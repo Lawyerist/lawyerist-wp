@@ -1,5 +1,10 @@
 # A custom WordPress theme for Lawyerist.com
 
+2013-09-06
+----------
+
+* Modify p.pullquote
+
 2013-08-16
 ----------
 

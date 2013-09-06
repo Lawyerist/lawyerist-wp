@@ -446,11 +446,11 @@ p.alert {
 
 p.pullquote {
 	color:#cc0000;
-	float:left;
 	font-size:22px;
 	font-weight:bold;
 	line-height:31px;
-	margin:0 15.5px 15.5px 0;
+	margin-left:26px;
+	margin-right:26px;
 	width:50%;
 }
 
