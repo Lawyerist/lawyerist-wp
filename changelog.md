@@ -4,6 +4,7 @@
 ----------
 
 * Modify p.pullquote
+* Fix homepage meta description.
 
 2013-08-16
 ----------

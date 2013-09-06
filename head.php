@@ -35,7 +35,7 @@ googletag.enableServices();
 </script>
 
 <title>
-<?php
+<?php /* Title tags */
 	if ( is_front_page() ) { bloginfo( 'name' ); echo ' &mdash; the law practice survival guide'; }
 	elseif ( is_single() || is_page() ) { the_title(); }
 	elseif ( is_author() ) { global $wp_query; $author_name = get_the_author_meta('display_name',$author); echo $author_name; }
@@ -45,14 +45,21 @@ googletag.enableServices();
 ?>
 </title>
 
-<?php if ( is_front_page() ) { ?><meta name="description" content=" <?php $blog_title = get_bloginfo('description'); ?>"><?php }
-elseif ( is_single() || is_page() ) {
 
-	global $post;
+<?php /* Meta descriptions */
+
+	if ( is_front_page() ) {
+
+		$description = get_bloginfo('description'); ?>
+		
+		<meta name="description" content="<?php echo $description; ?>"><?php }
+
+	elseif ( is_single() || is_page() ) {
 	
-	$excerpt = get_the_excerpt( $post->ID ) ?>
+		global $post;
+		$excerpt = get_the_excerpt( $post->ID ) ?>
 	
-	<meta name="description" content="<?php echo $excerpt; ?>">
+		<meta name="description" content="<?php echo $excerpt; ?>">
 
 <?php } ?>
 
