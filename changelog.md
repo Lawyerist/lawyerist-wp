@@ -1,5 +1,10 @@
 # A custom WordPress theme for Lawyerist.com
 
+2013-09-12
+----------
+
+* Increase content font size on single posts and pages.
+
 2013-09-06
 ----------
 

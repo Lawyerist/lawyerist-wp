@@ -540,6 +540,12 @@ body.single .wp-post-image.attachment-medium {
 	margin:0 0 20px 20px;
 }
 
+body.single .post_body p {
+	font-size:18px;
+	line-height:28px;
+	margin:0 0 28px 0;
+}
+
 body.single .pagenav_link {
         position:relative;
             top:0;
