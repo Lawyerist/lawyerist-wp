@@ -4,6 +4,7 @@
 ----------
 
 * Fix Jetpack sharing footer width.
+* Tweaks to responsive elements.
 
 2013-09-12
 ----------

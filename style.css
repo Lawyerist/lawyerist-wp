@@ -236,37 +236,28 @@ and (max-width: 727px) {
 
 }
 
-/* iPhone 5+ portrait */
+/* iPhone 5+ */
 
 @media only screen
 and (min-device-width : 320px) 
-and (max-device-width : 568px) 
-and (orientation : portrait) {
+and (max-device-width : 568px) {
 
-	#leaderboard_container {
-		display:none !important;
-	}
-
-	.post,
-	#popular_posts_tabbed ul.idTabs {
-		-webkit-text-size-adjust:200% !important;
-	}
-	
 	a.index_post p.excerpt {
 		display:none !important;
 	}
 
 }
 
-/* iPhone 5+ landscape */
+/* iPhone 5+ portrait */
 
 @media only screen
 and (min-device-width : 320px) 
-and (max-device-width : 568px) 
-and (orientation : landscape) {
+and (max-device-width : 568px)
+and (orientation : portrait) {
 
-	a.index_post p.excerpt {
-		display:none !important;
+	.post,
+	#popular_posts_tabbed ul.idTabs {
+		-webkit-text-size-adjust:200% !important;
 	}
 
 }
