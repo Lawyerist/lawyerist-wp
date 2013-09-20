@@ -1,5 +1,10 @@
 # A custom WordPress theme for Lawyerist.com
 
+2013-09-20
+----------
+
+* Fix Jetpack sharing footer width.
+
 2013-09-12
 ----------
 

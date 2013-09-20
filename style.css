@@ -132,7 +132,8 @@ body {
 
 /* Content width + Sharebar (1085px) */
 
-@media only screen and (max-width: 1084px) {
+@media only screen
+and (max-width: 1084px) {
 
 		#sharebar {
 			display:none !important;
@@ -147,7 +148,8 @@ body {
 
 /* Content width (1000px) */
 
-@media only screen and (max-width: 999px) {
+@media only screen
+and (max-width: 999px) {
 
 	/* Hide this stuff */
 	.lawyerist_insider_header_signup,
@@ -225,7 +227,8 @@ body {
 
 /* Leaderboard width (728px) */
 
-@media only screen and (max-width: 727px) {
+@media only screen
+and (max-width: 727px) {
 
 	#leaderboard_container {
 		display:none !important;
@@ -233,15 +236,16 @@ body {
 
 }
 
-/* Tablet portrait */
+/* iPhone 5+ portrait */
 
-@media only screen and (min-width: 768px) and (max-width: 959px) {
+@media only screen
+and (min-device-width : 320px) 
+and (max-device-width : 568px) 
+and (orientation : portrait) {
 
-}
-
-/* Phone portrait */
-
-@media only screen and (max-width: 767px) {
+	#leaderboard_container {
+		display:none !important;
+	}
 
 	.post,
 	#popular_posts_tabbed ul.idTabs {
@@ -254,9 +258,12 @@ body {
 
 }
 
-/* Phone landscape */
+/* iPhone 5+ landscape */
 
-@media only screen and (min-width: 480px) and (max-width: 767px) {
+@media only screen
+and (min-device-width : 320px) 
+and (max-device-width : 568px) 
+and (orientation : landscape) {
 
 	a.index_post p.excerpt {
 		display:none !important;
@@ -970,6 +977,7 @@ a.sticky {
 
 .sd-content {
 	float:none !important;
+	width:auto !important;
 }
 
 
