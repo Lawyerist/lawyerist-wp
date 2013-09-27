@@ -5,6 +5,7 @@
 NAV MENU
 FEATURED IMAGES
 SIDEBAR
+ADD UPLOAD_FILES TO CONTRIBUTOR ROLE
 REMOVE QUICKPRESS
 DASHBOARD RSS WIDGET
 
@@ -62,6 +63,16 @@ function lawyerist_sidebar_1()  {
 }
 
 add_action( 'widgets_init', 'lawyerist_sidebar_1' );
+
+
+/* ADD UPLOAD_FILES TO CONTRIBUTOR ROLE */
+
+function add_upload_files_contributor() {
+    $role = get_role( 'contributor' );
+    $role->add_cap( 'upload_files' ); 
+}
+
+add_action( 'admin_init', 'add_upload_files_contributor');
 
 
 /* REMOVE QUICKPRESS */

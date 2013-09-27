@@ -1,5 +1,21 @@
 # A custom WordPress theme for Lawyerist.com
 
+2013-09-27
+----------
+
+* Add upload_files capability to Contributor role.
+
+2013-09-24
+----------
+
+* Fix list styling in single.php.
+
+2013-09-23
+----------
+
+* Fix pullquote styling.
+* Style image captions.
+
 2013-09-20
 ----------
 
