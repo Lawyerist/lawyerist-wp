@@ -1,5 +1,10 @@
 # A custom WordPress theme for Lawyerist.com
 
+2013-09-30
+----------
+
+* Fix checkboxes on MailChimp signup forms.
+
 2013-09-27
 ----------
 

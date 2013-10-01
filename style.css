@@ -1448,6 +1448,21 @@ legend span {
 	width:75%;
 	}
 
+#mc-embedded-subscribe-form ul {
+	list-style:none;
+	margin-left:0;
+}
+
+#mc-embedded-subscribe-form ul input[type="checkbox"] {
+	margin-right:1em;
+}
+
+#mc-embedded-subscribe-form ul label {
+	display:inline;
+	font-size:inherit;
+	font-weight:normal;
+}
+
 	/* BUTTONS (from Skeleton) */
 
     .custom .button,
