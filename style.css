@@ -101,7 +101,7 @@ body {
 	#sidebar_column {
 		float:left;
 		margin:0;
-		padding-top:20px;
+		padding-top:15px;
 		width:300px;
 	}
 
@@ -377,7 +377,7 @@ em {
 h1,h2,h3,h4,h5,h6 {
 	color:#333;
 	font-family:'Roboto Slab','Droid Sans','Lucida Grande',Tahoma,sans-serif;
-	font-weight:bold;
+	font-weight:700;
 }
 
 h1 a,h2 a,h3 a,h4 a,h5 a,h6 a {
@@ -825,6 +825,40 @@ body.single .pagenav_link {
 
 /* CONTENT */
 
+#current_posts {
+	background-color:#ddd;
+	margin-bottom:30px;
+	padding-top:15px;
+}
+
+	#current_posts h3 {
+		color:#555;
+		font-size:16px;
+		font-weight:300;
+		line-height:1em;
+		margin-bottom:0;
+		padding:0 15px;
+	}
+
+	#current_posts a {
+		border-bottom:1px solid #ddd;
+		display:block;
+		padding:15px;
+		text-decoration:none;
+	}
+
+#previous_posts {
+}
+
+	#previous_posts h3 {
+		color:#555;
+		font-size:16px;
+		font-weight:100;
+		line-height:1em;
+		margin-bottom:0;
+		padding:0 15px;
+	}
+
 a.index_post {
     border-bottom:1px solid #ddd;
     display:block;
@@ -842,6 +876,14 @@ a.index_post {
     
     a.index_post:hover .headline {
     	color:#cc0000;
+    }
+    
+    a.index_post img {
+		opacity:.75;
+    }
+
+    a.index_post:hover img {
+		opacity:1;
     }
     
 	a.index_post .excerpt_postimg {
