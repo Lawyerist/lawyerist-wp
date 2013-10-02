@@ -3,8 +3,7 @@
 2013-10-02
 ----------
 
-* Fix nav menu width. [master]
-* Tweaks to yesterday's changes. The magazine theme isn't finished, but the back-end work is done. Now it's mostly styling. [Magazine-ify-index.php]
+* Make magazine-y theme way better.
 
 2013-10-01
 ----------

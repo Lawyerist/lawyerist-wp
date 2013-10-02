@@ -46,6 +46,12 @@ function featuredtoRSS($content) {
 add_filter('the_excerpt_rss', 'featuredtoRSS');
 add_filter('the_content_feed', 'featuredtoRSS');
 
+
+if ( function_exists( 'add_image_size' ) ) { 
+	add_image_size( 'home_thumb', 320, 320, true);
+}
+
+
 /* SIDEBAR */
 
 function lawyerist_sidebar_1()  {
