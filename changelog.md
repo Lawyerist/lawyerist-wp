@@ -1,9 +1,10 @@
 # A custom WordPress theme for Lawyerist.com
 
-2013-10-01
+2013-10-02
 ----------
 
-* Tweaks to yesterday's changes. The magazine theme isn't finished, but the back-end work is done, so I'm merging this branch.
+* Fix nav menu width. [master]
+* Tweaks to yesterday's changes. The magazine theme isn't finished, but the back-end work is done. Now it's mostly styling. [Magazine-ify-index.php]
 
 2013-10-01
 ----------
