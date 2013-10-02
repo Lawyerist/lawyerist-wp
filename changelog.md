@@ -3,7 +3,7 @@
 2013-10-01
 ----------
 
-* Tweaks to yesterday's changes.
+* Tweaks to yesterday's changes. The magazine theme isn't finished, but the back-end work is done, so I'm merging this branch.
 
 2013-10-01
 ----------
