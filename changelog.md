@@ -1,5 +1,10 @@
 # A custom WordPress theme for Lawyerist.com
 
+2013-10-02
+----------
+
+* Fix nav menu width.
+
 2013-10-01
 ----------
 
