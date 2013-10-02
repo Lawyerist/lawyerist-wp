@@ -3,12 +3,8 @@
 2013-10-02
 ----------
 
-* Fix nav menu width.
-
-2013-10-01
-----------
-
-* Tweaks to yesterday's changes. The magazine theme isn't finished, but the back-end work is done, so I'm merging this branch.
+* Fix nav menu width. [master]
+* Tweaks to yesterday's changes. The magazine theme isn't finished, but the back-end work is done. Now it's mostly styling. [Magazine-ify-index.php]
 
 2013-10-01
 ----------
