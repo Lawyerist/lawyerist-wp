@@ -826,11 +826,21 @@ body.single .pagenav_link {
 /* CONTENT */
 
 #current_posts {
+	background-color:#ddd;
 	margin-bottom:30px;
+	padding-top:15px;
 }
 
+	#current_posts h3 {
+		color:#555;
+		font-size:16px;
+		font-weight:300;
+		line-height:1em;
+		margin-bottom:0;
+		padding:0 15px;
+	}
+
 	#current_posts a {
-		background-color:#ddd;
 		border-bottom:1px solid #ddd;
 		display:block;
 		padding:15px;
@@ -847,7 +857,6 @@ body.single .pagenav_link {
 		line-height:1em;
 		margin-bottom:0;
 		padding:0 15px;
-		text-transform:uppercase;
 	}
 
 a.index_post {

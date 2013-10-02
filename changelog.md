@@ -3,8 +3,13 @@
 2013-10-01
 ----------
 
+* Tweaks to yesterday's changes.
+
+2013-10-01
+----------
+
 * Added editor-style.css.
-* Set up multiple loops and do some basic styling.
+* Set up multiple loops and do some basic styling for magazine-ified layout.
 * Minor tweaks to index.php styles.
 
 2013-09-30

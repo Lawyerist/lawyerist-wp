@@ -48,6 +48,8 @@
 
 			<div id="current_posts">
 		
+			<h3>THIS WEEK on LAWYERIST</h3>
+		
 			<?php 
 			$post_num = 1;
 		
@@ -105,7 +107,7 @@
 		
 			<div id="previous_posts">
 		
-			<h3>Previous posts</h3>
+			<h3>PREVIOUS ARTICLES</h3>
 		
 			<?php if ( have_posts() ) : while ( have_posts() ) : the_post();
 		
