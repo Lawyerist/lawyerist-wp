@@ -107,7 +107,7 @@
 		
 			<div id="previous_posts">
 		
-			<h3>PREVIOUS ARTICLES</h3>
+			<h3>PREVIOUSLY on LAWYERIST</h3>
 		
 			<?php if ( have_posts() ) : while ( have_posts() ) : the_post();
 		
