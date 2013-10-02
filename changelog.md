@@ -4,6 +4,8 @@
 ----------
 
 * Added editor-style.css.
+* Set up multiple loops and do some basic styling.
+* Minor tweaks to index.php styles.
 
 2013-09-30
 ----------
