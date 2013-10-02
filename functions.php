@@ -8,6 +8,7 @@ SIDEBAR
 ADD UPLOAD_FILES TO CONTRIBUTOR ROLE
 REMOVE QUICKPRESS
 DASHBOARD RSS WIDGET
+ADD EDITOR STYLESHEET
 
 */
 
@@ -134,3 +135,12 @@ function ls_add_lawyerist_dashboard_widget() {
 }
 
 add_action('wp_dashboard_setup', 'ls_add_lawyerist_dashboard_widget');
+
+
+/* ADD EDITOR STYLESHEET */
+
+function my_theme_add_editor_styles() {
+    add_editor_style();
+}
+
+add_action( 'init', 'my_theme_add_editor_styles' );

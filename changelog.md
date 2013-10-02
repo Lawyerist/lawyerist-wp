@@ -1,5 +1,10 @@
 # A custom WordPress theme for Lawyerist.com
 
+2013-10-01
+----------
+
+* Added editor-style.css.
+
 2013-09-30
 ----------
 
