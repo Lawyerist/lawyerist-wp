@@ -120,20 +120,10 @@ body {
 
 /* RESPONSIVE ELEMENTS */
 
-.mobile html,
-.mobile body {
-	overflow-x: hidden;
-}
-
-.mobile #related_posts {
-	display:none;
-}
-
-
 /* Content width + Sharebar (1085px) */
 
 @media only screen
-and (max-width: 1084px) {
+and (max-width: 1125px) {
 
 		#sharebar {
 			display:none !important;
@@ -142,123 +132,6 @@ and (max-width: 1084px) {
 		.sharedaddy {
 			display:block;
 		}
-
-}
-
-
-/* Content width (1000px) */
-
-@media only screen
-and (max-width: 999px) {
-
-	/* Hide this stuff */
-	.lawyerist_insider_header_signup,
-    .lawyerist_connect_more,
-	.menu-default-container,
-    #sidebar_column li.sidebar_ads,
-    #sidebar_column li.widget,
-	#pagenum,
-	#footer_content {
-		display:none !important;
-	}
-	
-	/* Change layout */
-
-	#header_container {
-		border-bottom:10px solid #cc0000;
-	}
-
-		#header {
-			padding:0 15px !important;
-			width:640px !important;
-		}
-	
-    #content_column_container {
-    	padding:0 !important;
-    	width:670px !important;
-    }
-
-		#content_column {
-			display:block !important;
-			float:none !important;
-			margin:0 auto;
-			padding:0 15px !important;
-			width:640px !important;
-		}
-		
-		body.index #content_column {
-			padding:0 !important;
-			width:670px !important;
-		}
-
-    #sidebar_column {
-    	clear:both !important;
-		display:block !important;
-		float:none !important;
-		margin:0 !important;
-		padding-left:15px !important;
-		padding-right:15px !important;
-		width:640px !important;
-	}
-	
-		#sidebar_column > li {
-			clear:both;
-		}
-
-		#sidebar_column h3 {
-			color:#111 !important;
-			font-size:20px !important;
-			letter-spacing:0;
-			line-height:30px !important;
-			margin-bottom:15px !important;
-			text-transform:none !important;
-			-webkit-text-size-adjust:200% !important;
-		}
-
-    #footer {
-    	background:none !important;
-		padding-left:15px !important;
-		padding-right:15px !important;
-		width:640px !important;
-	}
-
-}
-
-
-/* Leaderboard width (728px) */
-
-@media only screen
-and (max-width: 727px) {
-
-	#leaderboard_container {
-		display:none !important;
-	}
-
-}
-
-/* iPhone 5+ */
-
-@media only screen
-and (min-device-width : 320px) 
-and (max-device-width : 568px) {
-
-	a.index_post p.excerpt {
-		display:none !important;
-	}
-
-}
-
-/* iPhone 5+ portrait */
-
-@media only screen
-and (min-device-width : 320px) 
-and (max-device-width : 568px)
-and (orientation : portrait) {
-
-	.post,
-	#popular_posts_tabbed ul.idTabs {
-		-webkit-text-size-adjust:200% !important;
-	}
 
 }
 
@@ -831,7 +704,7 @@ a.featured_post {
 }
 	
 	a.top_post {
-		max-height:314px;
+		max-height:313px;
 		margin-top:20px;
 		margin-bottom:10px;
 		width:640px;

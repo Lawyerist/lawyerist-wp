@@ -9,6 +9,7 @@
 * Style popular posts in the sidebar the same as the featured posts and related posts footer.
 * Fix width of excerpt when the post has a thumbnail.
 * Bold headlines in featured posts, popular posts, and related posts.
+* __Enable Onswipe__ and remove most responsive elements.
 
 2013-10-02
 ----------
