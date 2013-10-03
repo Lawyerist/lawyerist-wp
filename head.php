@@ -1,7 +1,5 @@
 <head>
 
-<script type="text/javascript" src="http://cdn.onswipe.com/synapse/on.js?usr=lawyerist" id="onswipe_synapse"></script>
-
 <link rel="stylesheet" href="<?php echo get_stylesheet_uri(); ?>" type="text/css" media="screen, projection">
 
 <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:300,500,700|Source+Sans+Pro:200,400,700,200italic,400italic,700italic|Droid+Sans+Mono' rel='stylesheet' type='text/css'>
