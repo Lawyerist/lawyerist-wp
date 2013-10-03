@@ -910,10 +910,13 @@ body.single .pagenav_link {
 	}
 	
 			#current_posts .headline_excerpt h2,
-			#current_posts .headline_excerpt .author_link,
 			#current_posts .headline_excerpt .dsq-postid,
 			#current_posts .headline_excerpt p {
 				color:#fff;
+			}
+			
+			#current_posts .headline_excerpt .author_link {
+				color:#ddd;
 			}
 			
 			#current_posts .headline_excerpt .comment_bubble {
