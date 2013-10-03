@@ -8,6 +8,7 @@
 * Eliminate multiple loops and consolidate the loop.
 * Style popular posts in the sidebar the same as the featured posts and related posts footer.
 * Fix width of excerpt when the post has a thumbnail.
+* Bold headlines in featured posts, popular posts, and related posts.
 
 2013-10-02
 ----------
