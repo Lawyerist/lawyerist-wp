@@ -1,5 +1,13 @@
 # A custom WordPress theme for Lawyerist.com
 
+2013-10-03
+----------
+
+* Fix featured_thumb_2 size
+* Eliminate 15px padding on desktop layout.
+* Eliminate multiple loops and consolidate the loop.
+* Style popular posts in the sidebar the same as the featured posts and related posts footer.
+
 2013-10-02
 ----------
 

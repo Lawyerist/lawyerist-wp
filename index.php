@@ -40,169 +40,45 @@
 			single_tag_title();
 			echo '"</h1></div>';
         
-        } ?>
+        }
 
-		<?php if ( !is_paged() ) { ?>
 
-			<!-- Loop 1: this week -->
+				/* THE LOOP */
 
-			<div id="current_posts">
-		
-				<?php 
 				$post_num = 1;
-		
-				$my_query = new WP_Query( 'posts_per_page=3' );
-		
-				while ( $my_query->have_posts() ) : $my_query->the_post();
 
-					$do_not_duplicate[] = $post->ID;
-					$num_comments = get_comments_number(); ?>
-
-					<a class="index_post post post_num_<?php echo $post_num; if ( $post_num == 1 ) { echo ' top_post'; } else { echo ' other_current_posts'; } ?>" href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
-
-						<?php if ( $post_num == 1 ) { ?>
-							<div class="post_image_shade">
-					
-			<?php if ( has_post_thumbnail() ) { the_post_thumbnail( 'large' ); } ?>
-							</div>
-							<div class="headline_excerpt">
-								<h2 class="headline" id="post-<?php the_ID(); ?>"><?php the_title(); ?></h2>
-								<div class="postmeta">					
-									<?php if ( $num_comments > 0 ) { ?>
-										<div class="comment_link th_comment_link"><div class="comment_bubble"></div> <?php comments_number('leave a comment','1 comment','% comments'); ?></div>
-									<?php } ?>
-									<div class="author_link th_author_link double_bottom">by <?php the_author(); ?></div>
-								</div>
-								<p class="excerpt remove_bottom"><?php echo get_the_excerpt(); ?></p>
-							</div>
-						<?php } 
-
-						else { ?>
-							<div class="post_image_shade">
-					
-			<?php if ( has_post_thumbnail() ) { the_post_thumbnail( 'home_thumb' ); } ?>
-							</div>
-							<div class="headline_excerpt">
-								<h2 class="headline" id="post-<?php the_ID(); ?>"><?php the_title(); ?></h2>
-								<div class="postmeta th_postmeta">					
-									<?php if ( $num_comments > 0 ) { ?>
-										<div class="comment_link th_comment_link"><div class="comment_bubble"></div> <?php comments_number('leave a comment','1 comment','% comments'); ?></div>
-									<?php } ?>
-									<div class="author_link th_author_link">by <?php the_author(); ?></div>
-								</div>
-							</div>
-						<?php } ?>
-
-					</a>
-			
-					<?php $post_num++; ?>
-
-				<?php endwhile; ?>
-
-				<div class="clear"></div>
-
-			</div>
-		
-
-			<!-- Loop 2: previous posts -->
-		
-			<div id="previous_posts">
-		
-				<?php if ( have_posts() ) : while ( have_posts() ) : the_post();
-		
-				if ( in_array( $post->ID, $do_not_duplicate ) ) continue;
+				if ( have_posts() ) : while ( have_posts() ) : the_post();
 		
 					$num_comments = get_comments_number(); ?>
-			
-					<a class="index_post post" href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
+					
+					<a class="index_post post post_num_<?php echo $post_num; if ( $post_num < 4 ) { echo ' featured_post'; } if ( $post_num == 1 ) { echo ' top_post'; } elseif ( $post_num < 4 ) { echo ' other_featured_post'; } ?>" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
 	
-						<?php if ( has_post_thumbnail() ) { ?>
-							<?php the_post_thumbnail('thumbnail'); ?>
-							<h2 class="headline th_headline remove_bottom" id="post-<?php the_ID(); ?>"><?php the_title(); ?></h2>
-							<div class="postmeta th_postmeta">					
+						<?php if ( has_post_thumbnail() ) {
+							if ( $post_num == 1 ) { the_post_thumbnail( 'large' ); }
+							elseif ( $post_num < 4 ) { the_post_thumbnail( 'featured_thumb_2' ); }
+							else { the_post_thumbnail('thumbnail'); }
+						} ?>
+						
+						<div class="headline_excerpt">	
+							<h2 class="headline<?php if ( $post_num > 3 ) { echo ' remove_bottom'; } ?>" id="post-<?php the_ID(); ?>"><?php the_title(); ?></h2>
+							<div class="postmeta">					
 								<?php if ( $num_comments > 0 ) { ?>
 									<div class="comment_link th_comment_link"><div class="comment_bubble"></div> <?php comments_number('leave a comment','1 comment','% comments'); ?></div>
 								<?php } ?>
-								<div class="author_link th_author_link">by <?php the_author(); ?></div>
-								<p class="excerpt excerpt_postimg remove_bottom"><?php echo get_the_excerpt(); ?></p>
+								<div class="author_link<?php if ( $post_num == 1 ) { echo ' double_bottom'; } ?>">by <?php the_author(); ?></div>
+								<?php if ( $post_num == 1 || $post_num > 3 ) { echo '<p class="excerpt remove_bottom">' . get_the_excerpt() . '</p>'; } ?>
 							</div>
-						<?php }
-
-						else { ?>
-							<h2 class="headline remove_bottom" id="post-<?php the_ID(); ?>"><?php the_title(); ?></h2>
-							<div class="postmeta">					
-								<?php if ( $num_comments > 0 ) { ?>
-									<div class="comment_link"><div class="comment_bubble"></div> <?php comments_number('leave a comment','1 comment','% comments'); ?></div>
-								<?php } ?>
-								<div class="author_link">by <?php the_author(); ?></div>
-								<p class="excerpt remove_bottom"><?php the_excerpt(); ?></p>
-							</div>
-						<?php } ?>
+						</div>
 
 						<div class="clear"></div>
-				
+
 					</a>
+					
+					<?php $post_num++;
 			
-				<?php endwhile; endif; ?>
-		
-			</div>
-		
-			<!-- End posts -->
-		
-		<?php }
-		
-		else {
-		
-			if ( have_posts() ) : while ( have_posts() ) : the_post();
-		
-				$num_comments = get_comments_number(); ?>
-
-				<a class="index_post post <?php if ( is_sticky() ) { echo 'sticky'; } ?>" href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
-
-					<?php if ( has_post_thumbnail() && has_tag('big-image-everywhere') ) { ?>
-						<?php the_post_thumbnail('large'); ?>
-						<h2 class="headline remove_bottom" id="post-<?php the_ID(); ?>"><?php the_title(); ?></h2>
-						<div class="postmeta">					
-							<?php if ( $num_comments > 0 ) { ?>
-								<div class="comment_link th_comment_link"><div class="comment_bubble"></div> <?php comments_number('leave a comment','1 comment','% comments'); ?></div>
-							<?php } ?>
-							<div class="author_link th_author_link">by <?php the_author(); ?></div>
-						</div>
-						<div class="clear"></div>
-						<p class="excerpt remove_bottom"><?php echo get_the_excerpt(); ?></p>
-					<?php }
-
-					elseif ( has_post_thumbnail() ) { ?>
-						<?php the_post_thumbnail('thumbnail'); ?>
-						<h2 class="headline th_headline remove_bottom" id="post-<?php the_ID(); ?>"><?php the_title(); ?></h2>
-						<div class="postmeta th_postmeta">					
-							<?php if ( $num_comments > 0 ) { ?>
-								<div class="comment_link th_comment_link"><div class="comment_bubble"></div> <?php comments_number('leave a comment','1 comment','% comments'); ?></div>
-							<?php } ?>
-							<div class="author_link th_author_link">by <?php the_author(); ?></div>
-						</div>
-						<p class="excerpt excerpt_postimg remove_bottom"><?php echo get_the_excerpt(); ?></p>
-					<?php }
-
-					else { ?>
-						<h2 class="headline remove_bottom" id="post-<?php the_ID(); ?>"><?php the_title(); ?></h2>
-						<div class="postmeta">					
-							<?php if ( $num_comments > 0 ) { ?>
-								<div class="comment_link"><div class="comment_bubble"></div> <?php comments_number('leave a comment','1 comment','% comments'); ?></div>
-							<?php } ?>
-							<div class="author_link">by <?php the_author(); ?></div>
-						</div>
-						<p class="excerpt remove_bottom"><?php the_excerpt(); ?></p>
-					<?php } ?>
-
-					<div class="clear"></div>
-
-				</a>
-
-			<?php endwhile;
-			endif; ?>
-		
-		<?php } ?>
+				endwhile; endif;
+				
+				/* END LOOP */ ?>
 
 
 		<div id="pagenav_container">

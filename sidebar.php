@@ -60,15 +60,15 @@
 	</ul>
 
 	<div id="current" class="tabs_sublist">
-			<?php wpp_get_mostpopular("range=weekly&limit=5&stats_comments=0&thumbnail_height=90&thumbnail_width=90"); ?>
+			<?php wpp_get_mostpopular("post_type='post'&range=weekly&limit=5&stats_comments=0&thumbnail_height=225&thumbnail_width=300&post_html='<li>{thumb}<a class=\"wpp_headline\" href=\"{url}\">{text_title}</a></li>'"); ?>
 	</div> 
 
 	<div id="all-time" class="tabs_sublist">
-		<?php wpp_get_mostpopular("range=all&limit=5&stats_comments=0&thumbnail_height=90&thumbnail_width=90"); ?>
+		<?php wpp_get_mostpopular("post_type='post'&range=all&limit=5&stats_comments=0&thumbnail_height=225&thumbnail_width=300&post_html='<li>{thumb}<a class=\"wpp_headline\" href=\"{url}\">{text_title}</a></li>'"); ?>
 	</div>
 
 	<div id="our-picks" class="tabs_sublist">
-		<?php wpp_get_mostpopular("cat='2621'&range=all&limit=5&stats_comments=0&thumbnail_height=90&thumbnail_width=90"); ?>
+		<?php wpp_get_mostpopular("post_type='post'&cat='2621'&range=all&limit=5&stats_comments=0&thumbnail_height=225&thumbnail_width=300&post_html='<li>{thumb}<a class=\"wpp_headline\" href=\"{url}\">{text_title}</a></li>'"); ?>
 	</div>
 </li>
 

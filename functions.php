@@ -48,7 +48,7 @@ add_filter('the_content_feed', 'featuredtoRSS');
 
 
 if ( function_exists( 'add_image_size' ) ) { 
-	add_image_size( 'home_thumb', 320, 320, true);
+	add_image_size( 'featured_thumb_2', 315, 236, true);
 }
 
 
