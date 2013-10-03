@@ -58,7 +58,7 @@
 					$do_not_duplicate[] = $post->ID;
 					$num_comments = get_comments_number(); ?>
 
-					<a class="index_post post<?php if ( $post_num == 1 ) { echo ' top_post'; } else { echo ' other_current_posts'; } ?>" href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
+					<a class="index_post post post_num_<?php echo $post_num; if ( $post_num == 1 ) { echo ' top_post'; } else { echo ' other_current_posts'; } ?>" href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
 
 						<?php if ( $post_num == 1 ) { ?>
 							<div class="post_image_shade">
@@ -95,7 +95,7 @@
 
 					</a>
 			
-					<?php $post_num = 0; ?>
+					<?php $post_num++; ?>
 
 				<?php endwhile; ?>
 
