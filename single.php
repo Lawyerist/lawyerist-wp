@@ -48,7 +48,7 @@
             <div class="clear"></div>
 
             <div id="related_posts">
-    			<h3>Read More</h3>
+    			<h3>KEEP READING on LAWYERIST</h3>
 				<?php get_related_posts_thumbnails(); ?>
 			</div>
 			

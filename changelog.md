@@ -4,6 +4,7 @@
 ----------
 
 * Make magazine-y theme way better.
+* Update related posts footer.
 
 2013-10-01
 ----------
