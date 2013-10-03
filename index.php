@@ -66,7 +66,9 @@
 									<div class="comment_link th_comment_link"><div class="comment_bubble"></div> <?php comments_number('leave a comment','1 comment','% comments'); ?></div>
 								<?php } ?>
 								<div class="author_link<?php if ( $post_num == 1 ) { echo ' double_bottom'; } ?>">by <?php the_author(); ?></div>
-								<?php if ( $post_num == 1 || $post_num > 3 ) { echo '<p class="excerpt remove_bottom">' . get_the_excerpt() . '</p>'; } ?>
+								<?php if ( $post_num == 1 || $post_num > 3 ) { ?>
+									<p class="excerpt remove_bottom<?php if ( has_post_thumbnail() && $post_num > 3 ) { echo ' excerpt_with_thumb'; } ?>"><?php echo get_the_excerpt(); ?></p>
+								<?php } ?>
 							</div>
 						</div>
 
