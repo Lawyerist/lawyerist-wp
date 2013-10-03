@@ -883,7 +883,7 @@ body.single .pagenav_link {
 	
 	#current_posts img {
 		margin:0 !important;
-		opacity:.6;
+		opacity:.5;
 		overflow:hidden;
 		transition: opacity .4s;
 			-moz-transition: opacity .4s;
@@ -893,17 +893,6 @@ body.single .pagenav_link {
 	}
 	
 	#current_posts a:hover img {
-		opacity:.4;
-	}
-	
-	
-	#current_posts a.other_current_posts img {
-		margin:0 !important;
-		opacity:.5;
-		overflow:hidden;
-	}
-	
-	#current_posts a.other_current_posts:hover img {
 		opacity:.2;
 	}
 
@@ -1300,7 +1289,7 @@ a.sticky {
 	
 	ul#related_posts_thumbnails li a img {
 		margin:0 !important;
-		opacity:.6;
+		opacity:.5;
 		overflow:hidden;
 		transition: opacity .4s;
 			-moz-transition: opacity .4s;
@@ -1310,7 +1299,7 @@ a.sticky {
 	}
 	
 	ul#related_posts_thumbnails li:hover a img {
-		opacity:.4;
+		opacity:.2;
 	}
 	
 	ul#related_posts_thumbnails li a span {
