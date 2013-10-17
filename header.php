@@ -40,7 +40,7 @@
 					</div>
 				</form>	
 			</li>
-		<li><a class="linkedin sprite" href="http://www.linkedin.com/groups/Lawyeristcom-3843772" title="Connect with Lawyerist on LinkedIn" target="_blank"></a></li>
+		<li><a class="linkedin sprite" href="http://www.linkedin.com/company/lawyerist-media-llc" title="Connect with Lawyerist on LinkedIn" target="_blank"></a></li>
 		<li><a class="facebook sprite" href="http://facebook.com/lawyerist" title="Friend Lawyerist on Facebook" target="_blank"></a></li>
 		<li><a class="twitter sprite" href="http://twitter.com/lawyerist" title="Follow Lawyerist on Twitter" target="_blank"></a></li>
 		<li class="lawyerist_connect_more">

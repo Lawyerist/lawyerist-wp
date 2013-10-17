@@ -51,11 +51,11 @@
 		
 					$num_comments = get_comments_number(); ?>
 					
-					<a class="index_post post post_num_<?php echo $post_num; if ( $post_num < 4 ) { echo ' featured_post'; } if ( $post_num == 1 ) { echo ' top_post'; } elseif ( $post_num < 4 ) { echo ' other_featured_post'; } ?>" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
+					<a class="index_post post post_num_<?php echo $post_num; if ( $post_num < 4 && ( !is_paged() && !is_archive() ) ) { echo ' featured_post'; } if ( $post_num == 1 && ( !is_paged() && !is_archive() ) ) { echo ' top_post'; } elseif ( $post_num < 4 && ( !is_paged() && !is_archive() ) ) { echo ' other_featured_post'; } ?>" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
 	
 						<?php if ( has_post_thumbnail() ) {
-							if ( $post_num == 1 ) { the_post_thumbnail( 'large' ); }
-							elseif ( $post_num < 4 ) { the_post_thumbnail( 'featured_thumb_2' ); }
+							if ( $post_num == 1 && ( !is_paged() && !is_archive() ) ) { the_post_thumbnail( 'large' ); }
+							elseif ( $post_num < 4 && ( !is_paged() && !is_archive() ) ) { the_post_thumbnail( 'featured_thumb_2' ); }
 							else { the_post_thumbnail('thumbnail'); }
 						} ?>
 						
@@ -66,7 +66,7 @@
 									<div class="comment_link th_comment_link"><div class="comment_bubble"></div> <?php comments_number('leave a comment','1 comment','% comments'); ?></div>
 								<?php } ?>
 								<div class="author_link<?php if ( $post_num == 1 ) { echo ' double_bottom'; } ?>">by <?php the_author(); ?></div>
-								<?php if ( $post_num == 1 || $post_num > 3 ) { ?>
+								<?php if ( ( $post_num == 1 || $post_num > 3 ) || is_paged() || is_archive() ) { ?>
 									<p class="excerpt remove_bottom<?php if ( has_post_thumbnail() && $post_num > 3 ) { echo ' excerpt_with_thumb'; } ?>"><?php echo get_the_excerpt(); ?></p>
 								<?php } ?>
 							</div>

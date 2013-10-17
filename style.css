@@ -17,11 +17,10 @@ License: Copyright 2013 Lawyerist Media, LLC
 
 LAYOUT
 RESPONSIVE ELEMENTS
-RESETS
-BASIC TYPOGRAPHY
 index.php STYLES (FRONT & ARCHIVE PAGES)
 single.php & page.php STYLES (SINGLE POST PAGES & PAGES)
-page.php STYLES (PAGES)
+RESETS
+BASIC TYPOGRAPHY
 HEADER
 MENU
 CONTENT
@@ -45,7 +44,7 @@ USEFUL STUFF
 /* LAYOUT */
 
 body {
-    margin:0;
+	margin:0;
 	padding:0;
 }
 
@@ -63,7 +62,7 @@ body {
 	#header {
 		margin:0 auto;
 		padding:0;
-		width:960px;
+		max-width:96em;
 	}
 
 .menu-default-container {
@@ -76,33 +75,33 @@ body {
 		list-style:none;
 		margin:0 auto;
 		padding:0;
-		width:980px;
+		max-width:98em;
 	}
 
 #content_column_container {
 	margin:0 auto;
 	padding:0;
-	width:960px;
+	width:96em;
 }
 
 	#content_column {
 		float:right;
-		width:640px;
+		width:64em;
 	}
 	
 		.post {
-			padding-top:20px;
+			padding-top:2em;
 		}
 		
-		.sharedaddy {
-			display:none;
+		#pagenav {
+			margin-top:4em;
 		}
 	
 	#sidebar_column {
 		float:left;
 		margin:0;
-		padding-top:20px;
-		width:300px;
+		padding-top:2em;
+		width:30em;
 	}
 
 #footer_container {
@@ -112,33 +111,122 @@ body {
 }
 
 	#footer {
-		margin:40px auto 0 auto;
-		padding:0 0 15px 157px;
-		width:803px;
+		margin:4em auto 0 auto;
+		min-height:18em;
+		padding:0 0 1.5em 15.7em;
+		width:80.3em;
 	}
+
+
+/* index.php STYLES (FRONT & ARCHIVE PAGES) */
+
+body.index a.index_post .wp-post-image {
+	margin-left:1.5em;
+}
 
 
 /* RESPONSIVE ELEMENTS */
 
-/* Content width + Sharebar (1085px) */
+/* Content width (960px) + social icons (129px on each side) + 30px for padding */
 
 @media only screen
-and (max-width: 1125px) {
-
-		#sharebar {
-			display:none !important;
+and (max-width:1247px) {
+		
+	.juiz_sps_links {
+		margin-bottom:26px !important;
+		position:static;
+	}
+	
+		.juiz_sps_links ul {
+			position:static;
+		}
+	
+		.juiz_sps_links ul li {
+			display:inline !important;
 		}
 		
-		.sharedaddy {
-			display:block;
+		.juiz_sps_links ul li a {
+			margin:0 10px 0 0 !important;
 		}
+
+		.juiz_sps_hide_name a .juiz_sps_icon,
+		.juiz_sps_hide_name a .juiz_sps_icon {
+			margin-right:5px !important;
+		}
+
+		.juiz_sps_hide_name a .juis_sps_network_name,
+		.juiz_sps_hide_name a .juis_sps_network_name {
+			max-width:80px !important;
+		}
+
+}
+
+
+/* Content width (960px) + 30px for padding */
+
+@media only screen
+and (max-width:989px) {
+
+	html, body {
+        overflow-x: hidden;
+    }
+
+	/* Hide this stuff */
+	
+	#email_social,
+	.menu-default-container,
+	li.sidebar_ads,
+	#popular_posts_tabbed,
+	#linkcat-3058,
+	#footer_content {
+		display:none !important;
+	}
+	
+	/* Change layout */
+
+	#content_column_container {
+		margin:0 auto;
+		padding:0 2em;
+		width:64em
+	}
+
+		#content_column {
+			float:none;
+		}
+		
+		a.index_post .comment_link {
+			float:none !important;
+		}
+	
+		#sidebar_column {
+			float:none;
+			width:64em;
+		}
+
+	#footer {
+		width:48.3em;
+	}
+
+}
+
+
+/* Leaderboard ad width (728px) + 20px for padding */
+
+@media only screen
+and (max-width:747px) {
+
+	/* Hide this stuff */
+	
+	#leaderboard_container {
+		display:none;
+	}
 
 }
 
 
 /* RESETS */
 
-html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video {
+div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video {
 	margin:0;
 	padding:0;
 	border:0;
@@ -300,9 +388,9 @@ hr {
 }
 
 p {
-	font-size:16px;
-	line-height:26px;
-	margin:0 0 26px 0;
+	font-size:18px;
+	line-height:28px;
+	margin:0 0 28px 0;
 }
 
 p.note {
@@ -369,75 +457,19 @@ strong {
 
 ol,
 ul {
-	margin-bottom:13px;
+	margin-bottom:14px;
 	margin-left:30px;
 }
 
 li {
-	font-size:16px;
-	line-height:26px;
-	margin-bottom:13px;
+	font-size:18px;
+	line-height:28px;
+	margin-bottom:14px;
 }
 
 li p {
 	line-height:21px;
 }
-
-
-/* index.php STYLES (FRONT & ARCHIVE PAGES) */
-
-body.index #content_column_container {
-	margin:0 auto;
-	padding:0;
-	width:960px;
-}
-
-	body.index #content_column {
-		float:right;
-	}
-
-body.index a.index_post .wp-post-image {
-	float:right;
-	margin-left:15px;
-}
-
-body.index #pagenav {
-    margin:40px auto 0 auto;
-    width:640px;
-}
-
-
-/* single.php & page.php STYLES (SINGLE POST PAGES & PAGES) */
-
-body.single .wp-post-image.attachment-medium {
-	float:right;
-	margin:0 0 20px 20px;
-}
-
-body.single .post_body p {
-    font-size:18px;
-	line-height:28px;
-	margin:0 0 28px 0;
-}
-
-body.single .post_body ol,
-body.single .post_body ul {
-    margin-bottom:28px;
-}
-
-body.single .post_body li {
-    font-size:18px;
-    line-height:28px;
-    margin-bottom:14px;
-}
-
-body.single .pagenav_link {
-        position:relative;
-            top:0;
-    }
-
-/* page.php STYLES (PAGES) */
-
 
 
 /* LEADERBOARD */
@@ -704,13 +736,14 @@ a.featured_post {
 }
 	
 	a.top_post {
-		max-height:313px;
+		height:313px;
 		margin-top:20px;
 		margin-bottom:10px;
 		width:640px;
 	}
 	
 	a.other_featured_post {
+		clear:none !important;
 		display:inline-block;
 		float:left;
 		height:236px;
@@ -719,8 +752,7 @@ a.featured_post {
 		width:315px;
 	}
 
-	a.post_num_2,
-	a.post_num_4 {
+	a.post_num_2 {
 		margin-right:10px;
 	}
 
@@ -728,7 +760,7 @@ a.featured_post img {
 	margin:0 !important;
 	opacity:.5;
 	overflow:hidden;
-	transition: opacity .4s;
+	transition:opacity .4s;
 		-moz-transition: opacity .4s;
 		-ms-transition: opacity .4s;
 		-0-transition: opacity .4s;
@@ -737,6 +769,13 @@ a.featured_post img {
 
 a.featured_post:hover img {
 	opacity:.2;
+}
+
+a.featured_post .headline {
+	font-size:28px;
+	letter-spacing:1px;
+	line-height:39px;
+	margin-bottom:20px;
 }
 
 a.featured_post .headline_excerpt {
@@ -778,6 +817,7 @@ a.featured_post .headline_excerpt {
 
 a.index_post {
     border-bottom:1px solid #ddd;
+    clear:both;
     display:block;
 	padding:15px 0;
 	text-decoration:none;
@@ -897,19 +937,59 @@ a.sticky {
 	margin-bottom:13px;
 }
 
-.sd-block {
-	border:none !important;
-	padding:0 !important;
-	margin-bottom:26px !important;
-}
-
-.sd-content {
-	float:none !important;
-	width:auto !important;
-}
-
 
 	/* POSTS */
+
+	.post {
+		display:block;
+		position:relative;
+	}
+	
+	.juiz_sps_links {
+		margin-top:0 !important;
+		position:absolute;
+			top:20px;
+			right:-20px;
+	}
+	
+		.juiz_sps_links ul {
+			position:fixed;
+		}
+	
+		.juiz_sps_links ul li {
+			display:block !important;
+		}
+	
+		.juiz_sps_links ul li a {
+			font-family:inherit !important;
+			margin:0 0 10px 0 !important;
+			opacity:.5;
+			transition:opacity .4s !important;
+				-moz-transition: opacity .4s !important;
+				-ms-transition: opacity .4s !important;
+				-0-transition: opacity .4s !important;
+				-webkit-transition: opacity .4s !important;
+		}
+		
+		.juiz_sps_links ul li a:hover {
+			opacity:1;
+		}
+		
+		li.juiz_sps_link_facebook a {
+			background-color:#3b5998 !important;
+		}
+		
+		li.juiz_sps_link_twitter a {
+			background-color:#4875b4 !important;
+		}
+		
+		li.juiz_sps_link_google a {
+			background-color:#d34836 !important;
+		}
+		
+		li.juiz_sps_link_linkedin a {
+			background-color:#4875b4 !important;
+		}
 
 	.post_bio_sep {
 		text-align:center;
@@ -921,6 +1001,17 @@ a.sticky {
 		-webkit-font-smoothing:antialiased;
 		font:normal 16px/1em 'Genericons';
 		vertical-align:top;
+	}
+	
+	.sd-block {
+		border:none !important;
+		padding:0 !important;
+		margin-bottom:26px !important;
+	}
+
+	.sd-content {
+		float:none !important;
+		width:auto !important;
 	}
 	
 	#author_bio_footer {
@@ -942,7 +1033,13 @@ a.sticky {
 		margin-bottom:23px;
 		padding-left:120px;
 	}
-	
+
+	.wp-post-image.attachment-thumbnail,
+	.wp-post-image.attachment-medium {
+		float:right;
+		margin:0 0 20px 20px;
+	}
+
 	.wp-post-image.attachment-large {
 		clear:both;
         float:none !important;
@@ -1085,14 +1182,19 @@ a.sticky {
         text-decoration:none;
         width:210px;
     }
+
+		body.single .pagenav_link {
+				position:relative;
+					top:0;
+		}
     
-    #pagenav .alignleft .pagenav_link {
-        text-align:left;
-    }
-    
-    #pagenav .alignright .pagenav_link {
-        text-align:right;
-    }
+		#pagenav .alignleft .pagenav_link {
+			text-align:left;
+		}
+	
+		#pagenav .alignright .pagenav_link {
+			text-align:right;
+		}
     
     
     /* COMMENTS */
@@ -1293,6 +1395,7 @@ li.sidebar_ads li {
 	
 	#popular_posts_tabbed .tabs_sublist ul.wpp-list li a {
 		background:#111;
+		font-size:22px !important;
 		height:150px;
 		margin:0;
 		overflow:hidden;
@@ -1323,9 +1426,10 @@ li.sidebar_ads li {
 		background:none;
 		color:#fff;
 		font-family:'Roboto Slab','Droid Sans','Lucida Grande',Tahoma,sans-serif;
-		font-size:16px;
+		font-size:22px;
 		font-weight:700;
 		height:auto;
+		line-height:30px;
 		padding:15px;
 		text-decoration:none;
 		text-shadow:1px 1px 2px #111;

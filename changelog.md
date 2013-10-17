@@ -1,5 +1,38 @@
 # A custom WordPress theme for Lawyerist.com
 
+2013-10-15
+----------
+
+* Fix editing permissions.
+
+2013-10-14
+----------
+
+* Drastically improve mobile site. It's still far from perfect, but it will do for now.
+
+2013-10-10
+----------
+
+* Increased font size for featured post headlines and popular post headlines in the sidebar widget.
+
+2013-10-07
+----------
+
+* Fix sharing icon position.
+* Fix clear issues and excerpts not showing up where they ought to.
+
+2013-10-05
+----------
+
+* Convert to relative units.
+* Add edit_posts capability to Contributor role.
+* Stop featured posts from displaying on archive pages.
+
+2013-10-04
+----------
+
+* Implement new social sharing plugin.
+
 2013-10-03
 ----------
 

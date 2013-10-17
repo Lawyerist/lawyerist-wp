@@ -8,6 +8,10 @@
 
 <meta charset="utf-8" />
 
+<?php if ( wp_is_mobile() ) { ?>
+    <meta name="viewport" content="width=680">
+<?php } ?>
+
 <script type='text/javascript'>
 var googletag = googletag || {};
 googletag.cmd = googletag.cmd || [];
