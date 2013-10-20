@@ -23,7 +23,7 @@
 					<?php if ( is_user_logged_in() ) { edit_post_link( 'edit post', ' [', ']' ); } ?>
 				</p>
 				
-				<?php if ( has_post_thumbnail() && ( has_tag('big-image') || has_tag('big-image-everywhere') ) ) {
+				<?php if ( has_post_thumbnail() && has_tag('big-image') ) {
 					the_post_thumbnail('large');
 				}
 

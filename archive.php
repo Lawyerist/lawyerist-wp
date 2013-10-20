@@ -4,7 +4,7 @@
 <?php include('head.php'); ?>
 <?php wp_head(); ?>
 
-<body class="custom index<?php if ( wp_is_mobile() ) { ?> mobile<?php } ?>">
+<body class="custom archive<?php if ( wp_is_mobile() ) { ?> mobile<?php } ?>">
 
 <?php get_header(); ?>
 
@@ -12,27 +12,47 @@
 
     <div id="content_column">
 	
-		<?php /* THE LOOP */
+		<?php global $wp_query;
 		
-		$week = date('W');
-		$year = date('Y');
 		
-		$my_query = new WP_Query( array(
-			'date_query' => array(
-				'before' => array(
-					'year' => $year,
-					'week' => $week,
-				),
-			),
-		) );
+		/* ARCHIVE PAGE TITLES */
+		
+		if ( is_author() ) {
+			$author = $wp_query->query_vars['author'];
+			$author_name = get_the_author_meta('display_name',$author);
+			$author_bio = get_the_author_meta('description',$author);
+			$author_avatar = get_avatar( get_the_author_meta('user_email',$author) , 100 );
+			
+			echo '<div id="archive_header"><h1>' . $author_name . '</h1>' . "\n" . $author_avatar . "\n" . '<p class="author_descr">' . $author_bio . '</p><div class="clear"></div></div>';
+
+		} elseif ( is_category() ) {
+			$cat = $wp_query->query_vars['cat'];
+			$cat_descr = category_description($cat);
+			
+			echo '<div id="archive_header"><h1>';
+			single_cat_title();
+			echo '</h1>' . "\n" . '<p>' . $cat_descr . '</p></div>';
+		
+		} elseif ( is_tag() ) {
+			$tag = $wp_query->query_vars['tag'];
+			$tag_descr = tag_description($tag);
+			
+			echo '<div id="archive_header"><h1>Posts tagged "';
+			single_tag_title();
+			echo '"</h1></div>';
+        
+		}
+
+
+		/* THE LOOP */
 		
 		$post_num = 1;
 		
-		if ( $my_query->have_posts() ) : while ( $my_query->have_posts() ) : $my_query->the_post();
+		if ( have_posts() ) : while ( have_posts() ) : the_post();
 
 			$num_comments = get_comments_number(); ?>
 		
-			<a id="post-<?php the_ID(); ?>" class="index_post post<?php if ( $post_num == 1 ) { echo ' top_post'; } ?>" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
+			<a id="post-<?php the_ID(); ?>" class="post<?php if ( $post_num == 1 ) { echo ' top_post'; } ?>" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
 
 				<?php if ( has_post_thumbnail() ) { the_post_thumbnail('thumbnail'); } ?>
 			
@@ -52,10 +72,10 @@
 			</a>
 			
 			<?php $post_num++;
-				
+
 		endwhile; endif;
 		
-		/* END LOOP */ ?>
+		/* END LOOPS */ ?>
 
 
 		<div id="pagenav_container">

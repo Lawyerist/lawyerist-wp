@@ -1,5 +1,12 @@
 # A custom WordPress theme for Lawyerist.com
 
+2013-10 Major update
+--------------------
+
+* Added archive.php.
+* Front page is now this week's posts, LAB posts, and Sites network posts. Older posts start on page 2.
+
+
 2013-10-15
 ----------
 
