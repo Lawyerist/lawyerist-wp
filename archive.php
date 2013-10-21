@@ -56,15 +56,13 @@
 
 				<?php if ( has_post_thumbnail() ) { the_post_thumbnail('thumbnail'); } ?>
 			
-				<div class="headline_excerpt">
-					<h2 class="headline remove_bottom" id="post-<?php the_ID(); ?>"><?php the_title(); ?></h2>
-					<div class="postmeta">
-						<?php if ( $num_comments > 0 ) { ?>
-							<div class="comment_link th_comment_link"><div class="comment_bubble"></div> <?php comments_number('leave a comment','1 comment','% comments'); ?></div>
-						<?php } ?>
-						<div class="author_link">by <?php the_author(); ?></div>
-						<p class="excerpt remove_bottom<?php if ( has_post_thumbnail() ) { echo ' excerpt_with_thumb'; } ?>"><?php echo get_the_excerpt(); ?></p>
-					</div>
+				<h2 class="headline remove_bottom" id="post-<?php the_ID(); ?>"><?php the_title(); ?></h2>
+				<div class="postmeta">
+					<?php if ( $num_comments > 0 ) { ?>
+						<div class="comment_link th_comment_link"><div class="comment_bubble"></div> <?php comments_number('leave a comment','1 comment','% comments'); ?></div>
+					<?php } ?>
+					<div class="author_link">by <?php the_author(); ?></div>
+					<p class="excerpt remove_bottom<?php if ( has_post_thumbnail() ) { echo ' excerpt_with_thumb'; } ?>"><?php echo get_the_excerpt(); ?></p>
 				</div>
 
 				<div class="clear"></div>

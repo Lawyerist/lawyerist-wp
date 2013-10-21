@@ -14,21 +14,11 @@
 	
 		<?php /* THE LOOP */
 		
-		$week = date('W');
-		$year = date('Y');
-		
-		$my_query = new WP_Query( array(
-			'date_query' => array(
-				'before' => array(
-					'year' => $year,
-					'week' => $week,
-				),
-			),
-		) );
+		$my_query = new WP_Query( 'offset=5' );
 		
 		$post_num = 1;
 		
-		if ( $my_query->have_posts() ) : while ( $my_query->have_posts() ) : $my_query->the_post();
+		while ( $my_query->have_posts() ) : $my_query->the_post();
 
 			$num_comments = get_comments_number(); ?>
 		
@@ -36,15 +26,13 @@
 
 				<?php if ( has_post_thumbnail() ) { the_post_thumbnail('thumbnail'); } ?>
 			
-				<div class="headline_excerpt">
-					<h2 class="headline remove_bottom" id="post-<?php the_ID(); ?>"><?php the_title(); ?></h2>
-					<div class="postmeta">
-						<?php if ( $num_comments > 0 ) { ?>
-							<div class="comment_link th_comment_link"><div class="comment_bubble"></div> <?php comments_number('leave a comment','1 comment','% comments'); ?></div>
-						<?php } ?>
-						<div class="author_link">by <?php the_author(); ?></div>
-						<p class="excerpt remove_bottom<?php if ( has_post_thumbnail() ) { echo ' excerpt_with_thumb'; } ?>"><?php echo get_the_excerpt(); ?></p>
-					</div>
+				<h2 class="headline remove_bottom" id="post-<?php the_ID(); ?>"><?php the_title(); ?></h2>
+				<div class="postmeta">
+					<?php if ( $num_comments > 0 ) { ?>
+						<div class="comment_link th_comment_link"><div class="comment_bubble"></div> <?php comments_number('leave a comment','1 comment','% comments'); ?></div>
+					<?php } ?>
+					<div class="author_link">by <?php the_author(); ?></div>
+					<p class="excerpt remove_bottom<?php if ( has_post_thumbnail() ) { echo ' excerpt_with_thumb'; } ?>"><?php echo get_the_excerpt(); ?></p>
 				</div>
 
 				<div class="clear"></div>
@@ -53,7 +41,7 @@
 			
 			<?php $post_num++;
 				
-		endwhile; endif;
+		endwhile;
 		
 		/* END LOOP */ ?>
 
