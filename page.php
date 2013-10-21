@@ -6,8 +6,6 @@
 
 <body id="post-<?php the_ID(); ?>" class="custom single page<?php if ( wp_is_mobile() ) { ?> mobile<?php } ?>">
 
-<?php $ltheme_options = get_option( 'theme_ltheme_options' ); ?>
-
 <?php get_header(); ?>
 
 <div id="content_column_container">
