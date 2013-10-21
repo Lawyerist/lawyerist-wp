@@ -1559,8 +1559,8 @@ a.sticky {
 
 /* SIDEBAR */
 
-#lawyerist_sidebar_search {
-	margin-bottom:2em;
+#lawyerist_sidebar_search form {
+	margin-bottom:2.1em;
 }
 
 #lawyerist_sidebar_search input#st-search-input {
@@ -1621,7 +1621,7 @@ li.sidebar_ads ul {
 }
 
 li.sidebar_ads ul > li {
-	margin-bottom:1em !important;
+	margin-bottom:1.1em !important;
 	width:3em;
 }
 
