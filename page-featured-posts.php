@@ -41,7 +41,6 @@
 									<div class="comment_link th_comment_link"><div class="comment_bubble"></div> <?php comments_number('leave a comment','1 comment','% comments'); ?></div>
 								<?php } ?>
 								<div class="author_link">by <?php the_author(); ?></div>
-								<?php if ( $post_num == 1 ) { ?><p class="excerpt remove_bottom"><?php echo get_the_excerpt(); ?></p><?php } ?>
 							</div>
 						</div>
 						</div>
@@ -59,21 +58,22 @@
 			<div class="clear"></div>
 
 		</div>
+		
+		<div id="popular_posts">		
+			<h3>Most-discussed on Lawyerist</h3>
+			<?php wpp_get_mostpopular("post_type='post'&range=monthly&order_by=comments&limit=3&thumbnail_height=40&thumbnail_width=40&post_html='<li>{thumb}<a class=\"wpp_headline\" href=\"{url}\">{text_title}<div class=\"comment_bubble\"></div> {comments} comments</a></li>'"); ?>
+		</div>
 
 		<div id="browse_previous_posts">
 			<a href="<?php echo bloginfo('url') . '/previous-posts/'; ?>">
-				<p>SEE PREVIOUS POSTS &rarr;</p>
+				<p>see previous posts &rarr;</p>
 			</a>
-		</div>
-		
-		<div id="popular_posts">		
-			<h3>MOST-DISCUSSED on LAWYERIST</h3>
-			<?php wpp_get_mostpopular("post_type='post'&range=monthly&order_by=comments&limit=5&post_html='<li><a class=\"wpp_headline\" href=\"{url}\">{text_title}<div class=\"comment_bubble\"></div> {comments} comments</a></li>'"); ?>
 		</div>
 
 		<div id="sites_lab_container">
+			<div id="sites_lab_header"><h2>Read more from our network:</h2></div>
 			<div id="lab_posts">
-				<h3>NEW in the LAB</h3>
+				<h3>Lawyerist LAB</h3>
 
 				<?php // Get RSS Feed(s)
 				include_once( ABSPATH . WPINC . '/feed.php' );
@@ -100,8 +100,9 @@
 						<?php foreach ( $rss_items as $item ) : ?>
 							<li>
 								<a href="<?php echo esc_url( $item->get_permalink() ); ?>"
-									title="<?php printf( __( 'Posted %s', 'my-text-domain' ), $item->get_date('j F Y | g:i a') ); ?>">
-									<?php echo esc_html( $item->get_title() ); ?>
+									title="<?php printf( __( 'Updated on %s', 'my-text-domain' ), $item->get_date('F jS, Y @ g:i a') ); ?>">
+									<img src="http://lawyerist.com/lawyerist/wp-content/uploads/2013/10/lab-favicon.png" />
+									<div class="lab_headline"><?php echo esc_html( $item->get_title() ); ?></div>
 								</a>
 							</li>
 						<?php endforeach; ?>
@@ -111,7 +112,7 @@
 
 
 			<div id="sites_network_posts">
-				<h3>UPDATES from LAWYERIST SITES</h3>
+				<h3>Lawyerist Sites Network</h3>
 			
 				<?php // Get RSS Feed(s)
 				include_once( ABSPATH . WPINC . '/feed.php' );
@@ -138,7 +139,7 @@
 						<?php foreach ( $rss_items as $item ) : ?>
 							<li>
 								<a href="<?php echo esc_url( $item->get_permalink() ); ?>"
-									title="<?php printf( __( 'Posted %s', 'my-text-domain' ), $item->get_date('j F Y | g:i a') ); ?>">
+									title="<?php printf( __( 'Posted on %s', 'my-text-domain' ), $item->get_date('F jS, Y') ); ?>">
 									<?php echo esc_html( $item->get_title() ); ?>
 								</a>
 							</li>

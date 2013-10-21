@@ -9,6 +9,7 @@ ADD CAPABILITIES TO CONTRIBUTOR ROLE
 REMOVE QUICKPRESS
 DASHBOARD RSS WIDGET
 ADD EDITOR STYLESHEET
+RSS FEED CACHING
 
 */
 
@@ -150,3 +151,16 @@ function my_theme_add_editor_styles() {
 }
 
 add_action( 'init', 'my_theme_add_editor_styles' );
+
+
+/* RSS FEED CACHING */
+
+function return_3600( $seconds )
+{
+  /* Change the default feed cache recreation period to 1 hour */
+  return 3600;
+}
+
+add_filter( 'wp_feed_cache_transient_lifetime' , 'return_3600' );
+$feed = fetch_feed( $feed_url );
+remove_filter( 'wp_feed_cache_transient_lifetime' , 'return_3600' );
