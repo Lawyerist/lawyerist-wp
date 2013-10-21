@@ -21,7 +21,7 @@
 				
 				<div class="postmeta">
 					<div class="comment_link th_comment_link"><a href="#disqus_thread"><div class="comment_bubble"></div> <?php comments_number('leave a comment','1 comment','% comments'); ?></a></div>
-					<div class="author_link">by <?php the_author(); ?></div>
+					<div class="author_link">by <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>"><?php the_author(); ?></a></div>
 					<div class="clear"></div>
 				</div>
 
