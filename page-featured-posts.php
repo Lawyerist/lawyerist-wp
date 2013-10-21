@@ -61,7 +61,7 @@
 		
 		<div id="popular_posts">		
 			<h3>Most-discussed on Lawyerist</h3>
-			<?php wpp_get_mostpopular("post_type='post'&range=monthly&order_by=comments&limit=3&thumbnail_height=40&thumbnail_width=40&post_html='<li>{thumb}<a class=\"wpp_headline\" href=\"{url}\">{text_title}<div class=\"comment_bubble\"></div> {comments} comments</a></li>'"); ?>
+			<?php wpp_get_mostpopular("post_type='post'&range=monthly&order_by=comments&limit=3&thumbnail_height=40&thumbnail_width=40&post_html='<li>{thumb}<a class=\"wpp_headline\" href=\"{url}\">{text_title}<br /><div class=\"comment_bubble\"></div> {comments} recent comments</a></li>'"); ?>
 		</div>
 
 		<div id="browse_previous_posts">
