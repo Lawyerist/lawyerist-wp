@@ -65,8 +65,8 @@
 		</div>
 
 		<div id="browse_previous_posts">
-			<a href="<?php echo bloginfo('url') . '/previous-posts/'; ?>">
-				<p>see previous posts &rarr;</p>
+			<a href="<?php echo bloginfo('url') . '/articles/'; ?>">
+				<p>see all articles &rarr;</p>
 			</a>
 		</div>
 

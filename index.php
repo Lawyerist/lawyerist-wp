@@ -18,7 +18,7 @@
 		
 		$post_num = 1;
 		
-		while ( $my_query->have_posts() ) : $my_query->the_post();
+		if ( have_posts() ) : while ( have_posts() ) : the_post();
 
 			$num_comments = get_comments_number(); ?>
 		
@@ -41,7 +41,7 @@
 			
 			<?php $post_num++;
 				
-		endwhile;
+		endwhile; endif;
 		
 		/* END LOOP */ ?>
 
