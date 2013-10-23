@@ -51,7 +51,7 @@
 	</ul>
 </li>
 
-<?php if ( !is_page('featured-posts') ) { ?>
+<?php if ( !is_page('featured') ) { ?>
 
 	<li id="popular_posts_tabbed">
 			<h3>Popular Posts</h3>        
