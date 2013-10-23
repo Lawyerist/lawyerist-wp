@@ -1657,17 +1657,12 @@ li.sidebar_ads ul > li {
         }
         
         #popular_posts_tabbed .tabs_sublist ul.wpp-list li a.wpp_headline {
-        	color:#111;
         	display:block;
 			font-size:1.8em;
 			font-weight:500;
 			line-height:1.444em;
 			padding-right:90px;
 			text-decoration:none;
-        }
-        
-        #popular_posts_tabbed .tabs_sublist ul.wpp-list li a.wpp_headline:hover {
-        	color:#cc0000;
         }
 
 
