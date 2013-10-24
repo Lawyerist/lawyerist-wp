@@ -1073,6 +1073,7 @@ li p {
 .front_page #sites_promo {
 	background:#ddd;
 	box-shadow:0 0 50px rgba(0,0,0,.1) inset;
+	margin-bottom:2.8em;
 	padding:2em 2.5em;
 }
 
