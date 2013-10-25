@@ -1,7 +1,7 @@
 # A custom WordPress theme for Lawyerist.com
 
-2013-10-21 Major update
------------------------
+2013-10-21 through 10-24 Major update
+-------------------------------------
 
 * Front page is now a static page featuring this week's posts, most-discussed posts, LAB posts, and Sites network posts. Older posts start on page 2.
 * Lots of tweaks went into this. Really need to figure out a better way to organize style.css.

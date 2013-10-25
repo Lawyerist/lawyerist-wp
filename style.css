@@ -600,7 +600,7 @@ li p {
 			}
 		
 			#email_social ul li.lawyerist_connect_more a:hover {
-				color:#ddd;
+				color:#cc0000;
 			}
 	
 			#email_social ul li.lawyerist_connect_more .connect_more,
@@ -633,14 +633,11 @@ li p {
 			}
 
     	#email_social ul li a.sprite {
-			margin:0 0 0 10px;
+    		color:#fff;
+    		margin-left:8px;
 			padding:0;
 			text-decoration:none;
 		}
-        
-        #email_social ul li a.sprite:hover {
-            opacity:.5;
-        }
 
         #email_social ul li a.sprite:before {
     		display:inline-block;
@@ -649,41 +646,36 @@ li p {
     		vertical-align:top;
         }
         
-			#email_social ul li a.facebook.sprite {
-				background-color:#fff;
-				padding:1px 0 4px 0;
+			#email_social ul li a.facebook.sprite:hover {
+				color:#3b5998;
 			}
 		
 			#email_social ul li a.facebook.sprite:before {
-                color:#3b5998;
 				content:'\f203';
 			}
 
 			#email_social ul li a.linkedin.sprite {
-				background-color:#fff;
-				padding-bottom:3px;
-				position:relative;
-					left:-4px;
-				width:32px;
+				margin-left:10px;
+			}
+
+			#email_social ul li a.linkedin.sprite:hover {
+				color:#4875b4;
 			}
 					
 			#email_social ul li a.linkedin.sprite:before {
-				color:#4875b4;
                 content:'\f208';
-                position:relative;
-					left:-4px;
-                width:24px;
+			}
+
+			#email_social ul li a.twitter.sprite:hover {
+				color:#4099ff;
 			}
 		
 			#email_social ul li a.twitter.sprite:before {
-				color:#4099ff;
                 content:'\f202';
 			}
 		
 			#email_social ul li form#lawyerist_insider_subscribe {
 				margin:0;
-				position:relative;
-					left:-8px;
 			}
 		
 			#email_social ul li form#lawyerist_insider_subscribe input[type="email"] {
