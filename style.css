@@ -62,6 +62,7 @@ body {
 	#header {
 		margin:0 auto;
 		padding:0;
+		position:relative;
 		max-width:96em;
 	}
 
@@ -459,6 +460,11 @@ strong {
 	font-weight:bold;
 }
 
+sup {
+	font-size:75%;
+	vertical-align:super;
+}
+
 .post_body .syntaxhighlighter {
 	font-size:14px !important;
 	margin-bottom:32px !important;
@@ -492,6 +498,49 @@ li p {
 
 
 /* HEADER */
+
+img#zombie_scalia {
+	height:15em;
+	position:absolute;
+		left:-123px;
+		top:-35px;
+	width:auto;
+        -webkit-animation-duration: 1s;
+           -moz-animation-duration: 1s;
+             -o-animation-duration: 1s;
+                animation-duration: 1s;
+        -webkit-animation-fill-mode: both;
+           -moz-animation-fill-mode: both;
+             -o-animation-fill-mode: both;
+                animation-fill-mode: both;
+}
+
+	@-webkit-keyframes rollIn {
+			0% { opacity: 0; -webkit-transform: translateX(-100%) rotate(-120deg); }
+			100% { opacity: 1; -webkit-transform: translateX(0px) rotate(0deg); }
+	}
+
+	@-moz-keyframes rollIn {
+			0% { opacity: 0; -moz-transform: translateX(-100%) rotate(-120deg); }
+			100% { opacity: 1; -moz-transform: translateX(0px) rotate(0deg); }
+	}
+
+	@-o-keyframes rollIn {
+			0% { opacity: 0; -o-transform: translateX(-100%) rotate(-120deg); }
+			100% { opacity: 1; -o-transform: translateX(0px) rotate(0deg); }
+	}
+
+	@keyframes rollIn {
+			0% { opacity: 0; transform: translateX(-100%) rotate(-120deg); }
+			100% { opacity: 1; transform: translateX(0px) rotate(0deg); }
+	}
+
+	#zombie_scalia {
+			-webkit-animation-name: rollIn;
+			-moz-animation-name: rollIn;
+			-o-animation-name: rollIn;
+			animation-name: rollIn;
+	}
 
 #title {
 	background:url('images/lawyerist_header_short.png') no-repeat left center;
