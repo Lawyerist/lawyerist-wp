@@ -1,5 +1,11 @@
 # A custom WordPress theme for Lawyerist.com
 
+2013-11-03
+----------
+
+* Update blockquote in editor-style.css.
+* Rename changelog.md to README.md. I hope Github is happy with that.
+
 2013-11-01
 ----------
 

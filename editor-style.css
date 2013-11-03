@@ -15,8 +15,9 @@ blockquote p {
 blockquote {
 	border-left:1px solid #ddd;
 	margin:0 0 20px;
-	padding:9px 20px 0 19px;
+	padding:0 20px 0 19px;
 }
+
 
 h1,h2,h3,h4,h5,h6 {
 	color:#333;
