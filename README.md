@@ -1,9 +1,15 @@
 # A custom WordPress theme for Lawyerist.com
 
+2013-11-01
+----------
+
+* Remove Zombie Scalia.
+
 2013-10-30
 ----------
 
 * Zombie Scalia attacks!
+* Remove edit page link.
 
 2013-10-21 through 10-24 Major update
 -------------------------------------

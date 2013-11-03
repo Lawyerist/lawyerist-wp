@@ -132,40 +132,6 @@ body {
 
 /* RESPONSIVE ELEMENTS */
 
-/* Content width (960px) + social icons (129px on each side) + 30px for padding */
-
-@media only screen
-and (max-width:1247px) {
-		
-	.juiz_sps_links {
-		margin-bottom:26px !important;
-		position:static;
-	}
-	
-		.juiz_sps_links ul {
-			position:static;
-		}
-	
-		.juiz_sps_links ul li {
-			display:inline !important;
-		}
-		
-		.juiz_sps_links ul li a {
-			margin:0 10px 0 0 !important;
-		}
-
-		.juiz_sps_hide_name a .juiz_sps_icon,
-		.juiz_sps_hide_name a .juiz_sps_icon {
-			margin-right:5px !important;
-		}
-
-		.juiz_sps_hide_name a .juis_sps_network_name,
-		.juiz_sps_hide_name a .juis_sps_network_name {
-			max-width:80px !important;
-		}
-
-}
-
 
 /* Content width (960px) + 30px for padding */
 
@@ -498,49 +464,6 @@ li p {
 
 
 /* HEADER */
-
-img#zombie_scalia {
-	height:15em;
-	position:absolute;
-		left:-123px;
-		top:-35px;
-	width:auto;
-        -webkit-animation-duration: 1s;
-           -moz-animation-duration: 1s;
-             -o-animation-duration: 1s;
-                animation-duration: 1s;
-        -webkit-animation-fill-mode: both;
-           -moz-animation-fill-mode: both;
-             -o-animation-fill-mode: both;
-                animation-fill-mode: both;
-}
-
-	@-webkit-keyframes rollIn {
-			0% { opacity: 0; -webkit-transform: translateX(-100%) rotate(-120deg); }
-			100% { opacity: 1; -webkit-transform: translateX(0px) rotate(0deg); }
-	}
-
-	@-moz-keyframes rollIn {
-			0% { opacity: 0; -moz-transform: translateX(-100%) rotate(-120deg); }
-			100% { opacity: 1; -moz-transform: translateX(0px) rotate(0deg); }
-	}
-
-	@-o-keyframes rollIn {
-			0% { opacity: 0; -o-transform: translateX(-100%) rotate(-120deg); }
-			100% { opacity: 1; -o-transform: translateX(0px) rotate(0deg); }
-	}
-
-	@keyframes rollIn {
-			0% { opacity: 0; transform: translateX(-100%) rotate(-120deg); }
-			100% { opacity: 1; transform: translateX(0px) rotate(0deg); }
-	}
-
-	#zombie_scalia {
-			-webkit-animation-name: rollIn;
-			-moz-animation-name: rollIn;
-			-o-animation-name: rollIn;
-			animation-name: rollIn;
-	}
 
 #title {
 	background:url('images/lawyerist_header_short.png') no-repeat left center;
@@ -1251,52 +1174,6 @@ a.sticky {
 
 
 	/* POSTS */
-	
-	.juiz_sps_links {
-		margin-top:0 !important;
-		position:absolute;
-			top:20px;
-			right:-20px;
-	}
-	
-		.juiz_sps_links ul {
-			position:fixed;
-		}
-	
-		.juiz_sps_links ul li {
-			display:block !important;
-		}
-	
-		.juiz_sps_links ul li a {
-			font-family:inherit !important;
-			margin:0 0 10px 0 !important;
-			opacity:.5;
-			transition:opacity .4s !important;
-				-moz-transition: opacity .4s !important;
-				-ms-transition: opacity .4s !important;
-				-0-transition: opacity .4s !important;
-				-webkit-transition: opacity .4s !important;
-		}
-		
-		.juiz_sps_links ul li a:hover {
-			opacity:1;
-		}
-		
-		li.juiz_sps_link_facebook a {
-			background-color:#3b5998 !important;
-		}
-		
-		li.juiz_sps_link_twitter a {
-			background-color:#4875b4 !important;
-		}
-		
-		li.juiz_sps_link_google a {
-			background-color:#d34836 !important;
-		}
-		
-		li.juiz_sps_link_linkedin a {
-			background-color:#4875b4 !important;
-		}
 
 	.post_bio_sep {
 		text-align:center;

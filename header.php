@@ -55,8 +55,6 @@
 
 	<div class="clear"></div>
 
-	<img id="zombie_scalia" src="http://lawyerist.com/lawyerist/wp-content/uploads/2013/10/zombie-scalia.png" />
-
 </div>
 </div>
 

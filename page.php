@@ -18,9 +18,6 @@
 			<div class="post">
 		
 				<h1 class="headline"><?php the_title(); ?></h1>
-				<p class="postmeta">
-					<?php if ( is_user_logged_in() ) { edit_post_link( 'edit page', ' [', ']' ); } ?>
-				</p>
 
 				<?php if ( has_post_thumbnail() ) { 
 					the_post_thumbnail('large');
