@@ -22,9 +22,9 @@
 	</script>
 </li>
 
-<li class="sidebar_ads">
+<li class="sidebar_ads widget">
 	<ul>
-		<li>
+		<li id="ap2" class="sidebar_ad">
 			<!-- lawyerist_ap2_sidebar1 -->
 			<div id='div-gpt-ad-1356989285353-1' style='width:300px; height:250px;'>
 			<script type='text/javascript'>
@@ -32,7 +32,7 @@
 			</script>
 			</div>
 		</li>
-		<li>
+		<li id="ap3" class="sidebar_ad">
 			<!-- lawyerist_ap3_sidebar2 -->
 			<div id='div-gpt-ad-1356989285353-2' style='width:300px; height:250px;'>
 			<script type='text/javascript'>
@@ -40,7 +40,7 @@
 			</script>
 			</div>
 		</li>
-		<li>
+		<li id="ap4" class="sidebar_ad">
 			<!-- lawyerist_ap4_halfpage -->
 			<div id='div-gpt-ad-1356989285353-3' style='width:300px; height:600px;'>
 			<script type='text/javascript'>
@@ -49,6 +49,7 @@
 			</div>
 		</li>
 	</ul>
+	<div class="clear"></div>
 </li>
 
 <?php if ( !is_page('featured') ) { ?>

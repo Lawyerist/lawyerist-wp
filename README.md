@@ -1,21 +1,41 @@
 # A custom WordPress theme for Lawyerist.com
 
+2013-11-11
+----------
+
+* Add "smaller title" tag support.
+
+2013-11-05
+----------
+
+* Embiggen most-discussed post thumbnails.
+
+
+2013-11-04
+----------
+
+* Add sidebar ads back in on mobile.
+
+
 2013-11-03
 ----------
 
 * Update blockquote in editor-style.css.
 * Rename changelog.md to README.md. I hope Github is happy with that.
 
+
 2013-11-01
 ----------
 
 * Remove Zombie Scalia.
+
 
 2013-10-30
 ----------
 
 * Zombie Scalia attacks!
 * Remove edit page link.
+
 
 2013-10-21 through 10-24 Major update
 -------------------------------------
@@ -29,21 +49,25 @@
 
 * Fix editing permissions.
 
+
 2013-10-14
 ----------
 
 * Drastically improve mobile site. It's still far from perfect, but it will do for now.
+
 
 2013-10-10
 ----------
 
 * Increased font size for featured post headlines and popular post headlines in the sidebar widget.
 
+
 2013-10-07
 ----------
 
 * Fix sharing icon position.
 * Fix clear issues and excerpts not showing up where they ought to.
+
 
 2013-10-05
 ----------
@@ -52,10 +76,12 @@
 * Add edit_posts capability to Contributor role.
 * Stop featured posts from displaying on archive pages.
 
+
 2013-10-04
 ----------
 
 * Implement new social sharing plugin.
+
 
 2013-10-03
 ----------
@@ -68,11 +94,13 @@
 * Bold headlines in featured posts, popular posts, and related posts.
 * __Enable Onswipe__ and remove most responsive elements.
 
+
 2013-10-02
 ----------
 
 * Make magazine-y theme way better.
 * Update related posts footer.
+
 
 2013-10-01
 ----------
@@ -81,20 +109,24 @@
 * Set up multiple loops and do some basic styling for magazine-ified layout.
 * Minor tweaks to index.php styles.
 
+
 2013-09-30
 ----------
 
 * Fix checkboxes on MailChimp signup forms.
+
 
 2013-09-27
 ----------
 
 * Add upload_files capability to Contributor role.
 
+
 2013-09-24
 ----------
 
 * Fix list styling in single.php.
+
 
 2013-09-23
 ----------
@@ -102,22 +134,26 @@
 * Fix pullquote styling.
 * Style image captions.
 
+
 2013-09-20
 ----------
 
 * Fix Jetpack sharing footer width.
 * Tweaks to responsive elements.
 
+
 2013-09-12
 ----------
 
 * Increase content font size on single posts and pages.
+
 
 2013-09-06
 ----------
 
 * Modify p.pullquote
 * Fix homepage meta description.
+
 
 2013-08-16
 ----------
@@ -126,10 +162,12 @@
 * Added G+ share button script to footer.php
 * Added excerpt as meta description for single posts and pages
 
+
 2013-07-30
 ----------
 
 * Remove leaderboard house ad
+
 
 2013-07-29
 ----------
@@ -137,10 +175,12 @@
 * Un-hide sidebar search when single-column
 * Change navigation in header from "forum" to "lab"
 
+
 2013-07-17
 ----------
 
 * Re-styled email form on http://lawyerist.com/lawyerist-insider-newsletter/
+
 
 2013-07-05
 ----------
@@ -151,6 +191,7 @@ I am dropping version numbers because they are meaningless. From here on out, I 
 * Lawyerist + LAB Google Analytics tracking code added to footer
 * Bold blog-forum-sites nav
 * Fix byline for posts without featured images
+
 
 2013-06-18, v1.03
 -----------------
@@ -164,6 +205,7 @@ I am dropping version numbers because they are meaningless. From here on out, I 
 * Fix li line-height in Buyer's Guide
 * Other minor fixes
 
+
 2013-06-13, v1.02
 -----------------
 
@@ -171,10 +213,12 @@ I am dropping version numbers because they are meaningless. From here on out, I 
 * Remove pagenum styles
 * Style buyer's guide (not perfect, but it looks decent, at least)
 
+
 2013-06-13, v1.01
 -----------------
 
 Of course it didn't work right. Here's a quick fix to the nav menu.
+
 
 2013-06-13, v1.0
 ----------------

@@ -26,7 +26,7 @@
 	
 					$num_comments = get_comments_number(); ?>
 
-					<a id="post-<?php the_ID(); ?>" class="post featured_post post_num_<?php echo $post_num; ?>" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
+					<a id="post-<?php the_ID(); ?>" class="post featured_post post_num_<?php echo $post_num; if ( has_tag('smaller title') ) { echo ' tag_smaller_title'; } ?>" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
 
 						<?php if ( has_post_thumbnail() ) {
 								if ( $post_num == 1 ) { the_post_thumbnail( 'large' ); }
@@ -61,7 +61,7 @@
 		
 		<div id="popular_posts">		
 			<h3>Most-discussed on Lawyerist</h3>
-			<?php wpp_get_mostpopular("post_type='post'&range=monthly&order_by=comments&limit=3&thumbnail_height=40&thumbnail_width=40&post_html='<li>{thumb}<a class=\"wpp_headline\" href=\"{url}\">{text_title}<br /><div class=\"comment_bubble\"></div> {comments} recent comments</a></li>'"); ?>
+			<?php wpp_get_mostpopular("post_type='post'&range=monthly&order_by=comments&limit=3&thumbnail_height=60&thumbnail_width=60&post_html='<li>{thumb}<a class=\"wpp_headline\" href=\"{url}\">{text_title}<br /><div class=\"comment_bubble\"></div> {comments} recent comments</a></li>'"); ?>
 		</div>
 
 		<div id="browse_previous_posts">
@@ -84,7 +84,7 @@
 				if ( ! is_wp_error( $rss ) ) : // Checks that the object is created correctly
 
 					// Figure out how many total items there are, but limit it to 5. 
-					$maxitems = $rss->get_item_quantity( 7 ); 
+					$maxitems = $rss->get_item_quantity( 5 ); 
 
 					// Build an array of all the items, starting with element 0 (first element).
 					$rss_items = $rss->get_items( 0, $maxitems );
