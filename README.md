@@ -3,7 +3,7 @@
 2013-11-15
 ----------
 
-* Switch to @import fonts, and fix font weights.
+* Switch to locally-hosted fonts, and fix font weights.
 * Add in-depth article schema (I think).
 
 2013-11-11
