@@ -17,23 +17,25 @@
 
 			<div class="post">
 		
-				<h1 class="headline remove_bottom"><?php the_title(); ?></h1>
+				<h1 class="headline remove_bottom" itemprop="headline"><?php the_title(); ?></h1>
 				
 				<div class="postmeta">
 					<div class="comment_link th_comment_link"><a href="#disqus_thread"><div class="comment_bubble"></div> <?php comments_number('leave a comment','1 comment','% comments'); ?></a></div>
-					<div class="author_link">by <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>"><?php the_author(); ?></a> on  on <?php the_time('F jS, Y'); ?></div>
+					<div class="author_link">by <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>"><?php the_author(); ?></a> on  on <span itemprop="datePublished"><?php the_time('F jS, Y'); ?></span></div>
 					<div class="clear"></div>
 				</div>
 
-				<?php if ( has_post_thumbnail() && has_tag('big-image') ) {
-					the_post_thumbnail('large');
-				}
+				<div itemprop="image">
+					<?php if ( has_post_thumbnail() && has_tag('big-image') ) {
+						the_post_thumbnail('large');
+					}
 
-				elseif ( has_post_thumbnail() ) {
-					the_post_thumbnail('medium');
-				} ?>
+					elseif ( has_post_thumbnail() ) {
+						the_post_thumbnail('medium');
+					} ?>
+				</div>
 				
-				<div class="post_body">
+				<div class="post_body" itemprop="articleBody">
 					<?php include('notes.php'); ?>
 					<?php the_content(); ?>
 				</div>
