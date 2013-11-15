@@ -1,8 +1,6 @@
 <head>
 
-<link rel="stylesheet" href="<?php echo get_stylesheet_uri(); ?>?2013-11-11-00-15" type="text/css" media="screen, projection">
-
-<link href='http://fonts.googleapis.com/css?family=Roboto+Slab:300,500,700|Source+Sans+Pro:200,400,700,200italic,400italic,700italic|Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="<?php echo get_stylesheet_uri(); ?>?2013-11-14-23-10" type="text/css" media="screen, projection">
 
 <link rel="shortcut icon" href="<?php echo get_bloginfo('template_url'); ?>/images/favicon.ico" type="image/x-icon">
 <link rel="icon" href="<?php echo get_bloginfo('template_url'); ?>/images/favicon.ico" type="image/x-icon">

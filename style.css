@@ -19,6 +19,7 @@ LAYOUT
 	INDEX & ARCHIVE LISTS
 RESPONSIVE ELEMENTS
 RESETS
+FONTS
 BASIC TYPOGRAPHY
 HEADER
 MENU
@@ -236,18 +237,22 @@ body {
 }
 
 
-/* BASIC TYPOGRAPHY */
+/* FONTS */
 
 @font-face {
-	font-family: 'Genericons';
+	font-family:'Genericons';
 	src: url('font/genericons-regular-webfont.eot');
 	src: url('font/genericons-regular-webfont.eot?#iefix') format('embedded-opentype'),
 		 url('font/genericons-regular-webfont.woff') format('woff'),
 		 url('font/genericons-regular-webfont.ttf') format('truetype'),
 		 url('font/genericons-regular-webfont.svg#genericonsregular') format('svg');
-	font-weight: normal;
-	font-style: normal;
+	font-weight:normal;
+	font-style:normal;
 }
+
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,600,200italic,400italic,600italic|Roboto+Slab:400,700);
+
+/* BASIC TYPOGRAPHY */
 
 a,
 a:visited {
@@ -383,7 +388,8 @@ hr {
 	margin:10px 0 30px;
 }
 
-p {
+p,
+span[itemprop="articleBody"] /* Needed for Google In-Depth Articles schema plugin */ {
 	font-size:18px;
 	line-height:28px;
 	margin:0 0 28px 0;
@@ -404,7 +410,7 @@ p.pullquote {
 	color:#cc0000;
 	font-size:26px !important;
     font-style:italic;
-	font-weight:bold;
+	font-weight:600;
 	line-height:37px !important;
 	margin-left:26px !important;
 	margin-right:26px !important;
@@ -443,7 +449,7 @@ small {
 }
 
 strong {
-	font-weight:bold;
+	font-weight:600;
 }
 
 sup {
@@ -534,7 +540,7 @@ li p {
 		color:#aa0000;
 		display:block;
 		font-size:16px;
-		font-weight:bold;
+		font-weight:600;
 		letter-spacing:1px;
 		line-height:1em;
 		margin:0;
@@ -606,7 +612,7 @@ li p {
 			#email_social ul li.lawyerist_connect_more .connect_more {
 				font-family:"Droid Sans","Lucida Grande",Tahoma,sans-serif;
 				font-size:12px;
-				font-weight:bold;
+				font-weight:600;
 				letter-spacing:2px;
 				position:relative;
 					right:-2px;
@@ -621,7 +627,7 @@ li p {
 			#email_social ul li.lawyerist_connect_more .connect_connect {
 				font-family:"Droid Sans","Lucida Grande",Tahoma,sans-serif;
 				font-size:12px;
-				font-weight:bold;
+				font-weight:600;
 			}
 
     	#email_social ul li a.sprite {
@@ -806,7 +812,7 @@ li p {
 			margin-bottom:.714em;
 		}
 		
-				.front_page a.featured_post.tag_smaller_title .headline {
+				.front_page a.post_num_1.tag_smaller_title .headline {
 					font-size:4.2em;
 					line-height:1.357em;
 					margin-bottom:.679em;
@@ -855,7 +861,7 @@ li p {
 		display:block;
 		float:none;
 		font-family:'Roboto Slab','Droid Sans','Lucida Grande',Tahoma,sans-serif;
-		font-weight:500;
+		font-weight:400;
 		padding-left:75px;
 		text-decoration:none;
 		text-shadow:1px 1px 2px #111;
@@ -953,7 +959,7 @@ li p {
 		display:inline-block;
 		font-size:2.8em;
 		font-style:italic;
-		font-weight:100;
+		font-weight:200;
 		letter-spacing:.0455em;
 		line-height:1em;
 		margin:0;
@@ -984,7 +990,7 @@ li p {
 		.front_page #sites_network_posts li a {
 			color:#fff;
 			font-family:'Roboto Slab','Droid Sans','Lucida Grande',Tahoma,sans-serif;
-			font-weight:500;
+			font-weight:400;
 			text-decoration:none;
 			text-shadow:1px 1px 2px #111;
 				-moz-text-shadow:1px 1px 2px #111;
@@ -1418,7 +1424,7 @@ a.sticky {
     
     #related_posts h3 {
     	color:#bbb;
-    	font-weight:300;
+    	font-weight:400;
     }
 	
 	ul#related_posts_thumbnails {
@@ -1703,7 +1709,7 @@ textarea {
 label,
 legend {
 	display:block;
-	font-weight:bold;
+	font-weight:600;
 	font-size:13px;
 }
 
@@ -1777,7 +1783,7 @@ legend span {
 	  color: #444;
 	  display: inline-block;
 	  font-size: 14px !important;
-	  font-weight:bold;
+	  font-weight:600;
 	  text-decoration: none;
 	  text-shadow: 0 1px rgba(255, 255, 255, .75);
 	  text-transform:none;
