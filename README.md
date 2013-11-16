@@ -5,6 +5,7 @@
 
 * Switch to locally-hosted fonts, and fix font weights.
 * Add in-depth article schema (I think).
+* Tweak .note and .alert padding.
 
 2013-11-11
 ----------
