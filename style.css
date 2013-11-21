@@ -96,6 +96,7 @@ body {
 		
 		.post {
 			margin-bottom:4em;
+			position:relative;
 		}
 
 			/* INDEX & ARCHIVE LISTS */
@@ -133,6 +134,27 @@ body {
 
 
 /* RESPONSIVE ELEMENTS */
+
+/* Content width (960px) + social icons (138px on each side + 20px offset on each side) + 30px for padding */
+
+@media only screen
+and (max-width:1305px) {
+                
+	.juiz_sps_links {
+			margin-bottom:26px !important;
+			position:static !important;
+	}
+	
+		.juiz_sps_links ul {
+				position:static !important;
+		}
+
+		.juiz_sps_links ul li.juiz_sps_item {
+				display:inline !important;
+				margin:0 10px 0 0 !important;
+		}
+
+}
 
 
 /* Content width (960px) + 30px for padding */
@@ -1276,6 +1298,80 @@ a.sticky {
 		margin:0 auto 20px auto !important;
         width:640px;
 	}
+
+
+	/* SHARING BUTTONS */
+	
+	.juiz_sps_links {
+			margin-top:0 !important;
+			position:absolute;
+				top:0;
+				right:-20px;
+	}
+	
+			.juiz_sps_links ul {
+				position:fixed;
+			}
+	
+			.juiz_sps_links ul li.juiz_sps_item {
+				display:block;
+				margin-bottom:8px !important;
+			}
+	
+			.juiz_sps_links ul li .juiz_sps_counter,
+			.juiz_sps_links ul li a,
+			.juiz_sps_links ul li .juiz_sps_totalcount {
+				font-family:inherit !important;
+				margin:0 !important;
+			}
+			
+			.juiz_sps_links ul li .juiz_sps_counter {
+				border-radius:0;
+				padding-top:5px;
+			}
+			
+			.juiz_sps_links ul li a {
+			}
+
+                li.juiz_sps_link_facebook .juiz_sps_counter {
+					border-color:#3b5998 !important;
+                }
+			
+                li.juiz_sps_link_facebook a {
+					background-color:#3b5998 !important;
+                }
+
+                li.juiz_sps_link_twitter .juiz_sps_counter {
+					border-color:#4875b4 !important;
+                }
+                
+                li.juiz_sps_link_twitter a {
+					background-color:#4875b4 !important;
+                }
+
+                li.juiz_sps_link_google .juiz_sps_counter {
+					border-color:#d34836 !important;
+                }
+                
+                li.juiz_sps_link_google a {
+					background-color:#d34836 !important;
+                }
+
+                li.juiz_sps_link_linkedin .juiz_sps_counter {
+                        border-color:#4875b4 !important;
+                }
+                
+                li.juiz_sps_link_linkedin a {
+                        background-color:#4875b4 !important;
+                }
+			
+			.juiz_sps_links ul li .juiz_sps_totalcount {
+				background-color:#777;
+				border:0;
+				border-radius:0;
+				color:#fff;
+				padding:6px 11px 7px 11px;
+			}
 	
 	
 	/* BUYER'S GUIDE */
