@@ -341,7 +341,7 @@ code {
 	padding-right:12px;
 }
 
-em {
+em,i {
 	font-style:italic;
 }
 
@@ -456,7 +456,7 @@ small {
 	font-size:80%;
 }
 
-strong {
+strong,b {
 	font-weight:600;
 }
 
@@ -819,12 +819,18 @@ li p {
 			line-height:1.393em;
 			margin-bottom:.714em;
 		}
+
+			.front_page a.featured_post.tag_smaller_title .headline {
+				font-size:2.4em;
+				line-height:1.375em;
+				margin-bottom:.679em;
+			}
 		
-				.front_page a.post_num_1.tag_smaller_title .headline {
-					font-size:4.2em;
-					line-height:1.357em;
-					margin-bottom:.679em;
-				}
+			.front_page a.post_num_1.tag_smaller_title .headline {
+				font-size:4.2em;
+				line-height:1.357em;
+				margin-bottom:.679em;
+			}
 
 		.front_page a.featured_post .headline,
 		.front_page a.featured_post .author_link,
