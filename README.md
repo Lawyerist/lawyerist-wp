@@ -1,5 +1,10 @@
 # A custom WordPress theme for Lawyerist.com
 
+2013-11-21
+----------
+
+* Re-installed Juiz sharing buttons.
+
 2013-11-15
 ----------
 
