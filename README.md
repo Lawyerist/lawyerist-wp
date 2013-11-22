@@ -1,5 +1,10 @@
 # A custom WordPress theme for Lawyerist.com
 
+2013-11-22
+----------
+
+* Make social network names white in Juiz sharing buttons.
+
 2013-11-21
 ----------
 

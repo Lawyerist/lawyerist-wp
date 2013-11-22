@@ -1333,6 +1333,10 @@ a.sticky {
 			.juiz_sps_links ul li a {
 			}
 
+				.juiz_sps_links ul li a .juiz_sps_network_name {
+					color:#fff;
+				}
+
                 li.juiz_sps_link_facebook .juiz_sps_counter {
 					border-color:#3b5998 !important;
                 }
