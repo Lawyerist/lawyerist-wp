@@ -18,7 +18,7 @@
 
 			<?php /* THE LOOP */
 
-				$my_query = new WP_Query( 'posts_per_page=5' );
+				$my_query = new WP_Query( 'cat=-1320&posts_per_page=5' );
 
 				$post_num = 1;
 		
@@ -54,10 +54,11 @@
 				endwhile;
 		
 			/* END LOOP */ ?>
-
+			
 			<div class="clear"></div>
 
 		</div>
+
 		
 		<div id="popular_posts">		
 			<h3>Most-discussed on Lawyerist</h3>
