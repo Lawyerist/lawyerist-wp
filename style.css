@@ -5,9 +5,6 @@ Description:A theme for Lawyerist.com
 Author:Sam Glover
 Author URI:http://samglover.net
 Version:[see changelog.md for version history]
-Tags: Skeleton
-
-I am indebted to the Skeleton project (getskeleton.com) and to Chris Pearson's typography calculator (pearsonified.com/typography) for significant portions of this code.
 
 License: Copyright 2013 Lawyerist Media, LLC
 */
@@ -1423,106 +1420,73 @@ a.sticky {
 		width:140px;
 	}
     
-    /* PAGENAV */
-    
-    #pagenav a {
-        display:block;
-        width:310px;
-    }
-    
-    #pagenav a:hover .pagenav_link {
-        text-decoration:underline;
-    }
-    
-    #pagenav .alignright,
-    #pagenav .alignleft {
-        margin:0 0 40px 0;
-    }
-    
-    #pagenav .alignleft
-    #pagenav .alignleft .pagenav_disc,
-    #pagenav .alignright .pagenav_link {
-        float:left;
-    }
-    
-    #pagenav .alignright,
-	#pagenav .alignright .pagenav_disc,
-    #pagenav .alignleft .pagenav_link {
-        float:right;
-    }
-    
-    .pagenav_disc {
-        background-color:#cc0000;
-        border-radius:30px !important;
-        -moz-border-radius:30px !important;
-    	-webkit-border-radius:30px !important;
-        display:inline-block;
-        height:60px;
-        text-align:center;
-        vertical-align:middle;
-        width:60px;
-    }
-    
-        #pagenav .alignright:hover .pagenav_disc,
-        #pagenav .alignleft:hover .pagenav_disc {
-            background-color:#aa0000;
-        }
-        
-		.pagenav_leftarrow,
-		.pagenav_rightarrow {
-			position:relative;
-				top:16px;
-		}
 
-		.pagenav_leftarrow {
-			position:relative;
-				right:11px;
-		}
+    /* PAGENAV */
+
+    #pagenav {
+    	margin-bottom:6em;
+    }
+    
+    #pagenav .pagenav_link_block {
+        display:inline-block;
+        position:relative;
+        width:46%;
+    }
+
+	.pagenav_leftarrow:before {
+		float:left;
+		position:absolute;
+			top:0;
+			left:0;
+	}
+
+	.pagenav_rightarrow:before {
+		float:right;
+		position:absolute;
+			top:0;
+			right:0;
+	}
 		
-		.pagenav_rightarrow {
-			position:relative;
-				left:11px;
-		}
-		
-		.pagenav_leftarrow:before,
-		.pagenav_rightarrow:before {
-			color:#fff;
-			display:inline-block;
-			-webkit-font-smoothing:antialiased;
-			font:normal 32px/1em 'Genericons';
-			vertical-align:top;
-		}
-		
+	.pagenav_leftarrow:before,
+	.pagenav_rightarrow:before {
+		background:#cc0000;
+		border-radius:32px;
+		color:#fff;
+		display:inline-block;
+		-webkit-font-smoothing:antialiased;
+		font:normal 32px/1em 'Genericons';
+		vertical-align:top;
+	}
+	
+	#pagenav a:hover .pagenav_leftarrow:before,
+	#pagenav a:hover .pagenav_rightarrow:before {
+		background:#aa0000;
+	}
+	
 		.pagenav_leftarrow:before {
-			content:'\f503';
-        }
-        
+			content:'\f430';
+		}
+	
 		.pagenav_rightarrow:before {
-			content:'\f501';
-        }
+			content:'\f429';
+		}
     
     .pagenav_link {
-        display:inline-block;
-        font-size:24px;
-        font-style:italic;
-        font-weight:200;
-        padding:0 20px;
-        position:relative;
-        	top:18px;
+    	display:block;
+        font-size:2.2em;
+		font-style:italic;
+		font-weight:lighter;
+		line-height:1.3636em;
         text-decoration:none;
-        width:210px;
     }
-
-		body.single .pagenav_link {
-				position:relative;
-					top:0;
-		}
     
 		#pagenav .alignleft .pagenav_link {
+			padding-left:47px;
 			text-align:left;
 		}
 	
 		#pagenav .alignright .pagenav_link {
+			padding-right:47px;
 			text-align:right;
 		}
     

@@ -76,16 +76,14 @@
 		/* END LOOPS */ ?>
 
 
-		<div id="pagenav_container">
-			<div id="pagenav">
-				<div class="alignleft">
-					<?php previous_posts_link('<div class="pagenav_disc"><div class="genericon pagenav_leftarrow"></div></div><div class="pagenav_link">browse newer posts</div>') ?>
-				</div>
-				<div class="alignright">
-					<?php next_posts_link('<div class="pagenav_link">browse older posts</div><div class="pagenav_disc"><div class="genericon pagenav_rightarrow"></div></div>') ?>
-				</div>
-				<div class="clear"></div>
+		<div id="pagenav">
+			<div class="alignleft pagenav_link_block">
+				<?php previous_posts_link('<div class="genericon pagenav_leftarrow"></div><div class="pagenav_link">browse newer posts</div>',0) ?>
 			</div>
+			<div class="alignright pagenav_link_block">
+				<?php next_posts_link('<div class="pagenav_link">browse older posts</div><div class="genericon pagenav_rightarrow"></div>',0) ?>
+			</div>
+			<div class="clear"></div>
 		</div>
 	
 	</div>
