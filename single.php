@@ -20,12 +20,16 @@
 				<h1 class="headline" itemprop="headline"><?php the_title(); ?></h1>
 				
 				<div class="postmeta">
-					<div class="comment_link th_comment_link"><a href="#disqus_thread"><div class="comment_bubble"></div> <?php comments_number('leave a comment','1 comment','% comments'); ?></a></div>
+					<div class="comment_link"><a href="#disqus_thread"><?php comments_number('leave a comment','1 comment','% comments'); ?></a></div>
 					<div class="author_link">by <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>"><?php the_author(); ?></a> on <span itemprop="datePublished"><?php the_time('F jS, Y'); ?></span></div>
 					<div class="clear"></div>
 				</div>
 
-				<?php if ( has_post_thumbnail() && has_tag('big-image') ) { ?>
+				<?php if (has_post_thumbnail() && has_tag('no-image') ) {
+					echo '';
+				}
+				
+				elseif ( has_post_thumbnail() && has_tag('big-image') ) { ?>
 					<div itemprop="image"><?php the_post_thumbnail('large'); ?></div>
 				<?php }
 
