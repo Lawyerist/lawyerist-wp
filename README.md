@@ -1,14 +1,28 @@
 # A custom WordPress theme for Lawyerist.com
 
+2013-12-10
+----------
+
+* Streamline comment bubbles.
+
+
+2013-12-09
+----------
+
+* Add no-image tag (works better with Theia post slider posts).
+
+
 2013-11-22
 ----------
 
 * Make social network names white in Juiz sharing buttons.
 
+
 2013-11-21
 ----------
 
 * Re-installed Juiz sharing buttons.
+
 
 2013-11-15
 ----------
@@ -17,10 +31,12 @@
 * Add in-depth article schema (I think).
 * Tweak .note and .alert padding.
 
+
 2013-11-11
 ----------
 
 * Add "smaller title" tag support.
+
 
 2013-11-05
 ----------

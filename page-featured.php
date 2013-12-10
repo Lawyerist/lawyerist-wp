@@ -38,7 +38,7 @@
 							<h2 class="headline" id="post-<?php the_ID(); ?>"><?php the_title(); ?></h2>
 							<div class="postmeta">
 								<?php if ( $num_comments > 0 ) { ?>
-									<div class="comment_link th_comment_link"><div class="comment_bubble"></div> <?php comments_number('leave a comment','1 comment','% comments'); ?></div>
+									<div class="comment_link"><?php comments_number('leave a comment','1 comment','% comments'); ?></div>
 								<?php } ?>
 								<div class="author_link">by <?php the_author(); ?></div>
 							</div>
@@ -62,7 +62,7 @@
 		
 		<div id="popular_posts">		
 			<h3>Most-discussed on Lawyerist</h3>
-			<?php wpp_get_mostpopular("post_type='post'&range=monthly&order_by=comments&limit=3&thumbnail_height=60&thumbnail_width=60&post_html='<li>{thumb}<a class=\"wpp_headline\" href=\"{url}\">{text_title}<br /><div class=\"comment_bubble\"></div> {comments} recent comments</a></li>'"); ?>
+			<?php wpp_get_mostpopular("post_type='post'&range=monthly&order_by=comments&limit=3&thumbnail_height=60&thumbnail_width=60&post_html='<li>{thumb}<a class=\"wpp_headline\" href=\"{url}\">{text_title}<br /><div class=\"comment_link\">{comments} recent comments</a></div></li>'"); ?>
 		</div>
 
 		<div id="browse_previous_posts">
