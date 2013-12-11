@@ -1171,7 +1171,6 @@ a.sticky {
 }
 	
 	.comment_link:before {
-		color:#cc0000;
 		content:'\f300';
 		display:inline-block;
 		-webkit-font-smoothing:antialiased;
@@ -1181,10 +1180,6 @@ a.sticky {
 		font:normal 1.6rem/1em 'Genericons';
 		margin-right:.1em;
 		vertical-align:text-top;
-	}
-	
-	.comment_link:hover:before {
-		color:#aa0000;
 	}
 
 #lawyerist_content_search {
