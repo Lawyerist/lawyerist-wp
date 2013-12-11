@@ -1273,6 +1273,10 @@ a.sticky {
 		margin-bottom:23px;
 		padding-left:120px;
 	}
+	
+	.theiaPostSlider_nav ._text {
+		font-size:1.6rem;
+	}
 
 	.wp-post-image.attachment-thumbnail,
 	.wp-post-image.attachment-medium {
