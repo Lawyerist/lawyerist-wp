@@ -41,7 +41,8 @@ googletag.enableServices();
 
 <title>
 <?php /* Title tags */
-	if ( is_front_page() ) { bloginfo( 'name' ); echo ' &mdash; the law practice survival guide'; }
+	if ( is_front_page() ) { bloginfo('name'); echo ' &mdash; '; bloginfo('description'); }
+	elseif ( is_home () ) { bloginfo('name'); echo ' &mdash; '; bloginfo('description'); }
 	elseif ( is_single() || is_page() ) { the_title(); }
 	elseif ( is_author() ) { global $wp_query; $author_name = get_the_author_meta('display_name',$author); echo $author_name; }
 	elseif ( is_category() ) { single_cat_title(); }
