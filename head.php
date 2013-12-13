@@ -1,6 +1,6 @@
 <head>
 
-<link rel="stylesheet" href="<?php echo get_stylesheet_uri(); ?>?2013-12-11-09-39" type="text/css" media="screen, projection">
+<link rel="stylesheet" href="<?php echo get_stylesheet_uri(); ?>?2013-12-13-08-27" type="text/css" media="screen, projection">
 
 <link rel="shortcut icon" href="<?php echo get_bloginfo('template_url'); ?>/images/favicon.ico" type="image/x-icon">
 <link rel="icon" href="<?php echo get_bloginfo('template_url'); ?>/images/favicon.ico" type="image/x-icon">
