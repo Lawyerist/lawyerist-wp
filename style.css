@@ -1270,7 +1270,8 @@ a.sticky {
 	}
 	
 	.theiaPostSlider_nav ._text {
-		font-size:1.6rem;
+		color:#777;
+		font-size:32px;
 	}
 
 	.wp-post-image.attachment-thumbnail,
@@ -1371,6 +1372,21 @@ a.sticky {
 		clear:right;
 		float:right;
 	}
+	
+	ul.cets_embedRSS {
+		list-style:none;
+		margin:0;
+	}
+	
+		ul.cets_embedRSS a.post {
+			border:0;
+			margin:0;
+			padding:0;
+		}
+		
+		ul.cets_embedRSS a.post:hover {
+			text-decoration:underline;
+		}
 	
 	#post-43048 .post_body ul {
 		display:block;

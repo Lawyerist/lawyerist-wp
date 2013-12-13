@@ -1,5 +1,11 @@
 # A custom WordPress theme for Lawyerist.com
 
+2013-12-13
+----------
+
+* Fix RSS feeds displayed on Buyer's Guide pages.
+
+
 2013-12-10
 ----------
 
