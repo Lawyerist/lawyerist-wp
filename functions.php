@@ -77,7 +77,7 @@ add_action( 'widgets_init', 'lawyerist_sidebar_1' );
 
 function add_permissions_contributor() {
     $role = get_role( 'contributor' );
-    $role->add_cap( 'edit_others_posts,upload_files' ); 
+    $role->add_cap( 'upload_files' ); 
 }
 
 add_action( 'admin_init', 'add_permissions_contributor');

@@ -16,13 +16,11 @@
 		
 		$my_query = new WP_Query( 'offset=5' );
 		
-		$post_num = 1;
-		
 		if ( have_posts() ) : while ( have_posts() ) : the_post();
 
 			$num_comments = get_comments_number(); ?>
 		
-			<a id="post-<?php the_ID(); ?>" class="index_post post<?php if ( $post_num == 1 ) { echo ' top_post'; } ?>" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
+			<a id="post-<?php the_ID(); ?>" class="index_post post" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
 
 				<?php if ( has_post_thumbnail() ) { the_post_thumbnail('thumbnail'); } ?>
 			
@@ -38,10 +36,8 @@
 				<div class="clear"></div>
 
 			</a>
-			
-			<?php $post_num++;
 				
-		endwhile; endif;
+		<?php endwhile; endif;
 		
 		/* END LOOP */ ?>
 

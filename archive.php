@@ -41,18 +41,17 @@
 			single_tag_title();
 			echo '"</h1></div>';
         
-		}
+		} ?>
 
-
-		/* THE LOOP */
+		<?php /* THE LOOP */
 		
-		$post_num = 1;
+		$my_query = new WP_Query( 'offset=5' );
 		
 		if ( have_posts() ) : while ( have_posts() ) : the_post();
 
 			$num_comments = get_comments_number(); ?>
 		
-			<a id="post-<?php the_ID(); ?>" class="post<?php if ( $post_num == 1 ) { echo ' top_post'; } ?>" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
+			<a id="post-<?php the_ID(); ?>" class="index_post post" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
 
 				<?php if ( has_post_thumbnail() ) { the_post_thumbnail('thumbnail'); } ?>
 			
@@ -63,17 +62,15 @@
 					<?php } ?>
 					<div class="author_link">by <?php the_author(); ?></div>
 				</div>
+				<p class="excerpt remove_bottom<?php if ( has_post_thumbnail() ) { echo ' excerpt_with_thumb'; } ?>"><?php echo get_the_excerpt(); ?></p>
 
 				<div class="clear"></div>
 
 			</a>
-			
-			<?php $post_num++;
-
-		endwhile; endif;
+				
+		<?php endwhile; endif;
 		
-		/* END LOOPS */ ?>
-
+		/* END LOOP */ ?>
 
 		<div id="pagenav">
 			<div class="alignleft pagenav_link_block">
