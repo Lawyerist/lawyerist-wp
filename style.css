@@ -1152,6 +1152,10 @@ a.post {
 		color:#333;
 	}
 
+	a.post p.excerpt_with_thumb {
+		padding-right:170px;
+	}
+
 	a.post:hover p {
 		color:#111;
 	}
