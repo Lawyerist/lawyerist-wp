@@ -7,6 +7,7 @@
 * Update custom contributor permissions.
 * Copy loop from index.php to archive.php, and remove the $post_num variable.
 * Fix excerpt right padding (to keep text from flowing under thumbnails) on index and archive lists.
+* Add UTM codes to sidebar popular posts widget.
 
 
 2013-12-10
