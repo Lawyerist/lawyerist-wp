@@ -438,7 +438,7 @@ p.alert {
 
 p.pullquote {
     clear:both;
-	color:#cc0000;
+	color:#888;
 	font-size:26px !important;
     font-style:italic;
 	font-weight:600;
@@ -776,21 +776,21 @@ li p {
 	clear:none;
 	display:inline-block;
 	float:left;
-	height:24em;
+	height:24rem;
 	overflow:hidden;
 	margin:0 0 2px 0;
 	padding:0;
 	position:relative;
 	text-decoration:none;
-	width:31.9em;
+	width:31.9rem;
 }
 	
 	.front_page a.post_num_1 {
 		clear:both;
 		display:block;
 		float:none;
-		height:32em;
-		width:64em;
+		height:32rem;
+		width:64rem;
 	}
 	
 	.front_page a.post_num_2,
@@ -1276,6 +1276,11 @@ a.sticky {
 	.theiaPostSlider_nav ._text {
 		color:#777;
 		font-size:32px;
+	}
+	
+	.theiaPostSlider_footer {
+		border-top:1px solid #ddd;
+		padding-top:2.8rem;
 	}
 
 	.wp-post-image.attachment-thumbnail,

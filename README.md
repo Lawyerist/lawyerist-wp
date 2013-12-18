@@ -9,6 +9,7 @@
 * Fix excerpt right padding (to keep text from flowing under thumbnails) on index and archive lists.
 * Add UTM codes to sidebar popular posts widget.
 * Update footer.
+* Add top border and padding to Theia post slider footer.
 
 
 2013-12-10
