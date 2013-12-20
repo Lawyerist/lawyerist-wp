@@ -4,7 +4,7 @@
 <?php include('head.php'); ?>
 <?php wp_head(); ?>
 
-<body class="custom front_page<?php if ( wp_is_mobile() ) { ?> mobile<?php } ?>">
+<body <?php body_class('front_page'); ?>">
 
 <?php $ltheme_options = get_option( 'theme_ltheme_options' ); ?>
 
@@ -24,16 +24,20 @@
 		
 				while ( $my_query->have_posts() ) : $my_query->the_post();
 	
-					$num_comments = get_comments_number(); ?>
+					$num_comments = get_comments_number();
+					$classes = array(
+						'featured_post',
+						'post_num_' . $post_num
+					); ?>
 
-					<a id="post-<?php the_ID(); ?>" class="post featured_post post_num_<?php echo $post_num; if ( has_tag('smaller title') ) { echo ' tag_smaller_title'; } ?>" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
+					<a id="post-<?php the_ID(); ?>" <?php post_class($classes); ?> href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
 
 						<?php if ( has_post_thumbnail() ) {
 								if ( $post_num == 1 ) { the_post_thumbnail( 'large' ); }
 								else { the_post_thumbnail( 'featured_thumb_2' ); }
 						} ?>
 						
-						<div class="shadowbox">
+						<div class="shadowbox"></div>
 						<div class="headline_excerpt">
 							<h2 class="headline" id="post-<?php the_ID(); ?>"><?php the_title(); ?></h2>
 							<div class="postmeta">
@@ -42,7 +46,6 @@
 								<?php } ?>
 								<div class="author_link">by <?php the_author(); ?></div>
 							</div>
-						</div>
 						</div>
 
 						<div class="clear"></div>
@@ -60,12 +63,12 @@
 		</div>
 
 		
-		<div id="popular_posts">		
+		<div id="most_discussed">		
 			<h3>Most-discussed on Lawyerist</h3>
 			<?php wpp_get_mostpopular("post_type='post'&range=monthly&order_by=comments&limit=3&thumbnail_height=60&thumbnail_width=60&post_html='<li>{thumb}<a class=\"wpp_headline\" href=\"{url}\">{text_title}<br /><div class=\"comment_link\">{comments} recent comments</a></div></li>'"); ?>
 		</div>
 
-		<div id="browse_previous_posts">
+		<div id="see_all_articles">
 			<a href="<?php echo bloginfo('url') . '/articles/'; ?>">
 				<p>see all articles &rarr;</p>
 			</a>

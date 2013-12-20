@@ -4,7 +4,7 @@
 <?php include('head.php'); ?>
 <?php wp_head(); ?>
 
-<body id="post-<?php the_ID(); ?>" class="custom single page<?php if ( wp_is_mobile() ) { ?> mobile<?php } ?>">
+<body <?php body_class($class); ?>>
 
 <?php get_header(); ?>
 
@@ -15,7 +15,7 @@
 		<?php if ( have_posts() ) :
 		while ( have_posts() ) : the_post(); ?>
 
-			<div class="post">
+			<div <?php post_class($class); ?>>
 		
 				<h1 class="headline"><?php the_title(); ?></h1>
 

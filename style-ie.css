@@ -1,0 +1,898 @@
+/*------------------------------
+This stylesheet contains fixes
+for Internet Explorer 8, which
+does not support rem units.
+------------------------------*/
+
+
+/*------------------------------
+Layout
+------------------------------*/
+
+#leaderboard_container {
+	padding:10px 0;
+}
+
+	#header {
+		max-width:960px;
+	}
+
+.menu-default-container {
+	box-shadow:0 0 50px rgba(0,0,0,.1) inset;
+	margin-bottom:20px;
+}
+
+	.menu-default-container > ul {
+		max-width:980px;
+	}
+
+#content_column_container {
+	width:960px;
+}
+
+	#content_column {
+		max-width:640px;
+	}
+		
+		.post {
+			margin-bottom:40px;
+		}
+
+		/*------------------------------
+		Index & Archive Lists
+		------------------------------*/
+		
+		a.post {
+			margin-bottom:15px;
+			padding-bottom:15px;
+		}
+	
+	ul#sidebar_column {
+		width:300px;
+	}
+
+	#footer {
+		margin:40px auto 0 auto;
+		min-height:180px;
+		padding:0 0 15px 157px;
+		width:803px;
+	}
+
+
+/*------------------------------
+Typography
+------------------------------*/
+
+.page,
+.post,
+#footer {
+	font-size:18px;
+	line-height:28px;
+}
+
+blockquote {
+	margin-bottom:28px;
+	padding-left:19px;
+}
+
+.drop_cap {
+	font-size:48px;
+}
+
+h1,
+h2 {
+	font-size:32px;
+	line-height:44px;
+	margin-bottom:8px;
+}
+
+h3 {
+	font-size:22px;
+	line-height:32px;
+	margin-bottom:16px;
+}
+
+h4 {
+	font-size:18px;
+	line-height:28px;
+	margin-bottom:14px;
+}
+
+h5 {
+	font-size:16px;
+	line-height:28px;
+	margin-bottom:14px;
+}
+
+h6 {
+	font-size:14px;
+	line-height:24px;
+	margin-bottom:12px;
+}
+
+hr {
+	margin:10px 0 30px;
+}
+
+p {
+	margin-bottom:28px;
+}
+
+p.note {
+	padding:14px 28px;
+}
+
+p.alert {
+	padding:14px 28px;
+}
+
+p.pullquote {
+	font-size:28px;
+	line-height:39px;
+	margin-left:28px;
+	margin-right:28px;
+}
+
+p.wp-caption-text {
+     font-size:14px;
+     line-height:21px;
+}
+
+.postmeta {
+	margin-bottom:28px;
+}
+
+pre {
+	font-size:14px;
+	line-height:21px;
+	margin-bottom:21px;
+}
+
+.syntaxhighlighter {
+	font-size:14px;
+	margin-bottom:28px;
+}
+
+ol,
+ul {
+	margin-bottom:28px;
+	margin-left:28px;
+}
+
+li {
+	margin-bottom:14px;
+}
+
+
+
+/*------------------------------
+Images
+------------------------------*/
+
+img.aligncenter {
+	margin:0 auto 28px auto;
+}
+
+img.alignleft {
+	margin:0 20px 28px 0;
+}
+
+img.alignright {
+	margin:0 0 28px 20px;
+}
+
+a.post img.wp-post-image.attachment-thumbnail {
+	margin:0 0 28px 20px;
+}
+
+img.wp-post-image.attachment-medium {
+	margin:0 0 28px 20px;
+}
+
+img.wp-post-image.attachment-large {
+	margin:0 auto 28px auto !important;
+}
+
+
+/*------------------------------
+Header
+------------------------------*/
+
+#title {
+	font-size:10px;
+	margin:0 20px 0 0;
+	width:216px;
+}
+
+	#title a {
+		display:inline-block;
+		height:38px;
+		margin:10px 0;
+		width:300px;
+	}
+	
+	/*------------------------------
+	Blog-Forum-Sites Nav
+	------------------------------*/
+
+		#blog_forum_nav ul {
+			margin:13px 0 0 0;
+		}
+
+		#blog_forum_nav a {
+			font-size:18px;
+			letter-spacing:1px;
+			padding:7px 10px;
+		}
+
+
+	/*------------------------------
+	Newsletter Signup & Social Icons
+	------------------------------*/
+
+	#email_social {
+		margin-top:13px;
+	}
+	
+			#email_social ul li.lawyerist_connect_more {
+				font-size:10px;
+				height:32px;
+				margin:0 0 0 10px;
+			}
+	
+				#email_social ul li.lawyerist_connect_more .connect_more {
+					font-size:12px;
+					letter-spacing:2px;
+						right:-2px;
+				}
+		
+				#email_social ul li.lawyerist_connect_more .connect_ways_to {
+					letter-spacing:1px;
+						right:-1px;
+				}
+		
+				#email_social ul li.lawyerist_connect_more .connect_connect {
+					font-size:12px;
+				}
+
+			#email_social ul li a.sprite {
+				margin-left:8px;
+			}
+
+			#email_social ul li a.sprite:before {
+				font:normal 32px/1em 'Genericons';
+			}
+
+				#email_social ul li a.linkedin.sprite {
+					margin-left:10px;
+				}
+		
+				#email_social ul li form#lawyerist_insider_subscribe input[type="email"] {
+					font-size:16px;
+					padding:6px 8px;
+					width:292px;
+				}
+
+
+/*------------------------------
+Menu
+------------------------------*/
+
+.menu-default-container li a {
+	font-size:14px;
+	letter-spacing:1px;
+	padding:7px 10px 8px 10px;
+}
+
+
+/*------------------------------
+Front Page
+------------------------------*/
+
+	/*------------------------------
+	Featured Posts
+	------------------------------*/
+
+	.front_page a.featured_post {
+		height:240px;
+		margin:0 0 2px 0;
+		width:319px;
+	}
+	
+		.front_page a.post_num_1 {
+			height:320px;
+			width:640px;
+		}
+	
+		.front_page a.post_num_2,
+		.front_page a.post_num_4 {
+			margin-right:2px;
+		}
+	
+		.front_page a.featured_post .shadowbox {
+			box-shadow:0 0 50px rgba(0,0,0,.6) inset;
+		}
+
+		.front_page a.featured_post .headline_excerpt {
+			padding:20px 25px;
+		}
+
+			.front_page a.featured_post .headline {
+				font-size:24px;
+				letter-spacing:1px;
+				line-height:33px;
+				margin-bottom:17px;
+			}
+		
+				.front_page a.post_num_1 h2.headline {
+					font-size:48px;
+					line-height:64px;
+					margin-bottom:32px;
+				}
+
+				.front_page a.post_num_1.tag-smaller-title h2.headline {
+					font-size:42px;
+					line-height:57px;
+					margin-bottom:29px;
+				}
+
+			.front_page a.featured_post .headline,
+			.front_page a.featured_post .author_link,
+			.front_page a.featured_post .dsq-postid,
+			.front_page a.featured_post p,
+			.front_page a.featured_post:hover .headline,
+			.front_page a.featured_post:hover .author_link,
+			.front_page a.featured_post:hover .dsq-postid,
+			.front_page a.featured_post:hover p {
+				text-shadow:1px 1px 2px #111;
+					-moz-text-shadow:1px 1px 2px #111;
+					-ms-text-shadow:1px 1px 2px #111;
+					-o-text-shadow:1px 1px 2px #111;
+					-webkit-text-shadow:1px 1px 2px #111;
+			}
+	
+			.front_page a.featured_post .comment_link:before,
+			.front_page a.featured_post:hover .comment_link:before {
+				text-shadow:-1px 1px 2px #111;
+					-moz-text-shadow:-1px 1px 2px #111;
+					-ms-text-shadow:-1px 1px 2px #111;
+					-o-text-shadow:-1px 1px 2px #111;
+					-webkit-text-shadow:-1px 1px 2px #111;
+			}
+
+	/*------------------------------
+	Most-Discussed Posts
+	------------------------------*/
+
+	.front_page #most_discussed {
+		box-shadow:0 0 50px rgba(0,0,0,.6) inset;
+		margin-bottom:2px;
+		padding:20px 25px;
+	}
+
+		.front_page #most_discussed .comment_link {
+				left:16px;
+		}
+	
+		.front_page #most_discussed .comment_link a.wpp_headline {
+			font-size:16px;
+			line-height:28px;
+		}
+
+		.front_page #most_discussed .comment_link:before {
+			text-shadow:-1px 1px 2px #111;
+				-moz-text-shadow:-1px 1px 2px #111;
+				-ms-text-shadow:-1px 1px 2px #111;
+				-o-text-shadow:-1px 1px 2px #111;
+				-webkit-text-shadow:-1px 1px 2px #111;
+		}
+	
+		.front_page #most_discussed img {
+			border-radius:30px;
+				-moz-border-radius:30px;
+				-webkit-border-radius:30px;
+		}
+	
+		.front_page #most_discussed li {
+			margin-bottom:18px;
+			min-height:60px;
+		}
+
+	/*------------------------------
+	"See All Articles" Link
+	------------------------------*/
+	
+	.front_page #see_all_articles {
+		box-shadow:0 0 50px rgba(0,0,0,.1) inset;
+		margin-bottom:28px;
+	}
+
+		.front_page #see_all_articles a {
+			font-size:10px;
+			padding:20px 25px;
+		}
+
+		.front_page #see_all_articles p {
+			font-size:28px;
+			letter-spacing:1px;
+		}
+		
+	/*------------------------------
+	Lab & Sites Network Posts
+	------------------------------*/
+
+
+	.front_page #content_column h3 {
+		font-size:14px;
+		letter-spacing:1px;
+		line-height:24px;
+		margin-bottom:12px;
+	}
+
+	#sites_lab_container {
+		margin-bottom:2px;
+	}
+
+		.front_page #lab_posts,
+		.front_page #sites_network_posts {
+			box-shadow:0 0 50px rgba(0,0,0,.1) inset;
+			padding:20px 25px 1000px 25px;
+			width:269px;
+		}
+
+			.front_page #lab_posts ul,
+			.front_page #sites_network_posts ul {
+				margin:0 0 34px 0;
+			}
+
+			.front_page #lab_posts li a,
+			.front_page #sites_network_posts li a {
+				text-shadow:1px 1px 2px #111;
+					-moz-text-shadow:1px 1px 2px #111;
+					-ms-text-shadow:1px 1px 2px #111;
+					-o-text-shadow:1px 1px 2px #111;
+					-webkit-text-shadow:1px 1px 2px #111;
+			}
+
+		.front_page #sites_lab_header {
+			box-shadow:0 0 50px rgba(0,0,0,.6) inset;
+			margin-bottom:2px;
+			padding:20px 25px;
+		}
+	
+			.front_page #sites_lab_header h2 {
+				letter-spacing:1px;
+				text-shadow:1px 1px 2px #111;
+					-moz-text-shadow:1px 1px 2px #111;
+					-ms-text-shadow:1px 1px 2px #111;
+					-o-text-shadow:1px 1px 2px #111;
+					-webkit-text-shadow:1px 1px 2px #111;
+			}
+
+		.front_page #lab_posts {
+			margin-right:2px;
+		}
+
+			.front_page #lab_posts img {
+				border-radius:16px;
+			}
+
+			.front_page #lab_posts .lab_headline {
+				padding-left:42px;
+			}
+	
+			.front_page #lab_posts li {
+				min-height:32px;
+				margin-bottom:18px;
+			}
+
+	.front_page #sites_promo {
+		box-shadow:0 0 50px rgba(0,0,0,.1) inset;
+		margin-bottom:28px;
+		padding:20px 25px;
+	}
+
+
+/*------------------------------
+Content
+------------------------------*/
+
+	/*------------------------------
+	Index & Archive Lists
+	------------------------------*/
+
+	a.post p.excerpt_with_thumb {
+		padding-right:170px;
+	}
+
+	a.post .author_link {
+		margin-bottom:14px;
+	}
+
+	a.sticky {
+		margin-bottom:15px;
+	}
+	
+	.comment_link:before {
+		font:normal 16px/1em 'Genericons';
+		margin-right:1px;
+	}
+
+#lawyerist_content_search {
+    margin-bottom:20px;
+}
+
+#lawyerist_content_search input#st-search-input {
+	border-radius:2px !important; 
+    -moz-border-radius:2px !important;
+	-webkit-border-radius:2px !important;
+	font-size:16px !important;
+	width:262px !important;
+}
+
+
+	/* INDEX & ARCHIVE POSTS */
+
+	.index p.excerpt_with_thumb {
+		padding-right:165px;
+	}
+
+
+	#archive_header {
+		box-shadow:0 0 50px rgba(0,0,0,.1) inset;
+		margin-bottom:15px;
+		padding:15px;
+	}
+
+	#archive_header img {
+		margin-bottom:15px;
+	}
+
+	#archive_header p.author_descr {
+		padding-left:115px;
+	}
+
+
+	/* POSTS */
+		
+	.post_bio_sep:before {
+		font:normal 16px/1em 'Genericons';
+	}
+	
+	.sd-block {
+		margin-bottom:28px !important;
+	}
+	
+	#author_bio_footer {
+		margin-bottom:40px;
+		min-height:100px;
+	}
+
+	#author_bio_footer img.avatar {
+		margin-bottom:23px;
+		margin-right:20px;
+	}
+
+	#author_bio_footer p {
+		font-size:14px;
+		line-height:23px;
+		margin-bottom:23px;
+		padding-left:120px;
+	}
+	
+	.theiaPostSlider_nav ._text {
+		font-size:32px;
+	}
+	
+	.theiaPostSlider_footer {
+		border-top:1px solid #ddd;
+		padding-top:28px;
+	}
+
+
+	/* SHARING BUTTONS */
+	
+	.juiz_sps_links {
+				right:-20px;
+	}
+	
+			.juiz_sps_links ul li.juiz_sps_item {
+				margin-bottom:8px !important;
+			}
+			
+			.juiz_sps_links ul li .juiz_sps_counter {
+				padding-top:5px;
+			}
+			
+			.juiz_sps_links ul li .juiz_sps_totalcount {
+				padding:6px 11px 7px 11px;
+			}
+	
+	
+	/* BUYER'S GUIDE */
+	
+	#post-43048 .post_body ul img {
+		margin:24px 0 !important;
+	}
+	
+	#post-43048 .post_body ul > li {
+		margin-bottom:48px !important;
+		margin-right:10px;
+		width:150px;
+	}
+
+	#post-43048 .post_body ul ul li {
+		font-size:13px;
+		width:140px;
+	}
+    
+
+    /* PAGENAV */
+
+    #pagenav {
+    	margin-bottom:60px;
+    }
+		
+	.pagenav_leftarrow:before,
+	.pagenav_rightarrow:before {
+		border-radius:32px;
+		font:normal 32px/1em 'Genericons';
+	}
+    
+    .pagenav_link {
+        font-size:22px;
+		line-height:32px;
+    }
+    
+		#pagenav .alignleft .pagenav_link {
+			padding-left:47px;
+		}
+	
+		#pagenav .alignright .pagenav_link {
+			padding-right:47px;
+		}
+    
+    
+    /* COMMENTS */
+
+    #disqus_thread {
+        margin-bottom:40px;
+    }
+
+	
+    /* RELATED POSTS */
+	
+	ul#related_posts_thumbnails li {
+		height:150px;
+		margin:0 10px 36px 0;
+		width:150px;
+	}
+	
+	ul#related_posts_thumbnails li a span {
+		font-size:16px;
+		padding:10px;
+		text-shadow:1px 1px 2px #111;
+			-moz-text-shadow:1px 1px 2px #111;
+			-ms-text-shadow:1px 1px 2px #111;
+			-o-text-shadow:1px 1px 2px #111;
+			-webkit-text-shadow:1px 1px 2px #111;
+	}
+	
+
+/* SIDEBAR */
+
+#lawyerist_sidebar_search {
+	font-size:10px;
+}
+
+	#lawyerist_sidebar_search form {
+		margin-bottom:21px;
+	}
+
+	#lawyerist_sidebar_search input#st-search-input {
+		border-radius:2px !important; 
+		-moz-border-radius:2px !important;
+		-webkit-border-radius:2px !important;
+		font-size:16px !important;
+		width:262px !important;
+	}
+
+ul#sidebar_column h3 {
+	font-size:14px;
+	letter-spacing:1px;
+	line-height:24px;
+	text-transform:uppercase;
+}
+
+ul#sidebar_column h3 a.rsswidget img {
+	float:right;
+}
+
+li.widget {
+	font-size:10px;
+	margin:0 0 40px 0;
+}
+
+	li.widget > ul li {
+		font-size:18px;
+		line-height:28px;
+		margin-bottom:14px;
+	}
+	
+	/* SIDEBAR ADS */
+
+	li.sidebar_ads {
+		margin:0 0 29px 0 !important;
+	}
+
+	li.sidebar_ads ul li.sidebar_ad {
+		font-size:10px;
+		margin:0 0 11px 0;
+		width:300px;
+	}
+	
+	li#ap2,
+	li#ap3 {
+		height:250px;
+	}
+	
+	li#ap4 {
+		height:600px;
+	}
+
+
+	/* SIDEBAR POPULAR POSTS */
+	
+	li#popular_posts_tabbed {
+		font-size:10px;
+		margin-bottom:28px;
+	}
+	
+	li#popular_posts_tabbed h3 {
+		font-size:13px
+	}
+	
+	li#popular_posts_tabbed ul.idTabs {
+		border-bottom:1px solid #ddd;
+		font-size:10px;
+		margin:0 0 10px 0;
+	}
+	
+	li#popular_posts_tabbed ul.idTabs > li {
+		font-size:10px;
+	}
+
+	li#popular_posts_tabbed ul.idTabs li a {
+		border-top-left-radius:2px 2px;
+		border-top-right-radius:2px 2px;
+		font-size:12px;
+		padding:5px 7px;
+	}
+	
+	li#popular_posts_tabbed .tabs_sublist ul.wpp-list li {
+		font-size:10px;
+		margin:0 0 15px 0;
+		min-height:75px;
+	}
+	
+	li#popular_posts_tabbed .tabs_sublist ul.wpp-list li a.wpp_headline {
+		font-size:18px;
+		line-height:28px;
+		padding-right:90px;
+	}
+
+
+/* FORMS */
+
+form {
+	margin-bottom:20px;
+}
+
+fieldset {
+	margin-bottom:20px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+textarea,
+select {
+	border:1px solid #ccc;
+	padding:6px 4px;
+	border-radius:2px;
+	font-size:14px;
+	width:210px;
+	margin-bottom:20px;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+	border:1px solid #aaa;
+	box-shadow: 0 0 3px rgba(0,0,0,.2);
+	-moz-box-shadow:0 0 3px rgba(0,0,0,.2);
+	-webkit-box-shadow:0 0 3px rgba(0,0,0,.2);
+}
+
+textarea {
+	min-height:60px;
+}
+
+label,
+legend {
+	font-size:13px;
+}
+
+select {
+	width:220px;
+}
+
+label span,
+legend span {
+	font-size:13px;
+}
+
+.post input.email {
+	box-shadow: inset 0 1px 3px 0 rgba(0,0,0,0.17);
+	font-size:16px;
+	height:20px;
+	padding:4px 9px;
+}
+
+.post input.email:focus {
+	box-shadow: 0 0 3px rgba(0,0,0,.2);
+}
+
+#mc-embedded-subscribe-form ul input[type="checkbox"] {
+	margin-right:10px;
+}
+   
+    
+    /* GRAVITY FORMS */
+    
+	.gfield_radio label,
+    .gpoll_wrapper label,
+	.gfield_label,
+    .gpoll_wrapper .gpoll_field_label,
+    .gpoll_wrapper .gpoll_choice_label {
+        font-size:16px;
+    }
+
+    a.gpoll_button,
+    a.gpoll_back_button {
+        font-size:14px;
+    }
+
+
+/*------------------------------
+Media Queries
+------------------------------*/
+
+/* Content width (960px) + 30px for padding */
+
+@media only screen
+and (max-width:989px) {
+	
+	/* Change layout */
+
+	#header {
+		border-bottom:10px solid #cc0000;
+		margin-bottom:20px;
+	}
+
+	#content_column_container {
+		padding:0 20px;
+		width:640px
+	}
+		
+			li.widget.sidebar_ads {
+				margin-bottom:21px !important;
+				padding:13px;
+			}
+
+	#footer {
+		width:483px;
+	}
+
+}

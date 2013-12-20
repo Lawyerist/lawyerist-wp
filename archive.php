@@ -4,7 +4,7 @@
 <?php include('head.php'); ?>
 <?php wp_head(); ?>
 
-<body class="custom archive<?php if ( wp_is_mobile() ) { ?> mobile<?php } ?>">
+<body <?php body_class($class); ?>>
 
 <?php get_header(); ?>
 
@@ -51,7 +51,7 @@
 
 			$num_comments = get_comments_number(); ?>
 		
-			<a id="post-<?php the_ID(); ?>" class="index_post post" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
+			<a <?php post_class($class); ?> href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
 
 				<?php if ( has_post_thumbnail() ) { the_post_thumbnail('thumbnail'); } ?>
 			
