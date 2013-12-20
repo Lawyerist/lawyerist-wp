@@ -1,6 +1,8 @@
 <head>
 
-<link rel="stylesheet" href="<?php echo get_stylesheet_uri(); ?>?2013-12-01-24" type="text/css" media="screen, projection">
+<link rel="stylesheet" href="<?php echo get_bloginfo('template_url'); ?>/fonts-resets.css" type="text/css" media="screen, projection">
+<link rel="stylesheet" href="<?php echo get_bloginfo('template_url'); ?>/style-ie.css" type="text/css" media="screen, projection">
+<link rel="stylesheet" href="<?php echo get_stylesheet_uri(); ?>?2013-12-20-14-09" type="text/css" media="screen, projection">
 
 <link rel="shortcut icon" href="<?php echo get_bloginfo('template_url'); ?>/images/favicon.ico" type="image/x-icon">
 <link rel="icon" href="<?php echo get_bloginfo('template_url'); ?>/images/favicon.ico" type="image/x-icon">
@@ -33,7 +35,6 @@ googletag.defineSlot('/12659965/lawyerist_ap1_leaderboard', [728, 90], 'div-gpt-
 googletag.defineSlot('/12659965/lawyerist_ap2_sidebar1', [300, 250], 'div-gpt-ad-1356989285353-1').addService(googletag.pubads());
 googletag.defineSlot('/12659965/lawyerist_ap3_sidebar2', [300, 250], 'div-gpt-ad-1356989285353-2').addService(googletag.pubads());
 googletag.defineSlot('/12659965/lawyerist_ap4_halfpage', [300, 600], 'div-gpt-ad-1356989285353-3').addService(googletag.pubads());
-googletag.defineSlot('/12659965/lawyerist_house_header', [240, 90], 'div-gpt-ad-1356989285353-4').addService(googletag.pubads());
 googletag.pubads().enableSingleRequest();
 googletag.enableServices();
 });

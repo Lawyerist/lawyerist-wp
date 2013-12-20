@@ -1,5 +1,12 @@
 # A custom WordPress theme for Lawyerist.com
 
+2013-12-19
+----------
+
+* Add body_class and post_class functions to templates.
+* Reorganize style.css and remove unnecessary styles, to prepare to re-jigger the site's responsiveness.
+
+
 2013-12-13
 ----------
 
