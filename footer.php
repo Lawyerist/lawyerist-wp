@@ -20,3 +20,4 @@
 <!-- Load scripts -->
 
 <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/jquery.idTabs.min.js"></script>
+<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/rem.min.js"></script>
