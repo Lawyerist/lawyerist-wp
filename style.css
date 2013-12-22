@@ -122,7 +122,7 @@ body {
 
 	#header {
 		margin:0 auto;
-		padding:0;
+		padding:0 1rem;
 		position:relative;
 		max-width:96rem;
 	}
@@ -144,7 +144,6 @@ body {
 
 #content_column_container {
 	margin:0 auto;
-	padding:0;
 	width:96rem;
 }
 
@@ -177,7 +176,6 @@ body {
 	ul#sidebar_column {
 		float:left;
 		margin:0;
-		padding:0;
 		width:30rem;
 	}
 
@@ -188,10 +186,10 @@ body {
 }
 
 	#footer {
-		margin:4rem auto 0 auto;
+		margin:0 auto;
 		min-height:18rem;
-		padding:0 0 1.5rem 15.7rem;
-		width:80.3rem;
+		padding:1rem;
+		max-width:96rem;
 	}
 
 
@@ -241,7 +239,7 @@ code {
 	font-family:'Roboto Slab','Droid Sans','Lucida Grande',Tahoma,sans-serif;
 	font-size:4.8rem;
 	line-height:1em;
-	padding-right:1.2px;
+	padding-right:1.2rem;
 }
 
 em,i,italic,italics {
@@ -378,23 +376,32 @@ Images
 img.aligncenter {
 	clear:both;
 	display:block;
-	height:auto;
 	margin:0 auto 2.8rem auto;
-	width:100%;
 }
 
 img.alignleft {
 	float:left;
-	height:auto;
-	margin:0 2rem 2.8rem 0;
-	width:46.875%;
+	margin:0 1.4rem 2.8rem 0;
 }
 
 img.alignright {
 	float:right;
+	margin:0 0 1.4rem 2rem;
+}
+
+img.size-thumbnail {
 	height:auto;
-	margin:0 0 2.8rem 2rem;
+	width:23.4375%;
+}
+
+img.size-medium {
+	height:auto;
 	width:46.875%;
+}
+
+img.size-large {
+	height:auto;
+	width:100%;
 }
 
 img.size-full {
@@ -431,9 +438,9 @@ Leaderboard Ad
 
 #div-gpt-ad-1356989285353-0 {
 	display:block;
-	height:90px;
+	height:9rem;
 	margin:0 auto;
-	width:728px;
+	width:72.8rem;
 }
 
 
@@ -702,7 +709,7 @@ Front Page
 		padding:0;
 		position:relative;
 		text-decoration:none;
-		width:31.9rem;
+		max-width:31.9rem;
 	}
 	
 		.front_page a.post_num_1 {
@@ -710,7 +717,7 @@ Front Page
 			display:block;
 			float:none;
 			height:32rem;
-			width:64rem;
+			max-width:64rem;
 		}
 	
 		.front_page a.post_num_2,
@@ -841,10 +848,9 @@ Front Page
 		}
 
 		.front_page #most_discussed .comment_link {
-			display:inline;
+			display:block;
 			float:none !important;
-			position:relative;
-				left:1.6rem;
+			padding-left:7.5rem;
 		}
 	
 		.front_page #most_discussed .comment_link a.wpp_headline {
@@ -1095,7 +1101,7 @@ Content
 	}
 
 	a.post p.excerpt_with_thumb {
-		padding-right:170px;
+		padding-right:17rem;
 	}
 
 	a.post:hover p {
@@ -1163,6 +1169,8 @@ Content
 
 	#archive_header p {
 		color:#333;
+		font-size:1.8rem;
+		line-height:2.8rem;
 	}
 
 	#archive_header p.author_descr {
@@ -1573,7 +1581,7 @@ li.widget {
 
 	li.sidebar_ads {
 		display:block;
-		margin:0 0 2.9em 0 !important;
+		margin:0 0 2.8em 0 !important;
 	}
 
 	li.sidebar_ads > ul {
@@ -1675,6 +1683,10 @@ li.widget {
 #footer {
     background:url('images/L-footer.png') no-repeat left 2rem;
     color:#666;
+}
+
+#footer p {
+	padding-left:15.7rem;
 }
 
 
@@ -1930,32 +1942,32 @@ Media Queries
 and (max-width:1305px) {
                 
 	.juiz_sps_links {
-			margin-bottom:26px !important;
-			position:static !important;
+			margin-bottom:1.6rem;
+			position:static;
 	}
 	
 		.juiz_sps_links ul {
-				position:static !important;
+				position:static;
 		}
 
 		.juiz_sps_links ul li.juiz_sps_item {
-				display:inline !important;
-				margin:0 10px 0 0 !important;
+				display:inline-block;
+				margin:0 1rem 1rem 0 !important;
 		}
 
 }
 
 
-/* Content width (960px) + 30px for padding */
+/* Content width (960px) + 20px for padding */
 
 @media only screen
-and (max-width:989px) {
+and (max-width:979px) {
 
 	html, body {
         overflow-x: hidden;
     }
 
-	/* Hide this stuff */
+	/* Hide This Stuff */
 	
 	#email_social,
 	.menu-default-container,
@@ -1966,54 +1978,37 @@ and (max-width:989px) {
 		display:none !important;
 	}
 	
-	/* Change layout */
+	/* Change Layout */
 
-	#header {
-		border-bottom:1em solid #cc0000;
-		margin-bottom:2em;
+	#header,
+	#content_column_container,
+	#footer {
+		max-width:64rem;
+	}
+
+	#header_container {
+		border-bottom:1rem solid #cc0000;
 	}
 
 	#content_column_container {
-		margin:0 auto;
-		padding:0 2em;
-		width:64em
+		padding:1rem;
 	}
 
 		#content_column {
 			float:none;
 			width:100%;
 		}
-		
-		a.post .comment_link {
-			float:none !important;
-		}
-	
+
 		ul#sidebar_column {
 			float:none;
 			width:100%;
 		}
-		
-			li.widget.sidebar_ads {
-				background-color:#ddd;
-				margin-bottom:2.1em !important;
-				padding:1.3em;
+			
+			li.widget.sidebar_ads ul > li {
+				display:inline-block;
+				float:left;
+				margin-right:1rem;
 			}
-	
-				li.sidebar_ads ul li.sidebar_ad {
-					margin-bottom:0 !important;
-				}
-	
-				li#ap2 {
-					float:left;
-				}
-	
-				li#ap3 {
-					float:right;
-				}
-
-	#footer {
-		width:48.3em;
-	}
 
 }
 
@@ -2027,6 +2022,92 @@ and (max-width:747px) {
 	
 	#leaderboard_container {
 		display:none;
+	}
+
+}
+
+/* Content column width (640px) + 20px for padding */
+
+@media only screen
+and (max-width:659px) {
+
+	/* Hide This Stuff */
+
+	#blog_forum_nav,	
+	#related_posts {
+		display:none;
+	}
+	
+	/* Change Layout */
+
+	#content_column_container {
+		max-width:none;
+		width:auto;
+	}
+	
+		#content_column {
+			max-width:none;
+		}
+	
+	a.post p.excerpt_with_thumb {
+		padding-right:0;
+	}
+	
+	#footer {
+		background:none;
+	}
+	
+		#footer p {
+			padding:0;
+		}
+	
+	/* Front Page */
+
+	.front_page #header_container {
+		margin-bottom:.2rem;
+	}
+
+	.front_page #content_column_container {
+		margin:0;
+		padding:0;
+	}
+
+	.front_page a.featured_post {
+		display:block;
+		float:none;
+		height:24rem;
+		margin:0 0 .2rem 0;
+		max-width:none;
+		width:auto;
+	}
+	
+	.front_page a.featured_post img {
+		height:auto;
+		width:100%;
+	}
+
+	.front_page a.post_num_1 h2.headline {
+		font-size:2.4rem;
+		letter-spacing:.1rem;
+		line-height:3.3rem;
+		margin-bottom:1.65rem;
+	}
+	
+	.front_page #sites_lab_container {
+		margin-bottom:0;
+	}
+
+		.front_page #lab_posts,
+		.front_page #sites_network_posts {
+			padding:2rem 100rem 2rem 2.5rem;
+			margin:0 -97.5rem .2rem 0;
+			width:auto;
+		}		
+	
+	.front_page ul#sidebar_column {
+		margin:0 auto;
+		max-width:64rem;
+		padding:1rem;
 	}
 
 }

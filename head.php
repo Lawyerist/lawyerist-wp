@@ -1,6 +1,6 @@
 <head>
 
-<link rel="stylesheet" href="<?php echo get_stylesheet_uri(); ?>?2013-12-20-14-09" type="text/css" media="screen, projection">
+<link rel="stylesheet" href="<?php echo get_stylesheet_uri(); ?>?2013-12-22-04-31" type="text/css" media="screen, projection">
 
 <link rel="shortcut icon" href="<?php echo get_bloginfo('template_url'); ?>/images/favicon.ico" type="image/x-icon">
 <link rel="icon" href="<?php echo get_bloginfo('template_url'); ?>/images/favicon.ico" type="image/x-icon">
@@ -10,7 +10,7 @@
 <meta charset="utf-8" />
 
 <?php if ( wp_is_mobile() ) { ?>
-    <meta name="viewport" content="width=680,initial-scale=1.0">
+    <meta name="viewport" content="width=320,initial-scale=1.0">
 <?php } ?>
 
 <script type='text/javascript'>
