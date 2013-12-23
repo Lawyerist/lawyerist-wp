@@ -431,7 +431,6 @@ img.wp-post-image.attachment-large {
 }
 
 
-
 /*------------------------------
 Leaderboard Ad
 ------------------------------*/
@@ -1496,8 +1495,9 @@ Content
 	ul#related_posts_thumbnails li a span {
 		color:#fff;
 		font-family:'Roboto Slab','Droid Sans','Lucida Grande',Tahoma,sans-serif;
-		font-size:16px;
+		font-size:1.6rem;
 		font-weight:700;
+		line-height:2.2rem;
 		padding:10px;
 		position:absolute;
 			top:0;
