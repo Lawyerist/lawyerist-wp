@@ -1,5 +1,17 @@
 # A custom WordPress theme for Lawyerist.com
 
+2013-12-23
+----------
+
+* Fix line-height property on related posts.
+
+
+2013-12-22
+----------
+
+* Mobile/responsive makeover.
+
+
 2013-12-19
 ----------
 
