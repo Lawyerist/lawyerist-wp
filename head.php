@@ -1,6 +1,8 @@
 <head>
 
-<link rel="stylesheet" href="<?php echo get_stylesheet_uri(); ?>?2013-12-23-08-53" type="text/css" media="screen, projection">
+<link rel="stylesheet" href="<?php echo get_bloginfo('template_url'); ?>/fonts-resets.css" type="text/css" media="screen, projection">
+<link rel="stylesheet" href="<?php echo get_bloginfo('template_url'); ?>/style-ie.css" type="text/css" media="screen, projection">
+<link rel="stylesheet" href="<?php echo get_stylesheet_uri(); ?>?2013-12-26-10-20" type="text/css" media="screen, projection">
 
 <link rel="shortcut icon" href="<?php echo get_bloginfo('template_url'); ?>/images/favicon.ico" type="image/x-icon">
 <link rel="icon" href="<?php echo get_bloginfo('template_url'); ?>/images/favicon.ico" type="image/x-icon">
