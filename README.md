@@ -1,10 +1,17 @@
 # A custom WordPress theme for Lawyerist.com
 
+2013-12-26
+----------
+
+* Remove REM-unit-polyfill script (wasn't working).
+* Go back to manual IE 8 stylesheet (ugh).
+
+
 2013-12-23
 ----------
 
 * Fix line-height property on related posts.
-
+* Fix images with captions.
 
 2013-12-22
 ----------
