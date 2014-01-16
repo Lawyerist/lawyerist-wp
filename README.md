@@ -1,5 +1,29 @@
 # A custom WordPress theme for Lawyerist.com
 
+2014-01-15
+----------
+
+* Change front page title tag to "Featured Posts."
+
+2014-01-14
+----------
+
+* Fix sidebar ads on responsive layouts.
+* Fix footer width on non-responsive layout.
+* Configure front-page to show only featured posts (other posts will show up on lawyerist.com/articles).
+* Fix total shares box on Juiz sharing buttons.
+* Fix bottom margin on "see all articles" link on front page.
+
+2014-01-07
+----------
+
+* Wrap <code> and <pre> tags.
+
+2013-12-02
+----------
+
+* Remove #header bottom border on mobile.
+
 2013-12-26
 ----------
 

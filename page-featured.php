@@ -14,11 +14,11 @@
 
     <div id="content_column">
     
-    	<div id="this_weeks_posts">
+    	<div id="featured_posts">
 
 			<?php /* THE LOOP */
 
-				$my_query = new WP_Query( 'cat=-1320&posts_per_page=5' );
+				$my_query = new WP_Query( 'cat=3332&posts_per_page=5' );
 
 				$post_num = 1;
 		

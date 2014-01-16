@@ -2,7 +2,7 @@
 
 <link rel="stylesheet" href="<?php echo get_bloginfo('template_url'); ?>/fonts-resets.css" type="text/css" media="screen, projection">
 <link rel="stylesheet" href="<?php echo get_bloginfo('template_url'); ?>/style-ie.css" type="text/css" media="screen, projection">
-<link rel="stylesheet" href="<?php echo get_stylesheet_uri(); ?>?2013-12-26-10-20" type="text/css" media="screen, projection">
+<link rel="stylesheet" href="<?php echo get_stylesheet_uri(); ?>?2014-01-14-12-28" type="text/css" media="screen, projection">
 
 <link rel="shortcut icon" href="<?php echo get_bloginfo('template_url'); ?>/images/favicon.ico" type="image/x-icon">
 <link rel="icon" href="<?php echo get_bloginfo('template_url'); ?>/images/favicon.ico" type="image/x-icon">
@@ -42,7 +42,7 @@ googletag.enableServices();
 
 <title>
 <?php /* Title tags */
-	if ( is_front_page() ) { bloginfo('name'); echo ' &mdash; '; bloginfo('description'); }
+	if ( is_front_page() ) { bloginfo('name'); echo ' &mdash; Featured Posts'; }
 	elseif ( is_home () ) { bloginfo('name'); echo ' &mdash; '; bloginfo('description'); }
 	elseif ( is_single() || is_page() ) { the_title(); }
 	elseif ( is_author() ) { global $wp_query; $author_name = get_the_author_meta('display_name',$author); echo $author_name; }

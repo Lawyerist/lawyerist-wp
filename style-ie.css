@@ -869,30 +869,44 @@ legend span {
 Media Queries
 ------------------------------*/
 
-/* Content width (960px) + 30px for padding */
+/* Content width (960px) + 20px for padding */
 
 @media only screen
-and (max-width:989px) {
-        
-        /* Change layout */
+and (max-width:979px) {
 
-        #header {
-                border-bottom:10px solid #cc0000;
-                margin-bottom:20px;
-        }
+	html, body {
+        overflow-x: hidden;
+    }
 
-        #content_column_container {
-                padding:0 20px;
-                width:640px
-        }
-                
-                        li.widget.sidebar_ads {
-                                margin-bottom:21px !important;
-                                padding:13px;
-                        }
+	/* Hide This Stuff */
+	
+	#email_social,
+	.menu-default-container,
+	li#ap4,
+	#most_discussed_tabbed,
+	#linkcat-3058,
+	#footer_content {
+		display:none !important;
+	}
+	
+	/* Change Layout */
 
-        #footer {
-                width:483px;
-        }
+	#header,
+	#content_column_container,
+	#footer {
+		max-width:640px;
+	}
+
+	#header_container {
+		border-bottom:10px solid #cc0000;
+	}
+
+	#content_column_container {
+		padding:10px;
+	}
+			
+			li.widget.sidebar_ads ul > li {
+				margin-right:10px;
+			}
 
 }

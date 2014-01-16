@@ -147,7 +147,7 @@ body {
 		margin:0 auto;
 		min-height:18rem;
 		padding:1rem;
-		max-width:96rem;
+		width:96rem;
 	}
 
 
@@ -190,6 +190,11 @@ blockquote {
 code {
 	color:#777;
 	font-family:'Source Code Pro',Inconsolata,Consolas,mono;
+	white-space: pre-wrap; /* css-3 */
+	white-space: -moz-pre-wrap !important; /* Mozilla, since 1999 */
+	white-space: -pre-wrap; /* Opera 4-6 */
+	white-space: -o-pre-wrap; /* Opera 7 */
+	word-wrap: break-word; /* Internet Explorer 5.5+ */
 }
 
 .drop_cap {
@@ -295,6 +300,11 @@ pre {
 	font-size:1.4rem;
 	line-height:2.1rem;
 	margin-bottom:2.1rem;
+	white-space: pre-wrap; /* css-3 */
+	white-space: -moz-pre-wrap !important; /* Mozilla, since 1999 */
+	white-space: -pre-wrap; /* Opera 4-6 */
+	white-space: -o-pre-wrap; /* Opera 7 */
+	word-wrap: break-word; /* Internet Explorer 5.5+ */
 }
 
 small {
@@ -881,7 +891,7 @@ Front Page
 	
 	.front_page #see_all_articles {
 		box-shadow:0 0 5rem rgba(0,0,0,.1) inset;
-		margin-bottom:2.8em;
+		margin-bottom:2.8rem;
 	}
 
 		.front_page #see_all_articles a {
@@ -1277,6 +1287,7 @@ Content
 				border:0;
 				border-radius:0;
 				color:#fff;
+				display:block;
 				padding:6px 11px 7px 11px;
 			}
 	
@@ -1973,6 +1984,10 @@ and (max-width:979px) {
 			float:none;
 			width:100%;
 		}
+
+			li.widget.sidebar_ads {
+				padding:0;
+			}
 			
 			li.widget.sidebar_ads ul > li {
 				display:inline-block;
