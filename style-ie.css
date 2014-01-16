@@ -360,13 +360,34 @@ Front Page
                                         -webkit-text-shadow:-1px 1px 2px #111;
                         }
 
+
+        /*------------------------------
+        "Read the latest posts" Link
+        ------------------------------*/
+        
+        .front_page #read_latest_posts {
+                box-shadow:0 0 50px rgba(0,0,0,.1) inset;
+                margin-bottom:28px;
+        }
+
+                .front_page #read_latest_posts a {
+                        font-size:10px;
+                        padding:20px 25px;
+                }
+
+                .front_page #read_latest_posts p {
+                        font-size:28px;
+                        letter-spacing:1px;
+                }
+                
+
         /*------------------------------
         Most-Discussed Posts
         ------------------------------*/
 
         .front_page #most_discussed {
                 box-shadow:0 0 50px rgba(0,0,0,.6) inset;
-                margin-bottom:2px;
+                margin-bottom:28px;
                 padding:20px 25px;
         }
 
@@ -398,24 +419,6 @@ Front Page
                         min-height:60px;
                 }
 
-        /*------------------------------
-        "See All Articles" Link
-        ------------------------------*/
-        
-        .front_page #see_all_articles {
-                box-shadow:0 0 50px rgba(0,0,0,.1) inset;
-                margin-bottom:28px;
-        }
-
-                .front_page #see_all_articles a {
-                        font-size:10px;
-                        padding:20px 25px;
-                }
-
-                .front_page #see_all_articles p {
-                        font-size:28px;
-                        letter-spacing:1px;
-                }
                 
         /*------------------------------
         Lab & Sites Network Posts
