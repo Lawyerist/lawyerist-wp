@@ -781,6 +781,45 @@ Front Page
 					-webkit-text-shadow:-1px 1px 2px #111;
 			}
 
+
+	/*------------------------------
+	"Read the latest posts" Link
+	------------------------------*/
+	
+	.front_page #read_latest_posts {
+		box-shadow:0 0 5rem rgba(0,0,0,.1) inset;
+		margin-bottom:2.8rem;
+	}
+
+		.front_page #read_latest_posts a {
+			background:#cc0000;
+			color:#fff;
+			display:block;
+			font-size:1rem;
+			margin:0;
+			padding:2rem 2.5rem;
+			transition:background .4s;
+				-moz-transition: background .4s;
+				-ms-transition: background .4s;
+				-0-transition: background .4s;
+				-webkit-transition: background .4s;
+		}
+
+		.front_page #read_latest_posts a:hover {
+			background:#aa0000;
+		}
+
+		.front_page #read_latest_posts p {
+			display:inline-block;
+			font-size:2.8rem;
+			font-style:italic;
+			font-weight:200;
+			letter-spacing:.1rem;
+			line-height:1em;
+			margin:0;
+		}
+
+
 	/*------------------------------
 	Most-Discussed Posts
 	------------------------------*/
@@ -788,7 +827,7 @@ Front Page
 	.front_page #most_discussed {
 		background:#333;
 		box-shadow:0 0 5rem rgba(0,0,0,.6) inset;
-		margin-bottom:2px;
+		margin-bottom:2.8rem;
 		padding:2rem 2.5rem;
 	}
 
@@ -884,43 +923,6 @@ Front Page
 			margin:0;
 		}
 
-
-	/*------------------------------
-	"See All Articles" Link
-	------------------------------*/
-	
-	.front_page #see_all_articles {
-		box-shadow:0 0 5rem rgba(0,0,0,.1) inset;
-		margin-bottom:2.8rem;
-	}
-
-		.front_page #see_all_articles a {
-			background:#cc0000;
-			color:#fff;
-			display:block;
-			font-size:1rem;
-			margin:0;
-			padding:2rem 2.5rem;
-			transition:background .4s;
-				-moz-transition: background .4s;
-				-ms-transition: background .4s;
-				-0-transition: background .4s;
-				-webkit-transition: background .4s;
-		}
-
-		.front_page #see_all_articles a:hover {
-			background:#aa0000;
-		}
-
-		.front_page #see_all_articles p {
-			display:inline-block;
-			font-size:2.8rem;
-			font-style:italic;
-			font-weight:200;
-			letter-spacing:.1rem;
-			line-height:1em;
-			margin:0;
-		}
 		
 	/*------------------------------
 	Lab & Sites Network Posts

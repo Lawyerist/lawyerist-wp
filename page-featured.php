@@ -62,16 +62,15 @@
 
 		</div>
 
-		
+		<div id="read_latest_posts">
+			<a href="<?php echo bloginfo('url') . '/articles/'; ?>">
+				<p>Read the latest posts &rarr;</p>
+			</a>
+		</div>
+
 		<div id="most_discussed">		
 			<h3>Most-discussed on Lawyerist</h3>
 			<?php wpp_get_mostpopular("post_type='post'&range=monthly&order_by=comments&limit=3&thumbnail_height=60&thumbnail_width=60&post_html='<li>{thumb}<a class=\"wpp_headline\" href=\"{url}\">{text_title}<br /><div class=\"comment_link\">{comments} recent comments</a></div></li>'"); ?>
-		</div>
-
-		<div id="see_all_articles">
-			<a href="<?php echo bloginfo('url') . '/articles/'; ?>">
-				<p>see all articles &rarr;</p>
-			</a>
 		</div>
 
 		<div id="sites_lab_container">

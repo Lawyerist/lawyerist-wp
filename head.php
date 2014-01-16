@@ -2,7 +2,7 @@
 
 <link rel="stylesheet" href="<?php echo get_bloginfo('template_url'); ?>/fonts-resets.css" type="text/css" media="screen, projection">
 <link rel="stylesheet" href="<?php echo get_bloginfo('template_url'); ?>/style-ie.css" type="text/css" media="screen, projection">
-<link rel="stylesheet" href="<?php echo get_stylesheet_uri(); ?>?2014-01-14-12-28" type="text/css" media="screen, projection">
+<link rel="stylesheet" href="<?php echo get_stylesheet_uri(); ?>?2014-01-16-08-55" type="text/css" media="screen, projection">
 
 <link rel="shortcut icon" href="<?php echo get_bloginfo('template_url'); ?>/images/favicon.ico" type="image/x-icon">
 <link rel="icon" href="<?php echo get_bloginfo('template_url'); ?>/images/favicon.ico" type="image/x-icon">
