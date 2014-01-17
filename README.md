@@ -4,6 +4,7 @@
 ----------
 
 * Add "From the Archives" tag to featured  posts.
+* Adjust title tags.
 
 
 2014-01-16
