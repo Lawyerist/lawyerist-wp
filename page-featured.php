@@ -39,6 +39,19 @@
 						
 						<div class="shadowbox"></div>
 						<div class="headline_excerpt">
+						
+							<?php 
+								$date = new DateTime(get_the_date());
+
+								$thirty_days_out = new DateTime(get_the_date()); // init to the post's date
+								$thirty_days_out->add(new DateInterval('P30D')); // add 30 days to it
+
+								$today = new DateTime(); // defaults to today's date
+
+								if ($today > $thirty_days_out) { ?>
+									<div class="from_archives">From the Archives</div>
+							<?php } ?>
+						
 							<h2 class="headline" id="post-<?php the_ID(); ?>"><?php the_title(); ?></h2>
 							<div class="postmeta">
 								<?php if ( $num_comments > 0 ) { ?>
