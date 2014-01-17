@@ -317,6 +317,12 @@ Front Page
                         padding:20px 25px;
                 }
 
+						.front_page a.featured_post .from_archives {
+							font-size:12px;
+							letter-spacing:.5px;
+							padding:3px 5px;
+						}
+
                         .front_page a.featured_post .headline {
                                 font-size:24px;
                                 letter-spacing:1px;

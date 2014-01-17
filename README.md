@@ -1,5 +1,11 @@
 # A custom WordPress theme for Lawyerist.com
 
+2014-01-17
+----------
+
+* Add "From the Archives" tag to featured  posts.
+
+
 2014-01-16
 ----------
 
