@@ -13,7 +13,8 @@
 <div id="content_column_container">
 
     <div id="content_column">
-    
+
+		<div id="featured_posts_header"><h2>Featured on Lawyerist</h2></div>
     	<div id="featured_posts">
 
 			<?php /* THE LOOP */
@@ -77,17 +78,17 @@
 
 		<div id="read_latest_posts">
 			<a href="<?php echo bloginfo('url') . '/articles/'; ?>">
-				<p>Read the latest posts &rarr;</p>
+				<p>Read all posts &rarr;</p>
 			</a>
 		</div>
 
-		<div id="most_discussed">		
-			<h3>Most-discussed on Lawyerist</h3>
+		<div id="most_discussed_header"><h2>Most-Discussed on Lawyerist</h2></div>
+		<div id="most_discussed">
 			<?php wpp_get_mostpopular("post_type='post'&range=monthly&order_by=comments&limit=3&thumbnail_height=60&thumbnail_width=60&post_html='<li>{thumb}<a class=\"wpp_headline\" href=\"{url}\">{text_title}<br /><div class=\"comment_link\">{comments} recent comments</a></div></li>'"); ?>
 		</div>
 
 		<div id="sites_lab_container">
-			<div id="sites_lab_header"><h2>Read more from our network:</h2></div>
+			<div id="sites_lab_header"><h2>Read More from Our Network</h2></div>
 			<div id="lab_posts">
 				<h3>Lawyerist LAB</h3>
 
@@ -138,8 +139,8 @@
 
 				if ( ! is_wp_error( $rss ) ) : // Checks that the object is created correctly
 
-					// Figure out how many total items there are, but limit it to 5. 
-					$maxitems = $rss->get_item_quantity( 5 ); 
+					// Figure out how many total items there are, but limit it to 6. 
+					$maxitems = $rss->get_item_quantity( 6 ); 
 
 					// Build an array of all the items, starting with element 0 (first element).
 					$rss_items = $rss->get_items( 0, $maxitems );
@@ -166,7 +167,7 @@
 		</div>
 		
 		<div id="sites_promo">
-			<p class="remove_bottom"> Want to see your blog posts on the front page of Lawyerist? Join the <a href="http://sites.lawyerist.com">Lawyerist Sites</a> network of law blogs.
+			<p class="remove_bottom">Want to see your blog posts on the front page of Lawyerist? Join the <a href="http://sites.lawyerist.com">Lawyerist Sites</a> network of law blogs.</p>
 		</div>
 
 	</div>

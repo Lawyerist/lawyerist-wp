@@ -13,16 +13,6 @@ Load Fonts
                 url('fonts/Genericons/genericons-regular-webfont.svg#genericonsregular') format('svg');
 }
 
-@font-face {
-        font-family:'Roboto Slab';
-        src:url('fonts/Roboto_Slab/RobotoSlab-Regular.ttf') format('truetype');
-}
-
-@font-face {
-        font-family:'Source Sans Pro';
-        src:url('fonts/Source_Sans_Pro/SourceSansPro-Regular.ttf') format('truetype');
-}
-
 
 /*------------------------------
 Resets

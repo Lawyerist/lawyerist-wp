@@ -1,5 +1,21 @@
 # A custom WordPress theme for Lawyerist.com
 
+2014-01-18
+----------
+
+* Switch back to Google Fonts API.
+* Tweak styles.
+
+
+2014-01-17
+----------
+
+* Include Roboto Slab regular and bold font faces.
+* Include Source Sans Pro regular, bold, and italic font faces.
+* Start replacing font styles with the above.
+* Add featured posts and most-discussed headers to front page.
+
+
 2014-01-17
 ----------
 

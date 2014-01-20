@@ -58,7 +58,7 @@ Layout
 ------------------------------*/
 
 html {
-	font-size:10px;
+	font-size:62.5%;
 }
 
 body {
@@ -158,7 +158,7 @@ Typography
 body {
 	background:#fff;
 	color:#111;
-	font-family:'Source Sans Pro','Helvetica Neue',Helvetica,Arial,sans-serif;
+	font-family:'Source Sans Pro',sans-serif;
 }
 
 .page,
@@ -189,7 +189,7 @@ blockquote {
 
 code {
 	color:#777;
-	font-family:'Source Code Pro',Inconsolata,Consolas,mono;
+	font-family:'Source Code Pro',mono;
 	white-space: pre-wrap; /* css-3 */
 	white-space: -moz-pre-wrap !important; /* Mozilla, since 1999 */
 	white-space: -pre-wrap; /* Opera 4-6 */
@@ -199,8 +199,9 @@ code {
 
 .drop_cap {
 	float:left;
-	font-family:'Roboto Slab','Droid Sans','Lucida Grande',Tahoma,sans-serif;
+	font-family:'Roboto Slab',sans-serif;
 	font-size:4.8rem;
+	font-weight:bold;
 	line-height:1em;
 	padding-right:1.2rem;
 }
@@ -211,8 +212,8 @@ em,i,italic,italics {
 
 h1,h2,h3,h4,h5,h6 {
 	color:#333;
-	font-family:'Roboto Slab','Droid Sans','Lucida Grande',Tahoma,sans-serif;
-	font-weight:700;
+	font-family:'Roboto Slab',sans-serif;
+	font-weight:bold;
 }
 
 h1 a,h2 a,h3 a,h4 a,h5 a,h6 a {
@@ -275,9 +276,9 @@ p.alert {
 p.pullquote {
     clear:both;
 	color:#888;
+	font-family:'Source Sans Pro',sans-serif;
 	font-size:2.8rem;
-    font-style:italic;
-	font-weight:600;
+	font-style:italic;
 	line-height:3.9rem;
 	margin-left:2.8rem;
 	margin-right:2.8rem;
@@ -296,7 +297,7 @@ p.wp-caption-text {
 
 pre {
 	color:#555;
-	font-family:'Source Code Pro',Inconsolata,Consolas,mono;
+	font-family:'Source Code Pro',mono;
 	font-size:1.4rem;
 	line-height:2.1rem;
 	margin-bottom:2.1rem;
@@ -312,7 +313,7 @@ small {
 }
 
 strong,b,bold {
-	font-weight:600;
+	font-weight:bold;
 }
 
 sup {
@@ -478,8 +479,9 @@ Header
 			border-radius:2px;
 			color:#aa0000;
 			display:block;
+			font-family:'Source Sans Pro',sans-serif;
 			font-size:1.8rem;
-			font-weight:600;
+			font-weight:bold;
 			letter-spacing:.1rem;
 			line-height:1em;
 			margin:0;
@@ -671,6 +673,27 @@ Front Page
 	Featured Posts
 	------------------------------*/
 
+	.front_page #featured_posts_header {
+		background:#333;
+		box-shadow:0 0 5rem rgba(0,0,0,.6) inset;
+		margin-bottom:.2rem;
+		padding:2rem 2.5rem;
+	}
+
+		.front_page #featured_posts_header h2 {
+			color:#fff;
+			font-family:'Roboto Slab',sans-serif;
+			font-weight:normal;
+			letter-spacing:.1rem;
+			line-height:1em;
+			margin:0;
+			text-shadow:1px 1px 2px #111;
+				-moz-text-shadow:1px 1px 2px #111;
+				-ms-text-shadow:1px 1px 2px #111;
+				-o-text-shadow:1px 1px 2px #111;
+				-webkit-text-shadow:1px 1px 2px #111;
+		}
+
 	.front_page a.featured_post {
 		background:linear-gradient(135deg, #111111 0%,#555555 100%); /* W3C */
 		background:-moz-linear-gradient(-45deg, #111111 0%, #555555 100%); /* FF3.6+ */
@@ -808,6 +831,7 @@ Front Page
 			color:#fff;
 			display:block;
 			font-size:1rem;
+			line-height:1em;
 			margin:0;
 			padding:2rem 2.5rem;
 			transition:background .4s;
@@ -824,8 +848,8 @@ Front Page
 		.front_page #read_latest_posts p {
 			display:inline-block;
 			font-size:2.8rem;
-			font-style:italic;
-			font-weight:200;
+			font-family:'Source Sans Pro',sans-serif;
+			font-weight:italic;
 			letter-spacing:.1rem;
 			line-height:1em;
 			margin:0;
@@ -842,6 +866,27 @@ Front Page
 		margin-bottom:2.8rem;
 		padding:2rem 2.5rem;
 	}
+	
+		.front_page #most_discussed_header {
+			background:#333;
+			box-shadow:0 0 5rem rgba(0,0,0,.6) inset;
+			margin-bottom:.2rem;
+			padding:2rem 2.5rem;
+		}
+
+			.front_page #most_discussed_header h2 {
+				color:#fff;
+				font-family:'Roboto Slab',sans-serif;
+				font-weight:normal;
+				letter-spacing:.1rem;
+				line-height:1em;
+				margin:0;
+				text-shadow:1px 1px 2px #111;
+					-moz-text-shadow:1px 1px 2px #111;
+					-ms-text-shadow:1px 1px 2px #111;
+					-o-text-shadow:1px 1px 2px #111;
+					-webkit-text-shadow:1px 1px 2px #111;
+			}
 
 		.front_page #most_discussed a {
 			display:inline-block;
@@ -852,8 +897,7 @@ Front Page
 			color:#fff;
 			display:block;
 			float:none;
-			font-family:'Roboto Slab','Droid Sans','Lucida Grande',Tahoma,sans-serif;
-			font-weight:400;
+			font-family:'Roboto Slab',sans-serif;
 			padding-left:7.5rem;
 			text-decoration:none;
 			text-shadow:1px 1px 2px #111;
@@ -943,8 +987,9 @@ Front Page
 
 	.front_page #content_column h3 {
 		color:#eee;
-		font-family:'Source Sans Pro','HelveticaNeue','Helvetica Neue',Helvetica,Arial,sans-serif;
+		font-family:'Source Sans Pro',sans-serif;
 		font-size:1.4rem;
+		font-weight:normal;
 		letter-spacing:.1rem;
 		line-height:2.4rem;
 		margin-bottom:1.2rem;
@@ -975,8 +1020,7 @@ Front Page
 			.front_page #lab_posts li a,
 			.front_page #sites_network_posts li a {
 				color:#fff;
-				font-family:'Roboto Slab','Droid Sans','Lucida Grande',Tahoma,sans-serif;
-				font-weight:400;
+				font-family:'Roboto Slab',sans-serif;
 				text-decoration:none;
 				text-shadow:1px 1px 2px #111;
 					-moz-text-shadow:1px 1px 2px #111;
@@ -1004,6 +1048,8 @@ Front Page
 	
 			.front_page #sites_lab_header h2 {
 				color:#fff;
+				font-family:'Roboto Slab',sans-serif;
+				font-weight:normal;
 				letter-spacing:.1rem;
 				line-height:1em;
 				margin:0;
@@ -1420,8 +1466,8 @@ Content
     .pagenav_link {
     	display:block;
         font-size:2.2rem;
+		font-family:'Source Sans Pro',sans-serif;
 		font-style:italic;
-		font-weight:lighter;
 		line-height:3.2rem;
         text-decoration:none;
     }
@@ -1448,7 +1494,8 @@ Content
     
     #related_posts h3 {
     	color:#bbb;
-    	font-weight:400;
+		font-family:'Roboto Slab',sans-serif;
+		font-weight:bold;
     }
 	
 	ul#related_posts_thumbnails {
@@ -1489,9 +1536,8 @@ Content
 	
 	ul#related_posts_thumbnails li a span {
 		color:#fff;
-		font-family:'Roboto Slab','Droid Sans','Lucida Grande',Tahoma,sans-serif;
+		font-family:'Roboto Slab',sans-serif;
 		font-size:1.6rem;
-		font-weight:700;
 		line-height:2.2rem;
 		padding:10px;
 		position:absolute;
@@ -1665,8 +1711,8 @@ li.widget {
 	
 	li#popular_posts_tabbed .tabs_sublist ul.wpp-list li a.wpp_headline {
 		display:block;
+		font-family:'Roboto Slab',sans-serif;
 		font-size:1.8em;
-		font-weight:500;
 		line-height:1.444em;
 		padding-right:90px;
 		text-decoration:none;
@@ -1752,7 +1798,7 @@ input[type="checkbox"] {
 
 label span,
 legend span {
-	font-weight:normal;
+	font-family:'Source Sans Pro',sans-serif;
 	font-size:13px;
 	color:#444;
 }
