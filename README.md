@@ -1,5 +1,11 @@
 # A custom WordPress theme for Lawyerist.com
 
+2014-01-21
+----------
+
+* Front page tabs.
+
+
 2014-01-18
 ----------
 
