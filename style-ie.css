@@ -289,6 +289,23 @@ Menu
 Front Page
 ------------------------------*/
 
+.front_page .fp_tab {
+	margin-bottom:2px;
+	padding:10px 15px 10px 25px;
+}
+
+	.front_page .fp_tab:after {
+		width:20px;
+		height:36px;
+			right:-10px;
+	}
+
+	.front_page .fp_tab h2 {
+		font-size:16px;
+		letter-spacing:1px;
+	}
+
+
         /*------------------------------
         Featured Posts
         ------------------------------*/
@@ -904,10 +921,6 @@ and (max-width:979px) {
 	#content_column_container,
 	#footer {
 		max-width:640px;
-	}
-
-	#header_container {
-		border-bottom:10px solid #cc0000;
 	}
 
 	#content_column_container {

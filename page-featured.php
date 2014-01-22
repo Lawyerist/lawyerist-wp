@@ -14,7 +14,7 @@
 
     <div id="content_column">
 
-		<div id="featured_posts_header"><h2>Featured on Lawyerist</h2></div>
+		<div class="fp_tab"><h2>Featured Posts</h2></div>
     	<div id="featured_posts">
 
 			<?php /* THE LOOP */
@@ -82,13 +82,13 @@
 			</a>
 		</div>
 
-		<div id="most_discussed_header"><h2>Most-Discussed on Lawyerist</h2></div>
+		<div class="fp_tab"><h2>Most-Discussed</h2></div>
 		<div id="most_discussed">
 			<?php wpp_get_mostpopular("post_type='post'&range=monthly&order_by=comments&limit=3&thumbnail_height=60&thumbnail_width=60&post_html='<li>{thumb}<a class=\"wpp_headline\" href=\"{url}\">{text_title}<br /><div class=\"comment_link\">{comments} recent comments</a></div></li>'"); ?>
 		</div>
 
+		<div class="fp_tab"><h2>More from Our Network</h2></div>
 		<div id="sites_lab_container">
-			<div id="sites_lab_header"><h2>Read More from Our Network</h2></div>
 			<div id="lab_posts">
 				<h3>Lawyerist LAB</h3>
 

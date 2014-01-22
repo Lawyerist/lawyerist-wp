@@ -669,30 +669,50 @@ Menu
 Front Page
 ------------------------------*/
 
+.front_page .fp_tab {
+	background:#cc0000;
+	display:inline-block;
+	margin-bottom:.2rem;
+	padding:1rem 1.5rem 1rem 2.5rem;
+	position:relative;
+}
+
+	.front_page .fp_tab:after {
+		background-color:#cc0000;
+		content:" ";
+		display:block;
+		width:2rem;
+		height:3.6rem;
+		position: absolute;
+			right:-1rem;
+			top:0;
+		transform:skewX(20deg);
+		-ms-transform:skewX(20deg);
+		-webkit-transform:skewX(20deg);
+		z-index:-1;
+	}
+
+	.front_page .fp_tab h2 {
+		color:#fff;
+		font-family:"Source Sans Pro",sans-serif;
+		font-size:1.6rem;
+		font-weight:normal;
+		letter-spacing:.1rem;
+		line-height:1em;
+		margin:0;
+		text-shadow:1px 1px 2px #777;
+			-moz-text-shadow:1px 1px 2px #777;
+			-ms-text-shadow:1px 1px 2px #777;
+			-o-text-shadow:1px 1px 2px #777;
+			-webkit-text-shadow:1px 1px 2px #777;
+		text-transform:uppercase;
+	}
+
+
+
 	/*------------------------------
 	Featured Posts
 	------------------------------*/
-
-	.front_page #featured_posts_header {
-		background:#333;
-		box-shadow:0 0 5rem rgba(0,0,0,.6) inset;
-		margin-bottom:.2rem;
-		padding:2rem 2.5rem;
-	}
-
-		.front_page #featured_posts_header h2 {
-			color:#fff;
-			font-family:'Roboto Slab',sans-serif;
-			font-weight:normal;
-			letter-spacing:.1rem;
-			line-height:1em;
-			margin:0;
-			text-shadow:1px 1px 2px #111;
-				-moz-text-shadow:1px 1px 2px #111;
-				-ms-text-shadow:1px 1px 2px #111;
-				-o-text-shadow:1px 1px 2px #111;
-				-webkit-text-shadow:1px 1px 2px #111;
-		}
 
 	.front_page a.featured_post {
 		background:linear-gradient(135deg, #111111 0%,#555555 100%); /* W3C */
@@ -866,27 +886,6 @@ Front Page
 		margin-bottom:2.8rem;
 		padding:2rem 2.5rem;
 	}
-	
-		.front_page #most_discussed_header {
-			background:#333;
-			box-shadow:0 0 5rem rgba(0,0,0,.6) inset;
-			margin-bottom:.2rem;
-			padding:2rem 2.5rem;
-		}
-
-			.front_page #most_discussed_header h2 {
-				color:#fff;
-				font-family:'Roboto Slab',sans-serif;
-				font-weight:normal;
-				letter-spacing:.1rem;
-				line-height:1em;
-				margin:0;
-				text-shadow:1px 1px 2px #111;
-					-moz-text-shadow:1px 1px 2px #111;
-					-ms-text-shadow:1px 1px 2px #111;
-					-o-text-shadow:1px 1px 2px #111;
-					-webkit-text-shadow:1px 1px 2px #111;
-			}
 
 		.front_page #most_discussed a {
 			display:inline-block;
@@ -1037,27 +1036,6 @@ Front Page
 			.front_page #lab_posts li:hover a,
 			.front_page #sites_network_posts li:hover a {
 				color:#ccc;
-			}
-
-		.front_page #sites_lab_header {
-			background:#333;
-			box-shadow:0 0 5rem rgba(0,0,0,.6) inset;
-			margin-bottom:.2rem;
-			padding:2rem 2.5rem;
-		}
-	
-			.front_page #sites_lab_header h2 {
-				color:#fff;
-				font-family:'Roboto Slab',sans-serif;
-				font-weight:normal;
-				letter-spacing:.1rem;
-				line-height:1em;
-				margin:0;
-				text-shadow:1px 1px 2px #111;
-					-moz-text-shadow:1px 1px 2px #111;
-					-ms-text-shadow:1px 1px 2px #111;
-					-o-text-shadow:1px 1px 2px #111;
-					-webkit-text-shadow:1px 1px 2px #111;
 			}
 
 		.front_page #lab_posts {
@@ -2028,7 +2006,7 @@ and (max-width:979px) {
 	}
 
 	#header_container {
-		border-bottom:1rem solid #cc0000;
+		border-bottom:0;
 	}
 
 	#content_column_container {
