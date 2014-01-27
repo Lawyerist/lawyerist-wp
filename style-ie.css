@@ -931,4 +931,10 @@ and (max-width:979px) {
 				margin-right:10px;
 			}
 
+	/* Front Page */
+
+	.front_page #header_container {
+		margin-bottom:20px;
+	}
+
 }
