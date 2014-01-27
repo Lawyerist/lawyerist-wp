@@ -2087,7 +2087,7 @@ and (max-width:659px) {
 	/* Front Page */
 
 	.front_page #header_container {
-		margin-bottom:.2rem;
+		margin-bottom:2rem;
 	}
 
 	.front_page #content_column_container {
