@@ -2,8 +2,7 @@
 
 <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic,700italic|Source+Code+Pro|Roboto+Slab:700,400' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="<?php echo get_bloginfo('template_url'); ?>/fonts-resets.css" type="text/css" media="screen, projection">
-<link rel="stylesheet" href="<?php echo get_bloginfo('template_url'); ?>/style-ie.css" type="text/css" media="screen, projection">
-<link rel="stylesheet" href="<?php echo get_stylesheet_uri(); ?>?2014-01-26-18-30" type="text/css" media="screen, projection">
+<link rel="stylesheet" href="<?php echo get_stylesheet_uri(); ?>?2014-02-06-10-57" type="text/css" media="screen, projection">
 
 <link rel="shortcut icon" href="<?php echo get_bloginfo('template_url'); ?>/images/favicon.ico" type="image/x-icon">
 <link rel="icon" href="<?php echo get_bloginfo('template_url'); ?>/images/favicon.ico" type="image/x-icon">

@@ -1,5 +1,11 @@
 # A custom WordPress theme for Lawyerist.com
 
+2014-02-06
+----------
+
+* Changes to blog-forum-sites nav.
+
+
 2014-01-21
 ----------
 
