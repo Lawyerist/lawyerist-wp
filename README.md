@@ -5,6 +5,7 @@
 
 * Update front page tabs.
 * Updates Sites color on front page.
+* Change "From the Archives" tag colors.
 
 
 2014-02-06
