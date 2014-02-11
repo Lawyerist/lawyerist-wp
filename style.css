@@ -670,7 +670,10 @@ Front Page
 ------------------------------*/
 
 .front_page .fp_tab {
-	background:#cc0000;
+	background:#eee;
+	border-color:#ddd;
+	border-style:solid;
+	border-width:.1rem 0 .1rem .1rem;
 	display:inline-block;
 	margin-bottom:.2rem;
 	padding:1rem 1.5rem 1rem 2.5rem;
@@ -678,14 +681,17 @@ Front Page
 }
 
 	.front_page .fp_tab:after {
-		background-color:#cc0000;
+		background:#eee;
+		border-color:#ddd;
+		border-style:solid;
+		border-width:.1rem .1rem .1rem 0;
 		content:" ";
 		display:block;
 		width:2rem;
 		height:3.6rem;
 		position: absolute;
 			right:-1rem;
-			top:0;
+			top:-.1rem;
 		transform:skewX(20deg);
 		-ms-transform:skewX(20deg);
 		-webkit-transform:skewX(20deg);
@@ -693,18 +699,18 @@ Front Page
 	}
 
 	.front_page .fp_tab h2 {
-		color:#fff;
+		color:#333;
 		font-family:"Source Sans Pro",sans-serif;
 		font-size:1.6rem;
 		font-weight:normal;
 		letter-spacing:.1rem;
 		line-height:1em;
 		margin:0;
-		text-shadow:1px 1px 2px #777;
-			-moz-text-shadow:1px 1px 2px #777;
-			-ms-text-shadow:1px 1px 2px #777;
-			-o-text-shadow:1px 1px 2px #777;
-			-webkit-text-shadow:1px 1px 2px #777;
+		text-shadow:1px 1px 2px #ddd;
+			-moz-text-shadow:1px 1px 2px #ddd;
+			-ms-text-shadow:1px 1px 2px #ddd;
+			-o-text-shadow:1px 1px 2px #ddd;
+			-webkit-text-shadow:1px 1px 2px #ddd;
 		text-transform:uppercase;
 	}
 
@@ -1072,7 +1078,7 @@ Front Page
 			}
 
 		.front_page #sites_network_posts {
-			background:#2d9933;
+			background:#d14d0c;
 			float:right;
 		}
 
