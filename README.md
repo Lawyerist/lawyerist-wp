@@ -1,5 +1,12 @@
 # A custom WordPress theme for Lawyerist.com
 
+2014-02-11
+----------
+
+* Update front page tabs.
+* Updates Sites color on front page.
+
+
 2014-02-06
 ----------
 
