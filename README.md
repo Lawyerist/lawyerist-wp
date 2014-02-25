@@ -1,5 +1,11 @@
 # A custom WordPress theme for Lawyerist.com
 
+2014-02-24
+----------
+
+* Testing HipChat integration.
+
+
 2014-02-14
 ----------
 
