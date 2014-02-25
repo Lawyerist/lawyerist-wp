@@ -189,7 +189,7 @@ blockquote {
 
 code {
 	color:#777;
-	font-family:'Source Code Pro',mono;
+	font-family:mono;
 	white-space: pre-wrap; /* css-3 */
 	white-space: -moz-pre-wrap !important; /* Mozilla, since 1999 */
 	white-space: -pre-wrap; /* Opera 4-6 */
@@ -297,7 +297,7 @@ p.wp-caption-text {
 
 pre {
 	color:#555;
-	font-family:'Source Code Pro',mono;
+	font-family:mono;
 	font-size:1.4rem;
 	line-height:2.1rem;
 	margin-bottom:2.1rem;
@@ -734,10 +734,10 @@ Front Page
 		height:24rem;
 		overflow:hidden;
 		margin:0 0 .2rem 0;
+		max-width:31.9rem;
 		padding:0;
 		position:relative;
 		text-decoration:none;
-		max-width:31.9rem;
 	}
 	
 		.front_page a.post_num_1 {
@@ -760,6 +760,7 @@ Front Page
 				top:0;
 				left:0;
 			width:100%;
+			z-index:1;
 		}
 
 		.front_page a.featured_post img {
@@ -771,6 +772,7 @@ Front Page
 				-ms-transition: opacity .4s;
 				-0-transition: opacity .4s;
 				-webkit-transition	: opacity .4s;
+			z-index:0;
 		}
 
 		.front_page a.featured_post:hover img {
@@ -783,6 +785,7 @@ Front Page
 				top:0;
 				left:0;	
 			width:auto;
+			z-index:1;
 		}
 
 			.front_page a.featured_post .from_archives {

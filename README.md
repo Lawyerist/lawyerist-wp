@@ -1,5 +1,11 @@
 # A custom WordPress theme for Lawyerist.com
 
+2014-02-14
+----------
+
+* Fix z-index layering on front page.
+* Remove Source Code Pro (Google Font).
+
 2014-02-11
 ----------
 

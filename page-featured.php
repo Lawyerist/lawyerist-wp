@@ -32,13 +32,7 @@
 					); ?>
 
 					<a id="post-<?php the_ID(); ?>" <?php post_class($classes); ?> href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
-
-						<?php if ( has_post_thumbnail() ) {
-								if ( $post_num == 1 ) { the_post_thumbnail( 'large' ); }
-								else { the_post_thumbnail( 'featured_thumb_2' ); }
-						} ?>
 						
-						<div class="shadowbox"></div>
 						<div class="headline_excerpt">
 						
 							<?php 
@@ -61,6 +55,12 @@
 								<div class="author_link">by <?php the_author(); ?></div>
 							</div>
 						</div>
+
+						<div class="shadowbox"></div>
+						<?php if ( has_post_thumbnail() ) {
+								if ( $post_num == 1 ) { the_post_thumbnail( 'large' ); }
+								else { the_post_thumbnail( 'featured_thumb_2' ); }
+						} ?>
 
 						<div class="clear"></div>
 
@@ -139,8 +139,8 @@
 
 				if ( ! is_wp_error( $rss ) ) : // Checks that the object is created correctly
 
-					// Figure out how many total items there are, but limit it to 6. 
-					$maxitems = $rss->get_item_quantity( 6 ); 
+					// Figure out how many total items there are, but limit it to 5. 
+					$maxitems = $rss->get_item_quantity( 5 ); 
 
 					// Build an array of all the items, starting with element 0 (first element).
 					$rss_items = $rss->get_items( 0, $maxitems );
