@@ -1,5 +1,11 @@
 # A custom WordPress theme for Lawyerist.com
 
+2014-02-25
+----------
+
+* Un-italicize prev/next links.
+
+
 2014-02-14
 ----------
 
