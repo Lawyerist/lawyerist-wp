@@ -5,6 +5,7 @@
 
 * Consolidate stylesheets.
 * Remove IE 6 stylesheet.
+* Clean up stylesheet a bit.
 
 
 2014-02-25
