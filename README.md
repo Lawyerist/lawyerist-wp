@@ -1,5 +1,12 @@
 # A custom WordPress theme for Lawyerist.com
 
+2014-02-26
+----------
+
+* Consolidate stylesheets.
+* Remove IE 6 stylesheet.
+
+
 2014-02-25
 ----------
 
