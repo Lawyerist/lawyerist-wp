@@ -14,7 +14,7 @@
 
 		<div <?php post_class($class); ?>>
 
-			<h1 class="headline" id="404">Congratulations! You Found a Typo!</h1>
+			<h1 class="headline" id="404">404: Congratulations! You Found a Typo!</h1>
 			
 			<div class="post_body">
 
