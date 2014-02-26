@@ -31,26 +31,21 @@ Front Page
 	Lab & Sites Network Posts
 Content
 	Index & Archive Lists
+	Posts
+	Sharing Buttons
+	Buyers Guide
+	Pagenav
+	Comments
+	Related Posts
+Sidebar
+	Sidebar Ads
+	Sidebar Popular Posts Widget
+Footer
+Forms
+	Buttons
+	Gravity Forms
+Useful Stuff
 Media Queries
-
-
-
-
-CONTENT
-    POSTS
-    BUYER'S GUIDE
-    PAGENAV
-    PAGENUM
-    COMMENTS
-    RELATED POSTS
-SIDEBAR
-	SIDEBAR ADS
-	SIDEBAR POPULAR POSTS
-FOOTER
-FORMS
-    BUTTONS
-    GRAVITY FORMS
-USEFUL STUFF
 
 ------------------------------*/
 
@@ -1130,6 +1125,19 @@ Front Page
 Content
 ------------------------------*/
 
+#lawyerist_content_search {
+	margin-bottom:2rem;
+}
+
+#lawyerist_content_search input#st-search-input {
+	border-radius:2px !important; 
+	-moz-border-radius:2px !important;
+	-webkit-border-radius:2px !important;
+	font-size:16px !important;
+	margin:0;
+	width:262px !important;
+}
+
 	/*------------------------------
 	Index & Archive Lists
 	------------------------------*/
@@ -1176,44 +1184,6 @@ Content
 		margin-bottom:1.5rem;
 	}
 
-.comment_link {
-	display:inline-block;
-	float:right;
-}
-	
-	.comment_link:before {
-		content:'\f300';
-		display:inline-block;
-		-webkit-font-smoothing:antialiased;
-		-moz-transform:matrix(-1, 0, 0, 1, 0, 0);
-		-o-transform:matrix(-1, 0, 0, 1, 0, 0);
-		-webkit-transform:matrix(-1, 0, 0, 1, 0, 0);
-		font:normal 1.6rem/1em 'Genericons';
-		margin-right:.1em;
-		vertical-align:text-top;
-	}
-
-#lawyerist_content_search {
-    margin-bottom:2rem;
-}
-
-#lawyerist_content_search input#st-search-input {
-	border-radius:2px !important; 
-    -moz-border-radius:2px !important;
-	-webkit-border-radius:2px !important;
-	font-size:16px !important;
-	margin:0;
-	width:262px !important;
-}
-
-
-	/* INDEX & ARCHIVE POSTS */
-
-	.index p.excerpt_with_thumb {
-		padding-right:16.5rem;
-	}
-
-
 	#archive_header {
 		background-color:#ddd;
 		box-shadow:0 0 5rem rgba(0,0,0,.1) inset;
@@ -1236,8 +1206,31 @@ Content
 		padding-left:11.5rem;
 	}
 
+	.index p.excerpt_with_thumb {
+		padding-right:16.5rem;
+	}
 
-	/* POSTS */
+
+	/*------------------------------
+	Posts
+	------------------------------*/
+
+	.comment_link {
+		display:inline-block;
+		float:right;
+	}
+	
+		.comment_link:before {
+			content:'\f300';
+			display:inline-block;
+			-webkit-font-smoothing:antialiased;
+			-moz-transform:matrix(-1, 0, 0, 1, 0, 0);
+			-o-transform:matrix(-1, 0, 0, 1, 0, 0);
+			-webkit-transform:matrix(-1, 0, 0, 1, 0, 0);
+			font:normal 1.6rem/1em 'Genericons';
+			margin-right:.1em;
+			vertical-align:text-top;
+		}
 
 	.post_bio_sep {
 		text-align:center;
@@ -1293,7 +1286,9 @@ Content
 	}
 
 
-	/* SHARING BUTTONS */
+	/*------------------------------
+	Sharing Buttons
+	------------------------------*/
 	
 	.juiz_sps_links {
 			margin-top:0 !important;
@@ -1372,7 +1367,9 @@ Content
 			}
 	
 	
-	/* BUYER'S GUIDE */
+	/*------------------------------
+	Buyers Guide
+	------------------------------*/
 	
 	a.buy_button {
 		clear:right;
@@ -1433,7 +1430,9 @@ Content
 	}
     
 
-    /* PAGENAV */
+	/*------------------------------
+	Pagenav
+	------------------------------*/
 
     #pagenav {
     	margin-bottom:6em;
@@ -1502,14 +1501,18 @@ Content
 		}
     
     
-    /* COMMENTS */
+	/*------------------------------
+	Comments
+	------------------------------*/
 
     #disqus_thread {
         margin-bottom:4rem;
     }
 
 	
-    /* RELATED POSTS */
+	/*------------------------------
+	Related Posts
+	------------------------------*/
     
     #related_posts h3 {
     	color:#bbb;
@@ -1575,7 +1578,9 @@ Content
 	}
 	
 
-/* SIDEBAR */
+/*------------------------------
+Sidebar
+------------------------------*/
 
 #lawyerist_sidebar_search {
 	font-size:10px;
@@ -1636,8 +1641,11 @@ li.widget {
 		line-height:1.556em;
 		margin-bottom:.778em;
 	}
-	
-	/* SIDEBAR ADS */
+
+
+	/*------------------------------
+	Sidebar Ads
+	------------------------------*/
 
 	li.sidebar_ads {
 		display:block;
@@ -1666,7 +1674,9 @@ li.widget {
 	}
 
 
-	/* SIDEBAR POPULAR POSTS */
+	/*------------------------------
+	Sidebar Popular Posts Widget
+	------------------------------*/
 	
 	li#popular_posts_tabbed {
 		font-size:10px;
@@ -1738,7 +1748,9 @@ li.widget {
 	}
 
 
-/* FOOTER */
+/*------------------------------
+Footer
+------------------------------*/
 
 #footer {
     background:url('images/L-footer.png') no-repeat left 2rem;
@@ -1750,7 +1762,9 @@ li.widget {
 }
 
 
-/* FORMS */
+/*------------------------------
+Forms
+------------------------------*/
 
 form {
 	margin-bottom:20px;
@@ -1850,7 +1864,9 @@ legend span {
 	font-weight:normal;
 }
 
-	/* BUTTONS (from Skeleton) */
+	/*------------------------------
+	Buttons
+	------------------------------*/
 
     .custom .button,
 	.custom a.button,
@@ -1939,8 +1955,10 @@ legend span {
 		text-align: center;
 	}
     
-    
-    /* GRAVITY FORMS */
+
+	/*------------------------------
+	Gravity Forms
+	------------------------------*/
     
 	.gfield_radio label,
     .gpoll_wrapper label,
@@ -1963,7 +1981,9 @@ legend span {
     }
 
 
-/* USEFUL STUFF */
+/*------------------------------
+Useful Stuff
+------------------------------*/
 
 .aligncenter {
 	clear:both;
