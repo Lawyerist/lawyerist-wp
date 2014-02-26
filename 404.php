@@ -22,7 +22,7 @@
 
 				<p><iframe width="640" height="360" src="//www.youtube.com/embed/N_auFicUWK4?list=PL923B0FEA7688AA58" frameborder="0" allowfullscreen></iframe></p>
 
-				<p>Seriously, it looks like you got bad directions somewhere. If you know what you were looking for, try searching for it:</p>
+				<p>Seriously, it looks like the page you were looking for doesn't exist. Try searching for it, in case it moved:</p>
 
 				<div id="lawyerist_content_search">
 					<form>
