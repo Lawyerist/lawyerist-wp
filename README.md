@@ -6,6 +6,7 @@
 * Consolidate stylesheets.
 * Remove IE 6 stylesheet.
 * Clean up stylesheet a bit.
+* Make 404 page funnier (I hope).
 
 
 2014-02-25

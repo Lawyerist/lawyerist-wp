@@ -12,13 +12,17 @@
 
 	<div id="content_column">
 
-		<div class="post">
+		<div <?php post_class($class); ?>>
 
-			<h1 class="headline" id="404">Lost?</h1>
+			<h1 class="headline" id="404">Congratulations! You Found a Typo!</h1>
 			
 			<div class="post_body">
 
-				<p>Looks like you got bad directions somewhere. If you know what you were looking for, try searching for it:</p>
+				<p>Legal fame and glory are yours!</p>
+
+				<p><iframe width="640" height="360" src="//www.youtube.com/embed/N_auFicUWK4?list=PL923B0FEA7688AA58" frameborder="0" allowfullscreen></iframe></p>
+
+				<p>Seriously, it looks like you got bad directions somewhere. If you know what you were looking for, try searching for it:</p>
 
 				<div id="lawyerist_content_search">
 					<form>
@@ -56,9 +60,9 @@
 	
 	</div>
 	
-	<div id="sidebar_column">
+	<ul id="sidebar_column">
 		<?php include('sidebar.php'); ?>
-	</div>
+	</ul>
 	
 	<div class="clear"></div>
 
