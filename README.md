@@ -1,5 +1,12 @@
 # A custom WordPress theme for Lawyerist.com
 
+2014-02-28
+----------
+
+* Remove shadow from .menu-default-container (I have no idea why I gave it a shadow).
+* Fix nav menu height.
+
+
 2014-02-26
 ----------
 
