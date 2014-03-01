@@ -50,7 +50,7 @@
 
 				<p>Or, maybe you prefer a more serendipitous approach to discovery. Here are our most-popular tags:</p>
 
-				<div style="margin-bottom:1.571em;"><?php wp_tag_cloud('exclude=2580,2602'); ?></div>
+				<?php wp_tag_cloud('exclude=2580,2602'); ?>
 
 				<p>If these don't work for you, check out our <a href="http://lawyerist.com/start/">start page</a>.</p>
 
