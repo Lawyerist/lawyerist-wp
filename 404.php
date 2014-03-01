@@ -4,7 +4,7 @@
 <?php include('head.php'); ?>
 <?php wp_head(); ?>
 
-<body id="post-<?php the_ID(); ?>" class="custom single page<?php if ( wp_is_mobile() ) { ?> mobile<?php } ?>">
+<body <?php body_class($class); ?>>
 
 <?php get_header(); ?>
 
@@ -50,7 +50,7 @@
 
 				<p>Or, maybe you prefer a more serendipitous approach to discovery. Here are our most-popular tags:</p>
 
-				<?php wp_tag_cloud('exclude=2580,2602'); ?>
+				<div class="tag_cloud"><?php wp_tag_cloud('exclude=2580,2602'); ?></div>
 
 				<p>If these don't work for you, check out our <a href="http://lawyerist.com/start/">start page</a>.</p>
 
