@@ -1125,6 +1125,10 @@ Front Page
 Content
 ------------------------------*/
 
+.error404 .tag_cloud {
+	margin-bottom:2.8rem;
+}
+
 #lawyerist_content_search {
 	margin-bottom:2rem;
 }
