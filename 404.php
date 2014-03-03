@@ -12,7 +12,7 @@
 
 	<div id="content_column">
 
-		<div <?php post_class($class); ?>>
+		<div class="post">
 
 			<h1 class="headline" id="404">404: Congratulations! You Found a Typo!</h1>
 			
