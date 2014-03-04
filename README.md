@@ -1,5 +1,11 @@
 # A custom WordPress theme for Lawyerist.com
 
+2014-03-04
+----------
+
+* Adjust spacing in header.
+
+
 2014-02-28
 ----------
 
