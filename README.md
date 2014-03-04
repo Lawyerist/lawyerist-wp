@@ -4,6 +4,8 @@
 ----------
 
 * Adjust spacing in header.
+* Remove .custom from stylesheet.
+* Make buttons a little better (they still need work).
 
 
 2014-02-28
