@@ -1,7 +1,7 @@
 <head>
 
 <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic,700italic|Roboto+Slab:700,400' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="<?php echo get_stylesheet_uri(); ?>?2014-03-04-16-51" type="text/css" media="screen, projection">
+<link rel="stylesheet" href="<?php echo get_stylesheet_uri(); ?>?2014-03-06-01-49" type="text/css" media="screen, projection">
 
 <link rel="shortcut icon" href="<?php echo get_bloginfo('template_url'); ?>/images/favicon.ico" type="image/x-icon">
 <link rel="icon" href="<?php echo get_bloginfo('template_url'); ?>/images/favicon.ico" type="image/x-icon">
