@@ -466,7 +466,7 @@ Header
 	float:left;
 	font-size:1rem;
 	line-height:1em;
-	margin:0 1rem 0 0;
+	margin:0 .5rem 0 0;
 	padding:0;
 	width:21.6rem;
 }
@@ -522,11 +522,11 @@ Header
 			color:#cc0000;
 		}
 	
-		#blog_forum_nav li.nav_blog a {
+		.page-id-72195 #blog_forum_nav li.nav_store a {
 			color:#aaa;
 		}
 	
-		#blog_forum_nav li.nav_blog a:hover {
+		.page-id-72195 #blog_forum_nav li.nav_store a:hover {
 			color:#ccc;
 		}
 
