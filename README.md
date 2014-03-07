@@ -1,9 +1,16 @@
 # A custom WordPress theme for Lawyerist.com
 
+2014-03-07
+----------
+
+* Better buttons.
+
+
 2014-03-06
 ----------
 
 * Update header nav.
+
 
 2014-03-04
 ----------
