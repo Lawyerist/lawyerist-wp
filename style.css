@@ -303,13 +303,15 @@ p.alert {
 p.pullout {
 	background:#eee;
 	display:inline-block;
-	margin:1.5rem;
+	float:right;
+	margin:0 0 1.5rem 1.5rem;
 	padding:1.5rem;
 	width:46.875%;
 }
 
-	p.pullout.right {
-		float:right;
+	p.pullout.left {
+		float:left;
+		margin:0 1.5rem 1.5rem 0;
 	}
 
 p.pullquote {
