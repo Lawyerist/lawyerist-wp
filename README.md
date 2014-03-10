@@ -1,5 +1,11 @@
 # A custom WordPress theme for Lawyerist.com
 
+2014-03-10
+----------
+
+* Added pullout for related links within a post.
+
+
 2014-03-07
 ----------
 
