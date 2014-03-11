@@ -292,12 +292,16 @@ p {
 
 p.note {
 	background-color:#f5f5f5;
-	padding:1.4rem 2.8rem;
+	border-top:1px solid #ddd;
+	padding:1.5rem 2.5rem 2rem 2.5rem;
+	box-shadow:0 0 5rem rgba(0,0,0,.1) inset;
 }
 
 p.alert {
 	background-color:#ffffa0;
-	padding:1.4rem 2.8rem;
+	border-top:1px solid #ddd;
+	padding:1.5rem 2.5rem 2rem 2.5rem;
+	box-shadow:0 0 5rem rgba(0,0,0,.1) inset;
 }
 
 p.pullout {
