@@ -316,7 +316,10 @@ p.pullout {
 }
 
 	p.pullout strong {
+		border-bottom:1px solid #bbb;
+		display:block;
 		font-family:'Roboto Slab',sans-serif;
+		margin-bottom:1rem;
 	}
 
 	p.pullout.left {
