@@ -4,6 +4,7 @@
 ----------
 
 * Added pullout for related links within a post.
+* Improve p.note and p.alert styles.
 
 
 2014-03-07
