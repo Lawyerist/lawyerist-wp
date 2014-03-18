@@ -2,7 +2,7 @@
 
 <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic,700italic|Roboto+Slab:700,400' rel='stylesheet' type='text/css'>
 
-<link rel="stylesheet" href="<?php echo get_stylesheet_uri(); ?>?2014-03-10-20-35" type="text/css" media="screen, projection">
+<link rel="stylesheet" href="<?php echo get_stylesheet_uri(); ?>?2014-03-18-13-23" type="text/css" media="screen, projection">
 <link rel="shortcut icon" href="<?php echo get_bloginfo('template_url'); ?>/images/favicon.ico" type="image/x-icon">
 <link rel="icon" href="<?php echo get_bloginfo('template_url'); ?>/images/favicon.ico" type="image/x-icon">
 
@@ -22,7 +22,7 @@ var gads = document.createElement('script');
 gads.async = true;
 gads.type = 'text/javascript';
 var useSSL = 'https:' == document.location.protocol;
-gads.src = (useSSL ? 'https:' : 'http:') + 
+gads.src = (useSSL ? 'https:' : 'http:') +
 '//www.googletagservices.com/tag/js/gpt.js';
 var node = document.getElementsByTagName('script')[0];
 node.parentNode.insertBefore(gads, node);
@@ -57,14 +57,14 @@ googletag.enableServices();
 	if ( is_front_page() ) {
 
 		$description = get_bloginfo('description'); ?>
-		
+
 		<meta name="description" content="<?php echo $description; ?>"><?php }
 
 	elseif ( is_single() || is_page() ) {
-	
+
 		global $post;
 		$excerpt = get_the_excerpt( $post->ID ) ?>
-	
+
 		<meta name="description" content="<?php echo $excerpt; ?>">
 
 <?php } ?>
