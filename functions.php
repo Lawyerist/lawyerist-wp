@@ -2,18 +2,20 @@
 
 /* INDEX
 
-NAV MENU
-FEATURED IMAGES
-SIDEBAR
-ADD CAPABILITIES TO CONTRIBUTOR ROLE
-REMOVE QUICKPRESS
-DASHBOARD RSS WIDGET
-ADD EDITOR STYLESHEET
-RSS FEED CACHING
+Nav Menu
+Featured Images
+Sidebar
+Add Capabilities to Contributor Role
+Remove Quickpress
+Add Editor Stylesheet
+RSS Feed Caching
 
 */
 
-/* NAV MENU */
+
+/*------------------------------
+Nav Menu
+------------------------------*/
 
 function register_my_menu() {
 	register_nav_menu('header-menu',__( 'Header Menu' ));
@@ -22,7 +24,9 @@ function register_my_menu() {
 add_action('init','register_my_menu');
 
 
-/* FEATURED IMAGES */
+/*------------------------------
+Featured Images
+------------------------------*/
 
 add_theme_support('post-thumbnails');
 
@@ -43,17 +47,19 @@ function featuredtoRSS($content) {
 	return $content;
 
 }
- 
+
 add_filter('the_excerpt_rss', 'featuredtoRSS');
 add_filter('the_content_feed', 'featuredtoRSS');
 
 
-if ( function_exists( 'add_image_size' ) ) { 
+if ( function_exists( 'add_image_size' ) ) {
 	add_image_size( 'featured_thumb_2', 320, 240, true);
 }
 
 
-/* SIDEBAR */
+/*------------------------------
+Sidebar
+------------------------------*/
 
 function lawyerist_sidebar_1()  {
 	$args = array(
@@ -73,17 +79,21 @@ function lawyerist_sidebar_1()  {
 add_action( 'widgets_init', 'lawyerist_sidebar_1' );
 
 
-/* ADD CAPABILITIES TO CONTRIBUTOR ROLE */
+/*------------------------------
+Add Capabilities to Contributor Role
+------------------------------*/
 
 function add_permissions_contributor() {
     $role = get_role( 'contributor' );
-    $role->add_cap( 'upload_files' ); 
+    $role->add_cap( 'upload_files' );
 }
 
 add_action( 'admin_init', 'add_permissions_contributor');
 
 
-/* REMOVE QUICKPRESS */
+/*------------------------------
+Remove Quickpress
+------------------------------*/
 
 function remove_quickpress() {
 	remove_meta_box('dashboard_quick_press','dashboard','side');
@@ -92,59 +102,9 @@ function remove_quickpress() {
 add_action('wp_dashboard_setup','remove_quickpress');
 
 
-/* DASHBOARD RSS WIDGET */
-
-function lawyerist_dashboard_widget_function() {
-     $rss = fetch_feed( "http://lawyerist.com/feed/" );
- 
-     if ( is_wp_error($rss) ) {
-          if ( is_admin() || current_user_can('manage_options') ) {
-               echo '<p>';
-               printf(__('<strong>RSS Error</strong>: %s'), $rss->get_error_message());
-               echo '</p>';
-          }
-     return;
-}
- 
-if ( !$rss->get_item_quantity() ) {
-     echo '<p>Apparently, there is nothing on Lawyerist!</p>';
-     $rss->__destruct();
-     unset($rss);
-     return;
-}
- 
-echo "<ul>\n";
- 
-if ( !isset($items) )
-     $items = 5;
- 
-     foreach ( $rss->get_items(0, $items) as $item ) {
-          $publisher = '';
-          $site_link = '';
-          $link = '';
-          $content = '';
-          $date = '';
-          $link = esc_url( strip_tags( $item->get_link() ) );
-		  $title = esc_html( $item->get_title() );
-          $content = $item->get_content();
-          $content = wp_html_excerpt($content, 250) . ' ...';
- 
-         echo "<li><a class='rsswidget' href='$link'>$title</a>\n<div class='rssSummary'>$content</div>\n";
-}
- 
-echo "</ul>\n";
-$rss->__destruct();
-unset($rss);
-}
-
-function ls_add_lawyerist_dashboard_widget() {
-     wp_add_dashboard_widget('lawyerist_dashboard_widget', 'Recent Posts from Lawyerist.com', 'lawyerist_dashboard_widget_function');
-}
-
-add_action('wp_dashboard_setup', 'ls_add_lawyerist_dashboard_widget');
-
-
-/* ADD EDITOR STYLESHEET */
+/*------------------------------
+Add Editor Stylesheet
+------------------------------*/
 
 function my_theme_add_editor_styles() {
     add_editor_style();
@@ -153,11 +113,13 @@ function my_theme_add_editor_styles() {
 add_action( 'init', 'my_theme_add_editor_styles' );
 
 
-/* RSS FEED CACHING */
+/*------------------------------
+RSS Feed Caching
+------------------------------*/
 
 function return_3600( $seconds )
 {
-  /* Change the default feed cache recreation period to 1 hour */
+  /* Change the default feed cache re-creation period to 1 hour */
   return 3600;
 }
 

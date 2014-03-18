@@ -4,6 +4,9 @@
 ----------
 
 * Adjust #archive_header padding.
+* Clean up functions.php a bit.
+* Remove dashboard RSS widget.
+
 
 2014-03-10
 ----------
