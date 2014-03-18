@@ -136,7 +136,7 @@ body {
 		float:right;
 		max-width:64rem;
 	}
-		
+
 		.post {
 			margin-bottom:4rem;
 			position:relative;
@@ -149,7 +149,7 @@ body {
 		a.top_post {
 			padding-top:0;
 		}
-		
+
 		a.post {
 			border-bottom:1px solid #ddd;
 			clear:both;
@@ -157,7 +157,7 @@ body {
 			margin-bottom:1.5rem;
 			padding-bottom:1.5rem;
 		}
-	
+
 	ul#sidebar_column {
 		float:left;
 		margin:0;
@@ -506,7 +506,7 @@ Header
 		text-indent:-9999px;
 		width:30rem;
 	}
-	
+
 	/*------------------------------
 	Blog-Forum-Sites Nav
 	------------------------------*/
@@ -548,11 +548,11 @@ Header
 			background-color:#444;
 			color:#cc0000;
 		}
-	
+
 		.page-id-72195 #blog_forum_nav li.nav_store a {
 			color:#aaa;
 		}
-	
+
 		.page-id-72195 #blog_forum_nav li.nav_store a:hover {
 			color:#ccc;
 		}
@@ -579,7 +579,7 @@ Header
 				margin:0;
 				padding:0;
 			}
-	
+
 			#email_social ul li.lawyerist_connect_more {
 				color:#fff;
 				display:inline-block;
@@ -589,16 +589,16 @@ Header
 				padding:0;
 				vertical-align:top;
 			}
-	
+
 				#email_social ul li.lawyerist_connect_more a {
 					color:#fff;
 					text-decoration:none;
 				}
-		
+
 				#email_social ul li.lawyerist_connect_more a:hover {
 					color:#cc0000;
 				}
-	
+
 				#email_social ul li.lawyerist_connect_more .connect_more,
 				#email_social ul li.lawyerist_connect_more .connect_ways_to,
 				#email_social ul li.lawyerist_connect_more .connect_connect {
@@ -606,7 +606,7 @@ Header
 					text-align:right;
 					text-transform:uppercase;
 				}
-	
+
 				#email_social ul li.lawyerist_connect_more .connect_more {
 					font-size:1.2rem;
 					font-weight:600;
@@ -614,13 +614,13 @@ Header
 					position:relative;
 						right:-.2rem;
 				}
-		
+
 				#email_social ul li.lawyerist_connect_more .connect_ways_to {
 					letter-spacing:.1rem;
 					position:relative;
 						right:-.1rem;
 				}
-		
+
 				#email_social ul li.lawyerist_connect_more .connect_connect {
 					font-size:1.2rem;
 					font-weight:600;
@@ -638,11 +638,11 @@ Header
 				font:normal 3.2rem/1em 'Genericons';
 				vertical-align:top;
 			}
-		
+
 				#email_social ul li a.facebook.sprite:hover {
 					color:#3b5998;
 				}
-		
+
 				#email_social ul li a.facebook.sprite:before {
 					content:'\f203';
 				}
@@ -654,7 +654,7 @@ Header
 				#email_social ul li a.linkedin.sprite:hover {
 					color:#4875b4;
 				}
-					
+
 				#email_social ul li a.linkedin.sprite:before {
 					content:'\f208';
 				}
@@ -662,15 +662,15 @@ Header
 				#email_social ul li a.twitter.sprite:hover {
 					color:#4099ff;
 				}
-		
+
 				#email_social ul li a.twitter.sprite:before {
 					content:'\f202';
 				}
-		
+
 				#email_social ul li form#lawyerist_insider_subscribe {
 					margin:0;
 				}
-		
+
 				#email_social ul li form#lawyerist_insider_subscribe input[type="email"] {
 					-moz-box-sizing:content-box; /* or `border-box` */
 					-webkit-box-sizing:content-box;
@@ -684,7 +684,7 @@ Header
 					padding:.6rem .8rem;
 					width:29.2rem;
 				}
-		
+
 				#email_social ul li form#lawyerist_insider_subscribe input[type="email"]:focus {
 					background:#fff;
 				}
@@ -793,7 +793,7 @@ Front Page
 		position:relative;
 		text-decoration:none;
 	}
-	
+
 		.front_page a.post_num_1 {
 			clear:both;
 			display:block;
@@ -801,12 +801,12 @@ Front Page
 			height:32rem;
 			max-width:64rem;
 		}
-	
+
 		.front_page a.post_num_2,
 		.front_page a.post_num_4 {
 			margin-right:.2rem;
 		}
-	
+
 		.front_page a.featured_post .shadowbox {
 			box-shadow:0 0 5rem rgba(0,0,0,.6) inset;
 			height:100%;
@@ -837,7 +837,7 @@ Front Page
 			padding:2rem 2.5rem;
 			position:absolute;
 				top:0;
-				left:0;	
+				left:0;
 			width:auto;
 			z-index:1;
 		}
@@ -861,7 +861,7 @@ Front Page
 				line-height:3.3rem;
 				margin-bottom:1.65rem;
 			}
-		
+
 				.front_page a.post_num_1 h2.headline {
 					font-size:4.8rem;
 					line-height:6.4rem;
@@ -889,7 +889,7 @@ Front Page
 					-o-text-shadow:1px 1px 2px #111;
 					-webkit-text-shadow:1px 1px 2px #111;
 			}
-	
+
 			.front_page a.featured_post .comment_link:before,
 			.front_page a.featured_post:hover .comment_link:before {
 				color:#fff;
@@ -904,7 +904,7 @@ Front Page
 	/*------------------------------
 	"Read the latest posts" Link
 	------------------------------*/
-	
+
 	.front_page #read_latest_posts {
 		box-shadow:0 0 5rem rgba(0,0,0,.1) inset;
 		margin-bottom:2.8rem;
@@ -974,7 +974,7 @@ Front Page
 				-0-transition: color .4s;
 				-webkit-transition: color .4s;
 		}
-	
+
 		.front_page #most_discussed li:hover a.wpp_headline {
 			color:#ccc;
 			transition:color .4s;
@@ -989,7 +989,7 @@ Front Page
 			float:none !important;
 			padding-left:7.5rem;
 		}
-	
+
 		.front_page #most_discussed .comment_link a.wpp_headline {
 			display:inline;
 			font-size:1.6rem;
@@ -1010,11 +1010,11 @@ Front Page
 				-0-transition: color .4s;
 				-webkit-transition: color .4s;
 		}
-	
+
 		.front_page #most_discussed li:hover .comment_link:before {
 			color:#ccc;
 		}
-	
+
 		.front_page #most_discussed img {
 			border-radius:30px;
 				-moz-border-radius:30px;
@@ -1027,11 +1027,11 @@ Front Page
 				-0-transition: opacity .4s;
 				-webkit-transition: opacity .4s;
 		}
-	
+
 		.front_page #most_discussed li:hover a img {
 			opacity:.6;
 		}
-	
+
 		.front_page #most_discussed li {
 			margin-bottom:18px;
 			min-height:60px;
@@ -1042,7 +1042,7 @@ Front Page
 			margin:0;
 		}
 
-		
+
 	/*------------------------------
 	Lab & Sites Network Posts
 	------------------------------*/
@@ -1120,7 +1120,7 @@ Front Page
 					-0-transition: opacity .4s;
 					-webkit-transition: opacity .4s;
 			}
-	
+
 			.front_page #lab_posts a:hover img {
 				opacity:.6;
 			}
@@ -1129,7 +1129,7 @@ Front Page
 				display:block;
 				padding-left:42px;
 			}
-	
+
 			.front_page #lab_posts li {
 				min-height:32px;
 				margin-bottom:18px;
@@ -1161,7 +1161,7 @@ Content
 }
 
 #lawyerist_content_search input#st-search-input {
-	border-radius:2px !important; 
+	border-radius:2px !important;
 	-moz-border-radius:2px !important;
 	-webkit-border-radius:2px !important;
 	font-size:16px !important;
@@ -1176,7 +1176,7 @@ Content
 	a.post {
 		text-decoration:none;
 	}
-	
+
 	a.post .headline {
 		color:#333;
 	}
@@ -1219,7 +1219,7 @@ Content
 		background-color:#ddd;
 		box-shadow:0 0 5rem rgba(0,0,0,.1) inset;
 		margin-bottom:1.5rem;
-		padding:1.5rem;
+		padding:1.5rem 2.5rem 2rem 2.5rem;
 	}
 
 	#archive_header img {
@@ -1250,7 +1250,7 @@ Content
 		display:inline-block;
 		float:right;
 	}
-	
+
 		.comment_link:before {
 			content:'\f300';
 			display:inline-block;
@@ -1266,7 +1266,7 @@ Content
 	.post_bio_sep {
 		text-align:center;
 	}
-		
+
 	.post_bio_sep:before {
 		content: '\f408';
 		display:inline-block;
@@ -1274,7 +1274,7 @@ Content
 		font:normal 1.6rem/1em 'Genericons';
 		vertical-align:top;
 	}
-	
+
 	.sd-block {
 		border:none !important;
 		padding:0 !important;
@@ -1285,7 +1285,7 @@ Content
 		float:none !important;
 		width:auto !important;
 	}
-	
+
 	#author_bio_footer {
 		clear:both;
 		margin-bottom:4rem;
@@ -1305,12 +1305,12 @@ Content
 		margin-bottom:23px;
 		padding-left:120px;
 	}
-	
+
 	.theiaPostSlider_nav ._text {
 		color:#777;
 		font-size:32px;
 	}
-	
+
 	.theiaPostSlider_footer {
 		border-top:1px solid #ddd;
 		padding-top:2.8rem;
@@ -1320,35 +1320,35 @@ Content
 	/*------------------------------
 	Sharing Buttons
 	------------------------------*/
-	
+
 	.juiz_sps_links {
 			margin-top:0 !important;
 			position:absolute;
 				top:0;
 				right:-20px;
 	}
-	
+
 			.juiz_sps_links ul {
 				position:fixed;
 			}
-	
+
 			.juiz_sps_links ul li.juiz_sps_item {
 				display:block;
 				margin-bottom:8px !important;
 			}
-	
+
 			.juiz_sps_links ul li .juiz_sps_counter,
 			.juiz_sps_links ul li a,
 			.juiz_sps_links ul li .juiz_sps_totalcount {
 				font-family:inherit !important;
 				margin:0 !important;
 			}
-			
+
 			.juiz_sps_links ul li .juiz_sps_counter {
 				border-radius:0;
 				padding-top:5px;
 			}
-			
+
 			.juiz_sps_links ul li a {
 			}
 
@@ -1359,7 +1359,7 @@ Content
                 li.juiz_sps_link_facebook .juiz_sps_counter {
 					border-color:#3b5998 !important;
                 }
-			
+
                 li.juiz_sps_link_facebook a {
 					background-color:#3b5998 !important;
                 }
@@ -1367,7 +1367,7 @@ Content
                 li.juiz_sps_link_twitter .juiz_sps_counter {
 					border-color:#4875b4 !important;
                 }
-                
+
                 li.juiz_sps_link_twitter a {
 					background-color:#4875b4 !important;
                 }
@@ -1375,7 +1375,7 @@ Content
                 li.juiz_sps_link_google .juiz_sps_counter {
 					border-color:#d34836 !important;
                 }
-                
+
                 li.juiz_sps_link_google a {
 					background-color:#d34836 !important;
                 }
@@ -1383,11 +1383,11 @@ Content
                 li.juiz_sps_link_linkedin .juiz_sps_counter {
                         border-color:#4875b4 !important;
                 }
-                
+
                 li.juiz_sps_link_linkedin a {
                         background-color:#4875b4 !important;
                 }
-			
+
 			.juiz_sps_links ul li .juiz_sps_totalcount {
 				background-color:#777;
 				border:0;
@@ -1396,51 +1396,51 @@ Content
 				display:block;
 				padding:6px 11px 7px 11px;
 			}
-	
-	
+
+
 	/*------------------------------
 	Buyers Guide
 	------------------------------*/
-	
+
 	a.buy_button {
 		clear:right;
 		float:right;
 	}
-	
+
 	ul.cets_embedRSS {
 		list-style:none;
 		margin:0;
 	}
-	
+
 		ul.cets_embedRSS a.post {
 			border:0;
 			margin:0;
 			padding:0;
 		}
-		
+
 		ul.cets_embedRSS a.post:hover {
 			text-decoration:underline;
 		}
-	
+
 	#post-43048 .post_body ul {
 		display:block;
 		list-style:none;
 		margin:0 !important;
 	}
-    
+
 	#post-43048 .post_body ul a {
 		color:inherit;
 		text-decoration:none !important;
 	}
-	
+
 	#post-43048 .post_body ul a:hover {
 		color:#cc0000;
 	}
-	
+
 	#post-43048 .post_body ul img {
 		margin:24px 0 !important;
 	}
-	
+
 	#post-43048 .post_body ul > li {
 		display:inline-block;
 		float:left;
@@ -1459,7 +1459,7 @@ Content
 		margin-bottom:0 !important;
 		width:140px;
 	}
-    
+
 
 	/*------------------------------
 	Pagenav
@@ -1468,7 +1468,7 @@ Content
     #pagenav {
     	margin-bottom:6em;
     }
-    
+
     #pagenav .pagenav_link_block {
         display:inline-block;
         position:relative;
@@ -1488,7 +1488,7 @@ Content
 			top:0;
 			right:0;
 	}
-		
+
 	.pagenav_leftarrow:before,
 	.pagenav_rightarrow:before {
 		background:#cc0000;
@@ -1499,20 +1499,20 @@ Content
 		font:normal 32px/1em 'Genericons';
 		vertical-align:top;
 	}
-	
+
 	#pagenav a:hover .pagenav_leftarrow:before,
 	#pagenav a:hover .pagenav_rightarrow:before {
 		background:#aa0000;
 	}
-	
+
 		.pagenav_leftarrow:before {
 			content:'\f430';
 		}
-	
+
 		.pagenav_rightarrow:before {
 			content:'\f429';
 		}
-    
+
     .pagenav_link {
     	display:block;
         font-size:2.2rem;
@@ -1520,18 +1520,18 @@ Content
 		line-height:3.2rem;
         text-decoration:none;
     }
-    
+
 		#pagenav .alignleft .pagenav_link {
 			padding-left:47px;
 			text-align:left;
 		}
-	
+
 		#pagenav .alignright .pagenav_link {
 			padding-right:47px;
 			text-align:right;
 		}
-    
-    
+
+
 	/*------------------------------
 	Comments
 	------------------------------*/
@@ -1540,17 +1540,17 @@ Content
         margin-bottom:4rem;
     }
 
-	
+
 	/*------------------------------
 	Related Posts
 	------------------------------*/
-    
+
     #related_posts h3 {
     	color:#bbb;
 		font-family:'Roboto Slab',sans-serif;
 		font-weight:bold;
     }
-	
+
 	ul#related_posts_thumbnails {
 		display:block;
 		list-style:none;
@@ -1558,7 +1558,7 @@ Content
 		padding:0;
 		width:100%;
 	}
-	
+
 	ul#related_posts_thumbnails li {
 		background:#111;
 		border:0;
@@ -1571,7 +1571,7 @@ Content
 		position:relative;
 		width:15rem;
 	}
-	
+
 	ul#related_posts_thumbnails li a img {
 		margin:0 !important;
 		opacity:.5;
@@ -1582,11 +1582,11 @@ Content
 			-0-transition: opacity .4s;
 			-webkit-transition: opacity .4s;
 	}
-	
+
 	ul#related_posts_thumbnails li:hover a img {
 		opacity:.2;
 	}
-	
+
 	ul#related_posts_thumbnails li a span {
 		color:#fff;
 		font-family:'Roboto Slab',sans-serif;
@@ -1603,11 +1603,11 @@ Content
 			-o-text-shadow:1px 1px 2px #111;
 			-webkit-text-shadow:1px 1px 2px #111;
 	}
-	
+
 	ul#related_posts_thumbnails li a:hover {
 		text-decoration:underline;
 	}
-	
+
 
 /*------------------------------
 Sidebar
@@ -1622,7 +1622,7 @@ Sidebar
 	}
 
 	#lawyerist_sidebar_search input#st-search-input {
-		border-radius:2px !important; 
+		border-radius:2px !important;
 		-moz-border-radius:2px !important;
 		-webkit-border-radius:2px !important;
 		font-size:1.6em !important;
@@ -1694,12 +1694,12 @@ li.widget {
 		margin:0 0 1.1em 0;
 		width:30em;
 	}
-	
+
 	li#ap2,
 	li#ap3 {
 		height:25em;
 	}
-	
+
 	li#ap4 {
 		height:60em;
 	}
@@ -1708,17 +1708,17 @@ li.widget {
 	/*------------------------------
 	Sidebar Popular Posts Widget
 	------------------------------*/
-	
+
 	li#popular_posts_tabbed {
 		font-size:10px;
 		margin-bottom:2.857em;
 	}
-	
+
 	li#popular_posts_tabbed h3 {
 		font-size:1.3em;
 		line-height:1em;
 	}
-	
+
 	li#popular_posts_tabbed ul.idTabs {
 		border-bottom:1px solid #ddd;
 		font-size:10px;
@@ -1726,7 +1726,7 @@ li.widget {
 		list-style:none;
 		margin:0 0 1em 0;
 	}
-	
+
 	li#popular_posts_tabbed ul.idTabs > li {
 		display:inline-block;
 		font-size:10px;
@@ -1744,13 +1744,13 @@ li.widget {
 		padding:5px 7px;
 		text-transform:uppercase;
 	}
-	
+
 	li#popular_posts_tabbed ul.idTabs li a:hover,
 	li#popular_posts_tabbed ul.idTabs li a:hover.selected {
 		background:#ccc;
 		text-decoration:none;
 	}
-			
+
 	li#popular_posts_tabbed ul.idTabs li a.selected {
 		background:#ddd;
 	}
@@ -1758,17 +1758,17 @@ li.widget {
 	li#popular_posts_tabbed .tabs_sublist ul.wpp-list {
 		margin:0;
 	}
-	
+
 	li#popular_posts_tabbed .tabs_sublist ul.wpp-list li {
 		font-size:10px;
 		margin:0 0 1.5em 0;
 		min-height:75px;
 	}
-	
+
 	li#popular_posts_tabbed .tabs_sublist ul.wpp-list li a img {
 		float:right;
 	}
-	
+
 	li#popular_posts_tabbed .tabs_sublist ul.wpp-list li a.wpp_headline {
 		display:block;
 		font-family:'Roboto Slab',sans-serif;
@@ -1958,12 +1958,12 @@ legend span {
 		padding-right: 0 !important;
 		text-align: center;
 	}
-    
+
 
 	/*------------------------------
 	Gravity Forms
 	------------------------------*/
-    
+
 	.gfield_radio label,
     .gpoll_wrapper label,
 	.gfield_label,
@@ -2024,12 +2024,12 @@ Media Queries
 
 @media only screen
 and (max-width:1305px) {
-                
+
 	.juiz_sps_links {
 			margin-bottom:1.6rem;
 			position:static;
 	}
-	
+
 		.juiz_sps_links ul {
 				position:static;
 		}
@@ -2052,7 +2052,7 @@ and (max-width:979px) {
     }
 
 	/* Hide This Stuff */
-	
+
 	#email_social,
 	.menu-default-container,
 	li#ap4,
@@ -2061,7 +2061,7 @@ and (max-width:979px) {
 	#footer_content {
 		display:none !important;
 	}
-	
+
 	/* Change Layout */
 
 	#header,
@@ -2091,7 +2091,7 @@ and (max-width:979px) {
 			li.widget.sidebar_ads {
 				padding:0;
 			}
-			
+
 			li.widget.sidebar_ads ul > li {
 				display:inline-block;
 				float:left;
@@ -2107,7 +2107,7 @@ and (max-width:979px) {
 and (max-width:747px) {
 
 	/* Hide this stuff */
-	
+
 	#leaderboard_container {
 		display:none;
 	}
@@ -2121,34 +2121,34 @@ and (max-width:659px) {
 
 	/* Hide This Stuff */
 
-	#blog_forum_nav,	
+	#blog_forum_nav,
 	#related_posts {
 		display:none;
 	}
-	
+
 	/* Change Layout */
 
 	#content_column_container {
 		max-width:none;
 		width:auto;
 	}
-	
+
 		#content_column {
 			max-width:none;
 		}
-	
+
 	a.post p.excerpt_with_thumb {
 		padding-right:0;
 	}
-	
+
 	#footer {
 		background:none;
 	}
-	
+
 		#footer p {
 			padding:0;
 		}
-	
+
 	/* Front Page */
 
 	.front_page #header_container {
@@ -2168,7 +2168,7 @@ and (max-width:659px) {
 		max-width:none;
 		width:auto;
 	}
-	
+
 	.front_page a.featured_post img {
 		height:auto;
 		width:100%;
@@ -2180,7 +2180,7 @@ and (max-width:659px) {
 		line-height:3.3rem;
 		margin-bottom:1.65rem;
 	}
-	
+
 	.front_page #sites_lab_container {
 		margin-bottom:0;
 	}
@@ -2190,8 +2190,8 @@ and (max-width:659px) {
 			padding:2rem 100rem 2rem 2.5rem;
 			margin:0 -97.5rem .2rem 0;
 			width:auto;
-		}		
-	
+		}
+
 	.front_page ul#sidebar_column {
 		margin:0 auto;
 		max-width:64rem;

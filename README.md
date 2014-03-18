@@ -1,5 +1,10 @@
 # A custom WordPress theme for Lawyerist.com
 
+2014-03-17
+----------
+
+* Adjust #archive_header padding.
+
 2014-03-10
 ----------
 
