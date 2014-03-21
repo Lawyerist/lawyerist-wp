@@ -12,7 +12,7 @@
 
 <div id="content_column_container">
 
-    <div id="content_column">
+  <div id="content_column">
 
 		<div class="fp_tab"><h2>Featured Posts</h2></div>
     	<div id="featured_posts">
@@ -22,9 +22,9 @@
 				$my_query = new WP_Query( 'cat=3332&posts_per_page=5' );
 
 				$post_num = 1;
-		
+
 				while ( $my_query->have_posts() ) : $my_query->the_post();
-	
+
 					$num_comments = get_comments_number();
 					$classes = array(
 						'featured_post',
@@ -32,10 +32,10 @@
 					); ?>
 
 					<a id="post-<?php the_ID(); ?>" <?php post_class($classes); ?> href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
-						
+
 						<div class="headline_excerpt">
-						
-							<?php 
+
+							<?php
 								$date = new DateTime(get_the_date());
 
 								$thirty_days_out = new DateTime(get_the_date()); // init to the post's date
@@ -46,7 +46,7 @@
 								if ($today > $thirty_days_out) { ?>
 									<div class="from_archives">From the Archives</div>
 							<?php } ?>
-						
+
 							<h2 class="headline" id="post-<?php the_ID(); ?>"><?php the_title(); ?></h2>
 							<div class="postmeta">
 								<?php if ( $num_comments > 0 ) { ?>
@@ -67,11 +67,11 @@
 					</a>
 
 					<?php $post_num++;
-		
+
 				endwhile;
-		
+
 			/* END LOOP */ ?>
-			
+
 			<div class="clear"></div>
 
 		</div>
@@ -100,8 +100,8 @@
 
 				if ( ! is_wp_error( $rss ) ) : // Checks that the object is created correctly
 
-					// Figure out how many total items there are, but limit it to 5. 
-					$maxitems = $rss->get_item_quantity( 5 ); 
+					// Figure out how many total items there are, but limit it to 5.
+					$maxitems = $rss->get_item_quantity( 5 );
 
 					// Build an array of all the items, starting with element 0 (first element).
 					$rss_items = $rss->get_items( 0, $maxitems );
@@ -130,7 +130,7 @@
 
 			<div id="sites_network_posts">
 				<h3>Lawyerist Sites Network</h3>
-			
+
 				<?php // Get RSS Feed(s)
 				include_once( ABSPATH . WPINC . '/feed.php' );
 
@@ -139,8 +139,8 @@
 
 				if ( ! is_wp_error( $rss ) ) : // Checks that the object is created correctly
 
-					// Figure out how many total items there are, but limit it to 5. 
-					$maxitems = $rss->get_item_quantity( 5 ); 
+					// Figure out how many total items there are, but limit it to 5.
+					$maxitems = $rss->get_item_quantity( 5 );
 
 					// Build an array of all the items, starting with element 0 (first element).
 					$rss_items = $rss->get_items( 0, $maxitems );
@@ -165,20 +165,20 @@
 				</ul>
 			</div>
 		</div>
-		
+
 		<div id="sites_promo">
 			<p class="remove_bottom">Want to see your blog posts on the front page of Lawyerist? Join the <a href="http://sites.lawyerist.com">Lawyerist Sites</a> network of law blogs.</p>
 		</div>
 
-	</div>
+	</div><!--end content_column-->
 
 	<ul id="sidebar_column">
 		<?php include('sidebar.php'); ?>
 	</ul>
-	
+
 	<div class="clear"></div>
 
-</div>
+</div><!--end content_column_container-->
 
 <div class="clear"></div>
 
