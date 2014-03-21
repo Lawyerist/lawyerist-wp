@@ -1,5 +1,12 @@
 # A custom WordPress theme for Lawyerist.com
 
+2014-03-21
+----------
+
+* Fix sticky post style for index and archive pages.
+* Add sticky-post loop to front page.
+
+
 2014-03-17
 ----------
 

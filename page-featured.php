@@ -14,6 +14,34 @@
 
   <div id="content_column">
 
+    <?php /* PINNED POST LOOP */
+
+      $sticky = get_option( 'sticky_posts' );
+      $args = array(
+        'posts_per_page' => 1,
+        'post__in'  => $sticky,
+        'ignore_sticky_posts' => 1
+      );
+
+      $sticky_query = new WP_Query( $args );
+
+      if ( $sticky[0] ) {
+
+        while ( $sticky_query->have_posts() ) : $sticky_query->the_post();
+
+          $do_not_duplicate = $post->ID; ?>
+
+          <a class="fp_sticky" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
+           <div class="pin"></div>
+           <p><?php the_title(); ?></p>
+          </a>
+
+        <?php endwhile;
+
+      }
+
+    /* END PINNED POST LOOP */ ?>
+
 		<div class="fp_tab"><h2>Featured Posts</h2></div>
     	<div id="featured_posts">
 
@@ -24,6 +52,8 @@
 				$post_num = 1;
 
 				while ( $my_query->have_posts() ) : $my_query->the_post();
+
+          if ( $post->ID == $do_not_duplicate ) continue;
 
 					$num_comments = get_comments_number();
 					$classes = array(
@@ -47,7 +77,7 @@
 									<div class="from_archives">From the Archives</div>
 							<?php } ?>
 
-							<h2 class="headline" id="post-<?php the_ID(); ?>"><?php the_title(); ?></h2>
+							<h2 class="headline"><?php the_title(); ?></h2>
 							<div class="postmeta">
 								<?php if ( $num_comments > 0 ) { ?>
 									<div class="comment_link"><?php comments_number('leave a comment','1 comment','% comments'); ?></div>
