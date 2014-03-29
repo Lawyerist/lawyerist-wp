@@ -1,5 +1,11 @@
 # A custom WordPress theme for Lawyerist.com
 
+2014-03-29
+----------
+
+* Turn off pagination in the RSS feed.
+
+
 2014-03-21
 ----------
 
