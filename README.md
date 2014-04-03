@@ -1,5 +1,11 @@
 # A custom WordPress theme for Lawyerist.com
 
+2014-04-03
+----------
+
+* Fix monospace fonts for `code` and `pre` tags.
+
+
 2014-03-29
 ----------
 
