@@ -216,7 +216,7 @@ blockquote {
 
 code {
 	color:#777;
-	font-family:mono;
+	font-family:monospace;
 	white-space: pre-wrap; /* css-3 */
 	white-space: -moz-pre-wrap !important; /* Mozilla, since 1999 */
 	white-space: -pre-wrap; /* Opera 4-6 */
@@ -351,7 +351,7 @@ p.wp-caption-text {
 
 pre {
 	color:#555;
-	font-family:mono;
+	font-family:monospace;
 	font-size:1.4rem;
 	line-height:2.1rem;
 	margin-bottom:2.1rem;
