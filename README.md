@@ -1,5 +1,11 @@
 # A custom WordPress theme for Lawyerist.com
 
+2014-04-08
+----------
+
+* Remove need for "no image" tag on slideshows.
+
+
 2014-04-03
 ----------
 
