@@ -352,9 +352,8 @@ p.wp-caption-text {
 pre {
 	color:#555;
 	font-family:monospace;
-	font-size:1.4rem;
-	line-height:2.1rem;
-	margin-bottom:2.1rem;
+	margin-bottom:2.8rem;
+	margin-left:2.8rem;
 	white-space: pre-wrap; /* css-3 */
 	white-space: -moz-pre-wrap !important; /* Mozilla, since 1999 */
 	white-space: -pre-wrap; /* Opera 4-6 */
