@@ -1,5 +1,11 @@
 # A custom WordPress theme for Lawyerist.com
 
+2014-04-15
+----------
+
+* Add Pinterest coloring to Juiz sharing icons.
+
+
 2014-04-14
 ----------
 
