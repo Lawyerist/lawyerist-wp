@@ -4,6 +4,7 @@
 ----------
 
 * Fix category and tag description display on archive pages.
+* Remove top border on notes, alerts, and pullouts.
 
 
 2014-04-15
