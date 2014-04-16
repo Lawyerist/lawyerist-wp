@@ -1298,6 +1298,10 @@ Content
 		padding-left:11.5rem;
 	}
 
+	#archive_header p:last-child {
+		margin-bottom:0;
+	}
+
 	.index p.excerpt_with_thumb {
 		padding-right:16.5rem;
 	}

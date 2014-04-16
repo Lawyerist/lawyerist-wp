@@ -1,5 +1,11 @@
 # A custom WordPress theme for Lawyerist.com
 
+2014-04-16
+----------
+
+* Fix category and tag description display on archive pages.
+
+
 2014-04-15
 ----------
 
