@@ -4,13 +4,14 @@
 ----------
 
 * Add Pinterest coloring to Juiz sharing icons.
+* Get rid of ugly 3D button effect.
+* Style .post_index.
 
 
 2014-04-14
 ----------
 
 * Put popular posts widget back on front page.
-* Get rid of ugly 3D button effect.
 
 
 2014-04-08
