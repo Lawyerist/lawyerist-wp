@@ -1960,7 +1960,7 @@ legend span {
 	Buttons
 	------------------------------*/
 
-    .button,
+  .button,
 	a.button,
 	a.buy_button,
 	a.more-link,
@@ -1970,6 +1970,7 @@ legend span {
 	form input[type="reset"],
 	form input[type="button"] {
 		background:#bb0000;
+		border:0;
 		border-bottom:.5rem solid #780000;
 		border-radius:.3rem;
 		color:#fff;
@@ -1984,7 +1985,7 @@ legend span {
 		padding:.8rem 1rem;
 	}
 
-    .button:hover,
+  .button:hover,
 	a.button:hover,
 	a.buy_button:hover,
 	a.more-link:hover,
@@ -1996,7 +1997,7 @@ legend span {
 		background:#cc0000;
 	}
 
-    .button:active,
+  .button:active,
 	a.button:active,
 	a.buy_button:active,
 	a.more-link:active,
