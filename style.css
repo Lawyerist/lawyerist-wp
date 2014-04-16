@@ -1388,6 +1388,15 @@ Content
 		padding-left:120px;
 	}
 
+	.tag_list:before {
+		color:#bbb;
+		content: '\f302';
+		display:inline-block;
+		-webkit-font-smoothing:antialiased;
+		font:normal 3.2rem/1em 'Genericons';
+		vertical-align:middle;
+	}
+
 	.theiaPostSlider_nav ._text {
 		color:#777;
 		font-size:32px;

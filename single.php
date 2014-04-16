@@ -41,6 +41,7 @@
 					<?php include('notes.php'); ?>
 					<?php the_content(); ?>
 					<?php if ( !is_feed() ) { wp_link_pages(); } ?>
+					<?php echo get_the_tag_list( '<p class="tag_list"><small>', ', ', '</small></p>' ); ?>
 				</div>
 
 				<p class="post_bio_sep"></p>

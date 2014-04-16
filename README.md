@@ -5,6 +5,7 @@
 
 * Fix category and tag description display on archive pages.
 * Remove top border on notes, alerts, and pullouts.
+* Add tag list to single post pages.
 
 
 2014-04-15
