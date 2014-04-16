@@ -1418,35 +1418,43 @@ Content
 				}
 
                 li.juiz_sps_link_facebook .juiz_sps_counter {
-					border-color:#3b5998 !important;
+									border-color:#3b5998 !important;
                 }
 
                 li.juiz_sps_link_facebook a {
-					background-color:#3b5998 !important;
+									background-color:#3b5998 !important;
                 }
 
+								li.juiz_sps_link_pinterest .juiz_sps_counter {
+									border-color:#cb2027 !important;
+								}
+
+								li.juiz_sps_link_pinterest a {
+									background-color:#cb2027 !important;
+								}
+
                 li.juiz_sps_link_twitter .juiz_sps_counter {
-					border-color:#4875b4 !important;
+									border-color:#4875b4 !important;
                 }
 
                 li.juiz_sps_link_twitter a {
-					background-color:#4875b4 !important;
+									background-color:#4875b4 !important;
                 }
 
                 li.juiz_sps_link_google .juiz_sps_counter {
-					border-color:#d34836 !important;
+									border-color:#d34836 !important;
                 }
 
                 li.juiz_sps_link_google a {
-					background-color:#d34836 !important;
+									background-color:#d34836 !important;
                 }
 
                 li.juiz_sps_link_linkedin .juiz_sps_counter {
-                        border-color:#4875b4 !important;
+                  border-color:#4875b4 !important;
                 }
 
                 li.juiz_sps_link_linkedin a {
-                        background-color:#4875b4 !important;
+                  background-color:#4875b4 !important;
                 }
 
 			.juiz_sps_links ul li .juiz_sps_totalcount {
