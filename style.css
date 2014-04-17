@@ -1293,6 +1293,7 @@ Content
 
 	#archive_header p.author_descr {
 		padding-left:11.5rem;
+		margin-bottom:0;
 	}
 
 	#archive_header p:last-child {

@@ -1,5 +1,11 @@
 # A custom WordPress theme for Lawyerist.com
 
+2014-04-17
+----------
+
+* Remove bottom margin on author pages.
+
+
 2014-04-16
 ----------
 
