@@ -1404,89 +1404,83 @@ Content
 	------------------------------*/
 
 	.juiz_sps_links {
-			margin-top:0 !important;
-			position:absolute;
-				top:0;
-				right:-20px;
+		margin-top:0 !important;
+		position:absolute;
+			top:0;
+			right:-20px;
 	}
 
-			.juiz_sps_links ul {
-				position:fixed;
+		.juiz_sps_links ul {
+			position:fixed;
+		}
+
+		.juiz_sps_links ul li.juiz_sps_item {
+			display:block;
+			margin-bottom:.8rem !important;
+		}
+
+			li.juiz_sps_item a {
+				padding:.5rem 1rem !important
 			}
 
-			.juiz_sps_links ul li.juiz_sps_item {
-				display:block;
-				margin-bottom:8px !important;
-			}
+		.juiz_sps_links ul li .juiz_sps_counter,
+		.juiz_sps_links ul li a,
+		.juiz_sps_links ul li .juiz_sps_totalcount {
+			border-radius:0;
+			font-family:inherit !important;
+			margin:0 !important;
+		}
 
-			.juiz_sps_links ul li .juiz_sps_counter,
-			.juiz_sps_links ul li a,
-			.juiz_sps_links ul li .juiz_sps_totalcount {
-				font-family:inherit !important;
-				margin:0 !important;
-			}
+		.juiz_sps_links ul li a .juiz_sps_network_name {
+			color:#fff;
+		}
 
-			.juiz_sps_links ul li .juiz_sps_counter {
-				border-radius:0;
-				padding-top:5px;
-			}
+    li.juiz_sps_link_facebook .juiz_sps_counter {
+			border-color:#3b5998 !important;
+    }
 
-			.juiz_sps_links ul li a {
-			}
+    li.juiz_sps_link_facebook a {
+			background-color:#3b5998 !important;
+    }
 
-				.juiz_sps_links ul li a .juiz_sps_network_name {
-					color:#fff;
-				}
+		li.juiz_sps_link_google .juiz_sps_counter {
+			border-color:#d34836 !important;
+		}
 
-                li.juiz_sps_link_facebook .juiz_sps_counter {
-									border-color:#3b5998 !important;
-                }
+		li.juiz_sps_link_google a {
+			background-color:#d34836 !important;
+		}
 
-                li.juiz_sps_link_facebook a {
-									background-color:#3b5998 !important;
-                }
+		li.juiz_sps_link_linkedin .juiz_sps_counter {
+			border-color:#4875b4 !important;
+		}
 
-								li.juiz_sps_link_pinterest .juiz_sps_counter {
-									border-color:#cb2027 !important;
-								}
+		li.juiz_sps_link_linkedin a {
+			background-color:#4875b4 !important;
+		}
 
-								li.juiz_sps_link_pinterest a {
-									background-color:#cb2027 !important;
-								}
+		li.juiz_sps_link_pinterest .juiz_sps_counter {
+			border-color:#cb2027 !important;
+		}
 
-                li.juiz_sps_link_twitter .juiz_sps_counter {
-									border-color:#4875b4 !important;
-                }
+		li.juiz_sps_link_pinterest a {
+			background-color:#cb2027 !important;
+		}
 
-                li.juiz_sps_link_twitter a {
-									background-color:#4875b4 !important;
-                }
+    li.juiz_sps_link_twitter .juiz_sps_counter {
+			border-color:#4875b4 !important;
+    }
 
-                li.juiz_sps_link_google .juiz_sps_counter {
-									border-color:#d34836 !important;
-                }
+    li.juiz_sps_link_twitter a {
+			background-color:#4875b4 !important;
+    }
 
-                li.juiz_sps_link_google a {
-									background-color:#d34836 !important;
-                }
-
-                li.juiz_sps_link_linkedin .juiz_sps_counter {
-                  border-color:#4875b4 !important;
-                }
-
-                li.juiz_sps_link_linkedin a {
-                  background-color:#4875b4 !important;
-                }
-
-			.juiz_sps_links ul li .juiz_sps_totalcount {
-				background-color:#777;
-				border:0;
-				border-radius:0;
-				color:#fff;
-				display:block;
-				padding:6px 11px 7px 11px;
-			}
-
+		li.juiz_sps_totalcount_item .juiz_sps_totalcount {
+			background-color:#777;
+			border:0;
+			color:#fff;
+			padding:.6rem 1rem;
+		}
 
 	/*------------------------------
 	Buyers Guide
@@ -1555,15 +1549,15 @@ Content
 	Pagenav
 	------------------------------*/
 
-    #pagenav {
-    	margin-bottom:6em;
-    }
+  #pagenav {
+  	margin-bottom:6em;
+  }
 
-    #pagenav .pagenav_link_block {
-        display:inline-block;
-        position:relative;
-        width:46%;
-    }
+  #pagenav .pagenav_link_block {
+      display:inline-block;
+      position:relative;
+      width:46%;
+  }
 
 	.pagenav_leftarrow:before {
 		float:left;
@@ -1626,20 +1620,20 @@ Content
 	Comments
 	------------------------------*/
 
-    #disqus_thread {
-        margin-bottom:4rem;
-    }
+  #disqus_thread {
+      margin-bottom:4rem;
+  }
 
 
 	/*------------------------------
 	Related Posts
 	------------------------------*/
 
-    #related_posts h3 {
-    	color:#bbb;
-		font-family:'Roboto Slab',sans-serif;
-		font-weight:bold;
-    }
+  #related_posts h3 {
+  	color:#bbb;
+	font-family:'Roboto Slab',sans-serif;
+	font-weight:bold;
+  }
 
 	ul#related_posts_thumbnails {
 		display:block;
@@ -2128,6 +2122,12 @@ and (max-width:1305px) {
 		.juiz_sps_links ul li.juiz_sps_item {
 				display:inline-block;
 				margin:0 1rem 1rem 0 !important;
+		}
+
+		li.juiz_sps_totalcount_item .juiz_sps_totalcount {
+			display:block;
+			position:relative;
+				top:.1rem;
 		}
 
 }
