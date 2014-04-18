@@ -292,21 +292,18 @@ p {
 
 p.note {
 	background-color:#f5f5f5;
-	border-top:1px solid #ddd;
 	padding:1.5rem 2.5rem 2rem 2.5rem;
 	box-shadow:0 0 5rem rgba(0,0,0,.1) inset;
 }
 
 p.alert {
 	background-color:#ffffa0;
-	border-top:1px solid #ddd;
 	padding:1.5rem 2.5rem 2rem 2.5rem;
 	box-shadow:0 0 5rem rgba(0,0,0,.1) inset;
 }
 
 p.pullout {
 	background:#eee;
-	border-top:1px solid #ddd;
 	display:inline-block;
 	float:right;
 	margin:0 0 1.5rem 1.5rem;
@@ -1296,6 +1293,11 @@ Content
 
 	#archive_header p.author_descr {
 		padding-left:11.5rem;
+		margin-bottom:0;
+	}
+
+	#archive_header p:last-child {
+		margin-bottom:0;
 	}
 
 	.index p.excerpt_with_thumb {
@@ -1338,7 +1340,6 @@ Content
 
 	.post_index {
 		background-color:#f5f5f5;
-		border-top:1px solid #ddd;
 		box-shadow:0 0 5rem rgba(0,0,0,.1) inset;
 		margin-bottom:2.8rem;
 		padding:1.5rem 2.5rem 2rem 2.5rem;
@@ -1386,6 +1387,15 @@ Content
 		line-height:23px;
 		margin-bottom:23px;
 		padding-left:120px;
+	}
+
+	.tag_list:before {
+		color:#bbb;
+		content: '\f302';
+		display:inline-block;
+		-webkit-font-smoothing:antialiased;
+		font:normal 3.2rem/1em 'Genericons';
+		vertical-align:middle;
 	}
 
 	.theiaPostSlider_nav ._text {

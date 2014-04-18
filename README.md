@@ -6,6 +6,21 @@
 * Fix Juiz sharing icons alignment & responsiveness.
 
 
+2014-04-17
+----------
+
+* Remove bottom margin on author pages.
+
+
+2014-04-16
+----------
+
+* Fix category and tag description display on archive pages.
+* Remove top border on notes, alerts, and pullouts.
+* Add tag list to single post pages.
+>>>>>>> FETCH_HEAD
+
+
 2014-04-15
 ----------
 
