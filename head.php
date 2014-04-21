@@ -45,8 +45,8 @@ googletag.enableServices();
 	elseif ( is_home () ) { bloginfo('name'); echo ' &mdash; All Posts'; }
 	elseif ( is_single() || is_page() ) { the_title(); }
 	elseif ( is_author() ) { global $wp_query; $author_name = get_the_author_meta('display_name',$author); echo $author_name; }
-	elseif ( is_category() ) { single_cat_title(); echo ' posts on '; bloginfo('name'); }
-	elseif ( is_tag() ) { single_tag_title(); echo ' posts on '; bloginfo('name'); }
+	elseif ( is_category() ) { single_cat_title(); }
+	elseif ( is_tag() ) { single_tag_title(); }
     elseif ( is_404() ) { echo '404: You Found a Typo!'; }
 ?>
 </title>
