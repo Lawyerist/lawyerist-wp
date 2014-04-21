@@ -5,6 +5,8 @@
 ----------
 
 * Simplify tag intro on archive pages.
+* Update archive title tags.
+
 
 2014-04-18
 ----------
