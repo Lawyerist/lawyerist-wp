@@ -32,13 +32,13 @@
 			single_cat_title();
 			echo '</h1>' . "\n" . $cat_descr . '</div>';
 
-		} elseif ( is_tag() ) {
+    } elseif ( is_tag() ) {
       $tag_descr = tag_description($cat);
 
 
-			echo '<div id="archive_header"><h1>Posts tagged "';
-			single_tag_title();
-			echo '"</h1>' . "\n" . $tag_descr . '</div>';
+      echo '<div id="archive_header"><h1>';
+      single_tag_title();
+      echo '</h1>' . "\n" . $tag_descr . '</div>';
 
 		} ?>
 
