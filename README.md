@@ -1,5 +1,11 @@
 # A custom WordPress theme for Lawyerist.com
 
+2014-04-21
+----------
+
+* Simplify tag intro on archive pages.
+
+
 2014-04-17
 ----------
 
