@@ -1,5 +1,10 @@
 # A custom WordPress theme for Lawyerist.com
 
+2014-04-22
+----------
+
+* Remove editor-styles (added to lawyerist-admin-plugin).
+
 
 2014-04-21
 ----------

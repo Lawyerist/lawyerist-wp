@@ -103,17 +103,6 @@ add_action('wp_dashboard_setup','remove_quickpress');
 
 
 /*------------------------------
-Add Editor Stylesheet
-------------------------------*/
-
-function my_theme_add_editor_styles() {
-    add_editor_style();
-}
-
-add_action( 'init', 'my_theme_add_editor_styles' );
-
-
-/*------------------------------
 RSS Feed Caching
 ------------------------------*/
 
