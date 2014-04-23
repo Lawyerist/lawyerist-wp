@@ -86,6 +86,7 @@ Add Capabilities to Contributor Role
 function add_permissions_contributor() {
     $role = get_role( 'contributor' );
     $role->add_cap( 'upload_files' );
+		$role->remove_cap( 'edit_others_posts' );
 }
 
 add_action( 'admin_init', 'add_permissions_contributor');
