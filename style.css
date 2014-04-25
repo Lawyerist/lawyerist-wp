@@ -489,7 +489,7 @@ Header
 	float:left;
 	font-size:1rem;
 	line-height:1em;
-	margin:0 .5rem 0 0;
+	margin:0 1.4rem 0 0;
 	padding:0;
 	width:21.6rem;
 }
@@ -581,7 +581,7 @@ Header
 				display:inline-block;
 				font-size:10px;
 				height:3.2rem;
-				margin:0 0 0 10px;
+				margin:0 0 0 .5rem;
 				padding:0;
 				vertical-align:top;
 			}
@@ -678,7 +678,7 @@ Header
 					font-size:1.6rem;
 					margin:0;
 					padding:.6rem .8rem;
-					width:29.2rem;
+					width:28.2rem;
 				}
 
 				#email_social ul li form#lawyerist_insider_subscribe input[type="email"]:focus {
