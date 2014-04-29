@@ -26,9 +26,9 @@ Header
 Menu
 Front Page
 	Featured Posts
-	Most-Discussed Posts
-	"See All Articles" Link
-	Lab & Sites Network Posts
+	"Read more posts" Link
+	Discussions
+	Sites Network Posts
 Content
 	Index & Archive Lists
 	Posts
@@ -780,6 +780,17 @@ Front Page
 		color:#aa0000;
 	}
 
+.front_page #content_column h3 {
+	color:#eee;
+	font-family:'Source Sans Pro',sans-serif;
+	font-size:1.4rem;
+	font-weight:normal;
+	letter-spacing:.1rem;
+	line-height:2.4rem;
+	margin-bottom:1.2rem;
+	text-transform:uppercase;
+}
+
 .front_page .fp_tab {
 	background:#eee;
 	border-color:#ddd;
@@ -860,7 +871,10 @@ Front Page
 		}
 
 		.front_page a.post_num_2,
-		.front_page a.post_num_4 {
+		.front_page a.post_num_4,
+		.front_page a.post_num_6,
+		.front_page a.post_num_8,
+		.front_page a.post_num_10 {
 			margin-right:.2rem;
 		}
 
@@ -959,7 +973,7 @@ Front Page
 
 
 	/*------------------------------
-	"Read the latest posts" Link
+	"Read more posts" Link
 	------------------------------*/
 
 	.front_page #read_latest_posts {
@@ -998,69 +1012,42 @@ Front Page
 
 
 	/*------------------------------
-	Most-Discussed Posts
+	Discussions
 	------------------------------*/
 
-	.front_page #most_discussed {
-		background:#333;
-		box-shadow:0 0 5rem rgba(0,0,0,.6) inset;
+	#discussions_container {
+		clear:both;
 		margin-bottom:2.8rem;
-		padding:2rem 2.5rem;
+		overflow:hidden;
 	}
 
-		.front_page #most_discussed a {
+		.front_page #most_discussed,
+		.front_page #lab_posts {
+			box-shadow:0 0 5rem rgba(0,0,0,.1) inset;
 			display:inline-block;
-			float:left;
-		}
-
-		.front_page #most_discussed a.wpp_headline {
-			color:#fff;
-			display:block;
-			float:none;
 			font-family:'Roboto Slab',sans-serif;
-			padding-left:7.5rem;
-			text-decoration:none;
-			text-shadow:1px 1px 2px #111;
-				-moz-text-shadow:1px 1px 2px #111;
-				-ms-text-shadow:1px 1px 2px #111;
-				-o-text-shadow:1px 1px 2px #111;
-				-webkit-text-shadow:1px 1px 2px #111;
-			transition:color .4s;
-				-moz-transition: color .4s;
-				-ms-transition: color .4s;
-				-0-transition: color .4s;
-				-webkit-transition: color .4s;
+			padding:2rem 2.5rem 100rem 2.5rem;
+			margin-bottom:-97.5rem;
+			width:26.9rem;
 		}
 
-		.front_page #most_discussed li:hover a.wpp_headline {
-			color:#ccc;
-			transition:color .4s;
-				-moz-transition: color .4s;
-				-ms-transition: color .4s;
-				-0-transition: color .4s;
-				-webkit-transition: color .4s;
-		}
+			.front_page #most_discussed ul,
+			.front_page #lab_posts ul {
+				list-style:none;
+				margin:0 0 3.4rem 0;
+			}
 
-		.front_page #most_discussed .comment_link {
-			display:block;
-			float:none !important;
-			padding-left:7.5rem;
-		}
-
-		.front_page #most_discussed .comment_link a.wpp_headline {
-			display:inline;
-			font-size:1.6rem;
-			line-height:2.8rem;
-			padding-left:0;
-		}
-
-		.front_page #most_discussed .comment_link:before {
+		.front_page #most_discussed li a,
+		.front_page #most_discussed .comment_link,
+		.front_page #most_discussed .comment_link:before,
+		.front_page #lab_posts li a {
 			color:#fff;
-			text-shadow:-1px 1px 2px #111;
-				-moz-text-shadow:-1px 1px 2px #111;
-				-ms-text-shadow:-1px 1px 2px #111;
-				-o-text-shadow:-1px 1px 2px #111;
-				-webkit-text-shadow:-1px 1px 2px #111;
+			text-decoration:none;
+			text-shadow:.1rem .1rem .2rem #111;
+				-moz-text-shadow:.1rem .1rem .2rem #111;
+				-ms-text-shadow:.1rem .1rem .2rem #111;
+				-o-text-shadow:.1rem .1rem .2rem #111;
+				-webkit-text-shadow:.1rem .1rem .2rem #111;
 			transition:color .4s;
 				-moz-transition: color .4s;
 				-ms-transition: color .4s;
@@ -1068,30 +1055,26 @@ Front Page
 				-webkit-transition: color .4s;
 		}
 
-		.front_page #most_discussed li:hover .comment_link:before {
+		.front_page #most_discussed li:hover a,
+		.front_page #most_discussed li:hover .comment_link,
+		.front_page #most_discussed li:hover .comment_link:before,
+		.front_page #lab_posts li:hover a {
 			color:#ccc;
+			transition:color .4s;
+				-moz-transition: color .4s;
+				-ms-transition: color .4s;
+				-0-transition: color .4s;
+				-webkit-transition: color .4s;
 		}
 
-		.front_page #most_discussed img {
-			border-radius:30px;
-				-moz-border-radius:30px;
-				-webkit-border-radius:30px;
-			display:block;
-			opacity:1;
-			transition:opacity .4s;
-				-moz-transition: opacity .4s;
-				-ms-transition: opacity .4s;
-				-0-transition: opacity .4s;
-				-webkit-transition: opacity .4s;
-		}
+		/*------------------------------
+		Most-Discussed Posts
+		------------------------------*/
 
-		.front_page #most_discussed li:hover a img {
-			opacity:.6;
-		}
-
-		.front_page #most_discussed li {
-			margin-bottom:18px;
-			min-height:60px;
+		.front_page #most_discussed {
+			background:#333;
+			margin-right:.2rem;
+			float:left;
 		}
 
 		.front_page #most_discussed ul {
@@ -1099,76 +1082,73 @@ Front Page
 			margin:0;
 		}
 
-
-	/*------------------------------
-	Lab & Sites Network Posts
-	------------------------------*/
-
-
-	.front_page #content_column h3 {
-		color:#eee;
-		font-family:'Source Sans Pro',sans-serif;
-		font-size:1.4rem;
-		font-weight:normal;
-		letter-spacing:.1rem;
-		line-height:2.4rem;
-		margin-bottom:1.2rem;
-		text-transform:uppercase;
-	}
-
-	#sites_lab_container {
-		clear:both;
-		margin-bottom:2px;
-		overflow:hidden;
-	}
-
-		.front_page #lab_posts,
-		.front_page #sites_network_posts {
-			box-shadow:0 0 5rem rgba(0,0,0,.1) inset;
-			display:inline-block;
-			padding:2rem 2.5rem 1000px 2.5rem;
-			margin-bottom:-1000px;
-			width:26.9rem;
-		}
-
-			.front_page #lab_posts ul,
-			.front_page #sites_network_posts ul {
-				list-style:none;
-				margin:0 0 3.4rem 0;
+			.front_page #most_discussed li {
+				display:block;
+				margin-bottom:2.8rem;
+				min-height:6rem;
 			}
 
-			.front_page #lab_posts li a,
-			.front_page #sites_network_posts li a {
-				color:#fff;
-				font-family:'Roboto Slab',sans-serif;
-				text-decoration:none;
-				text-shadow:1px 1px 2px #111;
-					-moz-text-shadow:1px 1px 2px #111;
-					-ms-text-shadow:1px 1px 2px #111;
-					-o-text-shadow:1px 1px 2px #111;
-					-webkit-text-shadow:1px 1px 2px #111;
-				transition:color .4s;
-					-moz-transition: color .4s;
-					-ms-transition: color .4s;
-					-0-transition: color .4s;
-					-webkit-transition: color .4s;
-			}
+				.front_page #most_discussed li:last-child {
+					margin-bottom:0;
+				}
 
-			.front_page #lab_posts li:hover a,
-			.front_page #sites_network_posts li:hover a {
-				color:#ccc;
-			}
+				.front_page #most_discussed .wpp_thumb {
+					display:inline-block;
+					float:left;
+					height:6rem;
+					width:6rem;
+				}
+
+					.front_page #most_discussed .wpp_thumb a {
+						display:block;
+					}
+
+					.front_page #most_discussed img {
+						border-radius:3rem;
+							-moz-border-radius:3rem;
+							-webkit-border-radius:3rem;
+						display:block;
+						opacity:1;
+						transition:opacity .4s;
+							-moz-transition: opacity .4s;
+							-ms-transition: opacity .4s;
+							-0-transition: opacity .4s;
+							-webkit-transition: opacity .4s;
+					}
+
+						.front_page #most_discussed li:hover a img {
+							opacity:.6;
+						}
+
+					.front_page #most_discussed a.wpp_headline,
+					.front_page #most_discussed a.comment_link {
+						display:block;
+						padding-left:7.5rem;
+					}
+
+					.front_page #most_discussed a.wpp_headline {
+						margin-bottom:1.4rem;
+					}
+
+					.front_page #most_discussed a.comment_link {
+						float:none;
+						font-family:'Source Sans Pro',sans-serif;
+					}
+
+
+		/*------------------------------
+		Forum Posts
+		------------------------------*/
 
 		.front_page #lab_posts {
 			background:#1e79a7;
-			margin-right:2px;
-			float:left;
+			float:right;
 		}
 
 			.front_page #lab_posts img {
-				border-radius:16px;
-					-moz-border-radius:16px;
-					-webkit-border-radius:16px;
+				border-radius:1.6rem;
+					-moz-border-radius:1.6rem;
+					-webkit-border-radius:1.6rem;
 				float:left;
 				opacity:1;
 				transition:opacity .4s;
@@ -1188,20 +1168,58 @@ Front Page
 			}
 
 			.front_page #lab_posts li {
-				min-height:32px;
-				margin-bottom:18px;
+				min-height:3.2rem;
+				margin-bottom:2.8rem;
 			}
 
-		.front_page #sites_network_posts {
-			background:#d14d0c;
-			float:right;
-		}
+			.front_page #lab_posts li:last-child {
+				margin-bottom:0;
+			}
 
-	.front_page #sites_promo {
-		background:#ddd;
-		box-shadow:0 0 5rem rgba(0,0,0,.1) inset;
+
+	/*------------------------------
+	Sites Network Posts
+	------------------------------*/
+
+	.front_page #sites_network_posts {
+		background:#d14d0c;
+		box-shadow:0 0 5rem rgba(0,0,0,.6) inset;
 		margin-bottom:2.8rem;
 		padding:2rem 2.5rem;
+	}
+
+	.front_page #sites_network_posts a {
+		color:#fff;
+		font-family:'Roboto Slab',sans-serif;
+		text-decoration:none;
+		text-shadow:.1rem .1rem .2rem #111;
+			-moz-text-shadow:.1rem .1rem .2rem #111;
+			-ms-text-shadow:.1rem .1rem .2rem #111;
+			-o-text-shadow:.1rem .1rem .2rem #111;
+			-webkit-text-shadow:.1rem .1rem .2rem #111;
+		transition:color .4s;
+			-moz-transition: color .4s;
+			-ms-transition: color .4s;
+			-0-transition: color .4s;
+			-webkit-transition: color .4s;
+	}
+
+	.front_page #sites_network_posts a:hover {
+		color:#ccc;
+		transition:color .4s;
+			-moz-transition: color .4s;
+			-ms-transition: color .4s;
+			-0-transition: color .4s;
+			-webkit-transition: color .4s;
+	}
+
+	.front_page #sites_network_posts ul {
+		list-style:none;
+		margin:0;
+	}
+
+	.front_page #sites_network_posts ul li:last-child {
+		margin-bottom:0;
 	}
 
 
@@ -2282,15 +2300,23 @@ and (max-width:659px) {
 		margin-bottom:1.65rem;
 	}
 
-	.front_page #sites_lab_container {
+	.front_page #discussions_container {
 		margin-bottom:0;
 	}
 
-		.front_page #lab_posts,
-		.front_page #sites_network_posts {
-			padding:2rem 100rem 2rem 2.5rem;
-			margin:0 -97.5rem .2rem 0;
-			width:auto;
+		.front_page #most_discussed,
+		.front_page #lab_posts {
+			float:none;
+			padding:2rem 2.5rem;
+			width:100%;
+		}
+
+		.front_page #most_discussed {
+			margin-bottom:.2rem;
+		}
+
+		.front_page #lab_posts {
+			margin-bottom:2.8rem;
 		}
 
 	.front_page ul#sidebar_column {
