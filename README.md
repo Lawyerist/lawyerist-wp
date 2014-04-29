@@ -4,6 +4,7 @@
 ----------
 
 * Reorganize front page.
+* Add shadows to discussion thumbnails.
 
 
 2014-04-22
