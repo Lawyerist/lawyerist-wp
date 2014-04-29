@@ -35,7 +35,7 @@ function featuredtoRSS($content) {
 
 	global $post;
 
-	if ( has_post_thumbnail( $post->ID ) && has_tag('big-image-everywhere') ) {
+	if ( has_post_thumbnail( $post->ID ) && has_tag('big-image') ) {
 		$content = '' . get_the_post_thumbnail( $post->ID, 'large', array( 'style' => 'display:block;margin:0 0 15px 0;' ) ) . '' . $content;
 	}
 
