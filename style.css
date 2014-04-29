@@ -1183,7 +1183,7 @@ Front Page
 
 	.front_page #sites_network_posts {
 		background:#d14d0c;
-		box-shadow:0 0 5rem rgba(0,0,0,.6) inset;
+		box-shadow:0 0 5rem rgba(0,0,0,.1) inset;
 		margin-bottom:2.8rem;
 		padding:2rem 2.5rem;
 	}

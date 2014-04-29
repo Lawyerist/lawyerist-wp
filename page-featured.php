@@ -47,11 +47,11 @@
 
   		<?php /* THE LOOP */
 
-  			$my_query = new WP_Query( 'posts_per_page=7' );
+  			$featured_query = new WP_Query( 'posts_per_page=7' );
 
   			$post_num = 1;
 
-  			while ( $my_query->have_posts() ) : $my_query->the_post();
+  			while ( $featured_query->have_posts() ) : $featured_query->the_post();
 
           if ( $post->ID == $do_not_duplicate ) continue;
 
@@ -108,7 +108,7 @@
 
 		<div id="read_latest_posts">
 			<a href="<?php echo bloginfo('url') . '/articles/'; ?>">
-				<p>Read more posts &rarr;</p>
+				<p>Read all posts &rarr;</p>
 			</a>
 		</div>
 
