@@ -14,9 +14,9 @@
 
 		<?php /* THE LOOP */
 
-		$my_query = new WP_Query( 'offset=7' );
+		$index_query = new WP_Query();
 
-		if ( have_posts() ) : while ( have_posts() ) : the_post();
+		if ( $index_query->have_posts() ) : while ( $index_query->have_posts() ) : $index_query->the_post();
 
 			$num_comments = get_comments_number(); ?>
 
