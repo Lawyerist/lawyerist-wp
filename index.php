@@ -11,19 +11,19 @@
 <div id="content_column_container">
 
     <div id="content_column">
-	
+
 		<?php /* THE LOOP */
-		
-		$my_query = new WP_Query( 'offset=5' );
-		
+
+		$my_query = new WP_Query( 'offset=7' );
+
 		if ( have_posts() ) : while ( have_posts() ) : the_post();
 
 			$num_comments = get_comments_number(); ?>
-		
+
 			<a <?php post_class($class); ?> href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
 
 				<?php if ( has_post_thumbnail() ) { the_post_thumbnail('thumbnail'); } ?>
-			
+
 				<h2 class="headline remove_bottom" id="post-<?php the_ID(); ?>"><?php the_title(); ?></h2>
 				<div class="postmeta">
 					<?php if ( $num_comments > 0 ) { ?>
@@ -36,9 +36,9 @@
 				<div class="clear"></div>
 
 			</a>
-				
+
 		<?php endwhile; endif;
-		
+
 		/* END LOOP */ ?>
 
 
@@ -51,13 +51,13 @@
 			</div>
 			<div class="clear"></div>
 		</div>
-	
+
 	</div>
 
 	<ul id="sidebar_column">
 		<?php include('sidebar.php'); ?>
 	</ul>
-	
+
 	<div class="clear"></div>
 
 </div>

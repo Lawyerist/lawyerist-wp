@@ -1,5 +1,11 @@
 # A custom WordPress theme for Lawyerist.com
 
+2014-04-29
+----------
+
+* Reorganize front page.
+
+
 2014-04-22
 ----------
 
