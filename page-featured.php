@@ -42,69 +42,68 @@
 
     /* END PINNED POST LOOP */ ?>
 
-		<div class="fp_tab"><h2>Featured Posts</h2></div>
-    	<div id="featured_posts">
+  	<div id="featured_posts">
 
-			<?php /* THE LOOP */
+  		<?php /* THE LOOP */
 
-				$my_query = new WP_Query( 'cat=3332&posts_per_page=5' );
+  			$my_query = new WP_Query( 'cat=3332&posts_per_page=5' );
 
-				$post_num = 1;
+  			$post_num = 1;
 
-				while ( $my_query->have_posts() ) : $my_query->the_post();
+  			while ( $my_query->have_posts() ) : $my_query->the_post();
 
           if ( $post->ID == $do_not_duplicate ) continue;
 
-					$num_comments = get_comments_number();
-					$classes = array(
-						'featured_post',
-						'post_num_' . $post_num
-					); ?>
+  				$num_comments = get_comments_number();
+  				$classes = array(
+  					'featured_post',
+  					'post_num_' . $post_num
+  				); ?>
 
-					<a id="post-<?php the_ID(); ?>" <?php post_class($classes); ?> href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
+  				<a id="post-<?php the_ID(); ?>" <?php post_class($classes); ?> href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
 
-						<div class="headline_excerpt">
+  					<div class="headline_excerpt">
 
-							<?php
-								$date = new DateTime(get_the_date());
+  						<?php
+  							$date = new DateTime(get_the_date());
 
-								$thirty_days_out = new DateTime(get_the_date()); // init to the post's date
-								$thirty_days_out->add(new DateInterval('P30D')); // add 30 days to it
+  							$thirty_days_out = new DateTime(get_the_date()); // init to the post's date
+  							$thirty_days_out->add(new DateInterval('P30D')); // add 30 days to it
 
-								$today = new DateTime(); // defaults to today's date
+  							$today = new DateTime(); // defaults to today's date
 
-								if ($today > $thirty_days_out) { ?>
-									<div class="from_archives">From the Archives</div>
-							<?php } ?>
+  							if ($today > $thirty_days_out) { ?>
+  								<div class="from_archives">From the Archives</div>
+  						<?php } ?>
 
-							<h2 class="headline"><?php the_title(); ?></h2>
-							<div class="postmeta">
-								<?php if ( $num_comments > 0 ) { ?>
-									<div class="comment_link"><?php comments_number('leave a comment','1 comment','% comments'); ?></div>
-								<?php } ?>
-								<div class="author_link">by <?php the_author(); ?></div>
-							</div>
-						</div>
+  						<h2 class="headline"><?php the_title(); ?></h2>
+  						<div class="postmeta">
+  							<?php if ( $num_comments > 0 ) { ?>
+  								<div class="comment_link"><?php comments_number('leave a comment','1 comment','% comments'); ?></div>
+  							<?php } ?>
+  							<div class="author_link">by <?php the_author(); ?></div>
+  						</div>
+  					</div>
 
-						<div class="shadowbox"></div>
-						<?php if ( has_post_thumbnail() ) {
-								if ( $post_num == 1 ) { the_post_thumbnail( 'large' ); }
-								else { the_post_thumbnail( 'featured_thumb_2' ); }
-						} ?>
+  					<div class="shadowbox"></div>
+  					<?php if ( has_post_thumbnail() ) {
+  							if ( $post_num == 1 ) { the_post_thumbnail( 'large' ); }
+  							else { the_post_thumbnail( 'featured_thumb_2' ); }
+  					} ?>
 
-						<div class="clear"></div>
+  					<div class="clear"></div>
 
-					</a>
+  				</a>
 
-					<?php $post_num++;
+  				<?php $post_num++;
 
-				endwhile;
+  			endwhile;
 
 			/* END LOOP */ ?>
 
 			<div class="clear"></div>
 
-		</div>
+		</div><!--end #featured_posts-->
 
 		<div id="read_latest_posts">
 			<a href="<?php echo bloginfo('url') . '/articles/'; ?>">
