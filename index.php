@@ -14,9 +14,7 @@
 
 		<?php /* THE LOOP */
 
-		$index_query = new WP_Query();
-
-		if ( $index_query->have_posts() ) : while ( $index_query->have_posts() ) : $index_query->the_post();
+		if ( have_posts() ) : while ( have_posts() ) : the_post();
 
 			$num_comments = get_comments_number(); ?>
 

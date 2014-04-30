@@ -134,6 +134,7 @@ body {
 
 	#content_column {
 		float:right;
+		width:64rem;
 		max-width:64rem;
 	}
 
