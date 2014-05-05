@@ -1,5 +1,11 @@
 # A custom WordPress theme for Lawyerist.com
 
+2014-05-05
+----------
+
+* Style sidebar Submit a Link form.
+
+
 2014-04-29
 ----------
 

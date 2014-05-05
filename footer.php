@@ -6,7 +6,7 @@
 	<div id="footer_legal">
 		<p class="text_right remove_bottom">The original content within this website is &copy; 2007&ndash;<?php echo date("Y") ?></p>
 		<p class="text_right"><a href="<?php echo home_url(); ?>/privacy-policy/">Privacy policy</a> / <a href="<?php echo home_url(); ?>/ftc-disclosures/">FTC disclosures</a> / <a href="<?php echo home_url(); ?>/sitemap_index.xml">XML sitemap</a></p>
-    </div>
+  </div>
 
 	<?php wp_footer(); ?>
 
