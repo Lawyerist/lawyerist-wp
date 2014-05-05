@@ -1746,6 +1746,12 @@ li.gform_widget input[type="url"] {
 	width:26.2rem !important;
 }
 
+li.gform_widget .gform_description,
+li.gform_widget .gform_confirmation_message {
+	font-size:1.8rem;
+	line-height:2.8rem;
+}
+
 li.gform_widget .gform_footer {
 	margin:0 !important;
 	padding:0 !important;
