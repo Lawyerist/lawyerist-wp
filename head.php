@@ -10,6 +10,9 @@
 
 <meta charset="utf-8" />
 
+<!-- Google Webmaster Tools verification (LEAVE HERE) -->
+<meta name="google-site-verification" content="Oz-5Chr2m2w4jfNGz3w87JOiHCFD9ELq73xg_RHoR3A" />
+
 <?php if ( wp_is_mobile() ) { ?>
     <meta name="viewport" content="width=320,initial-scale=1.0">
 <?php } ?>
