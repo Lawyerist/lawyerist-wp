@@ -182,48 +182,6 @@
       </ul>
     </div><!--end #sites_network_posts-->
 
-    <div id="infinite_posts">
-
-      <?php /* THE LOOP */
-
-        $infinite_query = new WP_Query();
-
-        while ( $infinite_query->have_posts() ) : $infinite_query->the_post();
-
-          if ( $post->ID == $do_not_duplicate ) continue;
-
-          $num_comments = get_comments_number();
-          $classes = 'featured_post'; ?>
-
-          <a id="post-<?php the_ID(); ?>" <?php post_class($classes); ?> href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
-
-            <div class="headline_excerpt">
-
-              <h2 class="headline"><?php the_title(); ?></h2>
-              <div class="postmeta">
-                <?php if ( $num_comments > 0 ) { ?>
-                  <div class="comment_link"><?php comments_number('leave a comment','1 comment','% comments'); ?></div>
-                <?php } ?>
-                <div class="author_link">by <?php the_author(); ?></div>
-              </div>
-
-            </div><!--end .headline_excerpt-->
-
-            <div class="shadowbox"></div>
-            <?php if ( has_post_thumbnail() ) { the_post_thumbnail( 'featured_thumb_2' ); } ?>
-
-            <div class="clear"></div>
-
-          </a>
-
-          <?php $post_num++;
-
-        endwhile;
-
-      /* END LOOP */ ?>
-
-    </div><!--end #infinite_posts-->
-
 	</div><!--end content_column-->
 
 	<ul id="sidebar_column">
