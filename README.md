@@ -1,5 +1,15 @@
 # A custom WordPress theme for Lawyerist.com
 
+2014-05-08
+----------
+
+* Use featured_thumb_2 for top post on front page (speeds things up since it's a smaller image, and improves rendering on mobile).
+* Make top post headline the same size as all the headlines on mobile.
+* Make prev/next links full-width on mobile.
+* Fix screwy widths for discussion boxes on mobile.
+* Fix footer on mobile.
+
+
 2014-05-05
 ----------
 

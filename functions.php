@@ -67,7 +67,7 @@ function infinite_scroll_init() {
 			'type'           => 'scroll',
 			'footer'				 => false,
 			'footer_widgets' => false,
-			'container'      => 'content_column',
+			'container'      => 'infinite_posts',
 			'wrapper'        => true,
 			'render'         => false,
 			'posts_per_page' => 8,
