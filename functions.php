@@ -58,6 +58,27 @@ if ( function_exists( 'add_image_size' ) ) {
 
 
 /*------------------------------
+Infinite Scroll
+------------------------------*/
+
+function infinite_scroll_init() {
+
+	add_theme_support( 'infinite-scroll', array(
+			'type'           => 'scroll',
+			'footer'				 => false,
+			'footer_widgets' => false,
+			'container'      => 'content_column',
+			'wrapper'        => true,
+			'render'         => false,
+			'posts_per_page' => 8,
+	) );
+
+}
+
+add_action( 'after_setup_theme', 'infinite_scroll_init' );
+
+
+/*------------------------------
 Sidebar
 ------------------------------*/
 
