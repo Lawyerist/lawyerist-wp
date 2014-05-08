@@ -55,6 +55,8 @@
 
           if ( $post->ID == $do_not_duplicate ) continue;
 
+          $do_not_duplicate = $post->ID;
+
   				$num_comments = get_comments_number();
   				$classes = array(
   					'featured_post',
@@ -65,18 +67,6 @@
 
   					<div class="headline_excerpt">
 
-  						<?php
-  							$date = new DateTime(get_the_date());
-
-  							$thirty_days_out = new DateTime(get_the_date()); // init to the post's date
-  							$thirty_days_out->add(new DateInterval('P30D')); // add 30 days to it
-
-  							$today = new DateTime(); // defaults to today's date
-
-  							if ($today > $thirty_days_out) { ?>
-  								<div class="from_archives">From the Archives</div>
-  						<?php } ?>
-
   						<h2 class="headline"><?php the_title(); ?></h2>
   						<div class="postmeta">
   							<?php if ( $num_comments > 0 ) { ?>
@@ -84,13 +74,11 @@
   							<?php } ?>
   							<div class="author_link">by <?php the_author(); ?></div>
   						</div>
-  					</div>
+
+  					</div><!--end .headline_excerpt-->
 
   					<div class="shadowbox"></div>
-  					<?php if ( has_post_thumbnail() ) {
-  							if ( $post_num == 1 ) { the_post_thumbnail( 'large' ); }
-  							else { the_post_thumbnail( 'featured_thumb_2' ); }
-  					} ?>
+  					<?php if ( has_post_thumbnail() ) { the_post_thumbnail( 'featured_thumb_2' ); } ?>
 
   					<div class="clear"></div>
 
@@ -177,22 +165,64 @@
 			endif;
 			?>
 
-			<ul>
-				<?php if ( $maxitems == 0 ) : ?>
-					<li><?php _e( 'No items', 'my-text-domain' ); ?></li>
-				<?php else : ?>
-					<?php // Loop through each feed item and display each item as a hyperlink. ?>
-					<?php foreach ( $rss_items as $item ) : ?>
-						<li>
-							<a href="<?php echo esc_url( $item->get_permalink() ); ?>"
-								title="<?php printf( __( 'Posted on %s', 'my-text-domain' ), $item->get_date('F jS, Y') ); ?>">
-								<?php echo esc_html( $item->get_title() ); ?>
-							</a>
-						</li>
-					<?php endforeach; ?>
-				<?php endif; ?>
-			</ul>
-	</div>
+      <ul>
+      	<?php if ( $maxitems == 0 ) : ?>
+      		<li><?php _e( 'No items', 'my-text-domain' ); ?></li>
+      	<?php else : ?>
+      		<?php // Loop through each feed item and display each item as a hyperlink. ?>
+      		<?php foreach ( $rss_items as $item ) : ?>
+      			<li>
+      				<a href="<?php echo esc_url( $item->get_permalink() ); ?>"
+      					title="<?php printf( __( 'Posted on %s', 'my-text-domain' ), $item->get_date('F jS, Y') ); ?>">
+      					<?php echo esc_html( $item->get_title() ); ?>
+      				</a>
+      			</li>
+      		<?php endforeach; ?>
+      	<?php endif; ?>
+      </ul>
+    </div><!--end #sites_network_posts-->
+
+    <div id="infinite_posts">
+
+      <?php /* THE LOOP */
+
+        $infinite_query = new WP_Query();
+
+        while ( $infinite_query->have_posts() ) : $infinite_query->the_post();
+
+          if ( $post->ID == $do_not_duplicate ) continue;
+
+          $num_comments = get_comments_number();
+          $classes = 'featured_post'; ?>
+
+          <a id="post-<?php the_ID(); ?>" <?php post_class($classes); ?> href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
+
+            <div class="headline_excerpt">
+
+              <h2 class="headline"><?php the_title(); ?></h2>
+              <div class="postmeta">
+                <?php if ( $num_comments > 0 ) { ?>
+                  <div class="comment_link"><?php comments_number('leave a comment','1 comment','% comments'); ?></div>
+                <?php } ?>
+                <div class="author_link">by <?php the_author(); ?></div>
+              </div>
+
+            </div><!--end .headline_excerpt-->
+
+            <div class="shadowbox"></div>
+            <?php if ( has_post_thumbnail() ) { the_post_thumbnail( 'featured_thumb_2' ); } ?>
+
+            <div class="clear"></div>
+
+          </a>
+
+          <?php $post_num++;
+
+        endwhile;
+
+      /* END LOOP */ ?>
+
+    </div><!--end #infinite_posts-->
 
 	</div><!--end content_column-->
 
