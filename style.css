@@ -1381,6 +1381,15 @@ Content
 			margin-bottom:0;
 		}
 
+	.printfriendly {
+		float:right;
+		margin:.4rem 0 2.8rem 0;
+	}
+
+		.printfriendly a {
+			display:block;
+		}
+
 	.sd-block {
 		border:none !important;
 		padding:0 !important;
@@ -1416,6 +1425,7 @@ Content
 		color:#bbb;
 		content: '\f302';
 		display:inline-block;
+		float:left;
 		-webkit-font-smoothing:antialiased;
 		font:normal 3.2rem/1em 'Genericons';
 		vertical-align:middle;
