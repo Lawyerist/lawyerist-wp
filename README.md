@@ -1,5 +1,12 @@
 # A custom WordPress theme for Lawyerist.com
 
+2014-05-09
+----------
+
+* Align tags list on posts.
+* Adjust PrintFriendly button positioning.
+
+
 2014-05-08
 ----------
 
