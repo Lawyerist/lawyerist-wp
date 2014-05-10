@@ -2347,7 +2347,8 @@ and (max-width:659px) {
 	}
 
 	.front_page a.featured_post .headline,
-	.front_page a.post_num_1 h2.headline {
+	.front_page a.post_num_1 h2.headline,
+	.front_page a.post_num_1.tag-smaller-title h2.headline {
 		font-size:2.4rem;
 		letter-spacing:.1rem;
 		line-height:3.3rem;
