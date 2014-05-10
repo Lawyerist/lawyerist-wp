@@ -1182,52 +1182,6 @@ Front Page
 			}
 
 
-	/*------------------------------
-	Sites Network Posts
-	------------------------------*/
-
-	.front_page #sites_network_posts {
-		background:#d14d0c;
-		box-shadow:0 0 5rem rgba(0,0,0,.1) inset;
-		margin-bottom:2.8rem;
-		padding:2rem 2.5rem;
-	}
-
-	.front_page #sites_network_posts a {
-		color:#fff;
-		font-family:'Roboto Slab',sans-serif;
-		text-decoration:none;
-		text-shadow:.1rem .1rem .2rem #111;
-			-moz-text-shadow:.1rem .1rem .2rem #111;
-			-ms-text-shadow:.1rem .1rem .2rem #111;
-			-o-text-shadow:.1rem .1rem .2rem #111;
-			-webkit-text-shadow:.1rem .1rem .2rem #111;
-		transition:color .4s;
-			-moz-transition: color .4s;
-			-ms-transition: color .4s;
-			-0-transition: color .4s;
-			-webkit-transition: color .4s;
-	}
-
-	.front_page #sites_network_posts a:hover {
-		color:#ccc;
-		transition:color .4s;
-			-moz-transition: color .4s;
-			-ms-transition: color .4s;
-			-0-transition: color .4s;
-			-webkit-transition: color .4s;
-	}
-
-	.front_page #sites_network_posts ul {
-		list-style:none;
-		margin:0;
-	}
-
-	.front_page #sites_network_posts ul li:last-child {
-		margin-bottom:0;
-	}
-
-
 /*------------------------------
 Content
 ------------------------------*/

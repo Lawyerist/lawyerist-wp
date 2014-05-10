@@ -1,5 +1,11 @@
 # A custom WordPress theme for Lawyerist.com
 
+2014-05-10
+----------
+
+* Remove Sites Network box from front page.
+* Increase number of featured posts shown.
+
 2014-05-09
 ----------
 
