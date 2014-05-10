@@ -5,6 +5,8 @@
 
 * Remove Sites Network box from front page.
 * Increase number of featured posts shown.
+* Add Sites note to blog roundup tag.
+
 
 2014-05-09
 ----------
