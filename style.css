@@ -678,12 +678,13 @@ Header
 					display:block;
 					font-size:1.6rem;
 					margin:0;
-					padding:.6rem .8rem;
+					padding:.6rem .8rem !important;
 					width:28.2rem;
 				}
 
 				#email_social ul li form#lawyerist_insider_subscribe input[type="email"]:focus {
 					background:#fff;
+					color:#222;
 				}
 
 
@@ -1923,6 +1924,8 @@ select {
 	box-shadow:inset 0 .1rem .3rem 0 rgba(0,0,0,0.17);
 	color:#777;
 	display:block;
+	font-family:inherit;
+	font-size:inherit;
 	margin:0 0 2.8rem 0;
 	outline:none;
 	padding:.6rem .4rem !important;
@@ -1939,6 +1942,10 @@ select {
 		color:#444;
 		box-shadow:0 0 .3rem rgba(0,0,0,.2);
 	}
+
+input#st-search-input {
+	padding-left:2.7rem !important;
+}
 
 select {
 	padding:0;
