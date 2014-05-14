@@ -1,5 +1,11 @@
 # A custom WordPress theme for Lawyerist.com
 
+2014-05-14
+----------
+
+* Clean up form styles.
+
+
 2014-05-10
 ----------
 
