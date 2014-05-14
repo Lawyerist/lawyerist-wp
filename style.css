@@ -1904,11 +1904,11 @@ Forms
 ------------------------------*/
 
 form {
-	margin-bottom:20px;
+	margin-bottom:2.8rem;
 }
 
 fieldset {
-	margin-bottom:20px;
+	margin-bottom:2.8rem;
 }
 
 input[type="text"],
@@ -1917,54 +1917,46 @@ input[type="email"],
 input[type="url"],
 textarea,
 select {
-	border:1px solid #ccc;
-	box-shadow:inset 0 1px 3px 0 rgba(0,0,0,0.17);
-	-moz-box-shadow: inset 0 1px 3px 0 rgba(0,0,0,0.17);
-	-webkit-box-shadow: inset 0 1px 3px 0 rgba(0,0,0,0.17);
-	padding:6px 4px;
-	outline:none;
-	border-radius:2px;
-	-moz-border-radius:2px;
-	-webkit-border-radius:2px;
-	font:14px "HelveticaNeue","Helvetica Neue",Helvetica,Arial,sans-serif;
-	color:#777;
-	margin:0;
-	width:210px;
-	max-width:100%;
-	display:block;
-	margin-bottom:20px;
 	background:#fff;
+	border:.1rem solid #ccc;
+	border-radius:.2rem;
+	box-shadow:inset 0 .1rem .3rem 0 rgba(0,0,0,0.17);
+	color:#777;
+	display:block;
+	margin:0 0 2.8rem 0;
+	outline:none;
+	padding:.6rem .4rem !important;
+	width:2.1rem;
+		max-width:100%;
 }
+
+	input[type="text"]:focus,
+	input[type="password"]:focus,
+	input[type="email"]:focus,
+	input[type="url"]:focus,
+	textarea:focus {
+		border:1px solid #aaa;
+		color:#444;
+		box-shadow:0 0 .3rem rgba(0,0,0,.2);
+	}
 
 select {
 	padding:0;
 }
 
-input[type="text"]:focus,
-input[type="password"]:focus,
-input[type="email"]:focus,
-input[type="url"]:focus,
-textarea:focus {
-	border:1px solid #aaa;
-	color:#444;
-	box-shadow: 0 0 3px rgba(0,0,0,.2);
-	-moz-box-shadow:0 0 3px rgba(0,0,0,.2);
-	-webkit-box-shadow:0 0 3px rgba(0,0,0,.2);
-}
-
 textarea {
-	min-height:60px;
+	min-height:6rem;
 }
 
 label,
 legend {
 	display:block;
 	font-weight:600;
-	font-size:13px;
+	font-size:1.4rem;
 }
 
 select {
-	width:220px;
+	width:22rem;
 }
 
 input[type="checkbox"] {
@@ -1973,38 +1965,10 @@ input[type="checkbox"] {
 
 label span,
 legend span {
-	font-family:'Source Sans Pro',sans-serif;
-	font-size:13px;
+	font-size:1.4rem;
 	color:#444;
 }
 
-.post input.email {
-	box-shadow: inset 0 1px 3px 0 rgba(0,0,0,0.17);
-	font-size:16px;
-	height:20px;
-	padding:4px 9px;
-	width:75%;
-	}
-
-.post input.email:focus {
-	box-shadow: 0 0 3px rgba(0,0,0,.2);
-	width:75%;
-	}
-
-#mc-embedded-subscribe-form ul {
-	list-style:none;
-	margin-left:0;
-}
-
-#mc-embedded-subscribe-form ul input[type="checkbox"] {
-	margin-right:1em;
-}
-
-#mc-embedded-subscribe-form ul label {
-	display:inline;
-	font-size:inherit;
-	font-weight:normal;
-}
 
 	/*------------------------------
 	Buttons
@@ -2024,15 +1988,16 @@ legend span {
 		border-bottom:.5rem solid #780000;
 		border-radius:.3rem;
 		color:#fff;
+		cursor:pointer;
 		display:inline-block;
-		font-size:1.8rem !important;
-		font-weight:600;
+		font-family:'Source Sans Pro',sans-serif;
+		font-size:1.6rem !important;
+		line-height:normal;
+		margin-bottom:2rem;
+		outline:none;
+		padding:.6rem 1.2rem;
 		text-decoration:none;
 		text-transform:none;
-		cursor:pointer;
-		margin-bottom:2rem;
-		line-height:normal;
-		padding:.8rem 1rem;
 	}
 
   .button:hover,
@@ -2058,17 +2023,7 @@ legend span {
 	form input[type="button"]:active {
 		background:#aa0000;
 		color:#eee;
-	}
-
-	form .button.full-width,
-	form button.full-width,
-	form input[type="submit"].full-width,
-	form input[type="reset"].full-width,
-	form input[type="button"].full-width {
-		width: 100%;
-		padding-left: 0 !important;
-		padding-right: 0 !important;
-		text-align: center;
+		outline:none;
 	}
 
 
@@ -2077,24 +2032,24 @@ legend span {
 	------------------------------*/
 
 	.gfield_radio label,
-    .gpoll_wrapper label,
+  .gpoll_wrapper label,
 	.gfield_label,
-    .gpoll_wrapper .gpoll_field_label,
-    .gpoll_wrapper .gpoll_choice_label {
-        font-size:16px;
-    }
+  .gpoll_wrapper .gpoll_field_label,
+  .gpoll_wrapper .gpoll_choice_label {
+    font-size:1.8rem;
+  }
 
 	.gfield_radio label,
-    .gpoll_wrapper label,
+  .gpoll_wrapper label,
 	.gfield_label,
-    .gpoll_wrapper .gpoll_choice_label {
-        font-weight:normal;
-    }
+  .gpoll_wrapper .gpoll_choice_label {
+    font-weight:normal;
+  }
 
-    a.gpoll_button,
-    a.gpoll_back_button {
-        font-size:14px;
-    }
+  a.gpoll_button,
+  a.gpoll_back_button {
+    font-size:1.6rem;
+  }
 
 
 /*------------------------------
@@ -2117,6 +2072,10 @@ Useful Stuff
 
 .clear {
 	clear:both;
+}
+
+.hidden {
+	display:none;
 }
 
 .remove_bottom {

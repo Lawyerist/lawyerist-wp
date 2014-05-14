@@ -19,7 +19,7 @@
 	else { ?>
 		<p id="title"><a href="<?php echo home_url(); ?>"><?php bloginfo('name'); echo ' &mdash; '; bloginfo('description'); ?></a></p>
 		<?php } ?>
-	
+
 	<div id="blog_forum_nav">
 		<ul>
 			<li class="nav_lab"><a href="http://lab.lawyerist.com">forum</a></li>
@@ -32,13 +32,13 @@
 	<ul>
 			<li class="lawyerist_insider_header_signup">
 				<form id="lawyerist_insider_subscribe" action="http://lawyerist.us2.list-manage.com/subscribe/post?u=a5da2382c098b6541dcd6cf8e&amp;id=30d7a1f6e2" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
-					<input type="email" onblur="if (this.value == '') {this.value = 'Enter email address for weekly updates';}" onfocus="if (this.value == 'Enter email address for weekly updates') {this.value = '';}" value="Enter email address for weekly updates" name="EMAIL" class="required email" id="mce-EMAIL">
+					<input type="email" placeholder="Enter email address for weekly updates" name="EMAIL" class="required email" id="mce-EMAIL">
 					<input type="hidden" value="1" name="group[5769][1]" id="mce-group[5769]-5769-0" checked>
 					<div id="mce-responses" class="clear">
 						<div class="response" id="mce-error-response" style="display:none"></div>
 						<div class="response" id="mce-success-response" style="display:none"></div>
 					</div>
-				</form>	
+				</form>
 			</li>
 		<li><a class="linkedin sprite" href="http://www.linkedin.com/company/lawyerist-media-llc" title="Connect with Lawyerist on LinkedIn" target="_blank"></a></li>
 		<li><a class="facebook sprite" href="http://facebook.com/lawyerist" title="Friend Lawyerist on Facebook" target="_blank"></a></li>
