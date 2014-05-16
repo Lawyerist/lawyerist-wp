@@ -500,7 +500,7 @@ Header
 		height:3.8rem;
 		margin:1rem 0;
 		padding:0;
-		text-indent:-9999px;
+		text-indent:-99999px;
 		width:30rem;
 	}
 
@@ -664,13 +664,11 @@ Header
 					content:'\f202';
 				}
 
-				#email_social ul li form#lawyerist_insider_subscribe {
+				#email_social form#lawyerist_insider_subscribe {
 					margin:0;
 				}
 
-				#email_social ul li form#lawyerist_insider_subscribe input[type="email"] {
-					-moz-box-sizing:content-box; /* or `border-box` */
-					-webkit-box-sizing:content-box;
+				#email_social form#lawyerist_insider_subscribe input[type="text"] {
 					box-sizing:content-box;
 					background:#ffffb3;
 					border:0;
@@ -682,9 +680,14 @@ Header
 					width:28.2rem;
 				}
 
-				#email_social ul li form#lawyerist_insider_subscribe input[type="email"]:focus {
+				#email_social form#lawyerist_insider_subscribe input[type="text"]:focus {
 					background:#fff;
 					color:#222;
+				}
+
+				#email_social form#lawyerist_insider_subscribe label {
+					height:0;
+					text-indent:-99999px;
 				}
 
 
