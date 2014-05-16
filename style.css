@@ -1932,8 +1932,7 @@ select {
 	margin:0 0 2.8rem 0;
 	outline:none;
 	padding:.6rem .4rem !important;
-	width:2.1rem;
-		max-width:100%;
+	width:50%;
 }
 
 	input[type="text"]:focus,
