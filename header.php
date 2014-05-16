@@ -31,13 +31,12 @@
 	<div id="email_social">
 	<ul>
 			<li class="lawyerist_insider_header_signup">
-				<form id="lawyerist_insider_subscribe" action="http://lawyerist.us2.list-manage.com/subscribe/post?u=a5da2382c098b6541dcd6cf8e&amp;id=30d7a1f6e2" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
-					<input type="email" placeholder="Enter email address for weekly updates" name="EMAIL" class="required email" id="mce-EMAIL">
-					<input type="hidden" value="1" name="group[5769][1]" id="mce-group[5769]-5769-0" checked>
-					<div id="mce-responses" class="clear">
-						<div class="response" id="mce-error-response" style="display:none"></div>
-						<div class="response" id="mce-success-response" style="display:none"></div>
-					</div>
+				<form id="lawyerist_insider_subscribe" accept-charset="UTF-8" action="https://zr188.infusionsoft.com/app/form/process/f0c3c55ad3fc171fd11e4f98c9d49a78" class="infusion-form" method="POST">
+					<input name="inf_form_xid" type="hidden" value="f0c3c55ad3fc171fd11e4f98c9d49a78" />
+					<input name="inf_form_name" type="hidden" value="Sign up for newsletter" />
+					<input name="infusionsoft_version" type="hidden" value="1.29.11.21" />
+					<label for="inf_field_Email">Email *</label>
+					<input class="infusion-field-input-container" id="inf_field_Email" name="inf_field_Email" type="text" placeholder="Enter your email address to subscribe" />
 				</form>
 			</li>
 		<li><a class="linkedin sprite" href="http://www.linkedin.com/company/lawyerist-media-llc" title="Connect with Lawyerist on LinkedIn" target="_blank"></a></li>
