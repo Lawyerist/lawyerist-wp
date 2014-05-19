@@ -37,6 +37,7 @@ Content
 	Pagenav
 	Comments
 	Related Posts
+Comments
 Sidebar
 	Sidebar Ads
 	Sidebar Popular Posts Widget
@@ -1692,6 +1693,63 @@ Content
 	}
 
 
+/*----------------------------------------
+Comments
+----------------------------------------*/
+
+.comment-body {
+	display:block;
+	font-size:1.8rem;
+	line-heioght:2.8rem;
+	margin-bottom:2.8rem;
+}
+
+	.comment-body p:last-of-type {
+		margin-bottom:0;
+	}
+
+.comment-author cite {
+	font-weight:bold;
+}
+
+#commentform input[type="text"] {
+	margin-bottom:.35rem;
+}
+
+#commentform label small {
+	color:#777;
+	font-size:1.4rem;
+	font-weight:normal;
+}
+
+#commentform p {
+	font-size:1.4rem;
+}
+
+#commentform textarea {
+	width:auto;
+}
+
+.comment-meta,
+.reply {
+	font-size:1.4rem;
+}
+
+ol.commentlist {
+	list-style:none;
+	margin:0;
+}
+
+	ol.commentlist li {
+		line-height:2.8rem;
+	}
+
+ul.children {
+	list-style:none;
+	margin:0 0 0 2.8rem;
+}
+
+
 /*------------------------------
 Sidebar
 ------------------------------*/
@@ -1924,7 +1982,7 @@ select {
 	color:#777;
 	display:block;
 	font-family:inherit;
-	font-size:inherit;
+	font-size:1.8rem;
 	margin:0 0 2.8rem 0;
 	outline:none;
 	padding:.6rem .4rem !important;
