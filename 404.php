@@ -15,7 +15,7 @@
 		<div class="post">
 
 			<h1 class="headline" id="404">404: Congratulations! You Found a Typo!</h1>
-			
+
 			<div class="post_body">
 
 				<p>Legal fame and glory are yours!</p>
@@ -54,16 +54,39 @@
 
 				<p>If these don't work for you, check out our <a href="http://lawyerist.com/start/">start page</a>.</p>
 
+				<h3>Before you go, sign up for our email newsletter:</h3>
+
+				<form accept-charset="UTF-8" action="https://zr188.infusionsoft.com/app/form/process/1694a4caccf4e3492ea92528c1e598ae" class="infusion-form" method="POST">
+					<input name="inf_form_xid" type="hidden" value="1694a4caccf4e3492ea92528c1e598ae" />
+					<input name="inf_form_name" type="hidden" value="Lawyerist Insider 404 Page Signup Form" />
+					<input name="infusionsoft_version" type="hidden" value="1.29.11.21" />
+					<div class="infusion-field">
+						<label for="inf_field_FirstName">First Name *</label>
+						<input class="infusion-field-input-container" id="inf_field_FirstName" name="inf_field_FirstName" type="text" />
+					</div>
+					<div class="infusion-field">
+						<label for="inf_field_LastName">Last Name *</label>
+						<input class="infusion-field-input-container" id="inf_field_LastName" name="inf_field_LastName" type="text" />
+					</div>
+					<div class="infusion-field">
+						<label for="inf_field_Email">Email *</label>
+						<input class="infusion-field-input-container" id="inf_field_Email" name="inf_field_Email" type="text" />
+					</div>
+					<div class="infusion-submit">
+						<input type="submit" value="Submit" />
+					</div>
+				</form>
+
 			</div>
 
 		</div>
-	
+
 	</div>
-	
+
 	<ul id="sidebar_column">
 		<?php include('sidebar.php'); ?>
 	</ul>
-	
+
 	<div class="clear"></div>
 
 </div>

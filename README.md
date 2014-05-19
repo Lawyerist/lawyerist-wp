@@ -1,5 +1,11 @@
 # A custom WordPress theme for Lawyerist.com
 
+2014-05-19
+----------
+
+* Add newsletter signup form to 404 page.
+
+
 2014-05-14
 ----------
 
