@@ -1199,12 +1199,10 @@ Content
 }
 
 #lawyerist_content_search input#st-search-input {
-	border-radius:2px !important;
-	-moz-border-radius:2px !important;
-	-webkit-border-radius:2px !important;
-	font-size:16px !important;
+	border-radius:.2rem;
+	font-size:inherit !important;
 	margin:0;
-	width:262px !important;
+	width:26.7rem !important;
 }
 
 	/*------------------------------
@@ -1710,11 +1708,9 @@ Sidebar
 li.gform_widget input[type="url"],
 li.gform_widget input[type="text"] {
 	border-radius:.2rem !important;
-	-moz-border-radius:.2rem !important;
-	-webkit-border-radius:.2rem !important;
-	font-size:1.4rem !important;
+	font-size:1.6rem !important;
 	margin:0;
-	width:26.2rem !important;
+	width:26.7rem !important;
 }
 
 li.gform_widget label.gfield_label {
