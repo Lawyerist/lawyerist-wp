@@ -1789,8 +1789,6 @@ li.gform_widget .gform_footer {
 }
 
 li.gform_widget input[type="submit"] {
-	font-size:1.4rem !important;
-	font-weight:normal;
 	margin:0;
 }
 

@@ -5,6 +5,7 @@
 
 * Make form label font sizes consistent (they were showing up larger on Gravity Forms forms).
 * Make input field font sizes consistent.
+* Make sidebar form buttons the same font-size as all buttons.
 
 
 2014-05-19
