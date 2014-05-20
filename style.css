@@ -2094,21 +2094,6 @@ legend span {
 	Gravity Forms
 	------------------------------*/
 
-	.gfield_radio label,
-  .gpoll_wrapper label,
-	.gfield_label,
-  .gpoll_wrapper .gpoll_field_label,
-  .gpoll_wrapper .gpoll_choice_label {
-    font-size:1.8rem;
-  }
-
-	.gfield_radio label,
-  .gpoll_wrapper label,
-	.gfield_label,
-  .gpoll_wrapper .gpoll_choice_label {
-    font-weight:normal;
-  }
-
   a.gpoll_button,
   a.gpoll_back_button {
     font-size:1.6rem;
