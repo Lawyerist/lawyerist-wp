@@ -1,5 +1,11 @@
 # A custom WordPress theme for Lawyerist.com
 
+2014-05-20
+----------
+
+* Make form labels consistent (they were showing up larger on Gravity Forms forms).
+
+
 2014-05-19
 ----------
 
