@@ -3,7 +3,8 @@
 2014-05-20
 ----------
 
-* Make form labels consistent (they were showing up larger on Gravity Forms forms).
+* Make form label font sizes consistent (they were showing up larger on Gravity Forms forms).
+* Make input field font sizes consistent.
 
 
 2014-05-19

@@ -2099,6 +2099,16 @@ legend span {
     font-size:1.6rem;
   }
 
+	.gform_wrapper input[type=text],
+	.gform_wrapper input[type=url],
+	.gform_wrapper input[type=email],
+	.gform_wrapper input[type=tel],
+	.gform_wrapper input[type=number],
+	.gform_wrapper input[type=password],
+	.gform_wrapper textarea {
+		font-size:1.6rem !important;
+	}
+
 
 /*------------------------------
 Useful Stuff
