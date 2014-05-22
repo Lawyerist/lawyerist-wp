@@ -2263,6 +2263,7 @@ and (max-width:979px) {
 
 		ul#sidebar_column {
 			float:none;
+			margin:0 auto;
 		}
 
 			li.widget.sidebar_ads {
