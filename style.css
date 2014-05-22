@@ -1031,15 +1031,21 @@ Front Page
 			box-shadow:0 0 5rem rgba(0,0,0,.1) inset;
 			display:inline-block;
 			font-family:'Roboto Slab',sans-serif;
-			padding:2rem 2.5rem 100rem 2.5rem;
+			padding:2rem 0 100rem 0;
 			margin-bottom:-97.5rem;
-			width:26.9rem;
+			width:31.9rem;
 		}
+
+			.front_page #most_discussed h3,
+			.front_page #lab_posts h3 {
+				margin-left:2.5rem;
+				margin-right:2.5rem;
+			}
 
 			.front_page #most_discussed ul,
 			.front_page #lab_posts ul {
 				list-style:none;
-				margin:0 0 3.4rem 0;
+				margin:0 2.5rem 3.4rem 2.5rem;
 			}
 
 		.front_page #most_discussed li a,
@@ -1080,11 +1086,6 @@ Front Page
 			background:#333;
 			margin-right:.2rem;
 			float:left;
-		}
-
-		.front_page #most_discussed ul {
-			list-style:none;
-			margin:0;
 		}
 
 			.front_page #most_discussed li {
@@ -1206,7 +1207,7 @@ Front Page
 		height:auto;
 		overflow:hidden;
 		margin:0 0 .2rem 0;
-		max-width:31.9rem;
+		width:31.9rem;
 		padding:0;
 		position:relative;
 		text-decoration:none;
@@ -2262,7 +2263,6 @@ and (max-width:979px) {
 
 		ul#sidebar_column {
 			float:none;
-			width:100%;
 		}
 
 			li.widget.sidebar_ads {
@@ -2375,8 +2375,8 @@ and (max-width:659px) {
 		.front_page #most_discussed,
 		.front_page #lab_posts {
 			float:none;
-			padding:2rem 2.5rem;
-			width:auto;
+			padding-bottom:2.5rem;
+			width:100%;
 		}
 
 		.front_page #most_discussed {
@@ -2398,6 +2398,7 @@ and (max-width:659px) {
 
 		.front_page a.bookstore_post.post_num_2 {
 			margin-bottom:.2rem;
+			margin-right:0;
 		}
 
 	.front_page ul#sidebar_column {
