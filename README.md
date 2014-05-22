@@ -4,7 +4,7 @@
 ----------
 
 * Add bookstore to front page.
-
+* Also fixed responsiveness for discussions and sidebar.
 
 2014-05-20
 ----------
