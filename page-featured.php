@@ -45,7 +45,7 @@
   <div class="fp_tab"><h2>Latest Posts</h2></div>
   	<div id="featured_posts">
 
-  		<?php /* THE LOOP */
+  		<?php /* FEATURED POSTS LOOP */
 
   			$featured_query = new WP_Query( 'posts_per_page=11' );
 
@@ -84,11 +84,12 @@
 
   				</a>
 
-  				<?php $post_num++;
+  				<?php if ( $post_num==3 ) { $post_num = 2; }
+          else { $post_num++; }
 
   			endwhile;
 
-			/* END LOOP */ ?>
+			/* END FEATURED POSTS LOOP */ ?>
 
 			<div class="clear"></div>
 
@@ -144,7 +145,57 @@
           <?php endif; ?>
         </ul>
       </div><!--end #lab_posts-->
+      <div class="clear"></div>
 		</div>
+
+    <div class="fp_tab"><h2>Bookstore</h2></div>
+      <div id="bookstore">
+
+        <?php /* BOOKSTORE POSTS LOOP */
+
+          $args = array(
+            'posts_per_page' => 2,
+            'tag' => 'ebooks'
+          );
+
+          $bookstore_query = new WP_Query( $args );
+
+          $post_num = 2;
+
+          while ( $bookstore_query->have_posts() ) : $bookstore_query->the_post();
+
+            if ( $post->ID == $do_not_duplicate ) continue;
+
+            $do_not_duplicate = $post->ID;
+
+            $num_comments = get_comments_number();
+            $classes = array(
+              'bookstore_post',
+              'post_num_' . $post_num
+            ); ?>
+
+            <a id="post-<?php the_ID(); ?>" <?php post_class($classes); ?> href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
+
+              <div class="headline_excerpt">
+                <h2 class="headline"><?php the_title(); ?></h2>
+              </div><!--end .headline_excerpt-->
+
+              <div class="shadowbox"></div>
+              <?php if ( has_post_thumbnail() ) { the_post_thumbnail( 'medium' ); } ?>
+              <div class="clear"></div>
+
+            </a>
+
+            <?php if ( $post_num==3 ) { $post_num = 2; }
+            else { $post_num++; }
+
+          endwhile;
+
+        /* END BOOKSTORE POSTS LOOP */ ?>
+
+        <div class="clear"></div>
+
+      </div><!--end #bookstore_posts-->
 
 	</div><!--end content_column-->
 
