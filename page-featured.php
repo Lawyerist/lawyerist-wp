@@ -174,7 +174,7 @@
               'post_num_' . $post_num
             ); ?>
 
-            <a id="post-<?php the_ID(); ?>" <?php post_class($classes); ?> href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
+            <a id="post-<?php the_ID(); ?>" <?php post_class($classes); ?> href="<?php the_permalink(); ?>?utm_source=lawyerist_front_page" rel="bookmark" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
 
               <div class="headline_excerpt">
                 <h2 class="headline"><?php the_title(); ?></h2>
