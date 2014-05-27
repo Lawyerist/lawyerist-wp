@@ -29,6 +29,7 @@ Front Page
 	"Read more posts" Link
 	Discussions
 	Sites Network Posts
+	Bookstore
 Content
 	Index & Archive Lists
 	Posts
@@ -876,15 +877,11 @@ Front Page
 			max-width:64rem;
 		}
 
-		.front_page a.post_num_2,
-		.front_page a.post_num_4,
-		.front_page a.post_num_6,
-		.front_page a.post_num_8,
-		.front_page a.post_num_10 {
+		.front_page a.post_num_2 {
 			margin-right:.2rem;
 		}
 
-		.front_page a.featured_post .shadowbox {
+		.front_page .shadowbox {
 			box-shadow:0 0 5rem rgba(0,0,0,.6) inset;
 			height:100%;
 			position:absolute;
@@ -1034,15 +1031,21 @@ Front Page
 			box-shadow:0 0 5rem rgba(0,0,0,.1) inset;
 			display:inline-block;
 			font-family:'Roboto Slab',sans-serif;
-			padding:2rem 2.5rem 100rem 2.5rem;
+			padding:2rem 0 100rem 0;
 			margin-bottom:-97.5rem;
-			width:26.9rem;
+			width:31.9rem;
 		}
+
+			.front_page #most_discussed h3,
+			.front_page #lab_posts h3 {
+				margin-left:2.5rem;
+				margin-right:2.5rem;
+			}
 
 			.front_page #most_discussed ul,
 			.front_page #lab_posts ul {
 				list-style:none;
-				margin:0 0 3.4rem 0;
+				margin:0 2.5rem 3.4rem 2.5rem;
 			}
 
 		.front_page #most_discussed li a,
@@ -1083,11 +1086,6 @@ Front Page
 			background:#333;
 			margin-right:.2rem;
 			float:left;
-		}
-
-		.front_page #most_discussed ul {
-			list-style:none;
-			margin:0;
 		}
 
 			.front_page #most_discussed li {
@@ -1185,6 +1183,62 @@ Front Page
 			.front_page #lab_posts li:last-child {
 				margin-bottom:0;
 			}
+
+
+	/*------------------------------
+	Bookstore
+	------------------------------*/
+
+	#bookstore {
+		margin-bottom:2.8rem;
+	}
+
+	.front_page a.bookstore_post {
+		background:linear-gradient(135deg, #111111 0%,#555555 100%); /* W3C */
+		background:-moz-linear-gradient(-45deg, #111111 0%, #555555 100%); /* FF3.6+ */
+		background:-webkit-gradient(linear, left top, right bottom, color-stop(0%,#111111), color-stop(100%,#555555)); /* Chrome,Safari4+ */
+		background:-webkit-linear-gradient(-45deg, #111111 0%,#555555 100%); /* Chrome10+,Safari5.1+ */
+		background:-o-linear-gradient(-45deg, #111111 0%,#555555 100%); /* Opera 11.10+ */
+		background:-ms-linear-gradient(-45deg, #111111 0%,#555555 100%); /* IE10+ */
+		border:none;
+		clear:none;
+		display:inline-block;
+		float:left;
+		height:auto;
+		overflow:hidden;
+		margin:0 0 .2rem 0;
+		width:31.9rem;
+		padding:0;
+		position:relative;
+		text-decoration:none;
+	}
+
+		.front_page a.bookstore_post.post_num_2 {
+			margin-right:.2rem;
+		}
+
+	.front_page a.bookstore_post h2 {
+		height:0;
+		text-indent:-99999px;
+	}
+
+	.front_page a.bookstore_post img {
+		height:auto;
+		margin:0 !important;
+		opacity:1;
+		overflow:hidden;
+		transition:opacity .4s;
+			-moz-transition: opacity .4s;
+			-ms-transition: opacity .4s;
+			-0-transition: opacity .4s;
+			-webkit-transition	: opacity .4s;
+		width:100%;
+		z-index:0;
+	}
+
+	.front_page a.bookstore_post:hover img {
+		opacity:.6;
+	}
 
 
 /*------------------------------
@@ -1336,15 +1390,6 @@ Content
 
 		.post_index li {
 			margin-bottom:0;
-		}
-
-	.printfriendly {
-		float:right;
-		margin:.4rem 0 2.8rem 0;
-	}
-
-		.printfriendly a {
-			display:block;
 		}
 
 	.sd-block {
@@ -2218,7 +2263,7 @@ and (max-width:979px) {
 
 		ul#sidebar_column {
 			float:none;
-			width:100%;
+			margin:0 auto;
 		}
 
 			li.widget.sidebar_ads {
@@ -2331,8 +2376,8 @@ and (max-width:659px) {
 		.front_page #most_discussed,
 		.front_page #lab_posts {
 			float:none;
-			padding:2rem 2.5rem;
-			width:auto;
+			padding-bottom:2.5rem;
+			width:100%;
 		}
 
 		.front_page #most_discussed {
@@ -2342,6 +2387,19 @@ and (max-width:659px) {
 
 		.front_page #lab_posts {
 			margin-bottom:2.8rem;
+		}
+
+	.front_page a.bookstore_post {
+		display:block;
+		float:none;
+		margin:0;
+		max-width:none;
+		width:auto;
+	}
+
+		.front_page a.bookstore_post.post_num_2 {
+			margin-bottom:.2rem;
+			margin-right:0;
 		}
 
 	.front_page ul#sidebar_column {

@@ -1,5 +1,11 @@
 # A custom WordPress theme for Lawyerist.com
 
+2014-05-22
+----------
+
+* Add bookstore to front page.
+* Also fixed responsiveness for discussions and sidebar.
+
 2014-05-20
 ----------
 
