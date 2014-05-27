@@ -411,6 +411,10 @@ img.alignright {
 	margin:0 0 1.4rem 2rem;
 }
 
+img.avatar {
+	border-radius:5rem;
+}
+
 img.size-thumbnail {
 	height:auto;
 	width:23.4375%;
