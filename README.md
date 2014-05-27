@@ -4,6 +4,7 @@
 ----------
 
 * Make author avatars round.
+* Move popular post image to left, make them circular.
 
 2014-05-22
 ----------
