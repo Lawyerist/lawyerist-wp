@@ -47,7 +47,7 @@
 
   		<?php /* FEATURED POSTS LOOP */
 
-  			$featured_query = new WP_Query( 'posts_per_page=9' );
+  			$featured_query = new WP_Query( 'posts_per_page=7' );
 
   			$post_num = 1;
 
