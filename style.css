@@ -456,11 +456,11 @@ img.wp-post-image.attachment-large {
 	width:100%;
 }
 
-.wp-caption .alignleft {
+.wp-caption.alignleft {
 	margin:0 1.5rem 0 2.8rem;
 }
 
-.wp-caption .alignright {
+.wp-caption.alignright {
 	margin:0 0 1.5rem 2.8rem;
 }
 
