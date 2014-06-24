@@ -24,21 +24,13 @@
 		<ul>
 			<li class="nav_lab"><a href="http://lab.lawyerist.com">forum</a></li>
     		<li class="nav_sites"><a href="http://sites.lawyerist.com">sites</a></li>
-    		<li class="nav_store"><a href="http://lawyerist.com/store/">store</a></li>
+    		<li class="nav_store"><a href="http://lawyerist.com/store/">books</a></li>
 		</ul>
 	</div>
 
 	<div id="email_social">
 	<ul>
-			<li class="lawyerist_insider_header_signup">
-				<form id="lawyerist_insider_subscribe" accept-charset="UTF-8" action="https://zr188.infusionsoft.com/app/form/process/f0c3c55ad3fc171fd11e4f98c9d49a78" class="infusion-form" method="POST">
-					<input name="inf_form_xid" type="hidden" value="f0c3c55ad3fc171fd11e4f98c9d49a78" />
-					<input name="inf_form_name" type="hidden" value="Sign up for newsletter" />
-					<input name="infusionsoft_version" type="hidden" value="1.29.11.21" />
-					<label for="inf_field_Email">Email *</label>
-					<input class="infusion-field-input-container" id="inf_field_Email" name="inf_field_Email" type="text" placeholder="Enter your email address to subscribe" />
-				</form>
-			</li>
+		<li><a class="email sprite" href="http://feedburner.google.com/fb/a/mailverify?uri=solosmalltech&loc=en_US" title="Subscribe to Lawyerist by email" target="_blank"></a></li>
 		<li><a class="linkedin sprite" href="http://www.linkedin.com/company/lawyerist-media-llc" title="Connect with Lawyerist on LinkedIn" target="_blank"></a></li>
 		<li><a class="facebook sprite" href="http://facebook.com/lawyerist" title="Friend Lawyerist on Facebook" target="_blank"></a></li>
 		<li><a class="twitter sprite" href="http://twitter.com/lawyerist" title="Follow Lawyerist on Twitter" target="_blank"></a></li>
