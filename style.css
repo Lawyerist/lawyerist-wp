@@ -1962,11 +1962,7 @@ li.widget {
 	}
 
 	li#popular_posts_tabbed .tabs_sublist ul.wpp-list li a img {
-<<<<<<< HEAD
-		border-radius:3.75rem;
-=======
     border-radius:37.5rem;
->>>>>>> add-store-to-front-page
 		float:left;
 	}
 
