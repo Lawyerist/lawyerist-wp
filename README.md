@@ -1,5 +1,14 @@
 # A custom WordPress theme for Lawyerist.com
 
+2014-06-24
+----------
+
+* Chance "Store" to "Books" in header.
+* Remove Insider signup from header.
+* Add email subscription icon to header.
+* Add submenus to navigation (and hide them until I get a chance to style drop-downs properly).
+
+
 2014-05-22
 ----------
 
