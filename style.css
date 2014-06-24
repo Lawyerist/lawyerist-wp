@@ -1896,6 +1896,12 @@ li.widget {
 	padding:0;
 }
 
+  li.widget p {
+    font-size:1.6rem;
+    line-height:2.3rem;
+    margin-bottom:2.3rem;
+  }
+
 	li.widget > ul {
 		margin:0;
 		padding:0;
@@ -2060,6 +2066,14 @@ select {
 	width:50%;
 }
 
+  ul#sidebar_column input[type="text"],
+  ul#sidebar_column input[type="password"],
+  ul#sidebar_column input[type="email"],
+  ul#sidebar_column input[type="url"] {
+    margin-bottom:1.05rem;
+    width:29rem;
+  }
+
 	input[type="text"]:focus,
 	input[type="password"]:focus,
 	input[type="email"]:focus,
@@ -2074,12 +2088,9 @@ input#st-search-input {
 	padding-left:2.7rem !important;
 }
 
-select {
-	padding:0;
-}
 
-textarea {
-	min-height:6rem;
+input[type="checkbox"] {
+  display:inline;
 }
 
 label,
@@ -2087,20 +2098,21 @@ legend {
 	display:block;
 	font-weight:600;
 	font-size:1.4rem;
+  line-height:2.4rem;
 }
 
+  ul#sidebar_column label,
+  ul#sidebar_column legend {
+    line-height:2.1rem;
+  }
+
 select {
+  padding:0;
 	width:22rem;
 }
 
-input[type="checkbox"] {
-	display:inline;
-}
-
-label span,
-legend span {
-	font-size:1.4rem;
-	color:#444;
+textarea {
+  min-height:6rem;
 }
 
 

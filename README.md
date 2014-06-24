@@ -7,6 +7,7 @@
 * Remove Insider signup from header.
 * Add email subscription icon to header.
 * Add submenus to navigation.
+* Style *Insider* signup form for the sidebar.
 
 
 2014-05-27
