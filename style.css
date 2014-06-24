@@ -507,7 +507,7 @@ Header
 		margin:1rem 0;
 		padding:0;
 		text-indent:-99999px;
-		width:30rem;
+		width:100%e;
 	}
 
 	/*------------------------------
@@ -642,6 +642,14 @@ Header
 				vertical-align:top;
 			}
 
+        #email_social ul li a.email.sprite:hover {
+          color:#cc0000;
+        }
+
+        #email_social ul li a.email.sprite:before {
+          content:'\f410';
+        }
+
 				#email_social ul li a.facebook.sprite:hover {
 					color:#3b5998;
 				}
@@ -670,32 +678,6 @@ Header
 					content:'\f202';
 				}
 
-				#email_social form#lawyerist_insider_subscribe {
-					margin:0;
-				}
-
-				#email_social form#lawyerist_insider_subscribe input[type="text"] {
-					box-sizing:content-box;
-					background:#ffffb3;
-					border:0;
-					color:#222;
-					display:block;
-					font-size:1.6rem;
-					margin:0;
-					padding:.6rem .8rem !important;
-					width:28.2rem;
-				}
-
-				#email_social form#lawyerist_insider_subscribe input[type="text"]:focus {
-					background:#fff;
-					color:#222;
-				}
-
-				#email_social form#lawyerist_insider_subscribe label {
-					height:0;
-					text-indent:-99999px;
-				}
-
 
 /*------------------------------
 Menu
@@ -721,10 +703,13 @@ Menu
 	color:#fff;
 }
 
-#menu-item-60843 {
-	float:right;
+.menu-default-container li > ul {
+  display:none;
 }
 
+li#menu-item-74549 {
+  float:right;
+}
 
 /*------------------------------
 Front Page
@@ -1977,7 +1962,7 @@ li.widget {
 	}
 
 	li#popular_posts_tabbed .tabs_sublist ul.wpp-list li a img {
-		border-radius:3.75rem;
+    border-radius:37.5rem;
 		float:left;
 	}
 
