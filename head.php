@@ -2,11 +2,7 @@
 
 <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic,700italic|Roboto+Slab:700,400' rel='stylesheet' type='text/css'>
 
-<<<<<<< HEAD
-<link rel="stylesheet" href="<?php echo get_stylesheet_uri(); ?>?2014-05-27-16-17" type="text/css" media="screen, projection">
-=======
-<link rel="stylesheet" href="<?php echo get_stylesheet_uri(); ?>?2014-06-24-10-03" type="text/css" media="screen, projection">
->>>>>>> add-store-to-front-page
+<link rel="stylesheet" href="<?php echo get_stylesheet_uri(); ?>?2014-06-24-12-59" type="text/css" media="screen, projection">
 <link rel="shortcut icon" href="<?php echo get_bloginfo('template_url'); ?>/images/favicon.ico" type="image/x-icon">
 <link rel="icon" href="<?php echo get_bloginfo('template_url'); ?>/images/favicon.ico" type="image/x-icon">
 
