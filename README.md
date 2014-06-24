@@ -1,21 +1,20 @@
 # A custom WordPress theme for Lawyerist.com
 
-<<<<<<< HEAD
-2014-05-27
-----------
-
-* Make author avatars round.
-* Move popular post image to left, make them circular.
-=======
 2014-06-24
 ----------
 
 * Chance "Store" to "Books" in header.
 * Remove Insider signup from header.
 * Add email subscription icon to header.
-* Add submenus to navigation (and hide them until I get a chance to style drop-downs properly).
+* Add submenus to navigation.
 
->>>>>>> add-store-to-front-page
+
+2014-05-27
+----------
+
+* Make author avatars round.
+* Move popular post image to left, make them circular.
+
 
 2014-05-22
 ----------

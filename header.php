@@ -23,8 +23,8 @@
 	<div id="blog_forum_nav">
 		<ul>
 			<li class="nav_lab"><a href="http://lab.lawyerist.com">forum</a></li>
-    		<li class="nav_sites"><a href="http://sites.lawyerist.com">sites</a></li>
-    		<li class="nav_store"><a href="http://lawyerist.com/store/">books</a></li>
+			<li class="nav_store"><a href="http://lawyerist.com/store/">books</a></li>
+  		<li class="nav_sites"><a href="http://sites.lawyerist.com">sites</a></li>
 		</ul>
 	</div>
 
