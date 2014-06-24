@@ -694,6 +694,7 @@ Menu
   display:inline-block;
   -webkit-font-smoothing:antialiased;
   font:normal 1.6rem/1em 'Genericons';
+  height:1.4rem;
   vertical-align:top;
 }
 
@@ -707,9 +708,12 @@ Menu
 	text-decoration:none;
 }
 
+  .menu-default-container li a:hover {
+    color:#ddd;
+  }
+
 .menu-default-container li:hover a {
 	background-color:#aa0000;
-	color:#fff;
 }
 
 .menu-default-container li > ul {
@@ -727,10 +731,6 @@ Menu
 
   .menu-default-container li > ul li a {
     display:inline-block;
-  }
-
-  .menu-default-container li > ul a:hover {
-    color:#ddd;
   }
 
 .menu-default-container li:hover > ul {
