@@ -686,6 +686,15 @@ Menu
 .menu-default-container li {
 	display:inline-block;
 	margin:0;
+  position:relative;
+}
+
+.menu-default-container li.menu-item-has-children > a:after {
+  content: '\f431';
+  display:inline-block;
+  -webkit-font-smoothing:antialiased;
+  font:normal 1.6rem/1em 'Genericons';
+  vertical-align:top;
 }
 
 .menu-default-container li a {
@@ -698,18 +707,47 @@ Menu
 	text-decoration:none;
 }
 
-.menu-default-container li a:hover {
+.menu-default-container li:hover a {
 	background-color:#aa0000;
 	color:#fff;
 }
 
 .menu-default-container li > ul {
-  display:none;
+  background-color:#aa0000;
+  border-color:#fff;
+  border-style:solid;
+  border-width:0 .2rem .2rem .2rem;
+  margin:0;
+  opacity:0;
+  position:absolute;
+    left:-99999px;
+  width:11.5rem;
+  z-index:10;
+}
+
+  .menu-default-container li > ul li a {
+    display:inline-block;
+  }
+
+  .menu-default-container li > ul a:hover {
+    color:#ddd;
+  }
+
+.menu-default-container li:hover > ul {
+  opacity:1;
+  left:-.2rem;
+  transition:opacity .4s;
 }
 
 li#menu-item-74549 {
   float:right;
 }
+
+  li#menu-item-74549:hover > ul {
+    left:auto;
+    right:-.2rem;
+  }
+
 
 /*------------------------------
 Front Page
