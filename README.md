@@ -8,6 +8,7 @@
 * Add email subscription icon to header.
 * Add submenus to navigation.
 * Style *Insider* signup form for the sidebar.
+* Add author list shortcode and style author list on "About" page.
 
 
 2014-05-27
