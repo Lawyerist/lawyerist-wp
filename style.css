@@ -33,6 +33,7 @@ Front Page
 Content
 	Index & Archive Lists
 	Posts
+  Author List Shortcode
 	Sharing Buttons
 	Buyers Guide
 	Pagenav
@@ -1055,7 +1056,6 @@ Front Page
 
 		.front_page #most_discussed,
 		.front_page #lab_posts {
-			box-shadow:0 0 5rem rgba(0,0,0,.1) inset;
 			display:inline-block;
 			font-family:'Roboto Slab',sans-serif;
 			padding:2rem 0 100rem 0;
@@ -1469,6 +1469,22 @@ Content
 		border-top:1px solid #ddd;
 		padding-top:2.8rem;
 	}
+
+
+  /*------------------------------
+  Author List Shortcode
+  ------------------------------*/
+
+  .author_list {
+    color:#bbb;
+    list-style:none;
+    margin-left:0;
+  }
+
+  .author_list li {
+    display:inline-block;
+    width:33.333%;
+  }
 
 
 	/*------------------------------
@@ -2467,5 +2483,9 @@ and (max-width:659px) {
 		#pagenav .alignleft.pagenav_link_block {
 			margin-bottom:2.8rem;
 		}
+
+  .author_list li {
+    width:50%;
+  }
 
 }
