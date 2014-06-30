@@ -56,26 +56,26 @@
 
 				<h3>Before you go, sign up for our email newsletter:</h3>
 
-				<form accept-charset="UTF-8" action="https://zr188.infusionsoft.com/app/form/process/1694a4caccf4e3492ea92528c1e598ae" class="infusion-form" method="POST">
-					<input name="inf_form_xid" type="hidden" value="1694a4caccf4e3492ea92528c1e598ae" />
-					<input name="inf_form_name" type="hidden" value="Lawyerist Insider 404 Page Signup Form" />
-					<input name="infusionsoft_version" type="hidden" value="1.29.11.21" />
-					<div class="infusion-field">
-						<label for="inf_field_FirstName">First Name *</label>
-						<input class="infusion-field-input-container" id="inf_field_FirstName" name="inf_field_FirstName" type="text" />
-					</div>
-					<div class="infusion-field">
-						<label for="inf_field_LastName">Last Name *</label>
-						<input class="infusion-field-input-container" id="inf_field_LastName" name="inf_field_LastName" type="text" />
-					</div>
-					<div class="infusion-field">
-						<label for="inf_field_Email">Email *</label>
-						<input class="infusion-field-input-container" id="inf_field_Email" name="inf_field_Email" type="text" />
-					</div>
-					<div class="infusion-submit">
-						<input type="submit" value="Submit" />
-					</div>
+				<!-- Begin MailChimp Signup Form -->
+				<div id="mc_embed_signup">
+				<form action="http://lawyerist.us2.list-manage.com/subscribe/post?u=a5da2382c098b6541dcd6cf8e&amp;id=30d7a1f6e2" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+
+				<div class="mc-field-group">
+					<label for="mce-FNAME">First Name </label><input type="text" value="" name="FNAME" class="required" id="mce-FNAME">
+				</div>
+				<div class="mc-field-group">
+					<label for="mce-EMAIL">Email Address </label><input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+				</div>
+					<div id="mce-responses" class="clear">
+						<div class="response" id="mce-error-response" style="display:none"></div>
+						<div class="response" id="mce-success-response" style="display:none"></div>
+					</div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+				    <div style="position: absolute; left: -5000px;"><input type="text" name="b_a5da2382c098b6541dcd6cf8e_30d7a1f6e2" tabindex="-1" value=""></div>
+				    <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
 				</form>
+				</div>
+
+				<!--End mc_embed_signup-->
 
 			</div>
 
