@@ -47,6 +47,7 @@ Footer
 Forms
 	Buttons
 	Gravity Forms
+  MailChimp
 Useful Stuff
 Media Queries
 
@@ -2207,6 +2208,20 @@ textarea {
 	.gform_wrapper textarea {
 		font-size:1.6rem !important;
 	}
+
+  /*------------------------------
+  MailChimp
+  ------------------------------*/
+
+  #mc_embed_signup .input-group ul {
+    list-style:none;
+    margin-left:0;
+  }
+
+  #mc_embed_signup .input-group label {
+    display:inline-block;
+    margin-left:.5em;
+  }
 
 
 /*------------------------------
