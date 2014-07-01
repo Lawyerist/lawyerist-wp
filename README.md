@@ -1,5 +1,11 @@
 # A custom WordPress theme for Lawyerist.com
 
+2014-07-01
+----------
+
+* Fix radio button and checkbox styling on MailChimp forms.
+
+
 2014-06-30
 ----------
 
