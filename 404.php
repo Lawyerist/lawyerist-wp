@@ -58,7 +58,7 @@
 
 				<!-- Begin MailChimp Signup Form -->
 				<div id="mc_embed_signup">
-				<form action="http://lawyerist.us2.list-manage1.com/subscribe/post?u=a5da2382c098b6541dcd6cf8e&amp;id=30d7a1f6e2" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+				<form action="http://lawyerist.us2.list-manage.com/subscribe/post?u=a5da2382c098b6541dcd6cf8e&amp;id=30d7a1f6e2" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
 
 				<div class="mc-field-group">
 					<label for="mce-FNAME">First Name  <span class="asterisk">*</span>
@@ -81,7 +81,7 @@
 				</ul>
 				</div>
 				<div class="mc-field-group input-group">
-				    <strong>Practice type </strong>
+				    <strong>Practice Type </strong>
 				    <ul><li><input type="radio" value="4" name="group[5801]" id="mce-group[5801]-5801-0"><label for="mce-group[5801]-5801-0">Solo</label></li>
 				<li><input type="radio" value="16" name="group[5801]" id="mce-group[5801]-5801-1"><label for="mce-group[5801]-5801-1">Small firm (2–10 lawyers)</label></li>
 				<li><input type="radio" value="32" name="group[5801]" id="mce-group[5801]-5801-2"><label for="mce-group[5801]-5801-2">Medium-sized firm (16–25 lawyers)</label></li>
@@ -89,8 +89,9 @@
 				<li><input type="radio" value="2048" name="group[5801]" id="mce-group[5801]-5801-4"><label for="mce-group[5801]-5801-4">In-house</label></li>
 				<li><input type="radio" value="128" name="group[5801]" id="mce-group[5801]-5801-5"><label for="mce-group[5801]-5801-5">Government</label></li>
 				<li><input type="radio" value="256" name="group[5801]" id="mce-group[5801]-5801-6"><label for="mce-group[5801]-5801-6">Public interest/non-profit</label></li>
-				<li><input type="radio" value="512" name="group[5801]" id="mce-group[5801]-5801-7"><label for="mce-group[5801]-5801-7">Not a lawyer</label></li>
-				<li><input type="radio" value="1024" name="group[5801]" id="mce-group[5801]-5801-8"><label for="mce-group[5801]-5801-8">Other</label></li>
+				<li><input type="radio" value="4096" name="group[5801]" id="mce-group[5801]-5801-7"><label for="mce-group[5801]-5801-7">Legal staff (paralegal, legal secretary)</label></li>
+				<li><input type="radio" value="512" name="group[5801]" id="mce-group[5801]-5801-8"><label for="mce-group[5801]-5801-8">Not a lawyer / not in the legal industry</label></li>
+				<li><input type="radio" value="1024" name="group[5801]" id="mce-group[5801]-5801-9"><label for="mce-group[5801]-5801-9">Other</label></li>
 				</ul>
 				</div>
 					<div id="mce-responses" class="clear">
