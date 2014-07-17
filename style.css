@@ -1281,7 +1281,8 @@ Content
 	margin-bottom:2rem;
 }
 
-#lawyerist_content_search input#st-search-input {
+#lawyerist_content_search input#st-search-input,
+#lawyerist_content_search input#st-search-input-404 {
 	border-radius:.2rem;
 	font-size:inherit !important;
 	margin:0;
@@ -1852,6 +1853,7 @@ Sidebar
 	}
 
 #lawyerist_sidebar_search input#st-search-input,
+#lawyerist_sidebar_search input#st-search-input-404,
 li.gform_widget input[type="url"],
 li.gform_widget input[type="text"] {
 	border-radius:.2rem !important;
@@ -2101,7 +2103,8 @@ select {
 		box-shadow:0 0 .3rem rgba(0,0,0,.2);
 	}
 
-input#st-search-input {
+input#st-search-input,
+input#st-search-input-404 {
 	padding-left:2.7rem !important;
 }
 

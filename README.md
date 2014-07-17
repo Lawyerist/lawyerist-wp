@@ -4,6 +4,8 @@
 ----------
 
 * Fix button appearance on iOS.
+* Fix Swiftype search on 404 page and move Swiftype script to the footer for faster page rendering.
+
 
 2014-07-01
 ----------

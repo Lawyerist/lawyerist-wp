@@ -13,4 +13,23 @@
 
 <!-- Load scripts -->
 
+<script type="text/javascript">
+	var Swiftype = window.Swiftype || {};
+	(function() {
+	Swiftype.key = 'Y6pVA25sVzapo465JPtR';
+	Swiftype.inputElement = '#st-search-input';
+	Swiftype.additionalInputElements = ['#st-search-input-404'];
+	Swiftype.resultContainingElement = '#st-results-container';
+	Swiftype.attachElement = '#st-search-input';
+	Swiftype.renderStyle = "overlay";
+
+	var script = document.createElement('script');
+	script.type = 'text/javascript';
+	script.async = true;
+	script.src = "//swiftype.com/embed.js";
+	var entry = document.getElementsByTagName('script')[0];
+	entry.parentNode.insertBefore(script, entry);
+	}());
+</script>
+
 <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/jquery.idTabs.min.js"></script>
