@@ -2161,6 +2161,7 @@ textarea {
 		padding:.6rem 1.2rem;
 		text-decoration:none;
 		text-transform:none;
+    -webkit-appearance:none;
 	}
 
   .button:hover,

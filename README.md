@@ -1,5 +1,10 @@
 # A custom WordPress theme for Lawyerist.com
 
+2014-07-17
+----------
+
+* Fix button appearance on iOS.
+
 2014-07-01
 ----------
 
