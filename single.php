@@ -53,24 +53,24 @@
 
 			</div>
 
-            <div class="clear"></div>
+      <div class="clear"></div>
 
-            <div id="related_posts">
-    			<h3>KEEP READING on LAWYERIST</h3>
+			<div id="pagenav">
+				<div class="alignleft pagenav_link_block">
+					<?php next_post_link('%link','<div class="genericon pagenav_leftarrow"></div><div class="pagenav_link">%title</div>',0) ?>
+				</div>
+				<div class="alignright pagenav_link_block">
+					<?php previous_post_link('%link','<div class="pagenav_link">%title</div><div class="genericon pagenav_rightarrow"></div>',0) ?>
+				</div>
+				<div class="clear"></div>
+			</div>
+
+      <div id="related_posts">
+  			<h3>KEEP READING on LAWYERIST</h3>
 				<?php get_related_posts_thumbnails(); ?>
 			</div>
 
-            <div id="comments"><?php comments_template(); ?></div>
-
-			<div id="pagenav">
-                <div class="alignleft pagenav_link_block">
-                	<?php next_post_link('%link','<div class="genericon pagenav_leftarrow"></div><div class="pagenav_link">%title</div>',0) ?>
-                </div>
-                <div class="alignright pagenav_link_block">
-                	<?php previous_post_link('%link','<div class="pagenav_link">%title</div><div class="genericon pagenav_rightarrow"></div>',0) ?>
-                </div>
-                <div class="clear"></div>
-            </div>
+      <div id="comments"><?php comments_template(); ?></div>
 
 		<?php endwhile;
 		endif; ?>
