@@ -1,5 +1,11 @@
 # A custom WordPress theme for Lawyerist.com
 
+2014-07-18
+----------
+
+* Move navigation to below the post body.
+
+
 2014-07-17
 ----------
 
