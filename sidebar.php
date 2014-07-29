@@ -7,24 +7,21 @@
 
 <li class="sidebar_ads widget">
 	<ul>
-		<li id="ap2" class="sidebar_ad">
-			<!-- lawyerist_ap2_sidebar1 -->
+		<li id="ap2" class="sidebar_ad"><!-- lawyerist_ap2_sidebar1 -->
 			<div id='div-gpt-ad-1356989285353-1' style='width:300px; height:250px;'>
 			<script type='text/javascript'>
 			googletag.cmd.push(function() { googletag.display('div-gpt-ad-1356989285353-1'); });
 			</script>
 			</div>
 		</li>
-		<li id="ap3" class="sidebar_ad">
-			<!-- lawyerist_ap3_sidebar2 -->
+		<li id="ap3" class="sidebar_ad"><!-- lawyerist_ap3_sidebar2 -->
 			<div id='div-gpt-ad-1356989285353-2' style='width:300px; height:250px;'>
 			<script type='text/javascript'>
 			googletag.cmd.push(function() { googletag.display('div-gpt-ad-1356989285353-2'); });
 			</script>
 			</div>
 		</li>
-		<li id="ap4" class="sidebar_ad">
-			<!-- lawyerist_ap4_halfpage -->
+		<li id="ap4" class="sidebar_ad"><!-- lawyerist_ap4_halfpage -->
 			<div id='div-gpt-ad-1356989285353-3' style='width:300px; height:600px;'>
 			<script type='text/javascript'>
 			googletag.cmd.push(function() { googletag.display('div-gpt-ad-1356989285353-3'); });

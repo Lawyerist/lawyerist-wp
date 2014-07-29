@@ -3,7 +3,7 @@
 2014-07-29
 ----------
 
-* Adjust leaderboard padding so it looks better for visitors with ad blockers enabled.
+* Adjust leaderboard and sidebar for visitors with ad blockers enabled.
 
 
 2014-07-18
