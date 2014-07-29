@@ -100,7 +100,6 @@ body {
 
 #leaderboard_container {
 	background:#ddd;
-	padding:1rem 0;
 	width:100%;
 }
 
@@ -476,10 +475,8 @@ Leaderboard Ad
 ------------------------------*/
 
 #div-gpt-ad-1356989285353-0 {
-	display:block;
-	height:9rem;
 	margin:0 auto;
-	width:72.8rem;
+  padding:1rem 0;
 }
 
 
@@ -1281,8 +1278,7 @@ Content
 	margin-bottom:2rem;
 }
 
-#lawyerist_content_search input#st-search-input,
-#lawyerist_content_search input#st-search-input-404 {
+#lawyerist_content_search input#st-search-input {
 	border-radius:.2rem;
 	font-size:inherit !important;
 	margin:0;
@@ -1640,7 +1636,7 @@ Content
 	------------------------------*/
 
   #pagenav {
-  	margin-bottom:4em;
+  	margin-bottom:6em;
   }
 
   #pagenav .pagenav_link_block {
@@ -1719,14 +1715,10 @@ Content
 	Related Posts
 	------------------------------*/
 
-  #related_posts {
-    margin-bottom:4rem;
-  }
-
   #related_posts h3 {
   	color:#bbb;
-  	font-family:'Roboto Slab',sans-serif;
-  	font-weight:bold;
+	font-family:'Roboto Slab',sans-serif;
+	font-weight:bold;
   }
 
 	ul#related_posts_thumbnails {
@@ -1743,7 +1735,7 @@ Content
 		display:inline-block;
 		float:left;
 		height:15rem;
-		margin:0 1rem 0 0;
+		margin:0 10px 36px 0;
 		overflow:hidden;
 		padding:0;
 		position:relative;
@@ -1857,7 +1849,6 @@ Sidebar
 	}
 
 #lawyerist_sidebar_search input#st-search-input,
-#lawyerist_sidebar_search input#st-search-input-404,
 li.gform_widget input[type="url"],
 li.gform_widget input[type="text"] {
 	border-radius:.2rem !important;
@@ -2107,8 +2098,7 @@ select {
 		box-shadow:0 0 .3rem rgba(0,0,0,.2);
 	}
 
-input#st-search-input,
-input#st-search-input-404 {
+input#st-search-input {
 	padding-left:2.7rem !important;
 }
 
@@ -2168,7 +2158,6 @@ textarea {
 		padding:.6rem 1.2rem;
 		text-decoration:none;
 		text-transform:none;
-    -webkit-appearance:none;
 	}
 
   .button:hover,
