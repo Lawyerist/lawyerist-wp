@@ -1,5 +1,11 @@
 # A custom WordPress theme for Lawyerist.com
 
+2014-07-31
+----------
+
+* Fix responsiveness for size-full images.
+
+
 2014-07-29
 ----------
 
