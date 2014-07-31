@@ -2471,6 +2471,11 @@ and (max-width:659px) {
 
 	/* Content */
 
+  img.size-full {
+    display:block;
+    width:100%;
+  }
+
 	p.pullout {
 		display:block;
 		float:none;
