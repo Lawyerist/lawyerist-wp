@@ -102,7 +102,7 @@
   	</div>
 
 
-    <div class="fp_tab"><h2>Categories</h2></div>
+    <div class="fp_tab"><h2>Topics</h2></div>
     <div id="popular_in_cats">
 
       <div class="cat_post left">
