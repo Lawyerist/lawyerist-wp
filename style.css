@@ -27,6 +27,7 @@ Menu
 Front Page
 	Featured Posts
 	"Read more posts" Link
+  Category Posts
 	Discussions
 	Sites Network Posts
 	Bookstore
@@ -1040,6 +1041,41 @@ Front Page
 			line-height:1em;
 			margin:0;
 		}
+
+  /*------------------------------
+  Category Posts
+  ------------------------------*/
+
+  .front_page #popular_in_cats {
+      margin-bottom:2.8rem;
+  }
+
+    .front_page .cat_post {
+      background:#fff;
+      border:1px solid #ddd;
+      display:inline-block;
+      float:left;
+      height:24.9rem;
+      padding:1.9rem 2.4rem;
+      width:26.9rem;
+    }
+
+    .front_page .cat_post.left {
+      margin:0 .2rem .2rem 0;
+    }
+
+      .front_page .cat_post h3 a {
+        color:#555;
+      }
+
+      .front_page .cat_post .wpp-thumbnail {
+        box-shadow: .1rem .1rem .2rem #ddd;
+      }
+
+      .front_page .cat_post .wpp_headline {
+        display:block;
+        font-family:'Roboto Slab',sans-serif;
+      }
 
 
 	/*------------------------------
@@ -2429,6 +2465,29 @@ and (max-width:659px) {
 		line-height:3.3rem;
 		margin-bottom:1.65rem;
 	}
+
+  .front_page #popular_in_cats {
+    border-top:.1rem solid #ddd;
+    padding:2rem 2.5rem 0 2.5rem;
+  }
+
+  .front_page #popular_in_cats .cat_post {
+    border-width:0 0 .1rem 0;
+    height:auto;
+    margin:0 0 2.8rem 0;
+    padding:0;
+    width:100%;
+
+  }
+
+    .front_page .cat_post .wpp-thumbnail {
+      height:auto;
+      width:100%;
+    }
+
+    .front_page .cat_post .wpp_headline {
+      margin-bottom:2.8rem;
+    }
 
 	.front_page #discussions_container {
 		margin-bottom:0;

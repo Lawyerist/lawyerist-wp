@@ -4,6 +4,7 @@
 ----------
 
 * Fix responsiveness for size-full images.
+* Add categories section to front page.
 
 
 2014-07-29
