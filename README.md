@@ -6,6 +6,12 @@
 * Promote _humor_ tag to _Legal Humor_ category.
 
 
+2014-08-02
+----------
+
+* Re-fix buttons on iOS.
+
+
 2014-07-31
 ----------
 
