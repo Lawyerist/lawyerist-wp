@@ -163,8 +163,8 @@
       </div>
 
       <div class="cat_post bottom">
-        <h3><a href="http://lawyerist.com/topic/our-picks/">Our Picks</a></h3>
-        <?php wpp_get_mostpopular("wpp_start=' '&post_type='post'&cat='2621'&range='all'&limit=1&stats_comments=0&thumbnail_height=150&thumbnail_width=269&post_html='{thumb}<a class=\"wpp_headline\" href=\"{url}?utm_source=lawyerist_sidebar\">{text_title}</a>'&wpp_end=' '"); ?>
+        <h3><a href="http://lawyerist.com/topic/legal-humor/">Humor</a></h3>
+        <?php wpp_get_mostpopular("wpp_start=' '&post_type='post'&cat='206'&range='all'&limit=1&stats_comments=0&thumbnail_height=150&thumbnail_width=269&post_html='{thumb}<a class=\"wpp_headline\" href=\"{url}?utm_source=lawyerist_sidebar\">{text_title}</a>'&wpp_end=' '"); ?>
       </div>
 
       <div class="clear"></div>
