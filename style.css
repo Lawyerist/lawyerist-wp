@@ -1537,84 +1537,20 @@ Content
 	Sharing Buttons
 	------------------------------*/
 
-	.juiz_sps_links {
-		margin-top:0 !important;
+	.sharedaddy {
 		position:absolute;
 			top:0;
 			right:-20px;
 	}
 
-		.juiz_sps_links ul {
+		.sd-content ul {
 			position:fixed;
 		}
 
-		.juiz_sps_links ul li.juiz_sps_item {
-			display:block;
-			margin-bottom:.8rem !important;
-		}
-
-			li.juiz_sps_item a {
-				padding:.5rem 1rem !important
-			}
-
-		.juiz_sps_links ul li .juiz_sps_counter,
-		.juiz_sps_links ul li a,
-		.juiz_sps_links ul li .juiz_sps_totalcount {
-			border-radius:0;
-			font-family:inherit !important;
-			margin:0 !important;
-		}
-
-		.juiz_sps_links ul li a .juiz_sps_network_name {
-			color:#fff;
-		}
-
-    li.juiz_sps_link_facebook .juiz_sps_counter {
-			border-color:#3b5998 !important;
+    .sd-content ul li {
+      display:block !important;
     }
 
-    li.juiz_sps_link_facebook a {
-			background-color:#3b5998 !important;
-    }
-
-		li.juiz_sps_link_google .juiz_sps_counter {
-			border-color:#d34836 !important;
-		}
-
-		li.juiz_sps_link_google a {
-			background-color:#d34836 !important;
-		}
-
-		li.juiz_sps_link_linkedin .juiz_sps_counter {
-			border-color:#4875b4 !important;
-		}
-
-		li.juiz_sps_link_linkedin a {
-			background-color:#4875b4 !important;
-		}
-
-		li.juiz_sps_link_pinterest .juiz_sps_counter {
-			border-color:#cb2027 !important;
-		}
-
-		li.juiz_sps_link_pinterest a {
-			background-color:#cb2027 !important;
-		}
-
-    li.juiz_sps_link_twitter .juiz_sps_counter {
-			border-color:#4875b4 !important;
-    }
-
-    li.juiz_sps_link_twitter a {
-			background-color:#4875b4 !important;
-    }
-
-		li.juiz_sps_totalcount_item .juiz_sps_totalcount {
-			background-color:#777;
-			border:0;
-			color:#fff;
-			padding:.6rem 1rem;
-		}
 
 	/*------------------------------
 	Buyers Guide
@@ -2304,29 +2240,22 @@ Useful Stuff
 Media Queries
 ------------------------------*/
 
-/* Content width (960px) + social icons (138px on each side + 20px offset on each side) + 30px for padding */
+/* Content width (960px) + social icons (52px on each side + 20px offset on each side) + 30px for padding */
 
 @media only screen
-and (max-width:1305px) {
+and (max-width:1083px) {
 
-	.juiz_sps_links {
+	.sharedaddy {
 			margin-bottom:1.6rem;
 			position:static;
 	}
 
-		.juiz_sps_links ul {
+		.sd-content ul {
 				position:static;
 		}
 
-		.juiz_sps_links ul li.juiz_sps_item {
-				display:inline-block;
-				margin:0 1rem 1rem 0 !important;
-		}
-
-		li.juiz_sps_totalcount_item .juiz_sps_totalcount {
-			display:block;
-			position:relative;
-				top:.1rem;
+		.sd-content ul li {
+				display:inline !important;
 		}
 
 }
