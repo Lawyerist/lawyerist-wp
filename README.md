@@ -1,5 +1,11 @@
 # A custom WordPress theme for Lawyerist.com
 
+2014-08-08
+----------
+
+* Switch to Jetpack/Sharedaddy social sharing icons.
+
+
 2014-08-06
 ----------
 
