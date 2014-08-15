@@ -1497,6 +1497,20 @@ Content
 		padding-left:120px;
 	}
 
+  .category_list {
+    margin-bottom:.28rem;
+  }
+
+  .category_list:before {
+    color:#bbb;
+    content: '\f301';
+    display:inline-block;
+    float:left;
+    -webkit-font-smoothing:antialiased;
+    font:normal 3.2rem/1em 'Genericons';
+    vertical-align:middle;
+  }
+
 	.tag_list:before {
 		color:#bbb;
 		content: '\f302';

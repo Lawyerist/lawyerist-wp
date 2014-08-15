@@ -4,6 +4,7 @@
 ----------
 
 * Fix Swiftype search box in the content column.
+* Add category to single post pages.
 
 
 2014-08-08
