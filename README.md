@@ -1,5 +1,11 @@
 # A custom WordPress theme for Lawyerist.com
 
+2014-08-15
+----------
+
+* Fix Swiftype search box in the content column.
+
+
 2014-08-08
 ----------
 
