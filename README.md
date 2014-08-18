@@ -1,5 +1,10 @@
 # A custom WordPress theme for Lawyerist.com
 
+2014-08-18
+----------
+
+* Make Google happy with our schema.
+
 2014-08-15
 ----------
 
