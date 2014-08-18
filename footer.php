@@ -11,6 +11,12 @@
 </div>
 </div>
 
+
+<!-- Link Google+ Page -->
+
+<a href="https://www.google.com/+Lawyerist" rel="publisher"></a>
+
+
 <!-- Load scripts -->
 
 <script type="text/javascript">

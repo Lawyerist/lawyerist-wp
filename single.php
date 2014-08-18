@@ -15,13 +15,13 @@
 		<?php if ( have_posts() ) :
 		while ( have_posts() ) : the_post(); ?>
 
-			<div <?php post_class($class); ?>>
+			<div <?php post_class('hentry'); ?>>
 
-				<h1 class="headline" itemprop="headline"><?php the_title(); ?></h1>
+				<h1 class="headline entry-title" itemprop="headline"><?php the_title(); ?></h1>
 
 				<div class="postmeta">
 					<div class="comment_link"><a href="#comments"><?php comments_number('leave a comment','1 comment','% comments'); ?></a></div>
-					<div class="author_link">by <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>"><?php the_author(); ?></a> on <span itemprop="datePublished"><?php the_time('F jS, Y'); ?></span></div>
+					<div class="author_link">by <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>"><span class="vcard author post-author"><span class="fn"><?php the_author(); ?></span></span></a> on <span class="post-date updated"><?php the_time('F jS, Y'); ?></span></div>
 					<div class="clear"></div>
 				</div>
 
