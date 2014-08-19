@@ -5,6 +5,7 @@
 
 * Gravity Forms style tweaks.
 * Change settings for HTTPS.
+* Updates Sites note.
 
 
 2014-08-18
