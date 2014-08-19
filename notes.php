@@ -1,8 +1,8 @@
 <?php
 
 if ( has_tag('law-firm-websites') ) { ?>
-	<p class="note">Get a <em>great</em> law firm website from Lawyerist Sites, starting at $500.<br />
-	<a href="http://sites.lawyerist.com/websites/?utm_source=Lawyerist&utm_medium=text-link&utm_campaign=sites_note" rel="nofollow">Learn more.</a></p>
+	<p class="note">Need help getting a great law-firm website? We're here to help.<br />
+	<a href="http://sites.lawyerist.com?utm_source=Lawyerist&utm_medium=text-link&utm_campaign=sites_note" rel="nofollow">Learn more.</a></p>
 <?php }
 
 $blogging_tags = array(
