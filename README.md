@@ -1,5 +1,12 @@
 # A custom WordPress theme for Lawyerist.com
 
+2014-08-19
+----------
+
+* Gravity Forms style tweaks.
+* Change settings for HTTPS.
+
+
 2014-08-18
 ----------
 

@@ -208,7 +208,7 @@
               <li>
                 <a href="<?php echo esc_url( $item->get_permalink() ); ?>"
                   title="<?php printf( __( 'Updated on %s', 'my-text-domain' ), $item->get_date('F jS, Y @ g:i a') ); ?>">
-                  <img src="http://lawyerist.com/lawyerist/wp-content/uploads/2013/10/lab-favicon.png" />
+                  <img src="https://lawyerist.com/lawyerist/wp-content/uploads/2013/10/lab-favicon.png" />
                   <div class="lab_headline"><?php echo esc_html( $item->get_title() ); ?></div>
                 </a>
               </li>
