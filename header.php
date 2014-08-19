@@ -31,9 +31,9 @@
 	<div id="email_social">
 	<ul>
 		<li><a class="email sprite" href="http://feedburner.google.com/fb/a/mailverify?uri=solosmalltech&loc=en_US" title="Subscribe to Lawyerist by email" target="_blank"></a></li>
-		<li><a class="linkedin sprite" href="http://www.linkedin.com/company/lawyerist-media-llc" title="Connect with Lawyerist on LinkedIn" target="_blank"></a></li>
-		<li><a class="facebook sprite" href="http://facebook.com/lawyerist" title="Friend Lawyerist on Facebook" target="_blank"></a></li>
-		<li><a class="twitter sprite" href="http://twitter.com/lawyerist" title="Follow Lawyerist on Twitter" target="_blank"></a></li>
+		<li><a class="linkedin sprite" href="https://www.linkedin.com/company/lawyerist-media-llc" title="Connect with Lawyerist on LinkedIn" target="_blank"></a></li>
+		<li><a class="facebook sprite" href="https://facebook.com/lawyerist" title="Friend Lawyerist on Facebook" target="_blank"></a></li>
+		<li><a class="twitter sprite" href="https://twitter.com/lawyerist" title="Follow Lawyerist on Twitter" target="_blank"></a></li>
 		<li class="lawyerist_connect_more">
 			<a href="http://lawyerist.com/subscribe/" title="More ways to subscribe to connect with Lawyerist">
 			<div class="connect_more">More</div>
