@@ -64,6 +64,10 @@ if ( function_exists( 'add_image_size' ) ) {
 	add_image_size( 'featured', 320, 240, true);
 }
 
+if ( function_exists( 'add_image_size' ) ) {
+	add_image_size( 'featured_topics', 269, 150, true);
+}
+
 
 /*------------------------------
 Sidebar
