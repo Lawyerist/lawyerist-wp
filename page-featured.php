@@ -78,7 +78,7 @@
   					</div><!--end .headline_excerpt-->
 
   					<div class="shadowbox"></div>
-  					<?php if ( has_post_thumbnail() ) { the_post_thumbnail( 'featured_thumb_2' ); } ?>
+  					<?php if ( has_post_thumbnail() ) { the_post_thumbnail( 'featured' ); } ?>
 
   					<div class="clear"></div>
 
