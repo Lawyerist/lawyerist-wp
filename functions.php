@@ -52,9 +52,16 @@ function featuredtoRSS($content) {
 add_filter('the_excerpt_rss', 'featuredtoRSS');
 add_filter('the_content_feed', 'featuredtoRSS');
 
+if ( function_exists( 'add_image_size' ) ) {
+	add_image_size( '60px_thumb', 60, 60, true);
+}
 
 if ( function_exists( 'add_image_size' ) ) {
-	add_image_size( 'featured_thumb_2', 320, 240, true);
+	add_image_size( '75px_thumb', 75, 75, true);
+}
+
+if ( function_exists( 'add_image_size' ) ) {
+	add_image_size( 'featured', 320, 240, true);
 }
 
 

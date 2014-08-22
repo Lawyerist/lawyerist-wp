@@ -1,5 +1,11 @@
 # A custom WordPress theme for Lawyerist.com
 
+2014-08-22
+----------
+
+* Add smaller thumbnail sizes.
+
+
 2014-08-19
 ----------
 
