@@ -176,7 +176,7 @@
   	<div id="discussions_container">
       <div id="most_discussed">
         <h3>Most-Discussed Posts</h3>
-  			<?php wpp_get_mostpopular("post_type='post'&range=monthly&order_by=comments&limit=3&thumbnail_height=60&thumbnail_width=60&post_html='<li><div class=\"wpp_thumb\">{thumb}</div><a class=\"wpp_headline\" href=\"{url}\">{text_title}</a><a class=\"comment_link\" href=\"{url}#comments\?utm_source=lawyerist_fp_most_discussed&utm_medium=internal" rel=\"nofollow\">{comments} recent comments</a><div class=\"clear\"></div></li>'"); ?>
+  			<?php wpp_get_mostpopular("post_type='post'&range=monthly&order_by=comments&limit=3&thumbnail_height=60&thumbnail_width=60&post_html='<li><div class=\"wpp_thumb\">{thumb}</div><a class=\"wpp_headline\" href=\"{url}\">{text_title}</a><a class=\"comment_link\" href=\"{url}#comments\?utm_source=lawyerist_fp_most_discussed&utm_medium=internal\" rel=\"nofollow\">{comments} recent comments</a><div class=\"clear\"></div></li>'"); ?>
         <div class="clear"></div>
       </div>
       <div id="lab_posts">
