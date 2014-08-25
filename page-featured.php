@@ -31,7 +31,7 @@
 
           $do_not_duplicate = $post->ID; ?>
 
-          <a class="fp_sticky" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
+          <a class="fp_sticky" href="<?php the_permalink(); ?>?utm_source=lawyerist_fp_pinned&utm_medium=internal" rel="bookmark" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
            <div class="pin"></div>
            <p><?php the_title(); ?></p>
           </a>
@@ -63,7 +63,7 @@
   					'post_num_' . $post_num
   				); ?>
 
-  				<a id="post-<?php the_ID(); ?>" <?php post_class($classes); ?> href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
+  				<a id="post-<?php the_ID(); ?>" <?php post_class($classes); ?> href="<?php the_permalink(); ?>?utm_source=lawyerist_fp_featured&utm_medium=internal" rel="bookmark" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
 
   					<div class="headline_excerpt">
 
@@ -107,12 +107,12 @@
 
       <div class="cat_post left">
         <h3><a href="http://lawyerist.com/topic/practice-management/">Practice Management</a></h3>
-        <?php wpp_get_mostpopular("wpp_start=' '&post_type='post'&cat='362'&range='all'&limit=1&stats_comments=0&thumbnail_height=150&thumbnail_width=269&post_html='{thumb}<a class=\"wpp_headline\" href=\"{url}?utm_source=lawyerist_sidebar\">{text_title}</a>'&wpp_end=' '"); ?>
+        <?php wpp_get_mostpopular("wpp_start=' '&post_type='post'&cat='362'&range='all'&limit=1&stats_comments=0&thumbnail_height=150&thumbnail_width=269&post_html='{thumb}<a class=\"wpp_headline\" href=\"{url}?utm_source=lawyerist_fp_topics&utm_medium=internal\">{text_title}</a>'&wpp_end=' '"); ?>
       </div>
 
       <div class="cat_post">
         <h3><a href="http://lawyerist.com/topic/starting-a-law-firm/">Starting a Law Firm</a></h3>
-        <?php wpp_get_mostpopular("wpp_start=' '&post_type='post'&cat='708'&range='all'&limit=1&stats_comments=0&thumbnail_height=150&thumbnail_width=269&post_html='{thumb}<a class=\"wpp_headline\" href=\"{url}?utm_source=lawyerist_sidebar\">{text_title}</a>'&wpp_end=' '"); ?>
+        <?php wpp_get_mostpopular("wpp_start=' '&post_type='post'&cat='708'&range='all'&limit=1&stats_comments=0&thumbnail_height=150&thumbnail_width=269&post_html='{thumb}<a class=\"wpp_headline\" href=\"{url}?utm_source=lawyerist_fp_topics&utm_medium=internal\">{text_title}</a>'&wpp_end=' '"); ?>
       </div>
 
       <div class="clear"></div>
@@ -120,12 +120,12 @@
 
       <div class="cat_post left">
         <h3><a href="http://lawyerist.com/topic/tech/">Tech</a></h3>
-        <?php wpp_get_mostpopular("wpp_start=' '&post_type='post'&cat='10'&range='all'&limit=1&stats_comments=0&thumbnail_height=150&thumbnail_width=269&post_html='{thumb}<a class=\"wpp_headline\" href=\"{url}?utm_source=lawyerist_sidebar\">{text_title}</a>'&wpp_end=' '"); ?>
+        <?php wpp_get_mostpopular("wpp_start=' '&post_type='post'&cat='10'&range='all'&limit=1&stats_comments=0&thumbnail_height=150&thumbnail_width=269&post_html='{thumb}<a class=\"wpp_headline\" href=\"{url}?utm_source=lawyerist_fp_topics&utm_medium=internal\">{text_title}</a>'&wpp_end=' '"); ?>
       </div>
 
       <div class="cat_post">
         <h3><a href="http://lawyerist.com/topic/marketing/">Marketing</a></h3>
-        <?php wpp_get_mostpopular("wpp_start=' '&post_type='post'&cat='6'&range='all'&limit=1&stats_comments=0&thumbnail_height=150&thumbnail_width=269&post_html='{thumb}<a class=\"wpp_headline\" href=\"{url}?utm_source=lawyerist_sidebar\">{text_title}</a>'&wpp_end=' '"); ?>
+        <?php wpp_get_mostpopular("wpp_start=' '&post_type='post'&cat='6'&range='all'&limit=1&stats_comments=0&thumbnail_height=150&thumbnail_width=269&post_html='{thumb}<a class=\"wpp_headline\" href=\"{url}?utm_source=lawyerist_fp_topics&utm_medium=internal\">{text_title}</a>'&wpp_end=' '"); ?>
       </div>
 
       <div class="clear"></div>
@@ -133,12 +133,12 @@
 
       <div class="cat_post left">
         <h3><a href="http://lawyerist.com/topic/lawyering-skills/">Lawyering Skills</a></h3>
-        <?php wpp_get_mostpopular("wpp_start=' '&post_type='post'&cat='886'&range='all'&limit=1&stats_comments=0&thumbnail_height=150&thumbnail_width=269&post_html='{thumb}<a class=\"wpp_headline\" href=\"{url}?utm_source=lawyerist_sidebar\">{text_title}</a>'&wpp_end=' '"); ?>
+        <?php wpp_get_mostpopular("wpp_start=' '&post_type='post'&cat='886'&range='all'&limit=1&stats_comments=0&thumbnail_height=150&thumbnail_width=269&post_html='{thumb}<a class=\"wpp_headline\" href=\"{url}?utm_source=lawyerist_fp_topics&utm_medium=internal\">{text_title}</a>'&wpp_end=' '"); ?>
       </div>
 
       <div class="cat_post">
         <h3><a href="http://lawyerist.com/topic/ethics/">Ethics</a></h3>
-        <?php wpp_get_mostpopular("wpp_start=' '&post_type='post'&cat='132'&range='all'&limit=1&stats_comments=0&thumbnail_height=150&thumbnail_width=269&post_html='{thumb}<a class=\"wpp_headline\" href=\"{url}?utm_source=lawyerist_sidebar\">{text_title}</a>'&wpp_end=' '"); ?>
+        <?php wpp_get_mostpopular("wpp_start=' '&post_type='post'&cat='132'&range='all'&limit=1&stats_comments=0&thumbnail_height=150&thumbnail_width=269&post_html='{thumb}<a class=\"wpp_headline\" href=\"{url}?utm_source=lawyerist_fp_topics&utm_medium=internal\">{text_title}</a>'&wpp_end=' '"); ?>
       </div>
 
       <div class="clear"></div>
@@ -146,12 +146,12 @@
 
       <div class="cat_post left">
         <h3><a href="http://lawyerist.com/topic/lifestyle/">Lifestyle</a></h3>
-        <?php wpp_get_mostpopular("wpp_start=' '&post_type='post'&cat='2622'&range='all'&limit=1&stats_comments=0&thumbnail_height=150&thumbnail_width=269&post_html='{thumb}<a class=\"wpp_headline\" href=\"{url}?utm_source=lawyerist_sidebar\">{text_title}</a>'&wpp_end=' '"); ?>
+        <?php wpp_get_mostpopular("wpp_start=' '&post_type='post'&cat='2622'&range='all'&limit=1&stats_comments=0&thumbnail_height=150&thumbnail_width=269&post_html='{thumb}<a class=\"wpp_headline\" href=\"{url}?utm_source=lawyerist_fp_topics&utm_medium=internal\">{text_title}</a>'&wpp_end=' '"); ?>
       </div>
 
       <div class="cat_post">
         <h3><a href="http://lawyerist.com/topic/careers/">Careers</a></h3>
-        <?php wpp_get_mostpopular("wpp_start=' '&post_type='post'&cat='707'&range='all'&limit=1&stats_comments=0&thumbnail_height=150&thumbnail_width=269&post_html='{thumb}<a class=\"wpp_headline\" href=\"{url}?utm_source=lawyerist_sidebar\">{text_title}</a>'&wpp_end=' '"); ?>
+        <?php wpp_get_mostpopular("wpp_start=' '&post_type='post'&cat='707'&range='all'&limit=1&stats_comments=0&thumbnail_height=150&thumbnail_width=269&post_html='{thumb}<a class=\"wpp_headline\" href=\"{url}?utm_source=lawyerist_fp_topics&utm_medium=internal\">{text_title}</a>'&wpp_end=' '"); ?>
       </div>
 
       <div class="clear"></div>
@@ -159,12 +159,12 @@
 
       <div class="cat_post left bottom">
         <h3><a href="http://lawyerist.com/topic/law-school/">Law School</a></h3>
-        <?php wpp_get_mostpopular("wpp_start=' '&post_type='post'&cat='743'&range='all'&limit=1&stats_comments=0&thumbnail_height=150&thumbnail_width=269&post_html='{thumb}<a class=\"wpp_headline\" href=\"{url}?utm_source=lawyerist_sidebar\">{text_title}</a>'&wpp_end=' '"); ?>
+        <?php wpp_get_mostpopular("wpp_start=' '&post_type='post'&cat='743'&range='all'&limit=1&stats_comments=0&thumbnail_height=150&thumbnail_width=269&post_html='{thumb}<a class=\"wpp_headline\" href=\"{url}?utm_source=lawyerist_fp_topics&utm_medium=internal\">{text_title}</a>'&wpp_end=' '"); ?>
       </div>
 
       <div class="cat_post bottom">
         <h3><a href="http://lawyerist.com/topic/legal-humor/">Humor</a></h3>
-        <?php wpp_get_mostpopular("wpp_start=' '&post_type='post'&cat='206'&range='all'&limit=1&stats_comments=0&thumbnail_height=150&thumbnail_width=269&post_html='{thumb}<a class=\"wpp_headline\" href=\"{url}?utm_source=lawyerist_sidebar\">{text_title}</a>'&wpp_end=' '"); ?>
+        <?php wpp_get_mostpopular("wpp_start=' '&post_type='post'&cat='206'&range='all'&limit=1&stats_comments=0&thumbnail_height=150&thumbnail_width=269&post_html='{thumb}<a class=\"wpp_headline\" href=\"{url}?utm_source=lawyerist_fp_topics&utm_medium=internal\">{text_title}</a>'&wpp_end=' '"); ?>
       </div>
 
       <div class="clear"></div>
@@ -176,7 +176,7 @@
   	<div id="discussions_container">
       <div id="most_discussed">
         <h3>Most-Discussed Posts</h3>
-  			<?php wpp_get_mostpopular("post_type='post'&range=monthly&order_by=comments&limit=3&thumbnail_height=60&thumbnail_width=60&post_html='<li><div class=\"wpp_thumb\">{thumb}</div><a class=\"wpp_headline\" href=\"{url}\">{text_title}</a><a class=\"comment_link\" href=\"{url}#comments\" rel=\"nofollow\">{comments} recent comments</a><div class=\"clear\"></div></li>'"); ?>
+  			<?php wpp_get_mostpopular("post_type='post'&range=monthly&order_by=comments&limit=3&thumbnail_height=60&thumbnail_width=60&post_html='<li><div class=\"wpp_thumb\">{thumb}</div><a class=\"wpp_headline\" href=\"{url}\">{text_title}</a><a class=\"comment_link\" href=\"{url}#comments\?utm_source=lawyerist_fp_most_discussed&utm_medium=internal" rel=\"nofollow\">{comments} recent comments</a><div class=\"clear\"></div></li>'"); ?>
         <div class="clear"></div>
       </div>
       <div id="lab_posts">
@@ -245,7 +245,7 @@
             'post_num_' . $post_num
           ); ?>
 
-          <a id="post-<?php the_ID(); ?>" <?php post_class($classes); ?> href="<?php the_permalink(); ?>?utm_source=lawyerist_front_page" rel="bookmark" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
+          <a id="post-<?php the_ID(); ?>" <?php post_class($classes); ?> href="<?php the_permalink(); ?>?utm_source=lawyerist_fp_bookstore_tab&utm_medium=internal" rel="bookmark" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
 
             <div class="headline_excerpt">
               <h2 class="headline"><?php the_title(); ?></h2>
