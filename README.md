@@ -1,5 +1,12 @@
 # A custom WordPress theme for Lawyerist.com
 
+2014-08-25
+----------
+
+* Fixed UTM codes on topics.
+* Added UTM codes on pinned, featured, most-discussed, and bookstore posts.
+
+
 2014-08-22
 ----------
 
