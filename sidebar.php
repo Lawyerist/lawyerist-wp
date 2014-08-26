@@ -42,15 +42,15 @@
 		</ul>
 
 		<div id="current" class="tabs_sublist">
-				<?php wpp_get_mostpopular("post_type='post'&range=weekly&limit=5&stats_comments=0&thumbnail_height=75&thumbnail_width=75&post_html='<li>{thumb}<a class=\"wpp_headline\" href=\"{url}?utm_source=lawyerist_sidebar&utm_medium=internal\">{text_title}</a></li>'"); ?>
+				<?php wpp_get_mostpopular("post_type='post'&range=weekly&limit=5&stats_comments=0&thumbnail_height=75&thumbnail_width=75&post_html='<li>{thumb}<a class=\"wpp_headline\" href=\"{url}?utm_source=lawyerist_sidebar\">{text_title}</a></li>'"); ?>
 		</div>
 
 		<div id="all-time" class="tabs_sublist">
-				<?php wpp_get_mostpopular("post_type='post'&range=all&limit=5&stats_comments=0&thumbnail_height=75&thumbnail_width=75&post_html='<li>{thumb}<a class=\"wpp_headline\" href=\"{url}?utm_source=lawyerist_sidebar&utm_medium=internal\">{text_title}</a></li>'"); ?>
+				<?php wpp_get_mostpopular("post_type='post'&range=all&limit=5&stats_comments=0&thumbnail_height=75&thumbnail_width=75&post_html='<li>{thumb}<a class=\"wpp_headline\" href=\"{url}?utm_source=lawyerist_sidebar\">{text_title}</a></li>'"); ?>
 		</div>
 
 		<div id="our-picks" class="tabs_sublist">
-				<?php wpp_get_mostpopular("post_type='post'&cat='2621'&range=all&limit=5&stats_comments=0&thumbnail_height=75&thumbnail_width=75&post_html='<li>{thumb}<a class=\"wpp_headline\" href=\"{url}?utm_source=lawyerist_sidebar&utm_medium=internal\">{text_title}</a></li>'"); ?>
+				<?php wpp_get_mostpopular("post_type='post'&cat='2621'&range=all&limit=5&stats_comments=0&thumbnail_height=75&thumbnail_width=75&post_html='<li>{thumb}<a class=\"wpp_headline\" href=\"{url}?utm_source=lawyerist_sidebar\">{text_title}</a></li>'"); ?>
 		</div>
 </li>
 
