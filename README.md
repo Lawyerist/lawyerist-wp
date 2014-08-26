@@ -5,6 +5,7 @@
 
 * Fixed UTM codes on topics.
 * Added UTM codes on pinned, featured, most-discussed, and bookstore posts.
+* Add screenshot.png
 
 
 2014-08-22
