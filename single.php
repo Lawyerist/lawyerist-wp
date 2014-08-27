@@ -17,7 +17,7 @@
 
 			<div <?php post_class('hentry'); ?>>
 
-				<h1 class="headline entry-title" itemprop="headline"><?php the_title(); ?></h1>
+				<h1 class="headline entry-title"><?php the_title(); ?></h1>
 
 				<div class="postmeta">
 					<div class="comment_link"><a href="#comments"><?php comments_number('leave a comment','1 comment','% comments'); ?></a></div>
