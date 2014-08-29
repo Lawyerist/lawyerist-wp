@@ -10,6 +10,13 @@ License: Copyright 2013 Lawyerist Media, LLC
 ------------------------------*/
 
 
+#ice_bucket {
+  position:absolute;
+    top:-10rem;
+    left:-2.5rem;
+}
+
+
 /*------------------------------
 Index
 
