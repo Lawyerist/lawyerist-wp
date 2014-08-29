@@ -12,6 +12,8 @@
 <div id="header_container">
 <div id="header">
 
+	<a id="ice_bucket" href="http://lab.lawyerist.com/water-cooler/1417-lawyerist-com-takes-the-ice-bucket-challenge.html#latest"><img src="http://lawyerist.com/lawyerist/wp-content/uploads/2014/08/ice-bucket-th.png" alt="Lawyerist takes the ice-bucket challenge!" /></a>
+
 	<?php if ( is_front_page() ) { ?>
 		<h1 id="title"><a href="<?php echo home_url(); ?>"><?php bloginfo('name'); echo ' &mdash; '; bloginfo('description'); ?></a></h1>
 		<?php }
