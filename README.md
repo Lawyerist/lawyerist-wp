@@ -1,5 +1,10 @@
 # A custom WordPress theme for Lawyerist.com
 
+2014-09-03
+----------
+
+* Remove "books" link from header.
+
 2014-08-25
 ----------
 
