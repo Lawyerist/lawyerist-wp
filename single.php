@@ -25,11 +25,11 @@
 					<div class="clear"></div>
 				</div>
 
-				<?php if (has_post_thumbnail() && ( is_paged() || has_tag('no-image') ) ) {
+				<?php if ( has_post_thumbnail() && ( is_paged() || has_tag('no-image') ) ) {
 					echo '';
 				}
 
-				elseif ( has_post_thumbnail() && has_tag('big-image') ) { ?>
+				elseif ( !is_feed() && has_post_thumbnail() && has_tag('big-image') ) { ?>
 					<div itemprop="image"><?php the_post_thumbnail('large'); ?></div>
 				<?php }
 
