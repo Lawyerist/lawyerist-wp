@@ -25,7 +25,7 @@
 	<div id="blog_forum_nav">
 		<ul>
 			<li class="nav_lab"><a href="http://lab.lawyerist.com">forum</a></li>
-    	<li class="nav_sites"><a href="http://sites.lawyerist.com">websites</a></li>
+			<li class="nav_sites"><a href="http://sites.lawyerist.com">websites</a></li>
 		</ul>
 	</div>
 
