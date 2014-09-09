@@ -1,5 +1,11 @@
 # A custom WordPress theme for Lawyerist.com
 
+2014-09-09
+----------
+
+* Remove bookstore from front page.
+
+
 2014-09-03
 ----------
 
