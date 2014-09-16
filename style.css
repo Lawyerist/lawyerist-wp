@@ -350,6 +350,10 @@ p.wp-caption-text {
 	margin-bottom:1.4rem;
 }
 
+  .single .postmeta {
+    margin-bottom:2.8rem;
+  }
+
 pre {
 	color:#555;
 	font-family:monospace;
