@@ -1,5 +1,11 @@
 # A custom WordPress theme for Lawyerist.com
 
+2014-09-16
+----------
+
+* Change _FORUM_ link in header to _Q&A_.
+
+
 2014-09-09
 ----------
 
