@@ -586,52 +586,6 @@ Header
 				padding:0;
 			}
 
-			#email_social ul li.lawyerist_connect_more {
-				color:#fff;
-				display:inline-block;
-				font-size:10px;
-				height:3.2rem;
-				margin:0 0 0 .5rem;
-				padding:0;
-				vertical-align:top;
-			}
-
-				#email_social ul li.lawyerist_connect_more a {
-					color:#fff;
-					text-decoration:none;
-				}
-
-				#email_social ul li.lawyerist_connect_more a:hover {
-					color:#cc0000;
-				}
-
-				#email_social ul li.lawyerist_connect_more .connect_more,
-				#email_social ul li.lawyerist_connect_more .connect_ways_to,
-				#email_social ul li.lawyerist_connect_more .connect_connect {
-					line-height:1em;
-					text-align:right;
-					text-transform:uppercase;
-				}
-
-				#email_social ul li.lawyerist_connect_more .connect_more {
-					font-size:1.2rem;
-					font-weight:600;
-					letter-spacing:.2rem;
-					position:relative;
-						right:-.2rem;
-				}
-
-				#email_social ul li.lawyerist_connect_more .connect_ways_to {
-					letter-spacing:.1rem;
-					position:relative;
-						right:-.1rem;
-				}
-
-				#email_social ul li.lawyerist_connect_more .connect_connect {
-					font-size:1.2rem;
-					font-weight:600;
-				}
-
 			#email_social ul li a.sprite {
 				color:#fff;
 				margin-left:.8rem;
@@ -680,6 +634,14 @@ Header
 				#email_social ul li a.twitter.sprite:before {
 					content:'\f202';
 				}
+
+        #email_social ul li a.more_social.sprite:hover {
+          color:#cc0000;
+        }
+
+        #email_social ul li a.more_social.sprite:before {
+          content:'\f476';
+        }
 
 
 /*------------------------------
