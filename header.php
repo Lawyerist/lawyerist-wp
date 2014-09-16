@@ -23,6 +23,7 @@
 	<div id="blog_forum_nav">
 		<ul>
 			<li class="nav_lab"><a href="http://lab.lawyerist.com">q&a</a></li>
+			<li class="nav_newsletter"><a href="http://lawyerist.com/lawyerist-insider-newsletter/">newsletter</a></li>
 			<li class="nav_sites"><a href="http://sites.lawyerist.com">websites</a></li>
 		</ul>
 	</div>
@@ -33,13 +34,7 @@
 		<li><a class="linkedin sprite" href="https://www.linkedin.com/company/lawyerist-media-llc" title="Connect with Lawyerist on LinkedIn" target="_blank"></a></li>
 		<li><a class="facebook sprite" href="https://facebook.com/lawyerist" title="Friend Lawyerist on Facebook" target="_blank"></a></li>
 		<li><a class="twitter sprite" href="https://twitter.com/lawyerist" title="Follow Lawyerist on Twitter" target="_blank"></a></li>
-		<li class="lawyerist_connect_more">
-			<a href="http://lawyerist.com/subscribe/" title="More ways to subscribe to connect with Lawyerist">
-			<div class="connect_more">More</div>
-			<div class="connect_ways_to">ways to</div>
-			<div class="connect_connect">Connect</div>
-			</a>
-		</li>
+		<li><a class="more_social sprite" href="http://lawyerist.com/subscribe/" title="More ways to subscribe to connect with Lawyerist"></a></li>
 	</ul>
 	</div>
 

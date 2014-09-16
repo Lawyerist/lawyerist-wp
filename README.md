@@ -3,7 +3,9 @@
 2014-09-16
 ----------
 
-* Change _FORUM_ link in header to _Q&A_.
+* Change FORUM link in header to Q&A.
+* Add NEWSLETTER to header.
+* Simplify the "more ways to connect" icon in the header.
 
 
 2014-09-09
