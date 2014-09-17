@@ -22,9 +22,10 @@
 
 	<div id="blog_forum_nav">
 		<ul>
-			<li class="nav_lab"><a href="http://lab.lawyerist.com">q&a</a></li>
-			<li class="nav_newsletter"><a href="http://lawyerist.com/lawyerist-insider-newsletter/">newsletter</a></li>
-			<li class="nav_sites"><a href="http://sites.lawyerist.com">websites</a></li>
+			<li><a href="http://lawyerist.com/articles/">articles</a></li>
+			<li><a href="http://lab.lawyerist.com">q&a</a></li>
+			<li><a href="http://lawyerist.com/lawyerist-insider-newsletter/">newsletter</a></li>
+			<li><a href="http://sites.lawyerist.com">websites</a></li>
 		</ul>
 	</div>
 

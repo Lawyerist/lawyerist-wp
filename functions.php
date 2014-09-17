@@ -3,7 +3,9 @@
 /* INDEX
 
 Nav Menu
-Featured Images
+Theme Setup
+Add Image Sizes
+Featured Images in RSS Feeds
 Sidebar
 Add Capabilities to Contributor Role
 Create Author List Shortcode
@@ -26,11 +28,44 @@ add_action('init','register_my_menu');
 
 
 /*------------------------------
-Featured Images
+Theme Setup
 ------------------------------*/
 
-add_theme_support('post-thumbnails');
+add_action( 'after_setup_theme', 'lawyerist_theme_setup' );
 
+function lawyerist_theme_setup() {
+
+	add_theme_support('post-thumbnails');
+	add_theme_support( 'post-formats', array( 'link','image','quote','video','audio' ) );
+
+}
+
+
+/*------------------------------
+Add Image Sizes
+------------------------------*/
+
+
+if ( function_exists( 'add_image_size' ) ) {
+	add_image_size( '60px_thumb', 60, 60, true);
+}
+
+if ( function_exists( 'add_image_size' ) ) {
+	add_image_size( '75px_thumb', 75, 75, true);
+}
+
+if ( function_exists( 'add_image_size' ) ) {
+	add_image_size( 'featured', 320, 240, true);
+}
+
+if ( function_exists( 'add_image_size' ) ) {
+	add_image_size( 'featured_topics', 269, 150, true);
+}
+
+
+/*------------------------------
+Featured Images in RSS Feeds
+------------------------------*/
 
 function featuredtoRSS($content) {
 
@@ -51,22 +86,6 @@ function featuredtoRSS($content) {
 
 add_filter('the_excerpt_rss', 'featuredtoRSS');
 add_filter('the_content_feed', 'featuredtoRSS');
-
-if ( function_exists( 'add_image_size' ) ) {
-	add_image_size( '60px_thumb', 60, 60, true);
-}
-
-if ( function_exists( 'add_image_size' ) ) {
-	add_image_size( '75px_thumb', 75, 75, true);
-}
-
-if ( function_exists( 'add_image_size' ) ) {
-	add_image_size( 'featured', 320, 240, true);
-}
-
-if ( function_exists( 'add_image_size' ) ) {
-	add_image_size( 'featured_topics', 269, 150, true);
-}
 
 
 /*------------------------------
