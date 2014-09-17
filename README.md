@@ -1,5 +1,11 @@
 # A custom WordPress theme for Lawyerist.com
 
+2014-09-17
+----------
+
+* Fix pagination on articles and notes pages.
+
+
 2014-09-16
 ----------
 

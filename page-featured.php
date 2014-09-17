@@ -232,9 +232,7 @@
       <div class="clear"></div>
   	</div>
 
-
 	</div><!--end #content_column-->
-
 
 	<ul id="sidebar_column">
 		<?php include('sidebar.php'); ?>
@@ -242,14 +240,11 @@
 
 	<div class="clear"></div>
 
-
 </div><!-- end #content_column_container -->
 
 <div class="clear"></div>
 
-
 <?php get_footer(); ?>
-
 
 </body>
 </html>

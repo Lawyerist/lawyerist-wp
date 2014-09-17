@@ -12,13 +12,18 @@
 
   <div id="content_column">
 
+    <?php $page = get_query_var('paged'); ?>
+
+    <div id="archive_header">
+      <h1 class="remove_bottom"><?php the_title(); if ( $page > 1 ) { echo ', page ' . $page; } ?></h1>
+    </div>
+
 		<?php /* THE LOOP */
 
-    $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-    query_posts("paged=$paged");
-
-    $articles_query_args = array(
-      'tax_query' => array(
+    $paged = ( get_query_var('paged') ) ? get_query_var( 'paged' ) : 1;
+    $query_args = array(
+      'paged'           => $paged,
+      'tax_query'       => array(
         array(
           'taxonomy'    => 'post_format',
           'field'       => 'slug',
@@ -34,9 +39,9 @@
       )
     );
 
-    $articles_query = new WP_Query( $articles_query_args );
+    query_posts( $query_args );
 
-		while ( $articles_query->have_posts() ) : $articles_query->the_post(); ?>
+		if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
 			<a <?php post_class($class); ?> href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
 
@@ -52,10 +57,9 @@
 
 			</a>
 
-		<?php endwhile;
+		<?php endwhile; endif;
 
 		/* END LOOP */ ?>
-
 
 		<div id="pagenav">
 			<div class="alignleft pagenav_link_block">
@@ -67,9 +71,7 @@
 			<div class="clear"></div>
 		</div>
 
-
 	</div><!-- end #content_column -->
-
 
 	<ul id="sidebar_column">
 		<?php include('sidebar.php'); ?>
@@ -77,14 +79,11 @@
 
 	<div class="clear"></div>
 
-
 </div><!-- end #content_column_container -->
 
 <div class="clear"></div>
 
-
 <?php get_footer(); ?>
-
 
 </body>
 </html>

@@ -34,7 +34,6 @@
 
 		/* END LOOP */ ?>
 
-
 		<div id="pagenav">
 			<div class="alignleft pagenav_link_block">
 				<?php previous_posts_link('<div class="genericon pagenav_leftarrow"></div><div class="pagenav_link">browse newer posts</div>',0) ?>
@@ -45,9 +44,7 @@
 			<div class="clear"></div>
 		</div>
 
-
 	</div><!-- end #content_column -->
-
 
 	<ul id="sidebar_column">
 		<?php include('sidebar.php'); ?>
@@ -55,14 +52,11 @@
 
 	<div class="clear"></div>
 
-
 </div><!-- end #content_column_container -->
 
 <div class="clear"></div>
 
-
 <?php get_footer(); ?>
-
 
 </body>
 </html>
