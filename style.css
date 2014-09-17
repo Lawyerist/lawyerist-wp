@@ -61,11 +61,11 @@ Load Fonts
 
 @font-face {
     font-family:'Genericons';
-    src:url('font/genericons-regular-webfont.eot');
-    src:url('font/genericons-regular-webfont.eot?#iefix') format('embedded-opentype'),
-        url('font/genericons-regular-webfont.woff') format('woff'),
-        url('font/genericons-regular-webfont.ttf') format('truetype'),
-        url('font/genericons-regular-webfont.svg#genericonsregular') format('svg');
+    src:url('font/Genericons.eot');
+    src:url('font/Genericons.eot?#iefix') format('embedded-opentype'),
+        url('font/Genericons.woff') format('woff'),
+        url('font/Genericons.ttf') format('truetype'),
+        url('font/Genericons.svg#genericonsregular') format('svg');
     font-weight:normal;
     font-style:normal;
 }
