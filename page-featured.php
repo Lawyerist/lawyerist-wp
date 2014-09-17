@@ -109,7 +109,7 @@
   	</div><!--end #featured_posts-->
 
   	<div id="read_latest_posts">
-  		<a href="<?php echo bloginfo('url') . '/all/'; ?>">
+  		<a href="<?php echo bloginfo('url') . '/articles/'; ?>">
   			<p>Read all articles &rarr;</p>
   		</a>
   	</div>
