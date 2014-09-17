@@ -33,6 +33,7 @@ Front Page
 Content
 	Index & Archive Lists
 	Posts
+  Galleries
   Author List Shortcode
 	Sharing Buttons
 	Buyers Guide
@@ -1338,6 +1339,11 @@ Content
 			vertical-align:baseline;
 		}
 
+  embed,
+  iframe {
+    margin-bottom:2.8rem !important;
+  }
+
 	.post_bio_sep {
 		text-align:center;
 	}
@@ -1434,6 +1440,27 @@ Content
 		border-top:1px solid #ddd;
 		padding-top:2.8rem;
 	}
+
+
+  /*------------------------------
+  Galleries
+  ------------------------------*/
+
+  .gallery {
+    margin-bottom:2.8rem !important;
+  }
+
+  .gallery-columns-3 dl.gallery-item {
+    border:1px solid #ddd !important;
+    margin:0 .2rem .2rem 0!important;
+    width:32.708333333% !important;
+  }
+
+  .gallery-columns-3 dl.gallery-item img {
+    border:0 !important;
+    height:auto;
+    width:100%;
+  }
 
 
   /*------------------------------

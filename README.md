@@ -5,6 +5,8 @@
 
 * Fix pagination on articles and notes pages.
 * Add gallery post format.
+* Style 3-column gallery layout.
+* Add bottom margins for embed and iframe.
 
 
 2014-09-16
