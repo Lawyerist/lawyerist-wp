@@ -36,7 +36,7 @@ add_action( 'after_setup_theme', 'lawyerist_theme_setup' );
 function lawyerist_theme_setup() {
 
 	add_theme_support('post-thumbnails');
-	add_theme_support( 'post-formats', array( 'link','image','quote','video','audio' ) );
+	add_theme_support( 'post-formats', array( 'link','image','gallery','quote','video','audio' ) );
 
 }
 

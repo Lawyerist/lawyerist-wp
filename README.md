@@ -4,6 +4,7 @@
 ----------
 
 * Fix pagination on articles and notes pages.
+* Add gallery post format.
 
 
 2014-09-16
