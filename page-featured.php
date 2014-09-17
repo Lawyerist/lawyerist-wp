@@ -18,8 +18,8 @@
 
       $sticky = get_option( 'sticky_posts' );
       $args = array(
-        'posts_per_page' => 1,
-        'post__in'  => $sticky,
+        'posts_per_page'      => 1,
+        'post__in'            => $sticky,
         'ignore_sticky_posts' => 1
       );
 
@@ -29,7 +29,7 @@
 
         while ( $sticky_query->have_posts() ) : $sticky_query->the_post();
 
-          $do_not_duplicate = $post->ID; ?>
+          $do_not_duplicate[] = $post->ID; ?>
 
           <a class="fp_sticky" href="<?php the_permalink(); ?>?utm_source=lawyerist_fp_pinned&utm_medium=internal" rel="bookmark" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
            <div class="pin"></div>
@@ -42,28 +42,42 @@
 
     /* END PINNED POST LOOP */ ?>
 
-    <div class="fp_tab"><h2>Latest Posts</h2></div>
+    <div class="fp_tab"><h2>Articles</h2></div>
   	<div id="featured_posts">
 
   		<?php /* FEATURED POSTS LOOP */
 
-  			$featured_query = new WP_Query( 'posts_per_page=7' );
+        $featured_query_args = array(
+          'posts_per_page'  => 7,
+          'post__not_in'    => $do_not_duplicate,
+          'tax_query'       => array(
+            array(
+              'taxonomy'  => 'post_format',
+              'field'     => 'slug',
+              'terms'     => array(
+                'post-format-link',
+                'post-format-image',
+                'post-format-quote',
+                'post-format-video',
+                'post-format-audio'
+              ),
+              'operator'  => 'NOT IN'
+            )
+          )
+        );
+
+  			$featured_query = new WP_Query( $featured_query_args );
 
   			$post_num = 1;
 
   			while ( $featured_query->have_posts() ) : $featured_query->the_post();
 
-          if ( $post->ID == $do_not_duplicate ) continue;
-
-          $do_not_duplicate = $post->ID;
-
-  				$num_comments = get_comments_number();
   				$classes = array(
   					'featured_post',
   					'post_num_' . $post_num
   				); ?>
 
-  				<a id="post-<?php the_ID(); ?>" <?php post_class($classes); ?> href="<?php the_permalink(); ?>?utm_source=lawyerist_fp_featured&utm_medium=internal" rel="bookmark" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
+  				<a <?php post_class($classes); ?> href="<?php the_permalink(); ?>?utm_source=lawyerist_fp_featured&utm_medium=internal" rel="bookmark" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
 
   					<div class="headline_excerpt">
 
@@ -71,9 +85,6 @@
 
   						<h2 class="headline"><?php the_title(); ?></h2>
   						<div class="postmeta">
-  							<?php if ( $num_comments > 0 ) { ?>
-  								<div class="comment_link"><?php comments_number('leave a comment','1 comment','% comments'); ?></div>
-  							<?php } ?>
   							<div class="author_link">by <?php the_author(); ?></div>
   						</div>
 
@@ -98,8 +109,8 @@
   	</div><!--end #featured_posts-->
 
   	<div id="read_latest_posts">
-  		<a href="<?php echo bloginfo('url') . '/articles/'; ?>">
-  			<p>Read all posts &rarr;</p>
+  		<a href="<?php echo bloginfo('url') . '/all/'; ?>">
+  			<p>Read all articles &rarr;</p>
   		</a>
   	</div>
 
@@ -221,7 +232,9 @@
       <div class="clear"></div>
   	</div>
 
-	</div><!--end content_column-->
+
+	</div><!--end #content_column-->
+
 
 	<ul id="sidebar_column">
 		<?php include('sidebar.php'); ?>
@@ -229,11 +242,14 @@
 
 	<div class="clear"></div>
 
-</div><!--end content_column_container-->
+
+</div><!-- end #content_column_container -->
 
 <div class="clear"></div>
 
+
 <?php get_footer(); ?>
+
 
 </body>
 </html>

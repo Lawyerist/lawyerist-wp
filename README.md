@@ -6,6 +6,9 @@
 * Change FORUM link in header to Q&A.
 * Add NEWSLETTER to header.
 * Simplify the "more ways to connect" icon in the header.
+* Add support for post formats.
+* Lots of small tweaks to the front page.
+* Fix pagenav.
 
 
 2014-09-09

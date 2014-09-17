@@ -14,7 +14,29 @@
 
 		<?php /* THE LOOP */
 
-		if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+    $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+    query_posts("paged=$paged");
+
+    $articles_query_args = array(
+      'tax_query' => array(
+        array(
+          'taxonomy'    => 'post_format',
+          'field'       => 'slug',
+          'terms'       => array(
+            'post-format-link',
+            'post-format-image',
+            'post-format-quote',
+            'post-format-video',
+            'post-format-audio'
+          ),
+          'operator'  => 'NOT IN'
+        )
+      )
+    );
+
+    $articles_query = new WP_Query( $articles_query_args );
+
+		while ( $articles_query->have_posts() ) : $articles_query->the_post(); ?>
 
 			<a <?php post_class($class); ?> href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
 
@@ -30,7 +52,7 @@
 
 			</a>
 
-		<?php endwhile; endif;
+		<?php endwhile;
 
 		/* END LOOP */ ?>
 

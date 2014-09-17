@@ -14,7 +14,25 @@
 
 		<?php /* THE LOOP */
 
-		if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+    $notes_query_args = array(
+      'tax_query'       => array(
+        array(
+          'taxonomy'  => 'post_format',
+          'field'     => 'slug',
+          'terms'     => array(
+            'post-format-link',
+            'post-format-image',
+            'post-format-quote',
+            'post-format-video',
+            'post-format-audio'
+          ),
+        )
+      )
+    );
+
+    $notes_query = new WP_Query( $notes_query_args );
+
+		while ( $notes_query->have_posts() ) : $notes_query->the_post(); ?>
 
 			<a <?php post_class($class); ?> href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
 
@@ -30,7 +48,7 @@
 
 			</a>
 
-		<?php endwhile; endif;
+		<?php endwhile;
 
 		/* END LOOP */ ?>
 

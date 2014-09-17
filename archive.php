@@ -12,10 +12,7 @@
 
     <div id="content_column">
 
-		<?php global $wp_query;
-
-
-		/* ARCHIVE PAGE TITLES */
+		<?php /* ARCHIVE PAGE TITLES */
 
 		if ( is_author() ) {
 			$author = $wp_query->query_vars['author'];
@@ -44,11 +41,7 @@
 
 		<?php /* THE LOOP */
 
-		$my_query = new WP_Query( 'offset=5' );
-
-		if ( have_posts() ) : while ( have_posts() ) : the_post();
-
-			$num_comments = get_comments_number(); ?>
+    if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
 			<a <?php post_class($class); ?> href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
 
@@ -56,9 +49,6 @@
 
 				<h2 class="headline remove_bottom" id="post-<?php the_ID(); ?>"><?php the_title(); ?></h2>
 				<div class="postmeta">
-					<?php if ( $num_comments > 0 ) { ?>
-						<div class="comment_link"><?php comments_number('leave a comment','1 comment','% comments'); ?></div>
-					<?php } ?>
 					<div class="author_link">by <?php the_author(); ?></div>
 				</div>
 				<p class="excerpt remove_bottom<?php if ( has_post_thumbnail() ) { echo ' excerpt_with_thumb'; } ?>"><?php echo get_the_excerpt(); ?></p>
@@ -81,7 +71,9 @@
 			<div class="clear"></div>
 		</div>
 
-	</div>
+
+	</div><!-- end #content_column -->
+
 
 	<ul id="sidebar_column">
 		<?php include('sidebar.php'); ?>
@@ -89,11 +81,14 @@
 
 	<div class="clear"></div>
 
-</div>
+
+</div><!-- end #content_column_container -->
 
 <div class="clear"></div>
 
+
 <?php get_footer(); ?>
+
 
 </body>
 </html>

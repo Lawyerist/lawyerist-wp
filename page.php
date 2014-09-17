@@ -11,40 +11,45 @@
 <div id="content_column_container">
 
 	<div id="content_column">
-		
+
 		<?php if ( have_posts() ) :
 		while ( have_posts() ) : the_post(); ?>
 
 			<div <?php post_class($class); ?>>
-		
+
 				<h1 class="headline"><?php the_title(); ?></h1>
 
-				<?php if ( has_post_thumbnail() ) { 
+				<?php if ( has_post_thumbnail() ) {
 					the_post_thumbnail('large');
 				} ?>
-				
+
 				<div class="post_body">
 					<?php the_content(); ?>
 				</div>
-			
+
 			</div>
 
 		<?php endwhile;
 		endif; ?>
-	
-	</div>
+
+
+	</div><!-- end #content_column -->
+
 
 	<ul id="sidebar_column">
 		<?php include('sidebar.php'); ?>
 	</ul>
-	
+
 	<div class="clear"></div>
 
-</div>
+
+</div><!-- end #content_column_container -->
 
 <div class="clear"></div>
 
+
 <?php get_footer(); ?>
+
 
 </body>
 </html>
