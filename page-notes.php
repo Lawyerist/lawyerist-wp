@@ -26,12 +26,7 @@
           'taxonomy'  => 'post_format',
           'field'     => 'slug',
           'terms'     => array(
-            'post-format-link',
-            'post-format-image',
-            'post-format-gallery',
-            'post-format-quote',
-            'post-format-video',
-            'post-format-audio'
+            'post-format-aside'
           ),
         )
       )
