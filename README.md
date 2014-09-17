@@ -7,6 +7,7 @@
 * Add gallery post format.
 * Style 3-column gallery layout.
 * Add bottom margins for embed and iframe.
+* Update Genericons.
 
 
 2014-09-16
