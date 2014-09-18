@@ -10,6 +10,7 @@
 * Update Genericons.
 * Remove articles and notes page templates because they aren't necessary.
 * Make articles and notes pages work, in general.
+* Move discussions above topics on front page.
 
 
 2014-09-16
