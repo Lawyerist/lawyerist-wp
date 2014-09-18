@@ -110,6 +110,52 @@
   		</a>
   	</div>
 
+    <div class="fp_tab"><h2>Discussions</h2></div>
+    <div id="discussions_container">
+      <div id="most_discussed">
+        <h3>Most-Discussed Posts</h3>
+        <?php wpp_get_mostpopular("post_type='post'&range=monthly&order_by=comments&limit=3&thumbnail_height=60&thumbnail_width=60&post_html='<li><div class=\"wpp_thumb\">{thumb}</div><a class=\"wpp_headline\" href=\"{url}?utm_source=lawyerist_fp_most_discussed\">{text_title}</a><a class=\"comment_link\" href=\"{url}#comments\?utm_source=lawyerist_fp_most_discussed\" rel=\"nofollow\">{comments} recent comments</a><div class=\"clear\"></div></li>'"); ?>
+        <div class="clear"></div>
+      </div>
+      <div id="lab_posts">
+        <h3>Forum Posts</h3>
+
+        <?php // Get RSS Feed(s)
+        include_once( ABSPATH . WPINC . '/feed.php' );
+
+        // Get a SimplePie feed object from the specified feed source.
+        $rss = fetch_feed( 'http://lab.lawyerist.com/discussions/feed.rss' );
+
+        if ( ! is_wp_error( $rss ) ) : // Checks that the object is created correctly
+
+          // Figure out how many total items there are, but limit it to 5.
+          $maxitems = $rss->get_item_quantity( 5 );
+
+          // Build an array of all the items, starting with element 0 (first element).
+          $rss_items = $rss->get_items( 0, $maxitems );
+
+        endif;
+        ?>
+
+        <ul>
+          <?php if ( $maxitems == 0 ) : ?>
+            <li><?php _e( 'No items', 'my-text-domain' ); ?></li>
+          <?php else : ?>
+            <?php // Loop through each feed item and display each item as a hyperlink. ?>
+            <?php foreach ( $rss_items as $item ) : ?>
+              <li>
+                <a href="<?php echo esc_url( $item->get_permalink() ); ?>"
+                  title="<?php printf( __( 'Updated on %s', 'my-text-domain' ), $item->get_date('F jS, Y @ g:i a') ); ?>">
+                  <img src="https://lawyerist.com/lawyerist/wp-content/uploads/2013/10/lab-favicon.png" />
+                  <div class="lab_headline"><?php echo esc_html( $item->get_title() ); ?></div>
+                </a>
+              </li>
+            <?php endforeach; ?>
+          <?php endif; ?>
+        </ul>
+      </div><!--end #lab_posts-->
+      <div class="clear"></div>
+    </div>
 
     <div class="fp_tab"><h2>Topics</h2></div>
     <div id="popular_in_cats">
@@ -179,54 +225,6 @@
       <div class="clear"></div>
 
     </div><!--end #popular_in_cats-->
-
-
-  	<div class="fp_tab"><h2>Discussions</h2></div>
-  	<div id="discussions_container">
-      <div id="most_discussed">
-        <h3>Most-Discussed Posts</h3>
-  			<?php wpp_get_mostpopular("post_type='post'&range=monthly&order_by=comments&limit=3&thumbnail_height=60&thumbnail_width=60&post_html='<li><div class=\"wpp_thumb\">{thumb}</div><a class=\"wpp_headline\" href=\"{url}?utm_source=lawyerist_fp_most_discussed\">{text_title}</a><a class=\"comment_link\" href=\"{url}#comments\?utm_source=lawyerist_fp_most_discussed\" rel=\"nofollow\">{comments} recent comments</a><div class=\"clear\"></div></li>'"); ?>
-        <div class="clear"></div>
-      </div>
-      <div id="lab_posts">
-        <h3>Forum Posts</h3>
-
-        <?php // Get RSS Feed(s)
-        include_once( ABSPATH . WPINC . '/feed.php' );
-
-        // Get a SimplePie feed object from the specified feed source.
-        $rss = fetch_feed( 'http://lab.lawyerist.com/discussions/feed.rss' );
-
-        if ( ! is_wp_error( $rss ) ) : // Checks that the object is created correctly
-
-          // Figure out how many total items there are, but limit it to 5.
-          $maxitems = $rss->get_item_quantity( 5 );
-
-          // Build an array of all the items, starting with element 0 (first element).
-          $rss_items = $rss->get_items( 0, $maxitems );
-
-        endif;
-        ?>
-
-        <ul>
-          <?php if ( $maxitems == 0 ) : ?>
-            <li><?php _e( 'No items', 'my-text-domain' ); ?></li>
-          <?php else : ?>
-            <?php // Loop through each feed item and display each item as a hyperlink. ?>
-            <?php foreach ( $rss_items as $item ) : ?>
-              <li>
-                <a href="<?php echo esc_url( $item->get_permalink() ); ?>"
-                  title="<?php printf( __( 'Updated on %s', 'my-text-domain' ), $item->get_date('F jS, Y @ g:i a') ); ?>">
-                  <img src="https://lawyerist.com/lawyerist/wp-content/uploads/2013/10/lab-favicon.png" />
-                  <div class="lab_headline"><?php echo esc_html( $item->get_title() ); ?></div>
-                </a>
-              </li>
-            <?php endforeach; ?>
-          <?php endif; ?>
-        </ul>
-      </div><!--end #lab_posts-->
-      <div class="clear"></div>
-  	</div>
 
 	</div><!--end #content_column-->
 
