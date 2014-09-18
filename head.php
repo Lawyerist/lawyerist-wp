@@ -2,7 +2,7 @@
 
 <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic,700italic|Roboto+Slab:700,400' rel='stylesheet' type='text/css'>
 
-<link rel="stylesheet" href="<?php echo get_stylesheet_uri(); ?>?2014-09-17-15-01" type="text/css" media="screen, projection">
+<link rel="stylesheet" href="<?php echo get_stylesheet_uri(); ?>?2014-09-17-23-30" type="text/css" media="screen, projection">
 <link rel="shortcut icon" href="<?php echo get_bloginfo('template_url'); ?>/images/favicon.ico" type="image/x-icon">
 <link rel="icon" href="<?php echo get_bloginfo('template_url'); ?>/images/favicon.ico" type="image/x-icon">
 
@@ -39,18 +39,7 @@ googletag.enableServices();
 });
 </script>
 
-<title>
-<?php /* Title tags */
-	if ( is_front_page() ) { bloginfo('name'); echo ' &mdash; '; bloginfo('description'); }
-	elseif ( is_home () ) { bloginfo('name'); echo ' &mdash; All Posts'; }
-	elseif ( is_single() || is_page() ) { the_title(); }
-	elseif ( is_author() ) { global $wp_query; $author_name = get_the_author_meta('display_name',$author); echo $author_name; }
-	elseif ( is_category() ) { single_cat_title(); }
-	elseif ( is_tag() ) { single_tag_title(); }
-  elseif ( is_404() ) { echo '404: You Found a Typo!'; }
-?>
-</title>
-
+<title><?php wp_title(); ?></title>
 
 <?php /* Meta descriptions */
 

@@ -20,11 +20,14 @@ RSS Feed Caching
 Nav Menu
 ------------------------------*/
 
-function register_my_menu() {
-	register_nav_menu('header-menu',__( 'Header Menu' ));
+function register_my_menus() {
+	register_nav_menus( array(
+		'header_nav' => 'Header Nav Menu',
+		'main_nav' => 'Main Nav Menu (Below Header)',
+	)	);
 }
 
-add_action('init','register_my_menu');
+add_action('init','register_my_menus');
 
 
 /*------------------------------
@@ -64,7 +67,7 @@ function live_rename_formats() {
 
             jQuery("span.post-state-format").each(function() {
                 if ( jQuery(this).text() == "Aside" )
-                    jQuery(this).text("Note");             
+                    jQuery(this).text("Note");
             });
 
         });

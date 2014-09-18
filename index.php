@@ -14,6 +14,23 @@
 
 		<?php /* THE LOOP */
 
+    $paged = ( get_query_var('paged') ) ? get_query_var( 'paged' ) : 1;
+    $query_args = array(
+      'paged'           => $paged,
+      'tax_query'       => array(
+        array(
+          'taxonomy'    => 'post_format',
+          'field'       => 'slug',
+          'terms'       => array(
+            'post-format-aside'
+          ),
+          'operator'  => 'NOT IN'
+        )
+      )
+    );
+
+    query_posts( $query_args );
+
 		if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
 			<a <?php post_class($class); ?> href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
