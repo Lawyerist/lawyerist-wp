@@ -8,6 +8,8 @@
 * Style 3-column gallery layout.
 * Add bottom margins for embed and iframe.
 * Update Genericons.
+* Remove articles and notes page templates because they aren't necessary.
+* Make articles and notes pages work, in general.
 
 
 2014-09-16

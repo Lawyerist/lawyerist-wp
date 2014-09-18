@@ -10,19 +10,15 @@
 
 <div id="content_column_container">
 
-    <div id="content_column">
+  <div id="content_column">
 
 		<?php /* ARCHIVE PAGE TITLES */
 
-		if ( is_author() ) {
-			$author = $wp_query->query_vars['author'];
-			$author_name = get_the_author_meta('display_name',$author);
-			$author_bio = get_the_author_meta('description',$author);
-			$author_avatar = get_avatar( get_the_author_meta('user_email',$author) , 100 );
+    if ( is_post_type_archive( 'format' ) ) { ?>
+      <div id="archive_header"><h1>Notes</h1></div>
+    <?php
 
-			echo '<div id="archive_header"><h1>' . $author_name . '</h1>' . "\n" . $author_avatar . "\n" . '<p class="author_descr">' . $author_bio . '</p><div class="clear"></div></div>';
-
-		} elseif ( is_category() ) {
+    } elseif ( is_category() ) {
 			$cat_descr = category_description();
 
 			echo '<div id="archive_header"><h1>';
@@ -37,7 +33,15 @@
       single_tag_title();
       echo '</h1>' . "\n" . $tag_descr . '</div>';
 
-		} ?>
+		} elseif ( is_author() ) {
+      $author = $wp_query->query_vars['author'];
+      $author_name = get_the_author_meta('display_name',$author);
+      $author_bio = get_the_author_meta('description',$author);
+      $author_avatar = get_avatar( get_the_author_meta('user_email',$author) , 100 );
+
+      echo '<div id="archive_header"><h1>' . $author_name . '</h1>' . "\n" . $author_avatar . "\n" . '<p class="author_descr">' . $author_bio . '</p><div class="clear"></div></div>';
+
+    } ?>
 
 		<?php /* THE LOOP */
 

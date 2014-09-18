@@ -21,8 +21,8 @@ Typography
 Images
 Leaderboard Ad
 Header
-	Blog-Forum-Sites Nav
-	Newsletter Signup & Social Icons
+  Header Nav
+	Social Icons
 Menu
 Front Page
 	Featured Posts
@@ -500,7 +500,7 @@ Header
 	float:left;
 	font-size:1rem;
 	line-height:1em;
-	margin:0 1.4rem 0 0;
+	margin:0 1.8rem 0 0;
 	padding:0;
 	width:21.6rem;
 }
@@ -514,57 +514,50 @@ Header
 	}
 
 	/*------------------------------
-	Blog-Forum-Sites Nav
+	Header Nav
 	------------------------------*/
 
-	#blog_forum_nav {
-		display:inline-block;
-		float:left;
+  .menu-header-container {
+    display:inline-block;
+    float:left;
+    margin:2rem 0 0 4rem;
+  }
+
+  ul#menu-header {
+		display:block;
+    line-height:1em;
+		list-style:none;
+    margin:0;
+		padding:0;
 	}
 
-		#blog_forum_nav ul {
-			display:block;
-			list-style:none;
-			margin:1.3rem 0 0 0;
-			padding:0;
-		}
+	ul#menu-header li {
+		display:inline-block;
+		margin:0;
+		padding:0;
+	}
 
-		#blog_forum_nav li {
-			display:inline-block;
-			margin:0;
-			padding:0;
-		}
+	ul#menu-header a {
+		color:#fff;
+		font-size:1.8rem;
+		letter-spacing:.1rem;
+		line-height:1em;
+		margin:0 1.8rem 0 0;
+		text-transform:uppercase;
+	}
 
-		#blog_forum_nav a {
-			border-radius:2px;
-			color:#aa0000;
-			display:block;
-			font-family:'Source Sans Pro',sans-serif;
-			font-size:1.8rem;
-			font-weight:bold;
-			letter-spacing:.1rem;
-			line-height:1em;
-			margin:0;
-			padding:.7rem 1rem;
-			text-align:center;
-			text-transform:uppercase;
-		}
+  ul#menu-header li.current-menu-item a {
+    color:#aa0000;
+  }
 
-		#blog_forum_nav a:hover {
-			background-color:#444;
-			color:#cc0000;
-		}
+  ul#menu-header a:hover,
+  ul#menu-header li.current-menu-item a:hover {
+    color:#cc0000;
+  }
 
-		.page-id-72195 #blog_forum_nav li.nav_store a {
-			color:#aaa;
-		}
-
-		.page-id-72195 #blog_forum_nav li.nav_store a:hover {
-			color:#ccc;
-		}
 
 	/*------------------------------
-	Newsletter Signup & Social Icons
+  Social Icons
 	------------------------------*/
 
 	#email_social {
@@ -596,7 +589,6 @@ Header
 				display:inline-block;
 				-webkit-font-smoothing:antialiased;
 				font:normal 3.2rem/1em 'Genericons';
-				vertical-align:top;
 			}
 
         #email_social ul li a.email.sprite:hover {
@@ -2264,6 +2256,7 @@ and (max-width:979px) {
 	/* Hide This Stuff */
 
 	#email_social,
+  ul#menu-header #menu-item-76638,
 	.menu-default-container,
 	li#ap4,
 	#most_discussed_tabbed,
@@ -2283,6 +2276,16 @@ and (max-width:979px) {
 	#header_container {
 		border-bottom:0;
 	}
+
+  .menu-header-container {
+    float:right;
+    margin-left:0;
+  }
+
+  ul#menu-header a {
+    margin-left:1.8rem;
+    margin-right:0;
+  }
 
 	#content_column_container {
 		padding:1rem;
@@ -2329,7 +2332,7 @@ and (max-width:659px) {
 
 	/* Hide This Stuff */
 
-	#blog_forum_nav,
+	.menu-header-container,
 	#related_posts {
 		display:none;
 	}
