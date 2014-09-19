@@ -1232,7 +1232,8 @@ Content
 	}
 
 	#author_bio_footer img.avatar {
-		float:left;
+		box-shadow:.1rem .1rem .2rem #ddd;
+    float:left;
 		margin-bottom:2.3rem;
 		margin-right:2rem;
 	}
@@ -1661,7 +1662,7 @@ ul#sidebar_column a:hover {
 
 ul#sidebar_column h3 {
 	color:#999;
-	font-size:1.4em;
+	font-size:1.4rem;
 	letter-spacing:.1rem;
 	line-height:1.714em;
 	text-transform:uppercase;
@@ -1672,9 +1673,8 @@ ul#sidebar_column h3 a.rsswidget img {
 }
 
 li.widget {
-	font-size:10px;
 	line-height:1em;
-	margin:0 0 4em 0;
+	margin:0 0 4rem 0;
 	padding:0;
 }
 
