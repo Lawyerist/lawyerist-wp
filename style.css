@@ -348,6 +348,8 @@ p.wp-caption-text {
 
 .postmeta {
 	color:#777;
+  font-size:1.4rem;
+  line-height:2.3rem;
 	margin-bottom:1.4rem;
 }
 
@@ -931,11 +933,6 @@ Front Page
 		text-shadow:1px 1px 2px #111;
 	}
 
-  .front_page a.featured_post .postmeta {
-    font-size:1.4rem;
-    line-height:2.3rem;
-  }
-
 
   /*------------------------------
   Featured Notes
@@ -974,11 +971,6 @@ Front Page
     box-shadow: .1rem .1rem .2rem #ddd;
     float:left;
     margin:0 1.5rem 1.5rem 0;
-  }
-
-  #featured_notes .postmeta {
-    font-size:1.4rem;
-    line-height:2.3rem;
   }
 
 
@@ -1182,7 +1174,7 @@ Content
 			-webkit-font-smoothing:antialiased;
 			font:normal 1.6rem/1em 'Genericons';
 			margin-right:.1em;
-			vertical-align:baseline;
+			vertical-align:text-top;
 		}
 
   embed,
