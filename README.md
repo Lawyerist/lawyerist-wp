@@ -1,5 +1,11 @@
 # A custom WordPress theme for Lawyerist.com
 
+2014-09-19
+----------
+
+* Blur featured article images on front page.
+
+
 2014-09-18
 ----------
 
