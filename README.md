@@ -1,5 +1,12 @@
 # A custom WordPress theme for Lawyerist.com
 
+2014-09-18
+----------
+
+* Add notes to the front page.
+* Lots of front-page style tweaks.
+
+
 2014-09-17
 ----------
 

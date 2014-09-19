@@ -42,7 +42,7 @@
 
     /* END PINNED POST LOOP */ ?>
 
-    <div class="fp_tab"><h2>Articles</h2></div>
+    <div class="fp_tab"><h2><a href="<?php echo bloginfo('url') . '/articles/'; ?>">Articles</a></h2></div>
   	<div id="featured_posts">
 
   		<?php /* FEATURED POSTS LOOP */
@@ -81,7 +81,7 @@
 
   						<h2 class="headline"><?php the_title(); ?></h2>
   						<div class="postmeta">
-  							<div class="author_link">by <?php the_author(); ?></div>
+  							<div class="author_link">by <?php the_author(); ?> on <span class="post-date updated"><?php the_time('F jS, Y'); ?></div>
   						</div>
 
   					</div><!--end .headline_excerpt-->
@@ -104,58 +104,87 @@
 
   	</div><!--end #featured_posts-->
 
-  	<div id="read_latest_posts">
-  		<a href="<?php echo bloginfo('url') . '/articles/'; ?>">
-  			<p>Read all articles &rarr;</p>
-  		</a>
-  	</div>
+    <div class="fp_tab"><h2><a href="<?php echo bloginfo('url') . '/notes/'; ?>">Notes</a></h2></div>
+    <div id="featured_notes">
 
-    <div class="fp_tab"><h2>Discussions</h2></div>
-    <div id="discussions_container">
-      <div id="most_discussed">
-        <h3>Most-Discussed Posts</h3>
-        <?php wpp_get_mostpopular("post_type='post'&range=monthly&order_by=comments&limit=3&thumbnail_height=60&thumbnail_width=60&post_html='<li><div class=\"wpp_thumb\">{thumb}</div><a class=\"wpp_headline\" href=\"{url}?utm_source=lawyerist_fp_most_discussed\">{text_title}</a><a class=\"comment_link\" href=\"{url}#comments\?utm_source=lawyerist_fp_most_discussed\" rel=\"nofollow\">{comments} recent comments</a><div class=\"clear\"></div></li>'"); ?>
-        <div class="clear"></div>
-      </div>
-      <div id="lab_posts">
-        <h3>Forum Posts</h3>
+      <ul>
 
-        <?php // Get RSS Feed(s)
-        include_once( ABSPATH . WPINC . '/feed.php' );
+        <?php /* NOTES LOOP */
 
-        // Get a SimplePie feed object from the specified feed source.
-        $rss = fetch_feed( 'http://lab.lawyerist.com/discussions/feed.rss' );
+          $featured_query_args = array(
+            'posts_per_page'  => 3,
+            'post__not_in'    => $do_not_duplicate,
+            'tax_query'       => array(
+              array(
+                'taxonomy'  => 'post_format',
+                'field'     => 'slug',
+                'terms'     => array(
+                  'post-format-aside'
+                )
+              )
+            )
+          );
 
-        if ( ! is_wp_error( $rss ) ) : // Checks that the object is created correctly
+          $featured_query = new WP_Query( $featured_query_args );
 
-          // Figure out how many total items there are, but limit it to 5.
-          $maxitems = $rss->get_item_quantity( 5 );
+          while ( $featured_query->have_posts() ) : $featured_query->the_post(); ?>
 
-          // Build an array of all the items, starting with element 0 (first element).
-          $rss_items = $rss->get_items( 0, $maxitems );
+            <li>
+              <a <?php post_class(); ?> href="<?php the_permalink(); ?>?utm_source=lawyerist_fp_notes&utm_medium=internal" rel="bookmark" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
+                <?php if ( has_post_thumbnail() ) { the_post_thumbnail( '75px_thumb' ); } ?>
+                <h2 class="headline"><?php the_title(); ?></h2>
+                <div class="postmeta">
+                  <div class="author_link">by <?php the_author(); ?> on <span class="post-date updated"><?php the_time('F jS, Y'); ?> at <?php the_time('g:i a'); ?></span></div>
+                </div>
+                <div class="clear"></div>
+              </a>
+            </li>
 
-        endif;
-        ?>
+          <?php endwhile;
 
-        <ul>
-          <?php if ( $maxitems == 0 ) : ?>
-            <li><?php _e( 'No items', 'my-text-domain' ); ?></li>
-          <?php else : ?>
-            <?php // Loop through each feed item and display each item as a hyperlink. ?>
-            <?php foreach ( $rss_items as $item ) : ?>
-              <li>
-                <a href="<?php echo esc_url( $item->get_permalink() ); ?>"
-                  title="<?php printf( __( 'Updated on %s', 'my-text-domain' ), $item->get_date('F jS, Y @ g:i a') ); ?>">
-                  <img src="https://lawyerist.com/lawyerist/wp-content/uploads/2013/10/lab-favicon.png" />
-                  <div class="lab_headline"><?php echo esc_html( $item->get_title() ); ?></div>
-                </a>
-              </li>
-            <?php endforeach; ?>
-          <?php endif; ?>
-        </ul>
-      </div><!--end #lab_posts-->
-      <div class="clear"></div>
-    </div>
+        /* END NOTES LOOP */ ?>
+
+      </ul>
+
+    </div><!--end #featured_posts-->
+
+    <div class="fp_tab"><h2>Questions</h2></div>
+    <div id="lab_posts">
+
+      <?php // Get RSS Feed(s)
+      include_once( ABSPATH . WPINC . '/feed.php' );
+
+      // Get a SimplePie feed object from the specified feed source.
+      $rss = fetch_feed( 'http://lab.lawyerist.com/discussions/feed.rss' );
+
+      if ( ! is_wp_error( $rss ) ) : // Checks that the object is created correctly
+
+        // Figure out how many total items there are, but limit it to 5.
+        $maxitems = $rss->get_item_quantity( 5 );
+
+        // Build an array of all the items, starting with element 0 (first element).
+        $rss_items = $rss->get_items( 0, $maxitems );
+
+      endif;
+      ?>
+
+      <ul>
+        <?php if ( $maxitems == 0 ) : ?>
+          <li><?php _e( 'No items', 'my-text-domain' ); ?></li>
+        <?php else : ?>
+          <?php // Loop through each feed item and display each item as a hyperlink. ?>
+          <?php foreach ( $rss_items as $item ) : ?>
+            <li>
+              <a href="<?php echo esc_url( $item->get_permalink() ); ?>" title="<?php printf( __( 'Updated on %s', 'my-text-domain' ), $item->get_date('F jS, Y @ g:i a') ); ?>">
+                <img src="https://lawyerist.com/lawyerist/wp-content/uploads/2013/10/lab-favicon.png" />
+                <div class="lab_headline"><?php echo esc_html( $item->get_title() ); ?></div>
+                <div class="clear"></div>
+              </a>
+            </li>
+          <?php endforeach; ?>
+        <?php endif; ?>
+      </ul>
+    </div><!--end #lab_posts-->
 
     <div class="fp_tab"><h2>Topics</h2></div>
     <div id="popular_in_cats">
