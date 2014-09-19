@@ -1059,6 +1059,10 @@ Category Posts
     font-family:'Roboto Slab',sans-serif;
   }
 
+  .front_page .cat_post_headline:hover a.wpp_headline {
+    text-decoration:underline;
+  }
+
 
 /*------------------------------
 Content
