@@ -60,14 +60,14 @@ Load Fonts
 ------------------------------*/
 
 @font-face {
-    font-family:'Genericons';
-    src:url('font/Genericons.eot');
-    src:url('font/Genericons.eot?#iefix') format('embedded-opentype'),
-        url('font/Genericons.woff') format('woff'),
-        url('font/Genericons.ttf') format('truetype'),
-        url('font/Genericons.svg#genericonsregular') format('svg');
-    font-weight:normal;
-    font-style:normal;
+  font-family:'Genericons';
+  src:url('font/Genericons.eot');
+  src:url('font/Genericons.eot?#iefix') format('embedded-opentype'),
+      url('font/Genericons.woff') format('woff'),
+      url('font/Genericons.ttf') format('truetype'),
+      url('font/Genericons.svg#genericonsregular') format('svg');
+  font-weight:normal;
+  font-style:normal;
 }
 
 
@@ -76,12 +76,12 @@ Resets
 ------------------------------*/
 
 div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video {
-        margin:0;
-        padding:0;
-        border:0;
-        font-size:100%;
-        font:inherit;
-        vertical-align:baseline;
+  margin:0;
+  padding:0;
+  border:0;
+  font-size:100%;
+  font:inherit;
+  vertical-align:baseline;
 }
 
 
@@ -145,22 +145,6 @@ body {
 		.post {
 			margin-bottom:4rem;
 			position:relative;
-		}
-
-		/*------------------------------
-		Index & Archive Lists
-		------------------------------*/
-
-		a.top_post {
-			padding-top:0;
-		}
-
-		a.post {
-			border-bottom:1px solid #ddd;
-			clear:both;
-			display:block;
-			margin-bottom:1.5rem;
-			padding-bottom:1.5rem;
 		}
 
 	ul#sidebar_column {
@@ -416,7 +400,7 @@ img.alignleft {
 
 img.alignright {
 	float:right;
-	margin:0 0 1.4rem 2rem;
+	margin:0 0 2.8rem 1.4rem;
 }
 
 img.avatar {
@@ -443,17 +427,10 @@ img.size-full {
 	width:auto;
 }
 
-a.post img.wp-post-image.attachment-thumbnail {
-	float:right;
-	height:auto;
-	margin:0 0 2.8rem 2rem;
-	width:23.4375%;
-}
-
 img.wp-post-image.attachment-medium {
 	float:right;
 	height:auto;
-	margin:0 0 2.8rem 2rem;
+	margin:0 0 2.8rem 1.4rem;
 	width:46.875%;
 }
 
@@ -465,11 +442,11 @@ img.wp-post-image.attachment-large {
 }
 
 .wp-caption.alignleft {
-	margin:0 1.5rem 0 2.8rem;
+	margin:0 1.4rem 0 2.8rem;
 }
 
 .wp-caption.alignright {
-	margin:0 0 1.5rem 2.8rem;
+	margin:0 0 1.4rem 2.8rem;
 }
 
 .wp-caption img {
@@ -915,7 +892,6 @@ Front Page
 	.front_page a.post_num_1 h2.headline {
 		font-size:4.8rem;
 		line-height:6.4rem;
-		margin-bottom:3.2rem;
 	}
 
   .front_page a.featured_post:hover h2.headline {
@@ -944,38 +920,10 @@ Front Page
   ------------------------------*/
 
   #featured_notes {
-    border:1px solid #ddd;
+    border-top:1px solid #ddd;
     margin-bottom:2.8rem;
+    padding-top:2rem;
     width:100%;
-  }
-
-  #featured_notes ul {
-    margin:2rem 2.5rem 0 2.5rem;
-    list-style:none;
-    padding:0;
-  }
-
-    #featured_notes li {
-      margin-bottom:2.8rem;
-      min-height:7.5rem;
-    }
-
-  #featured_notes a.post {
-    border-bottom:0;
-    margin-bottom:0;
-    padding-bottom:0;
-  }
-
-  #featured_notes h2.headline {
-    font-size:1.8rem;
-    font-weight:normal;
-    line-height:2.7rem;
-  }
-
-  #featured_notes img {
-    box-shadow: .1rem .1rem .2rem #ddd;
-    float:left;
-    margin:0 1.5rem 1.5rem 0;
   }
 
 
@@ -1094,6 +1042,11 @@ Content
 	------------------------------*/
 
 	a.post {
+    border-bottom:1px solid #ddd;
+    clear:both;
+    display:block;
+    margin-bottom:1.5rem;
+    padding-bottom:1.5rem;
 		text-decoration:none;
 	}
 
@@ -1114,6 +1067,14 @@ Content
 		color:#555;
 	}
 
+  a.post img {
+    box-shadow:.1rem .1rem .2rem #ddd;
+    float:right;
+    height:auto;
+    margin:0 0 0 1.5rem;
+    width:23.4375%;
+  }
+
 	a.post p {
 		color:#333;
 	}
@@ -1126,9 +1087,9 @@ Content
 		color:#111;
 	}
 
-	a.post .author_link {
-		margin-bottom:1.4rem;
-	}
+  a.post .postmeta {
+    margin-bottom:0;
+  }
 
 	a.sticky {
 		background-color:#ddd;
@@ -1161,10 +1122,6 @@ Content
 
 	#archive_header p:last-child {
 		margin-bottom:0;
-	}
-
-	.index p.excerpt_with_thumb {
-		padding-right:16.5rem;
 	}
 
 
@@ -1476,8 +1433,11 @@ Content
 
 		#pagenav .alignright .pagenav_link {
 			padding-right:47px;
-			text-align:right;
 		}
+
+    #pagenav .alignright.pagenav_link_block {
+      text-align:right;
+    }
 
 
 	/*------------------------------
@@ -2344,7 +2304,7 @@ and (max-width:659px) {
 			display:block;
 			float:none;
 			position:relative;
-			width:auto;
+			max-width:100%;
 	}
 
 		#pagenav .alignleft.pagenav_link_block {
