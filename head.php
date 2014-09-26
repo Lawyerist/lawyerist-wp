@@ -11,7 +11,7 @@
 <meta charset="utf-8" />
 
 <?php if ( wp_is_mobile() ) { ?>
-    <meta name="viewport" content="width=320,initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <?php } ?>
 
 <script type='text/javascript'>
