@@ -4,7 +4,7 @@
 <?php include('head.php'); ?>
 <?php wp_head(); ?>
 
-<body <?php body_class($class); ?>>
+<body <?php body_class('index'); ?>>
 
 <?php get_header(); ?>
 

@@ -782,7 +782,7 @@ Front Page
 		letter-spacing:.1rem;
 		line-height:1em;
 		margin:0;
-		text-shadow:1px 1px 2px #ddd;
+		text-shadow:.1rem .1rem .2rem #ddd;
 		text-transform:uppercase;
 	}
 
@@ -922,7 +922,7 @@ Front Page
   #featured_notes {
     border-top:1px solid #ddd;
     margin-bottom:2.8rem;
-    padding-top:2rem;
+    padding-top:1.5rem;
     width:100%;
   }
 
@@ -1087,7 +1087,7 @@ Content
 		color:#111;
 	}
 
-  a.post .postmeta {
+  body.notes a.post .postmeta {
     margin-bottom:0;
   }
 
