@@ -48,7 +48,7 @@
   		<?php /* FEATURED POSTS LOOP */
 
         $featured_query_args = array(
-          'posts_per_page'  => 7,
+          'posts_per_page'  => 5,
           'post__not_in'    => $do_not_duplicate,
           'tax_query'       => array(
             array(
@@ -110,7 +110,7 @@
         <?php /* NOTES LOOP */
 
           $featured_query_args = array(
-            'posts_per_page'  => 3,
+            'posts_per_page'  => 5,
             'post__not_in'    => $do_not_duplicate,
             'tax_query'       => array(
               array(
