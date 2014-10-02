@@ -3,7 +3,9 @@
 /* INDEX
 
 Nav Menu
-Featured Images
+Theme Setup
+Add Image Sizes
+Featured Images in RSS Feeds
 Sidebar
 Add Capabilities to Contributor Role
 Create Author List Shortcode
@@ -18,19 +20,89 @@ RSS Feed Caching
 Nav Menu
 ------------------------------*/
 
-function register_my_menu() {
-	register_nav_menu('header-menu',__( 'Header Menu' ));
+function register_my_menus() {
+	register_nav_menus( array(
+		'header_nav' => 'Header Nav Menu',
+		'main_nav' => 'Main Nav Menu (Below Header)',
+	)	);
 }
 
-add_action('init','register_my_menu');
+add_action('init','register_my_menus');
 
 
 /*------------------------------
-Featured Images
+Theme Setup
 ------------------------------*/
 
-add_theme_support('post-thumbnails');
+add_action( 'after_setup_theme', 'lawyerist_theme_setup' );
 
+function lawyerist_theme_setup() {
+
+	add_theme_support('post-thumbnails');
+	add_theme_support( 'post-formats', array( 'aside' ) );
+
+}
+
+
+/*------------------------------
+Rename "Aside" Post Format to "Note"
+------------------------------*/
+
+function rename_post_formats( $safe_text ) {
+    if ( $safe_text == 'Aside' )
+        return 'Note';
+
+    return $safe_text;
+}
+
+add_filter( 'esc_html', 'rename_post_formats' );
+
+//rename Aside in posts list table
+function live_rename_formats() {
+    global $current_screen;
+
+    if ( $current_screen->id == 'edit-post' ) { ?>
+        <script type="text/javascript">
+        jQuery('document').ready(function() {
+
+            jQuery("span.post-state-format").each(function() {
+                if ( jQuery(this).text() == "Aside" )
+                    jQuery(this).text("Note");
+            });
+
+        });
+        </script>
+<?php }
+}
+
+add_action('admin_head', 'live_rename_formats');
+
+
+/*------------------------------
+Add Image Sizes
+------------------------------*/
+
+
+if ( function_exists( 'add_image_size' ) ) {
+	add_image_size( '60px_thumb', 60, 60, true);
+}
+
+if ( function_exists( 'add_image_size' ) ) {
+	add_image_size( '75px_thumb', 75, 75, true);
+}
+
+if ( function_exists( 'add_image_size' ) ) {
+	add_image_size( 'featured', 320, 240, true);
+}
+
+if ( function_exists( 'add_image_size' ) ) {
+	add_image_size( 'featured_topics', 269, 150, true);
+}
+
+
+/*------------------------------
+Featured Images in RSS Feeds
+------------------------------*/
 
 function featuredtoRSS($content) {
 
@@ -51,22 +123,6 @@ function featuredtoRSS($content) {
 
 add_filter('the_excerpt_rss', 'featuredtoRSS');
 add_filter('the_content_feed', 'featuredtoRSS');
-
-if ( function_exists( 'add_image_size' ) ) {
-	add_image_size( '60px_thumb', 60, 60, true);
-}
-
-if ( function_exists( 'add_image_size' ) ) {
-	add_image_size( '75px_thumb', 75, 75, true);
-}
-
-if ( function_exists( 'add_image_size' ) ) {
-	add_image_size( 'featured', 320, 240, true);
-}
-
-if ( function_exists( 'add_image_size' ) ) {
-	add_image_size( 'featured_topics', 269, 150, true);
-}
 
 
 /*------------------------------
