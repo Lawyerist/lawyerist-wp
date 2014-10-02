@@ -142,7 +142,7 @@
 
     </div><!--end #featured_posts-->
 
-    <div class="fp_tab"><h2>Questions</h2></div>
+    <div class="fp_tab"><h2><a href="http://lab.lawyerist.com">Q&A</a></h2></div>
     <div id="lab_posts">
 
       <?php // Get RSS Feed(s)
