@@ -1,5 +1,53 @@
 # A custom WordPress theme for Lawyerist.com
 
+2014-09-19
+----------
+
+* Blur featured article images on front page.
+
+
+2014-09-18
+----------
+
+* Add notes to the front page.
+* Lots of front-page style tweaks.
+
+
+2014-09-17
+----------
+
+* Fix pagination on articles and notes pages.
+* Add gallery post format.
+* Style 3-column gallery layout.
+* Add bottom margins for embed and iframe.
+* Update Genericons.
+* Remove articles and notes page templates because they aren't necessary.
+* Make articles and notes pages work, in general.
+* Move discussions above topics on front page.
+
+
+2014-09-16
+----------
+
+* Change FORUM link in header to Q&A.
+* Add NEWSLETTER to header.
+* Simplify the "more ways to connect" icon in the header.
+* Add support for post formats.
+* Lots of small tweaks to the front page.
+* Fix pagenav.
+
+
+2014-09-09
+----------
+
+* Remove bookstore from front page.
+
+
+2014-09-03
+----------
+
+* Remove "books" link from header.
+
 2014-08-25
 ----------
 

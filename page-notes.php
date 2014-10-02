@@ -4,7 +4,7 @@
 <?php include('head.php'); ?>
 <?php wp_head(); ?>
 
-<body <?php body_class('archive'); ?>>
+<body <?php body_class('notes'); ?>>
 
 <?php get_header(); ?>
 
@@ -12,38 +12,27 @@
 
   <div id="content_column">
 
-		<?php /* ARCHIVE PAGE TITLES */
-
-    if ( is_post_type_archive( 'format' ) ) { ?>
-      <div id="archive_header"><h1>Notes</h1></div>
-    <?php
-
-    } elseif ( is_category() ) {
-			$cat_descr = category_description();
-
-			echo '<div id="archive_header"><h1>';
-			single_cat_title();
-			echo '</h1>' . "\n" . $cat_descr . '</div>';
-
-    } elseif ( is_tag() ) {
-      $tag_descr = tag_description($cat);
-
-
-      echo '<div id="archive_header"><h1>';
-      single_tag_title();
-      echo '</h1>' . "\n" . $tag_descr . '</div>';
-
-		} elseif ( is_author() ) {
-      $author = $wp_query->query_vars['author'];
-      $author_name = get_the_author_meta('display_name',$author);
-      $author_bio = get_the_author_meta('description',$author);
-      $author_avatar = get_avatar( get_the_author_meta('user_email',$author) , 100 );
-
-      echo '<div id="archive_header"><h1>' . $author_name . '</h1>' . "\n" . $author_avatar . "\n" . '<p class="author_descr">' . $author_bio . '</p><div class="clear"></div></div>';
-
-    } ?>
+    <div id="archive_header">
+      <h1 class="remove_bottom"><?php the_title(); if ( $page > 1 ) { echo ', page ' . $page; } ?></h1>
+    </div>
 
 		<?php /* THE LOOP */
+
+    $paged = ( get_query_var('paged') ) ? get_query_var( 'paged' ) : 1;
+    $query_args = array(
+      'paged'           => $paged,
+      'tax_query'       => array(
+        array(
+          'taxonomy'  => 'post_format',
+          'field'     => 'slug',
+          'terms'     => array(
+            'post-format-aside'
+          ),
+        )
+      )
+    );
+
+    query_posts( $query_args );
 
     if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
@@ -53,9 +42,8 @@
 
 				<h2 class="headline remove_bottom" id="post-<?php the_ID(); ?>"><?php the_title(); ?></h2>
 				<div class="postmeta">
-					<div class="author_link">by <?php the_author(); ?></div>
+					<div class="author_link">by <?php the_author(); ?> on <span class="post-date updated"><?php the_time('F jS, Y'); ?> at <?php the_time('g:i a'); ?></span></div>
 				</div>
-				<p class="excerpt remove_bottom<?php if ( has_post_thumbnail() ) { echo ' excerpt_with_thumb'; } ?>"><?php echo get_the_excerpt(); ?></p>
 
 				<div class="clear"></div>
 
@@ -75,9 +63,7 @@
 			<div class="clear"></div>
 		</div>
 
-
 	</div><!-- end #content_column -->
-
 
 	<ul id="sidebar_column">
 		<?php include('sidebar.php'); ?>
@@ -85,14 +71,11 @@
 
 	<div class="clear"></div>
 
-
 </div><!-- end #content_column_container -->
 
 <div class="clear"></div>
 
-
 <?php get_footer(); ?>
-
 
 </body>
 </html>
