@@ -229,7 +229,6 @@ em,i,italic,italics {
 h1,h2,h3,h4,h5,h6 {
 	color:#333;
 	font-family:'Roboto Slab',sans-serif;
-	font-weight:bold;
 }
 
 h1 a,h2 a,h3 a,h4 a,h5 a,h6 a {
@@ -1123,11 +1122,6 @@ Content
 	#archive_header p:last-child {
 		margin-bottom:0;
 	}
-
-  h1.headline,
-  h2.headline {
-    font-weight:normal;
-  }
 
 	.index p.excerpt_with_thumb {
 		padding-right:16.5rem;
