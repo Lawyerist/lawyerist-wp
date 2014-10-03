@@ -1,5 +1,12 @@
 # A custom WordPress theme for Lawyerist.com
 
+2014-10-03
+----------
+
+* noindex notes (in head.php)
+* Lots of other little layout and style changes made over the last few weeks.
+
+
 2014-09-19
 ----------
 

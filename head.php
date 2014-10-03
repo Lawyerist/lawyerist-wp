@@ -2,7 +2,7 @@
 
 <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic,700italic|Roboto+Slab:700,400' rel='stylesheet' type='text/css'>
 
-<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/style.min.css?2014-10-03-12-52" type="text/css" media="screen, projection">
+<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/style.min.css?2014-10-03-11-41" type="text/css" media="screen, projection">
 <link rel="shortcut icon" href="<?php echo get_bloginfo('template_url'); ?>/images/favicon.ico" type="image/x-icon">
 <link rel="icon" href="<?php echo get_bloginfo('template_url'); ?>/images/favicon.ico" type="image/x-icon">
 
@@ -10,9 +10,8 @@
 
 <meta charset="utf-8" />
 
-<?php if ( wp_is_mobile() ) { ?>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<?php } ?>
+<?php if ( wp_is_mobile() ) { ?><meta name="viewport" content="width=device-width, initial-scale=1.0"/><?php } ?>
+<?php if ( has_post_format( 'aside' )) { ?><meta name="robots" content="noindex"><?php } ?>
 
 <script type='text/javascript'>
 var googletag = googletag || {};

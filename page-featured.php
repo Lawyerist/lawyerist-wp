@@ -117,7 +117,7 @@
                 'taxonomy'  => 'post_format',
                 'field'     => 'slug',
                 'terms'     => array(
-                  'post-format-aside'
+                'post-format-aside'
                 )
               )
             )
