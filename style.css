@@ -33,6 +33,7 @@ Front Page
 Content
 	Index & Archive Lists
 	Posts
+  Notes (see notes.php)
   Galleries
   Author List Shortcode
 	Sharing Buttons
@@ -40,6 +41,7 @@ Content
 	Pagenav
 	Comments
 	Related Posts
+Landing Page Template
 Comments
 Sidebar
 	Sidebar Ads
@@ -1252,6 +1254,24 @@ Content
 
 
   /*------------------------------
+  Notes (see notes.php)
+  ------------------------------*/
+
+  .white_paper_note {
+    background-color:#f5f5f5;
+    box-shadow:0 0 5rem rgba(0,0,0,.1) inset;
+    display:block;
+    margin-bottom:2.8rem;
+    padding:1.5rem 2.5rem 2rem 2.5rem;
+  }
+
+  .white_paper_note img {
+    height:auto;
+    width:20rem;
+  }
+
+
+  /*------------------------------
   Galleries
   ------------------------------*/
 
@@ -1519,6 +1539,18 @@ Content
 	ul#related_posts_thumbnails li a:hover {
 		text-decoration:underline;
 	}
+
+
+
+/*------------------------------
+Landing Page Template
+------------------------------*/
+
+  .page-template-landing-page-php #content_column {
+    float:none;
+    margin-left:auto;
+    margin-right:auto;
+  }
 
 
 /*----------------------------------------
