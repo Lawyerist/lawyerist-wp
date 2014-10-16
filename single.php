@@ -38,7 +38,7 @@
 				<?php } ?>
 
 				<div class="post_body" itemprop="articleBody">
-					<?php include('notes.php'); ?>
+					<?php if ( !has_tag( 'no-note' ) ) { include('notes.php'); } ?>
 					<?php the_content(); ?>
 					<?php if ( !is_feed() ) { wp_link_pages(); } ?>
 					<p class="category_list"><small><?php echo get_the_category_list( ', ' ); ?></small></p>
