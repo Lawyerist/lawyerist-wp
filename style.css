@@ -134,7 +134,7 @@ body {
 	}
 
 #content_column_container {
-	margin:0 auto;
+	margin:0 auto 2.8rem auto;
 	width:96.8rem;
 }
 
@@ -156,6 +156,7 @@ body {
 	}
 
 #footer_container {
+  background-color:#ddd;
 	margin:0;
 	padding:0;
 	width:100%;
@@ -164,7 +165,7 @@ body {
 	#footer {
 		margin:0 auto;
 		min-height:18rem;
-		padding:1rem;
+		padding:2.8rem 1rem;
 		width:96.8rem;
 	}
 
@@ -1834,12 +1835,13 @@ Footer
 ------------------------------*/
 
 #footer {
-    background:url('images/L-footer.png') no-repeat left 2rem;
+    background:url('images/L-dot-footer.png') no-repeat left 2.8rem;
     color:#666;
+    min-height:30rem;
 }
 
 #footer p {
-	padding-left:15.7rem;
+	padding-left:31.5rem;
 }
 
 
