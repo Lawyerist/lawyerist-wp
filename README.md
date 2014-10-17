@@ -1,9 +1,16 @@
 # A custom WordPress theme for Lawyerist.com
 
+2014-10-16
+----------
+
+* Footer updates.
+
+
 2014-10-14
 ----------
 
 * Add Landing Page template.
+
 
 2014-10-03
 ----------
