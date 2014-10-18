@@ -1,5 +1,12 @@
 # A custom WordPress theme for Lawyerist.com
 
+2014-10-18
+----------
+
+* Remove resets; use normalize.css instead.
+* Form styling tweaks.
+
+
 2014-10-16
 ----------
 
