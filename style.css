@@ -1161,6 +1161,10 @@ Content
 		padding:1.5rem 2.5rem 2rem 2.5rem;
 	}
 
+    .post_index h3 {
+      margin-top:0;
+    }
+
 		.post_index > ul {
 			margin-left:0;
 		}
@@ -1168,6 +1172,7 @@ Content
 		.post_index ul {
 			list-style:none;
 			margin-bottom:0;
+      padding:0;
 		}
 
 		.post_index li {
@@ -1721,6 +1726,10 @@ li.widget {
 	li#popular_posts_tabbed {
 		margin-bottom:2.8rem;
 	}
+
+  li#popular_posts_tabbed ul {
+    padding:0;
+  }
 
 	li#popular_posts_tabbed ul.idTabs {
 		line-height:1em;
