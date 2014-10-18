@@ -215,10 +215,16 @@ em,i,italic,italics {
 	font-style:italic;
 }
 
+embed,
+iframe {
+  margin-bottom:2.8rem !important;
+}
+
 h1,h2,h3,h4,h5,h6 {
 	color:#333;
 	font-family:'Roboto Slab',sans-serif;
   font-weight:bold;
+  margin-top:0;
 }
 
 h1 a,h2 a,h3 a,h4 a,h5 a,h6 a {
@@ -364,10 +370,12 @@ ol,
 ul {
 	margin-bottom:2.8rem;
 	margin-left:2.8rem;
+  padding:0;
 }
 
 li {
 	margin-bottom:1.4rem;
+  padding:0;
 }
 
 
@@ -538,7 +546,6 @@ Header
 			display:block;
 			list-style:none;
 			margin:0;
-      padding:0;
 		}
 
 			#email_social ul li {
@@ -1137,12 +1144,7 @@ Content
 			vertical-align:text-top;
 		}
 
-  embed,
-  iframe {
-    margin-bottom:2.8rem !important;
-  }
-
-	.post_bio_sep {
+  .post_bio_sep {
 		text-align:center;
 	}
 
@@ -1161,10 +1163,6 @@ Content
 		padding:1.5rem 2.5rem 2rem 2.5rem;
 	}
 
-    .post_index h3 {
-      margin-top:0;
-    }
-
 		.post_index > ul {
 			margin-left:0;
 		}
@@ -1172,7 +1170,6 @@ Content
 		.post_index ul {
 			list-style:none;
 			margin-bottom:0;
-      padding:0;
 		}
 
 		.post_index li {
@@ -1256,6 +1253,10 @@ Content
     display:block;
     margin-bottom:2.8rem;
     padding:1.5rem 2.5rem 2rem 2.5rem;
+  }
+
+  .white_paper_note h3 {
+    margin-top:0;
   }
 
   .white_paper_note img {
@@ -1684,7 +1685,6 @@ li.widget {
 
 	li.widget > ul {
 		margin:0;
-		padding:0;
 	}
 
 	li.widget > ul li {
@@ -1726,10 +1726,6 @@ li.widget {
 	li#popular_posts_tabbed {
 		margin-bottom:2.8rem;
 	}
-
-  li#popular_posts_tabbed ul {
-    padding:0;
-  }
 
 	li#popular_posts_tabbed ul.idTabs {
 		line-height:1em;
@@ -2119,7 +2115,7 @@ and (max-width:1083px) {
 	}
 
 		.sd-content ul {
-				position:static;
+			position:static;
 		}
 
 		.sd-content ul li {
