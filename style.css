@@ -1827,13 +1827,13 @@ Footer
 ------------------------------*/
 
 #footer {
-    background:url('images/L-dot-footer.png') no-repeat left 2.8rem;
+    background:url('images/L-watermark.png') no-repeat left 2.8rem;
     color:#666;
-    min-height:30rem;
+    min-height:16rem;
 }
 
 #footer p {
-	padding-left:31.5rem;
+	padding-left:13.7rem;
 }
 
 
