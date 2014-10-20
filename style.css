@@ -205,10 +205,10 @@ code {
 .drop_cap {
 	float:left;
 	font-family:'Roboto Slab',sans-serif;
-	font-size:4.8rem;
+	font-size:3.2rem;
 	font-weight:bold;
 	line-height:1em;
-	padding-right:1.2rem;
+	padding-right:.5em;
 }
 
 em,i,italic,italics {
