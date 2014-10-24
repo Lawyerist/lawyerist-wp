@@ -188,8 +188,8 @@ a:focus {
 blockquote {
 	border-left:1px solid #ddd;
 	color:#777;
-	margin-bottom:2.8rem;
-	padding-left:1.9rem;
+	margin:0 0 2.8rem 0;
+	padding:0 0 0 1.9rem;
 }
 
 code {
