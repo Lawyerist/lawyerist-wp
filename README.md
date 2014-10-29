@@ -8,7 +8,7 @@
 * Fix responsiveness on Safari for iOS.
 * Fix header responsiveness (hide nav menu when narrowing to single column).
 * Add bottom margin to pinned post headline.
-*
+* Put comment counts back on the front page (although since the front page pulls comment counts from WordPress, not Disqus, there is frequently a delay before the count is updated after a new comment is approved).
 
 
 2014-10-18

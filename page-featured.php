@@ -68,7 +68,8 @@
 
   			while ( $featured_query->have_posts() ) : $featured_query->the_post();
 
-  				$classes = array(
+  				$num_comments = get_comments_number();
+          $classes = array(
   					'featured_post',
   					'post_num_' . $post_num
   				); ?>
@@ -82,6 +83,9 @@
   						<h2 class="headline"><?php the_title(); ?></h2>
   						<div class="postmeta">
   							<div class="author_link">by <?php the_author(); ?> on <span class="post-date updated"><?php the_time('F jS, Y'); ?></div>
+                <?php if ( $num_comments > 0 ) { ?>
+                  <div class="comment_link"><?php comments_number( 'Leave a comment', '1 comment', '% comments' ); ?></div>
+                <?php } ?>
   						</div>
 
   					</div><!--end .headline_excerpt-->
