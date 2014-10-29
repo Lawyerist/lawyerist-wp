@@ -272,6 +272,7 @@ hr {
 
 p {
 	margin-bottom:2.8rem;
+  margin-top:0;
 }
 
 p.note {
