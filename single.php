@@ -20,8 +20,8 @@
 				<h1 class="headline entry-title"><?php the_title(); ?></h1>
 
 				<div class="postmeta">
-					<div class="comment_link"><a href="#disqus_thread">Leave a comment</a></div>
 					<div class="author_link">by <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>"><span class="vcard author post-author"><span class="fn"><?php the_author(); ?></span></span></a> on <span class="post-date updated"><?php the_time('F jS, Y'); ?></span></div>
+					<div class="comment_link"><a href="#disqus_thread">&nbsp;</a></div>
 					<div class="clear"></div>
 				</div>
 
