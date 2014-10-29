@@ -703,7 +703,7 @@ Front Page
 	.fp_sticky p {
 		color:#fff;
 		font-family:'Roboto Slab',sans-serif;
-		margin:0;
+		margin:0 0 .25em 0;
 		padding-left:3.95rem;
 		text-shadow:.1rem .1rem .2rem #111;
 		transition:color .4s;
@@ -2139,7 +2139,8 @@ and (max-width:979px) {
 
 	#email_social,
   ul#menu-header #menu-item-76638,
-	.menu-default-container,
+	.menu-header-container,
+  .menu-default-container,
 	li#ap4,
 	#most_discussed_tabbed,
 	#linkcat-3058,
@@ -2156,7 +2157,7 @@ and (max-width:979px) {
 	}
 
 	#header_container {
-		border-bottom:0;
+		border-bottom:1rem solid #cc0000;
 	}
 
   .menu-header-container {
@@ -2283,6 +2284,11 @@ and (max-width:659px) {
 		line-height:3.3rem;
 		margin-bottom:1.65rem;
 	}
+
+  .front_page #featured_notes a.post {
+    padding-left:2rem;
+    padding-right:2rem;
+  }
 
   .front_page #popular_in_cats {
     border-top:.1rem solid #ddd;

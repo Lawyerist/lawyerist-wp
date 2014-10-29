@@ -1,5 +1,16 @@
 # A custom WordPress theme for Lawyerist.com
 
+2014-10-29
+----------
+
+* Remove top margin on paragraphs.
+* Fix side padding of notes on front page on mobile.
+* Fix responsiveness on Safari for iOS.
+* Fix header responsiveness (hide nav menu when narrowing to single column).
+* Add bottom margin to pinned post headline.
+*
+
+
 2014-10-18
 ----------
 
