@@ -840,11 +840,11 @@ Front Page
 	}
 
 	.front_page a.featured_post img {
-		filter:blur(1rem);
-    -webkit-filter:blur(1rem);
-    -moz-filter:blur(1rem);
-    -o-filter:blur(1rem);
-    -ms-filter:blur(1rem);
+		filter:blur(.5rem);
+    -webkit-filter:blur(.5rem);
+    -moz-filter:blur(.5rem);
+    -o-filter:blur(.5rem);
+    -ms-filter:blur(.5rem);
     height:auto;
 		margin:0 !important;
 		opacity:.4;
