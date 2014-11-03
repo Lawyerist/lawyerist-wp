@@ -1872,9 +1872,10 @@ select {
   ul#sidebar_column input[type="text"],
   ul#sidebar_column input[type="password"],
   ul#sidebar_column input[type="email"],
+  ul#sidebar_column input[type="text"],
   ul#sidebar_column input[type="url"] {
     margin-bottom:1.05rem;
-    width:29rem;
+    width:26.7rem !important;
   }
 
 	input[type="text"]:focus,
