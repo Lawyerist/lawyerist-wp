@@ -8,9 +8,9 @@ Add Image Sizes
 Featured Images in RSS Feeds
 Sidebar
 Add Capabilities to Contributor Role
-Create Author List Shortcode
+Create Author List Shortcode [This Should be a Plugin]
+De-Sanitize Author Bio Field [This Should be a Plugin]
 Remove Quickpress
-Add Editor Stylesheet
 RSS Feed Caching
 
 */
@@ -187,6 +187,16 @@ function list_authors_shortcode() {
 }
 
 add_shortcode('author-list','list_authors_shortcode');
+
+
+/*------------------------------
+De-Sanitize Author Bio Field
+------------------------------*/
+
+//disable WordPress sanitization to allow more than just $allowedtags from /wp-includes/kses.php
+remove_filter('pre_user_description', 'wp_filter_kses');
+//add sanitization for WordPress posts
+add_filter( 'pre_user_description', 'wp_filter_post_kses');
 
 
 /*------------------------------

@@ -1,5 +1,11 @@
 # A custom WordPress theme for Lawyerist.com
 
+2014-11-04
+----------
+
+* De-sanitize author bio field (this should be moved to a plugin).
+
+
 2014-10-29
 ----------
 
