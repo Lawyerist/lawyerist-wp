@@ -1,5 +1,12 @@
 # A custom WordPress theme for Lawyerist.com
 
+2014-11-19
+----------
+
+* Remove list-authors shortcode (moved to Lawyerist Shortcodes plugin).
+* Style pullquotes.
+
+
 2014-11-04
 ----------
 

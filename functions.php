@@ -8,7 +8,6 @@ Add Image Sizes
 Featured Images in RSS Feeds
 Sidebar
 Add Capabilities to Contributor Role
-Create Author List Shortcode [This Should be a Plugin]
 De-Sanitize Author Bio Field [This Should be a Plugin]
 Remove Quickpress
 RSS Feed Caching
@@ -158,35 +157,6 @@ function add_permissions_contributor() {
 }
 
 add_action( 'admin_init', 'add_permissions_contributor');
-
-
-/*------------------------------
-Create Author List Shortcode
-------------------------------*/
-
-function list_authors_shortcode() {
-
-	$args = array(
-		'exclude'			=> '5,26,32,37,50,69,78',
-		'number'			=> 27,
-		'optioncount' => 1,
-		'order'				=> 'DESC',
-		'orderby'			=> 'post_count'
-	);
-
-	ob_start();
-		echo '<ul class="author_list">';
-		wp_list_authors($args);
-		echo '<li>…</li>';
-		echo '</ul>';
-
-	$author_list = ob_get_clean();
-
-	return $author_list;
-
-}
-
-add_shortcode('author-list','list_authors_shortcode');
 
 
 /*------------------------------
