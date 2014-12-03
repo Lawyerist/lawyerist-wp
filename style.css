@@ -847,7 +847,7 @@ Front Page
     -moz-filter:blur(.5rem);
     -o-filter:blur(.5rem);
     -ms-filter:blur(.5rem);
-    height:auto;
+    height:100%;
 		margin:0 !important;
 		opacity:.4;
 		overflow:hidden;
