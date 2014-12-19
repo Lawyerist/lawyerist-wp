@@ -800,6 +800,7 @@ Front Page
   }
 
 	.front_page a.featured_post {
+    background:#111;
 		background:linear-gradient(135deg, #111111 0%,#555555 100%); /* W3C */
 		background:-moz-linear-gradient(-45deg, #111111 0%, #555555 100%); /* FF3.6+ */
 		background:-webkit-gradient(linear, left top, right bottom, color-stop(0%,#111111), color-stop(100%,#555555)); /* Chrome,Safari4+ */
@@ -852,7 +853,6 @@ Front Page
     min-height:100%;
 		margin:0 !important;
 		opacity:.4;
-		overflow:hidden;
 		transition:opacity .4s;
 		width:100%;
 		z-index:0;

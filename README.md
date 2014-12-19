@@ -1,5 +1,11 @@
 # A custom WordPress theme for Lawyerist.com
 
+2014-12-19
+----------
+
+* Add image size for top featured post.
+
+
 2014-11-19
 ----------
 

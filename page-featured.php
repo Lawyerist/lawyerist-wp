@@ -91,7 +91,9 @@
   					</div><!--end .headline_excerpt-->
 
   					<div class="shadowbox"></div>
-  					<?php if ( has_post_thumbnail() ) { the_post_thumbnail( 'featured' ); } ?>
+  					<?php if ( has_post_thumbnail() && $post_num==1 ) { the_post_thumbnail( 'featured_top' ); }
+            elseif ( has_post_thumbnail() ) { the_post_thumbnail( 'featured' ); }
+            else { echo ''; } ?>
 
   					<div class="clear"></div>
 
