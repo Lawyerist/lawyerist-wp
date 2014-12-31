@@ -499,7 +499,7 @@ Header
   .menu-header-container {
     display:inline-block;
     float:left;
-    margin:2rem 0 0 4rem;
+    margin:2rem 0 0 3.2rem;
   }
 
   ul#menu-header {
@@ -518,7 +518,7 @@ Header
 
 	ul#menu-header a {
 		color:#fff;
-		font-size:1.8rem;
+		font-size:1.4rem;
 		letter-spacing:.1rem;
 		line-height:1em;
 		margin:0 1.8rem 0 0;
