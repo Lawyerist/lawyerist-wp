@@ -479,7 +479,7 @@ Header
 	float:left;
 	font-size:1rem;
 	line-height:1em;
-	margin:0 1.8rem 0 0;
+	margin:0;
 	padding:0;
 	width:21.6rem;
 }
@@ -499,7 +499,7 @@ Header
   .menu-header-container {
     display:inline-block;
     float:left;
-    margin:2rem 0 0 3.2rem;
+    margin:2rem 0 0 2.7rem;
   }
 
   ul#menu-header {
@@ -518,10 +518,10 @@ Header
 
 	ul#menu-header a {
 		color:#fff;
-		font-size:1.4rem;
+		font-size:1.6rem;
 		letter-spacing:.1rem;
 		line-height:1em;
-		margin:0 1.8rem 0 0;
+		margin:0 1em 0 0;
 		text-transform:uppercase;
 	}
 
