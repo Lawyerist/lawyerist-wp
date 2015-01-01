@@ -26,6 +26,7 @@
 				} ?>
 
 				<div class="post_body">
+					<?php include('notes.php'); ?>
 					<?php the_content(); ?>
 				</div>
 

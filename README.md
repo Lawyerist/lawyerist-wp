@@ -5,6 +5,7 @@
 
 * Move sidebar to the right.
 * Hide AP4 until we have ads for it or sell out all our other ad positions.
+* Add notes to page templates.
 
 
 2014-12-19
