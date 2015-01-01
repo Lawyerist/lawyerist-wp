@@ -124,7 +124,7 @@ body {
 }
 
 	#content_column {
-		float:right;
+		float:left;
 		width:64rem;
 		max-width:64rem;
 	}
@@ -135,7 +135,7 @@ body {
 		}
 
 	ul#sidebar_column {
-		float:left;
+		float:right;
 		margin:0;
     padding:0;
 		width:30rem;
@@ -1713,13 +1713,17 @@ li.widget {
 		width:30rem;
 	}
 
-  #div-gpt-ad-1356989285353-1,
-  #div-gpt-ad-1356989285353-2 {
+  #div-gpt-ad-1356989285353-1 {
     margin-bottom:1rem;
   }
 
-  #div-gpt-ad-1356989285353-3 {
+  #div-gpt-ad-1356989285353-2 {
     margin-bottom:2.8rem;
+  }
+
+  #div-gpt-ad-1356989285353-3 {
+    display:none;
+    /* margin-bottom:2.8rem; */
   }
 
 
