@@ -1,5 +1,12 @@
 # A custom WordPress theme for Lawyerist.com
 
+2015-01-01
+----------
+
+* Move sidebar to the right.
+* Hide AP4 until we have ads for it or sell out all our other ad positions.
+
+
 2014-12-19
 ----------
 
