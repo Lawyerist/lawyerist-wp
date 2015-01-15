@@ -42,7 +42,7 @@
 
     /* END PINNED POST LOOP */ ?>
 
-    <div class="fp_tab"><h2><a href="<?php echo bloginfo('url') . '/articles/'; ?>">Articles</a></h2></div>
+    <div class="fp_tab"><h2>Articles</h2></div>
   	<div id="featured_posts">
 
   		<?php /* FEATURED POSTS LOOP */
@@ -113,7 +113,7 @@
 
     <div class="clear"></div>
 
-    <div class="fp_tab"><h2><a href="<?php echo bloginfo('url') . '/notes/'; ?>">Notes</a></h2></div>
+    <div class="fp_tab"><h2>Notes</h2></div>
     <div id="featured_notes">
 
       <?php /* NOTES LOOP */
@@ -159,7 +159,7 @@
 
     <div class="clear"></div>
 
-    <div class="fp_tab"><h2><a href="http://lab.lawyerist.com">Q&A</a></h2></div>
+    <div class="fp_tab"><h2>Q&A</h2></div>
     <div id="lab_posts">
 
       <?php // Get RSS Feed(s)
