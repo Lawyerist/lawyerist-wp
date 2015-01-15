@@ -109,44 +109,55 @@
   		<div class="clear"></div>
 
   	</div><!--end #featured_posts-->
+    <div class="fp_bottom_tab"><h2><a href="<?php echo bloginfo('url') . '/articles/'; ?>">More Articles</a></h2></div>
+
+    <div class="clear"></div>
 
     <div class="fp_tab"><h2><a href="<?php echo bloginfo('url') . '/notes/'; ?>">Notes</a></h2></div>
     <div id="featured_notes">
 
-        <?php /* NOTES LOOP */
+      <?php /* NOTES LOOP */
 
-          $featured_query_args = array(
-            'posts_per_page'  => 5,
-            'post__not_in'    => $do_not_duplicate,
-            'tax_query'       => array(
-              array(
-                'taxonomy'  => 'post_format',
-                'field'     => 'slug',
-                'terms'     => array(
+        $set_posts_per_page = 5;
+        $note_num = 1;
+
+        $featured_query_args = array(
+          'posts_per_page'  => $set_posts_per_page,
+          'post__not_in'    => $do_not_duplicate,
+          'tax_query'       => array(
+            array(
+              'taxonomy'  => 'post_format',
+              'field'     => 'slug',
+              'terms'     => array(
                 'post-format-aside'
-                )
               )
             )
-          );
+          )
+        );
 
-          $featured_query = new WP_Query( $featured_query_args );
+        $featured_query = new WP_Query( $featured_query_args );
 
-          while ( $featured_query->have_posts() ) : $featured_query->the_post(); ?>
+        while ( $featured_query->have_posts() ) : $featured_query->the_post(); ?>
 
-            <a <?php post_class(); ?> href="<?php the_permalink(); ?>?utm_source=lawyerist_fp_notes&utm_medium=internal" rel="bookmark" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
-              <?php if ( has_post_thumbnail() ) { the_post_thumbnail( 'thumbnail' ); } ?>
-              <h2 class="headline"><?php the_title(); ?></h2>
-              <div class="postmeta">
-                <div class="author_link">by <?php the_author(); ?> on <span class="post-date updated"><?php the_time('F jS, Y'); ?> at <?php the_time('g:i a'); ?></span></div>
-              </div>
-              <div class="clear"></div>
-            </a>
+          <a <?php if ( $note_num == $set_posts_per_page ) { post_class( 'last_note' ); } else { post_class(); } ?> href="<?php the_permalink(); ?>?utm_source=lawyerist_fp_notes&utm_medium=internal" rel="bookmark" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
+            <?php if ( has_post_thumbnail() ) { the_post_thumbnail( 'thumbnail' ); } ?>
+            <h2 class="headline"><?php the_title(); ?></h2>
+            <div class="postmeta">
+              <div class="author_link">by <?php the_author(); ?> on <span class="post-date updated"><?php the_time('F jS, Y'); ?> at <?php the_time('g:i a'); ?></span></div>
+            </div>
+            <div class="clear"></div>
+          </a>
 
-          <?php endwhile;
+          <?php $note_num++;
 
-        /* END NOTES LOOP */ ?>
+        endwhile;
+
+      /* END NOTES LOOP */ ?>
 
     </div><!--end #featured_posts-->
+    <div class="fp_bottom_tab"><h2><a href="<?php echo bloginfo('url') . '/notes/'; ?>">More Notes</a></h2></div>
+
+    <div class="clear"></div>
 
     <div class="fp_tab"><h2><a href="http://lab.lawyerist.com">Q&A</a></h2></div>
     <div id="lab_posts">
@@ -185,6 +196,9 @@
         <?php endif; ?>
       </ul>
     </div><!--end #lab_posts-->
+    <div class="fp_bottom_tab"><h2><a href="http://lab.lawyerist.com">More Q&A</a></h2></div>
+
+    <div class="clear"></div>
 
     <div class="fp_tab"><h2>Topics</h2></div>
     <div id="popular_in_cats">
