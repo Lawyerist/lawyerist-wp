@@ -813,19 +813,10 @@ Front Page
 		text-transform:uppercase;
 	}
 
-  .front_page .fp_tab h2 a,
-  .front_page .fp_bottom_tab h2 a {
-    color:#333;
-  }
-
 
 	/*------------------------------
 	Featured Posts
 	------------------------------*/
-
-  #featured_posts {
-    margin-bottom:2.8rem;
-  }
 
 	.front_page a.featured_post {
     background:#111;
