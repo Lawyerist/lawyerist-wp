@@ -1,5 +1,10 @@
 # A custom WordPress theme for Lawyerist.com
 
+2015-01-15
+----------
+
+* Add "more" tabs to bottom of front-page sections.
+
 2015-01-01
 ----------
 
