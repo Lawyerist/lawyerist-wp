@@ -118,11 +118,8 @@
 
       <?php /* NOTES LOOP */
 
-        $set_posts_per_page = 5;
-        $note_num = 1;
-
         $featured_query_args = array(
-          'posts_per_page'  => $set_posts_per_page,
+          'posts_per_page'  => 5,
           'post__not_in'    => $do_not_duplicate,
           'tax_query'       => array(
             array(
@@ -139,7 +136,7 @@
 
         while ( $featured_query->have_posts() ) : $featured_query->the_post(); ?>
 
-          <a <?php if ( $note_num == $set_posts_per_page ) { post_class( 'last_note' ); } else { post_class(); } ?> href="<?php the_permalink(); ?>?utm_source=lawyerist_fp_notes&utm_medium=internal" rel="bookmark" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
+          <a <?php post_class(); ?> href="<?php the_permalink(); ?>?utm_source=lawyerist_fp_notes&utm_medium=internal" rel="bookmark" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
             <?php if ( has_post_thumbnail() ) { the_post_thumbnail( 'thumbnail' ); } ?>
             <h2 class="headline"><?php the_title(); ?></h2>
             <div class="postmeta">
@@ -148,9 +145,7 @@
             <div class="clear"></div>
           </a>
 
-          <?php $note_num++;
-
-        endwhile;
+        <?php endwhile;
 
       /* END NOTES LOOP */ ?>
 
