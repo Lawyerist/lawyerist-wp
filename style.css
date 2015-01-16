@@ -950,7 +950,7 @@ Front Page
     width:100%;
   }
 
-  #featured_notes a.last_note {
+  #featured_notes a:last-child {
     margin-bottom:.2rem;
   }
 
