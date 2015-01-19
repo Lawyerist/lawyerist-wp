@@ -1054,7 +1054,7 @@ Content
 }
 
 #lawyerist_content_search {
-	margin-bottom:2rem;
+	margin-bottom:2.8rem;
 }
 
 #lawyerist_content_search input#st-search-input-404 {
@@ -1637,10 +1637,6 @@ Sidebar
 #lawyerist_sidebar_search {
 	font-size:1rem;
 }
-
-	#lawyerist_sidebar_search form {
-		margin-bottom:2.1rem;
-	}
 
 #lawyerist_sidebar_search input#st-search-input,
 li.gform_widget input[type="url"],

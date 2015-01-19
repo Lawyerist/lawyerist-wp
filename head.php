@@ -3,7 +3,7 @@
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic,700italic|Roboto+Slab:700,400' type='text/css'>
 
 <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/normalize.min.css" type="text/css">
-<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/style.min.css?2015-01-19-15-25" type="text/css" media="screen, projection">
+<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/style.min.css?2015-01-19-15-29" type="text/css" media="screen, projection">
 <link rel="shortcut icon" href="<?php echo get_bloginfo('template_url'); ?>/images/favicon.ico" type="image/x-icon">
 <link rel="icon" href="<?php echo get_bloginfo('template_url'); ?>/images/favicon.ico" type="image/x-icon">
 
