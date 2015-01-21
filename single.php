@@ -45,9 +45,7 @@
 					<?php echo get_the_tag_list( '<p class="tag_list"><small>', ', ', '</small></p>' ); ?>
 				</div>
 
-				<p class="post_bio_sep"></p>
-
-				<div id="author_bio_footer">
+				<div id="author_bio_footer" class="raised_block">
 					<?php echo get_avatar( get_the_author_meta('user_email') , 100 ); ?>
 					<p class="remove_bottom"><?php the_author_description(); ?></p>
 				</div>
