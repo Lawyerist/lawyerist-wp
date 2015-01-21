@@ -31,7 +31,7 @@
 
           $do_not_duplicate[] = $post->ID; ?>
 
-          <a class="fp_sticky" href="<?php the_permalink(); ?>?utm_source=lawyerist_fp_pinned&utm_medium=internal" rel="bookmark" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
+          <a class="fp_sticky raised_block raised_text" href="<?php the_permalink(); ?>?utm_source=lawyerist_fp_pinned&utm_medium=internal" rel="bookmark" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
            <div class="pin"></div>
            <p><?php the_title(); ?></p>
           </a>
@@ -76,9 +76,9 @@
 
   				<a <?php post_class($classes); ?> href="<?php the_permalink(); ?>?utm_source=lawyerist_fp_featured&utm_medium=internal" rel="bookmark" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
 
-  					<div class="headline_excerpt">
+  					<div class="headline_excerpt raised_text">
 
-              <?php if ( has_tag('updated') ) { echo '<div class="flag">Updated</div>'; } ?>
+              <?php if ( has_tag('updated') ) { echo '<div class="flag raised_block no_shadow">Updated</div>'; } ?>
 
   						<h2 class="headline"><?php the_title(); ?></h2>
   						<div class="postmeta">
@@ -90,7 +90,6 @@
 
   					</div><!--end .headline_excerpt-->
 
-  					<div class="shadowbox"></div>
   					<?php if ( has_post_thumbnail() && $post_num==1 ) { the_post_thumbnail( 'featured_top' ); }
             elseif ( has_post_thumbnail() ) { the_post_thumbnail( 'featured' ); }
             else { echo ''; } ?>
@@ -182,8 +181,8 @@
           <?php foreach ( $rss_items as $item ) : ?>
             <li>
               <a href="<?php echo esc_url( $item->get_permalink() ); ?>" title="<?php printf( __( 'Updated on %s', 'my-text-domain' ), $item->get_date('F jS, Y @ g:i a') ); ?>">
-                <img src="https://lawyerist.com/lawyerist/wp-content/uploads/2013/10/lab-favicon.png" />
-                <div class="lab_headline"><?php echo esc_html( $item->get_title() ); ?></div>
+                <img class="raised_block" src="https://lawyerist.com/lawyerist/wp-content/uploads/2013/10/lab-favicon.png" />
+                <div class="lab_headline raised_text"><?php echo esc_html( $item->get_title() ); ?></div>
                 <div class="clear"></div>
               </a>
             </li>
