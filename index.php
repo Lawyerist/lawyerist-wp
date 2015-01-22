@@ -33,7 +33,7 @@
 
 		if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
-			<a <?php post_class($class); ?> href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
+			<a <?php post_class(); ?> href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
 
 				<?php if ( has_post_thumbnail() ) { the_post_thumbnail('thumbnail'); } ?>
 
