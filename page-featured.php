@@ -31,7 +31,7 @@
 
           $do_not_duplicate[] = $post->ID; ?>
 
-          <a class="fp_sticky raised_block raised_text" href="<?php the_permalink(); ?>?utm_source=lawyerist_fp_pinned&utm_medium=internal" rel="bookmark" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
+          <a class="fp_sticky raised_text" href="<?php the_permalink(); ?>?utm_source=lawyerist_fp_pinned&utm_medium=internal" rel="bookmark" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
            <div class="pin"></div>
            <p><?php the_title(); ?></p>
           </a>
@@ -71,6 +71,7 @@
   				$num_comments = get_comments_number();
           $classes = array(
   					'featured_post',
+            'raised_block',
   					'post_num_' . $post_num
   				); ?>
 
@@ -113,7 +114,7 @@
     <div class="clear"></div>
 
     <div class="fp_tab"><h2>Notes</h2></div>
-    <div id="featured_notes">
+    <div id="featured_notes" class="raised_block">
 
       <?php /* NOTES LOOP */
 
@@ -133,9 +134,13 @@
 
         $featured_query = new WP_Query( $featured_query_args );
 
-        while ( $featured_query->have_posts() ) : $featured_query->the_post(); ?>
+        while ( $featured_query->have_posts() ) : $featured_query->the_post();
 
-          <a <?php post_class(); ?> href="<?php the_permalink(); ?>?utm_source=lawyerist_fp_notes&utm_medium=internal" rel="bookmark" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
+          $classes = array(
+            'featured_note'
+          ); ?>
+
+          <a <?php post_class($classes); ?> href="<?php the_permalink(); ?>?utm_source=lawyerist_fp_notes&utm_medium=internal" rel="bookmark" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
             <?php if ( has_post_thumbnail() ) { the_post_thumbnail( 'thumbnail' ); } ?>
             <h2 class="headline"><?php the_title(); ?></h2>
             <div class="postmeta">
@@ -154,7 +159,7 @@
     <div class="clear"></div>
 
     <div class="fp_tab"><h2>Q&A</h2></div>
-    <div id="lab_posts">
+    <div id="lab_posts" class="raised_block">
 
       <?php // Get RSS Feed(s)
       include_once( ABSPATH . WPINC . '/feed.php' );
@@ -182,7 +187,7 @@
             <li>
               <a href="<?php echo esc_url( $item->get_permalink() ); ?>" title="<?php printf( __( 'Updated on %s', 'my-text-domain' ), $item->get_date('F jS, Y @ g:i a') ); ?>">
                 <img class="raised_block" src="https://lawyerist.com/lawyerist/wp-content/uploads/2013/10/lab-favicon.png" />
-                <div class="lab_headline raised_text"><?php echo esc_html( $item->get_title() ); ?></div>
+                <div class="lab_headline"><?php echo esc_html( $item->get_title() ); ?></div>
                 <div class="clear"></div>
               </a>
             </li>
@@ -195,7 +200,7 @@
     <div class="clear"></div>
 
     <div class="fp_tab"><h2>Topics</h2></div>
-    <div id="popular_in_cats">
+    <div id="popular_in_cats" class="raised_block">
 
       <div class="cat_post left">
         <h3><a href="http://lawyerist.com/topic/practice-management/">Practice Management</a></h3>

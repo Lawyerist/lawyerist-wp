@@ -9,7 +9,7 @@
 
 </div>
 
-<div id="header_container" class="tall_block">
+<div id="header_container" class="raised_block">
 
 	<div id="header">
 
