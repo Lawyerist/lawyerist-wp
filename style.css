@@ -131,7 +131,7 @@ body {
 	}
 
 		.post {
-			margin-bottom:4rem;
+			margin-bottom:5.6rem;
 			position:relative;
 		}
 
@@ -308,12 +308,15 @@ p.pullout {
 	width:39.0625%;
 }
 
-	p.pullout strong {
-		border-bottom:1px solid #bbb;
+	p.pullout .pullout_label {
 		display:block;
-		font-family:'Roboto Slab',sans-serif;
+    font-size:1.6rem;
 		margin-bottom:1rem;
 	}
+
+  p.pullout a {
+    font-family:'Roboto Slab',sans-serif;
+  }
 
 	p.pullout.left {
 		float:left;
@@ -1173,8 +1176,9 @@ Content
 	}
 
 	#author_bio_footer {
+    background:#eee;
 		clear:both;
-		margin-bottom:4rem;
+		margin-bottom:5.6rem;
 		min-height:10rem;
     padding:2rem 2.5rem;
 	}
@@ -1186,7 +1190,6 @@ Content
 	}
 
 	#author_bio_footer p {
-		color:#666;
 		font-size:14px;
 		line-height:23px;
 		margin-bottom:23px;
@@ -1208,7 +1211,7 @@ Content
   }
 
   .tag_list {
-    margin-bottom:4rem;
+    margin-bottom:5.6rem;
   }
 
 	.tag_list:before {
@@ -1451,7 +1454,7 @@ Content
 	------------------------------*/
 
   #disqus_thread {
-      margin-bottom:4rem;
+      margin-bottom:5.6rem;
   }
 
 
@@ -1627,6 +1630,10 @@ li.gform_widget input[type="submit"] {
 	margin:0;
 }
 
+ul.gform_fields li:last-child {
+  margin-bottom:2.8rem;
+}
+
 ul#sidebar_column,
 ul#sidebar_column ul {
 	list-style:none;
@@ -1654,7 +1661,7 @@ ul#sidebar_column h3 a.rsswidget img {
 
 li.widget {
 	line-height:1em;
-	margin:0 0 4rem 0;
+	margin:0 0 5.6rem 0;
 	padding:0;
 }
 
@@ -2070,12 +2077,16 @@ ul#menu-default .sub-menu {
   box-shadow:0 .2rem .5rem 0 rgba(0, 0, 0, 0.16),0 .2rem 1rem 0 rgba(0, 0, 0, 0.12);
 }
 
+.tall_block {
+  box-shadow:0 .8rem 1.7rem 0 rgba(0, 0, 0, 0.2),0 .6rem 2rem 0 rgba(0, 0, 0, 0.19);
+}
+
 .raised_text {
   text-shadow:0 .2rem .5rem rgba(0, 0, 0, 0.16),0 .2rem 1rem rgba(0, 0, 0, 0.12);
 }
 
-.tall_block {
-  box-shadow:0 .8rem 1.7rem 0 rgba(0, 0, 0, 0.2),0 .6rem 2rem 0 rgba(0, 0, 0, 0.19);
+.inset_shadow {
+  box-shadow:0 .2rem .5rem 0 rgba(0, 0, 0, 0.16) inset,0 .2rem 1rem 0 rgba(0, 0, 0, 0.12) inset;
 }
 
 .no_shadow {
