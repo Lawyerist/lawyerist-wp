@@ -29,9 +29,13 @@
 
         while ( $sticky_query->have_posts() ) : $sticky_query->the_post();
 
-          $do_not_duplicate[] = $post->ID; ?>
+          $do_not_duplicate[] = $post->ID;
+          $classes = array(
+            'fp_sticky',
+            'raised_text'
+          ); ?>
 
-          <a class="fp_sticky raised_text" href="<?php the_permalink(); ?>?utm_source=lawyerist_fp_pinned&utm_medium=internal" rel="bookmark" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
+          <a <?php post_class($classes); ?> href="<?php the_permalink(); ?>?utm_source=lawyerist_fp_pinned&utm_medium=internal" rel="bookmark" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
            <div class="pin"></div>
            <p><?php the_title(); ?></p>
           </a>
@@ -71,7 +75,6 @@
   				$num_comments = get_comments_number();
           $classes = array(
   					'featured_post',
-            'raised_block',
   					'post_num_' . $post_num
   				); ?>
 
@@ -114,7 +117,7 @@
     <div class="clear"></div>
 
     <div class="fp_tab"><h2>Notes</h2></div>
-    <div id="featured_notes" class="raised_block">
+    <div id="featured_notes">
 
       <?php /* NOTES LOOP */
 
@@ -200,7 +203,7 @@
     <div class="clear"></div>
 
     <div class="fp_tab"><h2>Topics</h2></div>
-    <div id="popular_in_cats" class="raised_block">
+    <div id="popular_in_cats">
 
       <div class="cat_post left">
         <h3><a href="http://lawyerist.com/topic/practice-management/">Practice Management</a></h3>

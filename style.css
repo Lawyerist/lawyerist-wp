@@ -388,6 +388,10 @@ li {
 Images
 ------------------------------*/
 
+a img {
+  transition:box-shadow .2s;
+}
+
 img.aligncenter {
 	clear:both;
 	display:block;
@@ -682,32 +686,32 @@ Front Page
 ------------------------------*/
 
 a.fp_sticky,
-.front_page a.post {
+  .front_page a.post {
   transition:box-shadow .2s;
 }
 
-.fp_sticky {
+a.post.fp_sticky {
 	background-color:#333;
-	display:block;
+  border:0;
 	min-height:3.2rem;
-	margin-bottom:2.8rem;
 	padding:.75rem 2.5rem .75rem .75rem;
   transition:background-color .2s;
 }
 
-	.fp_sticky:hover {
+	a.fp_sticky:hover {
     background-color:#555;
 		text-decoration:none;
 	}
 
-	.fp_sticky p {
+	a.post.fp_sticky p,
+  a.post.fp_sticky:hover p {
 		color:#fff;
 		font-family:'Roboto Slab',sans-serif;
 		margin:0 0 .25em 0;
 		padding-left:3.95rem;
 	}
 
-	.fp_sticky .pin:before {
+	a.fp_sticky .pin:before {
 		color:#cc0000;
 		content:'\f308';
 		display:inline-block;
@@ -916,12 +920,13 @@ a.fp_sticky,
   ------------------------------*/
 
   #featured_notes {
+    border-top:.1rem solid #ddd;
+    padding-top:2.8rem;
     width:100%;
   }
 
-  #featured_notes a {
+  #featured_notes a:last-child {
     margin-bottom:.2rem;
-    padding:2rem 2.5rem;
   }
 
 
@@ -968,31 +973,26 @@ Category Posts
 ------------------------------*/
 
 .front_page #popular_in_cats {
-    margin-bottom:2.8rem;
+  border:.1rem solid #ddd;
+  margin-bottom:2.8rem;
 }
 
   .front_page .cat_post {
     background:#fff;
-    border-color:#ddd;
-    border-style:solid;
-    border-width:0 0 .1rem 0;
+    border-bottom:.1rem solid #ddd;
     display:inline-block;
     float:left;
     height:28rem;
-    padding:2rem 2.475rem;
+    padding:2rem 2.425rem;
     width:27rem;
   }
 
   .front_page .cat_post.bottom {
-    border-width:0;
+    border-bottom:0;
   }
 
   .front_page .cat_post.left {
-    border-width:0 .1rem .1rem 0;
-  }
-
-  .front_page .cat_post.bottom.left {
-    border-width:0 .1rem 0 0;
+    border-right:.1rem solid #ddd;
   }
 
   .front_page .cat_post h3 a {
@@ -1474,23 +1474,24 @@ Content
 		overflow:hidden;
 		padding:0;
 		position:relative;
+    transition:box-shadow .2s;
 		width:15rem;
 	}
 
 	ul#related_posts_thumbnails li a img {
-    filter:blur(.5rem);
-    -webkit-filter:blur(.5rem);
-    -moz-filter:blur(.5rem);
-    -o-filter:blur(.5rem);
-    -ms-filter:blur(.5rem);
+    filter:blur(1rem);
+    -webkit-filter:blur(1rem);
+    -moz-filter:blur(1rem);
+    -o-filter:blur(1rem);
+    -ms-filter:blur(1rem);
 		margin:0 !important;
-		opacity:.5;
+		opacity:.1;
 		overflow:hidden;
-		transition:opacity .4s;
+    transition:opacity .2s;
 	}
 
 	ul#related_posts_thumbnails li:hover a img {
-		opacity:.2;
+		opacity:.3;
 	}
 
 	ul#related_posts_thumbnails li a span {
@@ -2055,24 +2056,22 @@ classes to list.
 ------------------------------*/
 
 .raised_block,
-a.fp_sticky,
-body.index a.sticky,
-#featured_posts a,
-img.avatar,
-img.wp-post-image,
-img.wpp-thumbnail,
-.post_index,
+img,
 p.alert,
 p.note,
-ul#menu-default .sub-menu {
+a.fp_sticky,a.sticky,
+a.featured_post,
+ul#related_posts_thumbnails li {
   box-shadow:0 .2rem .5rem 0 rgba(0, 0, 0, 0.16),0 .2rem 1rem 0 rgba(0, 0, 0, 0.12);
 }
 
 .tall_block,
+a.raised_block:hover,
+a:hover img,
+ul.sub-menu,
 a.fp_sticky:hover,
-body.index a.sticky:hover,
-#featured_posts a:hover,
-ul.sub-menu {
+a.featured_post:hover,
+ul#related_posts_thumbnails li:hover {
   box-shadow:0 .8rem 1.7rem 0 rgba(0, 0, 0, 0.2),0 .6rem 2rem 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -2269,10 +2268,6 @@ and (max-width:659px) {
 		}
 
 	/* Front Page */
-
-	.front_page #header_container {
-		margin-bottom:2rem;
-	}
 
 	.front_page #content_column_container {
 		margin:0;
