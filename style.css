@@ -1085,8 +1085,8 @@ Content
 
 	a.sticky {
 		background-color:#ddd;
-		margin-bottom:1.5rem;
 		padding:2.5rem;
+    transition:box-shadow .2s;
 	}
 
 	#archive_header {
@@ -2056,6 +2056,7 @@ classes to list.
 
 .raised_block,
 a.fp_sticky,
+body.index a.sticky,
 #featured_posts a,
 img.avatar,
 img.wp-post-image,
@@ -2069,6 +2070,7 @@ ul#menu-default .sub-menu {
 
 .tall_block,
 a.fp_sticky:hover,
+body.index a.sticky:hover,
 #featured_posts a:hover,
 ul.sub-menu {
   box-shadow:0 .8rem 1.7rem 0 rgba(0, 0, 0, 0.2),0 .6rem 2rem 0 rgba(0, 0, 0, 0.19);

@@ -1,5 +1,11 @@
 # A custom WordPress theme for Lawyerist.com
 
+2015-01-22
+----------
+
+* Went crazy on Material-style elements, especially on the front page.
+
+
 2015-01-15
 ----------
 
