@@ -658,7 +658,7 @@ ul#menu-default ul.sub-menu {
   position:absolute;
     left:-99999px;
     top:-.7rem;
-  transition:opacity .4s ease-out;
+  transition:opacity .2s ease-out;
   width:14rem;
   z-index:10;
 }
@@ -953,7 +953,6 @@ a.post.fp_sticky {
 		border-radius:1.6rem;
 		float:left;
 		opacity:1;
-		transition:opacity .4s;
 	}
 
 	.front_page #lab_posts .lab_headline {
@@ -1080,7 +1079,6 @@ Content
 	a.sticky {
 		background-color:#ddd;
 		padding:2.5rem;
-    transition:box-shadow .2s;
 	}
 
 	#archive_header {
@@ -1472,7 +1470,6 @@ Content
 		overflow:hidden;
 		padding:0;
 		position:relative;
-    transition:box-shadow .2s;
 		width:15rem;
 	}
 
@@ -1925,8 +1922,7 @@ textarea {
 		padding:.8rem 2.8rem;
 		text-decoration:none;
 		text-transform:uppercase;
-    transition:background .2s;
-    transition:box-shadow .2s;
+    transition:background .2s,box-shadow .2s;
     -webkit-appearance:none;
 	}
 
