@@ -312,6 +312,7 @@ p.pullout {
 		display:block;
     font-size:1.6rem;
 		margin-bottom:1rem;
+    text-transform:uppercase;
 	}
 
   p.pullout a {
