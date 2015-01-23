@@ -4,6 +4,8 @@
 ----------
 
 * Went crazy on Material-style elements, especially on the front page.
+* Fixed a bunch of responsive things that didn't work quite right.
+* Pulled some unused cruft out of style.css.
 
 
 2015-01-15
