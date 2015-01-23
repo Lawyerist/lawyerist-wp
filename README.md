@@ -1,5 +1,11 @@
 # A custom WordPress theme for Lawyerist.com
 
+2015-01-23
+----------
+
+* Fix heading sizes on mobile.
+
+
 2015-01-22
 ----------
 
