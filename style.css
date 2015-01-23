@@ -821,7 +821,7 @@ a.post.fp_sticky {
     width:64rem;
 	}
 
-  #featured_posts a.post_num_2 {
+  #featured_posts a:nth-child(even) {
 		margin-right:.2rem;
 	}
 
@@ -2256,25 +2256,21 @@ and (max-width:659px) {
 		display:block;
 		float:none;
 		height:24rem;
-		margin:0 0 1rem 0;
+		margin:0 0 .2rem 0 !important;
 		max-width:none;
 		width:auto;
 	}
 
-  #featured_posts a.featured_post:nth-last-child(2) {
-    margin-bottom:.2rem;
-  }
-
   #featured_posts img,
-  #featured_posts a.post_num_1 img {
+  #featured_posts a:first-child img {
 		height:auto;
 		width:100%;
 	}
 
   #featured_posts h2,
-  #featured_posts a.post_num_1 h2 {
+  #featured_posts a.post_num_1 h2,
+  #featured_notes h2 {
 		font-size:2.4rem;
-		letter-spacing:.1rem;
 		line-height:3.3rem;
 		margin-bottom:1.65rem;
 	}
