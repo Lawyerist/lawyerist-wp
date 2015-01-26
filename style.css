@@ -827,21 +827,16 @@ a.post.fp_sticky {
 	}
 
   #featured_posts img {
-    filter:blur(.1rem);
-    -webkit-filter:blur(1rem);
-    -moz-filter:blur(1rem);
-    -o-filter:blur(1rem);
-    -ms-filter:blur(1rem);
     min-height:100%;
 		margin:0 !important;
-		opacity:.1;
+		opacity:.2;
     transition:opacity .2s;
 		width:100%;
 		z-index:0;
 	}
 
     #featured_posts a:hover img {
-      opacity:.3;
+      opacity:.5;
     }
 
   #featured_posts .headline_excerpt {
