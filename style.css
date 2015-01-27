@@ -88,27 +88,32 @@ body {
 }
 
 #leaderboard_container {
-	background:#ddd;
 	width:100%;
 }
 
-#header {
+#header_container {
   background-color:#111;
 }
 
-.menu-default-container {
-	background-color:#cc0000;
-	margin-bottom:2.8rem;
-	width:100%;
-}
+  #header {
+    margin:0 auto;
+    max-width:102.4rem;
+  }
 
-	.menu-default-container > ul {
-		display:block;
-		line-height:1em;
-		list-style:none;
-		margin:0 auto;
-		padding:0;
-	}
+  .menu-default-container {
+  	background-color:#cc0000;
+  	margin-bottom:2.8rem;
+  	width:100%;
+  }
+
+  	.menu-default-container > ul {
+  		display:block;
+  		line-height:1em;
+  		list-style:none;
+  		margin:0 auto;
+  		padding:0;
+      max-width:102.4rem;
+  	}
 
 #content_column_container {
 	margin:0 auto 2.8rem auto;
@@ -453,8 +458,7 @@ Leaderboard Ad
 ------------------------------*/
 
 #div-gpt-ad-1356989285353-0 {
-	margin:0 auto;
-  padding:1rem 0;
+	margin:1rem auto;
 }
 
 
@@ -1660,24 +1664,12 @@ li.widget {
     margin-bottom:0;
   }
 
-	li.sidebar_ads ul li.sidebar_ad {
+  li.sidebar_ad {
 		display:inline-block;
     float:left;
-		margin:0;
+		margin:0 0 2.8rem 0;
 		width:30rem;
 	}
-
-  #div-gpt-ad-1356989285353-1 {
-    margin-bottom:1rem;
-  }
-
-  #div-gpt-ad-1356989285353-2 {
-    margin-bottom:2.8rem;
-  }
-
-  #div-gpt-ad-1356989285353-3 {
-    margin-bottom:2.8rem;
-  }
 
 
 	/*------------------------------
@@ -2039,11 +2031,15 @@ classes to list.
 img,
 p.alert,
 p.note,
-a.fp_sticky,a.sticky,
+a.fp_sticky,
+a.sticky,
 a.featured_post,
 a.sd-button,
+#div-gpt-ad-1356989285353-0,
+li.sidebar_ad,
 ul#related_posts_thumbnails li,
-.pagenav_leftarrow:before,.pagenav_rightarrow:before {
+.pagenav_leftarrow:before,
+.pagenav_rightarrow:before {
   box-shadow:0 .2rem .5rem 0 rgba(0, 0, 0, 0.16),0 .2rem 1rem 0 rgba(0, 0, 0, 0.12) !important;
   transition:box-shadow .2s;
 }
@@ -2054,10 +2050,13 @@ a:hover img,
 a.fp_sticky:hover,
 a.featured_post:hover,
 a.sd-button:hover,
+#div-gpt-ad-1356989285353-0:hover,
+li.sidebar_ad:hover,
 #popular_in_cats .cat_post_headline:hover img,
 #sidebar_column .wpp-list li:hover img,
 #related_posts_thumbnails li:hover,
-a:hover .pagenav_leftarrow:before,a:hover .pagenav_rightarrow:before {
+a:hover .pagenav_leftarrow:before,
+a:hover .pagenav_rightarrow:before {
   box-shadow:0 .5rem 1.1rem 0 rgba(0, 0, 0, 0.18),0 .4rem 1.5rem 0 rgba(0, 0, 0, 0.15) !important;
 }
 

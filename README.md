@@ -1,5 +1,12 @@
 # A custom WordPress theme for Lawyerist.com
 
+2015-01-27
+----------
+
+* Put max-width on header blocks.
+* Raise the ads.
+
+
 2015-01-23
 ----------
 
