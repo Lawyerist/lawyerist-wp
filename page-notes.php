@@ -34,7 +34,9 @@
 
     query_posts( $query_args );
 
-    if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+    if ( have_posts() ) : while ( have_posts() ) : the_post();
+
+      $num_comments = get_comments_number(); ?>
 
 			<a <?php post_class($class); ?> href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
 
@@ -43,6 +45,9 @@
 				<h2 class="headline remove_bottom" id="post-<?php the_ID(); ?>"><?php the_title(); ?></h2>
 				<div class="postmeta">
 					<div class="author_link">by <?php the_author(); ?> on <span class="post-date updated"><?php the_time('F jS, Y'); ?> at <?php the_time('g:i a'); ?></span></div>
+          <?php if ( $num_comments > 0 ) { ?>
+            <div class="comment_link"><?php comments_number( 'Leave a comment', '1 comment', '% comments' ); ?></div>
+          <?php } ?>
 				</div>
 
 				<div class="clear"></div>

@@ -45,7 +45,9 @@
 
 		<?php /* THE LOOP */
 
-    if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+    if ( have_posts() ) : while ( have_posts() ) : the_post();
+
+      $num_comments = get_comments_number(); ?>
 
 			<a <?php post_class($class); ?> href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
 
@@ -54,6 +56,9 @@
 				<h2 class="headline remove_bottom" id="post-<?php the_ID(); ?>"><?php the_title(); ?></h2>
 				<div class="postmeta">
 					<div class="author_link">by <?php the_author(); ?></div>
+          <?php if ( $num_comments > 0 ) { ?>
+            <div class="comment_link"><?php comments_number( 'Leave a comment', '1 comment', '% comments' ); ?></div>
+          <?php } ?>
 				</div>
 				<p class="excerpt remove_bottom<?php if ( has_post_thumbnail() ) { echo ' excerpt_with_thumb'; } ?>"><?php echo get_the_excerpt(); ?></p>
 
