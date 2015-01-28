@@ -15,13 +15,13 @@
 		<?php /* ARCHIVE PAGE TITLES */
 
     if ( is_post_type_archive( 'format' ) ) { ?>
-      <div id="archive_header" class="raised_block"><h1>Notes</h1></div>
+      <div id="archive_header"><h1>Notes</h1></div>
     <?php
 
     } elseif ( is_category() ) {
 			$cat_descr = category_description();
 
-			echo '<div id="archive_header" class="raised_block"><h1>';
+			echo '<div id="archive_header"><h1>';
 			single_cat_title();
 			echo '</h1>' . "\n" . $cat_descr . '</div>';
 
@@ -29,7 +29,7 @@
       $tag_descr = tag_description($cat);
 
 
-      echo '<div id="archive_header" class="raised_block"><h1>';
+      echo '<div id="archive_header"><h1>';
       single_tag_title();
       echo '</h1>' . "\n" . $tag_descr . '</div>';
 
@@ -39,7 +39,7 @@
       $author_bio = get_the_author_meta('description',$author);
       $author_avatar = get_avatar( get_the_author_meta('user_email',$author) , 100 );
 
-      echo '<div id="archive_header" class="raised_block"><h1>' . $author_name . '</h1>' . "\n" . $author_avatar . "\n" . '<p class="author_descr">' . $author_bio . '</p><div class="clear"></div></div>';
+      echo '<div id="archive_header"><h1>' . $author_name . '</h1>' . "\n" . $author_avatar . "\n" . '<p class="author_descr">' . $author_bio . '</p><div class="clear"></div></div>';
 
     } ?>
 
