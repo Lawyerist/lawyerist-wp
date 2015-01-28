@@ -185,6 +185,9 @@ a:focus {
 blockquote {
 	border-left:1px solid #ddd;
 	color:#777;
+  font-size:2.4rem;
+  font-weight:lighter;
+  line-height:3.4rem;
 	margin:0 0 2.8rem 0;
 	padding:0 0 0 1.9rem;
 }
@@ -833,14 +836,14 @@ a.post.fp_sticky {
   #featured_posts img {
     min-height:100%;
 		margin:0 !important;
-		opacity:.2;
+		opacity:.5;
     transition:opacity .2s;
 		width:100%;
 		z-index:0;
 	}
 
     #featured_posts a:hover img {
-      opacity:.5;
+      opacity:.2;
     }
 
   #featured_posts .headline_excerpt {
@@ -1464,19 +1467,14 @@ Content
 	}
 
 	ul#related_posts_thumbnails li a img {
-    filter:blur(1rem);
-    -webkit-filter:blur(1rem);
-    -moz-filter:blur(1rem);
-    -o-filter:blur(1rem);
-    -ms-filter:blur(1rem);
 		margin:0 !important;
-		opacity:.1;
+		opacity:.5;
 		overflow:hidden;
     transition:opacity .2s;
 	}
 
 	ul#related_posts_thumbnails li:hover a img {
-		opacity:.3;
+		opacity:.2;
 	}
 
 	ul#related_posts_thumbnails li a span {
