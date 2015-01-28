@@ -192,6 +192,10 @@ blockquote {
 	padding:0 0 0 1.9rem;
 }
 
+  blockquote strong {
+    font-weight:normal;
+  }
+
   aside blockquote,
   p.pullquote {
     border:none;
@@ -2033,8 +2037,6 @@ a.fp_sticky,
 a.sticky,
 a.featured_post,
 a.sd-button,
-#div-gpt-ad-1356989285353-0,
-li.sidebar_ad,
 ul#related_posts_thumbnails li,
 .pagenav_leftarrow:before,
 .pagenav_rightarrow:before {
@@ -2048,8 +2050,6 @@ a:hover img,
 a.fp_sticky:hover,
 a.featured_post:hover,
 a.sd-button:hover,
-#div-gpt-ad-1356989285353-0:hover,
-li.sidebar_ad:hover,
 #popular_in_cats .cat_post_headline:hover img,
 #sidebar_column .wpp-list li:hover img,
 #related_posts_thumbnails li:hover,
