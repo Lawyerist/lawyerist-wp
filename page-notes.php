@@ -12,7 +12,7 @@
 
   <div id="content_column">
 
-    <div id="archive_header" class="raised_block">
+    <div id="archive_header">
       <h1 class="remove_bottom"><?php the_title(); if ( $page > 1 ) { echo ', page ' . $page; } ?></h1>
     </div>
 

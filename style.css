@@ -1076,6 +1076,7 @@ Content
 
 	#archive_header {
 		background-color:#ddd;
+    border:1px solid #ddd;
 		margin-bottom:2.8rem;
 		padding:1.5rem 2.5rem 2rem 2.5rem;
 	}
@@ -1118,6 +1119,10 @@ Content
     vertical-align:text-top;
 	}
 
+  .post_body {
+    margin-bottom:5.6rem;
+  }
+
 	.post_index {
 		background-color:#f5f5f5;
     border:1px solid #ddd;
@@ -1150,11 +1155,9 @@ Content
 	}
 
 	#author_bio_footer {
-    background:#eee;
 		clear:both;
 		margin-bottom:5.6rem;
 		min-height:10rem;
-    padding:2rem 2.5rem;
 	}
 
 	#author_bio_footer img.avatar {
@@ -1164,10 +1167,10 @@ Content
 	}
 
 	#author_bio_footer p {
-		font-size:14px;
-		line-height:23px;
-		margin-bottom:23px;
-		padding-left:120px;
+    color:#666;
+		font-size:1.4rem;
+		line-height:2.3rem;
+		padding-left:12rem;
 	}
 
   #category_tag_lists p:first-child {
