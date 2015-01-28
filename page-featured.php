@@ -29,13 +29,9 @@
 
         while ( $sticky_query->have_posts() ) : $sticky_query->the_post();
 
-          $do_not_duplicate[] = $post->ID;
-          $classes = array(
-            'fp_sticky',
-            'raised_text'
-          ); ?>
+          $do_not_duplicate[] = $post->ID; ?>
 
-          <a <?php post_class($classes); ?> href="<?php the_permalink(); ?>?utm_source=lawyerist_fp_pinned&utm_medium=internal" rel="bookmark" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
+          <a <?php post_class("fp_sticky"); ?> href="<?php the_permalink(); ?>?utm_source=lawyerist_fp_pinned&utm_medium=internal" rel="bookmark" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
            <div class="pin"></div>
            <p><?php the_title(); ?></p>
           </a>
@@ -82,7 +78,7 @@
 
   					<div class="headline_excerpt raised_text">
 
-              <?php if ( has_tag('updated') ) { echo '<div class="flag raised_block no_shadow">Updated</div>'; } ?>
+              <?php if ( has_tag('updated') ) { echo '<div class="flag no_shadow">Updated</div>'; } ?>
 
   						<h2 class="headline"><?php the_title(); ?></h2>
   						<div class="postmeta">
@@ -162,7 +158,7 @@
     <div class="clear"></div>
 
     <div class="fp_tab"><h2>Q&A</h2></div>
-    <div id="lab_posts" class="raised_block">
+    <div id="lab_posts">
 
       <?php // Get RSS Feed(s)
       include_once( ABSPATH . WPINC . '/feed.php' );
@@ -189,7 +185,7 @@
           <?php foreach ( $rss_items as $item ) : ?>
             <li>
               <a href="<?php echo esc_url( $item->get_permalink() ); ?>" title="<?php printf( __( 'Updated on %s', 'my-text-domain' ), $item->get_date('F jS, Y @ g:i a') ); ?>">
-                <img class="raised_block" src="https://lawyerist.com/lawyerist/wp-content/uploads/2013/10/lab-favicon.png" />
+                <img src="https://lawyerist.com/lawyerist/wp-content/uploads/2013/10/lab-favicon.png" />
                 <div class="lab_headline"><?php echo esc_html( $item->get_title() ); ?></div>
                 <div class="clear"></div>
               </a>
