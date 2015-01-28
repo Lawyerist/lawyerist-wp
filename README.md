@@ -4,8 +4,8 @@
 ----------
 
 * Put max-width on header blocks.
-* Raise the ads.
 * Make blockquotes better.
+* Remove Material elements.
 
 
 2015-01-23
