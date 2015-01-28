@@ -665,18 +665,15 @@ ul#menu-default li a {
 ul#menu-default ul.sub-menu {
   background:#aa0000;
   margin:0;
-  opacity:0;
   position:absolute;
     left:-99999px;
-    top:-.7rem;
-  transition:opacity .2s ease-out;
+    top:0;
   width:14rem;
   z-index:10;
 }
 
   ul#menu-default li:hover ul.sub-menu {
     left:0;
-    opacity:1;
   }
 
   li#menu-item-74549 {
