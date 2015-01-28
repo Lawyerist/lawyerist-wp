@@ -88,6 +88,8 @@ body {
 }
 
 #leaderboard_container {
+  background-color:#eee;
+  padding:1rem 0;
 	width:100%;
 }
 
@@ -468,7 +470,7 @@ Leaderboard Ad
 ------------------------------*/
 
 #div-gpt-ad-1356989285353-0 {
-	margin:1rem auto;
+	margin:0 auto;
 }
 
 
