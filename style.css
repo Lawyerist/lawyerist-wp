@@ -1862,7 +1862,6 @@ textarea {
 	form input[type="button"] {
     background:#bb0000;
     border:0;
-    border-bottom:.5rem solid #780000;
     border-radius:.3rem;
     color:#fff;
     cursor:pointer;
@@ -1872,7 +1871,7 @@ textarea {
     line-height:normal;
     margin-bottom:2rem;
     outline:none;
-    padding:.6rem 1.2rem;
+    padding:.7rem 1.4rem;
     text-decoration:none;
     text-transform:none;
     -webkit-appearance:none;
