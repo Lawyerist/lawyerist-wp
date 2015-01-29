@@ -1,5 +1,10 @@
 # A custom WordPress theme for Lawyerist.com
 
+2015-01-28
+----------
+
+* Un-raise the ads.
+
 2015-01-27
 ----------
 
