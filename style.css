@@ -50,7 +50,6 @@ Forms
 	Buttons
 	Gravity Forms
   MailChimp
-Shadows
 Useful Stuff
 Media Queries
 
@@ -896,6 +895,7 @@ a.post.fp_sticky {
   #featured_posts .postmeta,
   #featured_posts .comment_link:before {
 		color:#fff !important;
+    text-shadow:.1rem .1rem 0 #111;
 	}
 
 
@@ -1015,7 +1015,7 @@ Content
 	font-size:inherit !important;
 	margin:0;
   padding-left:2.7rem !important;
-	width:26.7rem !important;
+	width:26.5rem !important;
 }
 
 	/*------------------------------
@@ -1578,40 +1578,6 @@ Sidebar
 	font-size:1rem;
 }
 
-#lawyerist_sidebar_search input#st-search-input,
-li.gform_widget input[type="url"],
-li.gform_widget input[type="text"] {
-	border-radius:.2rem !important;
-	font-size:1.6rem !important;
-	margin:0;
-	width:26.7rem !important;
-}
-
-li.gform_widget label.gfield_label {
-	margin-top:0 !important;
-}
-
-li.gform_widget .gform_heading,
-li.gform_widget .gform_description,
-li.gform_widget .gform_confirmation_message {
-	font-size:1.8rem;
-	line-height:2.8rem;
-	width:auto;
-}
-
-li.gform_widget .gform_footer {
-	margin:0 !important;
-	padding:0 !important;
-}
-
-li.gform_widget input[type="submit"] {
-	margin:0;
-}
-
-ul.gform_fields li:last-child {
-  margin-bottom:2.8rem;
-}
-
 ul#sidebar_column,
 ul#sidebar_column ul {
 	list-style:none;
@@ -1812,8 +1778,9 @@ input[type="url"],
 textarea,
 select {
 	background:#fff;
-	border:.1rem solid #ccc;
+	border:.2rem solid #ccc !important;
 	border-radius:.2rem;
+  box-shadow:none !important;
 	color:#777;
 	display:block;
 	font-family:inherit;
@@ -1830,7 +1797,14 @@ select {
   ul#sidebar_column input[type="text"],
   ul#sidebar_column input[type="url"] {
     margin-bottom:1.05rem;
-    width:26.7rem !important;
+    width:26.5rem !important;
+  }
+
+  #lawyerist_sidebar_search input#st-search-input,
+  li.gform_widget input[type="url"],
+  li.gform_widget input[type="text"] {
+    border-radius:.2rem !important;
+    font-size:1.6rem !important;
   }
 
 	input[type="text"]:focus,
@@ -1838,14 +1812,13 @@ select {
 	input[type="email"]:focus,
 	input[type="url"]:focus,
 	textarea:focus {
-		border:1px solid #aaa;
+		border:.2rem solid #cc0000 !important;
 		color:#444;
 	}
 
 input#st-search-input {
 	padding-left:2.7rem !important;
 }
-
 
 input[type="checkbox"] {
   display:inline;
@@ -2004,6 +1977,31 @@ textarea {
     margin-bottom:2.8rem;
   }
 
+  li.gform_widget label.gfield_label {
+    margin-top:0 !important;
+  }
+
+  li.gform_widget .gform_heading,
+  li.gform_widget .gform_description,
+  li.gform_widget .gform_confirmation_message {
+    font-size:1.8rem;
+    line-height:2.8rem;
+    width:auto;
+  }
+
+  li.gform_widget .gform_footer {
+    margin:0 !important;
+    padding:0 !important;
+  }
+
+  li.gform_widget input[type="submit"] {
+    margin:0;
+  }
+
+  ul.gform_fields li:last-child {
+    margin-bottom:2.8rem;
+  }
+
 
   /*------------------------------
   MailChimp
@@ -2018,40 +2016,6 @@ textarea {
     display:inline-block;
     margin-left:.5em;
   }
-
-/*------------------------------
-Shadows (thanks to materializecss.com)
-
-Button shadows are specific to buttons
-because there are too many elements and
-classes to list.
-------------------------------*/
-
-.raised_block {
-  box-shadow:0 .2rem .5rem 0 rgba(0, 0, 0, 0.16),0 .2rem 1rem 0 rgba(0, 0, 0, 0.12);
-  transition:box-shadow .2s;
-}
-
-.raised_block_hover {
-  box-shadow:0 .5rem 1.1rem 0 rgba(0, 0, 0, 0.18),0 .4rem 1.5rem 0 rgba(0, 0, 0, 0.15);
-}
-
-.tall_block {
-  box-shadow:0 .8rem 1.7rem 0 rgba(0, 0, 0, 0.2),0 .6rem 2rem 0 rgba(0, 0, 0, 0.19);
-}
-
-.raised_text {
-  text-shadow:0 .2rem .5rem rgba(0, 0, 0, 0.16),0 .2rem 1rem rgba(0, 0, 0, 0.12);
-}
-
-.inset_shadow {
-  box-shadow:0 .2rem .5rem 0 rgba(0, 0, 0, 0.16) inset,0 .2rem 1rem 0 rgba(0, 0, 0, 0.12) inset;
-}
-
-.no_shadow {
-  box-shadow:none !important;
-  text-shadow:none !important;
-}
 
 
 /*------------------------------

@@ -6,6 +6,7 @@
 * Put max-width on header blocks.
 * Make blockquotes better.
 * Remove Material elements.
+* Flatten forms.
 
 
 2015-01-23
