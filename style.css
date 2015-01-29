@@ -1797,7 +1797,7 @@ select {
   ul#sidebar_column input[type="text"],
   ul#sidebar_column input[type="url"] {
     margin-bottom:1.05rem;
-    width:26.5rem !important;
+    width:28.8rem !important;
   }
 
   #lawyerist_sidebar_search input#st-search-input,
@@ -1805,6 +1805,7 @@ select {
   li.gform_widget input[type="text"] {
     border-radius:.2rem !important;
     font-size:1.6rem !important;
+    width:26.5rem !important;
   }
 
 	input[type="text"]:focus,
@@ -1871,7 +1872,7 @@ textarea {
     line-height:normal;
     margin-bottom:2rem;
     outline:none;
-    padding:.7rem 1.4rem;
+    padding:.8rem 1.6rem;
     text-decoration:none;
     text-transform:none;
     -webkit-appearance:none;
