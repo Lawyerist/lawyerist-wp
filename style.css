@@ -1783,6 +1783,10 @@ body .gform_wrapper textarea {
   -webkit-appearance: none;
 }
 
+body .gform_wrapper label.gfield_label {
+  font-size:1.6rem;
+}
+
 body .gform_wrapper input[type=checkbox],
 body .gform_wrapper input[type=radio] {
   margin-left:.1rem;
@@ -1834,7 +1838,9 @@ input#st-search-input:focus {
   ------------------------------*/
 
   button,
-  a.button {
+  a.button,
+  body .gform_wrapper input.button,
+  input.button {
     background-color:#bb0000;
     border:0;
     border-radius: .2rem;
@@ -1843,7 +1849,7 @@ input#st-search-input:focus {
     color:#fff;
     display: inline-block;
     font-family: inherit;
-    font-size: 100%;
+    font-size: 1.6rem !important;
     outline: none;
     padding: .7rem 1.4rem !important;
     text-decoration:none;
@@ -1852,14 +1858,18 @@ input#st-search-input:focus {
   }
 
   button:hover,
-  a.button:hover {
+  a.button:hover,
+  body .gform_wrapper input.button:hover,
+  input.button:hover {
     background-color:#cc0000;
     color:#fff;
     text-decoration:none;
   }
 
   button:active,
-  a.button:active {
+  a.button:active,
+  body .gform_wrapper input.button:active,
+  input.button:active {
     background-color:#aa0000;
     color:#ddd;
   }
