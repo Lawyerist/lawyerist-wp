@@ -1834,30 +1834,32 @@ input#st-search-input:focus {
   ------------------------------*/
 
   button,
-  .button {
+  a.button {
     background-color:#bb0000;
     border:0;
     border-radius: .2rem;
     box-shadow: none;
     box-sizing: border-box;
     color:#fff;
-    display: block;
+    display: inline-block;
     font-family: inherit;
     font-size: 100%;
     outline: none;
     padding: .7rem 1.4rem !important;
+    text-decoration:none;
     -webkit-appearance: none;
     width:auto !important;
   }
 
   button:hover,
-  .button:hover {
+  a.button:hover {
     background-color:#cc0000;
     color:#fff;
+    text-decoration:none;
   }
 
   button:active,
-  .button:active {
+  a.button:active {
     background-color:#aa0000;
     color:#ddd;
   }
