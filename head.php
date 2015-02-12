@@ -12,7 +12,10 @@
 <meta charset="utf-8" />
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<?php if ( has_post_format( 'aside' )) { ?><meta name="robots" content="noindex"><?php } ?>
+<?php if ( has_post_format( 'aside' )) { ?>
+	<meta name="robots" content="noindex">
+	<meta name="st:robots" content="index">
+<?php } ?>
 
 <script type='text/javascript'>
 var googletag = googletag || {};
