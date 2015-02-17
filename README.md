@@ -1,5 +1,12 @@
 # A custom WordPress theme for Lawyerist.com
 
+2015-02-17
+----------
+
+* Make full-width featured images the default.
+* Show featured images only on the first page of multi-page posts.
+
+
 2015-01-28
 ----------
 
