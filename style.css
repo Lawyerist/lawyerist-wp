@@ -185,15 +185,11 @@ blockquote {
 	border-left:1px solid #ddd;
 	color:#777;
   font-size:2rem;
-  font-weight:lighter;
+  font-weight:300;
   line-height:3rem;
 	margin:0 0 2.8rem 0;
 	padding:0 0 0 1.9rem;
 }
-
-  blockquote strong {
-    font-weight:normal;
-  }
 
   aside blockquote,
   p.pullquote {

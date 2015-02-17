@@ -25,16 +25,11 @@
 					<div class="clear"></div>
 				</div>
 
-				<?php if ( has_post_thumbnail() && ( is_paged() || has_tag('no-image') ) ) {
-					echo '';
-				}
-
-				elseif ( !is_feed() && has_post_thumbnail() && has_tag('big-image') ) { ?>
+				<?php /* Show featured images (1) if the post has one AND (2) if it's
+								 the first page of the post AND (3) the post DOES NOT have the
+								 no-image tag. */
+				if ( has_post_thumbnail() && $page == 1 && !has_tag('no-image') ) { ?>
 					<div itemprop="image"><?php the_post_thumbnail('large'); ?></div>
-				<?php }
-
-				elseif ( has_post_thumbnail() ) { ?>
-					<div itemprop="image"><?php the_post_thumbnail('medium'); ?></div>
 				<?php } ?>
 
 				<div class="post_body" itemprop="articleBody">
