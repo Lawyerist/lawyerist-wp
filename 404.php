@@ -39,54 +39,7 @@
 
 				<h3>Before you go, sign up for our email newsletter:</h3>
 
-				<!-- Begin MailChimp Signup Form -->
-				<div id="mc_embed_signup">
-				<form action="http://lawyerist.us2.list-manage.com/subscribe/post?u=a5da2382c098b6541dcd6cf8e&amp;id=30d7a1f6e2" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-
-				<div class="mc-field-group">
-					<label for="mce-FNAME">First Name  <span class="asterisk">*</span>
-				</label>
-					<input type="text" value="" name="FNAME" class="required" id="mce-FNAME">
-				</div>
-				<div class="mc-field-group">
-					<label for="mce-LNAME">Last Name </label>
-					<input type="text" value="" name="LNAME" class="" id="mce-LNAME">
-				</div>
-				<div class="mc-field-group">
-					<label for="mce-EMAIL">Email Address  <span class="asterisk">*</span>
-				</label>
-					<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
-				</div>
-				<div class="mc-field-group input-group">
-				    <strong>Newsletters </strong>
-				    <ul><li><input checked type="checkbox" value="1" name="group[5769][1]" id="mce-group[5769]-5769-0"><label for="mce-group[5769]-5769-0">Lawyerist Insider Newsletter</label></li>
-				<li><input type="checkbox" value="2" name="group[5769][2]" id="mce-group[5769]-5769-1"><label for="mce-group[5769]-5769-1">Lawyerist Insider Tech News Updates</label></li>
-				</ul>
-				</div>
-				<div class="mc-field-group input-group">
-				    <strong>Practice Type </strong>
-				    <ul><li><input type="radio" value="4" name="group[5801]" id="mce-group[5801]-5801-0"><label for="mce-group[5801]-5801-0">Solo</label></li>
-				<li><input type="radio" value="16" name="group[5801]" id="mce-group[5801]-5801-1"><label for="mce-group[5801]-5801-1">Small firm (2–10 lawyers)</label></li>
-				<li><input type="radio" value="32" name="group[5801]" id="mce-group[5801]-5801-2"><label for="mce-group[5801]-5801-2">Medium-sized firm (16–25 lawyers)</label></li>
-				<li><input type="radio" value="64" name="group[5801]" id="mce-group[5801]-5801-3"><label for="mce-group[5801]-5801-3">Large firm (25+ lawyers)</label></li>
-				<li><input type="radio" value="2048" name="group[5801]" id="mce-group[5801]-5801-4"><label for="mce-group[5801]-5801-4">In-house</label></li>
-				<li><input type="radio" value="128" name="group[5801]" id="mce-group[5801]-5801-5"><label for="mce-group[5801]-5801-5">Government</label></li>
-				<li><input type="radio" value="256" name="group[5801]" id="mce-group[5801]-5801-6"><label for="mce-group[5801]-5801-6">Public interest/non-profit</label></li>
-				<li><input type="radio" value="4096" name="group[5801]" id="mce-group[5801]-5801-7"><label for="mce-group[5801]-5801-7">Legal staff (paralegal, legal secretary)</label></li>
-				<li><input type="radio" value="512" name="group[5801]" id="mce-group[5801]-5801-8"><label for="mce-group[5801]-5801-8">Not a lawyer / not in the legal industry</label></li>
-				<li><input type="radio" value="1024" name="group[5801]" id="mce-group[5801]-5801-9"><label for="mce-group[5801]-5801-9">Other</label></li>
-				</ul>
-				</div>
-					<div id="mce-responses" class="clear">
-						<div class="response" id="mce-error-response" style="display:none"></div>
-						<div class="response" id="mce-success-response" style="display:none"></div>
-					</div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-				    <div style="position: absolute; left: -5000px;"><input type="text" name="b_a5da2382c098b6541dcd6cf8e_30d7a1f6e2" tabindex="-1" value=""></div>
-				    <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
-				</form>
-				</div>
-
-				<!--End mc_embed_signup-->
+				<?php echo do_shortcode( '[gravityform id="14" name="Lawyerist Insider Signup" title="false" description="false" ajax="true"]' ) ?>
 
 			</div>
 
