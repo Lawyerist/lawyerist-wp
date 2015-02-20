@@ -1,5 +1,12 @@
 # A custom WordPress theme for Lawyerist.com
 
+2015-02-20
+----------
+
+* Show Submit for Review button on draft posts.
+* Limit statuses contributors can access to draft, pending, and in-revision.
+
+
 2015-02-17
 ----------
 

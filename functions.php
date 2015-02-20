@@ -18,14 +18,14 @@ RSS Feed Caching
 Nav Menu
 ------------------------------*/
 
+add_action('init','register_my_menus');
+
 function register_my_menus() {
 	register_nav_menus( array(
 		'header_nav' => 'Header Nav Menu',
 		'main_nav' => 'Main Nav Menu (Below Header)',
 	)	);
 }
-
-add_action('init','register_my_menus');
 
 
 /*------------------------------
@@ -47,6 +47,8 @@ function lawyerist_theme_setup() {
 Rename "Aside" Post Format to "Note"
 ------------------------------*/
 
+add_filter( 'esc_html' , 'rename_post_formats' );
+
 function rename_post_formats( $safe_text ) {
     if ( $safe_text == 'Aside' )
         return 'Note';
@@ -54,7 +56,8 @@ function rename_post_formats( $safe_text ) {
     return $safe_text;
 }
 
-add_filter( 'esc_html', 'rename_post_formats' );
+
+add_action( 'admin_head' , 'live_rename_formats' );
 
 //rename Aside in posts list table
 function live_rename_formats() {
@@ -74,7 +77,67 @@ function live_rename_formats() {
 <?php }
 }
 
-add_action('admin_head', 'live_rename_formats');
+
+/*------------------------------
+Edit Flow
+Limit Custom Statuses
+------------------------------*/
+
+add_filter( 'ef_custom_status_list', 'edit_flow_limit_custom_statuses_by_role' );
+
+function edit_flow_limit_custom_statuses_by_role( $custom_statuses ) {
+
+	$current_user = wp_get_current_user();
+
+	switch( $current_user->roles[0] ) {
+
+		// Limit contributors and authors to the same statuses
+		case 'contributor':
+		case 'author':
+			$permitted_statuses = array(
+				'draft',
+				'pending',
+				'in-revision',
+		);
+
+			// Remove the custom status if it's not whitelisted
+			foreach( $custom_statuses as $key => $custom_status ) {
+
+				if ( !in_array( $custom_status->slug, $permitted_statuses ) )
+					unset( $custom_statuses[$key] );
+				}
+
+				break;
+
+	}
+
+	return $custom_statuses;
+
+}
+
+
+/*------------------------------
+Edit Flow
+Show Submit for Review Button
+------------------------------*/
+
+add_action( 'admin_head', 'edit_flow_show_publish_button' );
+
+function edit_flow_show_publish_button() {
+
+	if ( ! function_exists( 'EditFlow' ) )
+		return;
+
+	if ( ! EditFlow()->custom_status->is_whitelisted_page() )
+		return;
+
+	if ( get_post_status() == 'draft' ) { ?>
+		<style>
+			#publishing-action #publish { display: block; }
+		</style>
+	<?php }
+}
+
 
 
 /*------------------------------
@@ -107,6 +170,9 @@ if ( function_exists( 'add_image_size' ) ) {
 Featured Images in RSS Feeds
 ------------------------------*/
 
+add_filter('the_excerpt_rss', 'featuredtoRSS');
+add_filter('the_content_feed', 'featuredtoRSS');
+
 function featuredtoRSS($content) {
 
 	global $post;
@@ -124,13 +190,12 @@ function featuredtoRSS($content) {
 
 }
 
-add_filter('the_excerpt_rss', 'featuredtoRSS');
-add_filter('the_content_feed', 'featuredtoRSS');
-
 
 /*------------------------------
 Sidebar
 ------------------------------*/
+
+add_action( 'widgets_init', 'lawyerist_sidebar_1' );
 
 function lawyerist_sidebar_1()  {
 	$args = array(
@@ -147,12 +212,12 @@ function lawyerist_sidebar_1()  {
 	register_sidebar( $args );
 }
 
-add_action( 'widgets_init', 'lawyerist_sidebar_1' );
-
 
 /*------------------------------
 Add Capabilities to Contributor Role
 ------------------------------*/
+
+add_action( 'admin_init', 'add_permissions_contributor');
 
 function add_permissions_contributor() {
     $role = get_role( 'contributor' );
@@ -160,30 +225,28 @@ function add_permissions_contributor() {
 		$role->remove_cap( 'edit_others_posts' );
 }
 
-add_action( 'admin_init', 'add_permissions_contributor');
-
 
 /*------------------------------
 Remove Quickpress
 ------------------------------*/
 
+add_action('wp_dashboard_setup','remove_quickpress');
+
 function remove_quickpress() {
 	remove_meta_box('dashboard_quick_press','dashboard','side');
 }
-
-add_action('wp_dashboard_setup','remove_quickpress');
 
 
 /*------------------------------
 RSS Feed Caching
 ------------------------------*/
 
+add_filter( 'wp_feed_cache_transient_lifetime' , 'return_3600' );
+$feed = fetch_feed( $feed_url );
+remove_filter( 'wp_feed_cache_transient_lifetime' , 'return_3600' );
+
 function return_3600( $seconds )
 {
   /* Change the default feed cache re-creation period to 1 hour */
   return 3600;
 }
-
-add_filter( 'wp_feed_cache_transient_lifetime' , 'return_3600' );
-$feed = fetch_feed( $feed_url );
-remove_filter( 'wp_feed_cache_transient_lifetime' , 'return_3600' );
