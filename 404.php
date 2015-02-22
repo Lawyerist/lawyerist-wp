@@ -26,7 +26,7 @@
 
 				<div id="lawyerist_content_search">
 					<form>
-					  <input type="text" id="st-search-input-404" class="st-search-input" value="Search" onblur="if (this.value == '') {this.value = 'Search';}" onfocus="if (this.value == 'Search') {this.value = '';}" />
+					  <input type="text" id="st-search-input-content" class="st-search-input" value="Search" onblur="if (this.value == '') {this.value = 'Search';}" onfocus="if (this.value == 'Search') {this.value = '';}" />
 					</form>
 					<div id="st-results-container"></div>
 				</div>

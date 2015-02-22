@@ -1004,9 +1004,9 @@ Content
 	margin-bottom:2.8rem;
 }
 
-#lawyerist_content_search input#st-search-input-404 {
-	border-radius:.2rem;
-	font-size:inherit !important;
+#lawyerist_content_search input#st-search-input-content {
+	border-radius:.2rem !important;
+	font-size:1.8rem;
 	margin:0;
   padding-left:2.7rem !important;
 	width:26.5rem !important;

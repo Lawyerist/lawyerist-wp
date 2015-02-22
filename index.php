@@ -12,6 +12,18 @@
 
   <div id="content_column">
 
+    <?php if ( is_search() ) {
+
+			echo '<div id="archive_header"><h1>Search results for "' . get_search_query() . '"</h1></div>'; ?>
+      <div id="lawyerist_content_search">
+        <form>
+          <input type="text" id="st-search-input-content" class="st-search-input" value="Search" onblur="if (this.value == '') {this.value = 'Search';}" onfocus="if (this.value == 'Search') {this.value = '';}" />
+        </form>
+        <div id="st-results-container"></div>
+      </div>
+
+		<?php } ?>
+
 		<?php /* THE LOOP */
 
     $paged = ( get_query_var('paged') ) ? get_query_var( 'paged' ) : 1;

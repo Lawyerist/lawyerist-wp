@@ -1,5 +1,11 @@
 # A custom WordPress theme for Lawyerist.com
 
+2015-02-22
+----------
+
+* Add header to native search results.
+
+
 2015-02-20
 ----------
 
