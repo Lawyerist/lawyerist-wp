@@ -24,7 +24,7 @@
 	(function() {
 	Swiftype.key = 'Y6pVA25sVzapo465JPtR';
 	Swiftype.inputElement = '#st-search-input';
-	Swiftype.additionalInputElements = ['#st-search-input-404'];
+	Swiftype.additionalInputElements = ['#st-search-input-content'];
 	Swiftype.resultContainingElement = '#st-results-container';
 	Swiftype.attachElement = '#st-search-input';
 	Swiftype.renderStyle = "overlay";
