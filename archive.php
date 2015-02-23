@@ -18,20 +18,12 @@
       <div id="archive_header"><h1>Notes</h1></div>
     <?php
 
-    } elseif ( is_category() ) {
-			$cat_descr = category_description();
-
-			echo '<div id="archive_header"><h1>';
-			single_cat_title();
-			echo '</h1>' . "\n" . $cat_descr . '</div>';
-
-    } elseif ( is_tag() ) {
-      $tag_descr = tag_description($cat);
-
+    } elseif ( is_category() || is_tag() || is_tax() ) {
+      $descr = term_description();
 
       echo '<div id="archive_header"><h1>';
-      single_tag_title();
-      echo '</h1>' . "\n" . $tag_descr . '</div>';
+      single_term_title();
+      echo '</h1>' . "\n" . $descr . '</div>';
 
 		} elseif ( is_author() ) {
       $author = $wp_query->query_vars['author'];

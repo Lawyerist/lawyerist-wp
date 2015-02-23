@@ -4,6 +4,9 @@
 
 Nav Menu
 Theme Setup
+Rename "Aside" Post Format to "Note"
+Series Custom Taxonomy
+Edit Flow
 Add Image Sizes
 Featured Images in RSS Feeds
 Sidebar
@@ -79,11 +82,58 @@ function live_rename_formats() {
 
 
 /*------------------------------
+Series Custom Taxonomy
+------------------------------*/
+
+function series_tax() {
+
+	$labels = array(
+		'name'                       => 'Series',
+		'singular_name'              => 'Series',
+		'menu_name'                  => 'Series',
+		'all_items'                  => 'All Series',
+		'parent_item'                => 'Parent Series',
+		'parent_item_colon'          => 'Parent Series:',
+		'new_item_name'              => 'New Series',
+		'add_new_item'               => 'Add New Series',
+		'edit_item'                  => 'Edit Series',
+		'update_item'                => 'Update Series',
+		'separate_items_with_commas' => 'Separate series with commas',
+		'search_items'               => 'Search Series',
+		'add_or_remove_items'        => 'Add or remove series',
+		'choose_from_most_used'      => 'Choose from existing series',
+		'not_found'                  => 'Series Not Found',
+	);
+
+	$rewrite = array(
+		'slug'                       => 'series',
+		'with_front'                 => true,
+		'hierarchical'               => false,
+	);
+
+	$args = array(
+		'labels'                     => $labels,
+		'hierarchical'               => false,
+		'public'                     => true,
+		'show_ui'                    => true,
+		'show_admin_column'          => true,
+		'show_in_nav_menus'          => true,
+		'show_tagcloud'              => false,
+		'rewrite'                    => $rewrite,
+	);
+
+	register_taxonomy( 'series', array( 'post' ), $args );
+
+}
+
+// Hook into the 'init' action
+add_action( 'init', 'series_tax', 0 );
+
+
+/*------------------------------
 Edit Flow
 Limit Custom Statuses
 ------------------------------*/
-
-add_filter( 'ef_custom_status_list', 'edit_flow_limit_custom_statuses_by_role' );
 
 function edit_flow_limit_custom_statuses_by_role( $custom_statuses ) {
 
@@ -115,13 +165,13 @@ function edit_flow_limit_custom_statuses_by_role( $custom_statuses ) {
 
 }
 
+add_filter( 'ef_custom_status_list', 'edit_flow_limit_custom_statuses_by_role' );
+
 
 /*------------------------------
 Edit Flow
 Show Submit for Review Button
 ------------------------------*/
-
-add_action( 'admin_head', 'edit_flow_show_publish_button' );
 
 function edit_flow_show_publish_button() {
 
@@ -138,6 +188,7 @@ function edit_flow_show_publish_button() {
 	<?php }
 }
 
+add_action( 'admin_head', 'edit_flow_show_publish_button' );
 
 
 /*------------------------------
@@ -170,9 +221,6 @@ if ( function_exists( 'add_image_size' ) ) {
 Featured Images in RSS Feeds
 ------------------------------*/
 
-add_filter('the_excerpt_rss', 'featuredtoRSS');
-add_filter('the_content_feed', 'featuredtoRSS');
-
 function featuredtoRSS($content) {
 
 	global $post;
@@ -190,12 +238,13 @@ function featuredtoRSS($content) {
 
 }
 
+add_filter('the_excerpt_rss', 'featuredtoRSS');
+add_filter('the_content_feed', 'featuredtoRSS');
+
 
 /*------------------------------
 Sidebar
 ------------------------------*/
-
-add_action( 'widgets_init', 'lawyerist_sidebar_1' );
 
 function lawyerist_sidebar_1()  {
 	$args = array(
@@ -212,41 +261,43 @@ function lawyerist_sidebar_1()  {
 	register_sidebar( $args );
 }
 
+add_action( 'widgets_init', 'lawyerist_sidebar_1' );
+
 
 /*------------------------------
 Add Capabilities to Contributor Role
 ------------------------------*/
 
-add_action( 'admin_init', 'add_permissions_contributor');
-
 function add_permissions_contributor() {
     $role = get_role( 'contributor' );
-    $role->add_cap( 'upload_files' );
-		$role->remove_cap( 'edit_others_posts' );
+	    $role->add_cap( 'upload_files' );
+			$role->remove_cap( 'edit_others_posts' );
 }
+
+add_action( 'admin_init', 'add_permissions_contributor');
 
 
 /*------------------------------
 Remove Quickpress
 ------------------------------*/
 
-add_action('wp_dashboard_setup','remove_quickpress');
-
 function remove_quickpress() {
 	remove_meta_box('dashboard_quick_press','dashboard','side');
 }
+
+add_action('wp_dashboard_setup','remove_quickpress');
 
 
 /*------------------------------
 RSS Feed Caching
 ------------------------------*/
 
-add_filter( 'wp_feed_cache_transient_lifetime' , 'return_3600' );
-$feed = fetch_feed( $feed_url );
-remove_filter( 'wp_feed_cache_transient_lifetime' , 'return_3600' );
-
 function return_3600( $seconds )
 {
   /* Change the default feed cache re-creation period to 1 hour */
   return 3600;
 }
+
+add_filter( 'wp_feed_cache_transient_lifetime' , 'return_3600' );
+$feed = fetch_feed( $feed_url );
+remove_filter( 'wp_feed_cache_transient_lifetime' , 'return_3600' );

@@ -1,9 +1,9 @@
 <head>
 
-<link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic|Roboto+Slab:700,400' type='text/css'>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic|Roboto+Slab:700,400' type='text/css'>
 
 <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/normalize.min.css" type="text/css">
-<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/style.min.css?2015-02-22-07-11" type="text/css" media="screen, projection">
+<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/style.min.css?2015-02-22-22-22" type="text/css" media="screen, projection">
 <link rel="shortcut icon" href="<?php echo get_bloginfo('template_url'); ?>/images/favicon.ico" type="image/x-icon">
 <link rel="icon" href="<?php echo get_bloginfo('template_url'); ?>/images/favicon.ico" type="image/x-icon">
 
