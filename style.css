@@ -1452,9 +1452,8 @@ Content
 	------------------------------*/
 
   #related_posts h3 {
-  	color:#bbb;
-	font-family:'Roboto Slab',sans-serif;
-	font-weight:bold;
+  	font-family:'Roboto Slab',sans-serif;
+  	font-weight:bold;
   }
 
 	ul#related_posts_thumbnails {
