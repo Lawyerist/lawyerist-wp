@@ -31,7 +31,7 @@
 
           $do_not_duplicate[] = $post->ID; ?>
 
-          <a <?php post_class("fp_sticky"); ?> href="<?php the_permalink(); ?>?utm_source=lawyerist_fp_pinned&utm_medium=internal" rel="bookmark" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
+          <a <?php post_class("fp_sticky"); ?> href="<?php the_permalink(); ?>?utm_source=lawyerist_fp_pinned&utm_medium=internal" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
            <div class="pin"></div>
            <p><?php the_title(); ?></p>
           </a>
@@ -74,7 +74,7 @@
   					'post_num_' . $post_num
   				); ?>
 
-  				<a <?php post_class($classes); ?> href="<?php the_permalink(); ?>?utm_source=lawyerist_fp_featured&utm_medium=internal" rel="bookmark" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
+  				<a <?php post_class($classes); ?> href="<?php the_permalink(); ?>?utm_source=lawyerist_fp_featured&utm_medium=internal" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
 
   					<div class="headline_excerpt raised_text">
 
@@ -140,7 +140,7 @@
             'featured_note'
           ); ?>
 
-          <a <?php post_class($classes); ?> href="<?php the_permalink(); ?>?utm_source=lawyerist_fp_notes&utm_medium=internal" rel="bookmark" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
+          <a <?php post_class($classes); ?> href="<?php the_permalink(); ?>?utm_source=lawyerist_fp_notes&utm_medium=internal" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
             <?php if ( has_post_thumbnail() ) { the_post_thumbnail( 'thumbnail' ); } ?>
             <h2 class="headline"><?php the_title(); ?></h2>
             <div class="postmeta">
