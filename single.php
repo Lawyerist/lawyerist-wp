@@ -46,59 +46,72 @@
 				<!--Begin series nav-->
 				<?php if ( has_term( true , 'series' ) ) {
 
-					$series_title = wp_get_post_terms(
-						$post->ID,
-						'series',
-						array(
-							'fields' => 'names',
-							'orderby' => 'count',
-							'order' => 'DESC'
-						)
-					);
-
-					$series_slug = wp_get_post_terms(
-						$post->ID,
-						'series',
-						array(
-							'fields' => 'slugs',
-							'orderby' => 'count',
-							'order' => 'DESC'
-						)
-					); ?>
+					$this_post = $post->ID; ?>
 
 					<div id="series_nav">
 
-						<p class="series_tag">This post is part of a series:</p>
-						<h3><?php echo $series_title[0] ?></h3>
+						<?php /* SERIES LOOP */
 
-						<ol>
+							$series_title = wp_get_post_terms(
+								$post->ID,
+								'series',
+								array(
+									'fields' 	=> 'names',
+									'orderby' => 'count',
+									'order' 	=> 'DESC'
+								)
+							);
 
-							<?php /* SERIES LOOP */
+							$series_slug = wp_get_post_terms(
+								$post->ID,
+								'series',
+								array(
+									'fields' 	=> 'slugs',
+									'orderby' => 'count',
+									'order' 	=> 'DESC'
+								)
+							);
 
-								$series_query_args = array(
-									'order'					=> 'ASC',
-									'nopaging'			=> true,
-									'tax_query'     => array(
-										array(
-											'taxonomy'  => 'series',
-											'field'			=> 'slug',
-											'terms'			=> $series_slug[0],
-										)
+							$series_query_args = array(
+								'order'					=> 'ASC',
+								'nopaging'			=> true,
+								'tax_query'     => array(
+									array(
+										'taxonomy'  => 'series',
+										'field'			=> 'slug',
+										'terms'			=> $series_slug[0],
 									)
-								);
+								)
+							);
 
-								$series_query = new WP_Query( $series_query_args );
+							$series_query = new WP_Query( $series_query_args );
 
-								while ( $series_query->have_posts() ) : $series_query->the_post(); ?>
+								if ( $series_query->post_count > 1 ) {
 
-									<li><a href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>"><?php the_title(); ?></a></li>
+									echo '<p class="series_tag">This post is part of a series:</p>';
+									echo '<h3>' . $series_title[0] . '</h3>';
+									echo '<ol>';
 
-								<?php endwhile;
-								wp_reset_postdata();
+									while ( $series_query->have_posts() ) : $series_query->the_post();
 
-							/* END SERIES LOOP */ ?>
+										echo '<li>';
 
-						</ol>
+										if ( $this_post == $post->ID ) {
+											echo the_title();
+										} else { ?>
+											<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>"><?php the_title(); ?></a>
+										<?php }
+
+										echo '</li>';
+
+									endwhile;
+									wp_reset_postdata();
+
+									echo '</ol>';
+
+								}
+
+						/* END SERIES LOOP */ ?>
 
 					</div>
 
