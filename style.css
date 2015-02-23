@@ -1197,6 +1197,18 @@ Content
   		vertical-align:middle;
   	}
 
+  #series_nav {
+    clear:both;
+		margin-bottom:5.6rem;
+  }
+
+    p.series_tag {
+      font-size:1.2rem;
+      line-height:1em;
+      margin-bottom:0;
+      text-transform:uppercase;
+    }
+
 	.theiaPostSlider_nav ._text {
 		color:#777;
 		font-size:3.2rem;

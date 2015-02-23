@@ -4,6 +4,8 @@
 ----------
 
 * Add header to native search results.
+* Add custom taxonomy for series.
+* Simplify archive headers and include custom taxonomies.
 
 
 2015-02-20

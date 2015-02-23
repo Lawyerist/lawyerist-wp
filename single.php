@@ -38,6 +38,66 @@
 					<?php if ( !is_feed() ) { wp_link_pages(); } ?>
 				</div>
 
+				<?php if ( has_term( true , 'series' ) ) {
+
+					$series_title = wp_get_post_terms(
+						$post->ID,
+						'series',
+						array(
+							'fields' => 'names',
+							'orderby' => 'count',
+							'order' => 'DESC'
+						)
+					);
+
+					$series_slug = wp_get_post_terms(
+						$post->ID,
+						'series',
+						array(
+							'fields' => 'slugs',
+							'orderby' => 'count',
+							'order' => 'DESC'
+						)
+					); ?>
+
+					<div id="series_nav">
+
+						<p class="series_tag">This post is part of a series:</p>
+						<h3><?php echo $series_title[0] ?></h3>
+
+						<ol>
+
+							<?php /* SERIES LOOP */
+
+								$series_query_args = array(
+									'order'					=> 'ASC',
+									'nopaging'			=> true,
+									'tax_query'     => array(
+										array(
+											'taxonomy'  => 'series',
+											'field'			=> 'slug',
+											'terms'			=> $series_slug[0],
+										)
+									)
+								);
+
+								$series_query = new WP_Query( $series_query_args );
+
+								while ( $series_query->have_posts() ) : $series_query->the_post(); ?>
+
+									<li><a href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>"><?php the_title(); ?></a></li>
+
+								<?php endwhile;
+								wp_reset_postdata();
+
+							/* END SERIES LOOP */ ?>
+
+						</ol>
+
+					</div>
+
+				<?php } ?>
+
 				<div id="author_bio_footer">
 					<?php echo get_avatar( get_the_author_meta('user_email') , 100 ); ?>
 					<p class="remove_bottom"><?php the_author_description(); ?></p>
@@ -63,7 +123,7 @@
 			</div>
 
       <div id="related_posts">
-  			<h3>KEEP READING on LAWYERIST</h3>
+  			<h3>Keep Reading on Lawyerist</h3>
 				<?php get_related_posts_thumbnails(); ?>
 			</div>
 
