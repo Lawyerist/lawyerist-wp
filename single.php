@@ -73,9 +73,9 @@
 							);
 
 							$series_query_args = array(
-								'order'					=> 'ASC',
-								'nopaging'			=> true,
-								'tax_query'     => array(
+								'nopaging'				=> true,
+								'posts_per_page'  => 10,
+								'tax_query'     	=> array(
 									array(
 										'taxonomy'  => 'series',
 										'field'			=> 'slug',
@@ -90,7 +90,7 @@
 
 									echo '<p class="series_tag">This post is part of a series:</p>';
 									echo '<h3>' . $series_title[0] . '</h3>';
-									echo '<ol>';
+									echo '<ul>';
 
 									while ( $series_query->have_posts() ) : $series_query->the_post();
 
@@ -107,7 +107,13 @@
 									endwhile;
 									wp_reset_postdata();
 
-									echo '</ol>';
+									echo '</ul>';
+
+									if ( $series_query->post_count > 10 ) {
+
+										echo 'There are even more posts in this series! <a href="' . get_term_link( $series_slug[0], 'series' ) .  '">Read them all here.</a>';
+
+									}
 
 								}
 
