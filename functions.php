@@ -18,6 +18,26 @@ RSS Feed Caching
 
 
 /*------------------------------
+Stylesheets & Google Fonts
+------------------------------*/
+
+function lawyerist_stylesheets() {
+
+	wp_register_style( 'normalize-css', get_template_directory_uri() . '/normalize.min.css' );
+	wp_enqueue_style( 'normalize-css' );
+
+	wp_register_style( 'stylesheet', get_template_directory_uri() . '/style.min.css' );
+	wp_enqueue_style( 'stylesheet' );
+
+	wp_register_style( 'google-fonts', 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic|Roboto+Slab:700,400' );
+	wp_enqueue_style( 'google-fonts' );
+
+}
+
+add_action( 'wp_enqueue_scripts', 'lawyerist_stylesheets' );
+
+
+/*------------------------------
 Nav Menu
 ------------------------------*/
 
