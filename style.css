@@ -1451,6 +1451,10 @@ Content
 	Related Posts
 	------------------------------*/
 
+  #related_posts {
+    margin-bottom:5.6rem;
+  }
+
   #related_posts h3 {
   	font-family:'Roboto Slab',sans-serif;
   	font-weight:bold;
@@ -1470,7 +1474,7 @@ Content
 		display:inline-block;
 		float:left;
 		height:15rem;
-		margin:0 10px 36px 0;
+		margin:0 10px 0 0;
 		overflow:hidden;
 		padding:0;
 		position:relative;
