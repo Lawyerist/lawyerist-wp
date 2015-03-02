@@ -31,7 +31,7 @@
 
           $do_not_duplicate[] = $post->ID; ?>
 
-          <a <?php post_class("fp_sticky"); ?> href="<?php the_permalink(); ?>?utm_source=lawyerist_fp_pinned&utm_medium=internal" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
+          <a <?php post_class("fp_sticky"); ?> href="<?php the_permalink(); ?>" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
            <div class="pin"></div>
            <p><?php the_title(); ?></p>
           </a>
@@ -74,7 +74,7 @@
   					'post_num_' . $post_num
   				); ?>
 
-  				<a <?php post_class($classes); ?> href="<?php the_permalink(); ?>?utm_source=lawyerist_fp_featured&utm_medium=internal" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
+  				<a <?php post_class($classes); ?> href="<?php the_permalink(); ?>" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
 
   					<div class="headline_excerpt raised_text">
 
@@ -140,7 +140,7 @@
             'featured_note'
           ); ?>
 
-          <a <?php post_class($classes); ?> href="<?php the_permalink(); ?>?utm_source=lawyerist_fp_notes&utm_medium=internal" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
+          <a <?php post_class($classes); ?> href="<?php the_permalink(); ?>" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
             <?php if ( has_post_thumbnail() ) { the_post_thumbnail( 'thumbnail' ); } ?>
             <h2 class="headline"><?php the_title(); ?></h2>
             <div class="postmeta">
@@ -207,52 +207,52 @@
 
       <div class="cat_post">
         <h3><a href="http://lawyerist.com/topic/practice-management/">Practice Management</a></h3>
-        <div class="cat_post_headline"><?php wpp_get_mostpopular("wpp_start=' '&post_type='post'&cat='362'&range='all'&limit=1&stats_comments=0&thumbnail_height=150&thumbnail_width=269&post_html='{thumb}<a class=\"wpp_headline\" href=\"{url}?utm_source=lawyerist_fp_topics\">{text_title}</a>'&wpp_end=' '"); ?></div>
+        <div class="cat_post_headline"><?php wpp_get_mostpopular("wpp_start=' '&post_type='post'&cat='362'&range='all'&limit=1&stats_comments=0&thumbnail_height=150&thumbnail_width=269&post_html='{thumb}<a class=\"wpp_headline\" href=\"{url}\">{text_title}</a>'&wpp_end=' '"); ?></div>
       </div>
 
       <div class="cat_post">
         <h3><a href="http://lawyerist.com/topic/starting-a-law-firm/">Starting a Law Firm</a></h3>
-        <div class="cat_post_headline"><?php wpp_get_mostpopular("wpp_start=' '&post_type='post'&cat='708'&range='all'&limit=1&stats_comments=0&thumbnail_height=150&thumbnail_width=269&post_html='{thumb}<a class=\"wpp_headline\" href=\"{url}?utm_source=lawyerist_fp_topics\">{text_title}</a>'&wpp_end=' '"); ?></div>
+        <div class="cat_post_headline"><?php wpp_get_mostpopular("wpp_start=' '&post_type='post'&cat='708'&range='all'&limit=1&stats_comments=0&thumbnail_height=150&thumbnail_width=269&post_html='{thumb}<a class=\"wpp_headline\" href=\"{url}\">{text_title}</a>'&wpp_end=' '"); ?></div>
       </div>
 
       <div class="cat_post">
         <h3><a href="http://lawyerist.com/topic/tech/">Tech</a></h3>
-        <div class="cat_post_headline"><?php wpp_get_mostpopular("wpp_start=' '&post_type='post'&cat='10'&range='all'&limit=1&stats_comments=0&thumbnail_height=150&thumbnail_width=269&post_html='{thumb}<a class=\"wpp_headline\" href=\"{url}?utm_source=lawyerist_fp_topics\">{text_title}</a>'&wpp_end=' '"); ?></div>
+        <div class="cat_post_headline"><?php wpp_get_mostpopular("wpp_start=' '&post_type='post'&cat='10'&range='all'&limit=1&stats_comments=0&thumbnail_height=150&thumbnail_width=269&post_html='{thumb}<a class=\"wpp_headline\" href=\"{url}\">{text_title}</a>'&wpp_end=' '"); ?></div>
       </div>
 
       <div class="cat_post">
         <h3><a href="http://lawyerist.com/topic/marketing/">Marketing</a></h3>
-        <div class="cat_post_headline"><?php wpp_get_mostpopular("wpp_start=' '&post_type='post'&cat='6'&range='all'&limit=1&stats_comments=0&thumbnail_height=150&thumbnail_width=269&post_html='{thumb}<a class=\"wpp_headline\" href=\"{url}?utm_source=lawyerist_fp_topics\">{text_title}</a>'&wpp_end=' '"); ?></div>
+        <div class="cat_post_headline"><?php wpp_get_mostpopular("wpp_start=' '&post_type='post'&cat='6'&range='all'&limit=1&stats_comments=0&thumbnail_height=150&thumbnail_width=269&post_html='{thumb}<a class=\"wpp_headline\" href=\"{url}\">{text_title}</a>'&wpp_end=' '"); ?></div>
       </div>
 
       <div class="cat_post">
         <h3><a href="http://lawyerist.com/topic/lawyering-skills/">Lawyering Skills</a></h3>
-        <div class="cat_post_headline"><?php wpp_get_mostpopular("wpp_start=' '&post_type='post'&cat='886'&range='all'&limit=1&stats_comments=0&thumbnail_height=150&thumbnail_width=269&post_html='{thumb}<a class=\"wpp_headline\" href=\"{url}?utm_source=lawyerist_fp_topics\">{text_title}</a>'&wpp_end=' '"); ?></div>
+        <div class="cat_post_headline"><?php wpp_get_mostpopular("wpp_start=' '&post_type='post'&cat='886'&range='all'&limit=1&stats_comments=0&thumbnail_height=150&thumbnail_width=269&post_html='{thumb}<a class=\"wpp_headline\" href=\"{url}\">{text_title}</a>'&wpp_end=' '"); ?></div>
       </div>
 
       <div class="cat_post">
         <h3><a href="http://lawyerist.com/topic/ethics/">Ethics</a></h3>
-        <div class="cat_post_headline"><?php wpp_get_mostpopular("wpp_start=' '&post_type='post'&cat='132'&range='all'&limit=1&stats_comments=0&thumbnail_height=150&thumbnail_width=269&post_html='{thumb}<a class=\"wpp_headline\" href=\"{url}?utm_source=lawyerist_fp_topics\">{text_title}</a>'&wpp_end=' '"); ?></div>
+        <div class="cat_post_headline"><?php wpp_get_mostpopular("wpp_start=' '&post_type='post'&cat='132'&range='all'&limit=1&stats_comments=0&thumbnail_height=150&thumbnail_width=269&post_html='{thumb}<a class=\"wpp_headline\" href=\"{url}\">{text_title}</a>'&wpp_end=' '"); ?></div>
       </div>
 
       <div class="cat_post">
         <h3><a href="http://lawyerist.com/topic/lifestyle/">Lifestyle</a></h3>
-        <div class="cat_post_headline"><?php wpp_get_mostpopular("wpp_start=' '&post_type='post'&cat='2622'&range='all'&limit=1&stats_comments=0&thumbnail_height=150&thumbnail_width=269&post_html='{thumb}<a class=\"wpp_headline\" href=\"{url}?utm_source=lawyerist_fp_topics\">{text_title}</a>'&wpp_end=' '"); ?></div>
+        <div class="cat_post_headline"><?php wpp_get_mostpopular("wpp_start=' '&post_type='post'&cat='2622'&range='all'&limit=1&stats_comments=0&thumbnail_height=150&thumbnail_width=269&post_html='{thumb}<a class=\"wpp_headline\" href=\"{url}\">{text_title}</a>'&wpp_end=' '"); ?></div>
       </div>
 
       <div class="cat_post">
         <h3><a href="http://lawyerist.com/topic/careers/">Careers</a></h3>
-        <div class="cat_post_headline"><?php wpp_get_mostpopular("wpp_start=' '&post_type='post'&cat='707'&range='all'&limit=1&stats_comments=0&thumbnail_height=150&thumbnail_width=269&post_html='{thumb}<a class=\"wpp_headline\" href=\"{url}?utm_source=lawyerist_fp_topics\">{text_title}</a>'&wpp_end=' '"); ?></div>
+        <div class="cat_post_headline"><?php wpp_get_mostpopular("wpp_start=' '&post_type='post'&cat='707'&range='all'&limit=1&stats_comments=0&thumbnail_height=150&thumbnail_width=269&post_html='{thumb}<a class=\"wpp_headline\" href=\"{url}\">{text_title}</a>'&wpp_end=' '"); ?></div>
       </div>
 
       <div class="cat_post">
         <h3><a href="http://lawyerist.com/topic/law-school/">Law School</a></h3>
-        <div class="cat_post_headline"><?php wpp_get_mostpopular("wpp_start=' '&post_type='post'&cat='743'&range='all'&limit=1&stats_comments=0&thumbnail_height=150&thumbnail_width=269&post_html='{thumb}<a class=\"wpp_headline\" href=\"{url}?utm_source=lawyerist_fp_topics\">{text_title}</a>'&wpp_end=' '"); ?></div>
+        <div class="cat_post_headline"><?php wpp_get_mostpopular("wpp_start=' '&post_type='post'&cat='743'&range='all'&limit=1&stats_comments=0&thumbnail_height=150&thumbnail_width=269&post_html='{thumb}<a class=\"wpp_headline\" href=\"{url}\">{text_title}</a>'&wpp_end=' '"); ?></div>
       </div>
 
       <div class="cat_post">
         <h3><a href="http://lawyerist.com/topic/legal-humor/">Humor</a></h3>
-        <div class="cat_post_headline"><?php wpp_get_mostpopular("wpp_start=' '&post_type='post'&cat='206'&range='all'&limit=1&stats_comments=0&thumbnail_height=150&thumbnail_width=269&post_html='{thumb}<a class=\"wpp_headline\" href=\"{url}?utm_source=lawyerist_fp_topics\">{text_title}</a>'&wpp_end=' '"); ?></div>
+        <div class="cat_post_headline"><?php wpp_get_mostpopular("wpp_start=' '&post_type='post'&cat='206'&range='all'&limit=1&stats_comments=0&thumbnail_height=150&thumbnail_width=269&post_html='{thumb}<a class=\"wpp_headline\" href=\"{url}\">{text_title}</a>'&wpp_end=' '"); ?></div>
       </div>
 
       <div class="clear"></div>
