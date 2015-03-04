@@ -36,6 +36,7 @@
 					<?php if ( !has_tag( 'no-note' ) ) { include('notes.php'); } ?>
 					<?php the_content(); ?>
 					<?php if ( !is_feed() ) { wp_link_pages(); } ?>
+					<?php echo do_shortcode( '[gravityform id="17" title="false" description="false" ajax="true"]' ) ?>
 				</div>
 
 				<div id="author_bio_footer">
