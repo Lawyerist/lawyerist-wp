@@ -2,6 +2,7 @@
 
 /* INDEX
 
+Stylesheets & Google Fonts
 Nav Menu
 Theme Setup
 Rename "Aside" Post Format to "Note"
@@ -26,7 +27,8 @@ function lawyerist_stylesheets() {
 	wp_register_style( 'normalize-css', get_template_directory_uri() . '/normalize.min.css' );
 	wp_enqueue_style( 'normalize-css' );
 
-	wp_register_style( 'stylesheet', get_template_directory_uri() . '/style.min.css' );
+	$cacheBusterCSS = date("Y m d", filemtime( get_stylesheet_directory() . '/style.min.css'));
+	wp_register_style( 'stylesheet', get_template_directory_uri() . '/style.min.css', array(), $cacheBusterCSS, 'all' );
 	wp_enqueue_style( 'stylesheet' );
 
 	wp_register_style( 'google-fonts', 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic|Roboto+Slab:700,400' );

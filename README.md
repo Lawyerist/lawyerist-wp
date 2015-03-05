@@ -1,5 +1,10 @@
 # A custom WordPress theme for Lawyerist.com
 
+2015-03-05
+----------
+
+* Create automatic cache buster for stylesheet
+
 2015-02-22
 ----------
 
