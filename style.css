@@ -1863,12 +1863,17 @@ body #gform_wrapper_17 .gform_footer {
     color:#fff;
     display: inline-block;
     font-family: inherit;
-    font-size: 1.6rem !important;
+    font-size: 1.6rem;
     outline: none;
-    padding: .7rem 1.4rem !important;
+    padding: .7rem 1.4rem;
     text-decoration:none;
     -webkit-appearance: none;
-    width:auto !important;
+    width:auto;
+  }
+
+  body .gform_wrapper input.button {
+    font-size: 1.6rem !important;
+    padding: .7rem 1.4rem !important;
   }
 
   button:hover,
