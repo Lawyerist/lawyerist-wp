@@ -90,6 +90,16 @@ body {
 	width:100%;
 }
 
+/* Leaderboard media query             */
+/* Ad width (728px) + 20px for padding */
+@media only screen and (max-width:747px) {
+
+	#leaderboard_container {
+		display:none;
+	}
+
+}
+
 #header_container {
   background-color:#111;
 }
@@ -97,6 +107,18 @@ body {
   #header {
     margin:0 auto;
     max-width:102.4rem;
+  }
+
+  .menu-header-container {
+    display:inline-block;
+    float:left;
+    margin:2rem 0 0 2.7rem;
+  }
+
+  #email_social {
+    display:inline-block;
+    float:right;
+    margin:1.3rem 1rem 0 0;
   }
 
   .menu-default-container {
@@ -113,6 +135,30 @@ body {
   		padding:0;
       max-width:102.4rem;
   	}
+
+/* Header media queries   */
+/* Content width (1024px) */
+@media only screen and (max-width:1023px) {
+
+  #header_container {
+  	border-bottom:1rem solid #cc0000;
+  }
+
+  .menu-header-container,
+  .menu-default-container {
+    display:none;
+  }
+
+}
+
+/* Logo + sharing icons (~440px) */
+@media only screen and (max-width:439px) {
+
+  #email_social {
+		display:none;
+	}
+
+}
 
 #content_column_container {
 	margin:0 auto 2.8rem auto;
@@ -499,12 +545,6 @@ Header
 	Header Nav
 	------------------------------*/
 
-  .menu-header-container {
-    display:inline-block;
-    float:left;
-    margin:2rem 0 0 2.7rem;
-  }
-
   ul#menu-header {
 		display:block;
     line-height:1em;
@@ -542,80 +582,74 @@ Header
   Social Icons
 	------------------------------*/
 
-	#email_social {
-		display:inline-block;
-		float:right;
-		margin:1.3rem 1rem 0 0;
+	#email_social ul {
+		display:block;
+		list-style:none;
+		margin:0;
 	}
 
-		#email_social ul {
-			display:block;
-			list-style:none;
+		#email_social ul li {
+			display:inline-block;
+			float:left;
 			margin:0;
+			padding:0;
 		}
 
-			#email_social ul li {
-				display:inline-block;
-				float:left;
-				margin:0;
-				padding:0;
+		#email_social ul li a.sprite {
+			color:#fff;
+			margin-left:.8rem;
+			padding:0;
+		}
+
+		#email_social ul li a.sprite:before {
+			display:inline-block;
+			-webkit-font-smoothing:antialiased;
+			font:normal 3.2rem/1em 'Genericons';
+		}
+
+      #email_social ul li a.email.sprite:hover {
+        color:#cc0000;
+      }
+
+      #email_social ul li a.email.sprite:before {
+        content:'\f410';
+      }
+
+			#email_social ul li a.facebook.sprite:hover {
+				color:#3b5998;
 			}
 
-			#email_social ul li a.sprite {
-				color:#fff;
-				margin-left:.8rem;
-				padding:0;
+			#email_social ul li a.facebook.sprite:before {
+				content:'\f203';
 			}
 
-			#email_social ul li a.sprite:before {
-				display:inline-block;
-				-webkit-font-smoothing:antialiased;
-				font:normal 3.2rem/1em 'Genericons';
+			#email_social ul li a.linkedin.sprite {
+				margin-left:1rem;
 			}
 
-        #email_social ul li a.email.sprite:hover {
-          color:#cc0000;
-        }
+			#email_social ul li a.linkedin.sprite:hover {
+				color:#4875b4;
+			}
 
-        #email_social ul li a.email.sprite:before {
-          content:'\f410';
-        }
+			#email_social ul li a.linkedin.sprite:before {
+				content:'\f208';
+			}
 
-				#email_social ul li a.facebook.sprite:hover {
-					color:#3b5998;
-				}
+			#email_social ul li a.twitter.sprite:hover {
+				color:#4099ff;
+			}
 
-				#email_social ul li a.facebook.sprite:before {
-					content:'\f203';
-				}
+			#email_social ul li a.twitter.sprite:before {
+				content:'\f202';
+			}
 
-				#email_social ul li a.linkedin.sprite {
-					margin-left:1rem;
-				}
+      #email_social ul li a.more_social.sprite:hover {
+        color:#cc0000;
+      }
 
-				#email_social ul li a.linkedin.sprite:hover {
-					color:#4875b4;
-				}
-
-				#email_social ul li a.linkedin.sprite:before {
-					content:'\f208';
-				}
-
-				#email_social ul li a.twitter.sprite:hover {
-					color:#4099ff;
-				}
-
-				#email_social ul li a.twitter.sprite:before {
-					content:'\f202';
-				}
-
-        #email_social ul li a.more_social.sprite:hover {
-          color:#cc0000;
-        }
-
-        #email_social ul li a.more_social.sprite:before {
-          content:'\f476';
-        }
+      #email_social ul li a.more_social.sprite:before {
+        content:'\f476';
+      }
 
 
 /*------------------------------
@@ -1295,6 +1329,24 @@ Content
       display:block !important;
     }
 
+    /* Content width (960px) + social icons (52px on each side + 20px offset on each side) + 30px for padding */
+    @media only screen and (max-width:1083px) {
+
+    	.sharedaddy {
+    			margin-bottom:1.6rem;
+    			position:static;
+    	}
+
+    		.sd-content ul {
+    			position:static;
+    		}
+
+    		.sd-content ul li {
+    				display:inline !important;
+    		}
+
+    }
+
 
 	/*------------------------------
 	Buyers Guide
@@ -1933,27 +1985,6 @@ Useful Stuff
 Media Queries
 ------------------------------*/
 
-/* Content width (960px) + social icons (52px on each side + 20px offset on each side) + 30px for padding */
-
-@media only screen
-and (max-width:1083px) {
-
-	.sharedaddy {
-			margin-bottom:1.6rem;
-			position:static;
-	}
-
-		.sd-content ul {
-			position:static;
-		}
-
-		.sd-content ul li {
-				display:inline !important;
-		}
-
-}
-
-
 /* Content width (1024px) including padding */
 
 @media only screen
@@ -1966,8 +1997,6 @@ and (max-width:1023px) {
 
 	/* Hide This Stuff */
 
-	.menu-header-container,
-  .menu-default-container,
 	li#ap4 {
 		display:none !important;
 	}
@@ -1978,10 +2007,6 @@ and (max-width:1023px) {
 	#content_column_container,
 	#footer {
 		max-width:64rem;
-	}
-
-	#header_container {
-		border-bottom:1rem solid #cc0000;
 	}
 
 	#content_column_container {
@@ -2009,19 +2034,6 @@ and (max-width:1023px) {
 }
 
 
-/* Leaderboard ad width (728px) + 20px for padding */
-
-@media only screen
-and (max-width:747px) {
-
-	/* Hide this stuff */
-
-	#leaderboard_container {
-		display:none;
-	}
-
-}
-
 /* Content column width (640px) + 20px for padding */
 
 @media only screen
@@ -2029,7 +2041,6 @@ and (max-width:659px) {
 
 	/* Hide This Stuff */
 
-  #email_social,
 	#related_posts {
 		display:none;
 	}
