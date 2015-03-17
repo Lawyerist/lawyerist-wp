@@ -1882,10 +1882,6 @@ input#st-search-input:focus {
   color:#333;
 }
 
-body #gform_wrapper_19 .gform_footer {
-  padding-top:0;
-}
-
 #sidebar_column .gform_wrapper input[type=text],
 #sidebar_column .gform_wrapper input[type=email],
 #sidebar_column .gform_wrapper input[type=tel],
