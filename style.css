@@ -90,23 +90,13 @@ body {
 	width:100%;
 }
 
-/* Leaderboard media query             */
-/* Ad width (728px) + 20px for padding */
-@media only screen and (max-width:747px) {
-
-	#leaderboard_container {
-		display:none;
-	}
-
-}
-
 #header_container {
   background-color:#111;
 }
 
   #header {
     margin:0 auto;
-    max-width:102.4rem;
+    max-width:98.8rem;
   }
 
   .menu-header-container {
@@ -133,32 +123,8 @@ body {
   		list-style:none;
   		margin:0 auto;
   		padding:0;
-      max-width:102.4rem;
+      max-width:98.8rem;
   	}
-
-/* Header media queries   */
-/* Content width (1024px) */
-@media only screen and (max-width:1023px) {
-
-  #header_container {
-  	border-bottom:1rem solid #cc0000;
-  }
-
-  .menu-header-container,
-  .menu-default-container {
-    display:none;
-  }
-
-}
-
-/* Logo + sharing icons (~440px) */
-@media only screen and (max-width:439px) {
-
-  #email_social {
-		display:none;
-	}
-
-}
 
 #content_column_container {
 	margin:0 auto 2.8rem auto;
@@ -1981,7 +1947,18 @@ Useful Stuff
 Media Queries
 ------------------------------*/
 
-/* Content width (1024px) including padding */
+/* Logo + sharing icons (~440px) */
+@media only screen and (max-width:439px) {
+
+  #email_social {
+		display:none;
+	}
+
+}
+
+
+
+/* Content width (1024px) */
 
 @media only screen
 and (max-width:1023px) {
@@ -1993,12 +1970,18 @@ and (max-width:1023px) {
 
 	/* Hide This Stuff */
 
-	li#ap4 {
+  .menu-header-container,
+  .menu-default-container,
+  li#ap4 {
 		display:none !important;
 	}
 
 
 	/* Change Layout */
+
+  #header_container {
+    border-bottom:1rem solid #cc0000;
+  }
 
 	#content_column_container,
 	#footer {
@@ -2026,6 +2009,15 @@ and (max-width:1023px) {
       #div-gpt-ad-1356989285353-2 {
         margin-bottom:2.8rem;
       }
+
+}
+
+/* Leaderboard ad width (728px) + 20px for padding */
+@media only screen and (max-width:747px) {
+
+	#leaderboard_container {
+		display:none;
+	}
 
 }
 
