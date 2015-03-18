@@ -1,5 +1,11 @@
 # A custom WordPress theme for Lawyerist.com
 
+2015-03-18
+----------
+
+* Add custom taxonomy for issues.
+* Create landing page template for issues (identical to archive.php for now).
+
 2015-03-05
 ----------
 
