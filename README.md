@@ -1,5 +1,10 @@
 # A custom WordPress theme for Lawyerist.com
 
+2015-03-19
+----------
+
+* Move author_bio_footer into the loop so it prints with Print Friendly.
+
 2015-03-18
 ----------
 
