@@ -202,63 +202,6 @@
 
     <div class="clear"></div>
 
-    <div class="fp_tab"><h2>Topics</h2></div>
-    <div id="popular_in_cats">
-
-      <div class="cat_post">
-        <h3><a href="http://lawyerist.com/topic/practice-management/">Practice Management</a></h3>
-        <div class="cat_post_headline"><?php wpp_get_mostpopular("wpp_start=' '&post_type='post'&cat='362'&range='all'&limit=1&stats_comments=0&thumbnail_height=150&thumbnail_width=269&post_html='{thumb}<a class=\"wpp_headline\" href=\"{url}\">{text_title}</a>'&wpp_end=' '"); ?></div>
-      </div>
-
-      <div class="cat_post">
-        <h3><a href="http://lawyerist.com/topic/starting-a-law-firm/">Starting a Law Firm</a></h3>
-        <div class="cat_post_headline"><?php wpp_get_mostpopular("wpp_start=' '&post_type='post'&cat='708'&range='all'&limit=1&stats_comments=0&thumbnail_height=150&thumbnail_width=269&post_html='{thumb}<a class=\"wpp_headline\" href=\"{url}\">{text_title}</a>'&wpp_end=' '"); ?></div>
-      </div>
-
-      <div class="cat_post">
-        <h3><a href="http://lawyerist.com/topic/tech/">Tech</a></h3>
-        <div class="cat_post_headline"><?php wpp_get_mostpopular("wpp_start=' '&post_type='post'&cat='10'&range='all'&limit=1&stats_comments=0&thumbnail_height=150&thumbnail_width=269&post_html='{thumb}<a class=\"wpp_headline\" href=\"{url}\">{text_title}</a>'&wpp_end=' '"); ?></div>
-      </div>
-
-      <div class="cat_post">
-        <h3><a href="http://lawyerist.com/topic/marketing/">Marketing</a></h3>
-        <div class="cat_post_headline"><?php wpp_get_mostpopular("wpp_start=' '&post_type='post'&cat='6'&range='all'&limit=1&stats_comments=0&thumbnail_height=150&thumbnail_width=269&post_html='{thumb}<a class=\"wpp_headline\" href=\"{url}\">{text_title}</a>'&wpp_end=' '"); ?></div>
-      </div>
-
-      <div class="cat_post">
-        <h3><a href="http://lawyerist.com/topic/lawyering-skills/">Lawyering Skills</a></h3>
-        <div class="cat_post_headline"><?php wpp_get_mostpopular("wpp_start=' '&post_type='post'&cat='886'&range='all'&limit=1&stats_comments=0&thumbnail_height=150&thumbnail_width=269&post_html='{thumb}<a class=\"wpp_headline\" href=\"{url}\">{text_title}</a>'&wpp_end=' '"); ?></div>
-      </div>
-
-      <div class="cat_post">
-        <h3><a href="http://lawyerist.com/topic/ethics/">Ethics</a></h3>
-        <div class="cat_post_headline"><?php wpp_get_mostpopular("wpp_start=' '&post_type='post'&cat='132'&range='all'&limit=1&stats_comments=0&thumbnail_height=150&thumbnail_width=269&post_html='{thumb}<a class=\"wpp_headline\" href=\"{url}\">{text_title}</a>'&wpp_end=' '"); ?></div>
-      </div>
-
-      <div class="cat_post">
-        <h3><a href="http://lawyerist.com/topic/lifestyle/">Lifestyle</a></h3>
-        <div class="cat_post_headline"><?php wpp_get_mostpopular("wpp_start=' '&post_type='post'&cat='2622'&range='all'&limit=1&stats_comments=0&thumbnail_height=150&thumbnail_width=269&post_html='{thumb}<a class=\"wpp_headline\" href=\"{url}\">{text_title}</a>'&wpp_end=' '"); ?></div>
-      </div>
-
-      <div class="cat_post">
-        <h3><a href="http://lawyerist.com/topic/careers/">Careers</a></h3>
-        <div class="cat_post_headline"><?php wpp_get_mostpopular("wpp_start=' '&post_type='post'&cat='707'&range='all'&limit=1&stats_comments=0&thumbnail_height=150&thumbnail_width=269&post_html='{thumb}<a class=\"wpp_headline\" href=\"{url}\">{text_title}</a>'&wpp_end=' '"); ?></div>
-      </div>
-
-      <div class="cat_post">
-        <h3><a href="http://lawyerist.com/topic/law-school/">Law School</a></h3>
-        <div class="cat_post_headline"><?php wpp_get_mostpopular("wpp_start=' '&post_type='post'&cat='743'&range='all'&limit=1&stats_comments=0&thumbnail_height=150&thumbnail_width=269&post_html='{thumb}<a class=\"wpp_headline\" href=\"{url}\">{text_title}</a>'&wpp_end=' '"); ?></div>
-      </div>
-
-      <div class="cat_post">
-        <h3><a href="http://lawyerist.com/topic/legal-humor/">Humor</a></h3>
-        <div class="cat_post_headline"><?php wpp_get_mostpopular("wpp_start=' '&post_type='post'&cat='206'&range='all'&limit=1&stats_comments=0&thumbnail_height=150&thumbnail_width=269&post_html='{thumb}<a class=\"wpp_headline\" href=\"{url}\">{text_title}</a>'&wpp_end=' '"); ?></div>
-      </div>
-
-      <div class="clear"></div>
-
-    </div><!--end #popular_in_cats-->
-
 	</div><!--end #content_column-->
 
 	<ul id="sidebar_column">
