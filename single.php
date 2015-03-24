@@ -136,11 +136,6 @@
 
       <div class="clear"></div>
 
-      <div id="related_posts">
-  			<h3>Keep Reading on Lawyerist</h3>
-				<?php get_related_posts_thumbnails(); ?>
-			</div>
-
       <?php comments_template(); ?>
 
 			<div id="pagenav">
