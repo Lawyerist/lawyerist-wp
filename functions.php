@@ -180,12 +180,12 @@ function issue_tax() {
 	$rewrite = array(
 		'slug'                       => 'issue',
 		'with_front'                 => true,
-		'hierarchical'               => true,
+		'hierarchical'               => false,
 	);
 
 	$args = array(
 		'labels'                     => $labels,
-		'hierarchical'               => true,
+		'hierarchical'               => false,
 		'public'                     => true,
 		'show_ui'                    => true,
 		'show_admin_column'          => true,
