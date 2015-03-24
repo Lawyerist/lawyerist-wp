@@ -52,85 +52,133 @@
 					<?php echo get_the_tag_list( '<p class="tag_list"><small>', ', ', '</small></p>' ); ?>
 				</div>
 
+				<!--Begin issue nav-->
+				<?php if ( has_term( true , 'issue' ) ) {
+
+					$this_post = $post->ID;
+
+					echo '<div id="issue_nav">';
+
+						$issue_title = wp_get_post_terms(
+							$post->ID,
+							'issue',
+							array(
+								'fields' 	=> 'names',
+								'orderby' => 'slug',
+								'order' 	=> 'DESC'
+							)
+						);
+
+						$issue_slug = wp_get_post_terms(
+							$post->ID,
+							'issue',
+							array(
+								'fields' 	=> 'slugs',
+								'orderby' => 'slug',
+								'order' 	=> 'DESC'
+							)
+						);
+
+						$issue_query_args = array(
+							'nopaging'				=> true,
+							'orderby'					=> 'date',
+							'order'						=> 'ASC',
+							'tax_query'     	=> array(
+								array(
+									'taxonomy'  => 'issue',
+									'field'			=> 'slug',
+									'terms'			=> $issue_slug[0],
+								)
+							)
+						);
+
+						echo '<h3><a href="' . get_term_link( $issue_slug[0], 'issue' ) .  '">Read the Rest of ' . $issue_title[0] . ' &rarr;</a></h3>';
+
+					echo '</div>';
+
+				} ?><!--End issue nav-->
+
+
 				<!--Begin series nav-->
 				<?php if ( has_term( true , 'series' ) ) {
 
-					$this_post = $post->ID; ?>
+					$this_post = $post->ID;
 
-					<div id="series_nav">
+					echo '<div id="series_nav">';
 
-						<?php /* SERIES LOOP */
+						/* SERIES LOOP */
 
-							$series_title = wp_get_post_terms(
-								$post->ID,
-								'series',
+						$series_title = wp_get_post_terms(
+							$post->ID,
+							'series',
+							array(
+								'fields' 	=> 'names',
+								'orderby' => 'count',
+								'order' 	=> 'DESC'
+							)
+						);
+
+						$series_slug = wp_get_post_terms(
+							$post->ID,
+							'series',
+							array(
+								'fields' 	=> 'slugs',
+								'orderby' => 'count',
+								'order' 	=> 'DESC'
+							)
+						);
+
+						$series_query_args = array(
+							'nopaging'				=> true,
+							'posts_per_page'  => 10,
+							'tax_query'     	=> array(
 								array(
-									'fields' 	=> 'names',
-									'orderby' => 'count',
-									'order' 	=> 'DESC'
+									'taxonomy'  => 'series',
+									'field'			=> 'slug',
+									'terms'			=> $series_slug[0],
 								)
-							);
+							)
+						);
 
-							$series_slug = wp_get_post_terms(
-								$post->ID,
-								'series',
-								array(
-									'fields' 	=> 'slugs',
-									'orderby' => 'count',
-									'order' 	=> 'DESC'
-								)
-							);
 
-							$series_query_args = array(
-								'nopaging'				=> true,
-								'posts_per_page'  => 10,
-								'tax_query'     	=> array(
-									array(
-										'taxonomy'  => 'series',
-										'field'			=> 'slug',
-										'terms'			=> $series_slug[0],
-									)
-								)
-							);
+						$series_query = new WP_Query( $series_query_args );
 
-							$series_query = new WP_Query( $series_query_args );
+						if ( $series_query->post_count > 1 ) {
 
-								if ( $series_query->post_count > 1 ) {
+							echo '<p class="series_tag">This post is part of a series:</p>';
+							echo '<h3>' . $series_title[0] . '</h3>';
+							echo '<ul>';
 
-									echo '<p class="series_tag">This post is part of a series:</p>';
-									echo '<h3>' . $series_title[0] . '</h3>';
-									echo '<ul>';
+							while ( $series_query->have_posts() ) : $series_query->the_post();
 
-									while ( $series_query->have_posts() ) : $series_query->the_post();
+								echo '<li>';
 
-										echo '<li>';
+								if ( $this_post == $post->ID ) {
+									echo the_title();
+								} else { ?>
+									<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>"><?php the_title(); ?></a>
+								<?php }
 
-										if ( $this_post == $post->ID ) {
-											echo the_title();
-										} else { ?>
-											<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>"><?php the_title(); ?></a>
-										<?php }
+								echo '</li>';
 
-										echo '</li>';
+							endwhile;
 
-									endwhile;
-									wp_reset_postdata();
+							echo '</ul>';
 
-									echo '</ul>';
+							if ( $series_query->post_count > 10 ) {
 
-									if ( $series_query->post_count > 10 ) {
+								echo 'There are even more posts in this series! <a href="' . get_term_link( $series_slug[0], 'series' ) .  '">Read them all here.</a>';
 
-										echo 'There are even more posts in this series! <a href="' . get_term_link( $series_slug[0], 'series' ) .  '">Read them all here.</a>';
+							}
 
-									}
+						}
 
-								}
+						wp_reset_postdata();
+						/* END SERIES LOOP */
 
-						/* END SERIES LOOP */ ?>
+					echo '</div>';
 
-					</div>
-
-				<?php } ?><!--End series nav-->
+				} ?><!--End series nav-->
 
 			</div>
 
@@ -151,7 +199,7 @@
 		<?php endwhile;
 		endif; ?>
 
-	</div>
+	</div><!-- end #content_column -->
 
 	<ul id="sidebar_column">
 		<?php include('sidebar.php'); ?>

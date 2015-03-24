@@ -1149,6 +1149,16 @@ Content
   		vertical-align:middle;
   	}
 
+  #issue_nav {
+    clear:both;
+    margin-bottom:5.6rem;
+  }
+
+    .future_post {
+      font-size:80%;
+      text-transform:uppercase;
+    }
+
   #series_nav {
     clear:both;
 		margin-bottom:5.6rem;
