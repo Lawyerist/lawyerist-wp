@@ -28,7 +28,6 @@ Front Page
   Featured Notes
 	Read More Box
 	Questions
-  Category Posts
 Content
 	Index & Archive Lists
 	Posts
@@ -39,7 +38,6 @@ Content
 	Buyers Guide
 	Pagenav
 	Comments
-	Related Posts
 Landing Page Template
 Comments
 Sidebar
@@ -1128,7 +1126,7 @@ Content
   }
 
   #category_tag_lists p:last-child {
-    margin-bottom:0;
+    margin-bottom:5.6rem;
   }
 
     .category_list:before {
@@ -1416,70 +1414,6 @@ Content
   #disqus_thread {
       margin-bottom:5.6rem;
   }
-
-
-	/*------------------------------
-	Related Posts
-	------------------------------*/
-
-  #related_posts {
-    margin-bottom:5.6rem;
-  }
-
-  #related_posts h3 {
-  	font-family:'Roboto Slab',sans-serif;
-  	font-weight:bold;
-  }
-
-	ul#related_posts_thumbnails {
-		display:block;
-		list-style:none;
-		margin:0;
-		padding:0;
-		width:100%;
-	}
-
-	ul#related_posts_thumbnails li {
-		background:#111;
-		border:0;
-		display:inline-block;
-		float:left;
-		height:15rem;
-		margin:0 10px 0 0;
-		overflow:hidden;
-		padding:0;
-		position:relative;
-		width:15rem;
-	}
-
-	ul#related_posts_thumbnails li a img {
-		margin:0 !important;
-		opacity:.5;
-		overflow:hidden;
-    transition:opacity .2s;
-	}
-
-	ul#related_posts_thumbnails li:hover a img {
-		opacity:.2;
-	}
-
-	ul#related_posts_thumbnails li a span {
-		color:#fff;
-		font-family:'Roboto Slab',sans-serif;
-		font-size:1.6rem;
-		line-height:2.2rem;
-		padding:10px;
-		position:absolute;
-			top:0;
-			left:0;
-		text-decoration:none;
-		text-shadow:1px 1px 2px #111;
-	}
-
-	ul#related_posts_thumbnails li a:hover {
-		text-decoration:underline;
-	}
-
 
 
 /*------------------------------
