@@ -11,6 +11,7 @@ Edit Flow
 Add Image Sizes
 Featured Images in RSS Feeds
 Sidebar
+Allow PHP in Widgets
 Add Capabilities to Contributor Role
 Remove Quickpress
 RSS Feed Caching
@@ -321,7 +322,7 @@ function lawyerist_sidebar_1()  {
 	$args = array(
 		'id'            => 'sidebar_1',
 		'name'          => 'Sidebar 1',
-		'description'   => 'Left sidebar on Lawyerist.com',
+		'description'   => 'Right sidebar on Lawyerist.com',
 		'class'         => 'sidebar',
 		'before_title'  => '<h3>',
 		'after_title'   => '</h3>',
@@ -336,13 +337,35 @@ add_action( 'widgets_init', 'lawyerist_sidebar_1' );
 
 
 /*------------------------------
+Allow PHP in Widgets
+------------------------------*/
+
+function php_execute($html){
+
+	if ( strpos( $html,"<"."?php" ) !== false ) {
+
+		ob_start(); eval("?".">".$html);
+
+		$html=ob_get_contents();
+
+		ob_end_clean();
+
+	}
+
+	return $html;
+}
+
+add_filter('widget_text','php_execute',100);
+
+
+/*------------------------------
 Add Capabilities to Contributor Role
 ------------------------------*/
 
 function add_permissions_contributor() {
-    $role = get_role( 'contributor' );
-	    $role->add_cap( 'upload_files' );
-			$role->remove_cap( 'edit_others_posts' );
+  $role = get_role( 'contributor' );
+  $role->add_cap( 'upload_files' );
+	$role->remove_cap( 'edit_others_posts' );
 }
 
 add_action( 'admin_init', 'add_permissions_contributor');

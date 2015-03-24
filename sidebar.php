@@ -25,27 +25,4 @@
 	<div class="clear"></div>
 </li>
 
-
-<li id="popular_posts_tabbed">
-		<h3>Popular Posts</h3>
-		<ul class="idTabs">
-				<li><a href="#current">This Week</a></li>
-				<li><a href="#all-time">All-Time</a></li>
-				<li><a href="#our-picks">Our Picks</a></li>
-		</ul>
-
-		<div id="current" class="tabs_sublist">
-				<?php wpp_get_mostpopular("post_type='post'&range=weekly&limit=5&stats_comments=0&thumbnail_height=60&thumbnail_width=60&post_html='<li>{thumb}<a class=\"wpp_headline\" href=\"{url}\">{text_title}</a></li>'"); ?>
-		</div>
-
-		<div id="all-time" class="tabs_sublist">
-				<?php wpp_get_mostpopular("post_type='post'&range=all&limit=5&stats_comments=0&thumbnail_height=60&thumbnail_width=60&post_html='<li>{thumb}<a class=\"wpp_headline\" href=\"{url}\">{text_title}</a></li>'"); ?>
-		</div>
-
-		<div id="our-picks" class="tabs_sublist">
-				<?php wpp_get_mostpopular("post_type='post'&cat='2621'&range=all&limit=5&stats_comments=0&thumbnail_height=60&thumbnail_width=60&post_html='<li>{thumb}<a class=\"wpp_headline\" href=\"{url}\">{text_title}</a></li>'"); ?>
-		</div>
-</li>
-
-
 <?php dynamic_sidebar('sidebar_1'); ?>
