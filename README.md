@@ -1,5 +1,11 @@
 # A custom WordPress theme for Lawyerist.com
 
+2015-03-24
+----------
+
+* Remove Topics section from front page.
+
+
 2015-03-23
 ----------
 
