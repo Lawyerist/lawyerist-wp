@@ -1658,7 +1658,7 @@ li.widget {
 	------------------------------*/
 
   li.sidebar_ads {
-    margin-bottom:0;
+    margin-bottom:5.6rem;
   }
 
   li.sidebar_ad {
@@ -1673,22 +1673,19 @@ li.widget {
 	Sidebar Popular Posts Widget
 	------------------------------*/
 
-	li#popular_posts_tabbed {
-		margin-bottom:2.8rem;
-	}
-
-	li#popular_posts_tabbed ul.idTabs {
+	#popular_posts_tabbed ul.idTabs {
 		line-height:1em;
 		list-style:none;
 		margin:0 0 .2rem 0;
 	}
 
-  li#popular_posts_tabbed ul.idTabs > li {
+  #popular_posts_tabbed ul.idTabs > li {
     display:inline-block;
+    line-height:1em;
     margin:0;
   }
 
-	li#popular_posts_tabbed ul.idTabs > li a {
+	#popular_posts_tabbed ul.idTabs > li a {
     background:#eee;
     border-color:#ddd;
     border-style:solid;
@@ -1704,7 +1701,7 @@ li.widget {
     text-transform:uppercase;
 	}
 
-  li#popular_posts_tabbed ul.idTabs > li a:after {
+  #popular_posts_tabbed ul.idTabs > li a:after {
     background:#eee;
     border-color:#ddd;
     border-style:solid;
@@ -1722,40 +1719,41 @@ li.widget {
     z-index:-1;
   }
 
-  li#popular_posts_tabbed ul.idTabs li a.selected,
-  li#popular_posts_tabbed ul.idTabs li a.selected:after {
+  #popular_posts_tabbed ul.idTabs li a.selected,
+  #popular_posts_tabbed ul.idTabs li a.selected:after {
     background:#ddd;
     border-color:#ccc;
   }
 
-  li#popular_posts_tabbed ul.idTabs > li a:hover,
-  li#popular_posts_tabbed ul.idTabs > li a:hover:after {
+  #popular_posts_tabbed ul.idTabs > li a:hover,
+  #popular_posts_tabbed ul.idTabs > li a:hover:after {
     background:#ccc;
     border-color:#aaa;
     text-decoration:none;
   }
 
-  li#popular_posts_tabbed .tabs_sublist {
+  #popular_posts_tabbed .tabs_sublist {
+    background-color:#fff;
     border:1px solid #ddd;
     padding:1rem 1.25rem 0 1.25rem;
   }
 
-	li#popular_posts_tabbed .tabs_sublist ul.wpp-list {
+	#popular_posts_tabbed .tabs_sublist ul.wpp-list {
 		margin:0;
 	}
 
-	li#popular_posts_tabbed .tabs_sublist ul.wpp-list li {
+	#popular_posts_tabbed .tabs_sublist ul.wpp-list li {
 		font-size:10px;
 		margin:0 0 1.5em 0;
 		min-height:75px;
 	}
 
-	li#popular_posts_tabbed .tabs_sublist ul.wpp-list li a img {
+  #popular_posts_tabbed .tabs_sublist ul.wpp-list li a img {
     border-radius:3.75rem;
 		float:left;
 	}
 
-	li#popular_posts_tabbed .tabs_sublist a.wpp_headline {
+	#popular_posts_tabbed .tabs_sublist a.wpp_headline {
     color:#333;
 		display:block;
 		font-family:'Roboto Slab',sans-serif;
@@ -1765,7 +1763,7 @@ li.widget {
 		text-decoration:none;
 	}
 
-  li#popular_posts_tabbed .tabs_sublist li:hover a.wpp_headline {
+  #popular_posts_tabbed .tabs_sublist li:hover a.wpp_headline {
     color:#333;
     text-decoration:underline;
   }
@@ -1789,6 +1787,20 @@ Footer
 /*------------------------------
 Forms
 ------------------------------*/
+
+#sidebar_column .gform_wrapper,
+#sidebar_column .gform_heading {
+  max-width:100%;
+  width:auto;
+}
+
+#sidebar_column .gform_footer {
+  margin-top:0;
+}
+
+#sidebar_column .gform_fields li {
+  margin-bottom:0;
+}
 
 body .gform_wrapper input[type=text],
 body .gform_wrapper input[type=email],

@@ -1,5 +1,13 @@
 # A custom WordPress theme for Lawyerist.com
 
+2015-03-23
+----------
+
+* Remove popular posts widget from functions.php.
+* Allow PHP in text widgets.
+* Popular posts widget is now a regular widget so we can fix it in place with a plugin.
+
+
 2015-03-19
 ----------
 
