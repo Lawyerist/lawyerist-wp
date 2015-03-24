@@ -136,6 +136,13 @@
 
       <div class="clear"></div>
 
+      <div id="related_posts">
+  			<h3>Keep Reading on Lawyerist</h3>
+				<?php get_related_posts_thumbnails(); ?>
+			</div>
+
+      <?php comments_template(); ?>
+
 			<div id="pagenav">
 				<div class="alignleft pagenav_link_block">
 					<?php next_post_link('%link','<div class="genericon pagenav_leftarrow"></div><div class="pagenav_link">%title</div>',0) ?>
@@ -145,13 +152,6 @@
 				</div>
 				<div class="clear"></div>
 			</div>
-
-      <div id="related_posts">
-  			<h3>Keep Reading on Lawyerist</h3>
-				<?php get_related_posts_thumbnails(); ?>
-			</div>
-
-      <?php comments_template(); ?>
 
 		<?php endwhile;
 		endif; ?>

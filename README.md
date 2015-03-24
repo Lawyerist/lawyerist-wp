@@ -4,6 +4,7 @@
 ----------
 
 * Remove Topics section from front page.
+* Move prev/next links to the bottom of single.php.
 
 
 2015-03-23
