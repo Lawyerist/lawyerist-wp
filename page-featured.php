@@ -31,7 +31,7 @@
 
           $do_not_duplicate[] = $post->ID; ?>
 
-          <a <?php post_class("fp_sticky"); ?> href="<?php the_permalink(); ?>" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
+          <a <?php post_class("fp_sticky"); ?> href="<?php the_permalink(); ?>?utm_source=lawyerist-front-page&utm_medium=internal&utm_campaign=nav" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
            <div class="pin"></div>
            <p><?php the_title(); ?></p>
           </a>
@@ -74,9 +74,9 @@
   					'post_num_' . $post_num
   				); ?>
 
-  				<a <?php post_class($classes); ?> href="<?php the_permalink(); ?>" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
+  				<a <?php post_class($classes); ?> href="<?php the_permalink(); ?>?utm_source=lawyerist-front-page&utm_medium=internal&utm_campaign=nav" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
 
-  					<div class="headline_excerpt raised_text">
+  					<div class="headline_excerpt">
 
               <?php if ( has_tag('updated') ) { echo '<div class="flag no_shadow">Updated</div>'; } ?>
 
@@ -108,7 +108,7 @@
   		<div class="clear"></div>
 
   	</div><!--end #featured_posts-->
-    <div class="fp_bottom_tab"><h2><a href="<?php echo bloginfo('url') . '/articles/'; ?>">More Articles</a></h2></div>
+    <div class="fp_bottom_tab"><h2><a href="<?php echo bloginfo('url') . '/articles/?utm_source=lawyerist-front-page&utm_medium=internal&utm_campaign=nav'; ?>">More Articles</a></h2></div>
 
     <div class="clear"></div>
 
@@ -140,7 +140,7 @@
             'featured_note'
           ); ?>
 
-          <a <?php post_class($classes); ?> href="<?php the_permalink(); ?>" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
+          <a <?php post_class($classes); ?> href="<?php the_permalink(); ?>?utm_source=lawyerist-front-page&utm_medium=internal&utm_campaign=nav" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
             <?php if ( has_post_thumbnail() ) { the_post_thumbnail( 'thumbnail' ); } ?>
             <h2 class="headline"><?php the_title(); ?></h2>
             <div class="postmeta">
@@ -157,7 +157,7 @@
       /* END NOTES LOOP */ ?>
 
     </div><!--end #featured_posts-->
-    <div class="fp_bottom_tab"><h2><a href="<?php echo bloginfo('url') . '/notes/'; ?>">More Notes</a></h2></div>
+    <div class="fp_bottom_tab"><h2><a href="<?php echo bloginfo('url') . '/notes/?utm_source=lawyerist-front-page&utm_medium=internal&utm_campaign=nav'; ?>">More Notes</a></h2></div>
 
     <div class="clear"></div>
 
@@ -188,7 +188,7 @@
           <?php // Loop through each feed item and display each item as a hyperlink. ?>
           <?php foreach ( $rss_items as $item ) : ?>
             <li>
-              <a href="<?php echo esc_url( $item->get_permalink() ); ?>" title="<?php printf( __( 'Updated on %s', 'my-text-domain' ), $item->get_date('F jS, Y @ g:i a') ); ?>">
+              <a href="<?php echo esc_url( $item->get_permalink() ); ?>?utm_source=lawyerist-front-page&utm_medium=internal&utm_campaign=nav" title="<?php printf( __( 'Updated on %s', 'my-text-domain' ), $item->get_date('F jS, Y @ g:i a') ); ?>">
                 <img src="https://lawyerist.com/lawyerist/wp-content/uploads/2013/10/lab-favicon.png" />
                 <div class="lab_headline"><?php echo esc_html( $item->get_title() ); ?></div>
                 <div class="clear"></div>
@@ -198,7 +198,7 @@
         <?php endif; ?>
       </ul>
     </div><!--end #lab_posts-->
-    <div class="fp_bottom_tab"><h2><a href="http://lab.lawyerist.com">More Q&A</a></h2></div>
+    <div class="fp_bottom_tab"><h2><a href="http://lab.lawyerist.com?utm_source=lawyerist-front-page&utm_medium=internal&utm_campaign=nav">More Q&A</a></h2></div>
 
     <div class="clear"></div>
 

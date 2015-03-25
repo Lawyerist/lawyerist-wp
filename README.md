@@ -1,5 +1,11 @@
 # A custom WordPress theme for Lawyerist.com
 
+2015-03-25
+----------
+
+* Post footer issue nav, take 1.
+
+
 2015-03-24
 ----------
 
