@@ -31,6 +31,7 @@ Front Page
 Content
 	Index & Archive Lists
 	Posts
+  Post Footer Nav
   Notes (see notes.php)
   Galleries
   Author List Shortcode
@@ -1149,37 +1150,124 @@ Content
   		vertical-align:middle;
   	}
 
-  #issue_nav {
-    clear:both;
-    margin-bottom:5.6rem;
-  }
-
-    .future_post {
-      font-size:80%;
-      text-transform:uppercase;
-    }
-
-  #series_nav {
-    clear:both;
-		margin-bottom:5.6rem;
-  }
-
-    p.series_tag {
-      font-size:1.2rem;
-      line-height:1em;
-      margin-bottom:0;
-      text-transform:uppercase;
-    }
-
 	.theiaPostSlider_nav ._text {
-		color:#777;
-		font-size:3.2rem;
+		color: #777;
+		font-size: 3.2rem;
 	}
 
 	.theiaPostSlider_footer {
-		border-top:1px solid #ddd;
-		padding-top:2.8rem;
+		border-top: 1px solid #ddd;
+		padding-top: 2.8rem;
 	}
+
+  /*------------------------------
+  Post Footer Nav
+  ------------------------------*/
+
+  #issue_nav {
+    border: .1rem solid #ddd;
+    margin-bottom: 5.6rem;
+    overflow: hidden;
+    padding: 2rem 2.5rem;
+    position: relative;
+  }
+
+  #issue_contents {
+    margin: 0;
+    padding: 0;
+  }
+
+    #issue_contents img.wp-post-image {
+      height: 100%;
+      opacity: .2;
+      position: absolute;
+        top: 0;
+        left: -50%;
+      width:auto;
+      z-index: -1;
+    }
+
+    #issue_header {
+      margin-bottom:2.8rem;
+    }
+
+      #issue_header img.cover_title {
+        height:auto;
+        width:100%;
+      }
+
+      #issue_header .issue_label {
+        color:  #777;
+        font-size: 1.4rem;
+        line-height: 1em;
+        position: relative;
+          top: -1em;
+        text-align: right;
+      }
+
+      #issue_header .issue_date:before {
+        content: '\f307';
+        display: inline-block;
+        -webkit-font-smoothing: antialiased;
+        font: normal 1.6rem/1.4rem 'Genericons';
+        margin-left: 1rem;
+        vertical-align: bottom;
+      }
+
+    #issue_cover_story {
+      margin-bottom:2.8rem;
+    }
+
+    #issue_contents ul {
+      list-style:none;
+      margin:0 0 2.8rem 0;
+    }
+
+    #issue_contents li {
+      float: left;
+      margin-bottom: 2.8rem;
+      width: 47.61904762%;
+    }
+
+    #issue_contents li:nth-child(odd) {
+      margin-right: 2.8rem;
+    }
+
+    .issue_headline {
+      font-family:'Roboto Slab',sans-serif;
+    }
+
+    .issue_headline a {
+      color: #333;
+    }
+
+    .issue_author {
+      display:block;
+      font-family:'Source Sans Pro',sans-serif;
+      font-size: 1.4rem;
+      line-height: 2.3rem;
+    }
+
+  #series_nav {
+    clear: both;
+		margin-bottom: 5.6rem;
+  }
+
+    p.series_tag {
+      font-size:1.4rem;
+      line-height:1em;
+      margin-bottom:.4rem;
+      text-transform:uppercase;
+    }
+
+    #series_nav ul {
+      list-style:none;
+      margin:0 0 2.8rem 0;
+    }
+
+    #series_nav li {
+      font-family:'Roboto Slab',sans-serif;
+    }
 
 
   /*------------------------------
@@ -1626,6 +1714,7 @@ li.widget {
   #popular_posts_tabbed ul.idTabs > li a:hover:after {
     background:#ccc;
     border-color:#aaa;
+    color:#cc0000;
     text-decoration:none;
   }
 
@@ -1957,6 +2046,12 @@ and (max-width:659px) {
 	a.post p.excerpt_with_thumb {
 		padding-right:0;
 	}
+
+  #issue_contents li {
+    float:none;
+    margin:0 0 2.8rem 0;
+    width:auto;
+  }
 
 	#footer {
 		background:none;

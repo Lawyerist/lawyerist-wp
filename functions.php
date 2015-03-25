@@ -386,8 +386,7 @@ add_action('wp_dashboard_setup','remove_quickpress');
 RSS Feed Caching
 ------------------------------*/
 
-function return_3600( $seconds )
-{
+function return_3600( $seconds ) {
   /* Change the default feed cache re-creation period to 1 hour */
   return 3600;
 }
