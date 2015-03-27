@@ -33,9 +33,10 @@
 
       echo '<div id="archive_header"><h1>' . $author_name . '</h1>' . "\n" . $author_avatar . "\n" . '<p class="author_descr">' . $author_bio . '</p><div class="clear"></div></div>';
 
-    } ?>
+    }
 
-		<?php /* THE LOOP */
+
+    /* THE LOOP */
 
     if ( have_posts() ) : while ( have_posts() ) : the_post();
 
