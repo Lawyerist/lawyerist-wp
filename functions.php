@@ -15,6 +15,7 @@ Allow PHP in Widgets
 Add Capabilities to Contributor Role
 Remove Quickpress
 RSS Feed Caching
+Theme Support Function
 
 */
 
@@ -394,3 +395,13 @@ function return_3600( $seconds ) {
 add_filter( 'wp_feed_cache_transient_lifetime' , 'return_3600' );
 $feed = fetch_feed( $feed_url );
 remove_filter( 'wp_feed_cache_transient_lifetime' , 'return_3600' );
+
+
+/*------------------------------
+Theme Support Function
+------------------------------*/
+
+add_action( 'after_setup_theme', 'woocommerce_support' );
+function woocommerce_support() {
+    add_theme_support( 'woocommerce' );
+}
