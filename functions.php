@@ -299,7 +299,7 @@ function featuredtoRSS($content) {
 	global $post;
 
 	if ( has_post_thumbnail( $post->ID ) ) {
-		$content = '' . get_the_post_thumbnail( $post->ID, 'featured_top', array( 'style' => 'display:block;margin:0 0 15px 0;' ) ) . '' . $content;
+		$content = '' . get_the_post_thumbnail( $post->ID, 'featured_top', array( 'style' => 'display:block;height:auto;margin:0 0 15px 0;width:560px;' ) ) . '' . $content;
 	}
 
 	return $content;

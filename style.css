@@ -1172,9 +1172,36 @@ Content
     position: relative;
   }
 
+  #issue_header {
+    margin-bottom:2.8rem;
+  }
+
+    #issue_header img.cover_title {
+      height:auto;
+      width:100%;
+    }
+
+    #issue_header .issue_label {
+      color:  #777;
+      font-size: 1.4rem;
+      line-height: 1em;
+      position: relative;
+        top: -1em;
+      text-align: right;
+    }
+
+    #issue_header .issue_date:before {
+      content: '\f307';
+      display: inline-block;
+      -webkit-font-smoothing: antialiased;
+      font: normal 1.6rem/1.4rem 'Genericons';
+      margin-left: 1rem;
+      vertical-align: bottom;
+    }
+
   #issue_contents {
     margin: 0;
-    padding: 0;
+    padding: 0 3.1rem 3.1rem 3.1rem;
   }
 
     #issue_contents img.wp-post-image {
@@ -1187,50 +1214,23 @@ Content
       z-index: -1;
     }
 
-    #issue_header {
-      margin-bottom:2.8rem;
-    }
-
-      #issue_header img.cover_title {
-        height:auto;
-        width:100%;
-      }
-
-      #issue_header .issue_label {
-        color:  #777;
-        font-size: 1.4rem;
-        line-height: 1em;
-        position: relative;
-          top: -1em;
-        text-align: right;
-      }
-
-      #issue_header .issue_date:before {
-        content: '\f307';
-        display: inline-block;
-        -webkit-font-smoothing: antialiased;
-        font: normal 1.6rem/1.4rem 'Genericons';
-        margin-left: 1rem;
-        vertical-align: bottom;
-      }
-
     #issue_cover_story {
       margin-bottom:2.8rem;
     }
 
     #issue_contents ul {
       list-style:none;
-      margin:0 0 2.8rem 0;
+      margin:0;
     }
 
     #issue_contents li {
       float: left;
       margin-bottom: 2.8rem;
-      width: 47.61904762%;
+      width: 23.5rem;
     }
 
     #issue_contents li:nth-child(odd) {
-      margin-right: 2.8rem;
+      margin-right: 5.6rem;
     }
 
     .issue_headline {
@@ -2035,31 +2035,36 @@ and (max-width:659px) {
 	/* Change Layout */
 
 	#content_column_container {
-		max-width:none;
-		width:auto;
+		max-width: none;
+		width: auto;
 	}
 
 		#content_column {
-			max-width:none;
+			max-width: none;
 		}
 
 	a.post p.excerpt_with_thumb {
-		padding-right:0;
+		padding-right: 0;
 	}
 
-  #issue_contents li {
-    float:none;
-    margin:0 0 2.8rem 0;
-    width:auto;
+  #issue_contents {
+    padding: 0;
+  }
+
+  #issue_contents li,
+  #issue_contents li:nth-child(odd) {
+    float: none;
+    margin: 0 0 2.8rem 0;
+    width: auto;
   }
 
 	#footer {
-		background:none;
-		width:auto;
+		background: none;
+		width: auto;
 	}
 
 		#footer p {
-			padding:0;
+			padding: 0;
 		}
 
 
