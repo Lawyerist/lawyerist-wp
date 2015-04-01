@@ -108,12 +108,12 @@
 
 					echo '<div id="issue_nav">';
 
-						echo '<div id="issue_contents">';
+						echo '<div id="issue_header">';
+							echo '<img class="cover_title" src="' . get_template_directory_uri() . '/images/lawyerist-magazine-cover-title.png" />';
+							echo '<div class="issue_label">' . $issue_title[0] . '<span class="issue_date">' . $issue_descr . '</span></div>';
+						echo '</div>';
 
-							echo '<div id="issue_header">';
-								echo '<img class="cover_title" src="' . get_template_directory_uri() . '/images/lawyerist-magazine-cover-title.png" />';
-								echo '<div class="issue_label">' . $issue_title[0] . '<span class="issue_date">' . $issue_descr . '</span></div>';
-							echo '</div>';
+						echo '<div id="issue_contents">';
 
 							/* Cover story loop */
 
@@ -176,6 +176,8 @@
 
 								/* End published post loop */
 
+								echo '<div class="clear"></div>';
+
 							echo '</ul>';
 
 						echo '</div>'; /* End #issue_contents */
@@ -219,7 +221,6 @@
 						);
 
 						$series_query_args = array(
-							'nopaging'				=> true,
 							'posts_per_page'  => 10,
 							'tax_query'     	=> array(
 								array(
@@ -255,7 +256,7 @@
 
 							echo '</ul>';
 
-							if ( $series_query->post_count > 10 ) {
+							if ( $series_query->post_count >= 10 ) {
 
 								echo 'There are even more posts in this series! <a href="' . get_term_link( $series_slug[0], 'series' ) .  '?utm_source=lawyerist-series-footer-nav&utm_medium=internal&utm_campaign=nav">Read them all here.</a>';
 
