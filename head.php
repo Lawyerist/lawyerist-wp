@@ -8,7 +8,7 @@
 <meta charset="utf-8" />
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<?php if ( has_post_format( 'aside' )) { ?>
+<?php if ( is_single() && has_post_format( 'aside' )) { ?>
 	<meta name="robots" content="noindex">
 	<meta name="st:robots" content="index">
 <?php } ?>
