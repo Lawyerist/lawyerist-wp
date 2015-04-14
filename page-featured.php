@@ -42,7 +42,6 @@
 
     /* END PINNED POST LOOP */ ?>
 
-    <div class="fp_tab"><h2>Articles</h2></div>
   	<div id="featured_posts">
 
   		<?php /* FEATURED POSTS LOOP */
@@ -108,11 +107,9 @@
   		<div class="clear"></div>
 
   	</div><!--end #featured_posts-->
-    <div class="fp_bottom_tab"><h2><a href="<?php echo bloginfo('url') . '/articles/?utm_source=lawyerist-front-page&utm_medium=internal&utm_campaign=nav'; ?>">More Articles</a></h2></div>
 
     <div class="clear"></div>
 
-    <div class="fp_tab"><h2>Notes</h2></div>
     <div id="featured_notes">
 
       <?php /* NOTES LOOP */
@@ -157,7 +154,7 @@
       /* END NOTES LOOP */ ?>
 
     </div><!--end #featured_posts-->
-    <div class="fp_bottom_tab"><h2><a href="<?php echo bloginfo('url') . '/notes/?utm_source=lawyerist-front-page&utm_medium=internal&utm_campaign=nav'; ?>">More Notes</a></h2></div>
+    <div class="fp_bottom_tab"><h2><a href="<?php echo bloginfo('url') . '/articles/?utm_source=lawyerist-front-page&utm_medium=internal&utm_campaign=nav'; ?>">All Articles</a></h2></div>
 
     <div class="clear"></div>
 
@@ -198,7 +195,7 @@
         <?php endif; ?>
       </ul>
     </div><!--end #lab_posts-->
-    <div class="fp_bottom_tab"><h2><a href="http://lab.lawyerist.com?utm_source=lawyerist-front-page&utm_medium=internal&utm_campaign=nav">More Q&A</a></h2></div>
+     <div class="fp_bottom_tab"><h2><a href="http://lab.lawyerist.com?utm_source=lawyerist-front-page&utm_medium=internal&utm_campaign=nav">All Q&A</a></h2></div>
 
     <div class="clear"></div>
 

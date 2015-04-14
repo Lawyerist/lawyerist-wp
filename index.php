@@ -26,23 +26,6 @@
 
 		<?php /* THE LOOP */
 
-    $paged = ( get_query_var('paged') ) ? get_query_var( 'paged' ) : 1;
-    $query_args = array(
-      'paged'           => $paged,
-      'tax_query'       => array(
-        array(
-          'taxonomy'    => 'post_format',
-          'field'       => 'slug',
-          'terms'       => array(
-            'post-format-aside'
-          ),
-          'operator'  => 'NOT IN'
-        )
-      )
-    );
-
-    query_posts( $query_args );
-
 		if ( have_posts() ) : while ( have_posts() ) : the_post();
 
       $num_comments = get_comments_number(); ?>
@@ -68,6 +51,7 @@
 
 		/* END LOOP */ ?>
 
+
 		<div id="pagenav">
 			<div class="alignleft pagenav_link_block">
 				<?php previous_posts_link('<div class="genericon pagenav_leftarrow"></div><div class="pagenav_link">browse newer posts</div>',0) ?>
@@ -77,6 +61,7 @@
 			</div>
 			<div class="clear"></div>
 		</div>
+
 
 	</div><!-- end #content_column -->
 
