@@ -677,32 +677,41 @@ Front Page
 ------------------------------*/
 
 a.post.fp_sticky {
-	background-color:#333;
-  border:0;
-	min-height:3.2rem;
-	padding:.75rem 2.5rem .75rem .75rem;
+  background-color: #333;
+	margin-bottom: .2rem;
+  padding: 2rem 2.5rem;
+  transition: background-color .2s;
 }
 
-  a.post.fp_sticky:hover p {
-    text-decoration:underline;
+a.post.fp_sticky:hover {
+  background-color: #111;
+}
+
+  a.fp_sticky h2.headline {
+    color: #fff;
+    font-size: 2.4rem;
+    letter-spacing: .1rem;
+    line-height: 3.2rem;
+    margin-bottom: 0;
+    text-shadow: .1rem .1rem 0 #111;
   }
 
-	a.post.fp_sticky p,
-  a.post.fp_sticky:hover p {
-		color:#fff;
-		font-family:'Roboto Slab',sans-serif;
-		margin:0 0 .25em 0;
-		padding-left:3.95rem;
-	}
+  a.fp_sticky:hover h2.headline {
+    text-decoration:none;
+  }
 
 	a.fp_sticky .pin:before {
-		color:#cc0000;
-		content:'\f308';
-		display:inline-block;
-		float:left;
-		-webkit-font-smoothing:antialiased;
-		font:normal 3.2rem/1em 'Genericons';
-		vertical-align:text-top;
+		color: #cc0000;
+		content: '\f308';
+    display: inline-block;
+    float:left;
+    -moz-osx-font-smoothing: grayscale;
+  	-webkit-font-smoothing: antialiased;
+		font: normal 3.2rem/1em 'Genericons';
+    margin-right: 1rem;
+    speak: none;
+    text-shadow: .1rem .1rem 0 #111;
+		vertical-align: top;
 	}
 
 .front_page #content_column h3 {
