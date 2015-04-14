@@ -572,14 +572,6 @@ Header
 			font:normal 3.2rem/1em 'Genericons';
 		}
 
-      #email_social ul li a.email.sprite:hover {
-        color:#cc0000;
-      }
-
-      #email_social ul li a.email.sprite:before {
-        content:'\f410';
-      }
-
 			#email_social ul li a.facebook.sprite:hover {
 				color:#3b5998;
 			}

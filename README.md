@@ -1,9 +1,16 @@
 # A custom WordPress theme for Lawyerist.com
 
+2015-04-14
+----------
+
+* Remove Feedburner email subscription option.
+
+
 2015-04-10
 ----------
 
 * Fixed a bug where an author page with a Note showing would be noindexed.
+
 
 2015-03-25
 ----------
