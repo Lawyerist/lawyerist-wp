@@ -25,7 +25,6 @@
 
 		<div id="email_social">
 			<ul>
-				<li><a class="email sprite" href="http://feedburner.google.com/fb/a/mailverify?uri=solosmalltech&loc=en_US" title="Subscribe to Lawyerist by email" target="_blank"></a></li>
 				<li><a class="linkedin sprite" href="https://www.linkedin.com/company/lawyerist-media-llc" title="Connect with Lawyerist on LinkedIn" target="_blank"></a></li>
 				<li><a class="facebook sprite" href="https://facebook.com/lawyerist" title="Friend Lawyerist on Facebook" target="_blank"></a></li>
 				<li><a class="twitter sprite" href="https://twitter.com/lawyerist" title="Follow Lawyerist on Twitter" target="_blank"></a></li>
