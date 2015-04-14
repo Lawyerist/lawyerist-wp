@@ -101,7 +101,7 @@ body {
   .menu-header-container {
     display:inline-block;
     float:left;
-    margin:2rem 0 0 2.7rem;
+    margin:2rem 0 0 7rem;
   }
 
   #email_social {
@@ -1939,17 +1939,6 @@ Useful Stuff
 Media Queries
 ------------------------------*/
 
-/* Logo + sharing icons (~440px) */
-@media only screen and (max-width:439px) {
-
-  #email_social {
-		display:none;
-	}
-
-}
-
-
-
 /* Content width (1024px) */
 
 @media only screen
@@ -1962,7 +1951,6 @@ and (max-width:1023px) {
 
 	/* Hide This Stuff */
 
-  .menu-header-container,
   .menu-default-container,
   li#ap4 {
 		display:none !important;
@@ -1974,6 +1962,10 @@ and (max-width:1023px) {
   #header_container {
     border-bottom:1rem solid #cc0000;
   }
+
+    .menu-header-container {
+      margin-left:2rem;
+    }
 
 	#content_column_container,
 	#footer {
@@ -2003,6 +1995,17 @@ and (max-width:1023px) {
       }
 
 }
+
+
+/* Too small for header menu (867px) */
+@media only screen and (max-width:866px) {
+
+.menu-header-container {
+  display:none !important;
+}
+
+}
+
 
 /* Leaderboard ad width (728px) + 20px for padding */
 @media only screen and (max-width:747px) {

@@ -4,6 +4,7 @@
 ----------
 
 * Remove Feedburner email subscription option.
+* Combine Articles and Notes into a single feed, Articles. Combine them on the front page, as well, and adjust the header nav.
 
 
 2015-04-10
