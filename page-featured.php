@@ -33,7 +33,7 @@
 
           <a <?php post_class("fp_sticky"); ?> href="<?php the_permalink(); ?>?utm_source=lawyerist-front-page&utm_medium=internal&utm_campaign=nav" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
            <div class="pin"></div>
-           <p><?php the_title(); ?></p>
+           <h2 class="headline"><?php the_title(); ?></h2>
           </a>
 
         <?php endwhile;
