@@ -682,7 +682,6 @@ a.post.fp_sticky {
   padding: 2rem 2.5rem;
   transition: background-color .2s;
 }
-
 a.post.fp_sticky:hover {
   background-color: #111;
 }
@@ -693,6 +692,7 @@ a.post.fp_sticky:hover {
     letter-spacing: .1rem;
     line-height: 3.2rem;
     margin-bottom: 0;
+    padding-left: 4.2rem;
     text-shadow: .1rem .1rem 0 #111;
   }
 
@@ -708,7 +708,6 @@ a.post.fp_sticky:hover {
     -moz-osx-font-smoothing: grayscale;
   	-webkit-font-smoothing: antialiased;
 		font: normal 3.2rem/1em 'Genericons';
-    margin-right: 1rem;
     speak: none;
     text-shadow: .1rem .1rem 0 #111;
 		vertical-align: top;
@@ -2028,8 +2027,7 @@ and (max-width:1023px) {
 
 /* Content column width (640px) + 20px for padding */
 
-@media only screen
-and (max-width:659px) {
+@media only screen and (max-width:659px) {
 
 	/* Hide This Stuff */
 
@@ -2093,11 +2091,16 @@ and (max-width:659px) {
 
   #featured_posts h2,
   #featured_posts a.post_num_1 h2,
+  #featured_posts a.post_num_1.tag-smaller-title h2,
   #featured_notes h2 {
 		font-size:2.4rem;
 		line-height:3.3rem;
 		margin-bottom:1.65rem;
 	}
+
+  a.fp_sticky h2.headline {
+    font-weight:normal;
+  }
 
 	.front_page ul#sidebar_column {
 		margin:0 auto;
@@ -2133,6 +2136,17 @@ and (max-width:659px) {
 
   .author_list li {
     width:50%;
+  }
+
+}
+
+
+/* Header nav (400px) */
+
+@media only screen and (max-width:399px) {
+
+  .more_social {
+    display:none;
   }
 
 }
