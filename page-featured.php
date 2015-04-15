@@ -89,7 +89,7 @@
 
   					</div><!--end .headline_excerpt-->
 
-  					<?php if ( has_post_thumbnail() && $post_num==1 ) { the_post_thumbnail( 'featured_top' ); }
+  					<?php if ( has_post_thumbnail() && !wp_is_mobile() && $post_num==1 ) { the_post_thumbnail( 'featured_top' ); }
             elseif ( has_post_thumbnail() ) { the_post_thumbnail( 'featured' ); }
             else { echo ''; } ?>
 
