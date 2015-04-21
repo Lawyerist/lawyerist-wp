@@ -1877,6 +1877,7 @@ input#st-search-input:focus {
     display: inline-block;
     font-family: inherit;
     font-size: 1.6rem;
+    margin-bottom:2.8rem;
     outline: none;
     padding: .7rem 1.4rem;
     text-decoration:none;
