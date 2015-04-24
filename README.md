@@ -1,5 +1,12 @@
 # A custom WordPress theme for Lawyerist.com
 
+2015-04-23
+----------
+
+* Rough draft of new author bio pages.
+* Related changes, such as adding Twitter link to footer and pages.
+
+
 2015-04-14
 ----------
 

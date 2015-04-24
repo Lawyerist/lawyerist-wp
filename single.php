@@ -41,8 +41,26 @@
 					<?php if ( !is_feed() ) { wp_link_pages(); } ?>
 
 					<div id="author_bio_footer">
-						<?php echo get_avatar( get_the_author_meta('user_email') , 100 ); ?>
-						<p class="remove_bottom"><?php the_author_description(); ?></p>
+
+						<?php /* Author bio footer variables */
+
+							$author = $wp_query->query_vars['author'];
+
+							$author_name    = get_the_author_meta( 'display_name', $author );
+							$author_website = get_the_author_meta( 'user_url', $author );
+							$author_twitter = get_the_author_meta( 'twitter', $author );
+
+							$author_avatar  = get_avatar( get_the_author_meta( 'user_email', $author ), 100, '', $author_name );
+
+						?>
+
+						<a href="<?php echo $author_website; ?>"><?php echo $author_avatar; ?></a>
+
+						<p><?php the_author_description(); ?></p>
+						<?php if ( $author_twitter == true ) { ?>
+			        <p class="author_twitter"><a href="https://twitter.com/<?php echo $author_twitter; ?>">@<?php echo $author_twitter; ?></a></p>
+			      <?php } ?>
+
 					</div>
 
 				</div>
