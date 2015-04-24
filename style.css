@@ -41,7 +41,6 @@ Content
 	Comments
 Author Page
 Landing Page Template
-Comments
 Sidebar
 	Sidebar Ads
 	Sidebar Popular Posts Widget
@@ -346,9 +345,9 @@ p.wp-caption-text {
 
 .postmeta {
 	color:#777;
-  font-size:1.4rem;
-  line-height:2.3rem;
-	margin-bottom:1.4rem;
+  font-size:1.6rem;
+  line-height:2.6rem;
+	margin-bottom:1.6rem;
 }
 
   .single .postmeta {
@@ -1117,8 +1116,8 @@ Content
 	#author_bio_footer p {
     color: #666;
 		font-size: 1.6rem;
-		line-height: 2.5rem;
-    margin-bottom: 2.5rem;
+		line-height: 2.6rem;
+    margin-bottom: 2.6rem;
 		padding-left: 12rem;
 	}
 
@@ -1534,16 +1533,20 @@ Author Pages
 p.author_bio {
   font-size: 1.6rem;
   line-height: 2.6rem;
-  margin-bottom: 2.6rem;
 }
 
-p.author_twitter {
+#author_connect p {
   font-size: 1.6rem;
-  line-height: 1em !important;
+  line-height: 1em;
+  margin-bottom: 1.3rem;
+}
+
+#author_connect p:last-child {
   margin-bottom: 2.6rem;
 }
 
-p.author_twitter:before {
+p.author_twitter:before,
+p.author_website:before {
   font-size: 16px;
   vertical-align: top;
   text-align: center;
@@ -1567,6 +1570,11 @@ p.author_twitter:before {
   content: '\f202';
 }
 
+p.author_website:before {
+  color: #555;
+  content: '\f475';
+}
+
 
 /*------------------------------
 Landing Page Template
@@ -1577,63 +1585,6 @@ Landing Page Template
     margin-left: auto;
     margin-right: auto;
   }
-
-
-/*----------------------------------------
-Comments
-----------------------------------------*/
-
-.comment-body {
-	display:block;
-	font-size:1.8rem;
-	line-heioght:2.8rem;
-	margin-bottom:2.8rem;
-}
-
-	.comment-body p:last-of-type {
-		margin-bottom:0;
-	}
-
-.comment-author cite {
-	font-weight:bold;
-}
-
-#commentform input[type="text"] {
-	margin-bottom:.35rem;
-}
-
-#commentform label small {
-	color:#777;
-	font-size:1.4rem;
-	font-weight:normal;
-}
-
-#commentform p {
-	font-size:1.4rem;
-}
-
-#commentform textarea {
-	width:auto;
-}
-
-.comment-meta,
-.reply {
-	font-size:1.4rem;
-}
-
-ol.commentlist {
-	list-style:none;
-	margin:0;
-}
-
-	ol.commentlist li {
-		line-height:2.8rem;
-	}
-
-ul.children {
-	list-style:none;
-	margin:0 0 0 2.8rem;
-}
 
 
 /*------------------------------

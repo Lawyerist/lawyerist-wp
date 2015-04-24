@@ -46,20 +46,23 @@
 
 							$author = $wp_query->query_vars['author'];
 
-							$author_name    = get_the_author_meta( 'display_name', $author );
-							$author_website = get_the_author_meta( 'user_url', $author );
-							$author_twitter = get_the_author_meta( 'twitter', $author );
+				      $author_name    = get_the_author_meta( 'display_name', $author );
+				      $author_website = get_the_author_meta( 'user_url', $author );
+				      $parsed_url     = parse_url( $author_website );
+				      $author_nice_website = $parsed_url['host'];
+				      $author_twitter = get_the_author_meta( 'twitter', $author );
 
-							$author_avatar  = get_avatar( get_the_author_meta( 'user_email', $author ), 100, '', $author_name );
+				      $author_avatar  = get_avatar( get_the_author_meta( 'user_email', $author ), 100, '', $author_name );
 
 						?>
 
-						<a href="<?php echo $author_website; ?>"><?php echo $author_avatar; ?></a>
+						<?php echo $author_avatar; ?>
 
 						<p><?php the_author_description(); ?></p>
-						<?php if ( $author_twitter == true ) { ?>
-			        <p class="author_twitter"><a href="https://twitter.com/<?php echo $author_twitter; ?>">@<?php echo $author_twitter; ?></a></p>
-			      <?php } ?>
+						<div id="author_connect">
+			        <?php if ( $author_twitter == true ) { ?><p class="author_twitter"><a href="https://twitter.com/<?php echo $author_twitter; ?>">@<?php echo $author_twitter; ?></a></p><?php } ?>
+			        <?php if ( $author_website == true ) { ?><p class="author_website"><a href="<?php echo $author_website; ?>"><?php echo $author_nice_website; ?></a></p><?php } ?>
+			      </div>
 
 					</div>
 
