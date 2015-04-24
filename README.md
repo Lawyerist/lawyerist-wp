@@ -5,6 +5,7 @@
 
 * Rough draft of new author bio pages.
 * Related changes, such as adding Twitter link to footer and pages.
+* Reinstall AP4.
 
 
 2015-04-14
