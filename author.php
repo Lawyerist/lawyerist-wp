@@ -18,6 +18,8 @@
 
       $author_name    = get_the_author_meta( 'display_name', $author );
       $author_website = get_the_author_meta( 'user_url', $author );
+      $parsed_url     = parse_url( $author_website );
+      $author_nice_website = $parsed_url['host'];
       $author_bio     = get_the_author_meta( 'description', $author );
       $author_twitter = get_the_author_meta( 'twitter', $author );
 
@@ -27,15 +29,16 @@
 
     <div id="author_header">
 
-      <h1><a href="<?php echo $author_website; ?>"><?php echo $author_name; ?></a></h1>
+      <h1><?php echo $author_name; ?></h1>
 
       <?php echo $author_avatar; ?>
 
       <p class="author_bio"><?php echo $author_bio; ?></p>
 
-      <?php if ( $author_twitter == true ) { ?>
-        <p class="author_twitter"><a href="https://twitter.com/<?php echo $author_twitter; ?>">@<?php echo $author_twitter; ?></a></p>
-      <?php } ?>
+      <div id="author_connect">
+        <?php if ( $author_twitter == true ) { ?><p class="author_twitter"><a href="https://twitter.com/<?php echo $author_twitter; ?>">@<?php echo $author_twitter; ?></a></p><?php } ?>
+        <?php if ( $author_website == true ) { ?><p class="author_website"><a href="<?php echo $author_website; ?>"><?php echo $author_nice_website; ?></a></p><?php } ?>
+      </div>
 
       <div class="clear"></div>
 
