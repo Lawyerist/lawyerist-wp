@@ -978,6 +978,9 @@ Content
 
 	a.post .headline {
 		color:#333;
+    font-size:2.4rem;
+    line-height:3.3rem;
+    margin-bottom:1.65rem;
 	}
 
 	a.post:hover .headline {

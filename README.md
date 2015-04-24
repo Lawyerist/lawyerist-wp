@@ -1,5 +1,11 @@
 # A custom WordPress theme for Lawyerist.com
 
+2015-04-24
+----------
+
+* Make headlines smaller on index/archive lists.
+
+
 2015-04-23
 ----------
 
