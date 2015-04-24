@@ -12,16 +12,37 @@
 
   <div id="content_column">
 
-		<?php /* ARCHIVE PAGE TITLES */
+		<?php /* AUTHOR DISPLAY */
 
-      $descr = term_description();
+      $author = $wp_query->query_vars['author'];
 
-      echo '<div id="archive_header"><h1>';
-      single_term_title();
-      echo '</h1>' . "\n" . $descr . '</div>';
+      $author_name    = get_the_author_meta( 'display_name', $author );
+      $author_website = get_the_author_meta( 'user_url', $author );
+      $author_bio     = get_the_author_meta( 'description', $author );
+      $author_twitter = get_the_author_meta( 'twitter', $author );
+
+      $author_avatar  = get_avatar( get_the_author_meta( 'user_email', $author ), 300, '', $author_name );
+
+    ?>
+
+    <div id="author_header">
+
+      <h1><a href="<?php echo $author_website; ?>"><?php echo $author_name; ?></a></h1>
+
+      <?php echo $author_avatar; ?>
+
+      <p class="author_bio"><?php echo $author_bio; ?></p>
+
+      <?php if ( $author_twitter == true ) { ?>
+        <p class="author_twitter"><a href="https://twitter.com/<?php echo $author_twitter; ?>">@<?php echo $author_twitter; ?></a></p>
+      <?php } ?>
+
+      <div class="clear"></div>
+
+    </div>
 
 
-    /* THE LOOP */
+    <?php /* THE LOOP */
 
     if ( have_posts() ) : while ( have_posts() ) : the_post();
 
@@ -33,7 +54,6 @@
 
 				<h2 class="headline remove_bottom" id="post-<?php the_ID(); ?>"><?php the_title(); ?></h2>
 				<div class="postmeta">
-					<div class="author_link">by <?php the_author(); ?></div>
           <?php if ( $num_comments > 0 ) { ?>
             <div class="comment_link"><?php comments_number( 'Leave a comment', '1 comment', '% comments' ); ?></div>
           <?php } ?>

@@ -39,6 +39,7 @@ Content
 	Buyers Guide
 	Pagenav
 	Comments
+Author Page
 Landing Page Template
 Comments
 Sidebar
@@ -1023,7 +1024,6 @@ Content
 
 	#archive_header {
 		background-color:#ddd;
-    border:1px solid #ddd;
 		margin-bottom:2.8rem;
 		padding:1.5rem 2.5rem 2rem 2.5rem;
 	}
@@ -1115,10 +1115,11 @@ Content
 	}
 
 	#author_bio_footer p {
-    color:#666;
-		font-size:1.4rem;
-		line-height:2.3rem;
-		padding-left:12rem;
+    color: #666;
+		font-size: 1.6rem;
+		line-height: 2.5rem;
+    margin-bottom: 2.5rem;
+		padding-left: 12rem;
 	}
 
   #category_tag_lists p:first-child {
@@ -1509,8 +1510,62 @@ Content
 	------------------------------*/
 
   #disqus_thread {
-      margin-bottom:5.6rem;
+      margin-bottom: 5.6rem;
   }
+
+/*------------------------------
+Author Pages
+------------------------------*/
+
+#author_header {
+  border-bottom: .1rem solid #ddd;
+  margin-bottom: 2.8rem;
+  padding-bottom: 2.8rem;
+}
+
+#author_header img {
+  border-radius: 0;
+  float: left;
+  height: auto;
+  margin: 0 2rem 2rem 0;
+  width: 46.875%
+}
+
+p.author_bio {
+  font-size: 1.6rem;
+  line-height: 2.6rem;
+  margin-bottom: 2.6rem;
+}
+
+p.author_twitter {
+  font-size: 1.6rem;
+  line-height: 1em !important;
+  margin-bottom: 2.6rem;
+}
+
+p.author_twitter:before {
+  font-size: 16px;
+  vertical-align: top;
+  text-align: center;
+  -moz-transition: color .1s ease-in 0;
+  -webkit-transition: color .1s ease-in 0;
+  display: inline-block;
+  font-family: "Genericons";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-decoration: inherit;
+  text-transform: none;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  speak: none;
+}
+
+p.author_twitter:before {
+  color: #4099ff;
+  content: '\f202';
+}
 
 
 /*------------------------------
@@ -1518,9 +1573,9 @@ Landing Page Template
 ------------------------------*/
 
   .page-template-landing-page-php #content_column {
-    float:none;
-    margin-left:auto;
-    margin-right:auto;
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
   }
 
 
