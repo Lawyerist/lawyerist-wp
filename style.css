@@ -600,11 +600,11 @@ Header
 			}
 
       #email_social ul li a.more_social.sprite:hover {
-        color:#cc0000;
+        color: #cc0000;
       }
 
       #email_social ul li a.more_social.sprite:before {
-        content:'\f476';
+        content: '\f476';
       }
 
 
@@ -797,20 +797,20 @@ a.post.fp_sticky:hover {
 	------------------------------*/
 
 	#featured_posts a {
-    background:#111;
-		background:linear-gradient(135deg, #111111 0%,#555555 100%);
-		border:none;
-		clear:none;
-		display:inline-block;
-		float:left;
-		height:24rem;
-		overflow:hidden;
-		margin:0 0 .2rem 0;
-		max-width:31.9rem;
-		padding:0;
-		position:relative;
-		text-decoration:none;
-    width:31.9rem;
+    background: #111;
+		background: linear-gradient(135deg, #111111 0%,#555555 100%);
+		border: none;
+		clear: none;
+		display: inline-block;
+		float: left;
+		height: 24rem;
+		overflow: hidden;
+		margin: 0 0 .2rem 0;
+		max-width: 31.9rem;
+		padding: 0;
+		position: relative;
+		text-decoration: none;
+    width: 31.9rem;
 	}
 
   #featured_posts a.post_num_1 {
@@ -827,25 +827,25 @@ a.post.fp_sticky:hover {
 	}
 
   #featured_posts img {
-    min-height:100%;
-		margin:0 !important;
-		opacity:.5;
-    transition:opacity .2s;
-		width:100%;
-		z-index:0;
+    min-height: 100%;
+		margin: 0 !important;
+		opacity: .5;
+    transition: opacity .2s;
+		width: 100%;
+		z-index: 0;
 	}
 
     #featured_posts a:hover img {
-      opacity:.2;
+      opacity: .2;
     }
 
   #featured_posts .headline_excerpt {
-		padding:2rem 2.5rem;
-		position:absolute;
-			top:0;
-			left:0;
-		width:auto;
-		z-index:1;
+		padding: 2rem 2.5rem;
+		position: absolute;
+			top: 0;
+			left: 0;
+		width: auto;
+		z-index: 1;
 	}
 
   #featured_posts .tag-updated .flag {
@@ -1166,89 +1166,57 @@ Content
   Post Footer Nav
   ------------------------------*/
 
-  #issue_nav {
-    border: .1rem solid #ddd;
+  #issue_nav a {
+    background: #111;
+		background: linear-gradient(135deg, #111111 0%,#555555 100%);
+		border: none;
+		clear: none;
+		display: inline-block;
+		float: left;
+		height: 15.85rem;
+		overflow: hidden;
+		margin: 0 .2rem .2rem 0;
+		padding: 0;
+		position: relative;
+		text-decoration: none;
+    width: 15.85rem;
+  }
+
+  #issue_nav a:last-child {
+    margin-right: 0;
+  }
+
+  #issue_nav .issue_headline {
+    color: #fff;
+    font-family: 'Roboto Slab',sans-serif;
+    font-size: 1.6rem;
+    line-height: 2.2rem;
+    padding: 1rem;
+    position: absolute;
+      top: 0;
+      left: 0;
+    text-shadow: .1rem .1rem 0 #111;
+    width: auto;
+    z-index: 1;
+  }
+
+  #issue_nav img {
+    min-height: 100%;
+		margin: 0 !important;
+		opacity: .3;
+    transition: opacity .2s;
+		width: 100%;
+		z-index: 0;
+  }
+
+    #issue_nav a:hover img {
+      opacity: .1;
+    }
+
+  .issue_nav_bottom_tab {
     margin-bottom: 5.6rem;
-    overflow: hidden;
-    padding: 2rem 2.5rem;
-    position: relative;
   }
 
-  #issue_header {
-    margin-bottom:2.8rem;
-  }
-
-    #issue_header img.cover_title {
-      height:auto;
-      width:100%;
-    }
-
-    #issue_header .issue_label {
-      color:  #777;
-      font-size: 1.4rem;
-      line-height: 1em;
-      position: relative;
-        top: -1em;
-      text-align: right;
-    }
-
-    #issue_header .issue_date:before {
-      content: '\f307';
-      display: inline-block;
-      -webkit-font-smoothing: antialiased;
-      font: normal 1.6rem/1.4rem 'Genericons';
-      margin-left: 1rem;
-      vertical-align: bottom;
-    }
-
-  #issue_contents {
-    margin: 0;
-    padding: 0 3.1rem 3.1rem 3.1rem;
-  }
-
-    #issue_contents img.wp-post-image {
-      height: 100%;
-      opacity: .2;
-      position: absolute;
-        top: 0;
-        left: -50%;
-      width:auto;
-      z-index: -1;
-    }
-
-    #issue_cover_story {
-      margin-bottom:2.8rem;
-    }
-
-    #issue_contents ul {
-      list-style:none;
-      margin:0;
-    }
-
-    #issue_contents li {
-      float: left;
-      margin-bottom: 2.8rem;
-      width: 23.5rem;
-    }
-
-    #issue_contents li:nth-child(odd) {
-      margin-right: 5.6rem;
-    }
-
-    .issue_headline {
-      font-family:'Roboto Slab',sans-serif;
-    }
-
-    .issue_headline a {
-      color: #333;
-    }
-
-    .issue_author {
-      display:block;
-      font-family:'Source Sans Pro',sans-serif;
-      font-size: 1.4rem;
-      line-height: 2.3rem;
-    }
 
   #series_nav {
     clear: both;
@@ -2131,6 +2099,14 @@ and (max-width:1023px) {
 		margin:0 0 1.5rem 0;
 		width:auto;
 	}
+
+  #issue_nav a {
+    display: block;
+    float: none;
+    height: 6.4rem;
+    margin-right: 0;
+    width: auto;
+  }
 
 	#pagenav .pagenav_link_block {
 			display:block;

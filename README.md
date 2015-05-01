@@ -1,5 +1,11 @@
 # A custom WordPress theme for Lawyerist.com
 
+2015-05-01
+----------
+
+* New issue nav footer.
+
+
 2015-04-24
 ----------
 

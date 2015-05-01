@@ -77,7 +77,7 @@
 
 				if ( has_term( true , 'issue' ) ) {
 
-					$this_post = $post->ID;
+					$this_post[] = $post->ID;
 
 					$issue_title = wp_get_post_terms(
 						$post->ID,
@@ -113,9 +113,10 @@
 					);
 
 					$issue_query_args = array(
-						'nopaging'				=> true,
 						'orderby'					=> 'date',
 						'order'						=> 'ASC',
+						'post__not_in'		=> $this_post,
+						'posts_per_page'	=> 4,
 						'tax_query'     	=> array(
 							array(
 								'taxonomy'  => 'issue',
@@ -123,89 +124,36 @@
 								'terms'			=> $issue_slug[0],
 							)
 						)
-					);
+					); ?>
 
-					echo '<h3>Read the Rest of ' . $issue_title[0] . '</h3>';
+					<div class="fp_tab"><h2><?php echo $issue_title[0]; ?></h2></div>
+					<div id="issue_nav">
 
-					echo '<div id="issue_nav">';
+								<?php $issue_query = new WP_Query( $issue_query_args );
+								if ( $issue_query->have_posts() ) : while ( $issue_query->have_posts() ) : $issue_query->the_post(); ?>
 
-						echo '<div id="issue_header">';
-							echo '<img class="cover_title" src="' . get_template_directory_uri() . '/images/lawyerist-magazine-cover-title.png" />';
-							echo '<div class="issue_label">' . $issue_title[0] . '<span class="issue_date">' . $issue_descr . '</span></div>';
-						echo '</div>';
+									<?php $title = the_title( '', '', FALSE );
 
-						echo '<div id="issue_contents">';
+									if ( strlen( $title ) > 80 ) {
 
-							/* Cover story loop */
+										$title = substr( $title, 0, 79 );
+										$title .= ' …';
 
-							$issue_query_cover_args = $issue_query_args;
-							$issue_query_cover_args = array_merge(
-							  $issue_query_cover_args,
-							  array(
-							    'tag'							=>	'cover',
-							    'posts_per_page'	=>	1
-							  )
-							);
+									} ?>
 
-							$issue_query = new WP_Query( $issue_query_cover_args );
-							if ( $issue_query->have_posts() ) : while ( $issue_query->have_posts() ) : $issue_query->the_post();
-
-								if ( has_post_thumbnail() ) { the_post_thumbnail( 'featured_top' ); } ?>
-
-								<div id="issue_cover_story">
-
-									<?php if ( $this_post == $post->ID ) { ?>
-										<h2 class="issue_cover_headline headline issue_headline"><?php the_title(); ?></h2>
-										<div class="issue_author">by <?php the_author(); ?></div>
-									<?php } else { ?>
-										<h2 class="issue_cover_headline headline issue_headline"><a href="<?php the_permalink(); ?>?utm_source=lawyerist-issue-footer-nav&utm_medium=internal&utm_campaign=nav" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>"><?php the_title(); ?></a></h2>
-										<div class="issue_author">by <?php the_author(); ?></div>
-									<?php } ?>
-
-								</div>
-
-						  <?php endwhile; endif;
-
-							/* End cover story loop */
+									<a <?php post_class($classes); ?> href="<?php the_permalink(); ?>?utm_source=lawyerist-issue-footer-nav&utm_medium=internal&utm_campaign=nav" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
+										<div class="issue_headline"><?php echo $title; ?></div>
+										<?php if ( has_post_thumbnail() ) { the_post_thumbnail( 'thumbnail' ); } ?>
+									</a>
 
 
-							echo '<ul>';
+							  <?php endwhile;	endif; ?>
 
-								/* Published posts loop */
+					</div> <!-- end #issue_nav -->
+					<div class="clear"></div>
+					<div class="fp_bottom_tab issue_nav_bottom_tab"><h2><a href="https://lawyerist.com/issue/<?php echo $issue_slug[0]; ?>/">Read the Full Issue</a></h2></div>
 
-								$issue_query_posts_args = $issue_query_args;
-								$issue_query_posts_args['posts_per_page'] = -1;
-
-								$issue_query = new WP_Query( $issue_query_posts_args );
-								if ( $issue_query->have_posts() ) : while ( $issue_query->have_posts() ) : $issue_query->the_post();
-
-									if ( has_tag('cover') ) { continue; } ?>
-
-									<li>
-
-										<?php if ( $this_post == $post->ID ) { ?>
-											<div class="issue_headline"><?php the_title(); ?></div>
-											<div class="issue_author">by <?php the_author(); ?></div>
-										<?php } else { ?>
-											<div class="issue_headline"><a href="<?php the_permalink(); ?>?utm_source=lawyerist-issue-footer-nav&utm_medium=internal&utm_campaign=nav" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>"><?php the_title(); ?></a></div>
-											<div class="issue_author">by <?php the_author(); ?></div>
-										<?php } ?>
-
-									</li>
-
-							  <?php endwhile;	endif;
-
-								/* End published post loop */
-
-								echo '<div class="clear"></div>';
-
-							echo '</ul>';
-
-						echo '</div>'; /* End #issue_contents */
-
-					echo '</div>'; /* end #issue_nav */
-
-				}
+				<?php }
 
 				wp_reset_postdata();
 
