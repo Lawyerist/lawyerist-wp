@@ -126,7 +126,7 @@
 						)
 					); ?>
 
-					<div class="fp_tab"><h2><?php echo $issue_title[0]; ?></h2></div>
+					<div class="fp_tab"><h2>More from <?php echo $issue_title[0]; ?></h2></div>
 					<div id="issue_nav">
 
 								<?php $issue_query = new WP_Query( $issue_query_args );
