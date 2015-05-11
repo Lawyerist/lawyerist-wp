@@ -1237,19 +1237,27 @@ Content
   }
 
     p.series_tag {
-      font-size:1.4rem;
-      line-height:1em;
-      margin-bottom:.4rem;
-      text-transform:uppercase;
+      font-size: 1.4rem;
+      line-height: 1em;
+      margin-bottom: .4rem;
+      text-transform: uppercase;
     }
 
+    #series_nav p,
     #series_nav ul {
-      list-style:none;
-      margin:0 0 2.8rem 0;
+      font-size: 1.8rem;
+      line-height: 2.8rem;
+      margin-bottom: 2.8rem;
+    }
+
+
+    #series_nav ul {
+      list-style: none;
+      margin: 0 0 2.8rem 0;
     }
 
     #series_nav li {
-      font-family:'Roboto Slab',sans-serif;
+      font-family: 'Roboto Slab',sans-serif;
     }
 
 
