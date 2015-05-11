@@ -12,8 +12,7 @@
 
 	<div id="content_column">
 
-		<?php if ( have_posts() ) :
-		while ( have_posts() ) : the_post(); ?>
+		<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
 			<div <?php post_class('hentry'); ?>>
 
@@ -25,7 +24,7 @@
 					<div class="clear"></div>
 				</div>
 
-				<?php /* Show featured images (1) if the post has one AND (2) if it's
+				<?php /* Show featured image (1) if the post has one AND (2) if it's
 								 the first page of the post AND (3) the post DOES NOT have the
 								 no-image tag. */
 				if ( has_post_thumbnail() && $page == 1 && !has_tag('no-image') ) { ?>
@@ -39,6 +38,11 @@
 					<?php the_content(); ?>
 
 					<?php if ( !is_feed() ) { wp_link_pages(); } ?>
+
+					<div id="category_tag_lists">
+						<p class="category_list"><small><?php echo get_the_category_list( ', ' ); ?></small></p>
+						<?php echo get_the_tag_list( '<p class="tag_list"><small>', ', ', '</small></p>' ); ?>
+					</div>
 
 					<div id="author_bio_footer">
 
@@ -64,188 +68,116 @@
 			        <?php if ( $author_website == true ) { ?><p class="author_website"><a href="<?php echo $author_website; ?>"><?php echo $author_nice_website; ?></a></p><?php } ?>
 			      </div>
 
-					</div>
+					</div><!--end #author_bio_footer-->
 
-				</div>
+				</div><!--end .post_body-->
 
-				<div id="category_tag_lists">
-					<p class="category_list"><small><?php echo get_the_category_list( ', ' ); ?></small></p>
-					<?php echo get_the_tag_list( '<p class="tag_list"><small>', ', ', '</small></p>' ); ?>
-				</div>
-
-				<?php /* ISSUE NAV */
-
-				if ( has_term( true , 'issue' ) ) {
-
-					$this_post[] = $post->ID;
-
-					$issue_title = wp_get_post_terms(
-						$post->ID,
-						'issue',
-						array(
-							'fields' 	=> 'names',
-							'orderby' => 'slug',
-							'order' 	=> 'DESC'
-						)
-					);
-
-					$issue_id = wp_get_post_terms(
-						$post->ID,
-						'issue',
-						array(
-							'fields' 	=> 'ids',
-							'orderby' => 'slug',
-							'order' 	=> 'DESC'
-						)
-					);
-
-					$issue_descr = term_description( $issue_id[0] , 'issue' );
-					$issue_descr = strip_tags( $issue_descr );
-
-					$issue_slug = wp_get_post_terms(
-						$post->ID,
-						'issue',
-						array(
-							'fields' 	=> 'slugs',
-							'orderby' => 'slug',
-							'order' 	=> 'DESC'
-						)
-					);
-
-					$issue_query_args = array(
-						'orderby'					=> 'date',
-						'order'						=> 'ASC',
-						'post__not_in'		=> $this_post,
-						'posts_per_page'	=> 4,
-						'tax_query'     	=> array(
-							array(
-								'taxonomy'  => 'issue',
-								'field'			=> 'slug',
-								'terms'			=> $issue_slug[0],
-							)
-						)
-					); ?>
-
-					<div class="fp_tab"><h2>More from <?php echo $issue_title[0]; ?></h2></div>
-					<div id="issue_nav">
-
-								<?php $issue_query = new WP_Query( $issue_query_args );
-								if ( $issue_query->have_posts() ) : while ( $issue_query->have_posts() ) : $issue_query->the_post(); ?>
-
-									<?php $title = the_title( '', '', FALSE );
-
-									if ( strlen( $title ) > 80 ) {
-
-										$title = substr( $title, 0, 79 );
-										$title .= ' …';
-
-									} ?>
-
-									<a <?php post_class($classes); ?> href="<?php the_permalink(); ?>?utm_source=lawyerist-issue-footer-nav&utm_medium=internal&utm_campaign=nav" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
-										<div class="issue_headline"><?php echo $title; ?></div>
-										<?php if ( has_post_thumbnail() ) { the_post_thumbnail( 'thumbnail' ); } ?>
-									</a>
-
-
-							  <?php endwhile;	endif; ?>
-
-					</div> <!-- end #issue_nav -->
-					<div class="clear"></div>
-					<div class="fp_bottom_tab issue_nav_bottom_tab"><h2><a href="https://lawyerist.com/issue/<?php echo $issue_slug[0]; ?>/">Read the Full Issue</a></h2></div>
-
-				<?php }
-
-				wp_reset_postdata();
-
-				/* END ISSUE NAV */ ?>
-
-
-				<!--Begin series nav-->
-				<?php if ( has_term( true , 'series' ) ) {
-
-					$this_post = $post->ID;
-
-					echo '<div id="series_nav">';
-
-						/* SERIES LOOP */
-
-						$series_title = wp_get_post_terms(
-							$post->ID,
-							'series',
-							array(
-								'fields' 	=> 'names',
-								'orderby' => 'count',
-								'order' 	=> 'DESC'
-							)
-						);
-
-						$series_slug = wp_get_post_terms(
-							$post->ID,
-							'series',
-							array(
-								'fields' 	=> 'slugs',
-								'orderby' => 'count',
-								'order' 	=> 'DESC'
-							)
-						);
-
-						$series_query_args = array(
-							'posts_per_page'  => 10,
-							'tax_query'     	=> array(
-								array(
-									'taxonomy'  => 'series',
-									'field'			=> 'slug',
-									'terms'			=> $series_slug[0],
-								)
-							)
-						);
-
-
-						$series_query = new WP_Query( $series_query_args );
-
-						if ( $series_query->post_count > 1 ) {
-
-							echo '<p class="series_tag">This post is part of a series:</p>';
-							echo '<h3>' . $series_title[0] . '</h3>';
-							echo '<ul>';
-
-							while ( $series_query->have_posts() ) : $series_query->the_post();
-
-								echo '<li>';
-
-								if ( $this_post == $post->ID ) {
-									echo the_title();
-								} else { ?>
-									<a href="<?php the_permalink(); ?>?utm_source=lawyerist-series-footer-nav&utm_medium=internal&utm_campaign=nav" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>"><?php the_title(); ?></a>
-								<?php }
-
-								echo '</li>';
-
-							endwhile;
-
-							echo '</ul>';
-
-							if ( $series_query->post_count >= 10 ) {
-
-								echo 'There are even more posts in this series! <a href="' . get_term_link( $series_slug[0], 'series' ) .  '?utm_source=lawyerist-series-footer-nav&utm_medium=internal&utm_campaign=nav">Read them all here.</a>';
-
-							}
-
-						}
-
-						wp_reset_postdata();
-
-						/* END SERIES LOOP */
-
-					echo '</div>';
-
-				} ?><!--End series nav-->
-
-			</div>
+			</div><!--end .hentry-->
 
       <div class="clear"></div>
 
+			<!--Begin issue nav-->
+			<?php if ( has_term( true , 'issue' ) ) {
+
+				$this_post[] = $post->ID;
+
+			  $issue_slug = wp_get_post_terms(
+			    $post->ID,
+			    'issue',
+			    array(
+			      'fields' 	=> 'slugs',
+			      'orderby' => 'slug',
+			      'order' 	=> 'DESC'
+			    )
+			  );
+			  $issue_slug = $issue_slug[0];
+
+			  $issue_title = wp_get_post_terms(
+			    $post->ID,
+			    'issue',
+			    array(
+			      'fields' 	=> 'names',
+			      'orderby' => 'slug',
+			      'order' 	=> 'DESC'
+			    )
+			  );
+			  $issue_title = $issue_title[0];
+
+			  $issue_query_args = array(
+			    'orderby'					=> 'date',
+			    'order'						=> 'ASC',
+			    'post__not_in'		=> $this_post,
+			    'posts_per_page'	=> 4,
+			    'tax_query'     	=> array(
+			      array(
+			        'taxonomy'  => 'issue',
+			        'field'			=> 'slug',
+			        'terms'			=> $issue_slug,
+			      )
+			    )
+			  );
+
+			  $issue_query = new WP_Query( $issue_query_args );
+
+			  if ( $issue_query->post_count > 1 ) { ?>
+
+			    <div class="fp_tab"><h2>More from <?php echo $issue_title; ?></h2></div>
+			    <div id="issue_nav">
+
+			      <?php while ( $issue_query->have_posts() ) : $issue_query->the_post();
+
+							$title = the_title( '', '', FALSE );
+
+			        if ( $issue_query->post_count == 2 ) {
+
+			          $classes = array(
+			            'two_in_issue_nav'
+			          );
+
+			        } elseif ( $issue_query->post_count == 3 ) {
+
+			          $classes = array(
+			            'three_in_issue_nav'
+			          );
+
+							} elseif ( !wp_is_mobile() && strlen( $title ) > 80 ) {
+
+		            $title = substr( $title, 0, 79 );
+		            $title .= ' …';
+
+		          } elseif ( wp_is_mobile() && strlen( $title ) > 70 ) {
+
+								$title = substr( $title, 0, 69 );
+		            $title .= ' …';
+
+							} ?>
+
+			        <a <?php post_class($classes); ?> href="<?php the_permalink(); ?>?utm_source=lawyerist-issue-footer-nav&utm_medium=internal&utm_campaign=nav" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
+			          <div class="issue_headline"><?php echo $title; ?></div>
+			          <?php if ( has_post_thumbnail() ) {
+									the_post_thumbnail( 'thumbnail' );
+								} else {
+									echo '<img src="' . get_template_directory_uri() . '/images/fff-thumb.png" class="attachment-thumbnail wp-post-image" />';
+								} ?>
+			        </a>
+
+			      <?php endwhile; ?>
+
+			    </div><!--end #issue_nav-->
+			    <div class="clear"></div>
+			    <div class="fp_bottom_tab issue_nav_bottom_tab"><h2><a href="https://lawyerist.com/issue/<?php echo $issue_slug; ?>/">Read the Full Issue</a></h2></div>
+
+			    <?php wp_reset_postdata();
+
+			  } /* END ISSUE LOOP */
+
+			} ?>
+
+			<!--End issue nav-->
+
+
       <?php comments_template(); ?>
+
 
 			<div id="pagenav">
 				<div class="alignleft pagenav_link_block">
@@ -257,8 +189,7 @@
 				<div class="clear"></div>
 			</div>
 
-		<?php endwhile;
-		endif; ?>
+		<?php endwhile; endif; ?>
 
 	</div><!-- end #content_column -->
 
@@ -268,7 +199,7 @@
 
 	<div class="clear"></div>
 
-</div>
+</div><!--end #content_column_container-->
 
 <div class="clear"></div>
 

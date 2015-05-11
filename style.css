@@ -390,6 +390,12 @@ ul {
   padding:0;
 }
 
+ol.footnotes li {
+  font-size: 1.4rem;
+  line-height: 2.3rem;
+  margin-bottom: 1.4rem;
+}
+
 li {
 	margin-bottom:1.4rem;
   padding:0;
@@ -1084,12 +1090,12 @@ Content
 		}
 
 		.post_index ul {
-			list-style:none;
-			margin-bottom:0;
+			list-style: none;
+			margin-bottom: 0;
 		}
 
 		.post_index li {
-			margin-bottom:0;
+			margin-bottom: 0;
 		}
 
 	.sd-block {
@@ -1104,16 +1110,16 @@ Content
 	}
 
 	#author_bio_footer {
-		clear:both;
-		margin-bottom:5.6rem;
-    margin-top:5.6rem;
-		min-height:10rem;
+		clear: both;
+		margin-bottom: 5.6rem;
+    margin-top: 5.6rem;
+		min-height: 10rem;
 	}
 
 	#author_bio_footer img.avatar {
-    float:left;
-		margin-bottom:2.3rem;
-		margin-right:2rem;
+    float: left;
+		margin-bottom: 2.3rem;
+		margin-right: 2rem;
 	}
 
 	#author_bio_footer p {
@@ -1125,31 +1131,31 @@ Content
 	}
 
   #category_tag_lists p:first-child {
-    margin-bottom:.56rem;
+    margin-bottom: .56rem;
   }
 
   #category_tag_lists p:last-child {
-    margin-bottom:5.6rem;
+    margin-bottom: 5.6rem;
   }
 
     .category_list:before {
-      color:#bbb;
+      color: #bbb;
       content: '\f301';
-      display:inline-block;
-      float:left;
-      -webkit-font-smoothing:antialiased;
-      font:normal 3.2rem/1em 'Genericons';
-      vertical-align:middle;
+      display: inline-block;
+      float: left;
+      -webkit-font-smoothing: antialiased;
+      font: normal 3.2rem/1em 'Genericons';
+      vertical-align: middle;
     }
 
   	.tag_list:before {
-  		color:#bbb;
+  		color: #bbb;
   		content: '\f302';
-  		display:inline-block;
-  		float:left;
-  		-webkit-font-smoothing:antialiased;
-  		font:normal 3.2rem/1em 'Genericons';
-  		vertical-align:middle;
+  		display: inline-block;
+  		float: left;
+  		-webkit-font-smoothing: antialiased;
+  		font: normal 3.2rem/1em 'Genericons';
+  		vertical-align: middle;
   	}
 
 	.theiaPostSlider_nav ._text {
@@ -1158,7 +1164,6 @@ Content
 	}
 
 	.theiaPostSlider_footer {
-		border-top: 1px solid #ddd;
 		padding-top: 2.8rem;
 	}
 
@@ -1168,7 +1173,7 @@ Content
 
   #issue_nav a {
     background: #111;
-		background: linear-gradient(135deg, #111111 0%,#555555 100%);
+		background: linear-gradient(135deg, #111111 0%, #555555 100%);
 		border: none;
 		clear: none;
 		display: inline-block;
@@ -1184,6 +1189,14 @@ Content
 
   #issue_nav a:last-child {
     margin-right: 0;
+  }
+
+  #issue_nav a.two_in_issue_nav {
+    width: 31.9rem;
+  }
+
+  #issue_nav a.three_in_issue_nav {
+    width: 21.2rem;
   }
 
   #issue_nav .issue_headline {
@@ -2100,7 +2113,9 @@ and (max-width:1023px) {
 		width:auto;
 	}
 
-  #issue_nav a {
+  #issue_nav a,
+  #issue_nav a.two_in_issue_nav,
+  #issue_nav a.three_in_issue_nav {
     display: block;
     float: none;
     height: 6.4rem;
