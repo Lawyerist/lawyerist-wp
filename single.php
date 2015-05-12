@@ -24,11 +24,14 @@
 					<div class="clear"></div>
 				</div>
 
-				<?php /* Show featured image (1) if the post has one AND (2) if it's
-								 the first page of the post AND (3) the post DOES NOT have the
-								 no-image tag. */
+				<?php /* Show featured image (1) if the post has a featured image AND
+								 (2) if it's the first page of the post AND (3) the post DOES
+								 NOT have the no-image tag. */
+
 				if ( has_post_thumbnail() && $page == 1 && !has_tag('no-image') ) { ?>
+
 					<div itemprop="image"><?php the_post_thumbnail('large'); ?></div>
+
 				<?php } ?>
 
 				<div class="post_body" itemprop="articleBody">
