@@ -1,5 +1,10 @@
 # A custom WordPress theme for Lawyerist.com
 
+2015-05-18
+----------
+
+* Fix: ignore sticky posts on front page.
+
 2015-05-01
 ----------
 

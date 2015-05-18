@@ -25,8 +25,6 @@
 
       $sticky_query = new WP_Query( $args );
 
-      if ( $sticky[0] ) {
-
         while ( $sticky_query->have_posts() ) : $sticky_query->the_post();
 
           $do_not_duplicate[] = $post->ID; ?>
@@ -38,8 +36,6 @@
 
         <?php endwhile;
 
-      }
-
     /* END PINNED POST LOOP */ ?>
 
   	<div id="featured_posts">
@@ -47,9 +43,10 @@
   		<?php /* FEATURED POSTS LOOP */
 
         $featured_query_args = array(
-          'posts_per_page'  => 5,
-          'post__not_in'    => $do_not_duplicate,
-          'tax_query'       => array(
+          'ignore_sticky_posts' => TRUE,
+          'posts_per_page'      => 5,
+          'post__not_in'        => $do_not_duplicate,
+          'tax_query'           => array(
             array(
               'taxonomy'  => 'post_format',
               'field'     => 'slug',
@@ -115,9 +112,10 @@
       <?php /* NOTES LOOP */
 
         $featured_query_args = array(
-          'posts_per_page'  => 5,
-          'post__not_in'    => $do_not_duplicate,
-          'tax_query'       => array(
+        'ignore_sticky_posts' => TRUE,
+          'posts_per_page'    => 5,
+          'post__not_in'      => $do_not_duplicate,
+          'tax_query'         => array(
             array(
               'taxonomy'  => 'post_format',
               'field'     => 'slug',
