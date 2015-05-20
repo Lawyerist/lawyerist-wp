@@ -88,7 +88,7 @@
 
   					<?php if ( has_post_thumbnail() && !wp_is_mobile() && $post_num==1 ) { the_post_thumbnail( 'featured_top' ); }
             elseif ( has_post_thumbnail() ) { the_post_thumbnail( 'featured' ); }
-            else { echo ''; } ?>
+            else { echo '<img src="' . get_template_directory_uri() . '/images/fff-thumb.png" class="attachment-thumbnail wp-post-image" />'; } ?>
 
   					<div class="clear"></div>
 
