@@ -1,5 +1,11 @@
 # A custom WordPress theme for Lawyerist.com
 
+2015-05-20
+----------
+
+* Add breadcrumbs to download pages.
+
+
 2015-05-18
 ----------
 
