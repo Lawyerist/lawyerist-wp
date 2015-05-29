@@ -40,11 +40,21 @@
 
 					<?php the_content(); ?>
 
-					<?php if ( !is_feed() ) { wp_link_pages(); } ?>
+					<div id="pages_categories_tags">
+						<?php if ( $numpages > 1 && !is_feed() ) {
 
-					<div id="category_tag_lists">
-						<p class="category_list"><small><?php echo get_the_category_list( ', ' ); ?></small></p>
-						<?php echo get_the_tag_list( '<p class="tag_list"><small>', ', ', '</small></p>' ); ?>
+							$wp_link_pages_args = array(
+								'before'           => '<p class="page_links">',
+								'after'            => '</p>',
+								'link_before'      => '<span class="page_number">',
+								'link_after'       => '</span>',
+							);
+
+							wp_link_pages( $wp_link_pages_args );
+
+						}	?>
+						<p class="category_list"><?php echo get_the_category_list( ', ' ); ?></p>
+						<?php echo get_the_tag_list( '<p class="tag_list">', ', ', '</p>' ); ?>
 					</div>
 
 					<div id="author_bio_footer">
