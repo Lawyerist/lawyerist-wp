@@ -971,6 +971,7 @@ Content
 	width:26.5rem !important;
 }
 
+
 	/*------------------------------
 	Index & Archive Lists
 	------------------------------*/
@@ -1132,13 +1133,52 @@ Content
 		padding-left: 12rem;
 	}
 
-  #category_tag_lists p:first-child {
+  #pages_categories_tags p {
+    font-size: 1.4rem;
+    line-height: 3.2rem;
     margin-bottom: .56rem;
   }
 
-  #category_tag_lists p:last-child {
+  #pages_categories_tags p:last-child {
     margin-bottom: 5.6rem;
   }
+
+    .page_links .page_number {
+      background-color: #eee;
+      border-radius: 1.1rem;
+      display: inline-block;
+      font-weight: bold;
+      height: 1.4rem;
+      line-height: 1em;
+      margin-right: .1rem;
+      padding: .4rem;
+      text-align: center;
+      vertical-align: middle;
+      width: 1.4rem;
+    }
+
+    .page_links a {
+      display: inline-block;
+    }
+
+    .page_links a .page_number {
+      font-weight: normal;
+    }
+
+    .page_links a .page_number:hover {
+      background-color: #ddd;
+      text-decoration: none;
+    }
+
+    .page_links:before {
+      color: #bbb;
+      content: '\f443';
+      display: inline-block;
+      float: left;
+      -webkit-font-smoothing: antialiased;
+      font: normal 3.2rem/1em 'Genericons';
+      vertical-align: middle;
+    }
 
     .category_list:before {
       color: #bbb;
@@ -1168,6 +1208,7 @@ Content
 	.theiaPostSlider_footer {
 		padding-top: 2.8rem;
 	}
+
 
   /*------------------------------
   Post Footer Nav

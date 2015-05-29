@@ -1,5 +1,12 @@
 # A custom WordPress theme for Lawyerist.com
 
+2015-05-29
+----------
+
+* Add audio post format.
+* Style default page links.
+
+
 2015-05-20
 ----------
 

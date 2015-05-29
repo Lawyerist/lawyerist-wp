@@ -64,7 +64,7 @@ function lawyerist_theme_setup() {
 
 	add_theme_support('title-tag');
 	add_theme_support('post-thumbnails');
-	add_theme_support( 'post-formats', array( 'aside' ) );
+	add_theme_support( 'post-formats', array( 'aside', 'audio' ) );
 
 }
 
@@ -222,15 +222,14 @@ function edit_flow_limit_custom_statuses_by_role( $custom_statuses ) {
 				'in-revision',
 		);
 
-			// Remove the custom status if it's not whitelisted
-			foreach( $custom_statuses as $key => $custom_status ) {
+		// Remove the custom status if it's not whitelisted
+		foreach( $custom_statuses as $key => $custom_status ) {
 
-				if ( !in_array( $custom_status->slug, $permitted_statuses ) )
-					unset( $custom_statuses[$key] );
-				}
+			if ( !in_array( $custom_status->slug, $permitted_statuses ) )
+				unset( $custom_statuses[$key] );
+			}
 
-				break;
-
+			break;
 	}
 
 	return $custom_statuses;
