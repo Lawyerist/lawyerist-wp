@@ -1200,13 +1200,13 @@ Content
   		vertical-align: middle;
   	}
 
+  .theiaPostSlider_nav {
+    margin-bottom:2.8rem;
+  }
+
 	.theiaPostSlider_nav ._text {
 		color: #777;
 		font-size: 3.2rem;
-	}
-
-	.theiaPostSlider_footer {
-		padding-top: 2.8rem;
 	}
 
 
