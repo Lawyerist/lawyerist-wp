@@ -40,6 +40,83 @@
 
 					<?php the_content(); ?>
 
+
+					<!--Begin series nav-->
+					<?php if ( has_term( true , 'series' ) ) {
+
+						echo '<div id="series_nav">';
+
+							/* SERIES LOOP */
+
+							$this_post[] = $post->ID;
+
+							$series_title = wp_get_post_terms(
+								$post->ID,
+								'series',
+								array(
+									'fields' 	=> 'names',
+									'orderby' => 'count',
+									'order' 	=> 'DESC'
+								)
+							);
+							$series_title = $series_title[0];
+
+							$series_slug = wp_get_post_terms(
+								$post->ID,
+								'series',
+								array(
+									'fields' 	=> 'slugs',
+									'orderby' => 'count',
+									'order' 	=> 'DESC'
+								)
+							);
+							$series_slug = $series_slug[0];
+
+							$series_query_args = array(
+								'post__not_in'		=> $this_post,
+								'posts_per_page'  => 4,
+								'tax_query'     	=> array(
+									array(
+										'taxonomy'  => 'series',
+										'field'			=> 'slug',
+										'terms'			=> $series_slug,
+									)
+								)
+							);
+
+
+							$series_query = new WP_Query( $series_query_args );
+
+							if ( $series_query->post_count > 1 ) { ?>
+
+								<h3>More in this Series: <?php echo $series_title; ?></h3>
+
+								<ul>
+
+									<?php while ( $series_query->have_posts() ) : $series_query->the_post(); ?>
+
+										<li><a href="<?php the_permalink(); ?>?utm_source=lawyerist-series-footer-nav&utm_medium=internal&utm_campaign=nav" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>"><?php the_title(); ?></a></li>
+
+									<?php endwhile; ?>
+
+								</ul>
+
+								<?php if ( $series_query->post_count >= 5 ) { ?>
+
+									<p>There are even more posts in this series! <a href="<?php echo get_term_link( $series_slug, 'series' ); ?>?utm_source=lawyerist-series-footer-nav&utm_medium=internal&utm_campaign=nav">Read them all.</a></p>
+
+								<?php }
+
+							}
+
+							wp_reset_postdata(); ?>
+
+						</div>
+
+					<?php } ?>
+					<!--End series nav-->
+
+
 					<div id="pages_categories_tags">
 						<?php if ( $numpages > 1 && !is_feed() ) {
 
@@ -186,83 +263,6 @@
 
 			} ?>
 			<!--End issue nav-->
-
-
-			<!--Begin series nav-->
-			<?php if ( has_term( true , 'series' ) ) {
-
-			  echo '<div id="series_nav">';
-
-			    /* SERIES LOOP */
-
-			    $this_post[] = $post->ID;
-
-			    $series_title = wp_get_post_terms(
-			      $post->ID,
-			      'series',
-			      array(
-			        'fields' 	=> 'names',
-			        'orderby' => 'count',
-			        'order' 	=> 'DESC'
-			      )
-			    );
-					$series_title = $series_title[0];
-
-			    $series_slug = wp_get_post_terms(
-			      $post->ID,
-			      'series',
-			      array(
-			        'fields' 	=> 'slugs',
-			        'orderby' => 'count',
-			        'order' 	=> 'DESC'
-			      )
-			    );
-					$series_slug = $series_slug[0];
-
-			    $series_query_args = array(
-			      'post__not_in'		=> $this_post,
-			      'posts_per_page'  => 5,
-			      'tax_query'     	=> array(
-			        array(
-			          'taxonomy'  => 'series',
-			          'field'			=> 'slug',
-			          'terms'			=> $series_slug,
-			        )
-			      )
-			    );
-
-
-			    $series_query = new WP_Query( $series_query_args );
-
-			    if ( $series_query->post_count > 1 ) { ?>
-
-			      <p class="series_tag">This post is part of a series:</p>
-			      <h3><?php echo $series_title; ?></h3>
-
-			      <ul>
-
-				      <?php while ( $series_query->have_posts() ) : $series_query->the_post(); ?>
-
-				        <li><a href="<?php the_permalink(); ?>?utm_source=lawyerist-series-footer-nav&utm_medium=internal&utm_campaign=nav" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>"><?php the_title(); ?></a></li>
-
-				      <?php endwhile; ?>
-
-			      </ul>
-
-			      <?php if ( $series_query->post_count >= 5 ) { ?>
-
-			        <p>There are even more posts in this series! <a href="<?php echo get_term_link( $series_slug, 'series' ); ?>?utm_source=lawyerist-series-footer-nav&utm_medium=internal&utm_campaign=nav">Read them all here.</a></p>
-
-			      <?php }
-
-			    }
-
-			    wp_reset_postdata(); ?>
-
-			  </div>
-
-			<?php } ?>
-			<!--End series nav-->
 
 
       <?php comments_template(); ?>
