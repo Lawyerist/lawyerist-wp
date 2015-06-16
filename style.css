@@ -1276,7 +1276,7 @@ Content
 
   #series_nav {
     clear: both;
-		margin-bottom: 5.6rem;
+		margin: 5.6rem 0;
   }
 
     #series_nav p,
@@ -1284,18 +1284,6 @@ Content
       font-size: 1.8rem;
       line-height: 2.8rem;
       margin-bottom: 2.8rem;
-    }
-
-    #series_nav .series_tag {
-      font-size: 1.4rem;
-      line-height: 1em;
-      margin-bottom: .4rem;
-      text-transform: uppercase;
-    }
-
-    #series_nav ul {
-      list-style: none;
-      margin: 0 0 2.8rem 0;
     }
 
     #series_nav li {
