@@ -36,7 +36,7 @@
 
 				<h2 class="headline remove_bottom" id="post-<?php the_ID(); ?>"><?php the_title(); ?></h2>
 				<div class="postmeta">
-					<div class="author_link">by <?php the_author(); ?></div>
+					<div class="author_link">By <?php the_author(); ?></div>
           <?php if ( $num_comments > 0 ) { ?>
             <div class="comment_link"><?php comments_number( 'Leave a comment', '1 comment', '% comments' ); ?></div>
           <?php } ?>
