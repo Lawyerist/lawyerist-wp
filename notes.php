@@ -5,7 +5,7 @@ Specify terms up top, not within
 the if-elseif loops. Put loops
 in order of priority. Higher
 loops take priority over lower
-loops if a post has more than 
+loops if a post has more than
 one.
 ------------------------------*/
 
