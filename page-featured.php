@@ -139,7 +139,7 @@
             <?php if ( has_post_thumbnail() ) { the_post_thumbnail( 'thumbnail' ); } ?>
             <h2 class="headline"><?php the_title(); ?></h2>
             <div class="postmeta">
-              <div class="author_link">by <?php the_author(); ?> on <span class="post-date updated"><?php the_time('F jS, Y'); ?> at <?php the_time('g:i a'); ?></span></div>
+              <div class="author_link">By <?php the_author(); ?> on <span class="post-date updated"><?php the_time('F jS, Y'); ?></span></div>
               <?php if ( $num_comments > 0 ) { ?>
                 <div class="comment_link"><?php comments_number( 'Leave a comment', '1 comment', '% comments' ); ?></div>
               <?php } ?>
