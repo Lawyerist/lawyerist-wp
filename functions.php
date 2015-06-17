@@ -108,6 +108,7 @@ function live_rename_formats() {
 Series Custom Taxonomy
 ------------------------------*/
 
+// Register Custom Taxonomy
 function series_tax() {
 
 	$labels = array(
@@ -157,6 +158,7 @@ add_action( 'init', 'series_tax', 0 );
 Issues Custom Taxonomy
 ------------------------------*/
 
+// Register Custom Taxonomy
 function issue_tax() {
 
 	$labels = array(
@@ -200,6 +202,56 @@ function issue_tax() {
 
 // Hook into the 'init' action
 add_action( 'init', 'issue_tax', 0 );
+
+
+
+/*------------------------------
+Sponsors Custom Taxonomy
+------------------------------*/
+
+// Register Custom Taxonomy
+function sponsor_tax() {
+
+	$labels = array(
+		'name'                       => 'Sponsors',
+		'singular_name'              => 'Sponsor',
+		'menu_name'                  => 'Sponsors',
+		'all_items'                  => 'All Sponsors',
+		'parent_item'                => 'Parent Sponsor',
+		'parent_item_colon'          => 'Parent Sponsor:',
+		'new_item_name'              => 'New Sponsor',
+		'add_new_item'               => 'Add New Sponsor',
+		'edit_item'                  => 'Edit Sponsor',
+		'update_item'                => 'Update Sponsor',
+		'view_item'                  => 'View Sponsor',
+		'separate_items_with_commas' => 'Posts can have only one sponsor',
+		'add_or_remove_items'        => 'Add or remove sponsors',
+		'choose_from_most_used'      => 'Choose from the most used sponsors',
+		'popular_items'              => 'Popular Sponsors',
+		'search_items'               => 'Search Sponsors',
+		'not_found'                  => 'Sponsor Not Found',
+	);
+	$rewrite = array(
+		'slug'                       => 'sponsor',
+		'with_front'                 => true,
+		'hierarchical'               => false,
+	);
+	$args = array(
+		'labels'                     => $labels,
+		'hierarchical'               => false,
+		'public'                     => true,
+		'show_ui'                    => true,
+		'show_admin_column'          => true,
+		'show_in_nav_menus'          => true,
+		'show_tagcloud'              => false,
+		'rewrite'                    => $rewrite,
+	);
+	register_taxonomy( 'sponsor', array( 'post' ), $args );
+
+}
+
+// Hook into the 'init' action
+add_action( 'init', 'sponsor_tax', 0 );
 
 
 /*------------------------------
