@@ -194,7 +194,7 @@
 			  $issue_title = $issue_title[0];
 
 			  $issue_query_args = array(
-			    'orderby'					=> 'date',
+			    'orderby'					=> 'rand',
 			    'order'						=> 'ASC',
 			    'post__not_in'		=> $this_post,
 			    'posts_per_page'	=> 4,
