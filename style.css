@@ -41,7 +41,6 @@ Content
 	Comments
 Author Page
 Landing Page Template
-Easy Digital Downloads
 Sidebar
 	Sidebar Ads
 	Sidebar Popular Posts Widget
@@ -1295,18 +1294,18 @@ Content
   Notes (see notes.php)
   ------------------------------*/
 
-  .white_paper_note {
-    background-color:#f5f5f5;
-    display:block;
-    margin-bottom:2.8rem;
-    padding:1.5rem 2.5rem 2rem 2.5rem;
+  .survival_guide_note {
+    border: .1rem solid #ddd;
+    display: block;
+    margin-bottom: 2.8rem;
+    padding: 1.5rem 2.5rem 2rem 2.5rem;
   }
 
-  .white_paper_note h3 {
+  .survival_guide_note h3 {
     margin-top:0;
   }
 
-  .white_paper_note img {
+  .survival_guide_note img {
     height:auto;
     width:20rem;
   }
@@ -1607,15 +1606,6 @@ Landing Page Template
     margin-left: auto;
     margin-right: auto;
   }
-
-
-/*------------------------------
-Easy Digital Downloads
-------------------------------*/
-
-.single-download img.wp-post-image {
-  border: 1px solid #ddd;
-}
 
 
 /*------------------------------
