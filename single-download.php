@@ -19,7 +19,7 @@
 				<h1 class="headline entry-title"><?php the_title(); ?></h1>
 
 				<div class="postmeta">
-					<div class="breadcrumbs"><a href="https://lawyerist.com/shop/">Shop</a> / <?php the_title(); ?></div>
+					<div class="breadcrumbs"><a href="https://lawyerist.com/guides/">Guides</a> / <?php the_title(); ?></div>
 				</div>
 
 				<?php if ( get_post_type() == 'download' && has_post_thumbnail() ) { ?>
