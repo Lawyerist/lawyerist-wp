@@ -368,7 +368,7 @@ pre {
 }
 
 small {
-	font-size:80%;
+	font-size: 80%;
 }
 
 strong,b,bold {
@@ -1884,6 +1884,10 @@ input#st-search-input:focus {
 #sidebar_column .gform_wrapper select,
 #sidebar_column .gform_wrapper textarea {
   width: 30rem;
+}
+
+body .gfield_description {
+  font-size: 80%;
 }
 
 body .gforms_confirmation_message {
