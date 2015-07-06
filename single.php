@@ -101,9 +101,9 @@
 
 								</ul>
 
-								<?php if ( $series_query->post_count >= 5 ) { ?>
+								<?php if ( $series_query->post_count = 4 ) { ?>
 
-									<p>There are even more posts in this series! <a href="<?php echo get_term_link( $series_slug, 'series' ); ?>?utm_source=lawyerist-series-footer-nav&utm_medium=internal&utm_campaign=nav">Read them all.</a></p>
+									<p><a href="<?php echo get_term_link( $series_slug, 'series' ); ?>?utm_source=lawyerist-series-footer-nav&utm_medium=internal&utm_campaign=nav">See all the posts in this series.</a></p>
 
 								<?php }
 
