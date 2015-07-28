@@ -19,7 +19,78 @@
 				<h1 class="headline entry-title"><?php the_title(); ?></h1>
 
 				<div class="postmeta">
-					<div class="author_link">By <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>"><span class="vcard author post-author"><span class="fn"><?php the_author(); ?></span></span></a> on <span class="post-date updated"><?php the_time('F jS, Y'); ?></span></div>
+
+					<?php /* Figure out who to put as the author in the byline */
+
+						if ( has_term( true , 'sponsor' ) && has_category( 'sponsored-posts' ) ) {
+
+							$this_post[] = $post->ID;
+
+							$sponsors = wp_get_post_terms(
+								$post->ID,
+								'sponsor',
+								array(
+									'fields' 	=> 'names',
+									'orderby' => 'count',
+									'order' 	=> 'DESC'
+								)
+							);
+							$sponsor = $sponsors[0];
+
+							$sponsor_ids = wp_get_post_terms(
+								$post->ID,
+								'sponsor',
+								array(
+									'fields' 	=> 'ids',
+									'orderby' => 'count',
+									'order' 	=> 'DESC'
+								)
+							);
+							$sponsor_id = $sponsor_ids[0];
+
+							$sponsor_url = term_description( $sponsor_id, 'sponsor' );
+							$sponsor_url = strip_tags( $sponsor_url );
+
+							$author = '<a href="' . $sponsor_url . '" class="vcard author post-author" rel="nofollow fn">' . $sponsor . '</a>';
+
+						} elseif ( has_term( true , 'sponsor' ) && !has_category( 'sponsored-posts' ) ) {
+
+							$this_post[] = $post->ID;
+
+							$sponsors = wp_get_post_terms(
+								$post->ID,
+								'sponsor',
+								array(
+									'fields' 	=> 'names',
+									'orderby' => 'count',
+									'order' 	=> 'DESC'
+								)
+							);
+							$sponsor = $sponsors[0];
+
+							$sponsor_ids = wp_get_post_terms(
+								$post->ID,
+								'sponsor',
+								array(
+									'fields' 	=> 'ids',
+									'orderby' => 'count',
+									'order' 	=> 'DESC'
+								)
+							);
+							$sponsor_id = $sponsor_ids[0];
+
+							$sponsor_url = term_description( $sponsor_id, 'sponsor' );
+							$sponsor_url = strip_tags( $sponsor_url );
+
+							$author = '<a href="' . get_author_posts_url( get_the_author_meta( 'ID' ) ) . '" class="vcard author post-author" rel="nofollow fn">' . get_the_author() . '</a> in collaboration with ' . '<a href="' . $sponsor_url . '" class="vcard author post-author" rel="nofollow fn">' . $sponsor . '</a>';
+
+						} else {
+
+							$author = '<a href="' . get_author_posts_url( get_the_author_meta( 'ID' ) ) . '" class="vcard author post-author">' . get_the_author() . '</a>';
+
+						} ?>
+
+					<div class="author_link">By <?php echo $author; ?> on <span class="post-date updated"><?php echo the_time( 'F jS, Y' ); ?></span></div>
 					<div class="comment_link"><a href="#disqus_thread">&nbsp;</a></div>
 					<div class="clear"></div>
 				</div>
