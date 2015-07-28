@@ -33,7 +33,63 @@
 
 				<h2 class="headline remove_bottom" id="post-<?php the_ID(); ?>"><?php the_title(); ?></h2>
 				<div class="postmeta">
-					<div class="author_link">By <?php the_author(); ?> on <span class="post-date updated"><?php the_time('F jS, Y'); ?></div>
+          <?php /* Figure out who to put as the author in the byline */
+
+						if ( has_term( true , 'sponsor' ) && has_category( 'sponsored-posts' ) ) {
+
+							$this_post[] = $post->ID;
+
+							$sponsors = wp_get_post_terms(
+								$post->ID,
+								'sponsor',
+								array(
+									'fields' 	=> 'names',
+									'orderby' => 'count',
+									'order' 	=> 'DESC'
+								)
+							);
+							$sponsor = $sponsors[0];
+
+							$sponsor_ids = wp_get_post_terms(
+								$post->ID,
+								'sponsor',
+								array(
+									'fields' 	=> 'ids',
+									'orderby' => 'count',
+									'order' 	=> 'DESC'
+								)
+							);
+							$sponsor_id = $sponsor_ids[0];
+
+							$sponsor_url = term_description( $sponsor_id, 'sponsor' );
+							$sponsor_url = strip_tags( $sponsor_url );
+
+							$author = '<span class="vcard author post-author" rel="fn">' . $sponsor . '</span>';
+
+						} elseif ( has_term( true , 'sponsor' ) && !has_category( 'sponsored-posts' ) ) {
+
+							$this_post[] = $post->ID;
+
+							$sponsors = wp_get_post_terms(
+								$post->ID,
+								'sponsor',
+								array(
+									'fields' 	=> 'names',
+									'orderby' => 'count',
+									'order' 	=> 'DESC'
+								)
+							);
+							$sponsor = $sponsors[0];
+
+							$author = '<span class="vcard author post-author" rel="fn">' . get_the_author() . '</span> in collaboration with ' .  $sponsor;
+
+						} else {
+
+							$author = '<span class="vcard author post-author">' . get_the_author() . '</span>';
+
+						} ?>
+
+					<div class="author_link">By <?php echo $author; ?> on <span class="post-date updated"><?php echo the_time( 'F jS, Y' ); ?></span></div>
           <?php if ( $num_comments > 0 ) { ?>
             <div class="comment_link"><?php comments_number( 'Leave a comment', '1 comment', '% comments' ); ?></div>
           <?php } ?>

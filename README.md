@@ -1,5 +1,11 @@
 # A custom WordPress theme for Lawyerist.com
 
+2015-07-28
+----------
+
+* Bylines for sponsored posts and native content articles.
+
+
 2015-05-29
 ----------
 
