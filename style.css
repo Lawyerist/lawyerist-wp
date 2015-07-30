@@ -408,6 +408,15 @@ li {
 Images
 ------------------------------*/
 
+a img {
+  transition: transform .2s;
+}
+
+a:hover img,
+a:focus img {
+  transform: scale(1.05,1.05);
+}
+
 img.aligncenter {
 	clear:both;
 	display:block;
