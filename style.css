@@ -408,12 +408,12 @@ li {
 Images
 ------------------------------*/
 
-a img {
+.page-id-82537 a img {
   transition: transform .2s;
 }
 
-a:hover img,
-a:focus img {
+.page-id-82537 a:hover img,
+.page-id-82537 a:focus img {
   transform: scale(1.05,1.05);
 }
 
