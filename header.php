@@ -1,13 +1,17 @@
-<div id="leaderboard_container">
+<?php if ( !has_tag('no-ads') ) { ?>
 
-	<!-- /12659965/lawyerist_ap1_leaderboard -->
-	<div id='div-gpt-ad-1429843825352-0' style='height:90px; width:728px;'>
-	<script type='text/javascript'>
-	googletag.cmd.push(function() { googletag.display('div-gpt-ad-1429843825352-0'); });
-	</script>
+	<div id="leaderboard_container">
+
+		<!-- /12659965/lawyerist_ap1_leaderboard -->
+		<div id='div-gpt-ad-1429843825352-0' style='height:90px; width:728px;'>
+		<script type='text/javascript'>
+		googletag.cmd.push(function() { googletag.display('div-gpt-ad-1429843825352-0'); });
+		</script>
+		</div>
+
 	</div>
 
-</div>
+<?php } ?>
 
 <div id="header_container">
 
