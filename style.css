@@ -1964,33 +1964,38 @@ Useful Stuff
 ------------------------------*/
 
 .aligncenter {
-	clear:both;
-	display:block;
-	margin:0 auto;
+	clear: both;
+	display: block;
+	margin: 0 auto;
 }
 
 .alignleft {
-	float:left;
+	float: left;
 }
 
 .alignright {
-	float:right;
+	float: right;
 }
 
 .clear {
-	clear:both;
+	clear: both;
 }
 
 .hidden {
-	display:none;
+	display: none;
+}
+
+.no_shadow {
+  box-shadow: none !important;
+  text-shadow: none !important;
 }
 
 .remove_bottom {
-	margin-bottom:0 !important;
+	margin-bottom: 0 !important;
 }
 
 .text_right {
-    text-align:right;
+    text-align: right;
 }
 
 
