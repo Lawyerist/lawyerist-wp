@@ -82,7 +82,7 @@
 							$sponsor_url = term_description( $sponsor_id, 'sponsor' );
 							$sponsor_url = strip_tags( $sponsor_url );
 
-							$author = '<a href="' . get_author_posts_url( get_the_author_meta( 'ID' ) ) . '" class="vcard author post-author" rel="nofollow fn">' . get_the_author() . '</a> in collaboration with ' . '<a href="' . $sponsor_url . '" class="vcard author post-author" rel="nofollow fn">' . $sponsor . '</a>';
+							$author = '<a href="' . get_author_posts_url( get_the_author_meta( 'ID' ) ) . '" class="vcard author post-author" rel="nofollow fn">' . get_the_author() . '</a>, a <a href="https://lawyerist.com/advertising/">sponsored collaboration</a> with ' . '<a href="' . $sponsor_url . '" class="vcard author post-author" rel="nofollow fn">' . $sponsor . '</a>,';
 
 						} else {
 
