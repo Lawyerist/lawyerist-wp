@@ -84,7 +84,7 @@
 							);
 							$sponsor = $sponsors[0];
 
-							$author = '<span class="vcard author post-author" rel="fn">' . get_the_author() . '</span> in collaboration with ' .  $sponsor;
+							$author = '<span class="vcard author post-author" rel="fn">' . get_the_author() . '</span>, a sponsored collaboration with ' .  $sponsor . ',';
 
 						} else {
 
