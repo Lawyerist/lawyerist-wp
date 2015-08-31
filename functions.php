@@ -264,19 +264,11 @@ if ( function_exists( 'add_image_size' ) ) {
 }
 
 if ( function_exists( 'add_image_size' ) ) {
-	add_image_size( '75px_thumb', 75, 75, true);
-}
-
-if ( function_exists( 'add_image_size' ) ) {
 	add_image_size( 'featured', 320, 240, true);
 }
 
 if ( function_exists( 'add_image_size' ) ) {
 	add_image_size( 'featured_top', 640, 320, true);
-}
-
-if ( function_exists( 'add_image_size' ) ) {
-	add_image_size( 'featured_topics', 269, 150, true);
 }
 
 
