@@ -894,7 +894,7 @@ a.post.fp_sticky:hover {
       text-decoration:none;
     }
 
-    #featured_posts a.post_num_1.tag-smaller-title h2 {
+    #featured_posts a.post_num_1.smaller-title h2 {
   		font-size:4.2rem;
   		line-height:5.7rem;
   		margin-bottom:2.85rem;
@@ -2149,7 +2149,7 @@ and (max-width:1023px) {
 
   #featured_posts h2,
   #featured_posts a.post_num_1 h2,
-  #featured_posts a.post_num_1.tag-smaller-title h2,
+  #featured_posts a.post_num_1.smaller-title h2,
   #featured_notes h2 {
 		font-size:2.4rem;
 		line-height:3.3rem;
