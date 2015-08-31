@@ -68,7 +68,12 @@
           $classes = array(
   					'featured_post',
   					'post_num_' . $post_num
-  				); ?>
+  				);
+
+          $title = the_title( '', '', FALSE );
+          if ( strlen( $title ) > 60 ) {
+            $classes[] = 'smaller-title';
+          } ?>
 
   				<a <?php post_class($classes); ?> href="<?php the_permalink(); ?>?utm_source=lawyerist-front-page&utm_medium=internal&utm_campaign=nav" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
 
