@@ -40,6 +40,15 @@ function lawyerist_stylesheets() {
 add_action( 'wp_enqueue_scripts', 'lawyerist_stylesheets' );
 
 
+function lawyerist_admin_stylesheet() {
+	wp_register_style( 'admin-stylesheet', get_template_directory_uri() . '/wp-admin.css' );
+	wp_enqueue_style( 'admin-stylesheet' );
+}
+
+add_action('admin_enqueue_scripts', 'lawyerist_admin_stylesheet');
+add_action('login_enqueue_scripts', 'lawyerist_admin_stylesheet');
+
+
 /*------------------------------
 Nav Menu
 ------------------------------*/
