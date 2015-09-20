@@ -243,16 +243,17 @@
 				$this_post[] = $post->ID;
 
 			  $current_posts_query_args = array(
-					'date_query'			=> array(
+					'category__not_in'			=> 1320,
+					'date_query'						=> array(
 						array(
-							'year'				=> date( 'Y' ),
-							'week'				=> date( 'W' ),
+							'year'	=> date( 'Y' ),
+							'week'	=> date( 'W' ),
 						),
 					),
-					'ignore_sticky_posts' => TRUE,
-			    'orderby'					=> 'rand',
-			    'post__not_in'		=> $this_post,
-			    'posts_per_page'	=> 4,
+					'ignore_sticky_posts'		=> TRUE,
+			    'orderby'								=> 'rand',
+			    'post__not_in'					=> $this_post,
+			    'posts_per_page'				=> 4,
 			  );
 
 			  $current_posts_query = new WP_Query( $current_posts_query_args );
