@@ -1,5 +1,12 @@
 # A custom WordPress theme for Lawyerist.com
 
+2015-09-19
+----------
+
+* Remove issue custom taxonomy.
+* Replace with current posts nav.
+
+
 2015-07-28
 ----------
 

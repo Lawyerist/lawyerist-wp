@@ -1228,7 +1228,7 @@ Content
   Post Footer Nav
   ------------------------------*/
 
-  #issue_nav a {
+  #current_posts_nav a {
     background: #111;
 		background: linear-gradient(135deg, #111111 0%, #555555 100%);
 		border: none;
@@ -1244,19 +1244,19 @@ Content
     width: 15.85rem;
   }
 
-  #issue_nav a:last-child {
+  #current_posts_nav a:last-child {
     margin-right: 0;
   }
 
-  #issue_nav a.two_in_issue_nav {
+  #current_posts_nav a.two_in_current_posts_nav {
     width: 31.9rem;
   }
 
-  #issue_nav a.three_in_issue_nav {
+  #current_posts_nav a.three_in_current_posts_nav {
     width: 21.2rem;
   }
 
-  #issue_nav .issue_headline {
+  #current_posts_nav .current_posts_headline {
     color: #fff;
     font-family: 'Roboto Slab',sans-serif;
     font-size: 1.6rem;
@@ -1270,7 +1270,7 @@ Content
     z-index: 1;
   }
 
-  #issue_nav img {
+  #current_posts_nav img {
     min-height: 100%;
 		margin: 0 !important;
 		opacity: .3;
@@ -1279,11 +1279,11 @@ Content
 		z-index: 0;
   }
 
-    #issue_nav a:hover img {
+    #current_posts_nav a:hover img {
       opacity: .1;
     }
 
-  .issue_nav_bottom_tab {
+  .current_posts_nav_bottom_tab {
     margin-bottom: 5.6rem;
   }
 
@@ -2108,12 +2108,12 @@ and (max-width:1023px) {
 		padding-right: 0;
 	}
 
-  #issue_contents {
+  #current_posts_contents {
     padding: 0;
   }
 
-  #issue_contents li,
-  #issue_contents li:nth-child(odd) {
+  #current_posts_contents li,
+  #current_posts_contents li:nth-child(odd) {
     float: none;
     margin: 0 0 2.8rem 0;
     width: auto;
@@ -2181,9 +2181,9 @@ and (max-width:1023px) {
 		width:auto;
 	}
 
-  #issue_nav a,
-  #issue_nav a.two_in_issue_nav,
-  #issue_nav a.three_in_issue_nav {
+  #current_posts_nav a,
+  #current_posts_nav a.two_in_current_posts_nav,
+  #current_posts_nav a.three_in_current_posts_nav {
     display: block;
     float: none;
     height: 6.4rem;
