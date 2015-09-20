@@ -155,57 +155,6 @@ add_action( 'init', 'series_tax', 0 );
 
 
 /*------------------------------
-Issues Custom Taxonomy
-------------------------------*/
-
-// Register Custom Taxonomy
-function issue_tax() {
-
-	$labels = array(
-		'name'                       => 'Issues',
-		'singular_name'              => 'Issue',
-		'menu_name'                  => 'Issues',
-		'all_items'                  => 'All Issues',
-		'parent_item'                => 'Parent Issue',
-		'parent_item_colon'          => 'Parent Issue:',
-		'new_item_name'              => 'New Issue',
-		'add_new_item'               => 'Add New Issue',
-		'edit_item'                  => 'Edit Issue',
-		'update_item'                => 'Update Issue',
-		'separate_items_with_commas' => 'Separate issues with commas',
-		'search_items'               => 'Search Issues',
-		'add_or_remove_items'        => 'Add or remove issues',
-		'choose_from_most_used'      => 'Choose from existing issues',
-		'not_found'                  => 'Issue Not Found',
-	);
-
-	$rewrite = array(
-		'slug'                       => 'issue',
-		'with_front'                 => true,
-		'hierarchical'               => false,
-	);
-
-	$args = array(
-		'labels'                     => $labels,
-		'hierarchical'               => false,
-		'public'                     => true,
-		'show_ui'                    => true,
-		'show_admin_column'          => true,
-		'show_in_nav_menus'          => true,
-		'show_tagcloud'              => false,
-		'rewrite'                    => $rewrite,
-	);
-
-	register_taxonomy( 'issue', array( 'post' ), $args );
-
-}
-
-// Hook into the 'init' action
-add_action( 'init', 'issue_tax', 0 );
-
-
-
-/*------------------------------
 Sponsors Custom Taxonomy
 ------------------------------*/
 

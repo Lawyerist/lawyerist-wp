@@ -273,7 +273,7 @@
 
     <div class="clear"></div>
 
-    <div class="fp_tab"><h2>Q&A</h2></div>
+    <div class="fp_tab"><h2>Q&A Forum</h2></div>
     <div id="lab_posts">
 
       <?php // Get RSS Feed(s)
@@ -310,7 +310,7 @@
         <?php endif; ?>
       </ul>
     </div><!--end #lab_posts-->
-     <div class="fp_bottom_tab"><h2><a href="http://lab.lawyerist.com?utm_source=lawyerist-front-page&utm_medium=internal&utm_campaign=nav">All Q&A</a></h2></div>
+     <div class="fp_bottom_tab"><h2><a href="http://lab.lawyerist.com?utm_source=lawyerist-front-page&utm_medium=internal&utm_campaign=nav">All Questions</a></h2></div>
 
     <div class="clear"></div>
 

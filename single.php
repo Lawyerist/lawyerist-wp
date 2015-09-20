@@ -237,68 +237,45 @@
 
       <div class="clear"></div>
 
-			<!--Begin issue nav-->
-			<?php if ( has_term( true , 'issue' ) ) {
+			<!--Begin current posts  nav -->
+			<?php
 
 				$this_post[] = $post->ID;
 
-			  $issue_slug = wp_get_post_terms(
-			    $post->ID,
-			    'issue',
-			    array(
-			      'fields' 	=> 'slugs',
-			      'orderby' => 'slug',
-			      'order' 	=> 'DESC'
-			    )
-			  );
-			  $issue_slug = $issue_slug[0];
-
-			  $issue_title = wp_get_post_terms(
-			    $post->ID,
-			    'issue',
-			    array(
-			      'fields' 	=> 'names',
-			      'orderby' => 'slug',
-			      'order' 	=> 'DESC'
-			    )
-			  );
-			  $issue_title = $issue_title[0];
-
-			  $issue_query_args = array(
+			  $current_posts_query_args = array(
+					'date_query'			=> array(
+						array(
+							'year'				=> date( 'Y' ),
+							'week'				=> date( 'W' ),
+						),
+					),
+					'ignore_sticky_posts' => TRUE,
 			    'orderby'					=> 'rand',
-			    'order'						=> 'ASC',
 			    'post__not_in'		=> $this_post,
 			    'posts_per_page'	=> 4,
-			    'tax_query'     	=> array(
-			      array(
-			        'taxonomy'  => 'issue',
-			        'field'			=> 'slug',
-			        'terms'			=> $issue_slug,
-			      )
-			    )
 			  );
 
-			  $issue_query = new WP_Query( $issue_query_args );
+			  $current_posts_query = new WP_Query( $current_posts_query_args );
 
-			  if ( $issue_query->post_count > 1 ) { ?>
+			  if ( $current_posts_query->post_count > 1 ) { ?>
 
-			    <div class="fp_tab"><h2>More from <?php echo $issue_title; ?></h2></div>
-			    <div id="issue_nav">
+			    <div class="fp_tab"><h2>More from this week</h2></div>
+			    <div id="current_posts_nav">
 
-			      <?php while ( $issue_query->have_posts() ) : $issue_query->the_post();
+			      <?php while ( $current_posts_query->have_posts() ) : $current_posts_query->the_post();
 
 							$title = the_title( '', '', FALSE );
 
-			        if ( $issue_query->post_count == 2 ) {
+			        if ( $current_posts_query->post_count == 2 ) {
 
 			          $classes = array(
-			            'two_in_issue_nav'
+			            'two_in_current_posts_nav'
 			          );
 
-			        } elseif ( $issue_query->post_count == 3 ) {
+			        } elseif ( $current_posts_query->post_count == 3 ) {
 
 			          $classes = array(
-			            'three_in_issue_nav'
+			            'three_in_current_posts_nav'
 			          );
 
 							} elseif ( !wp_is_mobile() && strlen( $title ) > 80 ) {
@@ -313,8 +290,8 @@
 
 							} ?>
 
-			        <a <?php post_class($classes); ?> href="<?php the_permalink(); ?>?utm_source=lawyerist-issue-footer-nav&utm_medium=internal&utm_campaign=nav" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
-			          <div class="issue_headline"><?php echo $title; ?></div>
+			        <a <?php post_class($classes); ?> href="<?php the_permalink(); ?>?utm_source=lawyerist-current-posts-footer-nav&utm_medium=internal&utm_campaign=nav" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
+			          <div class="current_posts_headline"><?php echo $title; ?></div>
 			          <?php if ( has_post_thumbnail() ) {
 									the_post_thumbnail( 'thumbnail' );
 								} else {
@@ -324,17 +301,16 @@
 
 			      <?php endwhile; ?>
 
-			    </div><!--end #issue_nav-->
+			    </div><!-- end #current_posts -->
 			    <div class="clear"></div>
-			    <div class="fp_bottom_tab issue_nav_bottom_tab"><h2><a href="https://lawyerist.com/issue/<?php echo $issue_slug; ?>/">Read the Full Issue</a></h2></div>
+			    <div class="fp_bottom_tab current_posts_bottom_tab"><h2><a href="https://lawyerist.com/articles/">Read all articles</a></h2></div>
 
 			    <?php wp_reset_postdata();
 
-			  }
+			  } ?>
+				<!--End current posts nav-->
 
-			} ?>
-			<!--End issue nav-->
-
+			<div class="clear"></div>
 
       <?php comments_template(); ?>
 
