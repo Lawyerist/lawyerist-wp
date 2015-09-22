@@ -57,17 +57,13 @@
           $do_not_duplicate[] = $post->ID;
 
   				$num_comments = get_comments_number();
-          $classes = array(
-  					'featured_post',
-  					'post_num_' . $post_num
-  				);
 
           $title = the_title( '', '', FALSE );
           if ( strlen( $title ) > 60 ) {
             $classes[] = 'smaller-title';
           } ?>
 
-  				<a <?php post_class($classes); ?> href="<?php the_permalink(); ?>?utm_source=lawyerist-front-page&utm_medium=internal&utm_campaign=nav" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
+  				<a <?php post_class(); ?> href="<?php the_permalink(); ?>?utm_source=lawyerist-front-page&utm_medium=internal&utm_campaign=nav" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
 
   					<div class="headline_excerpt">
 
@@ -75,63 +71,7 @@
 
   						<h2 class="headline"><?php the_title(); ?></h2>
   						<div class="postmeta">
-                <?php /* Figure out who to put as the author in the byline */
-
-      						if ( has_term( true , 'sponsor' ) && has_category( 'sponsored-posts' ) ) {
-
-      							$this_post[] = $post->ID;
-
-      							$sponsors = wp_get_post_terms(
-      								$post->ID,
-      								'sponsor',
-      								array(
-      									'fields' 	=> 'names',
-      									'orderby' => 'count',
-      									'order' 	=> 'DESC'
-      								)
-      							);
-      							$sponsor = $sponsors[0];
-
-      							$sponsor_ids = wp_get_post_terms(
-      								$post->ID,
-      								'sponsor',
-      								array(
-      									'fields' 	=> 'ids',
-      									'orderby' => 'count',
-      									'order' 	=> 'DESC'
-      								)
-      							);
-      							$sponsor_id = $sponsor_ids[0];
-
-      							$sponsor_url = term_description( $sponsor_id, 'sponsor' );
-      							$sponsor_url = strip_tags( $sponsor_url );
-
-      							$author = '<span class="vcard author post-author" rel="fn">' . $sponsor . '</span>';
-
-      						} elseif ( has_term( true , 'sponsor' ) && !has_category( 'sponsored-posts' ) ) {
-
-      							$this_post[] = $post->ID;
-
-      							$sponsors = wp_get_post_terms(
-      								$post->ID,
-      								'sponsor',
-      								array(
-      									'fields' 	=> 'names',
-      									'orderby' => 'count',
-      									'order' 	=> 'DESC'
-      								)
-      							);
-      							$sponsor = $sponsors[0];
-
-      							$author = '<span class="vcard author post-author" rel="fn">' . get_the_author() . '</span>, a sponsored collaboration with ' .  $sponsor . ',';
-
-      						} else {
-
-      							$author = '<span class="vcard author post-author">' . get_the_author() . '</span>';
-
-      						} ?>
-
-      					<div class="author_link">By <?php echo $author; ?> on <span class="post-date updated"><?php echo the_time( 'F jS, Y' ); ?></span></div>
+                <?php lawyerist_get_byline(); ?>
                 <?php if ( $num_comments > 0 ) { ?>
                   <div class="comment_link"><?php comments_number( 'Leave a comment', '1 comment', '% comments' ); ?></div>
                 <?php } ?>
@@ -183,63 +123,7 @@
             <?php if ( has_post_thumbnail() ) { the_post_thumbnail( 'thumbnail' ); } ?>
             <h2 class="headline"><?php the_title(); ?></h2>
             <div class="postmeta">
-              <?php /* Figure out who to put as the author in the byline */
-
-    						if ( has_term( true , 'sponsor' ) && has_category( 'sponsored-posts' ) ) {
-
-    							$this_post[] = $post->ID;
-
-    							$sponsors = wp_get_post_terms(
-    								$post->ID,
-    								'sponsor',
-    								array(
-    									'fields' 	=> 'names',
-    									'orderby' => 'count',
-    									'order' 	=> 'DESC'
-    								)
-    							);
-    							$sponsor = $sponsors[0];
-
-    							$sponsor_ids = wp_get_post_terms(
-    								$post->ID,
-    								'sponsor',
-    								array(
-    									'fields' 	=> 'ids',
-    									'orderby' => 'count',
-    									'order' 	=> 'DESC'
-    								)
-    							);
-    							$sponsor_id = $sponsor_ids[0];
-
-    							$sponsor_url = term_description( $sponsor_id, 'sponsor' );
-    							$sponsor_url = strip_tags( $sponsor_url );
-
-    							$author = '<span class="vcard author post-author" rel="fn">' . $sponsor . '</span>';
-
-    						} elseif ( has_term( true , 'sponsor' ) && !has_category( 'sponsored-posts' ) ) {
-
-    							$this_post[] = $post->ID;
-
-    							$sponsors = wp_get_post_terms(
-    								$post->ID,
-    								'sponsor',
-    								array(
-    									'fields' 	=> 'names',
-    									'orderby' => 'count',
-    									'order' 	=> 'DESC'
-    								)
-    							);
-    							$sponsor = $sponsors[0];
-
-    							$author = '<span class="vcard author post-author" rel="fn">' . get_the_author() . '</span> in collaboration with ' .  $sponsor;
-
-    						} else {
-
-    							$author = '<span class="vcard author post-author">' . get_the_author() . '</span>';
-
-    						} ?>
-
-    					<div class="author_link">By <?php echo $author; ?> on <span class="post-date updated"><?php echo the_time( 'F jS, Y' ); ?></span></div>
+              <?php lawyerist_get_byline(); ?>
               <?php if ( $num_comments > 0 ) { ?>
                 <div class="comment_link"><?php comments_number( 'Leave a comment', '1 comment', '% comments' ); ?></div>
               <?php } ?>
