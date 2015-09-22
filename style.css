@@ -698,7 +698,7 @@ Front Page
 
 a.post.fp_sticky {
   background-color: #333;
-	margin-bottom: .2rem;
+	margin-bottom: .2rem !important;
   padding: 2rem 2.5rem;
   transition: background-color .2s;
 }
@@ -918,7 +918,6 @@ a.post.fp_sticky:hover {
 
   #featured_notes {
     border-top:.1rem solid #ddd;
-    padding-top:2.8rem;
     width:100%;
   }
 
@@ -994,13 +993,17 @@ Content
 	------------------------------*/
 
 	a.post {
-    border-bottom:.1rem solid #ddd;
-    clear:both;
-    display:block;
-    margin-bottom:2.8rem;
-    padding-bottom:2.8rem;
-		text-decoration:none;
+    border-bottom: .1rem solid #ddd;
+    clear: both;
+    display: block;
+    margin-bottom: 0;
+    padding: 2.8rem 0;
+		text-decoration: none;
 	}
+
+  a.post:last-of-type {
+    margin-bottom: 2.8rem;
+  }
 
 	a.post .headline {
 		color:#333;

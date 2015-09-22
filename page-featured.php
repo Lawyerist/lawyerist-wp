@@ -45,17 +45,7 @@
         $featured_query_args = array(
           'ignore_sticky_posts' => TRUE,
           'posts_per_page'      => 5,
-          'post__not_in'        => $do_not_duplicate,
-          'tax_query'           => array(
-            array(
-              'taxonomy'  => 'post_format',
-              'field'     => 'slug',
-              'terms'     => array(
-                'post-format-aside'
-              ),
-              'operator'  => 'NOT IN'
-            )
-          )
+          'post__not_in'        => $do_not_duplicate
         );
 
   			$featured_query = new WP_Query( $featured_query_args );
@@ -63,6 +53,8 @@
   			$post_num = 1;
 
   			while ( $featured_query->have_posts() ) : $featured_query->the_post();
+
+          $do_not_duplicate[] = $post->ID;
 
   				$num_comments = get_comments_number();
           $classes = array(
@@ -175,16 +167,7 @@
         $featured_query_args = array(
         'ignore_sticky_posts' => TRUE,
           'posts_per_page'    => 5,
-          'post__not_in'      => $do_not_duplicate,
-          'tax_query'         => array(
-            array(
-              'taxonomy'  => 'post_format',
-              'field'     => 'slug',
-              'terms'     => array(
-                'post-format-aside'
-              )
-            )
-          )
+          'post__not_in'      => $do_not_duplicate
         );
 
         $featured_query = new WP_Query( $featured_query_args );
