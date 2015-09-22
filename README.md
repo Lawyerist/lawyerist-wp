@@ -4,6 +4,7 @@
 ----------
 
 * Responsive fixes for images in notes and medium-sized images.
+* Create function for bylines.
 
 
 2015-09-19

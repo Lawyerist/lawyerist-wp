@@ -4,6 +4,7 @@
 
 Stylesheets & Google Fonts
 Nav Menu
+Bylines
 Theme Setup
 Rename "Aside" Post Format to "Note"
 Series Custom Taxonomy
@@ -44,21 +45,114 @@ add_action( 'wp_enqueue_scripts', 'lawyerist_stylesheets' );
 Nav Menu
 ------------------------------*/
 
-add_action('init','register_my_menus');
-
 function register_my_menus() {
 	register_nav_menus( array(
 		'header_nav' => 'Header Nav Menu',
 		'main_nav' => 'Main Nav Menu (Below Header)',
+		'mobile_nav' => 'Mobile Nav Menu for Phones',
 	)	);
+}
+
+add_action('init','register_my_menus');
+
+
+/*------------------------------
+Bylines
+------------------------------*/
+
+function lawyerist_get_byline() {
+
+	// This function must be used within the Loop
+
+	$this_post_id = get_the_ID();
+
+	if ( has_term( true , 'sponsor' ) && has_category( 'sponsored-posts' ) ) {
+
+		$sponsors = wp_get_post_terms(
+			$this_post_id,
+			'sponsor',
+			array(
+				'fields' 	=> 'names',
+				'orderby' => 'count',
+				'order' 	=> 'DESC'
+			)
+		);
+		$sponsor = $sponsors[0];
+
+		$sponsor_ids = wp_get_post_terms(
+			$this_post_id,
+			'sponsor',
+			array(
+				'fields' 	=> 'ids',
+				'orderby' => 'count',
+				'order' 	=> 'DESC'
+			)
+		);
+		$sponsor_id = $sponsor_ids[0];
+
+		$sponsor_url = term_description( $sponsor_id, 'sponsor' );
+		$sponsor_url = strip_tags( $sponsor_url );
+
+		if ( is_single() ) {
+			$author = '<a href="' . $sponsor_url . '" class="vcard author post-author" rel="nofollow fn">' . $sponsor . '</a>';
+		} else {
+			$author = '<span class="vcard author post-author" rel="nofollow fn">' . $sponsor . '</span>';
+		}
+
+	} elseif ( has_term( true , 'sponsor' ) && !has_category( 'sponsored-posts' ) ) {
+
+		$sponsors = wp_get_post_terms(
+			$this_post_id,
+			'sponsor',
+			array(
+				'fields' 	=> 'names',
+				'orderby' => 'count',
+				'order' 	=> 'DESC'
+			)
+		);
+		$sponsor = $sponsors[0];
+
+		$sponsor_ids = wp_get_post_terms(
+			$this_post_id,
+			'sponsor',
+			array(
+				'fields' 	=> 'ids',
+				'orderby' => 'count',
+				'order' 	=> 'DESC'
+			)
+		);
+		$sponsor_id = $sponsor_ids[0];
+
+		$sponsor_url = term_description( $sponsor_id, 'sponsor' );
+		$sponsor_url = strip_tags( $sponsor_url );
+
+		if ( is_single() ) {
+			$author = '<a href="' . get_author_posts_url( get_the_author_meta( 'ID' ) ) . '" class="vcard author post-author" rel="nofollow fn">' . get_the_author() . '</a>, a <a href="https://lawyerist.com/advertising/">sponsored collaboration</a> with ' . '<a href="' . $sponsor_url . '" class="vcard author post-author" rel="nofollow fn">' . $sponsor . '</a>,';
+		} else {
+			$author = '<span class="vcard author post-author" rel="nofollow fn">' . get_the_author() . '</span>, a sponsored collaboration with ' . $sponsor . ',';
+		}
+
+	} else {
+
+		if ( is_single() ) {
+			$author = '<a href="' . get_author_posts_url( get_the_author_meta( 'ID' ) ) . '" class="vcard author post-author">' . get_the_author() . '</a>';
+		} else {
+			$author = '<span class="vcard author post-author">' . get_the_author() . '</span>';
+		}
+
+	}
+
+	$date = get_the_time( 'F jS, Y' );
+
+	// Output the results
+	echo '<div class="author_link">By ' . $author . ' on <span class="post-date updated">' . $date. '</span></div>';
+
 }
 
 
 /*------------------------------
 Theme Setup
 ------------------------------*/
-
-add_action( 'after_setup_theme', 'lawyerist_theme_setup' );
 
 function lawyerist_theme_setup() {
 
@@ -68,13 +162,14 @@ function lawyerist_theme_setup() {
 
 }
 
+add_action( 'after_setup_theme', 'lawyerist_theme_setup' );
+
 
 /*------------------------------
 Rename "Aside" Post Format to "Note"
 ------------------------------*/
 
-add_filter( 'esc_html' , 'rename_post_formats' );
-
+// Rename Aside post format
 function rename_post_formats( $safe_text ) {
     if ( $safe_text == 'Aside' )
         return 'Note';
@@ -82,10 +177,10 @@ function rename_post_formats( $safe_text ) {
     return $safe_text;
 }
 
+add_filter( 'esc_html' , 'rename_post_formats' );
 
-add_action( 'admin_head' , 'live_rename_formats' );
 
-//rename Aside in posts list table
+// Rename Aside in posts list table
 function live_rename_formats() {
     global $current_screen;
 
@@ -102,6 +197,8 @@ function live_rename_formats() {
         </script>
 <?php }
 }
+
+add_action( 'admin_head' , 'live_rename_formats' );
 
 
 /*------------------------------

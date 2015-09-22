@@ -25,7 +25,9 @@
 			<p id="title"><a href="<?php echo home_url(); ?>"><?php bloginfo('name'); echo ' &mdash; '; bloginfo('description'); ?></a></p>
 		<?php } ?>
 
-		<?php wp_nav_menu( array( 'theme_location' => 'header_nav' ) ); ?>
+		<?php if ( !is_mobile() ) { wp_nav_menu( array( 'theme_location' => 'header_nav' ) ); } ?>
+
+		<?php /* if ( is_mobile() ) { wp_nav_menu( array( 'theme_location' => 'mobile_nav' ) ); } */ ?>
 
 		<div id="email_social">
 			<ul>
@@ -40,6 +42,6 @@
 
 	</div><!-- #header -->
 
-	<?php wp_nav_menu( array( 'theme_location' => 'main_nav' ) ); ?>
+	<?php if ( !is_mobile() ) { wp_nav_menu( array( 'theme_location' => 'main_nav' ) ); } ?>
 
 </div><!-- #header_container -->

@@ -23,6 +23,7 @@ Header
   Header Nav
 	Social Icons
 Menu
+Mobile Menu
 Front Page
 	Featured Posts
   Featured Notes
@@ -693,6 +694,66 @@ ul#menu-default ul.sub-menu {
 
 
 /*------------------------------
+Mobile Menu
+------------------------------*/
+
+.menu-mobile-container {
+  position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+ul#menu-mobile li {
+	display:block;
+	margin:0;
+  position:relative;
+}
+
+ul#menu-mobile li.menu-item-has-children > a:after {
+  content: '\f431';
+  display:inline-block;
+  -webkit-font-smoothing:antialiased;
+  font:normal 1.6rem/1em 'Genericons';
+  height:1.4rem;
+  vertical-align:top;
+}
+
+ul#menu-mobile li a {
+	color:#fff;
+	display:block;
+	font-size:1.4rem;
+	letter-spacing:.1rem;
+	line-height:1em;
+	padding:.7rem 1rem .8rem 1rem;
+	text-decoration:none;
+}
+
+  ul#menu-mobile > li a:hover {
+    background:#aa0000;
+    color:#ddd;
+  }
+
+  ul#menu-mobile > li.menu-item-has-children > a:hover {
+    background:#cc0000;
+    color:#cc0000;
+  }
+
+ul#menu-mobile ul.sub-menu {
+  background:#aa0000;
+  margin:0;
+  position:absolute;
+    left:-99999px;
+    top:0;
+  width:14rem;
+  z-index:10;
+}
+
+  ul#menu-mobile li:hover ul.sub-menu {
+    left:0;
+  }
+
+
+/*------------------------------
 Front Page
 ------------------------------*/
 
@@ -732,17 +793,6 @@ a.post.fp_sticky:hover {
     text-shadow: .1rem .1rem 0 #111;
 		vertical-align: top;
 	}
-
-.front_page #content_column h3 {
-	color:#eee;
-	font-family:'Source Sans Pro',sans-serif;
-	font-size:1.4rem;
-	font-weight:normal;
-	letter-spacing:.1rem;
-	line-height:2.4rem;
-	margin-bottom:1.2rem;
-	text-transform:uppercase;
-}
 
 .fp_tab,
 .fp_bottom_tab {
@@ -834,7 +884,7 @@ a.post.fp_sticky:hover {
     width: 31.9rem;
 	}
 
-  #featured_posts a.post_num_1 {
+  #featured_posts a:first-child {
 		clear:both;
 		display:block;
 		float:none;
@@ -888,7 +938,7 @@ a.post.fp_sticky:hover {
 		margin-bottom:1.65rem;
 	}
 
-    #featured_posts a.post_num_1 h2 {
+    #featured_posts a:first-child h2 {
   		font-size:4.8rem;
   		line-height:6.4rem;
   	}
@@ -897,7 +947,7 @@ a.post.fp_sticky:hover {
       text-decoration:none;
     }
 
-    #featured_posts a.post_num_1.smaller-title h2 {
+    #featured_posts a:first-child.smaller-title h2 {
   		font-size:3.8rem;
   		line-height:5.2rem;
   		margin-bottom:2.6rem;
@@ -2139,7 +2189,7 @@ and (max-width:1023px) {
 	/* Front Page */
 
   #featured_posts a,
-  #featured_posts a.post_num_1 {
+  #featured_posts a:first-child {
 		display:block;
 		float:none;
 		height:24rem;
@@ -2155,8 +2205,8 @@ and (max-width:1023px) {
 	}
 
   #featured_posts h2,
-  #featured_posts a.post_num_1 h2,
-  #featured_posts a.post_num_1.smaller-title h2,
+  #featured_posts a:first-child h2,
+  #featured_posts a:first-child.smaller-title h2,
   #featured_notes h2 {
 		font-size:2.4rem;
 		line-height:3.3rem;
@@ -2219,7 +2269,6 @@ and (max-width:1023px) {
 /* When notes and medium-sized images start looking bad (540px) */
 
 @media only screen and (max-width:499px) {
-
 
   img.size-medium {
     margin: 0 0 1.5rem 0;
