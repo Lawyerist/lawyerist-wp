@@ -1043,12 +1043,12 @@ Content
   }
 
 	a.sticky {
-		background-color:#ddd;
+		background-color:#eee;
 		padding:2.5rem;
 	}
 
 	#archive_header {
-		background-color:#ddd;
+		background-color:#eee;
 		margin-bottom:2.8rem;
 		padding:1.5rem 2.5rem 2rem 2.5rem;
 	}
@@ -1310,6 +1310,7 @@ Content
   ------------------------------*/
 
   .survival_guide_note {
+    background: #eee;
     border: .1rem solid #ddd;
     display: block;
     margin-bottom: 2.8rem;
@@ -2204,6 +2205,24 @@ and (max-width:1023px) {
 
   .author_list li {
     width:50%;
+  }
+
+}
+
+
+/* When notes and medium-sized images start looking bad (540px) */
+
+@media only screen and (max-width:499px) {
+
+
+  img.size-medium {
+    margin: 0 0 1.5rem 0;
+  	width: 100%;
+  }
+
+  .survival_guide_note img {
+    margin: 0 0 1.5rem 0;
+    width: 100%;
   }
 
 }
