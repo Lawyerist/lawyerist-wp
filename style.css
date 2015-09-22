@@ -476,10 +476,13 @@ img.wp-post-image.attachment-large {
 
 /* Lawyerist Survival Guides Landing Page */
 
+#survival_guides a img,
 .page-id-82537 a img {
   transition: transform .2s;
 }
 
+#survival_guides a:hover img,
+#survival_guides a:focus img,
 .page-id-82537 a:hover img,
 .page-id-82537 a:focus img {
   transform: scale(1.05,1.05);
