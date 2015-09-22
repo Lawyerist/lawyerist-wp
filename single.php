@@ -260,7 +260,7 @@
 
 			  if ( $current_posts_query->post_count > 1 ) { ?>
 
-			    <div class="fp_tab"><h2>More from this week</h2></div>
+			    <div class="fp_tab"><h2>Current posts</h2></div>
 			    <div id="current_posts_nav">
 
 			      <?php while ( $current_posts_query->have_posts() ) : $current_posts_query->the_post();
