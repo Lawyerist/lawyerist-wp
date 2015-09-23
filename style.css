@@ -759,12 +759,10 @@ Front Page
 
 a.post.fp_sticky {
   background-color: #333;
-  border: 0;
 	margin-bottom: .2rem !important;
   padding: 2rem 2.5rem;
   transition: background-color .2s;
 }
-
 a.post.fp_sticky:hover {
   background-color: #111;
 }
@@ -876,7 +874,7 @@ a.post.fp_sticky:hover {
 		clear: none;
 		display: inline-block;
 		float: left;
-		height: 24rem;
+		height: 25.65rem;
 		overflow: hidden;
 		margin: 0 0 .2rem 0;
 		max-width: 31.9rem;
@@ -890,7 +888,7 @@ a.post.fp_sticky:hover {
 		clear:both;
 		display:block;
 		float:none;
-		height:32rem;
+		height:38.05rem;
 		max-width:64rem;
     width:64rem;
 	}
@@ -1293,7 +1291,7 @@ Content
 		clear: none;
 		display: inline-block;
 		float: left;
-		height: 15.85rem;
+		height: 17rem;
 		overflow: hidden;
 		margin: 0 .2rem .2rem 0;
 		padding: 0;
@@ -1317,8 +1315,8 @@ Content
   #current_posts_nav .current_posts_headline {
     color: #fff;
     font-family: 'Roboto Slab',sans-serif;
-    font-size: 1.6rem;
-    line-height: 2.2rem;
+    font-size: 1.8rem;
+    line-height: 2.5rem;
     padding: 1rem;
     position: absolute;
       top: 0;
@@ -2167,17 +2165,6 @@ and (max-width:1023px) {
 		padding-right: 0;
 	}
 
-  #current_posts_contents {
-    padding: 0;
-  }
-
-  #current_posts_contents li,
-  #current_posts_contents li:nth-child(odd) {
-    float: none;
-    margin: 0 0 2.8rem 0;
-    width: auto;
-  }
-
 	#footer {
 		background: none;
 		width: auto;
@@ -2194,7 +2181,7 @@ and (max-width:1023px) {
   #featured_posts a:first-child {
 		display:block;
 		float:none;
-		height:24rem;
+		height:25.65rem;
 		margin:0 0 .2rem 0 !important;
 		max-width:none;
 		width:auto;
@@ -2240,12 +2227,23 @@ and (max-width:1023px) {
 		width:auto;
 	}
 
+  #current_posts_contents {
+    padding: 0;
+  }
+
+  #current_posts_contents li,
+  #current_posts_contents li:nth-child(odd) {
+    float: none;
+    margin: 0 0 2.8rem 0;
+    width: auto;
+  }
+
   #current_posts_nav a,
   #current_posts_nav a.two_in_current_posts_nav,
   #current_posts_nav a.three_in_current_posts_nav {
     display: block;
     float: none;
-    height: 6.4rem;
+    height: 7rem;
     margin-right: 0;
     width: auto;
   }
