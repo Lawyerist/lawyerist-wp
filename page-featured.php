@@ -45,7 +45,17 @@
         $top_post_query_args = array(
           'ignore_sticky_posts' => TRUE,
           'posts_per_page'      => 1,
-          'post__not_in'        => $do_not_duplicate
+          'post__not_in'        => $do_not_duplicate,
+          'tax_query'           => array(
+           array(
+             'taxonomy'  => 'post_format',
+             'field'     => 'slug',
+             'terms'     => array(
+               'post-format-aside'
+             ),
+             'operator'  => 'NOT IN'
+           )
+         )
         );
 
   			$top_post_query = new WP_Query( $top_post_query_args );
