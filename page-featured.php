@@ -57,7 +57,7 @@
   				$num_comments = get_comments_number();
 
           $title = the_title( '', '', FALSE );
-          if ( strlen( $title ) > 60 ) {
+          if ( strlen( $title ) > 80 ) {
             $classes[] = 'smaller-title';
           } ?>
 
