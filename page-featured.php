@@ -105,12 +105,7 @@
 
           $do_not_duplicate[] = $post->ID;
 
-  				$num_comments = get_comments_number();
-
-          $title = the_title( '', '', FALSE );
-          if ( strlen( $title ) > 60 ) {
-            $classes[] = 'smaller-title';
-          } ?>
+  				$num_comments = get_comments_number(); ?>
 
   				<a <?php post_class($classes); ?> href="<?php the_permalink(); ?>?utm_source=lawyerist-front-page&utm_medium=internal&utm_campaign=nav" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
 
