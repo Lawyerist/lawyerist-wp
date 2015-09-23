@@ -40,17 +40,66 @@
 
   	<div id="featured_posts">
 
-  		<?php /* FEATURED POSTS LOOP */
+      <?php /* TOP POST LOOP */
+
+        $top_post_query_args = array(
+          'ignore_sticky_posts' => TRUE,
+          'posts_per_page'      => 1,
+          'post__not_in'        => $do_not_duplicate
+        );
+
+  			$top_post_query = new WP_Query( $top_post_query_args );
+
+  			while ( $top_post_query->have_posts() ) : $top_post_query->the_post();
+
+          $do_not_duplicate[] = $post->ID;
+
+  				$num_comments = get_comments_number();
+
+          $title = the_title( '', '', FALSE );
+          if ( strlen( $title ) > 60 ) {
+            $classes[] = 'smaller-title';
+          } ?>
+
+  				<a <?php post_class($classes); ?> href="<?php the_permalink(); ?>?utm_source=lawyerist-front-page&utm_medium=internal&utm_campaign=nav" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
+
+  					<div class="headline_excerpt">
+
+              <?php if ( has_tag('updated') ) { echo '<div class="flag no_shadow">Updated</div>'; } ?>
+
+  						<h2 class="headline"><?php the_title(); ?></h2>
+  						<div class="postmeta">
+                <?php lawyerist_get_byline(); ?>
+                <?php if ( $num_comments > 0 ) { ?>
+                  <div class="comment_link"><?php comments_number( 'Leave a comment', '1 comment', '% comments' ); ?></div>
+                <?php } ?>
+  						</div>
+
+  					</div><!--end .headline_excerpt-->
+
+  					<?php if ( has_post_thumbnail() && !is_mobile() ) { the_post_thumbnail( 'featured_top' ); }
+            elseif ( has_post_thumbnail() ) { the_post_thumbnail( 'featured' ); }
+            else { echo '<img src="' . get_template_directory_uri() . '/images/fff-thumb.png" class="attachment-thumbnail wp-post-image" />'; } ?>
+
+  					<div class="clear"></div>
+
+  				</a>
+
+  				<?php endwhile;
+
+  		/* END TOP POST LOOP */
+
+  		/* FEATURED POSTS LOOP */
 
         $featured_query_args = array(
           'ignore_sticky_posts' => TRUE,
-          'posts_per_page'      => 5,
+          'posts_per_page'      => 4,
           'post__not_in'        => $do_not_duplicate
         );
 
   			$featured_query = new WP_Query( $featured_query_args );
 
-  			$post_num = 1;
+  			$post_num = 2;
 
   			while ( $featured_query->have_posts() ) : $featured_query->the_post();
 
@@ -63,7 +112,7 @@
             $classes[] = 'smaller-title';
           } ?>
 
-  				<a <?php post_class(); ?> href="<?php the_permalink(); ?>?utm_source=lawyerist-front-page&utm_medium=internal&utm_campaign=nav" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
+  				<a <?php post_class($classes); ?> href="<?php the_permalink(); ?>?utm_source=lawyerist-front-page&utm_medium=internal&utm_campaign=nav" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
 
   					<div class="headline_excerpt">
 
