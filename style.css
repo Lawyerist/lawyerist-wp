@@ -958,7 +958,7 @@ a.post.fp_sticky:hover {
   #featured_posts .postmeta,
   #featured_posts .comment_link:before {
 		color:#fff !important;
-    text-shadow:.1rem .1rem 0 #111;
+    text-shadow:.1rem .1rem 0 #111, 0 0 5rem #555;
 	}
 
 
@@ -1321,7 +1321,7 @@ Content
     position: absolute;
       top: 0;
       left: 0;
-    text-shadow: .1rem .1rem 0 #111;
+    text-shadow: .1rem .1rem 0 #111, 0 0 3rem #555;
     width: auto;
     z-index: 1;
   }
