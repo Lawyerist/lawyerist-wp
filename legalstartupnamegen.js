@@ -78,7 +78,7 @@ function generator(){
 
 	// A div element is created to show the generated name. The Name is added as a textnode. Textnode is added to the placeholder.
 
-	var element = document.createElement("div");
+	var element = document.createElement("h3");
 
 	element.setAttribute("id", "result");
 
