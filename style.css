@@ -1977,7 +1977,8 @@ body .gforms_confirmation_message {
   button,
   a.button,
   body .gform_wrapper input.button,
-  input.button {
+  input.button,
+  input[type="button"] {
     background-color:#bb0000;
     border:0;
     border-radius: .2rem;
@@ -2003,7 +2004,8 @@ body .gforms_confirmation_message {
   button:hover,
   a.button:hover,
   body .gform_wrapper input.button:hover,
-  input.button:hover {
+  input.button:hover,
+  input[type="button"]:hover {
     background-color:#cc0000;
     color:#fff;
     text-decoration:none;
@@ -2012,7 +2014,8 @@ body .gforms_confirmation_message {
   button:active,
   a.button:active,
   body .gform_wrapper input.button:active,
-  input.button:active {
+  input.button:active,
+  input[type="button"]:active {
     background-color:#aa0000;
     color:#ddd;
   }
