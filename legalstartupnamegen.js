@@ -6,13 +6,13 @@
 
 function generator(){
 
-  // Add your own words to the wordlist. Be carefull to obey the syntax shown
+  // Add your own words to the wordlist. Be careful to obey the syntax shown
 
   var wordlist1 = ["Forward","Law","Juris","Docu","Corpus","Dictum","Bill",
 
     "Docu","Flat","Right","Incorp","Easy","EZ","Iron","Will",
 
-    "Clause", "Web","Serve","Firm","Juxta","Fiscal","e","Case",
+    "Clause", "Web","Serve","Firm","Juxta","Fiscal","e","i","Case",
 
     "Term","Patent","Habeas","Estate","Clear","Legis",
 
@@ -20,11 +20,9 @@ function generator(){
 
     "We","Evolve","Lex","Supra","Id","Alt","Plain","Docket",
 
-    "Best","Ever","Simple","Attorney", "Cosmo","Diligence",
+    "Best","Ever","Simple","Attorney","Cosmo","Diligence","Sky","Up","Logik",
 
-    "Sky","Up","Logik","Ravel",
-
-    "Panda","Shake","Clio","My"];
+    "Ravel","Panda","Shake","My"];
 
 
   var wordlist2 = ["Docs","Law","Pivot","Dingo","Legal","Page","Kick",
