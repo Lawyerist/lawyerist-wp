@@ -1388,19 +1388,23 @@ Content
   ------------------------------*/
 
   .gallery {
-    margin-bottom:2.8rem !important;
+    margin-bottom: 2.8rem !important;
   }
 
-  .gallery-columns-3 dl.gallery-item {
-    border:1px solid #ddd !important;
-    margin:0 .2rem .2rem 0!important;
-    width:32.708333333% !important;
+  #gallery-2 img {
+    border: 0 !important;
   }
 
-  .gallery-columns-3 dl.gallery-item img {
-    border:0 !important;
-    height:auto;
-    width:100%;
+  #gallery-3 dl.gallery-item {
+    border: 1px solid #ddd !important;
+    margin: 0 .2rem .2rem 0!important;
+    width: 32.708333333% !important;
+  }
+
+  #gallery-3 img {
+    border: 0 !important;
+    height: auto;
+    width: 100%;
   }
 
 
