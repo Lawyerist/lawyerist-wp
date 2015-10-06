@@ -1,13 +1,5 @@
 # A custom WordPress theme for Lawyerist.com
 
-2015-09-23
-----------
-
-* Adjust front page box sizing (and custom image sizes) to line-height instead of just setting those heights at a round number.
-* Same for current posts nav on single posts.
-* Add loop on front page so the current article is the top post. Notes and articles go underneath.
-
-
 2015-09-22
 ----------
 
