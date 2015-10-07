@@ -27,7 +27,7 @@ Mobile Menu
 Front Page
 	Featured Posts
   Featured Notes
-	Read More Box
+  Survival Guides (on Front Page)
 	Questions
 Content
 	Index & Archive Lists
@@ -810,7 +810,7 @@ a.post.fp_sticky:hover {
 .fp_bottom_tab {
   border-width:.1rem .1rem .1rem 0;
   float:right;
-  margin-bottom:2.8rem;
+  margin-bottom:5.6rem;
   padding:1rem 2.5rem 1rem 1.5rem;
 }
 
@@ -973,6 +973,15 @@ a.post.fp_sticky:hover {
 
   #featured_notes a:last-child {
     margin-bottom:.2rem;
+  }
+
+
+  /*------------------------------
+  Survival Guides (on Front Page)
+  ------------------------------*/
+
+  .front_page #survival_guides {
+    margin-bottom: 5.6rem;
   }
 
 
