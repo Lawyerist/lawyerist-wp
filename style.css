@@ -32,6 +32,7 @@ Front Page
 Content
 	Index & Archive Lists
 	Posts
+  Tables
   Post Footer Nav
   Notes (see notes.php)
   Galleries
@@ -1042,10 +1043,6 @@ Content
 	width:26.5rem !important;
 }
 
-.tablepress {
-  font-size: 80%;
-}
-
 
 	/*------------------------------
 	Index & Archive Lists
@@ -1288,6 +1285,30 @@ Content
 		font-size: 3.2rem;
 	}
 
+
+  /*------------------------------
+  Tables
+  ------------------------------*/
+
+  table {
+    margin-bottom: 2.8rem;
+  }
+
+  td,
+  th {
+    border: 1px solid #ddd;
+    padding: .75rem 1.5rem;
+  }
+
+  th {
+    background-color: #eee;
+    font-weight: bold;
+    text-align: left;
+  }
+
+  .tablepress {
+    font-size: 80%;
+  }
 
   /*------------------------------
   Post Footer Nav
