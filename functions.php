@@ -65,6 +65,7 @@ function lawyerist_get_byline() {
 
 	$this_post_id = get_the_ID();
 
+	// Sponsor-submitted posts
 	if ( has_term( true , 'sponsor' ) && has_category( 'sponsored-posts' ) ) {
 
 		$sponsors = wp_get_post_terms(
@@ -93,11 +94,12 @@ function lawyerist_get_byline() {
 		$sponsor_url = strip_tags( $sponsor_url );
 
 		if ( is_single() ) {
-			$author = '<a href="' . $sponsor_url . '" class="vcard author post-author" rel="nofollow fn">' . $sponsor . '</a>';
+			$author = '<a href="' . $sponsor_url . '" rel="nofollow">' . $sponsor . '</a>';
 		} else {
-			$author = '<span class="vcard author post-author" rel="nofollow fn">' . $sponsor . '</span>';
+			$author = $sponsor;
 		}
 
+	// Sponsored collaborative (native) posts
 	} elseif ( has_term( true , 'sponsor' ) && !has_category( 'sponsored-posts' ) ) {
 
 		$sponsors = wp_get_post_terms(
@@ -125,18 +127,33 @@ function lawyerist_get_byline() {
 		$sponsor_url = term_description( $sponsor_id, 'sponsor' );
 		$sponsor_url = strip_tags( $sponsor_url );
 
+		/* Bylines should only have links to the author page on single post pages. */
 		if ( is_single() ) {
-			$author = '<a href="' . get_author_posts_url( get_the_author_meta( 'ID' ) ) . '" class="vcard author post-author" rel="nofollow fn">' . get_the_author() . '</a>, a <a href="https://lawyerist.com/advertising/">sponsored collaboration</a> with ' . '<a href="' . $sponsor_url . '" class="vcard author post-author" rel="nofollow fn">' . $sponsor . '</a>,';
+			$author = '<a href="' . get_author_posts_url( get_the_author_meta( 'ID' ) ) . '">' . get_the_author() . '</a>, a <a href="https://lawyerist.com/advertising/">sponsored collaboration</a> with ' . '<a href="' . $sponsor_url . '" rel="nofollow">' . $sponsor . '</a>,';
 		} else {
-			$author = '<span class="vcard author post-author" rel="nofollow fn">' . get_the_author() . '</span>, a sponsored collaboration with ' . $sponsor . ',';
+			$author = get_the_author() . ', a sponsored collaboration with ' . $sponsor . ',';
 		}
 
+	// Regular posts
 	} else {
 
+		/* Bylines should only have links to the author page on single post pages. */
 		if ( is_single() ) {
-			$author = '<a href="' . get_author_posts_url( get_the_author_meta( 'ID' ) ) . '" class="vcard author post-author">' . get_the_author() . '</a>';
+
+			if ( function_exists( 'coauthors_posts_links' ) ) {
+				$author = coauthors_posts_links( ', ',' and ','','', false );
+			} else {
+			  $author = '<a href="' . get_author_posts_url( get_the_author_meta( 'ID' ) ) . '">' . get_the_author() . '</a>';
+			}
+
 		} else {
-			$author = '<span class="vcard author post-author">' . get_the_author() . '</span>';
+
+			if ( function_exists( 'coauthors_posts_links' ) ) {
+				$author = coauthors( ', ',' and ','','', false );
+			} else {
+				$author = get_the_author();
+			}
+
 		}
 
 	}
