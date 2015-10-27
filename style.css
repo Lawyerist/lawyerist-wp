@@ -921,46 +921,50 @@ a.post.fp_sticky:hover {
 	}
 
   #featured_posts .tag-updated .flag {
-    background:#eee;
-    border:1px solid #ddd;
-    color:#333;
-    display:inline-block;
-    font-size:1.2rem;
-    letter-spacing:.05rem;
-    line-height:1em;
-    padding:.3rem .5rem;
-    text-transform:uppercase;
+    background: #eee;
+    border: 1px solid #ddd;
+    color: #333;
+    display: inline-block;
+    font-size: 1.2rem;
+    letter-spacing: .05rem;
+    line-height: 1em;
+    padding: .3rem .5rem;
+    text-transform: uppercase;
   }
 
   #featured_posts h2 {
-		font-size:2.4rem;
-		letter-spacing:.1rem;
-		line-height:3.3rem;
-		margin-bottom:1.65rem;
+		font-size: 2.4rem;
+		letter-spacing: .1rem;
+		line-height: 3.3rem;
+		margin-bottom: 1.65rem;
 	}
 
     #featured_posts a:first-child h2 {
-  		font-size:4.8rem;
-  		line-height:6.4rem;
+  		font-size: 4.8rem;
+  		line-height: 6.4rem;
   	}
 
     #featured_posts a:hover h2 {
-      text-decoration:none;
+      text-decoration: none;
     }
 
     #featured_posts a:first-child.smaller-title h2 {
-  		font-size:3.8rem;
-  		line-height:5.2rem;
-  		margin-bottom:2.6rem;
+  		font-size: 3.8rem;
+  		line-height: 5.2rem;
+  		margin-bottom: 2.6rem;
   	}
 
   #featured_posts,
   #featured_posts h2,
   #featured_posts .postmeta,
   #featured_posts .comment_link:before {
-		color:#fff !important;
-    text-shadow:.1rem .1rem 0 #111, 0 0 5rem #555;
+		color: #fff !important;
+    text-shadow: .1rem .1rem 0 #111, 0 0 5rem #555;
 	}
+
+  #featured_posts .fp_postmeta_break {
+    display: inline-block;
+  }
 
 
   /*------------------------------

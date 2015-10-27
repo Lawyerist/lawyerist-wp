@@ -161,7 +161,7 @@ function lawyerist_get_byline() {
 	$date = get_the_time( 'F jS, Y' );
 
 	// Output the results
-	echo '<div class="author_link">By ' . $author . ' on <span class="post-date updated">' . $date. '</span></div>';
+	echo '<div class="author_link">By ' . $author . ' <span class="fp_postmeta_break">on ' . $date. '</span></div>';
 
 }
 
