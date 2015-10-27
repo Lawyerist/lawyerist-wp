@@ -14,7 +14,6 @@ Featured Images in RSS Feeds
 Sidebar
 Allow PHP in Widgets
 Add Capabilities to Contributor Role
-Remove Quickpress
 RSS Feed Caching
 
 */
@@ -393,17 +392,6 @@ function add_permissions_contributor() {
 }
 
 add_action( 'admin_init', 'add_permissions_contributor');
-
-
-/*------------------------------
-Remove Quickpress
-------------------------------*/
-
-function remove_quickpress() {
-	remove_meta_box('dashboard_quick_press','dashboard','side');
-}
-
-add_action('wp_dashboard_setup','remove_quickpress');
 
 
 /*------------------------------
