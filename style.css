@@ -411,69 +411,80 @@ Images
 ------------------------------*/
 
 img.aligncenter {
-	clear:both;
-	display:block;
-	margin:0 auto 2.8rem auto;
+	clear: both;
+	display: block;
+	margin: 0 auto 2.8rem auto;
 }
 
 img.alignleft {
-	float:left;
-	margin:0 2.1875% 2.8rem 0;
+	float: left;
+	margin: 0 2.1875% 2.8rem 0;
 }
 
 img.alignright {
-	float:right;
-	margin:0 0 2.8rem 2.1875%;
+	float: right;
+	margin: 0 0 2.8rem 2.1875%;
 }
 
 img.avatar {
-	border-radius:5rem;
+	border-radius: 5rem;
 }
 
 img.size-thumbnail {
-	height:auto;
-	width:23.4375%;
+	height: auto;
+	width: 23.4375%;
 }
 
 img.size-medium {
-	height:auto;
-	width:46.875%;
+	height: auto;
+	width: 46.875%;
 }
 
 img.size-large {
-	height:auto;
-	width:100%;
+	height: auto;
+	width: 100%;
 }
 
 img.size-full {
-	height:auto;
-	width:auto;
+	height: auto;
+	width: auto;
 }
 
 img.wp-post-image.attachment-medium {
-	float:right;
-	height:auto;
-	margin:0 0 2.8rem 2.1875%;
-	width:46.875%;
+	float: right;
+	height: auto;
+	margin: 0 0 2.8rem 2.1875%;
+	width: 46.875%;
 }
 
 img.wp-post-image.attachment-large {
-	clear:both;
-	height:auto;
-	margin:0 auto 2.8rem auto !important;
-	width:100%;
+	clear: both;
+	height: auto;
+	margin: 0 auto 2.8rem auto !important;
+	width: 100%;
 }
 
-.wp-caption.alignleft {
-	margin:0 2.1875% 0 2.8rem;
+.wp-caption {
+  margin-bottom: 2.8rem;
+  max-width: 100%;
 }
 
-.wp-caption.alignright {
-	margin:0 0 2.1875% 2.8rem;
-}
+  .wp-caption.alignleft {
+  	margin-right: 2.1875%;
+  }
+
+  .wp-caption.alignright {
+  	margin-left: 2.1875%;
+  }
+
+  .wp-caption .alignone {
+    clear: both;
+    display: block;
+  }
 
 .wp-caption img {
-	width:100%;
+  max-width: 100%;
+	width: 100%;
 }
 
 /* Lawyerist Survival Guides Landing Page */
