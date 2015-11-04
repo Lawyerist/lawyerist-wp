@@ -2267,6 +2267,10 @@ and (max-width:1023px) {
 
 	/* Content */
 
+  blockquote {
+    font-weight:normal;
+  }
+
   img.size-full {
     display:block;
     width:100%;
