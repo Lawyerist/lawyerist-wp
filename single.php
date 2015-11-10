@@ -171,12 +171,22 @@
 
 				$this_post[] = $post->ID;
 
+				$today = getdate();
+
 			  $current_posts_query_args = array(
 					'category__not_in'			=> 1320,
 					'date_query'						=> array(
 						array(
-							'year'	=> date( 'Y' ),
-							'week'	=> date( 'W' ),
+							'before'	=> array(
+								'year'  => $today['year'],
+								'month' => $today['mon'],
+								'day'   => $today['mday']+1,
+							),
+							'after'		=> array(
+								'year'  => $today['year'],
+								'month' => $today['mon'],
+								'day'   => $today['mday']-6,
+							),
 						),
 					),
 					'ignore_sticky_posts'		=> TRUE,
