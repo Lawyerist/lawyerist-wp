@@ -323,11 +323,11 @@ if ( function_exists( 'add_image_size' ) ) {
 }
 
 if ( function_exists( 'add_image_size' ) ) {
-	add_image_size( 'featured', 320, 286.5, true);
+	add_image_size( 'featured', 320, 263.5, true);
 }
 
 if ( function_exists( 'add_image_size' ) ) {
-	add_image_size( 'featured_top', 640, 384.5, true);
+	add_image_size( 'featured_top', 640, 387.5, true);
 }
 
 
