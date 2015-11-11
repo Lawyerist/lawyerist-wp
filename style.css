@@ -232,7 +232,7 @@ body {
   #email_social {
     display: inline-block;
     float: right;
-    margin: 1.3rem 1rem 0 0;
+    margin: 1.2.8rem 1rem 0 0;
   }
 
   .menu-default-container {
@@ -251,7 +251,7 @@ body {
   	}
 
 #content_column_container {
-	margin: 0 auto 3rem auto;
+	margin: 0 auto 2.8rem auto;
 	width: 96.8rem;
 }
 
@@ -283,7 +283,7 @@ body {
 	#footer {
 		margin: 0 auto;
 		min-height: 18rem;
-		padding: 3rem 1rem;
+		padding: 2.8rem 1rem;
 		width: 96.8rem;
 	}
 
@@ -302,8 +302,8 @@ body {
 .post,
 .post_body,
 #footer {
-	font-size: 2rem;
-	line-height: 3rem;
+	font-size: 1.8rem;
+	line-height: 1.5;
 }
 
 a,
@@ -321,7 +321,7 @@ a:focus {
 blockquote {
 	border-left: 1px solid #ddd;
 	color: #777;
-	margin: 0 0 3rem 0;
+	margin: 0 0 2.8rem 0;
 	padding: 0 0 0 1.9rem;
 }
 
@@ -331,10 +331,9 @@ blockquote {
     clear: both;
     color: #888;
     font-family: concourse, sans-serif;
-    font-size: 3rem;
+    font-size: 2.8rem;
     font-style: italic;
-    line-height: 3.9rem;
-    margin: 0 3rem 3rem 3rem;
+    margin: 0 2.8rem 2.8rem 2.8rem;
     padding: 0;
   }
 
@@ -366,7 +365,7 @@ italics {
 
 embed,
 iframe {
-  margin-bottom: 3rem !important;
+  margin-bottom: 2.8rem !important;
 }
 
 h1,
@@ -417,7 +416,7 @@ h5 {
 
 h6 {
 	font-size: 2rem;
-	line-height: 3rem;
+	line-height: 2.8rem;
 	margin-bottom: 1em;
 }
 
@@ -473,15 +472,12 @@ p.pullout {
 p.wp-caption-text {
      color: #666;
      font-size: 1.4rem;
-     line-height: 2.1rem;
 }
 
 .postmeta {
 	color: #777;
   font-family: concourse, serif;
   font-size: 1.6rem;
-  line-height: 2.6rem;
-	margin-bottom: 1.6rem;
 }
 
   .single .postmeta {
@@ -492,7 +488,7 @@ pre {
 	color: #555;
 	font-family: triplicate, monospace;
 	margin-bottom: 1em;
-	margin-left: 3rem;
+	margin-left: 2.8rem;
 	white-space: pre-wrap; /* css-3 */
 	white-space: -moz-pre-wrap !important; /* Mozilla, since 1999 */
 	white-space: -pre-wrap; /* Opera 4-6 */
@@ -522,14 +518,13 @@ sup {
 ol,
 ul {
 	margin-bottom: 1em;
-	margin-left: 3rem;
+	margin-left: 2.8rem;
   padding: 0;
 }
 
 ol.footnotes li {
   font-size: 1.4rem;
-  line-height: 2.3rem;
-  margin-bottom: 1.4rem;
+  margin-bottom: 1em;
 }
 
 li {
@@ -546,17 +541,17 @@ Images
 img.aligncenter {
 	clear: both;
 	display: block;
-	margin: 0 auto 3rem auto;
+	margin: 0 auto 2.8rem auto;
 }
 
 img.alignleft {
 	float: left;
-	margin: 0 1.5rem 3rem 0;
+	margin: 0 1.5rem 2.8rem 0;
 }
 
 img.alignright {
 	float: right;
-	margin: 0 0 3rem 1.5rem;
+	margin: 0 0 2.8rem 1.5rem;
 }
 
 img.avatar {
@@ -586,14 +581,14 @@ img.size-full {
 img.wp-post-image.attachment-medium {
 	float: right;
 	height: auto;
-	margin: 0 0 3rem 1.5rem;
+	margin: 0 0 2.8rem 1.5rem;
 	width: 46.875%;
 }
 
 img.wp-post-image.attachment-large {
 	clear: both;
 	height: auto;
-	margin: 0 auto 3rem auto !important;
+	margin: 0 auto 2.8rem auto !important;
 	width: 100%;
 }
 
@@ -1078,14 +1073,14 @@ a.post.fp_sticky:hover {
     font-family: concourse, sans-serif;
     font-size: 1.2rem;
     line-height: 1em;
-    padding: .3rem .5rem;
+    padding: .2.8rem .5rem;
     text-transform: uppercase;
   }
 
   #featured_posts h2 {
 		font-size: 2.4rem;
     letter-spacing: .1rem;
-		line-height: 3.3rem;
+		line-height: 2.8rem;
 		margin-bottom: 1.65rem;
 	}
 
@@ -1155,7 +1150,7 @@ a.post.fp_sticky:hover {
 
 	.front_page #lab_posts ul {
 		list-style:none;
-		margin:2rem 2.5rem 3rem 2.5rem;
+		margin:2rem 2.5rem 2.8rem 2.5rem;
 	}
 
     .front_page #lab_posts li {
@@ -1208,7 +1203,7 @@ Content
     clear: both;
     display: block;
     margin-bottom: 0;
-    padding: 3rem 0;
+    padding: 2.8rem 0;
 		text-decoration: none;
 	}
 
@@ -1219,7 +1214,7 @@ Content
 	a.post .headline {
 		color: #333;
     font-size: 2.4rem;
-    line-height: 3.3rem;
+    line-height: 2.8rem;
     margin-bottom: 1.65rem;
 	}
 
@@ -1277,8 +1272,8 @@ Content
 
 	#archive_header p {
 		color:#333;
-		font-size: 2rem;
-		line-height: 3rem;
+		font-size: 1.8rem;
+		line-height: 1.5;
 	}
 
 	#archive_header p.author_descr {
@@ -1335,7 +1330,7 @@ Content
 	.sd-block {
 		border:none !important;
 		padding:0 !important;
-		margin-bottom:3rem !important;
+		margin-bottom:2.8rem !important;
 	}
 
 	.sd-content {
@@ -1352,21 +1347,18 @@ Content
 
 	#author_bio_footer img.avatar {
     float: left;
-		margin-bottom: 2.3rem;
+		margin-bottom: 2.2.8rem;
 		margin-right: 2rem;
 	}
 
 	#author_bio_footer p {
     color: #666;
 		font-size: 1.6rem;
-		line-height: 2.6rem;
-    margin-bottom: 2.6rem;
 		padding-left: 12rem;
 	}
 
   #pages_categories_tags p {
     font-size: 1.4rem;
-    line-height: 3.2rem;
     margin-bottom: .56rem;
   }
 
@@ -1512,7 +1504,7 @@ Content
     position: absolute;
       top: 0;
       left: 0;
-    text-shadow: .1rem .1rem 0 #111, 0 0 3rem #555;
+    text-shadow: .1rem .1rem 0 #111, 0 0 2.8rem #555;
     width: auto;
     z-index: 1;
   }
@@ -1539,13 +1531,6 @@ Content
     clear: both;
 		margin: 5.6rem 0;
   }
-
-    #series_nav p,
-    #series_nav ul {
-      font-size: 2rem;
-      line-height: 3rem;
-      margin-bottom: 1em;
-    }
 
     #series_nav li {
       font-family: concourse, sans-serif;
@@ -1579,7 +1564,7 @@ Content
   ------------------------------*/
 
   .gallery {
-    margin-bottom: 3rem !important;
+    margin-bottom: 2.8rem !important;
   }
 
   #gallery-2 img {
@@ -1807,7 +1792,7 @@ Author Pages
 #author_header {
   border-bottom: .1rem solid #ddd;
   margin-bottom: 1em;
-  padding-bottom: 3rem;
+  padding-bottom: 2.8rem;
 }
 
 #author_header img {
@@ -1820,13 +1805,12 @@ Author Pages
 
 p.author_bio {
   font-size: 1.6rem;
-  line-height: 2.6rem;
 }
 
 #author_connect p {
   font-size: 1.6rem;
   line-height: 1em;
-  margin-bottom: 1.3rem;
+  margin-bottom: 1.2.8rem;
 }
 
 #author_connect p:last-child {
@@ -1909,15 +1893,14 @@ ul#sidebar_column h3 a.rsswidget img {
 }
 
 li.widget {
-	line-height:1em;
-	margin:0 0 5.6rem 0;
-	padding:0;
+	line-height: 1em;
+	margin: 0 0 5.6rem 0;
+	padding: 0;
 }
 
   li.widget p {
     font-size:1.6rem;
-    line-height:2.3rem;
-    margin-bottom:2.3rem;
+    margin-bottom: 2.8rem;
   }
 
 	li.widget > ul {
@@ -1925,9 +1908,9 @@ li.widget {
 	}
 
 	li.widget > ul li {
-		font-size:1.8em;
-		line-height:1.556em;
-		margin-bottom:.778em;
+		font-size: 1.8em;
+		line-height: 1.556em;
+		margin-bottom: .778em;
 	}
 
 
@@ -1942,7 +1925,7 @@ li.widget {
   li.sidebar_ad {
 		display:inline-block;
     float:left;
-		margin:0 0 3rem 0;
+		margin:0 0 2.8rem 0;
 		width:30rem;
 	}
 
@@ -1980,71 +1963,70 @@ li.widget {
 	}
 
   #popular_posts_tabbed ul.idTabs > li a:after {
-    background:#eee;
-    border-color:#ddd;
-    border-style:solid;
-    border-width:.1rem .1rem .1rem 0;
-    content:" ";
-    display:block;
-    height:2.2rem;
+    background: #eee;
+    border-color: #ddd;
+    border-style: solid;
+    border-width: .1rem .1rem .1rem 0;
+    content: " ";
+    display: block;
+    height: 2.2rem;
     position: absolute;
-      right:-.5rem;
-      top:-.1rem;
-    transform:skewX(20deg);
-    -ms-transform:skewX(20deg);
-    -webkit-transform:skewX(20deg);
-    width:1rem;
-    z-index:-1;
+      right: -.5rem;
+      top: -.1rem;
+    transform: skewX(20deg);
+    -ms-transform: skewX(20deg);
+    -webkit-transform: skewX(20deg);
+    width: 1rem;
+    z-index: -1;
   }
 
   #popular_posts_tabbed ul.idTabs li a.selected,
   #popular_posts_tabbed ul.idTabs li a.selected:after {
-    background:#ddd;
-    border-color:#ccc;
+    background: #ddd;
+    border-color: #ccc;
   }
 
   #popular_posts_tabbed ul.idTabs > li a:hover,
   #popular_posts_tabbed ul.idTabs > li a:hover:after {
-    background:#ccc;
-    border-color:#aaa;
-    color:#cc0000;
-    text-decoration:none;
+    background: #ccc;
+    border-color: #aaa;
+    color: #cc0000;
+    text-decoration: none;
   }
 
   #popular_posts_tabbed .tabs_sublist {
-    background-color:#fff;
-    border:1px solid #ddd;
-    padding:1rem 1.25rem 0 1.25rem;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 1rem 1.25rem 0 1.25rem;
   }
 
 	#popular_posts_tabbed .tabs_sublist ul.wpp-list {
-		margin:0;
+		margin: 0;
 	}
 
 	#popular_posts_tabbed .tabs_sublist ul.wpp-list li {
-		font-size:10px;
-		margin:0 0 1.5em 0;
-		min-height:75px;
+		font-size: 10px;
+		margin: 0 0 1.5em 0;
+		min-height: 75px;
 	}
 
   #popular_posts_tabbed .tabs_sublist ul.wpp-list li a img {
-    border-radius:3.75rem;
-		float:left;
+    border-radius: 3.75rem;
+		float: left;
 	}
 
 	#popular_posts_tabbed .tabs_sublist a.wpp_headline {
-    color:#333;
-		display:block;
-		font-family:concourse, sans-serif;
-		font-size:1.8em;
-		line-height:2.7rem;
-		padding-left:7.5rem;
-		text-decoration:none;
+    color: #333;
+		display: block;
+		font-family: concourse, sans-serif;
+		font-size: 1.8em;
+		padding-left: 7.5rem;
+		text-decoration: none;
 	}
 
   #popular_posts_tabbed .tabs_sublist li:hover a.wpp_headline {
-    color:#333;
-    text-decoration:underline;
+    color: #333;
+    text-decoration: underline;
   }
 
 
@@ -2053,11 +2035,11 @@ Footer
 ------------------------------*/
 
 #footer {
-    background: url('images/L-watermark.png') no-repeat left 3rem;
+    background: url('images/L-watermark.png') no-repeat left 2.8rem;
     color: #666;
     font-family: concourse, sans-serif;
     font-size: 1.6rem;
-    line-height: 2.6rem;
+    line-height: 1.5;
     min-height: 16rem;
 }
 
@@ -2128,7 +2110,7 @@ input#st-search-input {
 }
 
 body .gform_wrapper select {
-  line-height:2rem;
+  line-height: 2rem;
   padding: .4rem !important;
 }
 
@@ -2381,56 +2363,56 @@ and (max-width:1023px) {
 
   #featured_posts a,
   #featured_posts a:first-child {
-		display:block;
-		float:none;
-		height:25.65rem;
-		margin:0 0 .2rem 0 !important;
-		max-width:none;
-		width:auto;
+		display: block;
+		float: none;
+		height: 25.65rem;
+		margin: 0 0 .2rem 0 !important;
+		max-width: none;
+		width: auto;
 	}
 
   #featured_posts img,
   #featured_posts a:first-child img {
-		height:auto;
-		width:100%;
+		height: auto;
+		width: 100%;
 	}
 
   #featured_posts h2,
   #featured_posts a:first-child h2,
   #featured_posts a:first-child.smaller-title h2,
   #featured_notes h2 {
-		font-size:2.4rem;
-		line-height:3.3rem;
-		margin-bottom:1.65rem;
+		font-size: 2.4rem;
+		line-height: 2.8rem;
+		margin-bottom: 1.65rem;
 	}
 
   a.fp_sticky h2.headline {
-    font-weight:normal;
+    font-weight: normal;
   }
 
 	.front_page ul#sidebar_column {
-		margin:0 auto;
-		max-width:64rem;
-		padding:1rem;
+		margin: 0 auto;
+		max-width: 64rem;
+		padding: 1rem;
 	}
 
 
 	/* Content */
 
   blockquote {
-    font-weight:normal;
+    font-weight: normal;
   }
 
   img.size-full {
-    display:block;
-    width:100%;
+    display: block;
+    width: 100%;
   }
 
 	p.pullout {
-		display:block;
-		float:none;
-		margin:0 0 1.5rem 0;
-		width:auto;
+		display: block;
+		float: none;
+		margin: 0 0 1.5rem 0;
+		width: auto;
 	}
 
   #current_posts_contents {
@@ -2440,7 +2422,7 @@ and (max-width:1023px) {
   #current_posts_contents li,
   #current_posts_contents li:nth-child(odd) {
     float: none;
-    margin: 0 0 3rem 0;
+    margin: 0 0 2.8rem 0;
     width: auto;
   }
 
