@@ -6,8 +6,6 @@
 
 <body <?php body_class('front_page'); ?>">
 
-<?php $ltheme_options = get_option( 'theme_ltheme_options' ); ?>
-
 <?php get_header(); ?>
 
 <div id="content_column_container">
