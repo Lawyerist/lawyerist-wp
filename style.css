@@ -478,11 +478,8 @@ p.wp-caption-text {
 	color: #777;
   font-family: concourse, serif;
   font-size: 1.6rem;
+  margin-bottom: 1em;
 }
-
-  .single .postmeta {
-    margin-bottom: 1em;
-  }
 
 pre {
 	color: #555;
@@ -1399,13 +1396,14 @@ Content
       display: inline-block;
       float: left;
       -webkit-font-smoothing: antialiased;
-      font: normal 3.2rem/1em Genericons;
+      font: normal 3.2rem/1em 'Genericons';
       vertical-align: middle;
     }
 
     .category_list,
     .tag_list {
       font-family: concourse, sans-serif;
+      line-height: 3.2rem;
     }
 
     .category_list:before {
@@ -1414,7 +1412,7 @@ Content
       display: inline-block;
       float: left;
       -webkit-font-smoothing: antialiased;
-      font: normal 3.2rem/1em Genericons;
+      font: normal 3.2rem/1em 'Genericons';
       vertical-align: middle;
     }
 
@@ -1424,7 +1422,7 @@ Content
   		display: inline-block;
   		float: left;
   		-webkit-font-smoothing: antialiased;
-  		font: normal 3.2rem/1em Genericons;
+  		font: normal 3.2rem/1em 'Genericons';
   		vertical-align: middle;
   	}
 
