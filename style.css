@@ -1095,13 +1095,16 @@ a.post.fp_sticky:hover {
   		margin-bottom: 2.6rem;
   	}
 
-  #featured_posts,
+  #featured_posts {
+		color: #fff !important;
+	}
+
   #featured_posts h2,
   #featured_posts .postmeta,
   #featured_posts .comment_link:before {
-		color: #fff !important;
+    color: #fff !important;
     text-shadow: .1rem .1rem 0 #111, 0 0 5rem #555;
-	}
+  }
 
   #featured_posts .fp_postmeta_break {
     display: inline-block;
