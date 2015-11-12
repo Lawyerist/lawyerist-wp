@@ -1210,9 +1210,9 @@ Content
 
 	a.post .headline {
 		color: #333;
-    font-size: 2.4rem;
-    line-height: 2.8rem;
-    margin-bottom: 1.65rem;
+    font-size: 2.8rem;
+  	line-height: 3.9rem;
+  	margin-bottom: .25em;
 	}
 
 	a.post:hover .headline {
