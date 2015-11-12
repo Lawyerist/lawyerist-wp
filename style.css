@@ -1897,7 +1897,8 @@ li.widget {
 }
 
   li.widget p {
-    font-size:1.6rem;
+    font-size: 1.6rem;
+    line-height: 1.35;
     margin-bottom: 2.8rem;
   }
 
@@ -2018,6 +2019,7 @@ li.widget {
 		display: block;
 		font-family: concourse, sans-serif;
 		font-size: 1.8em;
+    line-height: 1.35;
 		padding-left: 7.5rem;
 		text-decoration: none;
 	}
