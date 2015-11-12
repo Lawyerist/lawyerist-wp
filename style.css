@@ -398,25 +398,25 @@ h2 {
 h3 {
 	font-size: 2.8rem;
 	line-height: 3.9rem;
-	margin-bottom: 1em;
+	margin-bottom: .5em;
 }
 
 h4 {
 	font-size: 2.4rem;
 	line-height: 3.5rem;
-	margin-bottom: 1em;
+	margin-bottom: .5em;
 }
 
 h5 {
 	font-size: 2.2rem;
 	line-height: 3.2rem;
-	margin-bottom: 1em;
+	margin-bottom: .5em;
 }
 
 h6 {
 	font-size: 2rem;
 	line-height: 2.8rem;
-	margin-bottom: 1em;
+	margin-bottom: .75em;
 }
 
 hr {
