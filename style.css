@@ -237,7 +237,7 @@ body {
 
   .menu-default-container {
   	background-color: #cc0000;
-  	margin-bottom: 1em;
+  	margin-bottom: 2.8rem;
   	width: 100%;
   }
 
@@ -509,7 +509,7 @@ sup {
 
 .syntaxhighlighter {
 	font-size: 1.4rem;
-	margin-bottom: 1em;
+	margin-bottom: 2.8rem;
 }
 
 ol,
@@ -590,7 +590,7 @@ img.wp-post-image.attachment-large {
 }
 
 .wp-caption {
-  margin-bottom: 1em;
+  margin-bottom: 2.8rem;
   max-width: 100%;
 }
 
@@ -1175,19 +1175,19 @@ Content
 ------------------------------*/
 
 .error404 .tag_cloud {
-	margin-bottom: 1em;
+	margin-bottom: 2.8rem;
 }
 
 #lawyerist_content_search {
-	margin-bottom: 1em;
+	margin-bottom: 2.8rem;
 }
 
 #lawyerist_content_search input#st-search-input-content {
-	border-radius:.2rem !important;
-	font-size:2rem;
-	margin:0;
-  padding-left:2.7rem !important;
-	width:26.5rem !important;
+	border-radius: .2rem !important;
+	font-size: 2rem;
+	margin: 0;
+  padding-left: 2.7rem !important;
+	width: 26.5rem !important;
 }
 
 
@@ -1205,7 +1205,7 @@ Content
 	}
 
   a.post:last-of-type {
-    margin-bottom: 1em;
+    margin-bottom: 2.8rem;
   }
 
 	a.post .headline {
@@ -1258,7 +1258,7 @@ Content
 
 	#archive_header {
 		background-color: #eee;
-		margin-bottom: 1em;
+		margin-bottom: 2.8rem;
 		padding: 1.5rem 2.5rem 2rem 2.5rem;
 	}
 
@@ -1307,7 +1307,7 @@ Content
 	.post_index {
 		background-color:#f5f5f5;
     border:1px solid #ddd;
-		margin-bottom: 1em;
+		margin-bottom: 2.8rem;
 		padding:1.5rem 2.5rem 2rem 2.5rem;
 	}
 
@@ -1427,7 +1427,7 @@ Content
   	}
 
   .theiaPostSlider_nav {
-    margin-bottom: 1em;
+    margin-bottom: 2.8rem;
   }
 
 	.theiaPostSlider_nav ._text {
@@ -1442,7 +1442,7 @@ Content
   ------------------------------*/
 
   table {
-    margin-bottom: 1em;
+    margin-bottom: 2.8rem;
   }
 
   td,
@@ -1543,7 +1543,7 @@ Content
     background: #eee;
     border: .1rem solid #ddd;
     display: block;
-    margin-bottom: 1em;
+    margin-bottom: 2.8rem;
     padding: 1.5rem 2.5rem 2rem 2.5rem;
   }
 
@@ -1789,7 +1789,7 @@ Author Pages
 
 #author_header {
   border-bottom: .1rem solid #ddd;
-  margin-bottom: 1em;
+  margin-bottom: 2.8rem;
   padding-bottom: 2.8rem;
 }
 
@@ -1862,8 +1862,7 @@ Sidebar
 ------------------------------*/
 
 #lawyerist_sidebar_search {
-	font-size: 1rem;
-  margin-bottom: 1em;
+  margin-bottom: 2.8rem;
 }
 
 ul#sidebar_column,
@@ -1907,9 +1906,9 @@ li.widget {
 	}
 
 	li.widget > ul li {
-		font-size: 1.8em;
-		line-height: 1.556em;
-		margin-bottom: .778em;
+		font-size: 1.8rem;
+		line-height: 1.556rem;
+		margin-bottom: .778rem;
 	}
 
 
@@ -2144,7 +2143,7 @@ body .gfield_description {
 }
 
 body .gforms_confirmation_message {
-  margin-bottom: 1em;
+  margin-bottom: 2.8rem;
   border: .1rem solid #ddd;
   padding: 1.5rem 2.5rem 2rem 2.5rem;
   background-color: #ffffa0;
@@ -2169,7 +2168,7 @@ body .gforms_confirmation_message {
     display: inline-block;
     font-family: concourse, sans-serif;
     font-size: 1.6rem;
-    margin-bottom: 1em;
+    margin-bottom: 2.8rem;
     outline: none;
     padding: .7rem 1.4rem;
     text-decoration:none;
@@ -2298,7 +2297,7 @@ and (max-width:1023px) {
 			}
 
       #div-gpt-ad-1429843825352-2 {
-        margin-bottom: 1em;
+        margin-bottom: 2.8rem;
       }
 
 }
@@ -2444,7 +2443,7 @@ and (max-width:1023px) {
 	}
 
 		#pagenav .alignleft.pagenav_link_block {
-			margin-bottom: 1em;
+			margin-bottom: 2.8rem;
 		}
 
   .author_list li {
