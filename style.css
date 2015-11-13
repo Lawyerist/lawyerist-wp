@@ -140,28 +140,7 @@ Load Fonts
 /* Triplicate (code) */
 @font-face {
     font-family: 'triplicate';
-    src: url('fonts/triplicate/triplicate_t3_code_regular-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'triplicate-italic';
-    src: url('fonts/triplicate/triplicate_t3_code_italic-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'triplicate-bold';
-    src: url('fonts/triplicate/triplicate_t3_code_bold-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'triplicate-bold-italic';
-    src: url('fonts/triplicate/triplicate_t3_code_bold_italic-webfont.woff') format('woff');
+    src: url('fonts/triplicate/triplicate_t4_code_regular-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
