@@ -2079,6 +2079,10 @@ body .gform_wrapper input[type=radio] {
   margin-left: .1rem;
 }
 
+body .gform_wrapper input.ginput_card_security_code {
+  line-height: 2.4rem;
+}
+
 body .gform_wrapper span.ginput_card_security_code_icon {
   left: 0 !important;
   top: .4rem !important;
@@ -2119,7 +2123,11 @@ input#st-search-input:focus {
   width: 30rem;
 }
 
-body .gfield_description {
+body .gform_wrapper .instruction {
+  font-size: 80%;
+}
+
+body .gform_wrapper .gfield_description {
   font-size: 80%;
 }
 
