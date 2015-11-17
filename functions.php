@@ -32,9 +32,6 @@ function lawyerist_stylesheets() {
 	wp_register_style( 'stylesheet', get_template_directory_uri() . '/style.css', array(), $cacheBusterCSS, 'all' );
 	wp_enqueue_style( 'stylesheet' );
 
-	wp_register_style( 'google-fonts', 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic|Roboto+Slab:700,400' );
-	wp_enqueue_style( 'google-fonts' );
-
 }
 
 add_action( 'wp_enqueue_scripts', 'lawyerist_stylesheets' );
@@ -326,11 +323,11 @@ if ( function_exists( 'add_image_size' ) ) {
 }
 
 if ( function_exists( 'add_image_size' ) ) {
-	add_image_size( 'featured', 320, 256.5, true);
+	add_image_size( 'featured', 320, 263.5, true);
 }
 
 if ( function_exists( 'add_image_size' ) ) {
-	add_image_size( 'featured_top', 640, 380.5, true);
+	add_image_size( 'featured_top', 640, 387.5, true);
 }
 
 
