@@ -2064,6 +2064,7 @@ body .gform_wrapper textarea {
   font-family: inherit;
   font-size: 1.6rem;
   outline: none;
+  line-height: 2.4rem;
   padding: .4rem;
   -webkit-appearance: none;
 }
@@ -2079,10 +2080,6 @@ body .gform_wrapper input[type=radio] {
   margin-left: .1rem;
 }
 
-body .gform_wrapper input.ginput_card_security_code {
-  line-height: 2.4rem;
-}
-
 body .gform_wrapper span.ginput_card_security_code_icon {
   left: 0 !important;
   top: .4rem !important;
@@ -2094,7 +2091,6 @@ input#st-search-input {
 }
 
 body .gform_wrapper select {
-  line-height: 2rem;
   padding: .4rem !important;
 }
 
