@@ -277,6 +277,15 @@ body {
 
 
 /* Things that use Concourse */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: concourse-headings, sans-serif;
+}
+
 aside blockquote,
 button,
 .button,
@@ -305,7 +314,8 @@ ul#menu-default {
 
 
 /* Things that use Triplicate */
-code {
+code,
+pre {
   font-family: triplicate, monospace;
 }
 
@@ -390,7 +400,6 @@ h4,
 h5,
 h6 {
 	color: #333;
-	font-family: concourse-headings, sans-serif;
   font-weight: bold;
   line-height: 1.15;
   margin-top: 0;
@@ -403,7 +412,6 @@ h4 em,
 h5 em,
 h6 em {
 	color: #333;
-	font-family: concourse-headings-italic, sans-serif;
   font-style: italic;
   font-weight: bold;
   margin-top: 0;
@@ -506,7 +514,6 @@ p.wp-caption-text {
 
 pre {
 	color: #555;
-	font-family: triplicate, monospace;
 	margin-bottom: 1em;
 	margin-left: 2.8rem;
 	white-space: pre-wrap; /* css-3 */
