@@ -1037,7 +1037,7 @@ a.post.fp_sticky:hover {
 		clear: none;
 		display: inline-block;
 		float: left;
-		height: 26.35rem;
+		height: 22.45rem;
 		overflow: hidden;
 		margin: 0 0 .2rem 0;
 		max-width: 31.9rem;
@@ -2374,7 +2374,7 @@ and (max-width:1023px) {
   #featured_posts a:first-child {
 		display: block;
 		float: none;
-		height: 25.65rem;
+		height: 22.45rem;
 		margin: 0 0 .2rem 0 !important;
 		max-width: none;
 		width: auto;
@@ -2390,9 +2390,9 @@ and (max-width:1023px) {
   #featured_posts a:first-child h2,
   #featured_posts a:first-child.smaller-title h2,
   #featured_notes h2 {
-		font-size: 2.4rem;
-		line-height: 3.3rem;
-		margin-bottom: 1.65rem;
+    font-size: 2.4rem;
+    letter-spacing: .1rem;
+    margin-bottom: 1.65rem;
 	}
 
   a.fp_sticky h2.headline {
