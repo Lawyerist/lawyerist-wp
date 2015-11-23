@@ -4,7 +4,7 @@
 *  Peace and love. :)
 */
 
-function generator(){
+function generator() {
 
   // Add your own words to the wordlist. Be careful to obey the syntax shown
 
@@ -60,9 +60,7 @@ function generator(){
 
   var randomNumber3 = parseInt(Math.random() * wordlist3.length);
 
-  var name = wordlist1[randomNumber1] + wordlist2[randomNumber2]
-
-  + wordlist3[randomNumber3];
+  var name = wordlist1[randomNumber1] + wordlist2[randomNumber2] + wordlist3[randomNumber3];
 
   // alert(name); //Remove first to slashes to alert the name
 
