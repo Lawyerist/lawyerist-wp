@@ -48,7 +48,8 @@
 
 							/* SERIES LOOP */
 
-							$this_post[] = $post->ID;
+							$current_post	= get_the_ID();
+							$this_post[]	= $post->ID;
 
 							$series_title = wp_get_post_terms(
 								$post->ID,
@@ -73,7 +74,8 @@
 							$series_slug = $series_slug[0];
 
 							$series_query_args = array(
-								'post__not_in'		=> $this_post,
+								'orderby'					=> 'date',
+								'order'						=> 'ASC',
 								'posts_per_page'  => 4,
 								'tax_query'     	=> array(
 									array(
@@ -93,9 +95,17 @@
 
 								<ul>
 
-									<?php while ( $series_query->have_posts() ) : $series_query->the_post(); ?>
+									<?php while ( $series_query->have_posts() ) : $series_query->the_post();
 
-										<li><a href="<?php the_permalink(); ?>?utm_source=lawyerist-series-footer-nav&utm_medium=internal&utm_campaign=nav" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>"><?php the_title(); ?></a></li>
+										if ( get_the_ID() == $current_post ) { ?>
+
+											<li><?php the_title(); ?></li>
+
+										<?php } else { ?>
+
+											<li><a href="<?php the_permalink(); ?>?utm_source=lawyerist-series-footer-nav&utm_medium=internal&utm_campaign=nav" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>"><?php the_title(); ?></a></li>
+
+										<?php } ?>
 
 									<?php endwhile; ?>
 
