@@ -16,9 +16,9 @@
 
 			<div <?php post_class('hentry'); ?>>
 
-				<h1 class="headline entry-title"><?php the_title(); ?></h1>
+				<h1 class="headline entry-title" data-swiftype-index="false"><?php the_title(); ?></h1>
 
-				<div class="postmeta">
+				<div class="postmeta" data-swiftype-index="false">
 					<?php lawyerist_get_byline(); ?>
 					<div class="comment_link"><a href="#disqus_thread">&nbsp;</a></div>
 					<div class="clear"></div>
@@ -30,7 +30,7 @@
 
 				if ( has_post_thumbnail() && $page == 1 && !has_tag('no-image') ) { ?>
 
-					<div itemprop="image"><?php the_post_thumbnail('large'); ?></div>
+					<div itemprop="image" data-swiftype-index="false"><?php the_post_thumbnail('large'); ?></div>
 
 				<?php } ?>
 

@@ -22,14 +22,20 @@
 		<?php }
 
 		else { ?>
-			<p id="title"><a href="<?php echo home_url(); ?>"><?php bloginfo('name'); echo ' &mdash; '; bloginfo('description'); ?></a></p>
+			<p id="title" data-swiftype-index="false"><a href="<?php echo home_url(); ?>"><?php bloginfo('name'); echo ' &mdash; '; bloginfo('description'); ?></a></p>
 		<?php } ?>
 
-		<?php if ( !is_mobile() ) { wp_nav_menu( array( 'theme_location' => 'header_nav' ) ); } ?>
+		<?php if ( !is_mobile() ) { ?>
+
+			<div data-swiftype-index="false">
+				<?php wp_nav_menu( array( 'theme_location' => 'header_nav' ) ); ?>
+			</div>
+
+		<?php } ?>
 
 		<?php /* if ( is_mobile() ) { wp_nav_menu( array( 'theme_location' => 'mobile_nav' ) ); } */ ?>
 
-		<div id="email_social">
+		<div id="email_social" data-swiftype-index="false">
 			<ul>
 				<li><a class="linkedin sprite" href="https://www.linkedin.com/company/lawyerist-media-llc" title="Connect with Lawyerist on LinkedIn" target="_blank"></a></li>
 				<li><a class="facebook sprite" href="https://facebook.com/lawyerist" title="Friend Lawyerist on Facebook" target="_blank"></a></li>
@@ -42,6 +48,12 @@
 
 	</div><!-- #header -->
 
-	<?php if ( !is_mobile() ) { wp_nav_menu( array( 'theme_location' => 'main_nav' ) ); } ?>
+	<?php if ( !is_mobile() ) { ?>
+
+		<div data-swiftype-index="false">
+			<?php wp_nav_menu( array( 'theme_location' => 'main_nav' ) ); ?>
+		</div>
+
+	<?php } ?>
 
 </div><!-- #header_container -->
