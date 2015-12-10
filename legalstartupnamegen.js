@@ -1,7 +1,6 @@
-/* Online Name Generators v.2.0 script is  made by Niels Gamborg webmaster at online-generator.com
-*  and Andrew Cabasso from jurispage.com.
-*  The script is  free (as in "free speech" and also as in "free beer") in anyway. Use it after you own likings.
-*  Peace and love. :)
+/* Online Name Generators v.2.0 script is made by Niels Gamborg (online-generator.com)
+*  and adapted for Lawyerist.com by Andrew Cabasso (jurispage.com).
+*  The script is free software (as in "free speech" and also as in "free beer").
 */
 
 function generator() {

@@ -76,7 +76,7 @@
 							$series_query_args = array(
 								'orderby'					=> 'date',
 								'order'						=> 'ASC',
-								'posts_per_page'  => 4,
+								'posts_per_page'	=> 10,
 								'tax_query'     	=> array(
 									array(
 										'taxonomy'  => 'series',
@@ -86,6 +86,10 @@
 								)
 							);
 
+							if ( $series_slug == 'briefs' || $series_slug == 'lawyerist-podcast' ) {
+								$series_query_args['order'] = 'DESC';
+								$series_query_args['posts_per_page'] = 4;
+							}
 
 							$series_query = new WP_Query( $series_query_args );
 
@@ -111,7 +115,7 @@
 
 								</ul>
 
-								<?php if ( $series_query->post_count = 4 ) { ?>
+								<?php if ( $series_query->found_posts > 4 ) { ?>
 
 									<p><a href="<?php echo get_term_link( $series_slug, 'series' ); ?>?utm_source=lawyerist-series-footer-nav&utm_medium=internal&utm_campaign=nav">See all the posts in this series.</a></p>
 
