@@ -6,6 +6,7 @@ Stylesheets & Google Fonts
 Nav Menu
 Bylines
 Theme Setup
+Fix Gravity Form Tab Index Conflicts
 Rename "Aside" Post Format to "Note"
 Series Custom Taxonomy
 Edit Flow
@@ -176,6 +177,20 @@ function lawyerist_theme_setup() {
 }
 
 add_action( 'after_setup_theme', 'lawyerist_theme_setup' );
+
+
+/*------------------------------
+Fix Gravity Form Tab Index Conflicts
+http://gravitywiz.com/fix-gravity-form-tabindex-conflicts/
+------------------------------*/
+
+function gform_tabindexer( $tab_index, $form = false ) {
+    $starting_index = 1000; // if you need a higher tabindex, update this number
+    if( $form )
+        add_filter( 'gform_tabindex_' . $form['id'], 'gform_tabindexer' );
+    return GFCommon::$tab_index >= $starting_index ? GFCommon::$tab_index : $starting_index;
+}
+add_filter( 'gform_tabindex', 'gform_tabindexer', 10, 2 );
 
 
 /*------------------------------
