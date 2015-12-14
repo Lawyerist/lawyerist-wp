@@ -21,7 +21,7 @@ function generator() {
 
     "Best","Ever","Simple","Attorney","Cosmo","Diligence","Sky","Up","Logik",
 
-    "Ravel","Panda","Shake","My"];
+    "Ravel","Panda","Shake","My","Gnos","Cogni","Lumina","Collab"];
 
 
   var wordlist2 = ["Docs","Law","Pivot","Dingo","Legal","Page","Kick",
@@ -40,7 +40,7 @@ function generator() {
 
     "scale","Booker","Court","Alarm","Fee","Rate","Stage",
 
-    "Engine","Analytics","cull","Machina","Flex","text","trek"];
+    "Engine","Analytics","cull","Machina","Flex","text","trek","Lex"];
 
 
   var wordlist3 = [" "," "," "," "," "," "," "," "," "," "," "," "," ",
