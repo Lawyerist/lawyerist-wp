@@ -25,6 +25,7 @@
 			<p id="title" data-swiftype-index="false"><a href="<?php echo home_url(); ?>"><?php bloginfo('name'); echo ' &mdash; '; bloginfo('description'); ?></a></p>
 		<?php } ?>
 
+		<!-- Show the header nav menu nless we've got a mobile phone -->
 		<?php if ( !is_mobile() ) { ?>
 
 			<div data-swiftype-index="false">
@@ -32,8 +33,6 @@
 			</div>
 
 		<?php } ?>
-
-		<?php /* if ( is_mobile() ) { wp_nav_menu( array( 'theme_location' => 'mobile_nav' ) ); } */ ?>
 
 		<div id="email_social" data-swiftype-index="false">
 			<ul>
@@ -48,6 +47,7 @@
 
 	</div><!-- #header -->
 
+	<!-- Show the main nav menu unless we've got a mobile phone -->
 	<?php if ( !is_mobile() ) { ?>
 
 		<div data-swiftype-index="false">
@@ -55,5 +55,8 @@
 		</div>
 
 	<?php } ?>
+
+	<!-- Show the mobile nav menu if we've got a mobile phone -->
+	<?php /* if ( is_mobile() ) { wp_nav_menu( array( 'theme_location' => 'mobile_nav' ) ); } */ ?>
 
 </div><!-- #header_container -->

@@ -2066,7 +2066,8 @@ Forms
 }
 
 #sidebar_column .gform_footer {
-  margin-top:0;
+  margin-top: 0;
+  padding-bottom: 0;
 }
 
 #sidebar_column .gform_fields li {
@@ -2186,6 +2187,14 @@ body .gforms_confirmation_message {
     width:auto;
   }
 
+    #sidebar_column button,
+    #sidebar_column a.button,
+    #sidebar_column body .gform_wrapper input.button,
+    #sidebar_column input.button,
+    #sidebar_column input[type="button"] {
+      margin-bottom: 0;
+    }
+
   body .gform_wrapper input.button {
     font-size: 1.6rem !important;
     padding: .7rem 1.4rem !important;
@@ -2267,47 +2276,52 @@ and (max-width:1023px) {
 
 	/* Hide This Stuff */
 
-  .menu-default-container,
-  li#ap4 {
-		display:none !important;
+  .menu-default-container {
+		display: none !important;
 	}
+
+  li.widget.sidebar_ads {
+    display: none !important;
+  }
 
 
 	/* Change Layout */
 
   #header_container {
-    border-bottom:1rem solid #cc0000;
+    border-bottom: 1rem solid #cc0000;
   }
 
     .menu-header-container {
-      margin-left:2rem;
+      margin-left: 2rem;
     }
 
 	#content_column_container,
 	#footer {
-		max-width:64rem;
+		max-width: 64rem;
 	}
 
 	#content_column_container {
-		padding:1rem;
+		padding: 1rem;
 	}
 
 		#content_column {
-			float:none;
-			width:100%;
+			float: none;
+			width: 100%;
 		}
 
 		ul#sidebar_column {
-			float:none;
-			margin:0 auto;
+			float: none;
+			margin: 0 auto;
+      padding: 0;
+      width: auto;
 		}
 
-			li.widget.sidebar_ads {
-				padding:0;
-			}
+      li#lawyerist_sidebar_search {
+        margin-bottom: 5.6rem;
+      }
 
-      #div-gpt-ad-1429843825352-2 {
-        margin-bottom: 2.8rem;
+      li#lawyerist_sidebar_search input#st-search-input {
+        width: 100%;
       }
 
 }
@@ -2317,7 +2331,7 @@ and (max-width:1023px) {
 @media only screen and (max-width:945px) {
 
 .menu-header-container {
-  display:none !important;
+  display: none !important;
 }
 
 }
@@ -2327,7 +2341,7 @@ and (max-width:1023px) {
 @media only screen and (max-width:747px) {
 
 	#leaderboard_container {
-		display:none;
+		display: none;
 	}
 
 }
@@ -2340,7 +2354,7 @@ and (max-width:1023px) {
 	/* Hide This Stuff */
 
 	#related_posts {
-		display:none;
+		display: none;
 	}
 
 	/* Change Layout */
@@ -2400,9 +2414,7 @@ and (max-width:1023px) {
   }
 
 	.front_page ul#sidebar_column {
-		margin: 0 auto;
 		max-width: 64rem;
-		padding: 1rem;
 	}
 
 
@@ -2475,6 +2487,11 @@ and (max-width:1023px) {
   .survival_guide_note img {
     margin: 0 0 1.5rem 0;
     width: 100%;
+  }
+
+  #survival_guides a img,
+  .page-id-82537 a img {
+    width: 50%;
   }
 
 }

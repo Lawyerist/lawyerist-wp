@@ -9,6 +9,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
+<!-- Begin DoubleClick tags -->
 <script type='text/javascript'>
   var googletag = googletag || {};
   googletag.cmd = googletag.cmd || [];
@@ -34,6 +35,7 @@
     googletag.enableServices();
   });
 </script>
+<!-- End DoubleClick tags -->
 
 <title><?php wp_title(); ?></title>
 

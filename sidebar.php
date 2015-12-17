@@ -5,7 +5,7 @@
 		<div id="st-results-container"></div>
 	</li>
 
-<?php if ( !has_tag('no-ads') ) { ?>
+<?php if ( !has_tag('no-ads') || !is_mobile() ) { ?>
 
 	<li class="sidebar_ads widget">
 		<ul>
