@@ -5,6 +5,7 @@
 Stylesheets & Google Fonts
 Nav Menu
 Bylines
+Mobile Ad
 Theme Setup
 Fix Gravity Form Tab Index Conflicts
 Rename "Aside" Post Format to "Note"
@@ -162,6 +163,59 @@ function lawyerist_get_byline() {
 	echo '<div class="author_link">By ' . $author . ' <span class="fp_postmeta_break">on ' . $date. '</span></div>';
 
 }
+
+
+/*------------------------------
+Mobile Ad
+------------------------------*/
+
+function lawyerist_mobile_ad() {
+
+	if ( is_mobile() ) {
+
+		$content = get_the_content();
+
+		ob_start();
+
+			?>
+			<div id="mobile_ad">
+				<div id='div-gpt-ad-1429843825352-1' style='height:250px; width:300px;'>
+				<script type='text/javascript'>
+				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1429843825352-1'); });
+				</script>
+				</div>
+			</div>
+			<?php
+
+		$dpf_ap2_code = ob_get_clean();
+
+		$paragraphs = explode( '</p>', $content );
+
+		if ( is_front_page() ) {
+
+			// show below first sponsored post
+
+		} elseif ( is_single() || is_page() ) {
+
+			// show below featured post (or title if the post or page doesn't have a featured post)
+
+		} elseif ( is_archive() ) {
+
+			// show below archive header
+
+		} else {
+
+			echo '';
+
+		}
+
+		/* echo $dpf_ap2_code; */
+
+	}
+
+}
+
+add_action( 'wp_footer', 'lawyerist_mobile_ad' );
 
 
 /*------------------------------
