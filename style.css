@@ -24,6 +24,7 @@ Header
 	Social Icons
 Menu
 Mobile Menu
+Mobile Ad
 Front Page
 	Featured Posts
   Featured Notes
@@ -920,6 +921,26 @@ ul#menu-mobile ul.sub-menu {
 
 
 /*------------------------------
+Mobile Ad
+------------------------------*/
+
+#mobile_ad {
+  background: #ddd;
+  clear: both;
+  height: 25rem;
+  width: 100%;
+}
+
+#mobile_ad > div {
+  margin: 0 auto;
+}
+
+#featured_posts #mobile_ad {
+  margin-bottom: .2rem;
+}
+
+
+/*------------------------------
 Front Page
 ------------------------------*/
 
@@ -1121,7 +1142,7 @@ a.post.fp_sticky:hover {
   #featured_posts .postmeta,
   #featured_posts .comment_link:before {
     color: #fff !important;
-    text-shadow: .1rem .1rem 0 #111, 0 0 5rem #555;
+    text-shadow: .1rem .1rem 0 #111;
   }
 
   #featured_posts .fp_postmeta_break {
@@ -1207,7 +1228,6 @@ Content
   padding-left: 2.7rem !important;
 	width: 26.5rem !important;
 }
-
 
 	/*------------------------------
 	Index & Archive Lists
