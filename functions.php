@@ -169,53 +169,53 @@ function lawyerist_get_byline() {
 Mobile Ad
 ------------------------------*/
 
-function lawyerist_mobile_ad() {
+function lawyerist_mobile_ad( $content ) {
 
-	if ( is_mobile() ) {
-
-		$content = get_the_content();
-
-		ob_start();
-
-			?>
-			<div id="mobile_ad">
-				<div id='div-gpt-ad-1429843825352-1' style='height:250px; width:300px;'>
-				<script type='text/javascript'>
-				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1429843825352-1'); });
-				</script>
-				</div>
-			</div>
-			<?php
-
-		$dpf_ap2_code = ob_get_clean();
+	if ( is_mobile() && ( is_single() || is_page() ) ) {
 
 		$paragraphs = explode( '</p>', $content );
 
-		if ( is_front_page() ) {
+		ob_start();
 
-			// show below first sponsored post
+		?>
+		<div id="mobile_ad"><!-- /12659965/lawyerist_ap2_sidebar1 -->
+			<div id='div-gpt-ad-1429843825352-1' style='height:250px; width:300px;'>
+			<script type='text/javascript'>
+			googletag.cmd.push(function() { googletag.display('div-gpt-ad-1429843825352-1'); });
+			</script>
+			</div>
+		</div>
+		<?php
 
-		} elseif ( is_single() || is_page() ) {
+		$dfp_code = ob_get_clean();
 
-			// show below featured post (or title if the post or page doesn't have a featured post)
+		foreach ( $paragraphs as $p_num => $paragraph ) {
 
-		} elseif ( is_archive() ) {
+			// Only add closing tag to non-empty paragraphs
+			if ( trim( $paragraph ) ) {
+				// Adding closing markup now, rather than at implode, means insertion
+				// is outside of the paragraph markup, and not just inside of it.
+				$paragraphs[$p_num] .= '</p>';
+			}
 
-			// show below archive header
-
-		} else {
-
-			echo '';
-
+			// Insert DFP code after 1st paragraph
+			// (0 is paragraph #1 in the $paragraphs array)
+			if ( $p_num == 0 ) {
+				$paragraphs[$p_num] .= $dfp_code;
+			}
 		}
 
-		/* echo $dpf_ap2_code; */
+		return implode( '', $paragraphs );
 
+	} else {
+
+		return $content;
+		
 	}
 
 }
 
-add_action( 'wp_footer', 'lawyerist_mobile_ad' );
+add_filter( 'the_content', 'lawyerist_mobile_ad' );
 
 
 /*------------------------------
