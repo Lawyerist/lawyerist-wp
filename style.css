@@ -23,7 +23,6 @@ Header
   Header Nav
 	Social Icons
 Menu
-Mobile Menu
 Mobile Ad
 Front Page
 	Featured Posts
@@ -859,65 +858,6 @@ ul#menu-default ul.sub-menu {
       left: auto;
       right: 0;
     }
-
-
-/*------------------------------
-Mobile Menu
-------------------------------*/
-
-.menu-mobile-container {
-  position: absolute;
-    bottom: 0;
-    left: 0;
-}
-
-ul#menu-mobile li {
-	display:block;
-	margin:0;
-  position:relative;
-}
-
-ul#menu-mobile li.menu-item-has-children > a:after {
-  content: '\f431';
-  display: inline-block;
-  -webkit-font-smoothing: antialiased;
-  font: normal 1.6rem/1em Genericons;
-  height: 1.4rem;
-  vertical-align: top;
-}
-
-ul#menu-mobile li a {
-	color: #fff;
-	display: block;
-	font-size: 1.4rem;
-	line-height: 1em;
-	padding: .7rem 1rem .8rem 1rem;
-	text-decoration: none;
-}
-
-  ul#menu-mobile > li a:hover {
-    background: #aa0000;
-    color: #ddd;
-  }
-
-  ul#menu-mobile > li.menu-item-has-children > a:hover {
-    background: #cc0000;
-    color: #cc0000;
-  }
-
-ul#menu-mobile ul.sub-menu {
-  background: #aa0000;
-  margin: 0;
-  position: absolute;
-    left: -99999px;
-    top: 0;
-  width: 14rem;
-  z-index: 10;
-}
-
-  ul#menu-mobile li:hover ul.sub-menu {
-    left: 0;
-  }
 
 
 /*------------------------------

@@ -47,16 +47,8 @@
 
 	</div><!-- #header -->
 
-	<!-- Show the main nav menu unless we've got a mobile phone -->
-	<?php if ( !is_mobile() ) { ?>
-
-		<div data-swiftype-index="false">
-			<?php wp_nav_menu( array( 'theme_location' => 'main_nav' ) ); ?>
-		</div>
-
-	<?php } ?>
-
-	<!-- Show the mobile nav menu if we've got a mobile phone -->
-	<?php /* if ( is_mobile() ) { wp_nav_menu( array( 'theme_location' => 'mobile_nav' ) ); } */ ?>
+	<div data-swiftype-index="false">
+		<?php wp_nav_menu( array( 'theme_location' => 'main_nav' ) ); ?>
+	</div>
 
 </div><!-- #header_container -->
