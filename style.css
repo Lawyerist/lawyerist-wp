@@ -569,17 +569,17 @@ Images
 img.aligncenter {
 	clear: both;
 	display: block;
-	margin: 0 auto 2.8rem auto;
+	margin: 0 auto 1em auto;
 }
 
 img.alignleft {
 	float: left;
-	margin: 0 1.5rem 2.8rem 0;
+	margin: 0 1.5rem 1em 0;
 }
 
 img.alignright {
 	float: right;
-	margin: 0 0 2.8rem 1.5rem;
+	margin: 0 0 1em 1.5rem;
 }
 
 img.avatar {
@@ -609,7 +609,7 @@ img.size-full {
 img.wp-post-image.attachment-medium {
 	float: right;
 	height: auto;
-	margin: 0 0 2.8rem 1.5rem;
+	margin: 0 0 1em 1.5rem;
 	width: 46.875%;
 }
 
@@ -621,7 +621,7 @@ img.wp-post-image.attachment-large {
 }
 
 .wp-caption {
-  margin-bottom: 2.8rem;
+  margin-bottom: 1em;
   max-width: 100%;
 }
 
@@ -1575,7 +1575,7 @@ Content
     background: #eee;
     border: .1rem solid #ddd;
     display: block;
-    margin-bottom: 2.8rem;
+    margin-bottom: 1em;
     padding: 1.5rem 2.5rem 2rem 2.5rem;
   }
 
