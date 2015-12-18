@@ -1824,7 +1824,7 @@ Author Pages
 
 #author_header {
   border-bottom: .1rem solid #ddd;
-  margin-bottom: 2.8rem;
+  min-height: 30rem;
   padding-bottom: 2.8rem;
 }
 
@@ -1832,7 +1832,7 @@ Author Pages
   border-radius: 0;
   float: left;
   height: auto;
-  margin: 0 2rem 0 0;
+  margin: 0 2rem 1em 0;
   width: 46.875%;
 }
 
