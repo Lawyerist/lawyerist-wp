@@ -186,21 +186,12 @@ function lawyerist_mobile_ad( $content ) {
 
 	if ( is_mobile() && ( is_single() || is_page() ) ) {
 
-		$paragraphs = explode( '</p>', $content );
+		$p_close		= '</p>';
+		$paragraphs = explode( $p_close, $content );
 
 		ob_start();
-
-		?>
-		<div id="mobile_ad"><!-- /12659965/lawyerist_ap2_sidebar1 -->
-			<div id='div-gpt-ad-1429843825352-1' style='height:250px; width:300px;'>
-			<script type='text/javascript'>
-			googletag.cmd.push(function() { googletag.display('div-gpt-ad-1429843825352-1'); });
-			</script>
-			</div>
-		</div>
-		<?php
-
-		$dfp_code = ob_get_clean();
+			echo insert_lawyerist_mobile_ad();
+		$dfp_code		= ob_get_clean();
 
 		foreach ( $paragraphs as $p_num => $paragraph ) {
 
@@ -208,12 +199,12 @@ function lawyerist_mobile_ad( $content ) {
 			if ( trim( $paragraph ) ) {
 				// Adding closing markup now, rather than at implode, means insertion
 				// is outside of the paragraph markup, and not just inside of it.
-				$paragraphs[$p_num] .= '</p>';
+				$paragraphs[$p_num] .= $p_close;
 			}
 
 			// Insert DFP code after 1st paragraph
 			// (0 is paragraph #1 in the $paragraphs array)
-			if ( $p_num == 0 ) {
+			if ( $p_num == 1 ) {
 				$paragraphs[$p_num] .= $dfp_code;
 			}
 		}
