@@ -24,7 +24,10 @@
 
 		<?php } ?>
 
+
 		<?php /* THE LOOP */
+
+    $post_num = 1;
 
 		if ( have_posts() ) : while ( have_posts() ) : the_post();
 
@@ -46,6 +49,8 @@
 				<div class="clear"></div>
 
 			</a>
+
+      <?php if ( $post_num == 1 && is_mobile() ) { insert_lawyerist_mobile_ad(); } $post_num++; ?>
 
 		<?php endwhile; endif;
 

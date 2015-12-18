@@ -169,6 +169,19 @@ function lawyerist_get_byline() {
 Mobile Ad
 ------------------------------*/
 
+function insert_lawyerist_mobile_ad() { ?>
+
+	<div id="mobile_ad">
+		<div id='div-gpt-ad-1429843825352-1' style='height:250px; width:300px;'>
+		<script type='text/javascript'>
+		googletag.cmd.push(function() { googletag.display('div-gpt-ad-1429843825352-1'); });
+		</script>
+		</div>
+	</div>
+
+<?php }
+
+
 function lawyerist_mobile_ad( $content ) {
 
 	if ( is_mobile() && ( is_single() || is_page() ) ) {
@@ -210,7 +223,7 @@ function lawyerist_mobile_ad( $content ) {
 	} else {
 
 		return $content;
-		
+
 	}
 
 }

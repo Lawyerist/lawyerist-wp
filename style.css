@@ -925,10 +925,9 @@ Mobile Ad
 ------------------------------*/
 
 #mobile_ad {
-  background: #ddd;
   clear: both;
   height: 25rem;
-  margin-bottom: 1em;
+  padding: 2.8rem 0;
   width: 100%;
 }
 
@@ -936,8 +935,9 @@ Mobile Ad
   margin: 0 auto;
 }
 
-#featured_posts #mobile_ad {
-  margin-bottom: .2rem;
+.index #mobile_ad,
+.archive #mobile_ad {
+  border-bottom: 1px solid #ddd;
 }
 
 
