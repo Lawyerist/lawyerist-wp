@@ -202,7 +202,7 @@ function lawyerist_mobile_ad( $content ) {
 				$paragraphs[$p_num] .= $p_close;
 			}
 
-			// Insert DFP code after 1st paragraph
+			// Insert DFP code after 2nd paragraph
 			// (0 is paragraph #1 in the $paragraphs array)
 			if ( $p_num == 1 ) {
 				$paragraphs[$p_num] .= $dfp_code;
