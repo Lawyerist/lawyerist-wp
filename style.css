@@ -938,6 +938,10 @@ Mobile Ad
   margin: 0 auto;
 }
 
+#featured_posts #mobile_ad {
+  margin: .2rem 0;
+}
+
 .index #mobile_ad,
 .archive #mobile_ad {
   border-top: 1px solid #ddd;
