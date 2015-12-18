@@ -97,17 +97,7 @@
 
   		/* END TOP POST LOOP */
 
-      if ( is_mobile() ) { ?>
-
-        <div id="mobile_ad">
-  				<div id='div-gpt-ad-1429843825352-1' style='height:250px; width:300px;'>
-  				<script type='text/javascript'>
-  				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1429843825352-1'); });
-  				</script>
-  				</div>
-  			</div>
-
-      <?php }
+      if ( is_mobile() ) { insert_lawyerist_mobile_ad(); }
 
   		/* FEATURED POSTS LOOP */
 

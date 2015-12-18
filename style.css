@@ -925,8 +925,11 @@ Mobile Ad
 ------------------------------*/
 
 #mobile_ad {
+  border-bottom: 1px solid #ddd;
+  border-top: 1px solid #ddd;
   clear: both;
   height: 25rem;
+  margin: 1em 0;
   padding: 2.8rem 0;
   width: 100%;
 }
@@ -937,7 +940,8 @@ Mobile Ad
 
 .index #mobile_ad,
 .archive #mobile_ad {
-  border-bottom: 1px solid #ddd;
+  border-top: 1px solid #ddd;
+  margin: 0;
 }
 
 
