@@ -30,7 +30,6 @@
     googletag.defineSlot('/12659965/lawyerist_ap1_leaderboard', [728, 90], 'div-gpt-ad-1429843825352-0').addService(googletag.pubads());
     googletag.defineSlot('/12659965/lawyerist_ap2_sidebar1', [300, 250], 'div-gpt-ad-1429843825352-1').addService(googletag.pubads());
     googletag.defineSlot('/12659965/lawyerist_ap3_sidebar2', [300, 250], 'div-gpt-ad-1429843825352-2').addService(googletag.pubads());
-    googletag.defineSlot('/12659965/lawyerist_ap4_halfpage', [300, 600], 'div-gpt-ad-1429843825352-3').addService(googletag.pubads());
     googletag.pubads().enableSingleRequest();
     googletag.enableServices();
   });

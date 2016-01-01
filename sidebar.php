@@ -23,13 +23,6 @@
 				</script>
 				</div>
 			</li>
-			<li id="ap4" class="sidebar_ad"><!-- /12659965/lawyerist_ap4_halfpage -->
-				<div id='div-gpt-ad-1429843825352-3' style='height:600px; width:300px;'>
-				<script type='text/javascript'>
-				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1429843825352-3'); });
-				</script>
-				</div>
-			</li>
 		</ul>
 		<div class="clear"></div>
 	</li>
