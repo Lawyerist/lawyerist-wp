@@ -1903,7 +1903,7 @@ li.widget {
   li.sidebar_ad {
 		display:inline-block;
     float:left;
-		margin:0 0 2.8rem 0;
+		margin:0 0 2.8rem 0 !important;
 		width:30rem;
 	}
 
