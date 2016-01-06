@@ -319,6 +319,11 @@ pre {
   font-family: triplicate, monospace;
 }
 
+/* Font overrides. */
+.gfield_radio label {
+  font-family: equity, serif;
+}
+
 
 /* Typography */
 body {
@@ -2043,6 +2048,10 @@ Forms
   margin-bottom:0;
 }
 
+body .gform_wrapper {
+  font-size: inherit !important;
+}
+
 body .gform_wrapper input[type=text],
 body .gform_wrapper input[type=email],
 body .gform_wrapper input[type=tel],
@@ -2067,7 +2076,7 @@ body .gform_wrapper textarea {
 }
 
 body .gform_wrapper label.gfield_label {
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   margin-bottom: 0 !important;
 }
 
@@ -2147,7 +2156,6 @@ body .gforms_confirmation_message {
     box-sizing: border-box;
     color:#fff;
     display: inline-block;
-    font-size: 1.6rem;
     margin-bottom: 2.8rem;
     outline: none;
     padding: .7rem 1.4rem;
@@ -2165,7 +2173,7 @@ body .gforms_confirmation_message {
     }
 
   body .gform_wrapper input.button {
-    font-size: 1.6rem !important;
+    font-size: 1.8rem !important;
     padding: .7rem 1.4rem !important;
   }
 
