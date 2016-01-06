@@ -1,19 +1,5 @@
 <?php
 
-/* Temporary fix related to a problem with the MailChimp extension in
-Easy Digital Downloads caused by WordPress 4.4. */
-
-add_filter( 'http_request_args', function( $args, $url ) {
-	// only act on requests to api.mailchimp.com
-	if( strpos( $url, 'api.mailchimp.com' ) === false ) {
-		return $args;
-	}
-
-	$args['sslverify'] = false;
-	return $args;
-}, 10, 2 );
-
-
 /* INDEX
 
 Stylesheets & Google Fonts
