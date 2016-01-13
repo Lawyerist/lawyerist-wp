@@ -406,7 +406,7 @@ h5,
 h6 {
 	color: #333;
   font-weight: bold;
-  line-height: 1.15;
+  line-height: 1.2;
   margin-top: 0;
 }
 
@@ -1071,6 +1071,7 @@ a.post.fp_sticky:hover {
   #featured_posts h2 {
 		font-size: 2.4rem;
     letter-spacing: .1rem;
+    line-height: 1.2;
 		margin-bottom: 1.65rem;
 	}
 
@@ -1084,7 +1085,6 @@ a.post.fp_sticky:hover {
 
     #featured_posts a:first-child.smaller-title h2 {
   		font-size: 3.8rem;
-  		line-height: 5.2rem;
   		margin-bottom: 2.6rem;
   	}
 
@@ -1203,7 +1203,7 @@ Content
 	a.post .headline {
 		color: #333;
     font-size: 2.8rem;
-  	line-height: 1.15;
+  	line-height: 1.2;
   	margin-bottom: .25em;
 	}
 
@@ -1354,6 +1354,10 @@ Content
   #pages_categories_tags p:last-child {
     margin-bottom: 6rem;
   }
+
+    .page_links {
+      line-height: 3.2rem;
+    }
 
     .page_links .page_number {
       background-color: #eee;
