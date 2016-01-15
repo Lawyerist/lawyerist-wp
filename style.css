@@ -1912,8 +1912,12 @@ li.widget {
 	Sidebar Ads
 	------------------------------*/
 
-  li.sidebar_ads {
+  .sidebar_ads {
     margin-bottom: 6rem;
+  }
+
+  .sidebar_ads > ul li:last-child {
+    margin-bottom: 0 !important;
   }
 
   li.sidebar_ad {
