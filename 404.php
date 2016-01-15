@@ -14,15 +14,11 @@
 
 		<div class="post">
 
-			<h1 class="headline" id="404">404: Congratulations! You Found a Typo!</h1>
+			<h1 class="headline">We Can't Find That Page</h1>
 
 			<div class="post_body">
 
-				<p>Legal fame and glory are yours!</p>
-
-				<p><iframe width="640" height="360" src="//www.youtube.com/embed/N_auFicUWK4?list=PL923B0FEA7688AA58" frameborder="0" allowfullscreen></iframe></p>
-
-				<p>Seriously, it looks like the page you were looking for doesn't exist. Try searching for it, in case it moved:</p>
+				<p>Sorry, we can't find the page you are looking for. Try searching for it, in case it moved:</p>
 
 				<div id="lawyerist_content_search">
 					<form>
@@ -31,11 +27,9 @@
 					<div id="st-results-container"></div>
 				</div>
 
-				<p>Or, maybe you prefer a more serendipitous approach to discovery. Here are our most-popular tags:</p>
+				<p>Or, maybe you prefer a more serendipitous approach to discovery. Here are our most popular tags:</p>
 
 				<div class="tag_cloud"><?php wp_tag_cloud('exclude=2580,2602'); ?></div>
-
-				<p>If these don't work for you, check out our <a href="http://lawyerist.com/start/">start page</a>.</p>
 
 				<h3>Before you go, sign up for our email newsletter:</h3>
 
