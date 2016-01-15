@@ -14,7 +14,7 @@ Edit Flow
 Add Image Sizes
 Featured Images in RSS Feeds
 Sidebar
-Allow PHP in Widgets
+Sidebar Popular Posts Widget
 Add Capabilities to Contributor Role
 RSS Feed Caching
 
@@ -450,22 +450,46 @@ add_action( 'widgets_init', 'lawyerist_sidebar_1' );
 Allow PHP in Widgets
 ------------------------------*/
 
-function php_execute($html){
+function l_pp_tabbed_widget_display($args) {
 
-	if ( strpos( $html,"<"."?php" ) !== false ) {
+	echo $args['before_widget'];
+	echo $args['before_title'] . 'Popular Posts' .  $args['after_title'];
 
-		ob_start(); eval("?".">".$html);
+		?>
 
-		$html=ob_get_contents();
+		<div id="popular_posts_tabbed">
 
-		ob_end_clean();
+		<ul class="idTabs">
+			<li><a href="#current">This Week</a></li>
+			<li><a href="#all-time">All Time</a></li>
+		</ul>
 
-	}
+		<div id="current" class="tabs_sublist">
+			<?php wpp_get_mostpopular("post_type='post'&range=weekly&limit=5&freshness=1&stats_comments=0&thumbnail_height=60&thumbnail_width=60&post_html='<li>{thumb}<a class=\"wpp_headline\" href=\"{url}?utm_source=lawyerist-sidebar\">{text_title}</a></li>'"); ?>
+		</div>
 
-	return $html;
+		<div id="all-time" class="tabs_sublist">
+			<?php wpp_get_mostpopular("post_type='post'&range=all&limit=5&stats_comments=0&thumbnail_height=60&thumbnail_width=60&post_html='<li>{thumb}<a class=\"wpp_headline\" href=\"{url}?utm_source=lawyerist-sidebar\">{text_title}</a></li>'"); ?>
+		</div>
+
+		</div>
+
+		<?php
+
+	echo $args['after_widget'];
+
 }
 
-add_filter('widget_text','php_execute',100);
+wp_register_sidebar_widget(
+
+	'popular-posts-tabbed-widget',	// your unique widget id
+	'Popular Posts',								// widget name
+	'l_pp_tabbed_widget_display',		// callback function
+	array(													// options
+		'description' => 'Displays a tabbed list of current and all-time popular posts.'
+	)
+
+);
 
 
 /*------------------------------
