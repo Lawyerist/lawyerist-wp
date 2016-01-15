@@ -1012,7 +1012,7 @@ a.post.fp_sticky:hover {
 		clear: none;
 		display: inline-block;
 		float: left;
-		height: 22.45rem;
+		height: 22.85rem;
 		overflow: hidden;
 		margin: 0 0 .2rem 0;
 		max-width: 31.9rem;
@@ -1026,7 +1026,7 @@ a.post.fp_sticky:hover {
 		clear:both;
 		display:block;
 		float:none;
-		height:38.75rem;
+		height:34.45rem;
 		max-width:64rem;
     width:64rem;
 	}
