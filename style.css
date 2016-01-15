@@ -286,6 +286,7 @@ h6 {
   font-family: concourse-headings, sans-serif;
 }
 
+#archive_header li,
 aside blockquote,
 button,
 .button,
@@ -1270,9 +1271,15 @@ Content
 		margin-bottom: 0;
 	}
 
-	#archive_header p:last-child {
+	#archive_header:last-child {
 		margin-bottom: 0;
 	}
+
+  #archive_header li {
+    color:#333;
+    font-size: 1.8rem;
+    line-height: 1.2
+  }
 
 	.index p.excerpt_with_thumb {
 		padding-right: 16.5rem;

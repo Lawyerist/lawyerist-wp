@@ -14,11 +14,19 @@
 
 		<?php /* ARCHIVE PAGE TITLES */
 
+      $title = single_term_title( '', FALSE);
       $descr = term_description();
 
-      echo '<div id="archive_header"><h1>';
-      single_term_title();
-      echo '</h1>' . "\n" . $descr . '</div>';
+      echo '<div id="archive_header"><h1>' . $title . '</h1>';
+      echo "\n" . $descr;
+      /* ------------------------------
+      // If the WPP plugin ever turns on taxonomy options, enable this bit.
+      if ( is_category() || is_tag() ) {
+        echo '<p>Here are the most-popular <em>' . $title . '</em> posts:</p>';
+        wpp_get_mostpopular("post_type='post'&range=all&limit=15&stats_comments=0&stats_views=0");
+      }
+      ------------------------------*/
+      echo '</div>';
 
 
     /* THE LOOP */
