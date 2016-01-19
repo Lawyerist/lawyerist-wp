@@ -25,15 +25,6 @@
 			<p id="title" data-swiftype-index="false"><a href="<?php echo home_url(); ?>"><?php bloginfo('name'); echo ' &mdash; '; bloginfo('description'); ?></a></p>
 		<?php } ?>
 
-		<!-- Show the header nav menu nless we've got a mobile phone -->
-		<?php if ( !is_mobile() ) { ?>
-
-			<div data-swiftype-index="false">
-				<?php wp_nav_menu( array( 'theme_location' => 'header_nav' ) ); ?>
-			</div>
-
-		<?php } ?>
-
 		<div id="email_social" data-swiftype-index="false">
 			<ul>
 				<li><a class="linkedin sprite" href="https://www.linkedin.com/company/lawyerist-media-llc" title="Connect with Lawyerist on LinkedIn" target="_blank"></a></li>

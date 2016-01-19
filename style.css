@@ -20,7 +20,6 @@ Typography
 Images
 Leaderboard Ad
 Header
-  Header Nav
 	Social Icons
 Menu
 Mobile Ad
@@ -699,42 +698,6 @@ Header
 		padding: 0;
 		text-indent: -99999px;
 	}
-
-	/*------------------------------
-	Header Nav
-	------------------------------*/
-
-  ul#menu-header {
-		display: block;
-    line-height: 1em;
-		list-style: none;
-    margin: 0;
-		padding: 0;
-	}
-
-	ul#menu-header li {
-		display: inline-block;
-		margin: 0;
-		padding: 0;
-	}
-
-	ul#menu-header a {
-		color: #fff;
-		font-size: 1.6rem;
-    letter-spacing: .1rem;
-		line-height: 1em;
-		margin: 0 1em 0 0;
-		text-transform: uppercase;
-	}
-
-  ul#menu-header li.current-menu-item a {
-    color: #cc0000;
-  }
-
-  ul#menu-header a:hover,
-  ul#menu-header li.current-menu-item a:hover {
-    color: #aa0000;
-  }
 
 
 	/*------------------------------
@@ -2489,7 +2452,7 @@ and (max-width:1023px) {
 }
 
 
-/* Header nav (400px) */
+/* Social i`cons (400px) */
 
 @media only screen and (max-width:399px) {
 

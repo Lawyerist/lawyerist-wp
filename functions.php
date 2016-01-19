@@ -45,9 +45,7 @@ Nav Menu
 
 function register_my_menus() {
 	register_nav_menus( array(
-		'header_nav' => 'Header Nav Menu',
-		'main_nav' => 'Main Nav Menu (Below Header)',
-		'mobile_nav' => 'Mobile Nav Menu for Phones',
+		'main_nav' => 'Main Nav Menu (Below Header)'
 	)	);
 }
 
