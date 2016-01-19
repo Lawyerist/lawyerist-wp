@@ -36,8 +36,8 @@
 
 	</div><!-- #header -->
 
-	<div data-swiftype-index="false">
-		<?php wp_nav_menu( array( 'theme_location' => 'main_nav' ) ); ?>
-	</div>
-
 </div><!-- #header_container -->
+
+<div data-swiftype-index="false">
+	<?php wp_nav_menu( array( 'theme_location' => 'main_nav' ) ); ?>
+</div>

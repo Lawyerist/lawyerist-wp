@@ -206,23 +206,23 @@ body {
   #header {
     margin: 0 auto;
     max-width: 96.8rem;
-    padding: 1.2rem 0;
+    padding: 1.2rem 1rem;
   }
 
-  .menu-default-container {
-  	background-color: #cc0000;
-  	margin-bottom: 2.8rem;
-  	width: 100%;
-  }
+.menu-default-container {
+	background-color: #cc0000;
+	margin-bottom: 2.8rem;
+	width: 100%;
+}
 
-  	.menu-default-container > ul {
-  		display: block;
-  		line-height: 1em;
-  		list-style: none;
-  		margin: 0 auto;
-  		padding: 0;
-      max-width: 98.8rem;
-  	}
+	.menu-default-container > ul {
+		display: block;
+		line-height: 1em;
+		list-style: none;
+		margin: 0 auto;
+		padding: 0;
+    max-width: 98.8rem;
+	}
 
 #content_column_container {
 	margin: 0 auto 2.8rem auto;
@@ -797,7 +797,7 @@ ul#menu-default li a {
 	display: block;
 	font-size: 1.6rem;
 	line-height: 1em;
-	padding: .9rem 1.2rem 1rem 1.2rem;
+	padding: .8rem 1rem;
 	text-decoration: none;
 }
 
@@ -2237,10 +2237,6 @@ and (max-width:1023px) {
 
 	/* Hide This Stuff */
 
-  .menu-default-container {
-		display: none !important;
-	}
-
   li.widget.sidebar_ads {
     display: none !important;
   }
@@ -2248,14 +2244,9 @@ and (max-width:1023px) {
 
 	/* Change Layout */
 
-  #header_container {
-    border-bottom: 1rem solid #cc0000;
-    padding: 0 1rem;
+  .menu-default-container ul {
+    padding: 0;
   }
-
-    .menu-header-container {
-      margin-left: 2rem;
-    }
 
 	#content_column_container,
 	#footer {
@@ -2289,16 +2280,6 @@ and (max-width:1023px) {
 }
 
 
-/* Too small for header menu (867px) */
-@media only screen and (max-width:945px) {
-
-.menu-header-container {
-  display: none !important;
-}
-
-}
-
-
 /* Leaderboard ad width (728px) + 20px for padding */
 @media only screen and (max-width:747px) {
 
@@ -2315,11 +2296,19 @@ and (max-width:1023px) {
 
 	/* Hide This Stuff */
 
+  .menu-default-container {
+		display: none !important;
+	}
+
 	#related_posts {
 		display: none;
 	}
 
 	/* Change Layout */
+
+  #header_container {
+    border-bottom: 1rem solid #cc0000;
+  }
 
 	#content_column_container {
 		max-width: none;
