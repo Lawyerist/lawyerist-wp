@@ -20,6 +20,7 @@ Typography
 Images
 Leaderboard Ad
 Header
+  Title
 	Social Icons
 Menu
 Mobile Ad
@@ -57,6 +58,14 @@ Media Queries
 /*------------------------------
 Load Fonts
 ------------------------------*/
+
+/* Adler */
+@font-face {
+    font-family: 'adler';
+    src: url('fonts/adler/adler-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 
 /* Concourse (headings) */
 @font-face {
@@ -196,13 +205,8 @@ body {
 
   #header {
     margin: 0 auto;
-    max-width: 98.8rem;
-  }
-
-  #email_social {
-    display: inline-block;
-    float: right;
-    margin: 1.3rem 1rem 0 0;
+    max-width: 96.8rem;
+    padding: 1.2rem 0;
   }
 
   .menu-default-container {
@@ -674,88 +678,97 @@ Header
 	text-decoration: none;
 }
 
+
+/*------------------------------
+Title
+------------------------------*/
+
 #title {
-	background:url('https://lawyerist.com/lawyerist/wp-content/uploads/2016/01/lawyerist-logo-300x36.png') no-repeat left center;
-	display: inline-block;
+	display: block;
 	float: left;
-	font-size: 1rem;
-	line-height: 1em;
-	margin: 0 0 0 1rem;
-	padding: 0;
-	width: 30rem;
+  font-size: 3.2rem;
+  font-family: adler, serif;
+  font-weight: normal;
+  position: relative;
+    top: 4px;
+  line-height: 1em;
+  margin: 0;
+  padding: 0;
+	width: auto;
 }
 
 	#title a {
+    color: #fff;
 		display: block;
-		height: 3.6rem;
-		margin: 1.1rem 0;
-		padding: 0;
-		text-indent: -99999px;
 	}
+
+  #title a:hover {
+    color: #ddd;
+  }
 
 
 	/*------------------------------
   Social Icons
 	------------------------------*/
 
-	#email_social ul {
-		display:block;
-		list-style:none;
-		margin:0;
-	}
+  #email_social {
+    display: block;
+    float: right;
+    list-style: none;
+		margin: 0;
+  }
 
-		#email_social ul li {
-			display:inline-block;
-			float:left;
-			margin:0;
-			padding:0;
-		}
-
-		#email_social ul li a.sprite {
-			color:#fff;
-			margin-left:.8rem;
-			padding:0;
-		}
-
-		#email_social ul li a.sprite:before {
+		#email_social li {
 			display: inline-block;
-			-webkit-font-smoothing: antialiased;
-			font: normal 3.2rem/1em Genericons;
+			float: left;
+      font-size: 3.2rem;
+      line-height: 1em;
+			margin: 0;
+			padding: 0;
 		}
 
-			#email_social ul li a.facebook.sprite:hover {
+		#email_social a.sprite {
+			color: #fff;
+      display: block;
+      margin-left: .8rem;
+			padding: 0;
+		}
+
+		#email_social a.sprite:before {
+			display: block;
+			-webkit-font-smoothing: antialiased;
+			font-family: 'Genericons';
+		}
+
+			#email_social a.facebook.sprite:hover {
 				color: #3b5998;
 			}
 
-			#email_social ul li a.facebook.sprite:before {
+			#email_social a.facebook.sprite:before {
 				content: '\f203';
 			}
 
-			#email_social ul li a.linkedin.sprite {
-				margin-left: 1rem;
-			}
-
-			#email_social ul li a.linkedin.sprite:hover {
+			#email_social a.linkedin.sprite:hover {
 				color: #4875b4;
 			}
 
-			#email_social ul li a.linkedin.sprite:before {
+			#email_social a.linkedin.sprite:before {
 				content: '\f208';
 			}
 
-			#email_social ul li a.twitter.sprite:hover {
+			#email_social a.twitter.sprite:hover {
 				color: #4099ff;
 			}
 
-			#email_social ul li a.twitter.sprite:before {
+			#email_social a.twitter.sprite:before {
 				content: '\f202';
 			}
 
-      #email_social ul li a.more_social.sprite:hover {
+      #email_social a.more_social.sprite:hover {
         color: #cc0000;
       }
 
-      #email_social ul li a.more_social.sprite:before {
+      #email_social a.more_social.sprite:before {
         content: '\f476';
       }
 
@@ -2237,6 +2250,7 @@ and (max-width:1023px) {
 
   #header_container {
     border-bottom: 1rem solid #cc0000;
+    padding: 0 1rem;
   }
 
     .menu-header-container {
@@ -2428,19 +2442,11 @@ icons start to get squeezed. (520px) */
 
 @media only screen and (max-width:499px) {
 
-  #email_social {
-    margin-top: 2.1rem;
-  }
-
-  #email_social ul li {
-    line-height: 1em;
-  }
-
-  #email_social ul li a.sprite:before {
+  #email_social a.sprite:before {
     font-size: 1.6rem;
   }
 
-  .more_social {
+  #email_social a.more_social {
     display:none;
   }
 

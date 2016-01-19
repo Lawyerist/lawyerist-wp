@@ -18,21 +18,19 @@
 	<div id="header">
 
 		<?php if ( is_front_page() ) { ?>
-			<h1 id="title"><a href="<?php echo home_url(); ?>"><?php bloginfo('name'); echo ' &mdash; '; bloginfo('description'); ?></a></h1>
+			<h1 id="title"><a href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a></h1>
 		<?php }
 
 		else { ?>
-			<p id="title" data-swiftype-index="false"><a href="<?php echo home_url(); ?>"><?php bloginfo('name'); echo ' &mdash; '; bloginfo('description'); ?></a></p>
+			<p id="title" data-swiftype-index="false"><a href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a></p>
 		<?php } ?>
 
-		<div id="email_social" data-swiftype-index="false">
-			<ul>
-				<li><a class="linkedin sprite" href="https://www.linkedin.com/company/lawyerist-media-llc" title="Connect with Lawyerist on LinkedIn" target="_blank"></a></li>
-				<li><a class="facebook sprite" href="https://facebook.com/lawyerist" title="Friend Lawyerist on Facebook" target="_blank"></a></li>
-				<li><a class="twitter sprite" href="https://twitter.com/lawyerist" title="Follow Lawyerist on Twitter" target="_blank"></a></li>
-				<li><a class="more_social sprite" href="http://lawyerist.com/subscribe/" title="More ways to subscribe to connect with Lawyerist"></a></li>
-			</ul>
-		</div>
+		<ul id="email_social" data-swiftype-index="false">
+			<li><a class="linkedin sprite" href="https://www.linkedin.com/company/lawyerist-media-llc" title="Connect with Lawyerist on LinkedIn" target="_blank"></a></li>
+			<li><a class="facebook sprite" href="https://facebook.com/lawyerist" title="Friend Lawyerist on Facebook" target="_blank"></a></li>
+			<li><a class="twitter sprite" href="https://twitter.com/lawyerist" title="Follow Lawyerist on Twitter" target="_blank"></a></li>
+			<li><a class="more_social sprite" href="http://lawyerist.com/subscribe/" title="More ways to subscribe to connect with Lawyerist"></a></li>
+		</ul>
 
 		<div class="clear"></div>
 
