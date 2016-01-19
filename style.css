@@ -199,12 +199,6 @@ body {
     max-width: 98.8rem;
   }
 
-  .menu-header-container {
-    display: inline-block;
-    float: left;
-    margin: 2rem 0 0 3.15rem;
-  }
-
   #email_social {
     display: inline-block;
     float: right;
@@ -681,20 +675,20 @@ Header
 }
 
 #title {
-	background:url('images/lawyerist_header_short.png') no-repeat left center;
+	background:url('https://lawyerist.com/lawyerist/wp-content/uploads/2016/01/lawyerist-logo-300x36.png') no-repeat left center;
 	display: inline-block;
 	float: left;
 	font-size: 1rem;
 	line-height: 1em;
 	margin: 0 0 0 1rem;
 	padding: 0;
-	width: 21.6rem;
+	width: 30rem;
 }
 
 	#title a {
 		display: block;
-		height: 3.8rem;
-		margin: 1rem 0;
+		height: 3.6rem;
+		margin: 1.1rem 0;
 		padding: 0;
 		text-indent: -99999px;
 	}
@@ -788,10 +782,9 @@ ul#menu-default li.menu-item-has-children > a:after {
 ul#menu-default li a {
 	color: #fff;
 	display: block;
-	font-size: 1.4rem;
-  letter-spacing: .1rem;
+	font-size: 1.6rem;
 	line-height: 1em;
-	padding: .7rem 1rem .8rem 1rem;
+	padding: .9rem 1.2rem 1rem 1.2rem;
 	text-decoration: none;
 }
 
@@ -2430,9 +2423,26 @@ and (max-width:1023px) {
 }
 
 
-/* When notes and medium-sized images start looking bad (540px) */
+/* When notes and medium-sized images start looking bad, and the social
+icons start to get squeezed. (520px) */
 
 @media only screen and (max-width:499px) {
+
+  #email_social {
+    margin-top: 2.1rem;
+  }
+
+  #email_social ul li {
+    line-height: 1em;
+  }
+
+  #email_social ul li a.sprite:before {
+    font-size: 1.6rem;
+  }
+
+  .more_social {
+    display:none;
+  }
 
   img.size-medium {
     margin: 0 0 1.5rem 0;
@@ -2447,17 +2457,6 @@ and (max-width:1023px) {
   #survival_guides a img,
   .page-id-82537 a img {
     width: 50%;
-  }
-
-}
-
-
-/* Social i`cons (400px) */
-
-@media only screen and (max-width:399px) {
-
-  .more_social {
-    display:none;
   }
 
 }
