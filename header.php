@@ -13,7 +13,7 @@
 
 <?php } ?>
 
-<div id="header_container">
+<div id="header_container" data-swiftype-index="false">
 
 	<div id="header">
 
@@ -22,10 +22,10 @@
 		<?php }
 
 		else { ?>
-			<p id="title" data-swiftype-index="false"><a href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a></p>
+			<p id="title"><a href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a></p>
 		<?php } ?>
 
-		<ul id="email_social" data-swiftype-index="false">
+		<ul id="email_social">
 			<li><a class="linkedin sprite" href="https://www.linkedin.com/company/lawyerist-media-llc" title="Connect with Lawyerist on LinkedIn" target="_blank"></a></li>
 			<li><a class="facebook sprite" href="https://facebook.com/lawyerist" title="Friend Lawyerist on Facebook" target="_blank"></a></li>
 			<li><a class="twitter sprite" href="https://twitter.com/lawyerist" title="Follow Lawyerist on Twitter" target="_blank"></a></li>

@@ -898,7 +898,7 @@ a.post.fp_sticky:hover {
     float:left;
     -moz-osx-font-smoothing: grayscale;
   	-webkit-font-smoothing: antialiased;
-		font: normal 3.2rem/1em Genericons;
+		font: normal 3.2rem/1em 'Genericons';
     speak: none;
     text-shadow: .1rem .1rem 0 #111;
 		vertical-align: top;
@@ -1263,8 +1263,9 @@ Content
 		content:'\f300';
 		display:inline-block;
 		-webkit-font-smoothing:antialiased;
-		font:normal 1.6rem/1em Genericons;
+		font:normal 1.6rem/1em 'Genericons';
 		margin-right:.1em;
+    speak: none;
     vertical-align:text-top;
 	}
 
@@ -1369,6 +1370,7 @@ Content
       float: left;
       -webkit-font-smoothing: antialiased;
       font: normal 3.2rem/1em 'Genericons';
+      speak: none;
       vertical-align: middle;
     }
 
@@ -1384,6 +1386,7 @@ Content
       float: left;
       -webkit-font-smoothing: antialiased;
       font: normal 3.2rem/1em 'Genericons';
+      speak: none;
       vertical-align: middle;
     }
 
@@ -1394,6 +1397,7 @@ Content
   		float: left;
   		-webkit-font-smoothing: antialiased;
   		font: normal 3.2rem/1em 'Genericons';
+      speak: none;
   		vertical-align: middle;
   	}
 
@@ -1697,7 +1701,8 @@ Content
 		color:#fff;
 		display:inline-block;
 		-webkit-font-smoothing:antialiased;
-		font:normal 3.2rem/1em Genericons;
+		font:normal 3.2rem/1em 'Genericons';
+    speak: none;
     transition:background-color .2s;
 		vertical-align:top;
 	}
@@ -1793,6 +1798,7 @@ p.author_website:before {
   font-weight: normal;
   font-variant: normal;
   line-height: 1;
+  speak: none;
   text-decoration: inherit;
   text-transform: none;
   -moz-osx-font-smoothing: grayscale;
@@ -2019,8 +2025,8 @@ Forms
 
 #sidebar_column .gform_wrapper,
 #sidebar_column .gform_heading {
-  max-width:100%;
-  width:auto;
+  max-width: 100%;
+  width: auto;
 }
 
 #sidebar_column .gform_footer {
@@ -2029,7 +2035,8 @@ Forms
 }
 
 #sidebar_column .gform_fields li {
-  margin-bottom:0;
+  margin-bottom: 0;
+  padding: 0;
 }
 
 body .gform_wrapper {
@@ -2091,9 +2098,9 @@ body .gform_wrapper input[type=number]:focus,
 body .gform_wrapper input[type=password]:focus,
 body .gform_wrapper select:focus,
 body .gform_wrapper textarea:focus,
-input#st-search-input:focus {
-  border-color:#cc0000;
-  color:#333;
+input#st-search-input: focus {
+  border-color: #cc0000;
+  color: #333;
 }
 
 #sidebar_column .gform_wrapper input[type=text],
@@ -2133,19 +2140,19 @@ body .gforms_confirmation_message {
   body .gform_wrapper input.button,
   input.button,
   input[type="button"] {
-    background-color:#bb0000;
-    border:0;
+    background-color: #bb0000;
+    border: 0;
     border-radius: .2rem;
     box-shadow: none;
     box-sizing: border-box;
-    color:#fff;
+    color: #fff;
     display: inline-block;
     margin-bottom: 2.8rem;
     outline: none;
     padding: .7rem 1.4rem;
-    text-decoration:none;
+    text-decoration: none;
     -webkit-appearance: none;
-    width:auto;
+    width: auto;
   }
 
     #sidebar_column button,
@@ -2166,9 +2173,9 @@ body .gforms_confirmation_message {
   body .gform_wrapper input.button:hover,
   input.button:hover,
   input[type="button"]:hover {
-    background-color:#cc0000;
-    color:#fff;
-    text-decoration:none;
+    background-color: #cc0000;
+    color: #fff;
+    text-decoration: none;
   }
 
   button:active,
@@ -2176,8 +2183,8 @@ body .gforms_confirmation_message {
   body .gform_wrapper input.button:active,
   input.button:active,
   input[type="button"]:active {
-    background-color:#aa0000;
-    color:#ddd;
+    background-color: #aa0000;
+    color: #ddd;
   }
 
 
