@@ -8,9 +8,11 @@ jQuery(function( $ ){
 
 
   $(".sub-menu").before('<div class="mobile-sub-menu-icon"></div>');
+  $(".mobile-sub-menu-icon").prev("a").addClass("has-sub-menu");
 
   $(".mobile-sub-menu-icon").click(function(){
-		$(this).next(".sub-menu").slideToggle().css( "background-color", "#a00" );;
+    $(this).prev("a").toggleClass("open-menu");
+		$(this).next(".sub-menu").slideToggle();
 	});
 
 });

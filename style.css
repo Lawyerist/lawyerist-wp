@@ -689,7 +689,7 @@ Title
   font-size: 3.2rem;
   font-family: 'adler', serif;
   font-weight: normal;
-  line-height: 1em;
+  height: 3.2rem;
   margin: 0;
   padding: 0;
 	width: auto;
@@ -809,7 +809,7 @@ Menu
   }
 
 #main-menu .sub-menu {
-  background: #aa0000;
+  background: #a00;
   margin: 0;
   height: 0;
   overflow: hidden;
@@ -2368,6 +2368,14 @@ and (max-width:1023px) {
   #main-menu .menu-item {
     display: block;
     width: 100%;
+  }
+
+  #main-menu .has-sub-menu {
+    background-color: #c00;
+  }
+
+  #main-menu .open-menu {
+    background-color: #a00;
   }
 
   #main-menu .sub-menu .menu-item a:before {
