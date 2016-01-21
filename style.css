@@ -2360,7 +2360,7 @@ and (max-width:1023px) {
     speak: none;
     text-align: right;
     vertical-align: top;
-    width: 25%;
+    width: 100%;
     z-index: 100;
   }
 
