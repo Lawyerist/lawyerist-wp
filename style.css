@@ -2257,8 +2257,13 @@ and (max-width:1023px) {
     margin-bottom: 0;
   }
 
-    li#menu-item-74549 {
+    #menu-item-74549 {
       float: none;
+    }
+
+    #menu-item-74549:hover .sub-menu {
+      left: 0;
+      right: auto;
     }
 
 	#content_column_container,
