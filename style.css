@@ -170,7 +170,7 @@ Load Fonts
   font-style: normal;
 }
 
-@media screen and (-webkit-min-device-pixel-ratio:0) {
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
   @font-face {
     font-family: 'Genericons';
     src: url('fonts/genericons/Genericons.svg#Genericons') format('svg');
@@ -687,10 +687,8 @@ Title
 	display: block;
 	float: left;
   font-size: 3.2rem;
-  font-family: adler, serif;
+  font-family: 'adler', serif;
   font-weight: normal;
-  position: relative;
-    top: 4px;
   line-height: 1em;
   margin: 0;
   padding: 0;
@@ -777,13 +775,13 @@ Title
 Menu
 ------------------------------*/
 
-ul#menu-default li {
+#main-menu .menu-item {
 	display: inline-block;
 	margin: 0;
   position: relative;
 }
 
-ul#menu-default li.menu-item-has-children > a:after {
+#main-menu .menu-item.menu-item-has-children > a:after {
   content: '\f431';
   display: inline-block;
   -webkit-font-smoothing: antialiased;
@@ -792,7 +790,7 @@ ul#menu-default li.menu-item-has-children > a:after {
   vertical-align: top;
 }
 
-ul#menu-default li a {
+#main-menu .menu-item a {
 	color: #fff;
 	display: block;
 	font-size: 1.6rem;
@@ -801,35 +799,34 @@ ul#menu-default li a {
 	text-decoration: none;
 }
 
-  ul#menu-default > li a:hover {
+  #main-menu .menu > .menu-item:hover a {
     background: #aa0000;
+    color: #fff;
+  }
+
+  #main-menu .sub-menu .menu-item:hover a {
     color: #ddd;
   }
 
-  ul#menu-default > li.menu-item-has-children > a:hover {
-    background: #cc0000;
-    color: #cc0000;
-  }
-
-ul#menu-default ul.sub-menu {
+#main-menu .sub-menu {
   background: #aa0000;
   margin: 0;
+  height: 0;
+  overflow: hidden;
   position: absolute;
-    left: -99999px;
-    top: 0;
   width: 14rem;
   z-index: 10;
 }
 
-  ul#menu-default li:hover ul.sub-menu {
-    left: 0;
+  #main-menu .menu-item:hover .sub-menu {
+    height: auto;
   }
 
-  li#menu-item-74549 {
+  #menu-item-74549 {
     float: right;
   }
 
-    ul#menu-default li#menu-item-74549:hover ul.sub-menu {
+    #menu-item-74549:hover .sub-menu {
       left: auto;
       right: 0;
     }
@@ -874,6 +871,7 @@ a.post.fp_sticky {
   padding: 2rem 2.5rem;
   transition: background-color .2s;
 }
+
 a.post.fp_sticky:hover {
   background-color: #111;
 }
@@ -2034,6 +2032,10 @@ Forms
   padding-bottom: 0;
 }
 
+#sidebar_column ul.gform_fields {
+  margin-left: 0;
+}
+
 #sidebar_column .gform_fields li {
   margin-bottom: 0;
   padding: 0;
@@ -2251,9 +2253,13 @@ and (max-width:1023px) {
 
 	/* Change Layout */
 
-  .menu-default-container ul {
-    padding: 0;
+  .menu-default-container {
+    margin-bottom: 0;
   }
+
+    li#menu-item-74549 {
+      float: none;
+    }
 
 	#content_column_container,
 	#footer {
@@ -2303,19 +2309,81 @@ and (max-width:1023px) {
 
 	/* Hide This Stuff */
 
-  .menu-default-container {
-		display: none !important;
-	}
-
 	#related_posts {
 		display: none;
 	}
 
-	/* Change Layout */
 
-  #header_container {
-    border-bottom: 1rem solid #cc0000;
+  /* Mobile Menu */
+
+  .mobile-menu-icon:before {
+    background-color: #c00;
+		color: #fff;
+		content: '\f419';
+    cursor: pointer;
+    display: block;
+    -moz-osx-font-smoothing: grayscale;
+  	-webkit-font-smoothing: antialiased;
+		font: normal 1.6rem/1em 'Genericons';
+    padding: .5em;
+    speak: none;
+    text-align: center;
+		vertical-align: top;
+    width: 100%;
+	}
+
+
+  #main-menu,
+  #main-menu .menu-item.menu-item-has-children > a:after,
+  #main-menu .sub-menu {
+    display: none;
   }
+
+  #main-menu .mobile-sub-menu-icon:after {
+    color: #fff;
+    content: '\f431';
+    cursor: pointer;
+    display: inline-block;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    float: right;
+    font: normal 1.6rem/1em 'Genericons';
+    padding: .8rem 1rem;
+    position: absolute;
+      right: 0;
+      top: 0;
+    speak: none;
+    text-align: right;
+    vertical-align: top;
+    width: 25%;
+    z-index: 100;
+  }
+
+  #main-menu .sub-menu {
+    height: auto;
+    position: static;
+    width: 100%;
+  }
+
+  #main-menu .menu-item {
+    display: block;
+    width: 100%;
+  }
+
+  #main-menu .sub-menu .menu-item a:before {
+    content: '- '
+  }
+
+    #menu-item-74549 {
+      float: none;
+    }
+
+    #menu-item-74549:hover .sub-menu {
+      left: 0;
+    }
+
+
+	/* Change Layout */
 
 	#content_column_container {
 		max-width: none;
@@ -2433,18 +2501,9 @@ and (max-width:1023px) {
 }
 
 
-/* When notes and medium-sized images start looking bad, and the social
-icons start to get squeezed. (520px) */
+/* When notes and medium-sized images start looking bad (500px) */
 
 @media only screen and (max-width:499px) {
-
-  #email_social a.sprite:before {
-    font-size: 1.6rem;
-  }
-
-  #email_social a.more_social {
-    display:none;
-  }
 
   img.size-medium {
     margin: 0 0 1.5rem 0;
@@ -2459,6 +2518,17 @@ icons start to get squeezed. (520px) */
   #survival_guides a img,
   .page-id-82537 a img {
     width: 50%;
+  }
+
+}
+
+
+/* When the social icons start to get squeezed (455px) */
+
+@media only screen and (max-width:454px) {
+
+  #email_social {
+    display:none;
   }
 
 }

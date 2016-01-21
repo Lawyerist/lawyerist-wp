@@ -2,7 +2,7 @@
 
 /* INDEX
 
-Stylesheets & Google Fonts
+Stylesheets & Scripts
 Nav Menu
 Bylines
 Mobile Ad
@@ -22,10 +22,10 @@ RSS Feed Caching
 
 
 /*------------------------------
-Stylesheets & Google Fonts
+Stylesheets & Scripts
 ------------------------------*/
 
-function lawyerist_stylesheets() {
+function lawyerist_stylesheets_scripts() {
 
 	wp_register_style( 'normalize-css', get_template_directory_uri() . '/normalize.min.css' );
 	wp_enqueue_style( 'normalize-css' );
@@ -34,9 +34,12 @@ function lawyerist_stylesheets() {
 	wp_register_style( 'stylesheet', get_template_directory_uri() . '/style.css', array(), $cacheBusterCSS, 'all' );
 	wp_enqueue_style( 'stylesheet' );
 
+	wp_enqueue_script( 'idTabs', get_template_directory_uri() . '/jquery.idTabs.min.js', array( 'jquery' ), '2.2', 'true' );
+	wp_enqueue_script( 'responsive-menu', get_template_directory_uri() . '/responsive-menu.js', array( 'jquery' ), '1.0.0', 'true' );
+
 }
 
-add_action( 'wp_enqueue_scripts', 'lawyerist_stylesheets' );
+add_action( 'wp_enqueue_scripts', 'lawyerist_stylesheets_scripts' );
 
 
 /*------------------------------
@@ -45,7 +48,7 @@ Nav Menu
 
 function register_my_menus() {
 	register_nav_menus( array(
-		'main_nav' => 'Main Nav Menu (Below Header)'
+		'main_nav' => 'Responsive Nav Menu (Below Header)'
 	)	);
 }
 

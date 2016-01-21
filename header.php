@@ -38,6 +38,6 @@
 
 </div><!-- #header_container -->
 
-<div data-swiftype-index="false">
+<div id="main-menu" data-swiftype-index="false">
 	<?php wp_nav_menu( array( 'theme_location' => 'main_nav' ) ); ?>
 </div>

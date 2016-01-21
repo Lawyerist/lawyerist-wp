@@ -32,5 +32,3 @@
 	entry.parentNode.insertBefore(script, entry);
 	}());
 </script>
-
-<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/jquery.idTabs.min.js"></script>
