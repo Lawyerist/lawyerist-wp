@@ -397,7 +397,7 @@ if ( function_exists( 'add_image_size' ) ) {
 }
 
 if ( function_exists( 'add_image_size' ) ) {
-	add_image_size( 'featured', 320, 228.5, true);
+	add_image_size( 'featured', 320, 255.5, true);
 }
 
 if ( function_exists( 'add_image_size' ) ) {
