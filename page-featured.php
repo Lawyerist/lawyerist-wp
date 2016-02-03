@@ -238,6 +238,7 @@
 
 
     <div id="survival_guides">
+      <a href="https://lawyerist.com/downloads/windows-computer-setup-guide/?utm_source=lawyerist-front-page&utm_medium=internal&utm_campaign=nav" rel="attachment wp-att-100582"><img src="https://lawyerist.com/lawyerist/wp-content/uploads/edd/2016/02/computer-setup-guide-cover-300x391.png" alt="computer-setup-guide-cover" width="300" height="391" class="alignleft size-medium wp-image-100582" /></a>
       <a href="https://lawyerist.com/downloads/30-minute-wordpress-setup-guide/?utm_source=lawyerist-front-page&utm_medium=internal&utm_campaign=nav"><img src="https://lawyerist.com/lawyerist/wp-content/uploads/edd/2015/11/wordpress-setup-guide-cover-300x391.png" alt="wordpress-setup-guide-cover" width="300" height="391" class="alignleft size-medium wp-image-92924" /></a>
       <a href="https://lawyerist.com/downloads/4-step-computer-security-upgrade/?utm_source=lawyerist-front-page&utm_medium=internal&utm_campaign=nav"><img src="https://lawyerist.com/lawyerist/wp-content/uploads/2015/05/computer-security-guide-cover-2-300x391.png" alt="computer-security-guide-cover-2" width="300" height="391" class="alignleft size-medium wp-image-86178" /></a>
       <a href="https://lawyerist.com/downloads/law-firm-website-design-guide/?utm_source=lawyerist-front-page&utm_medium=internal&utm_campaign=nav"><img src="https://lawyerist.com/lawyerist/wp-content/uploads/2015/05/website-design-guide-cover-2-300x391.png" alt="website-design-guide-cover-2" width="300" height="391" class="alignleft size-medium wp-image-86177" /></a>
