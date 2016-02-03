@@ -41,6 +41,9 @@
       <?php /* TOP POST LOOP */
 
         $top_post_query_args = array(
+          'author__not_in'      => array(
+            32 /* excludes sponsored posts */
+          ),
           'ignore_sticky_posts' => TRUE,
           'posts_per_page'      => 1,
           'post__not_in'        => $do_not_duplicate,
