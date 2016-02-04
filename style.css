@@ -2106,6 +2106,10 @@ input#st-search-input: focus {
   color: #333;
 }
 
+#edd-free-downloads-modal {
+  font-size: 1.6rem;
+}
+
 #sidebar_column .gform_wrapper input[type=text],
 #sidebar_column .gform_wrapper input[type=email],
 #sidebar_column .gform_wrapper input[type=tel],
