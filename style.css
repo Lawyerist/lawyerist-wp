@@ -331,6 +331,7 @@ body {
 .page,
 .post,
 .post_body,
+.single,
 #footer {
 	font-size: 1.8rem;
 	line-height: 1.5;
@@ -2022,28 +2023,18 @@ Footer
 Forms
 ------------------------------*/
 
-#sidebar_column .gform_wrapper,
-#sidebar_column .gform_heading {
-  max-width: 100%;
-  width: auto;
-}
-
-#sidebar_column .gform_footer {
-  margin-top: 0;
-  padding-bottom: 0;
-}
-
-#sidebar_column ul.gform_fields {
-  margin-left: 0;
-}
-
-#sidebar_column .gform_fields li {
-  margin-bottom: 0;
-  padding: 0;
+#edd-free-downloads-modal {
+  font-size: 1.6rem;
 }
 
 body .gform_wrapper {
   font-size: inherit !important;
+}
+
+body #sidebar_column .gform_wrapper,
+body #sidebar_column .gform_heading {
+  max-width: 100%;
+  width: auto;
 }
 
 body .gform_wrapper input[type=text],
@@ -2069,21 +2060,6 @@ body .gform_wrapper textarea {
   -webkit-appearance: none;
 }
 
-body .gform_wrapper label.gfield_label {
-  font-size: 1.8rem;
-  margin-bottom: 0 !important;
-}
-
-body .gform_wrapper input[type=checkbox],
-body .gform_wrapper input[type=radio] {
-  margin-left: .1rem;
-}
-
-body .gform_wrapper span.ginput_card_security_code_icon {
-  left: 0 !important;
-  top: .4rem !important;
-}
-
 input#st-search-input {
   height:auto;
   padding-left: 2.7rem !important;
@@ -2091,6 +2067,23 @@ input#st-search-input {
 
 body .gform_wrapper select {
   padding: .4rem !important;
+}
+
+body #sidebar_column .gform_wrapper input[type=text],
+body #sidebar_column .gform_wrapper input[type=email],
+body #sidebar_column .gform_wrapper input[type=tel],
+body #sidebar_column .gform_wrapper input[type=url],
+body #sidebar_column .gform_wrapper input[type=number],
+body #sidebar_column .gform_wrapper input[type=password],
+#sidebar_column input#st-search-input,
+body #sidebar_column .gform_wrapper select,
+body #sidebar_column .gform_wrapper textarea {
+  width: 30rem;
+}
+
+body .gform_wrapper input[type=checkbox],
+body .gform_wrapper input[type=radio] {
+  margin-left: .1rem;
 }
 
 body .gform_wrapper input[type=text]:focus,
@@ -2106,20 +2099,14 @@ input#st-search-input: focus {
   color: #333;
 }
 
-#edd-free-downloads-modal {
-  font-size: 1.6rem;
+body .gform_wrapper label.gfield_label {
+  font-size: 1.8rem;
+  margin-bottom: 0 !important;
 }
 
-#sidebar_column .gform_wrapper input[type=text],
-#sidebar_column .gform_wrapper input[type=email],
-#sidebar_column .gform_wrapper input[type=tel],
-#sidebar_column .gform_wrapper input[type=url],
-#sidebar_column .gform_wrapper input[type=number],
-#sidebar_column .gform_wrapper input[type=password],
-#sidebar_column input#st-search-input,
-#sidebar_column .gform_wrapper select,
-#sidebar_column .gform_wrapper textarea {
-  width: 30rem;
+body .gform_wrapper span.ginput_card_security_code_icon {
+  left: 0 !important;
+  top: .4rem !important;
 }
 
 body .gform_wrapper .instruction {
@@ -2135,6 +2122,10 @@ body .gforms_confirmation_message {
   border: .1rem solid #ddd;
   padding: 1.5rem 2.5rem 2rem 2.5rem;
   background-color: #ffffa0;
+}
+
+body #sidebar_column .gform_footer {
+  padding: 0;
 }
 
 
