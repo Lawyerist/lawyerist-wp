@@ -515,6 +515,10 @@ p.wp-caption-text {
   margin-bottom: 1em;
 }
 
+.postmeta_break {
+  display: inline-block;
+}
+
 pre {
 	color: #555;
 	margin-bottom: 1em;
@@ -1066,10 +1070,6 @@ a.post.fp_sticky:hover {
   #featured_posts .comment_link:before {
     color: #fff !important;
     text-shadow: .1rem .1rem 0 #111;
-  }
-
-  #featured_posts .fp_postmeta_break {
-    display: inline-block;
   }
 
 
