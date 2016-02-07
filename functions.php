@@ -65,8 +65,20 @@ function lawyerist_get_byline() {
 
 	$this_post_id = get_the_ID();
 
+	// Media partners
+	if ( has_term( 'aba-techshow-2016-coverage', 'series' ) ) {
+
+		/* Bylines should only have links to the author page on single post pages. */
+		if ( is_single() ) {
+			$author = '<a href="' . get_author_posts_url( get_the_author_meta( 'ID' ) ) . '">' . get_the_author() . '</a>, in collaboration with <a href="http://www.techshow.com/" rel="nofollow">ABA TECHSHOW</a>,';
+		} else {
+			$author = get_the_author() . ', in collaboration with ABA TECHSHOW,';
+		}
+
+	}
+
 	// Sponsor-submitted posts
-	if ( has_term( true , 'sponsor' ) && has_category( 'sponsored-posts' ) ) {
+	elseif ( has_term( true , 'sponsor' ) && has_category( 'sponsored-posts' ) ) {
 
 		$sponsors = wp_get_post_terms(
 			$this_post_id,
