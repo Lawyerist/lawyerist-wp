@@ -197,7 +197,8 @@ function insert_lawyerist_mobile_ad() { ?>
 
 function lawyerist_mobile_ad( $content ) {
 
-	if ( is_mobile() && ( is_single() || is_page() ) ) {
+	// Show on single posts and pages, but if they are using the landing-page template
+	if ( is_mobile() && ( is_single() || is_page() ) && !get_page_template('landing-page') ) {
 
 		$p_close		= '</p>';
 		$paragraphs = explode( $p_close, $content );
