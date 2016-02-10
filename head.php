@@ -9,6 +9,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
+<meta name="google-site-verification" content="GwbQ-BLG3G-tXV4-uG-_kZIaxXxm_Wqmzg5wFSBa9hI" />
+
 <!-- Begin DoubleClick tags -->
 <script type='text/javascript'>
   var googletag = googletag || {};

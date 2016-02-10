@@ -199,6 +199,15 @@ body {
 	width: 100%;
 }
 
+  /* Leaderboard ad width (728px) + 20px for padding */
+  @media only screen and (max-width:747px) {
+
+  	#leaderboard_container {
+  		display: none;
+  	}
+
+  }
+
 #header_container {
   background-color: #111;
 }
@@ -2290,16 +2299,6 @@ and (max-width:1023px) {
       li#lawyerist_sidebar_search input#st-search-input {
         width: 100%;
       }
-
-}
-
-
-/* Leaderboard ad width (728px) + 20px for padding */
-@media only screen and (max-width:747px) {
-
-	#leaderboard_container {
-		display: none;
-	}
 
 }
 
