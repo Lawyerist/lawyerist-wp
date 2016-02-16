@@ -1522,16 +1522,21 @@ Content
     border: .1rem solid #ddd;
     display: block;
     margin-bottom: 1em;
-    padding: 1.5rem 2.5rem 2rem 2.5rem;
+    padding: 2rem 2.5rem;
   }
 
   .survival_guide_note h3 {
-    margin-top:0;
+    margin-top: 0;
   }
 
   .survival_guide_note img {
-    height:auto;
-    width:20rem;
+    height: auto;
+    margin-bottom: 0;
+    width: 20rem;
+  }
+
+  .survival_guide_note .button {
+    margin-bottom: 0;
   }
 
 
