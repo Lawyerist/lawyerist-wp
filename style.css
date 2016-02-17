@@ -2010,7 +2010,7 @@ li.widget {
   }
 
   .sidebar_ads > ul li:last-child {
-    margin-bottom: 0 !important;
+    margin: 2.8rem 0 0 0 !important;
   }
 
   li.sidebar_ad {
