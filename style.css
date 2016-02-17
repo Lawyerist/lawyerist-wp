@@ -2141,8 +2141,9 @@ Footer
 Forms
 ------------------------------*/
 
-#edd-free-downloads-modal {
+.jBox-Modal .jBox-content {
   font-size: 1.6rem;
+  padding: 2rem 2.5rem;
 }
 
 body .gform_wrapper {
@@ -2163,7 +2164,8 @@ body .gform_wrapper input[type=number],
 body .gform_wrapper input[type=password],
 input#st-search-input,
 body .gform_wrapper select,
-body .gform_wrapper textarea {
+body .gform_wrapper textarea,
+#edd-free-downloads-modal input[type='text'] {
   border: .1rem solid #bbb;
   border-radius: .2rem;
   box-shadow: none;
@@ -2210,9 +2212,10 @@ body .gform_wrapper input[type=tel]:focus,
 body .gform_wrapper input[type=url]:focus,
 body .gform_wrapper input[type=number]:focus,
 body .gform_wrapper input[type=password]:focus,
+input#st-search-input:focus,
 body .gform_wrapper select:focus,
 body .gform_wrapper textarea:focus,
-input#st-search-input: focus {
+#edd-free-downloads-modal input[type='text']:focus {
   border-color: #cc0000;
   color: #333;
 }
