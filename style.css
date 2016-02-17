@@ -719,6 +719,31 @@ Title
     color: #ddd;
   }
 
+  /*------------------------------
+  Header Signup
+	------------------------------*/
+
+  #header_signup {
+    float: right;
+    height: 3.2rem;
+    margin-right: 1rem;
+    width: 30rem;
+  }
+
+  /* 780px */
+  @media only screen and (max-width:779px) {
+
+    .responsive_clear {
+      clear: both;
+    }
+
+    #header_signup {
+      float: none;
+      margin: 1rem auto 0 auto;
+    }
+
+  }
+
 
 	/*------------------------------
   Social Icons
@@ -845,6 +870,85 @@ Menu
       left: auto;
       right: 0;
     }
+
+/* 745px */
+
+@media only screen and (max-width:744px) {
+
+  .mobile-menu-icon:before {
+    background-color: #c00;
+		color: #fff;
+		content: '\f419';
+    cursor: pointer;
+    display: block;
+    -moz-osx-font-smoothing: grayscale;
+  	-webkit-font-smoothing: antialiased;
+		font: normal 1.6rem/1em 'Genericons';
+    padding: .5em;
+    speak: none;
+    text-align: center;
+		vertical-align: top;
+    width: 100%;
+	}
+
+
+  #main-menu,
+  #main-menu .menu-item.menu-item-has-children > a:after,
+  #main-menu .sub-menu {
+    display: none;
+  }
+
+  #main-menu .mobile-sub-menu-icon:after {
+    color: #fff;
+    content: '\f431';
+    cursor: pointer;
+    display: inline-block;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    float: right;
+    font: normal 1.6rem/1em 'Genericons';
+    padding: .8rem 1rem;
+    position: absolute;
+      right: 0;
+      top: 0;
+    speak: none;
+    text-align: right;
+    vertical-align: top;
+    width: 100%;
+    z-index: 100;
+  }
+
+  #main-menu .sub-menu {
+    height: auto;
+    position: static;
+    width: 100%;
+  }
+
+  #main-menu .menu-item {
+    display: block;
+    width: 100%;
+  }
+
+  #main-menu .has-sub-menu {
+    background-color: #c00;
+  }
+
+  #main-menu .open-menu {
+    background-color: #a00;
+  }
+
+  #main-menu .sub-menu .menu-item a:before {
+    content: '- '
+  }
+
+    #menu-item-74549 {
+      float: none;
+    }
+
+    #menu-item-74549:hover .sub-menu {
+      left: 0;
+    }
+}
 
 
 /*------------------------------
@@ -2317,83 +2421,6 @@ and (max-width:1023px) {
 	#related_posts {
 		display: none;
 	}
-
-
-  /* Mobile Menu */
-
-  .mobile-menu-icon:before {
-    background-color: #c00;
-		color: #fff;
-		content: '\f419';
-    cursor: pointer;
-    display: block;
-    -moz-osx-font-smoothing: grayscale;
-  	-webkit-font-smoothing: antialiased;
-		font: normal 1.6rem/1em 'Genericons';
-    padding: .5em;
-    speak: none;
-    text-align: center;
-		vertical-align: top;
-    width: 100%;
-	}
-
-
-  #main-menu,
-  #main-menu .menu-item.menu-item-has-children > a:after,
-  #main-menu .sub-menu {
-    display: none;
-  }
-
-  #main-menu .mobile-sub-menu-icon:after {
-    color: #fff;
-    content: '\f431';
-    cursor: pointer;
-    display: inline-block;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
-    float: right;
-    font: normal 1.6rem/1em 'Genericons';
-    padding: .8rem 1rem;
-    position: absolute;
-      right: 0;
-      top: 0;
-    speak: none;
-    text-align: right;
-    vertical-align: top;
-    width: 100%;
-    z-index: 100;
-  }
-
-  #main-menu .sub-menu {
-    height: auto;
-    position: static;
-    width: 100%;
-  }
-
-  #main-menu .menu-item {
-    display: block;
-    width: 100%;
-  }
-
-  #main-menu .has-sub-menu {
-    background-color: #c00;
-  }
-
-  #main-menu .open-menu {
-    background-color: #a00;
-  }
-
-  #main-menu .sub-menu .menu-item a:before {
-    content: '- '
-  }
-
-    #menu-item-74549 {
-      float: none;
-    }
-
-    #menu-item-74549:hover .sub-menu {
-      left: 0;
-    }
 
 
 	/* Change Layout */

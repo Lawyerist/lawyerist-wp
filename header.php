@@ -32,6 +32,17 @@
 			<li><a class="more_social sprite" href="http://lawyerist.com/subscribe/" title="More ways to subscribe to connect with Lawyerist"></a></li>
 		</ul>
 
+		<div class="responsive_clear"></div>
+
+		<div id="header_signup">
+			<!-- /12659965/lawyerist_header_signup -->
+			<div id='div-gpt-ad-1455661914226-0' style='height:32px; width:300px;'>
+			<script type='text/javascript'>
+			googletag.cmd.push(function() { googletag.display('div-gpt-ad-1455661914226-0'); });
+			</script>
+			</div>
+		</div>
+
 		<div class="clear"></div>
 
 	</div><!-- #header -->
