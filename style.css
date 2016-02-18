@@ -2285,27 +2285,23 @@ body #sidebar_column .gform_footer {
   ------------------------------*/
 
   button,
-  a.button,
-  body .gform_wrapper input.button,
-  input.button,
-  input[type="button"],
   button:focus,
+  a.button,
   a.button:focus,
+  body .gform_wrapper input.button,
   body .gform_wrapper input.button:focus,
-  #edd-purchase-button:focus,
-  .edd-submit:focus,
-  .edd-submit.button:focus,
-  input[type=submit].edd-submit:focus,
+  input.button,
   input.button:focus,
+  input[type="button"],
   input[type="button"]:focus {
-    background-color: #bb0000;
+    background-color: #b00;
     border: 0;
     border-radius: .2rem;
     box-shadow: none;
     box-sizing: border-box;
     color: #fff;
     display: inline-block;
-    font-size: 1.3rem;
+    font-size: 1.3rem !important;
     height: 3.2rem;
     line-height: 3.2rem;
     margin-bottom: 2.8rem;
@@ -2325,17 +2321,14 @@ body #sidebar_column .gform_footer {
       margin-bottom: 0;
     }
 
-  body .gform_wrapper input.button {
-    font-size: 1.8rem !important;
-    padding: .7rem 1.4rem !important;
-  }
-
   button:hover,
   a.button:hover,
   body .gform_wrapper input.button:hover,
   input.button:hover,
   input[type="button"]:hover {
-    background-color: #cc0000;
+    background-color: #c00;
+    border: 0;
+    box-shadow: none;
     color: #fff;
     text-decoration: none;
   }
@@ -2345,8 +2338,8 @@ body #sidebar_column .gform_footer {
   body .gform_wrapper input.button:active,
   input.button:active,
   input[type="button"]:active {
-    background-color: #aa0000;
-    box-shadow: none !important;
+    background-color: #a00;
+    box-shadow: none;
     color: #ddd;
   }
 
