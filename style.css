@@ -49,6 +49,7 @@ Sidebar
 Footer
 Forms
 	Buttons
+  Easy Digital Downloads
 Useful Stuff
 Media Queries
 
@@ -360,7 +361,7 @@ a:focus {
 
 blockquote {
 	border-left: 1px solid #ddd;
-	color: #777;
+	color: #666;
 	margin: 0 0 2.8rem 0;
 	padding: 0 0 0 1.9rem;
 }
@@ -1622,21 +1623,55 @@ Content
   ------------------------------*/
 
   .survival_guide_note {
-    background: #eee;
-    border: .1rem solid #ddd;
+    border-bottom: .1rem solid #ddd;
     display: block;
-    margin-bottom: 1em;
-    padding: 2rem 2.5rem;
+    margin: 2.8rem 0;
+    overflow: hidden;
+    padding: 0 22.5rem 2rem 0;
+    position: relative;
   }
 
   .survival_guide_note h3 {
+    font-size: 2.2rem;
+    margin-bottom: .5em;
     margin-top: 0;
+  }
+
+  .survival_guide_note p {
+    font-size: 1.6rem;
   }
 
   .survival_guide_note img {
     height: auto;
     margin-bottom: 0;
+    position: absolute;
+      right: 1.1rem;
+      top: 1rem;
+    transform: rotate( .015turn );
     width: 20rem;
+  }
+
+  .survival_guide_note .button {
+    font-size: 1.3rem;
+    height: 3.2rem;
+    line-height: 3.2rem;
+    padding: 0 1.6rem;
+    text-transform: uppercase;
+    width: auto;
+  }
+
+  /* When notes start looking bad (500px) */
+
+  @media only screen and (max-width:499px) {
+
+    .survival_guide_note {
+      padding-right: 17.5rem;
+    }
+
+    .survival_guide_note img {
+      width: 15rem;
+    }
+
   }
 
   .survival_guide_note .button {
@@ -2141,11 +2176,6 @@ Footer
 Forms
 ------------------------------*/
 
-.jBox-Modal .jBox-content {
-  font-size: 1.6rem;
-  padding: 2rem 2.5rem;
-}
-
 body .gform_wrapper {
   font-size: inherit !important;
 }
@@ -2258,7 +2288,16 @@ body #sidebar_column .gform_footer {
   a.button,
   body .gform_wrapper input.button,
   input.button,
-  input[type="button"] {
+  input[type="button"],
+  button:focus,
+  a.button:focus,
+  body .gform_wrapper input.button:focus,
+  #edd-purchase-button:focus,
+  .edd-submit:focus,
+  .edd-submit.button:focus,
+  input[type=submit].edd-submit:focus,
+  input.button:focus,
+  input[type="button"]:focus {
     background-color: #bb0000;
     border: 0;
     border-radius: .2rem;
@@ -2266,10 +2305,14 @@ body #sidebar_column .gform_footer {
     box-sizing: border-box;
     color: #fff;
     display: inline-block;
+    font-size: 1.3rem;
+    height: 3.2rem;
+    line-height: 3.2rem;
     margin-bottom: 2.8rem;
     outline: none;
-    padding: .7rem 1.4rem;
+    padding: 0 1.6rem;
     text-decoration: none;
+    text-transform: uppercase;
     -webkit-appearance: none;
     width: auto;
   }
@@ -2303,7 +2346,21 @@ body #sidebar_column .gform_footer {
   input.button:active,
   input[type="button"]:active {
     background-color: #aa0000;
+    box-shadow: none !important;
     color: #ddd;
+  }
+
+
+  /*------------------------------
+  Easy Digital Downloads
+  ------------------------------*/
+
+  .jBox-Modal .jBox-content {
+    padding: 2rem 2.5rem;
+  }
+
+  #edd-free-downloads-modal button {
+    margin-bottom: 0;
   }
 
 
@@ -2551,11 +2608,6 @@ and (max-width:1023px) {
   img.size-medium {
     margin: 0 0 1.5rem 0;
   	width: 100%;
-  }
-
-  .survival_guide_note img {
-    margin: 0 0 1.5rem 0;
-    width: 100%;
   }
 
   #survival_guides a img,
