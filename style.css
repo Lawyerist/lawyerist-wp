@@ -1623,11 +1623,12 @@ Content
   ------------------------------*/
 
   .survival_guide_note {
-    border-bottom: .1rem solid #ddd;
+    background-color: #eee;
+    border: .1rem solid #ddd;
     display: block;
     margin: 2.8rem 0;
     overflow: hidden;
-    padding: 0 22.5rem 2rem 0;
+    padding: 2rem 22.5rem 2rem 2.5rem;
     position: relative;
   }
 
@@ -1646,7 +1647,7 @@ Content
     margin-bottom: 0;
     position: absolute;
       right: 1.1rem;
-      top: 1rem;
+      top: 3rem;
     transform: rotate( .015turn );
     width: 20rem;
   }
@@ -2285,15 +2286,10 @@ body #sidebar_column .gform_footer {
   ------------------------------*/
 
   button,
-  button:focus,
   a.button,
-  a.button:focus,
   body .gform_wrapper input.button,
-  body .gform_wrapper input.button:focus,
   input.button,
-  input.button:focus,
-  input[type="button"],
-  input[type="button"]:focus {
+  input[type="button"] {
     background-color: #b00;
     border: 0;
     border-radius: .2rem;
@@ -2327,8 +2323,6 @@ body #sidebar_column .gform_footer {
   input.button:hover,
   input[type="button"]:hover {
     background-color: #c00;
-    border: 0;
-    box-shadow: none;
     color: #fff;
     text-decoration: none;
   }
@@ -2337,9 +2331,13 @@ body #sidebar_column .gform_footer {
   a.button:active,
   body .gform_wrapper input.button:active,
   input.button:active,
-  input[type="button"]:active {
+  input[type="button"]:active
+  button:focus,
+  a.button:focus,
+  body .gform_wrapper input.button:focus,
+  input.button:focus,
+  input[type="button"]:focus {
     background-color: #a00;
-    box-shadow: none;
     color: #ddd;
   }
 
