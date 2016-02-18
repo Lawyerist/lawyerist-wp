@@ -9,7 +9,7 @@ if ( !has_tag( 'no-ads' ) ) {
 		<div class="survival_guide_note" data-swiftype-index="false">
 			<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2015/05/website-design-guide-cover-2-300x391.png" alt="website-design-guide-cover-2" />
 			<h3>Free: 10 Things the Best Law-Firm Website Designs Have in Common</h3>
-			<p>For the past six years, Lawyerist has published an annual list of the best law firm websites. Now, you can find out what they have in common.</p>
+			<p>For seven years, Lawyerist has published an annual list of the best law firm websites. Now, you can find out what they have in common.</p>
 			<a href="https://lawyerist.com/downloads/law-firm-website-design-guide/" class="button">Download Now</a>
 			<div class="clear"></div>
 		</div>
