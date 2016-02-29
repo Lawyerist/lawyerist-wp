@@ -2286,6 +2286,7 @@ body #sidebar_column .gform_footer {
   ------------------------------*/
 
   button,
+  .button,
   a.button,
   body .gform_wrapper input.button,
   input.button,
@@ -2310,6 +2311,7 @@ body #sidebar_column .gform_footer {
   }
 
   button:focus,
+  .button:focus,
   a.button:focus,
   body .gform_wrapper input.button:focus,
   input.button:focus,
@@ -2318,6 +2320,7 @@ body #sidebar_column .gform_footer {
   }
 
     #sidebar_column button,
+    #sidebar_column .button,
     #sidebar_column a.button,
     #sidebar_column body .gform_wrapper input.button,
     #sidebar_column input.button,
@@ -2326,6 +2329,7 @@ body #sidebar_column .gform_footer {
     }
 
   button:hover,
+  .button:hover,
   a.button:hover,
   body .gform_wrapper input.button:hover,
   input.button:hover,
@@ -2336,6 +2340,7 @@ body #sidebar_column .gform_footer {
   }
 
   button:active,
+  .button:active,
   a.button:active,
   body .gform_wrapper input.button:active,
   input.button:active,
