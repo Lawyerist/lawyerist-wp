@@ -107,7 +107,7 @@
 
 										<?php } else { ?>
 
-											<li><a href="<?php the_permalink(); ?>?utm_source=lawyerist-series-footer-nav&utm_medium=internal&utm_campaign=nav" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>"><?php the_title(); ?></a></li>
+											<li><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>"><?php the_title(); ?></a></li>
 
 										<?php } ?>
 
@@ -117,7 +117,7 @@
 
 								<?php if ( $series_query->found_posts > 4 ) { ?>
 
-									<p><a href="<?php echo get_term_link( $series_slug, 'series' ); ?>?utm_source=lawyerist-series-footer-nav&utm_medium=internal&utm_campaign=nav">See all the posts in this series.</a></p>
+									<p><a href="<?php echo get_term_link( $series_slug, 'series' ); ?>">See all the posts in this series.</a></p>
 
 								<?php }
 
@@ -244,7 +244,7 @@
 
 							} ?>
 
-			        <a <?php post_class($classes); ?> href="<?php the_permalink(); ?>?utm_source=lawyerist-current-posts-footer-nav&utm_medium=internal&utm_campaign=nav" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
+			        <a <?php post_class($classes); ?> href="<?php the_permalink(); ?>" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
 			          <div class="current_posts_headline"><?php echo $title; ?></div>
 			          <?php if ( has_post_thumbnail() ) {
 									the_post_thumbnail( 'thumbnail' );

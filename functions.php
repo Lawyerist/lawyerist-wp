@@ -479,11 +479,11 @@ function l_pp_tabbed_widget_display($args) {
 		</ul>
 
 		<div id="current" class="tabs_sublist">
-			<?php wpp_get_mostpopular("post_type='post'&range=weekly&limit=5&freshness=1&stats_comments=0&thumbnail_height=60&thumbnail_width=60&post_html='<li>{thumb}<a class=\"wpp_headline\" href=\"{url}?utm_source=lawyerist-sidebar\">{text_title}</a></li>'"); ?>
+			<?php wpp_get_mostpopular("post_type='post'&range=weekly&limit=5&freshness=1&stats_comments=0&thumbnail_height=60&thumbnail_width=60&post_html='<li>{thumb}<a class=\"wpp_headline\" href=\"{url}\">{text_title}</a></li>'"); ?>
 		</div>
 
 		<div id="all-time" class="tabs_sublist">
-			<?php wpp_get_mostpopular("post_type='post'&range=all&limit=5&stats_comments=0&thumbnail_height=60&thumbnail_width=60&post_html='<li>{thumb}<a class=\"wpp_headline\" href=\"{url}?utm_source=lawyerist-sidebar\">{text_title}</a></li>'"); ?>
+			<?php wpp_get_mostpopular("post_type='post'&range=all&limit=5&stats_comments=0&thumbnail_height=60&thumbnail_width=60&post_html='<li>{thumb}<a class=\"wpp_headline\" href=\"{url}\">{text_title}</a></li>'"); ?>
 		</div>
 
 		</div>
