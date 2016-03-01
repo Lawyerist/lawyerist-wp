@@ -9,7 +9,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
+<!-- Google Webmaster Tools site verification tag for Sam -->
 <meta name="google-site-verification" content="GwbQ-BLG3G-tXV4-uG-_kZIaxXxm_Wqmzg5wFSBa9hI" />
+<!-- Google Webmaster Tools site verification tag for Aaron -->
+<meta name="google-site-verification" content="d_OrAi2nt_o3Y3uQ-dicRpRYaxZSynFLUhHY15cnJUY" />
 
 <!-- Begin DoubleClick tags -->
 <script type='text/javascript'>
