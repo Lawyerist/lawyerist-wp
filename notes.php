@@ -38,6 +38,17 @@ if ( !has_tag( 'no-ads' ) ) {
 			<div class="clear"></div>
 		</div>
 
+	<?php } elseif ( has_category( 'practice-management' ) ) { ?>
+
+		<div class="survival_guide_note" data-swiftype-index="false">
+			<img src="https://lawyerist.com/lawyerist/wp-content/uploads/edd/2016/03/productivity-guide-cover-300x391.png" alt="productivity-guide-cover" />
+			<h3>Personal Productivity for Lawyers</h3>
+			<p>This quick-start guide to Getting Things Done and Inbox Zero also includes two shortcuts for those who want the benefits of GTD without having to learn the system.</p>
+			<?php echo edd_get_purchase_link( array( 'download_id' => 103618 ) ); ?>
+			<div class="clear"></div>
+		</div>
+		<a href="https://lawyerist.com/downloads/personal-productivity-lawyers/" rel="attachment wp-att-103620"></a>
+
 	<?php }
 
 }
