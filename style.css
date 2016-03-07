@@ -1626,7 +1626,7 @@ Content
     background-color: #eee;
     border: .1rem solid #ddd;
     display: block;
-    margin: 2.8rem 0;
+    margin: 0 0 2.8rem 0;
     overflow: hidden;
     padding: 2rem 22.5rem 2rem 2.5rem;
     position: relative;
