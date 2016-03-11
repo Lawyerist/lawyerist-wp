@@ -10,12 +10,12 @@ Theme Setup
 Fix Gravity Form Tab Index Conflicts
 Rename "Aside" Post Format to "Note"
 Series Custom Taxonomy
+Sponsors Custom Taxonomy
 Edit Flow
 Add Image Sizes
 Featured Images in RSS Feeds
 Sidebar
-Sidebar Popular Posts Widget
-Add Capabilities to Contributor Role
+Popular Posts Widget
 RSS Feed Caching
 
 */
@@ -65,20 +65,9 @@ function lawyerist_get_byline() {
 
 	$this_post_id = get_the_ID();
 
-	// Media partners
-	if ( has_term( 'aba-techshow-2016-coverage', 'series' ) ) {
-
-		/* Bylines should only have links to the author page on single post pages. */
-		if ( is_single() ) {
-			$author = '<a href="' . get_author_posts_url( get_the_author_meta( 'ID' ) ) . '">' . get_the_author() . '</a>, in collaboration with <a href="http://www.techshow.com/" rel="nofollow">ABA TECHSHOW</a>,';
-		} else {
-			$author = get_the_author() . ', in collaboration with ABA TECHSHOW,';
-		}
-
-	}
-
-	// Sponsor-submitted posts
-	elseif ( has_term( true , 'sponsor' ) && has_category( 'sponsored-posts' ) ) {
+	// Sponsor-submitted posts will have a sponsor and the category will be set
+	// to Sponsored Post.
+	if ( has_term( true , 'sponsor' ) && has_category( 'sponsored-posts' ) ) {
 
 		$sponsors = wp_get_post_terms(
 			$this_post_id,
@@ -111,7 +100,8 @@ function lawyerist_get_byline() {
 			$author = $sponsor;
 		}
 
-	// Sponsored collaborative (native) posts
+	// Sponsored collaborative posts will have a sponsor but the
+	// category will *not* be set to Sponsored Posts.
 	} elseif ( has_term( true , 'sponsor' ) && !has_category( 'sponsored-posts' ) ) {
 
 		$sponsors = wp_get_post_terms(
@@ -141,9 +131,9 @@ function lawyerist_get_byline() {
 
 		/* Bylines should only have links to the author page on single post pages. */
 		if ( is_single() ) {
-			$author = '<a href="' . get_author_posts_url( get_the_author_meta( 'ID' ) ) . '">' . get_the_author() . '</a>, a <a href="https://lawyerist.com/advertising/">sponsored collaboration</a> with ' . '<a href="' . $sponsor_url . '" rel="nofollow">' . $sponsor . '</a>,';
+			$author = '<a href="' . get_author_posts_url( get_the_author_meta( 'ID' ) ) . '">' . get_the_author() . '</a>, sponsored by ' . '<a href="' . $sponsor_url . '" rel="nofollow">' . $sponsor . '</a>,';
 		} else {
-			$author = get_the_author() . ', a sponsored collaboration with ' . $sponsor . ',';
+			$author = get_the_author() . ', sponsored by ' . $sponsor . ',';
 		}
 
 	// Regular posts
@@ -461,7 +451,7 @@ add_action( 'widgets_init', 'lawyerist_sidebar_1' );
 
 
 /*------------------------------
-Allow PHP in Widgets
+Popular Posts Widget
 ------------------------------*/
 
 function l_pp_tabbed_widget_display($args) {
@@ -504,19 +494,6 @@ wp_register_sidebar_widget(
 	)
 
 );
-
-
-/*------------------------------
-Add Capabilities to Contributor Role
-------------------------------*/
-
-function add_permissions_contributor() {
-  $role = get_role( 'contributor' );
-  $role->add_cap( 'upload_files' );
-	$role->remove_cap( 'edit_others_posts' );
-}
-
-add_action( 'admin_init', 'add_permissions_contributor');
 
 
 /*------------------------------
