@@ -637,6 +637,10 @@ img.wp-post-image.attachment-large {
 	width: 100%;
 }
 
+img.inline {
+  display: inline !important;
+}
+
 .wp-caption {
   margin-bottom: 1em;
   max-width: 100%;
