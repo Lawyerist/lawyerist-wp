@@ -21,10 +21,7 @@
 				<p>Sorry, we can't find the page you are looking for. Try searching for it, in case it moved:</p>
 
 				<div id="lawyerist_content_search">
-					<form>
-					  <input type="text" id="st-search-input-content" class="st-search-input" value="Search" onblur="if (this.value == '') {this.value = 'Search';}" onfocus="if (this.value == 'Search') {this.value = '';}" />
-					</form>
-					<div id="st-results-container"></div>
+					<?php get_search_form(); ?>
 				</div>
 
 				<p>Or, maybe you prefer a more serendipitous approach to discovery. Here are our most popular tags:</p>

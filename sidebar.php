@@ -1,8 +1,17 @@
 	<li id="lawyerist_sidebar_search">
-		<form>
-		  <input type="text" id="st-search-input" class="st-search-input" value="Search" onblur="if (this.value == '') {this.value = 'Search';}" onfocus="if (this.value == 'Search') {this.value = '';}" />
+		<form role="search" method="get" class="search-form" action="<?php echo home_url( '/' ); ?>">
+		    <label>
+		        <span hidden class="screen-reader-text"><?php echo _x( 'Search Lawyerist.com: ', 'label' ) ?></span>
+		        <input type="search" class="search-field"
+		          name="s"
+		          placeholder="<?php echo esc_attr_x( 'Search Lawyerist.com …', 'placeholder' ) ?>"
+		          title="<?php echo esc_attr_x( 'Search Lawyerist.com', 'label' ) ?>"
+		        />
+		    </label>
+		    <input hidden type="submit" class="search-submit"
+		      value="<?php echo esc_attr_x( 'Search', 'submit button' ) ?>"
+		    />
 		</form>
-		<div id="st-results-container"></div>
 	</li>
 
 <?php if ( !has_tag('no-ads') || !is_mobile() ) { ?>

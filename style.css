@@ -1263,13 +1263,6 @@ Content
 	margin-bottom: 2.8rem;
 }
 
-#lawyerist_content_search input#st-search-input-content {
-	border-radius: .2rem !important;
-	font-size: 1.6rem;
-	margin: 0;
-  padding-left: 2.7rem !important;
-	width: 26.5rem !important;
-}
 
 	/*------------------------------
 	Index & Archive Lists
@@ -1714,13 +1707,14 @@ Content
   ------------------------------*/
 
   .author_list {
-    list-style:none;
-    margin-left:0;
+    list-style: none;
+    margin-left: 0;
   }
 
   .author_list li {
-    display:inline-block;
-    width:33.333%;
+    display: inline-block;
+    margin-bottom: 2.8rem;
+    width: 33.333%;
   }
 
 
@@ -2197,9 +2191,9 @@ body .gform_wrapper input[type=tel],
 body .gform_wrapper input[type=url],
 body .gform_wrapper input[type=number],
 body .gform_wrapper input[type=password],
-input#st-search-input,
 body .gform_wrapper select,
 body .gform_wrapper textarea,
+body input[type="search"],
 #edd-free-downloads-modal input[type='text'] {
   border: .1rem solid #bbb;
   border-radius: .2rem;
@@ -2215,11 +2209,6 @@ body .gform_wrapper textarea,
   -webkit-appearance: none;
 }
 
-input#st-search-input {
-  height:auto;
-  padding-left: 2.7rem !important;
-}
-
 body .gform_wrapper select {
   padding: .4rem !important;
 }
@@ -2230,9 +2219,9 @@ body #sidebar_column .gform_wrapper input[type=tel],
 body #sidebar_column .gform_wrapper input[type=url],
 body #sidebar_column .gform_wrapper input[type=number],
 body #sidebar_column .gform_wrapper input[type=password],
-#sidebar_column input#st-search-input,
 body #sidebar_column .gform_wrapper select,
-body #sidebar_column .gform_wrapper textarea {
+body #sidebar_column .gform_wrapper textarea,
+body #sidebar_column input[type="search"], {
   width: 30rem;
 }
 
@@ -2247,15 +2236,16 @@ body .gform_wrapper input[type=tel]:focus,
 body .gform_wrapper input[type=url]:focus,
 body .gform_wrapper input[type=number]:focus,
 body .gform_wrapper input[type=password]:focus,
-input#st-search-input:focus,
 body .gform_wrapper select:focus,
 body .gform_wrapper textarea:focus,
+body input[type="search"]:focus,
 #edd-free-downloads-modal input[type='text']:focus {
   border-color: #cc0000;
   color: #333;
 }
 
-body .gform_wrapper label.gfield_label {
+body .gform_wrapper label.gfield_label,
+body label {
   font-size: 1.8rem;
   margin-bottom: 0 !important;
 }
@@ -2282,6 +2272,16 @@ body .gforms_confirmation_message {
 
 body #sidebar_column .gform_footer {
   padding: 0;
+}
+
+#lawyerist_content_search input[type="search"],
+#lawyerist_sidebar_search input[type="search"] {
+  width: 100%;
+}
+
+#lawyerist_content_search label span {
+  display: block;
+  margin-bottom: .5em;
 }
 
 

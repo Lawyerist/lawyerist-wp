@@ -13,7 +13,7 @@
 
 <?php } ?>
 
-<div id="header_container" data-swiftype-index="false">
+<div id="header_container">
 
 	<div id="header">
 
@@ -49,6 +49,6 @@
 
 </div><!-- #header_container -->
 
-<div id="main-menu" data-swiftype-index="false">
+<div id="main-menu">
 	<?php wp_nav_menu( array( 'theme_location' => 'main_nav' ) ); ?>
 </div>
