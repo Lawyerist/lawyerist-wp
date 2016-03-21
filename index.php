@@ -34,7 +34,7 @@
 
 				<?php if ( has_post_thumbnail() ) { the_post_thumbnail('thumbnail'); } ?>
 
-				<h2 class="headline remove_bottom" id="post-<?php the_ID(); ?>"><?php the_title(); ?></h2>
+				<h2 class="headline" id="post-<?php the_ID(); ?>"><?php the_title(); ?></h2>
 				<div class="postmeta">
           <?php lawyerist_get_byline(); ?>
           <?php if ( $num_comments > 0 ) { ?>

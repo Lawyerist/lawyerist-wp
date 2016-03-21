@@ -64,113 +64,107 @@ function lawyerist_get_byline() {
 
 	// This function must be used within the Loop
 
-	if ( !is_page() ) {
+	$this_post_id = get_the_ID();
 
-		$this_post_id = get_the_ID();
+	// Sponsor-submitted posts will have a sponsor and the category will be set
+	// to Sponsored Post.
+	if ( has_term( true, 'sponsor' ) && has_category( 'sponsored-posts' ) ) {
 
-		// Sponsor-submitted posts will have a sponsor and the category will be set
-		// to Sponsored Post.
-		if ( has_term( true, 'sponsor' ) && has_category( 'sponsored-posts' ) ) {
+		$sponsors = wp_get_post_terms(
+			$this_post_id,
+			'sponsor',
+			array(
+				'fields' 	=> 'names',
+				'orderby' => 'count',
+				'order' 	=> 'DESC'
+			)
+		);
+		$sponsor = $sponsors[0];
 
-			$sponsors = wp_get_post_terms(
-				$this_post_id,
-				'sponsor',
-				array(
-					'fields' 	=> 'names',
-					'orderby' => 'count',
-					'order' 	=> 'DESC'
-				)
-			);
-			$sponsor = $sponsors[0];
+		$sponsor_ids = wp_get_post_terms(
+			$this_post_id,
+			'sponsor',
+			array(
+				'fields' 	=> 'ids',
+				'orderby' => 'count',
+				'order' 	=> 'DESC'
+			)
+		);
+		$sponsor_id = $sponsor_ids[0];
 
-			$sponsor_ids = wp_get_post_terms(
-				$this_post_id,
-				'sponsor',
-				array(
-					'fields' 	=> 'ids',
-					'orderby' => 'count',
-					'order' 	=> 'DESC'
-				)
-			);
-			$sponsor_id = $sponsor_ids[0];
+		$sponsor_url = term_description( $sponsor_id, 'sponsor' );
+		$sponsor_url = strip_tags( $sponsor_url );
 
-			$sponsor_url = term_description( $sponsor_id, 'sponsor' );
-			$sponsor_url = strip_tags( $sponsor_url );
+		if ( is_single() ) {
+			$author = '<a href="' . $sponsor_url . '" rel="nofollow">' . $sponsor . '</a>';
+		} else {
+			$author = $sponsor;
+		}
 
-			if ( is_single() ) {
-				$author = '<a href="' . $sponsor_url . '" rel="nofollow">' . $sponsor . '</a>';
+	// Sponsored collaborative posts will have a sponsor but the
+	// category will *not* be set to Sponsored Posts.
+	} elseif ( has_term( true, 'sponsor' ) && !has_category( 'sponsored-posts' ) ) {
+
+		$sponsors = wp_get_post_terms(
+			$this_post_id,
+			'sponsor',
+			array(
+				'fields' 	=> 'names',
+				'orderby' => 'count',
+				'order' 	=> 'DESC'
+			)
+		);
+		$sponsor = $sponsors[0];
+
+		$sponsor_ids = wp_get_post_terms(
+			$this_post_id,
+			'sponsor',
+			array(
+				'fields' 	=> 'ids',
+				'orderby' => 'count',
+				'order' 	=> 'DESC'
+			)
+		);
+		$sponsor_id = $sponsor_ids[0];
+
+		$sponsor_url = term_description( $sponsor_id, 'sponsor' );
+		$sponsor_url = strip_tags( $sponsor_url );
+
+		/* Bylines should only have links to the author page on single post pages. */
+		if ( is_single() ) {
+			$author = '<a href="' . get_author_posts_url( get_the_author_meta( 'ID' ) ) . '">' . get_the_author() . '</a>, sponsored by ' . '<a href="' . $sponsor_url . '" rel="nofollow">' . $sponsor . '</a>,';
+		} else {
+			$author = get_the_author() . ', sponsored by ' . $sponsor . ',';
+		}
+
+	// Regular posts
+	} else {
+
+		/* Bylines should only have links to the author page on single post pages. */
+		if ( is_single() ) {
+
+			if ( function_exists( 'coauthors_posts_links' ) ) {
+				$author = coauthors_posts_links( ', ',' and ','','', false );
 			} else {
-				$author = $sponsor;
+			  $author = '<a href="' . get_author_posts_url( get_the_author_meta( 'ID' ) ) . '">' . get_the_author() . '</a>';
 			}
 
-		// Sponsored collaborative posts will have a sponsor but the
-		// category will *not* be set to Sponsored Posts.
-		} elseif ( has_term( true, 'sponsor' ) && !has_category( 'sponsored-posts' ) ) {
-
-			$sponsors = wp_get_post_terms(
-				$this_post_id,
-				'sponsor',
-				array(
-					'fields' 	=> 'names',
-					'orderby' => 'count',
-					'order' 	=> 'DESC'
-				)
-			);
-			$sponsor = $sponsors[0];
-
-			$sponsor_ids = wp_get_post_terms(
-				$this_post_id,
-				'sponsor',
-				array(
-					'fields' 	=> 'ids',
-					'orderby' => 'count',
-					'order' 	=> 'DESC'
-				)
-			);
-			$sponsor_id = $sponsor_ids[0];
-
-			$sponsor_url = term_description( $sponsor_id, 'sponsor' );
-			$sponsor_url = strip_tags( $sponsor_url );
-
-			/* Bylines should only have links to the author page on single post pages. */
-			if ( is_single() ) {
-				$author = '<a href="' . get_author_posts_url( get_the_author_meta( 'ID' ) ) . '">' . get_the_author() . '</a>, sponsored by ' . '<a href="' . $sponsor_url . '" rel="nofollow">' . $sponsor . '</a>,';
-			} else {
-				$author = get_the_author() . ', sponsored by ' . $sponsor . ',';
-			}
-
-		// Regular posts
 		} else {
 
-			/* Bylines should only have links to the author page on single post pages. */
-			if ( is_single() ) {
-
-				if ( function_exists( 'coauthors_posts_links' ) ) {
-					$author = coauthors_posts_links( ', ',' and ','','', false );
-				} else {
-				  $author = '<a href="' . get_author_posts_url( get_the_author_meta( 'ID' ) ) . '">' . get_the_author() . '</a>';
-				}
-
+			if ( function_exists( 'coauthors_posts_links' ) ) {
+				$author = coauthors( ', ',' and ','','', false );
 			} else {
-
-				if ( function_exists( 'coauthors_posts_links' ) ) {
-					$author = coauthors( ', ',' and ','','', false );
-				} else {
-					$author = get_the_author();
-				}
-
+				$author = get_the_author();
 			}
 
 		}
 
-		$date = get_the_time( 'F jS, Y' );
-
-		// Output the results
-		echo '<div class="author_link">By ' . $author . ' <span class="postmeta_break">on ' . $date. '</span></div>';
-
-	} else {
-		echo '';
 	}
+
+	$date = get_the_time( 'F jS, Y' );
+
+	// Output the results
+	echo '<div class="author_link">By ' . $author . ' <span class="postmeta_break">on ' . $date. '</span></div>';
 
 }
 
