@@ -198,7 +198,7 @@
     <div class="clear"></div>
 
 
-    <div class="fp_tab"><h2>Q&A Forum</h2></div>
+    <div class="fp_tab"><h2>Q&amp;A Forum</h2></div>
     <div id="lab_posts">
 
       <?php // Get RSS Feed(s)

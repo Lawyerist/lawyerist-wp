@@ -54,15 +54,7 @@
 		/* END LOOP */ ?>
 
 
-		<div id="pagenav">
-			<div class="alignleft pagenav_link_block">
-				<?php previous_posts_link('<div class="genericon pagenav_leftarrow"></div><div class="pagenav_link">browse newer posts</div>',0) ?>
-			</div>
-			<div class="alignright pagenav_link_block">
-				<?php next_posts_link('<div class="pagenav_link">browse older posts</div><div class="genericon pagenav_rightarrow"></div>',0) ?>
-			</div>
-			<div class="clear"></div>
-		</div>
+		<?php lawyerist_get_pagenav(); ?>
 
 
 	</div><!-- end #content_column -->

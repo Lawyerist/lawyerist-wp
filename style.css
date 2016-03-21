@@ -308,7 +308,7 @@ input[type="button"],
 .fp_bottom_tab h2,
 label,
 #lab_posts,
-.pagenav_link,
+#pagenav,
 #popular_posts_tabbed,
 .postmeta,
 p.pullout,
@@ -1266,9 +1266,13 @@ Content
 
 	/*------------------------------
 	Index & Archive Lists
+
+  Includes a.page for pages in
+  search results.
 	------------------------------*/
 
-	a.post {
+	a.post,
+  a.page {
     border-bottom: .1rem solid #ddd;
     clear: both;
     display: block;
@@ -1277,18 +1281,21 @@ Content
 		text-decoration: none;
 	}
 
-  a.post:last-of-type {
+  a.post:last-of-type,
+  a.page:last-of-type {
     margin-bottom: 2.8rem;
   }
 
-	a.post .headline {
+	a.post .headline,
+  a.page .headline {
 		color: #333;
     font-size: 2.8rem;
   	line-height: 1.2;
   	margin-bottom: .25em;
 	}
 
-	a.post:hover .headline {
+	a.post:hover .headline,
+  a.page:hover .headline {
 		text-decoration: underline;
 	}
 
@@ -1301,22 +1308,26 @@ Content
 		color: #555;
 	}
 
-  a.post img {
+  a.post img,
+  a.page img {
     float: right;
     height: auto;
     margin: 0 0 0 1.5rem;
     width: 23.4375%;
   }
 
-	a.post p {
+	a.post p,
+  a.page p {
 		color: #333;
 	}
 
-	a.post p.excerpt_with_thumb {
+	a.post p.excerpt_with_thumb,
+  a.page p.excerpt_with_thumb {
 		padding-right: 17rem;
 	}
 
-	a.post:hover p {
+	a.post:hover p,
+  a.page:hover p {
 		color: #111;
 	}
 
@@ -1826,74 +1837,99 @@ Content
   	margin-bottom: 6rem;
   }
 
+  #pagenav .page-numbers {
+    color: #111;
+    display: inline-block;
+    font-size: 1.2rem;
+    font-weight: normal;
+    line-height: 1;
+    padding:.6rem;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  #pagenav a.page-numbers {
+    background: #ddd;
+    border-radius: 1.2rem;
+    margin-right: .4rem;
+    min-width: 1.2rem;
+  }
+
+  #pagenav a.page-numbers:active,
+  #pagenav a.page-numbers:hover {
+    background: #ccc;
+    color: #c00;
+    text-decoration: none;
+  }
+
   #pagenav .pagenav_link_block {
       display:inline-block;
       max-width:30rem;
       position:relative;
   }
 
-	.pagenav_leftarrow:before {
-		float:left;
-		position:absolute;
-			top:0;
-			left:0;
-	}
+  	.pagenav_leftarrow:before {
+  		float:left;
+  		position:absolute;
+  			top:0;
+  			left:0;
+  	}
 
-	.pagenav_rightarrow:before {
-		float:right;
-		position:absolute;
-			top:0;
-			right:0;
-	}
+  	.pagenav_rightarrow:before {
+  		float:right;
+  		position:absolute;
+  			top:0;
+  			right:0;
+  	}
 
-	.pagenav_leftarrow:before,
-	.pagenav_rightarrow:before {
-		background-color:#cc0000;
-		border-radius:1.6rem;
-		color:#fff;
-		display:inline-block;
-		-webkit-font-smoothing:antialiased;
-		font:normal 3.2rem/1em 'Genericons';
-    speak: none;
-    transition:background-color .2s;
-		vertical-align:top;
-	}
+  	.pagenav_leftarrow:before,
+  	.pagenav_rightarrow:before {
+  		background-color:#cc0000;
+  		border-radius:1.6rem;
+  		color:#fff;
+  		display:inline-block;
+  		-webkit-font-smoothing:antialiased;
+  		font:normal 3.2rem/1em 'Genericons';
+      speak: none;
+      transition:background-color .2s;
+  		vertical-align:top;
+  	}
 
-	#pagenav a:hover .pagenav_leftarrow:before,
-	#pagenav a:hover .pagenav_rightarrow:before {
-    background-color:#aa0000;
-	}
+  	#pagenav a:hover .pagenav_leftarrow:before,
+  	#pagenav a:hover .pagenav_rightarrow:before {
+      background-color:#aa0000;
+  	}
 
-		.pagenav_leftarrow:before {
-			content:'\f430';
-		}
+  		.pagenav_leftarrow:before {
+  			content:'\f430';
+  		}
 
-		.pagenav_rightarrow:before {
-			content:'\f429';
-		}
+  		.pagenav_rightarrow:before {
+  			content:'\f429';
+  		}
 
-    .pagenav_link {
-      display:inline-block;
-      font-size:2.2rem;
-      line-height:3.2rem;
-    }
-
-      a:hover .pagenav_link {
-        text-decoration:underline;
+      .pagenav_link {
+        display:inline-block;
+        font-size:2.2rem;
+        line-height:3.2rem;
       }
 
-		#pagenav .alignleft .pagenav_link {
-			padding-left:4.7rem;
-			text-align:left;
-		}
+        a:hover .pagenav_link {
+          text-decoration:underline;
+        }
 
-		#pagenav .alignright .pagenav_link {
-			padding-right:4.7rem;
-		}
+  		#pagenav .alignleft .pagenav_link {
+  			padding-left:4.7rem;
+  			text-align:left;
+  		}
 
-    #pagenav .alignright.pagenav_link_block {
-      text-align:right;
-    }
+  		#pagenav .alignright .pagenav_link {
+  			padding-right:4.7rem;
+  		}
+
+      #pagenav .alignright.pagenav_link_block {
+        text-align:right;
+      }
 
 
 	/*------------------------------

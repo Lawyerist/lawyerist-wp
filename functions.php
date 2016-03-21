@@ -6,6 +6,7 @@ Stylesheets & Scripts
 Nav Menu
 Bylines
 Mobile Ad
+Page Navigation
 Theme Setup
 Fix Gravity Form Tab Index Conflicts
 Rename "Aside" Post Format to "Note"
@@ -13,9 +14,9 @@ Series Custom Taxonomy
 Sponsors Custom Taxonomy
 Edit Flow
 Add Image Sizes
-Featured Images in RSS Feeds
 Sidebar
 Popular Posts Widget
+Featured Images in RSS Feeds
 RSS Feed Caching
 
 */
@@ -63,107 +64,113 @@ function lawyerist_get_byline() {
 
 	// This function must be used within the Loop
 
-	$this_post_id = get_the_ID();
+	if ( !is_page() ) {
 
-	// Sponsor-submitted posts will have a sponsor and the category will be set
-	// to Sponsored Post.
-	if ( has_term( true , 'sponsor' ) && has_category( 'sponsored-posts' ) ) {
+		$this_post_id = get_the_ID();
 
-		$sponsors = wp_get_post_terms(
-			$this_post_id,
-			'sponsor',
-			array(
-				'fields' 	=> 'names',
-				'orderby' => 'count',
-				'order' 	=> 'DESC'
-			)
-		);
-		$sponsor = $sponsors[0];
+		// Sponsor-submitted posts will have a sponsor and the category will be set
+		// to Sponsored Post.
+		if ( has_term( true, 'sponsor' ) && has_category( 'sponsored-posts' ) ) {
 
-		$sponsor_ids = wp_get_post_terms(
-			$this_post_id,
-			'sponsor',
-			array(
-				'fields' 	=> 'ids',
-				'orderby' => 'count',
-				'order' 	=> 'DESC'
-			)
-		);
-		$sponsor_id = $sponsor_ids[0];
+			$sponsors = wp_get_post_terms(
+				$this_post_id,
+				'sponsor',
+				array(
+					'fields' 	=> 'names',
+					'orderby' => 'count',
+					'order' 	=> 'DESC'
+				)
+			);
+			$sponsor = $sponsors[0];
 
-		$sponsor_url = term_description( $sponsor_id, 'sponsor' );
-		$sponsor_url = strip_tags( $sponsor_url );
+			$sponsor_ids = wp_get_post_terms(
+				$this_post_id,
+				'sponsor',
+				array(
+					'fields' 	=> 'ids',
+					'orderby' => 'count',
+					'order' 	=> 'DESC'
+				)
+			);
+			$sponsor_id = $sponsor_ids[0];
 
-		if ( is_single() ) {
-			$author = '<a href="' . $sponsor_url . '" rel="nofollow">' . $sponsor . '</a>';
+			$sponsor_url = term_description( $sponsor_id, 'sponsor' );
+			$sponsor_url = strip_tags( $sponsor_url );
+
+			if ( is_single() ) {
+				$author = '<a href="' . $sponsor_url . '" rel="nofollow">' . $sponsor . '</a>';
+			} else {
+				$author = $sponsor;
+			}
+
+		// Sponsored collaborative posts will have a sponsor but the
+		// category will *not* be set to Sponsored Posts.
+		} elseif ( has_term( true, 'sponsor' ) && !has_category( 'sponsored-posts' ) ) {
+
+			$sponsors = wp_get_post_terms(
+				$this_post_id,
+				'sponsor',
+				array(
+					'fields' 	=> 'names',
+					'orderby' => 'count',
+					'order' 	=> 'DESC'
+				)
+			);
+			$sponsor = $sponsors[0];
+
+			$sponsor_ids = wp_get_post_terms(
+				$this_post_id,
+				'sponsor',
+				array(
+					'fields' 	=> 'ids',
+					'orderby' => 'count',
+					'order' 	=> 'DESC'
+				)
+			);
+			$sponsor_id = $sponsor_ids[0];
+
+			$sponsor_url = term_description( $sponsor_id, 'sponsor' );
+			$sponsor_url = strip_tags( $sponsor_url );
+
+			/* Bylines should only have links to the author page on single post pages. */
+			if ( is_single() ) {
+				$author = '<a href="' . get_author_posts_url( get_the_author_meta( 'ID' ) ) . '">' . get_the_author() . '</a>, sponsored by ' . '<a href="' . $sponsor_url . '" rel="nofollow">' . $sponsor . '</a>,';
+			} else {
+				$author = get_the_author() . ', sponsored by ' . $sponsor . ',';
+			}
+
+		// Regular posts
 		} else {
-			$author = $sponsor;
+
+			/* Bylines should only have links to the author page on single post pages. */
+			if ( is_single() ) {
+
+				if ( function_exists( 'coauthors_posts_links' ) ) {
+					$author = coauthors_posts_links( ', ',' and ','','', false );
+				} else {
+				  $author = '<a href="' . get_author_posts_url( get_the_author_meta( 'ID' ) ) . '">' . get_the_author() . '</a>';
+				}
+
+			} else {
+
+				if ( function_exists( 'coauthors_posts_links' ) ) {
+					$author = coauthors( ', ',' and ','','', false );
+				} else {
+					$author = get_the_author();
+				}
+
+			}
+
 		}
 
-	// Sponsored collaborative posts will have a sponsor but the
-	// category will *not* be set to Sponsored Posts.
-	} elseif ( has_term( true , 'sponsor' ) && !has_category( 'sponsored-posts' ) ) {
+		$date = get_the_time( 'F jS, Y' );
 
-		$sponsors = wp_get_post_terms(
-			$this_post_id,
-			'sponsor',
-			array(
-				'fields' 	=> 'names',
-				'orderby' => 'count',
-				'order' 	=> 'DESC'
-			)
-		);
-		$sponsor = $sponsors[0];
+		// Output the results
+		echo '<div class="author_link">By ' . $author . ' <span class="postmeta_break">on ' . $date. '</span></div>';
 
-		$sponsor_ids = wp_get_post_terms(
-			$this_post_id,
-			'sponsor',
-			array(
-				'fields' 	=> 'ids',
-				'orderby' => 'count',
-				'order' 	=> 'DESC'
-			)
-		);
-		$sponsor_id = $sponsor_ids[0];
-
-		$sponsor_url = term_description( $sponsor_id, 'sponsor' );
-		$sponsor_url = strip_tags( $sponsor_url );
-
-		/* Bylines should only have links to the author page on single post pages. */
-		if ( is_single() ) {
-			$author = '<a href="' . get_author_posts_url( get_the_author_meta( 'ID' ) ) . '">' . get_the_author() . '</a>, sponsored by ' . '<a href="' . $sponsor_url . '" rel="nofollow">' . $sponsor . '</a>,';
-		} else {
-			$author = get_the_author() . ', sponsored by ' . $sponsor . ',';
-		}
-
-	// Regular posts
 	} else {
-
-		/* Bylines should only have links to the author page on single post pages. */
-		if ( is_single() ) {
-
-			if ( function_exists( 'coauthors_posts_links' ) ) {
-				$author = coauthors_posts_links( ', ',' and ','','', false );
-			} else {
-			  $author = '<a href="' . get_author_posts_url( get_the_author_meta( 'ID' ) ) . '">' . get_the_author() . '</a>';
-			}
-
-		} else {
-
-			if ( function_exists( 'coauthors_posts_links' ) ) {
-				$author = coauthors( ', ',' and ','','', false );
-			} else {
-				$author = get_the_author();
-			}
-
-		}
-
+		echo '';
 	}
-
-	$date = get_the_time( 'F jS, Y' );
-
-	// Output the results
-	echo '<div class="author_link">By ' . $author . ' <span class="postmeta_break">on ' . $date. '</span></div>';
 
 }
 
@@ -224,6 +231,63 @@ function lawyerist_mobile_ad( $content ) {
 }
 
 add_filter( 'the_content', 'lawyerist_mobile_ad' );
+
+
+/*------------------------------
+Page Navigation
+------------------------------*/
+
+function lawyerist_get_pagenav() {
+
+	// This function must be used within the Loop in single.php.
+	// It doesn't matter in other template files.
+
+	if ( is_home() || is_archive() || is_search() ) {
+
+		ob_start();
+			echo paginate_links( 'mid_size=3' );
+		$pagenav = ob_get_clean();
+
+	} elseif ( is_single() && has_term( true, 'series' ) ) {
+
+		ob_start();
+			?>
+
+			<div class="alignleft pagenav_link_block">
+				<?php next_post_link( '%link', '<div class="genericon pagenav_leftarrow"></div><div class="pagenav_link">%title</div>', TRUE, '', 'series', 0 ) ?>
+			</div>
+			<div class="alignright pagenav_link_block">
+				<?php previous_post_link( '%link', '<div class="pagenav_link">%title</div><div class="genericon pagenav_rightarrow"></div>', TRUE, '', 'series', 0 ) ?>
+			</div>
+			<div class="clear"></div>
+
+			<?php
+		$pagenav = ob_get_clean();
+
+	} elseif ( is_single() ) {
+
+		ob_start();
+			?>
+
+			<div class="alignleft pagenav_link_block">
+				<?php next_post_link('%link','<div class="genericon pagenav_leftarrow"></div><div class="pagenav_link">%title</div>',0) ?>
+			</div>
+			<div class="alignright pagenav_link_block">
+				<?php previous_post_link('%link','<div class="pagenav_link">%title</div><div class="genericon pagenav_rightarrow"></div>',0) ?>
+			</div>
+			<div class="clear"></div>
+
+			<?php
+		$pagenav = ob_get_clean();
+
+	}
+
+
+	echo '<div id="pagenav">';
+	echo $pagenav;
+	echo '</div>';
+
+}
 
 
 /*------------------------------
@@ -410,26 +474,6 @@ if ( function_exists( 'add_image_size' ) ) {
 
 
 /*------------------------------
-Featured Images in RSS Feeds
-------------------------------*/
-
-function featuredtoRSS($content) {
-
-	global $post;
-
-	if ( has_post_thumbnail( $post->ID ) ) {
-		$content = '' . get_the_post_thumbnail( $post->ID, 'featured_top', array( 'style' => 'display:block;height:auto;margin:0 0 15px 0;width:560px;' ) ) . '' . $content;
-	}
-
-	return $content;
-
-}
-
-add_filter('the_excerpt_rss', 'featuredtoRSS');
-add_filter('the_content_feed', 'featuredtoRSS');
-
-
-/*------------------------------
 Sidebar
 ------------------------------*/
 
@@ -495,6 +539,26 @@ wp_register_sidebar_widget(
 	)
 
 );
+
+
+/*------------------------------
+Featured Images in RSS Feeds
+------------------------------*/
+
+function featuredtoRSS($content) {
+
+	global $post;
+
+	if ( has_post_thumbnail( $post->ID ) ) {
+		$content = '' . get_the_post_thumbnail( $post->ID, 'featured_top', array( 'style' => 'display:block;height:auto;margin:0 0 15px 0;width:560px;' ) ) . '' . $content;
+	}
+
+	return $content;
+
+}
+
+add_filter('the_excerpt_rss', 'featuredtoRSS');
+add_filter('the_content_feed', 'featuredtoRSS');
 
 
 /*------------------------------

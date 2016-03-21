@@ -26,18 +26,18 @@
         wpp_get_mostpopular("post_type='post'&range=all&limit=15&stats_comments=0&stats_views=0");
       }
       ------------------------------*/
-      echo '</div>';
+      echo '</div>'; ?>
 
 
-    /* THE LOOP */
+    <?php /* THE LOOP */
 
     $post_num = 1;
 
-    if ( have_posts() ) : while ( have_posts() ) : the_post();
+		if ( have_posts() ) : while ( have_posts() ) : the_post();
 
       $num_comments = get_comments_number(); ?>
 
-			<a <?php post_class($class); ?> href="<?php the_permalink(); ?>" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
+			<a <?php post_class(); ?> href="<?php the_permalink(); ?>" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
 
 				<?php if ( has_post_thumbnail() ) { the_post_thumbnail('thumbnail'); } ?>
 
@@ -60,15 +60,8 @@
 
 		/* END LOOP */ ?>
 
-		<div id="pagenav">
-			<div class="alignleft pagenav_link_block">
-				<?php previous_posts_link('<div class="genericon pagenav_leftarrow"></div><div class="pagenav_link">browse newer posts</div>',0) ?>
-			</div>
-			<div class="alignright pagenav_link_block">
-				<?php next_posts_link('<div class="pagenav_link">browse older posts</div><div class="genericon pagenav_rightarrow"></div>',0) ?>
-			</div>
-			<div class="clear"></div>
-		</div>
+
+		<?php lawyerist_get_pagenav(); ?>
 
 
 	</div><!-- end #content_column -->
