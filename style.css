@@ -1851,6 +1851,7 @@ Content
     font-size: 1.2rem;
     font-weight: normal;
     line-height: 1;
+    margin-right: .4rem;
     padding:.6rem;
     text-align: center;
     text-transform: uppercase;
@@ -1859,8 +1860,12 @@ Content
   #pagenav a.page-numbers {
     background: #ddd;
     border-radius: 1.2rem;
-    margin-right: .4rem;
     min-width: 1.2rem;
+  }
+
+  #pagenav .prev,
+  #pagenav .next {
+    padding: .6rem 1.2rem;
   }
 
   #pagenav a.page-numbers:active,
