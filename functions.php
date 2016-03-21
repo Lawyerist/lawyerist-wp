@@ -2,25 +2,38 @@
 
 /* INDEX
 
-Stylesheets & Scripts
-Nav Menu
-Bylines
-Mobile Ad
-Page Navigation
-Theme Setup
-Fix Gravity Form Tab Index Conflicts
-Rename "Aside" Post Format to "Note"
-Series Custom Taxonomy
-Sponsors Custom Taxonomy
-Edit Flow
-Add Image Sizes
-Sidebar
-Popular Posts Widget
-Featured Images in RSS Feeds
-RSS Feed Caching
+SETUP
+- Stylesheets & Scripts
+- Theme Setup
+
+STRUCTURE
+- Nav Menu
+- Sidebar
+
+WIDGETS
+- Popular Posts Widget
+
+CONTENT
+- Bylines
+- Extended Author Bio
+- Mobile Ad
+- Add Image Sizes
+- Page Navigation
+- Featured Images in RSS Feeds
+
+TAXONOMY
+- Rename "Aside" Post Format to "Note"
+- Series Custom Taxonomy
+- Sponsors Custom Taxonomy
+
+PATCHES
+- RSS Feed Caching
+- Fix Gravity Form Tab Index Conflicts
 
 */
 
+
+/* SETUP **********************/
 
 /*------------------------------
 Stylesheets & Scripts
@@ -44,6 +57,24 @@ add_action( 'wp_enqueue_scripts', 'lawyerist_stylesheets_scripts' );
 
 
 /*------------------------------
+Theme Setup
+------------------------------*/
+
+function lawyerist_theme_setup() {
+
+	add_theme_support('title-tag');
+	add_theme_support('post-thumbnails');
+	add_theme_support( 'post-formats', array( 'aside', 'audio' ) );
+	add_theme_support( 'html5', array( 'search-form' ) );
+
+}
+
+add_action( 'after_setup_theme', 'lawyerist_theme_setup' );
+
+
+/* STRUCTURE ******************/
+
+/*------------------------------
 Nav Menu
 ------------------------------*/
 
@@ -55,6 +86,78 @@ function register_my_menus() {
 
 add_action('init','register_my_menus');
 
+
+/*------------------------------
+Sidebar
+------------------------------*/
+
+function lawyerist_sidebar_1()  {
+	$args = array(
+		'id'            => 'sidebar_1',
+		'name'          => 'Sidebar 1',
+		'description'   => 'Right sidebar on Lawyerist.com',
+		'class'         => 'sidebar',
+		'before_title'  => '<h3>',
+		'after_title'   => '</h3>',
+		'before_widget' => '<li id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</li>',
+	);
+
+	register_sidebar( $args );
+}
+
+add_action( 'widgets_init', 'lawyerist_sidebar_1' );
+
+
+/* WIDGETS ********************/
+
+/*------------------------------
+Popular Posts Widget
+------------------------------*/
+
+function l_pp_tabbed_widget_display($args) {
+
+	echo $args['before_widget'];
+	echo $args['before_title'] . 'Popular Posts' .  $args['after_title'];
+
+		?>
+
+		<div id="popular_posts_tabbed">
+
+		<ul class="idTabs">
+			<li><a href="#current">This Week</a></li>
+			<li><a href="#all-time">All Time</a></li>
+		</ul>
+
+		<div id="current" class="tabs_sublist">
+			<?php wpp_get_mostpopular("post_type='post'&range=weekly&limit=5&freshness=1&stats_comments=0&thumbnail_height=60&thumbnail_width=60&post_html='<li>{thumb}<a class=\"wpp_headline\" href=\"{url}\">{text_title}</a></li>'"); ?>
+		</div>
+
+		<div id="all-time" class="tabs_sublist">
+			<?php wpp_get_mostpopular("post_type='post'&range=all&limit=5&stats_comments=0&thumbnail_height=60&thumbnail_width=60&post_html='<li>{thumb}<a class=\"wpp_headline\" href=\"{url}\">{text_title}</a></li>'"); ?>
+		</div>
+
+		</div>
+
+		<?php
+
+	echo $args['after_widget'];
+
+}
+
+wp_register_sidebar_widget(
+
+	'popular-posts-tabbed-widget',	// your unique widget id
+	'Popular Posts',								// widget name
+	'l_pp_tabbed_widget_display',		// callback function
+	array(													// options
+		'description' => 'Displays a tabbed list of current and all-time popular posts.'
+	)
+
+);
+
+
+/* CONTENT ********************/
 
 /*------------------------------
 Bylines
@@ -170,6 +273,11 @@ function lawyerist_get_byline() {
 
 
 /*------------------------------
+Extended Author Bio
+------------------------------*/
+
+
+/*------------------------------
 Mobile Ad
 ------------------------------*/
 
@@ -225,6 +333,24 @@ function lawyerist_mobile_ad( $content ) {
 }
 
 add_filter( 'the_content', 'lawyerist_mobile_ad' );
+
+
+/*------------------------------
+Add Image Sizes
+------------------------------*/
+
+
+if ( function_exists( 'add_image_size' ) ) {
+	add_image_size( '60px_thumb', 60, 60, true);
+}
+
+if ( function_exists( 'add_image_size' ) ) {
+	add_image_size( 'featured', 320, 255.5, true);
+}
+
+if ( function_exists( 'add_image_size' ) ) {
+	add_image_size( 'featured_top', 640, 344.5, true);
+}
 
 
 /*------------------------------
@@ -285,34 +411,26 @@ function lawyerist_get_pagenav() {
 
 
 /*------------------------------
-Theme Setup
+Featured Images in RSS Feeds
 ------------------------------*/
 
-function lawyerist_theme_setup() {
+function featuredtoRSS($content) {
 
-	add_theme_support('title-tag');
-	add_theme_support('post-thumbnails');
-	add_theme_support( 'post-formats', array( 'aside', 'audio' ) );
-	add_theme_support( 'html5', array( 'search-form' ) );
+	global $post;
+
+	if ( has_post_thumbnail( $post->ID ) ) {
+		$content = '' . get_the_post_thumbnail( $post->ID, 'featured_top', array( 'style' => 'display:block;height:auto;margin:0 0 15px 0;width:560px;' ) ) . '' . $content;
+	}
+
+	return $content;
 
 }
 
-add_action( 'after_setup_theme', 'lawyerist_theme_setup' );
+add_filter('the_excerpt_rss', 'featuredtoRSS');
+add_filter('the_content_feed', 'featuredtoRSS');
 
 
-/*------------------------------
-Fix Gravity Form Tab Index Conflicts
-http://gravitywiz.com/fix-gravity-form-tabindex-conflicts/
-------------------------------*/
-
-function gform_tabindexer( $tab_index, $form = false ) {
-    $starting_index = 1000; // if you need a higher tabindex, update this number
-    if( $form )
-        add_filter( 'gform_tabindex_' . $form['id'], 'gform_tabindexer' );
-    return GFCommon::$tab_index >= $starting_index ? GFCommon::$tab_index : $starting_index;
-}
-add_filter( 'gform_tabindex', 'gform_tabindexer', 10, 2 );
-
+/* TAXONOMY *******************/
 
 /*------------------------------
 Rename "Aside" Post Format to "Note"
@@ -449,111 +567,7 @@ function sponsor_tax() {
 add_action( 'init', 'sponsor_tax', 0 );
 
 
-/*------------------------------
-Add Image Sizes
-------------------------------*/
-
-
-if ( function_exists( 'add_image_size' ) ) {
-	add_image_size( '60px_thumb', 60, 60, true);
-}
-
-if ( function_exists( 'add_image_size' ) ) {
-	add_image_size( 'featured', 320, 255.5, true);
-}
-
-if ( function_exists( 'add_image_size' ) ) {
-	add_image_size( 'featured_top', 640, 344.5, true);
-}
-
-
-/*------------------------------
-Sidebar
-------------------------------*/
-
-function lawyerist_sidebar_1()  {
-	$args = array(
-		'id'            => 'sidebar_1',
-		'name'          => 'Sidebar 1',
-		'description'   => 'Right sidebar on Lawyerist.com',
-		'class'         => 'sidebar',
-		'before_title'  => '<h3>',
-		'after_title'   => '</h3>',
-		'before_widget' => '<li id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</li>',
-	);
-
-	register_sidebar( $args );
-}
-
-add_action( 'widgets_init', 'lawyerist_sidebar_1' );
-
-
-/*------------------------------
-Popular Posts Widget
-------------------------------*/
-
-function l_pp_tabbed_widget_display($args) {
-
-	echo $args['before_widget'];
-	echo $args['before_title'] . 'Popular Posts' .  $args['after_title'];
-
-		?>
-
-		<div id="popular_posts_tabbed">
-
-		<ul class="idTabs">
-			<li><a href="#current">This Week</a></li>
-			<li><a href="#all-time">All Time</a></li>
-		</ul>
-
-		<div id="current" class="tabs_sublist">
-			<?php wpp_get_mostpopular("post_type='post'&range=weekly&limit=5&freshness=1&stats_comments=0&thumbnail_height=60&thumbnail_width=60&post_html='<li>{thumb}<a class=\"wpp_headline\" href=\"{url}\">{text_title}</a></li>'"); ?>
-		</div>
-
-		<div id="all-time" class="tabs_sublist">
-			<?php wpp_get_mostpopular("post_type='post'&range=all&limit=5&stats_comments=0&thumbnail_height=60&thumbnail_width=60&post_html='<li>{thumb}<a class=\"wpp_headline\" href=\"{url}\">{text_title}</a></li>'"); ?>
-		</div>
-
-		</div>
-
-		<?php
-
-	echo $args['after_widget'];
-
-}
-
-wp_register_sidebar_widget(
-
-	'popular-posts-tabbed-widget',	// your unique widget id
-	'Popular Posts',								// widget name
-	'l_pp_tabbed_widget_display',		// callback function
-	array(													// options
-		'description' => 'Displays a tabbed list of current and all-time popular posts.'
-	)
-
-);
-
-
-/*------------------------------
-Featured Images in RSS Feeds
-------------------------------*/
-
-function featuredtoRSS($content) {
-
-	global $post;
-
-	if ( has_post_thumbnail( $post->ID ) ) {
-		$content = '' . get_the_post_thumbnail( $post->ID, 'featured_top', array( 'style' => 'display:block;height:auto;margin:0 0 15px 0;width:560px;' ) ) . '' . $content;
-	}
-
-	return $content;
-
-}
-
-add_filter('the_excerpt_rss', 'featuredtoRSS');
-add_filter('the_content_feed', 'featuredtoRSS');
-
+/* PATCHES ********************/
 
 /*------------------------------
 RSS Feed Caching
@@ -567,3 +581,17 @@ function return_3600( $seconds ) {
 add_filter( 'wp_feed_cache_transient_lifetime' , 'return_3600' );
 $feed = fetch_feed( $feed_url );
 remove_filter( 'wp_feed_cache_transient_lifetime' , 'return_3600' );
+
+
+/*------------------------------
+Fix Gravity Form Tab Index Conflicts
+http://gravitywiz.com/fix-gravity-form-tabindex-conflicts/
+------------------------------*/
+
+function gform_tabindexer( $tab_index, $form = false ) {
+    $starting_index = 1000; // if you need a higher tabindex, update this number
+    if( $form )
+        add_filter( 'gform_tabindex_' . $form['id'], 'gform_tabindexer' );
+    return GFCommon::$tab_index >= $starting_index ? GFCommon::$tab_index : $starting_index;
+}
+add_filter( 'gform_tabindex', 'gform_tabindexer', 10, 2 );
