@@ -2411,8 +2411,16 @@ body #sidebar_column .gform_footer {
     padding: 2rem 2.5rem;
   }
 
+  #edd_purchase_form #edd_mailchimp {
+    margin-bottom: 1.2em;
+  }
+
   #edd-free-downloads-modal button {
     margin-bottom: 0;
+  }
+
+  #edd-free-downloads-modal label.edd-free-downloads-checkbox-label {
+    display: inline;
   }
 
 
