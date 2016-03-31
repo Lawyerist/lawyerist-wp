@@ -642,7 +642,7 @@ img.inline {
 }
 
 .wp-caption {
-  margin-bottom: 1em;
+  margin-bottom: 1.5rem;
   max-width: 100%;
 }
 
@@ -660,6 +660,7 @@ img.inline {
   }
 
 .wp-caption img {
+  margin-bottom: .1em !important;
   max-width: 100%;
 	width: 100%;
 }
@@ -2668,6 +2669,10 @@ and (max-width:1023px) {
   img.size-medium {
     margin: 0 0 1.5rem 0;
   	width: 100%;
+  }
+
+  .wp-caption {
+    width: 100% !important;
   }
 
   #survival_guides a img,
