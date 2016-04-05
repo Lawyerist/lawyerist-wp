@@ -41,6 +41,9 @@ Stylesheets & Scripts
 
 function lawyerist_stylesheets_scripts() {
 
+	wp_register_style( 'lawyerist-fonts', 'https://lawyerist.com/lawyerist-fonts/lawyerist-fonts.css' );
+	wp_enqueue_style( 'lawyerist-fonts' );
+
 	wp_register_style( 'normalize-css', get_template_directory_uri() . '/normalize.min.css' );
 	wp_enqueue_style( 'normalize-css' );
 

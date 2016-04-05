@@ -32,13 +32,6 @@
 				</script>
 				</div>
 			</li>
-			<li id="lawyerist_sidebar_signup" class="sidebar_ad"><!-- /12659965/lawyerist_sidebar_signup -->
-				<div id='div-gpt-ad-1455732796230-0' style='height:400px; width:300px;'>
-				<script type='text/javascript'>
-				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1455732796230-0'); });
-				</script>
-				</div>
-			</li>
 		</ul>
 		<div class="clear"></div>
 	</li>
