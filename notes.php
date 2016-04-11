@@ -19,7 +19,7 @@ if ( !has_tag( 'no-ads' ) ) {
 		<!-- Computer Security Guide -->
 
 		<div class="survival_guide_note">
-			<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2015/05/computer-security-guide-cover-2-300x391.png" alt="computer-security-guide-cover-2" />
+			<img src="https://lawyerist.com/lawyerist/wp-content/uploads/edd/2016/04/security-guide-cover-2nd-ed-300x391.png" alt="computer-security-guide-cover-2nd-ed" />
 			<h3>4-Step Computer Security Upgrade</h3>
 			<p>Learn to encrypt your files, secure your computer when using public Wi-Fi, enable two-factor authentication, and use good passwords.</p>
 			<?php echo edd_get_purchase_link( array( 'download_id' => 82500 ) ); ?>
