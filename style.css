@@ -235,6 +235,7 @@ pre {
 }
 
 /* Font overrides. */
+.gfield_checkbox label,
 .gfield_radio label {
   font-family: equity, serif;
 }
