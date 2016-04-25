@@ -491,6 +491,10 @@ li {
   padding: 0;
 }
 
+li li:first-child {
+  margin-top: 1.4rem;
+}
+
 
 
 /*------------------------------
