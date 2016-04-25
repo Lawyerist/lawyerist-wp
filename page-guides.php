@@ -12,11 +12,38 @@
 
 	<div id="content_column">
 
-		<h1 class="headline">Lawyerist Survival Guides</h1>
+		<?php
 
-		<div class="postmeta">
-			<div class="breadcrumbs">Guides</div>
-		</div>
+		if ( have_posts() ) :
+		while ( have_posts() ) : the_post();
+
+		?>
+
+			<div <?php post_class($class); ?>>
+
+				<h1 class="headline"><?php the_title(); ?></h1>
+
+				<div class="postmeta">
+					<div class="breadcrumbs">Guides</div>
+				</div>
+
+				<?php if ( has_post_thumbnail() ) {
+					the_post_thumbnail('large');
+				} ?>
+
+				<div class="post_body" style="margin-bottom: 3rem;">
+					<?php include('notes.php'); ?>
+					<?php the_content(); ?>
+				</div>
+
+			</div>
+
+		<?php
+
+		endwhile;
+		endif;
+
+		?>
 
 		<div id="survival_guides">
 
