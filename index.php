@@ -30,7 +30,7 @@
 
       $num_comments = get_comments_number(); ?>
 
-			<a <?php post_class(); ?> href="<?php the_permalink(); ?>" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
+			<a <?php post_class('index_post'); ?> href="<?php the_permalink(); ?>" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
 
 				<?php if ( has_post_thumbnail() ) { the_post_thumbnail('thumbnail'); } ?>
 
