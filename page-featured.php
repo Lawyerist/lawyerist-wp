@@ -241,13 +241,49 @@
 
 
     <div id="survival_guides">
-      <a href="https://lawyerist.com/downloads/4-step-computer-security-upgrade/"><img src="https://lawyerist.com/lawyerist/wp-content/uploads/edd/2016/04/security-guide-cover-2nd-ed-300x391.png" alt="security-guide-cover-2nd-ed" width="300" height="391" class="alignleft size-medium wp-image-108555" /></a>
-      <a href="https://lawyerist.com/downloads/personal-productivity-lawyers/" rel="attachment wp-att-103620"><img src="https://lawyerist.com/lawyerist/wp-content/uploads/edd/2016/03/productivity-guide-cover-300x391.png" alt="productivity-guide-cover" width="300" height="391" class="alignleft size-medium wp-image-103620" /></a>
-      <a href="https://lawyerist.com/downloads/windows-computer-setup-guide/" rel="attachment wp-att-100582"><img src="https://lawyerist.com/lawyerist/wp-content/uploads/edd/2016/02/computer-setup-guide-cover-300x391.png" alt="computer-setup-guide-cover" width="300" height="391" class="alignleft size-medium wp-image-100582" /></a>
-      <a href="https://lawyerist.com/downloads/30-minute-wordpress-setup-guide/"><img src="https://lawyerist.com/lawyerist/wp-content/uploads/edd/2015/11/wordpress-setup-guide-cover-300x391.png" alt="wordpress-setup-guide-cover" width="300" height="391" class="alignleft size-medium wp-image-92924" /></a>
-      <a href="https://lawyerist.com/downloads/law-firm-website-design-guide/"><img src="https://lawyerist.com/lawyerist/wp-content/uploads/2015/05/website-design-guide-cover-2-300x391.png" alt="website-design-guide-cover-2" width="300" height="391" class="alignleft size-medium wp-image-86177" /></a>
-      <div class="clear"></div>
-    </div><!--end #survival_guides-->
+
+			<?php /* SURVIVAL GUIDES LOOP */
+
+			$downloads_args = array(
+				'post_type'	=> 'download',
+				'tax_query'	=> array(
+					array(
+						'taxonomy'	=> 'download_category',
+						'field'			=> 'slug',
+						'terms'			=> 'guides',
+					),
+				),
+			);
+
+			$downloads = new WP_Query( $downloads_args );
+
+			if ( $downloads->have_posts() ) :
+			while ( $downloads->have_posts() ) : $downloads->the_post();
+
+			?>
+
+				<a <?php post_class($class); ?> href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+
+					<?php if ( has_post_thumbnail() ) { the_post_thumbnail('medium'); }
+
+					$price = edd_get_download_price( get_the_ID() );
+
+					if ( $price == 0 ) { ?>
+						<div class="price_tag">FREE</div>
+					<?php } else { ?>
+						<div class="price_tag"><?php edd_price( get_the_ID() ); ?></div>
+					<?php } ?>
+
+				</a>
+
+			<?php
+
+			endwhile;
+			endif;
+
+			/* END SURVIVAL GUIDES LOOP */ ?>
+
+		</div><!-- end #survival_guides -->
 
     <div class="clear"></div>
 

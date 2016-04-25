@@ -12,8 +12,12 @@
 
 	<div id="content_column">
 
-		<?php if ( have_posts() ) :
-		while ( have_posts() ) : the_post(); ?>
+		<?php
+
+		if ( have_posts() ) :
+		while ( have_posts() ) : the_post();
+
+		?>
 
 			<div <?php post_class($class); ?>>
 
@@ -30,8 +34,12 @@
 
 			</div>
 
-		<?php endwhile;
-		endif; ?>
+		<?php
+
+		endwhile;
+		endif;
+
+		?>
 
 
 	</div><!-- end #content_column -->

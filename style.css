@@ -218,6 +218,7 @@ label,
 #pagenav,
 #popular_posts_tabbed,
 .postmeta,
+.price_tag,
 p.pullout,
 p.pullquote,
 #series_nav li,
@@ -571,20 +572,6 @@ img.inline {
   margin-bottom: .1em !important;
   max-width: 100%;
 	width: 100%;
-}
-
-/* Lawyerist Survival Guides Landing Page */
-
-#survival_guides a img,
-.page-id-82537 a img {
-  transition: transform .2s;
-}
-
-#survival_guides a:hover img,
-#survival_guides a:focus img,
-.page-id-82537 a:hover img,
-.page-id-82537 a:focus img {
-  transform: scale(1.05,1.05);
 }
 
 
@@ -1194,7 +1181,6 @@ a.post.fp_sticky:hover {
     margin-bottom: 6rem;
   }
 
-
 	/*------------------------------
 	Questions
 	------------------------------*/
@@ -1234,6 +1220,16 @@ a.post.fp_sticky:hover {
 /*------------------------------
 Content
 ------------------------------*/
+
+.breadcrumbs:before {
+  content: '\f417';
+  display: inline-block;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font: normal 1.6rem/1.4 'Genericons';
+  speak: none;
+  vertical-align: top;
+}
 
 .error404 .tag_cloud {
 	margin-bottom: 2.8rem;
@@ -1752,6 +1748,64 @@ Content
     		}
 
     }
+
+
+  /*------------------------------
+	Survival Guides
+	------------------------------*/
+
+  #survival_guides a {
+    display: inline-block;
+    float: left;
+    margin-right: 3.125%;
+    position: relative;
+    transition: transform .2s;
+    width: 46.875%;
+  }
+
+  #survival_guides a img.wp-post-image {
+    float: none;
+    height: auto;
+    margin:0;
+    width: 100%;
+  }
+
+  #survival_guides a:hover,
+  #survival_guides a:focus {
+    transform: scale(1.05, 1.05);
+  }
+
+  #survival_guides .price_tag {
+    background-color: #c00;
+    border-radius: 0 0 .2rem .2rem;
+    color: #fff;
+    display: block;
+    font-size: 1.2rem;
+    line-height: 1.2;
+    padding: .4rem .8rem;
+    position: absolute;
+      right: 10%;
+      top: 0;
+    transition: background-color .2s;
+  }
+
+  #survival_guides a:hover .price_tag,
+  #survival_guides a:focus .price_tag {
+    background-color: #a00;
+  }
+
+  @media only screen and (max-width:499px) {
+
+    #survival_guides img.wp-post-image {
+      margin: 0;
+    }
+
+    #survival_guides .price_tag {
+      font-size: 1rem;
+      padding: .2rem .4rem;
+    }
+
+  }
 
 
 	/*------------------------------
@@ -2652,11 +2706,6 @@ and (max-width:1023px) {
 
   .wp-caption {
     width: 100% !important;
-  }
-
-  #survival_guides a img,
-  .page-id-82537 a img {
-    width: 50%;
   }
 
 }
