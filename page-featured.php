@@ -283,6 +283,8 @@
 
 			/* END SURVIVAL GUIDES LOOP */ ?>
 
+      <div class="clear"></div>
+
 		</div><!-- end #survival_guides -->
 
     <div class="clear"></div>

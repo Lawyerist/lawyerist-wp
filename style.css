@@ -27,7 +27,6 @@ Mobile Ad
 Front Page
 	Featured Posts
   Featured Notes
-  Survival Guides (on Front Page)
 	Questions
 Content
 	Index & Archive Lists
@@ -38,6 +37,7 @@ Content
   Galleries
   Author List Shortcode
 	Sharing Buttons
+  Survival Guides
 	Buyers Guide
 	Pagenav
 	Comments
@@ -156,6 +156,10 @@ body {
 			margin-bottom: 6rem;
 			position: relative;
 		}
+
+    #survival_guides {
+      margin-bottom: 6rem;
+    }
 
 	ul#sidebar_column {
 		float: right;
@@ -1173,14 +1177,6 @@ a.post.fp_sticky:hover {
     margin-bottom:.2rem;
   }
 
-
-  /*------------------------------
-  Survival Guides (on Front Page)
-  ------------------------------*/
-
-  .front_page #survival_guides {
-    margin-bottom: 6rem;
-  }
 
 	/*------------------------------
 	Questions

@@ -61,6 +61,8 @@
 
 			?>
 
+			<div class="clear"></div>
+
 		</div><!-- end #survival_guides -->
 
 	</div><!-- end #content_column -->
