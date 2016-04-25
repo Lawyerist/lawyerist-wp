@@ -1243,11 +1243,9 @@ Content
 
 	/*------------------------------
 	Index & Archive Lists
-
-  Includes a.page for pages in
-  search results.
 	------------------------------*/
 
+  a.post,
 	a.index_post {
     border-bottom: .1rem solid #ddd;
     clear: both;
@@ -1257,11 +1255,13 @@ Content
 		text-decoration: none;
 	}
 
+  a.post:last-of-type,
   a.index_post:last-of-type {
     margin-bottom: 2.8rem;
   }
 
-	a.index_post .headline {
+	a.post .headline,
+  a.index_post .headline {
 		color: #333;
     font-size: 2.8rem;
   	line-height: 1.2;
@@ -1272,6 +1272,7 @@ Content
     margin-bottom: 1.6rem;
   }
 
+  a.post:hover .headline,
 	a.index_post:hover .headline {
 		text-decoration: underline;
 	}
@@ -1289,6 +1290,7 @@ Content
     display: none;
   }
 
+  a.post img,
   a.index_post img {
     float: right;
     height: auto;
@@ -1296,14 +1298,17 @@ Content
     width: 23.4375%;
   }
 
+  a.post p,
 	a.index_post p {
 		color: #333;
 	}
 
+  a.post p.excerpt_with_thumb,
 	a.index_post p.excerpt_with_thumb {
 		padding-right: 17rem;
 	}
 
+  a.post:hover p,
 	a.index_post:hover p {
 		color: #111;
 	}
