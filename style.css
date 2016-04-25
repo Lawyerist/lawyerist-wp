@@ -247,6 +247,7 @@ body {
 	color: #111;
 }
 
+.download,
 .page,
 .post,
 .post_body,
@@ -1248,7 +1249,8 @@ Content
 	------------------------------*/
 
 	a.post,
-  a.page {
+  a.page,
+  a.download {
     border-bottom: .1rem solid #ddd;
     clear: both;
     display: block;
@@ -1258,12 +1260,14 @@ Content
 	}
 
   a.post:last-of-type,
-  a.page:last-of-type {
+  a.page:last-of-type,
+  a.download:last-of-type {
     margin-bottom: 2.8rem;
   }
 
 	a.post .headline,
-  a.page .headline {
+  a.page .headline,
+  a.download .headline {
 		color: #333;
     font-size: 2.8rem;
   	line-height: 1.2;
@@ -1275,7 +1279,8 @@ Content
   }
 
 	a.post:hover .headline,
-  a.page:hover .headline {
+  a.page:hover .headline,
+  a.download:hover .headline {
 		text-decoration: underline;
 	}
 
@@ -1293,7 +1298,8 @@ Content
   }
 
   a.post img,
-  a.page img {
+  a.page img,
+  a.download img {
     float: right;
     height: auto;
     margin: 0 0 0 1.5rem;
@@ -1301,17 +1307,20 @@ Content
   }
 
 	a.post p,
-  a.page p {
+  a.page p,
+  a.download p {
 		color: #333;
 	}
 
 	a.post p.excerpt_with_thumb,
-  a.page p.excerpt_with_thumb {
+  a.page p.excerpt_with_thumb,
+  a.download p.excerpt_with_thumb {
 		padding-right: 17rem;
 	}
 
 	a.post:hover p,
-  a.page:hover p {
+  a.page:hover p,
+  a.download:hover p {
 		color: #111;
 	}
 
