@@ -52,6 +52,7 @@ Forms
   Easy Digital Downloads
 Useful Stuff
 Media Queries
+Print
 
 ------------------------------*/
 
@@ -2721,6 +2722,81 @@ and (max-width:1023px) {
 
   #email_social {
     display:none;
+  }
+
+}
+
+
+/*------------------------------
+Load Genericons
+------------------------------*/
+
+@media print {
+
+  /* Don't Print */
+  #leaderboard_container,
+  #email_social,
+  #header_signup,
+  .sharedaddy,
+  .comment_link,
+  .survival_guide_note,
+  #post_footer,
+  #after_post,
+  #sidebar_column {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+    margin: 0;
+    -webkit-print-color-adjust: exact;
+  }
+
+  #header_container {
+    background: #111;
+  }
+
+  #main_menu {
+    background: #c00;
+  }
+
+  #content_column {
+    float: none;
+    margin: 0 auto;
+    max-width: 80%;
+    width: auto;
+  }
+
+  #footer {
+    background: none;
+  }
+
+    #footer p {
+      padding: 0;
+    }
+
+  /* Page Breaks */
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    page-break-after: avoid;
+    page-break-inside: avoid;
+  }
+
+  blockquote,
+  #footer,
+  img {
+    page-break-inside: avoid;
+  }
+
+  ul,
+  ol,
+  dl {
+    page-break-before: avoid;
   }
 
 }

@@ -40,113 +40,116 @@
 
 					<?php the_content(); ?>
 
+					<div id="post_footer">
 
-					<!--Begin series nav-->
-					<?php if ( has_term( true , 'series' ) ) {
+						<!--Begin series nav-->
+						<?php if ( has_term( true , 'series' ) ) {
 
-						echo '<div id="series_nav">';
+							echo '<div id="series_nav">';
 
-							/* SERIES LOOP */
+								/* SERIES LOOP */
 
-							$current_post	= get_the_ID();
-							$this_post[]	= $post->ID;
+								$current_post	= get_the_ID();
+								$this_post[]	= $post->ID;
 
-							$series_title = wp_get_post_terms(
-								$post->ID,
-								'series',
-								array(
-									'fields' 	=> 'names',
-									'orderby' => 'count',
-									'order' 	=> 'DESC'
-								)
-							);
-							$series_title = $series_title[0];
-
-							$series_slug = wp_get_post_terms(
-								$post->ID,
-								'series',
-								array(
-									'fields' 	=> 'slugs',
-									'orderby' => 'count',
-									'order' 	=> 'DESC'
-								)
-							);
-							$series_slug = $series_slug[0];
-
-							$series_query_args = array(
-								'orderby'					=> 'date',
-								'order'						=> 'ASC',
-								'posts_per_page'	=> 10,
-								'tax_query'     	=> array(
+								$series_title = wp_get_post_terms(
+									$post->ID,
+									'series',
 									array(
-										'taxonomy'  => 'series',
-										'field'			=> 'slug',
-										'terms'			=> $series_slug,
+										'fields' 	=> 'names',
+										'orderby' => 'count',
+										'order' 	=> 'DESC'
 									)
-								)
-							);
+								);
+								$series_title = $series_title[0];
 
-							if ( $series_slug == 'briefs' || $series_slug == 'lawyerist-podcast' ) {
-								$series_query_args['order'] = 'DESC';
-								$series_query_args['posts_per_page'] = 4;
-							}
+								$series_slug = wp_get_post_terms(
+									$post->ID,
+									'series',
+									array(
+										'fields' 	=> 'slugs',
+										'orderby' => 'count',
+										'order' 	=> 'DESC'
+									)
+								);
+								$series_slug = $series_slug[0];
 
-							$series_query = new WP_Query( $series_query_args );
+								$series_query_args = array(
+									'orderby'					=> 'date',
+									'order'						=> 'ASC',
+									'posts_per_page'	=> 10,
+									'tax_query'     	=> array(
+										array(
+											'taxonomy'  => 'series',
+											'field'			=> 'slug',
+											'terms'			=> $series_slug,
+										)
+									)
+								);
 
-							if ( $series_query->post_count > 1 ) { ?>
+								if ( $series_slug == 'briefs' || $series_slug == 'lawyerist-podcast' ) {
+									$series_query_args['order'] = 'DESC';
+									$series_query_args['posts_per_page'] = 4;
+								}
 
-								<h3>More in this Series: <?php echo $series_title; ?></h3>
+								$series_query = new WP_Query( $series_query_args );
 
-								<ul>
+								if ( $series_query->post_count > 1 ) { ?>
 
-									<?php while ( $series_query->have_posts() ) : $series_query->the_post();
+									<h3>More in this Series: <?php echo $series_title; ?></h3>
 
-										if ( get_the_ID() == $current_post ) { ?>
+									<ul>
 
-											<li><?php the_title(); ?></li>
+										<?php while ( $series_query->have_posts() ) : $series_query->the_post();
 
-										<?php } else { ?>
+											if ( get_the_ID() == $current_post ) { ?>
 
-											<li><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>"><?php the_title(); ?></a></li>
+												<li><?php the_title(); ?></li>
 
-										<?php } ?>
+											<?php } else { ?>
 
-									<?php endwhile; ?>
+												<li><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>"><?php the_title(); ?></a></li>
 
-								</ul>
+											<?php } ?>
 
-								<?php if ( $series_query->found_posts > 4 ) { ?>
+										<?php endwhile; ?>
 
-									<p><a href="<?php echo get_term_link( $series_slug, 'series' ); ?>">See all the posts in this series.</a></p>
+									</ul>
 
-								<?php }
+									<?php if ( $series_query->found_posts > 4 ) { ?>
 
-							}
+										<p><a href="<?php echo get_term_link( $series_slug, 'series' ); ?>">See all the posts in this series.</a></p>
 
-							wp_reset_postdata(); ?>
+									<?php }
 
+								}
+
+								wp_reset_postdata(); ?>
+
+							</div>
+
+						<?php } ?>
+						<!--End series nav-->
+
+
+						<div id="pages_categories_tags">
+							<?php if ( $numpages > 1 && !is_feed() ) {
+
+								$wp_link_pages_args = array(
+									'before'           => '<p class="page_links">',
+									'after'            => '</p>',
+									'link_before'      => '<span class="page_number">',
+									'link_after'       => '</span>',
+								);
+
+								wp_link_pages( $wp_link_pages_args );
+
+							}	?>
+							<p class="category_list"><?php echo get_the_category_list( ', ' ); ?></p>
+							<?php // echo get_the_tag_list( '<p class="tag_list">', ', ', '</p>' ); ?>
 						</div>
 
-					<?php } ?>
-					<!--End series nav-->
-
-
-					<div id="pages_categories_tags">
-						<?php if ( $numpages > 1 && !is_feed() ) {
-
-							$wp_link_pages_args = array(
-								'before'           => '<p class="page_links">',
-								'after'            => '</p>',
-								'link_before'      => '<span class="page_number">',
-								'link_after'       => '</span>',
-							);
-
-							wp_link_pages( $wp_link_pages_args );
-
-						}	?>
-						<p class="category_list"><?php echo get_the_category_list( ', ' ); ?></p>
-						<?php // echo get_the_tag_list( '<p class="tag_list">', ', ', '</p>' ); ?>
-					</div>
+					</div><!-- end #post_footer -->
 
 					<div id="author_bio_footer">
 
@@ -180,97 +183,102 @@
 
       <div class="clear"></div>
 
-			<!--Begin current posts  nav -->
-			<?php
+			<div id="after_post">
 
-				$this_post[] = $post->ID;
+				<!--Begin current posts  nav -->
+				<?php
 
-				$today = getdate();
+					$this_post[] = $post->ID;
 
-			  $current_posts_query_args = array(
-					'category__not_in'			=> 1320,
-					'date_query'						=> array(
-						array(
-							'before'	=> array(
-								'year'  => $today['year'],
-								'month' => $today['mon'],
-								'day'   => $today['mday']+1,
-							),
-							'after'		=> array(
-								'year'  => $today['year'],
-								'month' => $today['mon'],
-								'day'   => $today['mday']-6,
+					$today = getdate();
+
+				  $current_posts_query_args = array(
+						'category__not_in'			=> 1320,
+						'date_query'						=> array(
+							array(
+								'before'	=> array(
+									'year'  => $today['year'],
+									'month' => $today['mon'],
+									'day'   => $today['mday']+1,
+								),
+								'after'		=> array(
+									'year'  => $today['year'],
+									'month' => $today['mon'],
+									'day'   => $today['mday']-6,
+								),
 							),
 						),
-					),
-					'ignore_sticky_posts'		=> TRUE,
-			    'orderby'								=> 'rand',
-			    'post__not_in'					=> $this_post,
-			    'posts_per_page'				=> 4,
-			  );
+						'ignore_sticky_posts'		=> TRUE,
+				    'orderby'								=> 'rand',
+				    'post__not_in'					=> $this_post,
+				    'posts_per_page'				=> 4,
+				  );
 
-			  $current_posts_query = new WP_Query( $current_posts_query_args );
+				  $current_posts_query = new WP_Query( $current_posts_query_args );
 
-			  if ( $current_posts_query->post_count > 1 ) { ?>
+				  if ( $current_posts_query->post_count > 1 ) { ?>
 
-			    <div class="fp_tab"><h2>Current posts</h2></div>
-			    <div id="current_posts_nav">
+				    <div class="fp_tab"><h2>Current posts</h2></div>
+				    <div id="current_posts_nav">
 
-			      <?php while ( $current_posts_query->have_posts() ) : $current_posts_query->the_post();
+				      <?php while ( $current_posts_query->have_posts() ) : $current_posts_query->the_post();
 
-							$title = the_title( '', '', FALSE );
+								$title = the_title( '', '', FALSE );
 
-			        if ( $current_posts_query->post_count == 2 ) {
+				        if ( $current_posts_query->post_count == 2 ) {
 
-			          $classes = array(
-			            'two_in_current_posts_nav'
-			          );
+				          $classes = array(
+				            'two_in_current_posts_nav'
+				          );
 
-			        } elseif ( $current_posts_query->post_count == 3 ) {
+				        } elseif ( $current_posts_query->post_count == 3 ) {
 
-			          $classes = array(
-			            'three_in_current_posts_nav'
-			          );
+				          $classes = array(
+				            'three_in_current_posts_nav'
+				          );
 
-							} elseif ( !wp_is_mobile() && strlen( $title ) > 80 ) {
+								} elseif ( !wp_is_mobile() && strlen( $title ) > 80 ) {
 
-		            $title = substr( $title, 0, 79 );
-		            $title .= ' …';
+			            $title = substr( $title, 0, 79 );
+			            $title .= ' …';
 
-		          } elseif ( wp_is_mobile() && strlen( $title ) > 70 ) {
+			          } elseif ( wp_is_mobile() && strlen( $title ) > 70 ) {
 
-								$title = substr( $title, 0, 69 );
-		            $title .= ' …';
+									$title = substr( $title, 0, 69 );
+			            $title .= ' …';
 
-							} ?>
-
-			        <a <?php post_class($classes); ?> href="<?php the_permalink(); ?>" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
-			          <div class="current_posts_headline"><?php echo $title; ?></div>
-			          <?php if ( has_post_thumbnail() ) {
-									the_post_thumbnail( 'thumbnail' );
-								} else {
-									echo '<img src="' . get_template_directory_uri() . '/images/fff-thumb.png" class="attachment-thumbnail wp-post-image" />';
 								} ?>
-			        </a>
 
-			      <?php endwhile; ?>
+				        <a <?php post_class($classes); ?> href="<?php the_permalink(); ?>" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
+				          <div class="current_posts_headline"><?php echo $title; ?></div>
+				          <?php if ( has_post_thumbnail() ) {
+										the_post_thumbnail( 'thumbnail' );
+									} else {
+										echo '<img src="' . get_template_directory_uri() . '/images/fff-thumb.png" class="attachment-thumbnail wp-post-image" />';
+									} ?>
+				        </a>
 
-			    </div><!-- end #current_posts -->
-			    <div class="clear"></div>
-			    <div class="fp_bottom_tab current_posts_bottom_tab"><h2><a href="https://lawyerist.com/articles/">Read all articles</a></h2></div>
+				      <?php endwhile; ?>
 
-			    <?php wp_reset_postdata();
+				    </div><!-- end #current_posts -->
+				    <div class="clear"></div>
+				    <div class="fp_bottom_tab current_posts_bottom_tab"><h2><a href="https://lawyerist.com/articles/">Read all articles</a></h2></div>
 
-			  } ?>
-				<!--End current posts nav-->
+				    <?php wp_reset_postdata();
 
-			<div class="clear"></div>
+				  } ?>
+					<!--End current posts nav-->
 
-      <?php comments_template(); ?>
+					<div class="clear"></div>
 
-			<?php lawyerist_get_pagenav(); ?>			
+		      <?php comments_template(); ?>
 
-		<?php endwhile; endif; ?>
+					<?php lawyerist_get_pagenav(); ?>
+
+				</div><!-- end #after_post -->
+
+			<?php endwhile; endif; ?>
+
 
 	</div><!-- end #content_column -->
 
