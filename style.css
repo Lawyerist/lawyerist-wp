@@ -2788,6 +2788,7 @@ Load Genericons
   }
 
   blockquote,
+  #author_bio_footer,
   #footer,
   img {
     page-break-inside: avoid;
