@@ -249,19 +249,11 @@ function lawyerist_get_byline() {
 		/* Bylines should only have links to the author page on single post pages. */
 		if ( is_single() ) {
 
-			if ( function_exists( 'coauthors_posts_links' ) ) {
-				$author = coauthors_posts_links( ', ',' and ','','', false );
-			} else {
-			  $author = '<a href="' . get_author_posts_url( get_the_author_meta( 'ID' ) ) . '">' . get_the_author() . '</a>';
-			}
+			$author = '<a href="' . get_author_posts_url( get_the_author_meta( 'ID' ) ) . '">' . get_the_author() . '</a>';
 
 		} else {
 
-			if ( function_exists( 'coauthors_posts_links' ) ) {
-				$author = coauthors( ', ',' and ','','', false );
-			} else {
-				$author = get_the_author();
-			}
+			$author = get_the_author();
 
 		}
 
