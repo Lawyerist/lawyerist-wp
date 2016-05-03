@@ -291,8 +291,8 @@ function insert_lawyerist_mobile_ad() { ?>
 
 function lawyerist_mobile_ad( $content ) {
 
-	// Show on single posts and pages, but if they are using the landing-page template
-	if ( is_mobile() && ( is_single() || is_page() ) && !get_page_template('landing-page') ) {
+	// Show on single posts but not pages.
+	if ( is_mobile() && is_single() && !is_page() ) {
 
 		$p_close		= '</p>';
 		$paragraphs = explode( $p_close, $content );
@@ -312,7 +312,7 @@ function lawyerist_mobile_ad( $content ) {
 
 			// Insert DFP code after 2nd paragraph
 			// (0 is paragraph #1 in the $paragraphs array)
-			if ( $p_num == 1 ) {
+			if ( $p_num == 0 ) {
 				$paragraphs[$p_num] .= $dfp_code;
 			}
 		}
