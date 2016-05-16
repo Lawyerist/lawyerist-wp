@@ -531,7 +531,7 @@ img.avatar {
 
 img.size-thumbnail {
 	height: auto;
-	width: 23.4375%;
+	width: 15rem;
 }
 
 img.size-medium {
@@ -565,6 +565,10 @@ img.wp-post-image.attachment-large {
 
 img.inline {
   display: inline !important;
+}
+
+.gallery-size-thumbnail img {
+  border-radius: 50%;
 }
 
 .wp-caption {
