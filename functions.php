@@ -15,7 +15,6 @@ WIDGETS
 
 CONTENT
 - Bylines
-- Extended Author Bio
 - Mobile Ad
 - Add Image Sizes
 - Page Navigation
@@ -265,11 +264,6 @@ function lawyerist_get_byline() {
 	echo '<div class="author_link">By ' . $author . ' <span class="postmeta_break">on ' . $date. '</span></div>';
 
 }
-
-
-/*------------------------------
-Extended Author Bio
-------------------------------*/
 
 
 /*------------------------------

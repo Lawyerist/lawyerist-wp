@@ -131,7 +131,6 @@
 						<?php } ?>
 						<!--End series nav-->
 
-
 						<div id="pages_categories_tags">
 							<?php if ( $numpages > 1 && !is_feed() ) {
 
@@ -151,19 +150,20 @@
 
 					</div><!-- end #post_footer -->
 
+					<!-- Author bio footer -->
 					<div id="author_bio_footer">
 
 						<?php /* Author bio footer variables */
 
 							$author = $wp_query->query_vars['author'];
 
-				      $author_name    = get_the_author_meta( 'display_name', $author );
-				      $author_website = get_the_author_meta( 'user_url', $author );
-				      $parsed_url     = parse_url( $author_website );
-				      $author_nice_website = $parsed_url['host'];
-				      $author_twitter = get_the_author_meta( 'twitter', $author );
+							$author_name    = get_the_author_meta( 'display_name', $author );
+							$author_website = get_the_author_meta( 'user_url', $author );
+							$parsed_url     = parse_url( $author_website );
+							$author_nice_website = $parsed_url['host'];
+							$author_twitter = get_the_author_meta( 'twitter', $author );
 
-				      $author_avatar  = get_avatar( get_the_author_meta( 'user_email', $author ), 100, '', $author_name );
+							$author_avatar  = get_avatar( get_the_author_meta( 'user_email', $author ), 100, '', $author_name );
 
 						?>
 
@@ -171,11 +171,12 @@
 
 						<p><?php the_author_description(); ?></p>
 						<div id="author_connect">
-			        <?php if ( $author_twitter == true ) { ?><p class="author_twitter"><a href="https://twitter.com/<?php echo $author_twitter; ?>">@<?php echo $author_twitter; ?></a></p><?php } ?>
-			        <?php if ( $author_website == true ) { ?><p class="author_website"><a href="<?php echo $author_website; ?>"><?php echo $author_nice_website; ?></a></p><?php } ?>
-			      </div>
+							<?php if ( $author_twitter == true ) { ?><p class="author_twitter"><a href="https://twitter.com/<?php echo $author_twitter; ?>">@<?php echo $author_twitter; ?></a></p><?php } ?>
+							<?php if ( $author_website == true ) { ?><p class="author_website"><a href="<?php echo $author_website; ?>"><?php echo $author_nice_website; ?></a></p><?php } ?>
+						</div>
 
-					</div><!--end #author_bio_footer-->
+					</div>
+					<!-- End author bio footer -->
 
 				</div><!--end .post_body-->
 
@@ -185,97 +186,96 @@
 
 			<div id="after_post">
 
-				<!--Begin current posts  nav -->
+				<!-- Current posts nav -->
 				<?php
 
-					$this_post[] = $post->ID;
+				$this_post[] = $post->ID;
 
-					$today = getdate();
+				$today = getdate();
 
-				  $current_posts_query_args = array(
-						'category__not_in'			=> 1320,
-						'date_query'						=> array(
-							array(
-								'before'	=> array(
-									'year'  => $today['year'],
-									'month' => $today['mon'],
-									'day'   => $today['mday']+1,
-								),
-								'after'		=> array(
-									'year'  => $today['year'],
-									'month' => $today['mon'],
-									'day'   => $today['mday']-6,
-								),
+				$current_posts_query_args = array(
+					'category__not_in'			=> 1320, // Excludes sponsor-submitted posts.
+					'date_query'						=> array(
+						array(
+							'before'	=> array(						// Before tomorrow.
+								'year'  => $today['year'],
+								'month' => $today['mon'],
+								'day'   => $today['mday']+1,
+							),
+							'after'		=> array(						// After 7 days ago.
+								'year'  => $today['year'],
+								'month' => $today['mon'],
+								'day'   => $today['mday']-7,
 							),
 						),
-						'ignore_sticky_posts'		=> TRUE,
-				    'orderby'								=> 'rand',
-				    'post__not_in'					=> $this_post,
-				    'posts_per_page'				=> 4,
-				  );
+					),
+					'ignore_sticky_posts'		=> TRUE,
+					'orderby'								=> 'rand',
+					'post__not_in'					=> $this_post,
+					'posts_per_page'				=> 4,
+				);
 
-				  $current_posts_query = new WP_Query( $current_posts_query_args );
+				$current_posts_query = new WP_Query( $current_posts_query_args );
 
-				  if ( $current_posts_query->post_count > 1 ) { ?>
+				if ( $current_posts_query->post_count > 1 ) { ?>
 
-				    <div class="fp_tab"><h2>Current posts</h2></div>
-				    <div id="current_posts_nav">
+					<div class="fp_tab"><h2>Current posts</h2></div>
+					<div id="current_posts_nav">
 
-				      <?php while ( $current_posts_query->have_posts() ) : $current_posts_query->the_post();
+						<?php while ( $current_posts_query->have_posts() ) : $current_posts_query->the_post();
 
-								$title = the_title( '', '', FALSE );
+							$title = the_title( '', '', FALSE );
 
-				        if ( $current_posts_query->post_count == 2 ) {
+							if ( $current_posts_query->post_count == 2 ) {
 
-				          $classes = array(
-				            'two_in_current_posts_nav'
-				          );
+								$classes = array(
+									'two_in_current_posts_nav'
+								);
 
-				        } elseif ( $current_posts_query->post_count == 3 ) {
+							} elseif ( $current_posts_query->post_count == 3 ) {
 
-				          $classes = array(
-				            'three_in_current_posts_nav'
-				          );
+								$classes = array(
+									'three_in_current_posts_nav'
+								);
 
-								} elseif ( !wp_is_mobile() && strlen( $title ) > 80 ) {
+							} elseif ( !wp_is_mobile() && strlen( $title ) > 80 ) {
 
-			            $title = substr( $title, 0, 79 );
-			            $title .= ' …';
+								$title = substr( $title, 0, 79 );
+								$title .= ' …';
 
-			          } elseif ( wp_is_mobile() && strlen( $title ) > 70 ) {
+							} elseif ( wp_is_mobile() && strlen( $title ) > 70 ) {
 
-									$title = substr( $title, 0, 69 );
-			            $title .= ' …';
+								$title = substr( $title, 0, 69 );
+								$title .= ' …';
 
+							} ?>
+
+							<a <?php post_class($classes); ?> href="<?php the_permalink(); ?>" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
+								<div class="current_posts_headline"><?php echo $title; ?></div>
+								<?php if ( has_post_thumbnail() ) {
+									the_post_thumbnail( 'thumbnail' );
+								} else {
+									echo '<img src="' . get_template_directory_uri() . '/images/fff-thumb.png" class="attachment-thumbnail wp-post-image" />';
 								} ?>
+							</a>
 
-				        <a <?php post_class($classes); ?> href="<?php the_permalink(); ?>" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
-				          <div class="current_posts_headline"><?php echo $title; ?></div>
-				          <?php if ( has_post_thumbnail() ) {
-										the_post_thumbnail( 'thumbnail' );
-									} else {
-										echo '<img src="' . get_template_directory_uri() . '/images/fff-thumb.png" class="attachment-thumbnail wp-post-image" />';
-									} ?>
-				        </a>
+						<?php endwhile; ?>
 
-				      <?php endwhile; ?>
-
-				    </div><!-- end #current_posts -->
-				    <div class="clear"></div>
-				    <div class="fp_bottom_tab current_posts_bottom_tab"><h2><a href="https://lawyerist.com/articles/">Read all articles</a></h2></div>
-
-				    <?php wp_reset_postdata();
-
-				  } ?>
-					<!--End current posts nav-->
-
+					</div><!-- end #current_posts -->
+					<div class="clear"></div>
+					<div class="fp_bottom_tab current_posts_bottom_tab"><h2><a href="https://lawyerist.com/articles/">Read all articles</a></h2></div>
 					<div class="clear"></div>
 
-		      <?php comments_template(); ?>
+					<?php wp_reset_postdata();
 
-					<?php lawyerist_get_pagenav(); ?>
+				} ?>
+				<!-- End current posts nav -->
 
-				</div><!-- end #after_post -->
+	      <?php comments_template(); ?>
+
+				<?php lawyerist_get_pagenav(); ?>
+
+			</div><!-- end #after_post -->
 
 			<?php endwhile; endif; ?>
 
