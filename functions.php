@@ -21,7 +21,6 @@ CONTENT
 - Featured Images in RSS Feeds
 
 TAXONOMY
-- Rename "Aside" Post Format to "Note"
 - Series Custom Taxonomy
 - Sponsors Custom Taxonomy
 
@@ -420,42 +419,6 @@ add_filter('the_content_feed', 'featuredtoRSS');
 
 
 /* TAXONOMY *******************/
-
-/*------------------------------
-Rename "Aside" Post Format to "Note"
-------------------------------*/
-
-// Rename Aside post format
-function rename_post_formats( $safe_text ) {
-    if ( $safe_text == 'Aside' )
-        return 'Note';
-
-    return $safe_text;
-}
-
-add_filter( 'esc_html' , 'rename_post_formats' );
-
-
-// Rename Aside in posts list table
-function live_rename_formats() {
-    global $current_screen;
-
-    if ( $current_screen->id == 'edit-post' ) { ?>
-        <script type="text/javascript">
-        jQuery('document').ready(function() {
-
-            jQuery("span.post-state-format").each(function() {
-                if ( jQuery(this).text() == "Aside" )
-                    jQuery(this).text("Note");
-            });
-
-        });
-        </script>
-<?php }
-}
-
-add_action( 'admin_head' , 'live_rename_formats' );
-
 
 /*------------------------------
 Series Custom Taxonomy
