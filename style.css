@@ -133,6 +133,15 @@ body {
 	width: 100%;
 }
 
+  @media only screen
+  and (max-width: 1023px) {
+
+    .menu-default-container {
+      margin-bottom: 0;
+    }
+
+  }
+
 	.menu-default-container > ul {
 		display: block;
 		line-height: 1em;
@@ -705,7 +714,7 @@ Title
       font-variant-ligatures: common-ligatures;
       height: 32px;
       line-height: 1;
-      margin-left: 5px;
+      margin: 0 0 0 5px;
       padding: 0;
       outline: none;
       text-align: center;
@@ -727,8 +736,17 @@ Title
       color: #ddd;
     }
 
-  /* 780px */
-  @media only screen and (max-width:779px) {
+  /* 800px */
+  @media only screen and (max-width:799px) {
+
+    #header_signup {
+      margin-right: 0;
+    }
+
+  }
+
+  /* 620px */
+  @media only screen and (max-width:619px) {
 
     .responsive_clear {
       clear: both;
@@ -737,6 +755,21 @@ Title
     #header_signup {
       float: none;
       margin: 1rem 0 0 0;
+      width: 100%;
+    }
+
+    #mc_embed_signup {
+      width: 100%;
+    }
+
+    .email_input_container {
+      box-sizing: border-box;
+      padding-right: 10.5rem;
+      width: 100%;
+    }
+
+    #mc_embed_signup input[type="email"] {
+      width: 100%;
     }
 
   }
@@ -751,6 +784,15 @@ Title
     float: right;
     list-style: none;
 		margin: 0;
+  }
+
+  /* 800px */
+  @media only screen and (max-width:799px) {
+
+    #email_social {
+      display:none;
+    }
+
   }
 
 		#email_social li {
@@ -868,9 +910,8 @@ Menu
       right: 0;
     }
 
-/* 745px */
-
-@media only screen and (max-width:744px) {
+/* 800px */
+@media only screen and (max-width:799px) {
 
   .mobile-menu-icon:before {
     background-color: #c00;
@@ -2557,9 +2598,8 @@ Media Queries
 and (max-width:1023px) {
 
 	html, body {
-        overflow-x: hidden;
-    }
-
+    overflow-x: hidden;
+  }
 
 	/* Change Layout */
 
@@ -2736,17 +2776,6 @@ and (max-width:1023px) {
 
   .wp-caption {
     width: 100% !important;
-  }
-
-}
-
-
-/* When the social icons start to get squeezed (455px) */
-
-@media only screen and (max-width:454px) {
-
-  #email_social {
-    display:none;
   }
 
 }
