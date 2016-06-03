@@ -54,3 +54,19 @@
 <div id="main-menu">
 	<?php wp_nav_menu( array( 'theme_location' => 'main_nav' ) ); ?>
 </div>
+
+<li id="lawyerist_responsive_search">
+	<form role="search" method="get" class="search-form" action="<?php echo home_url( '/' ); ?>">
+	    <label>
+	        <span hidden class="screen-reader-text"><?php echo _x( 'Search Lawyerist.com: ', 'label' ) ?></span>
+	        <input type="search" class="search-field"
+	          name="s"
+	          placeholder="<?php echo esc_attr_x( 'Search Lawyerist.com …', 'placeholder' ) ?>"
+	          title="<?php echo esc_attr_x( 'Search Lawyerist.com', 'label' ) ?>"
+	        />
+	    </label>
+	    <input hidden type="submit" class="search-submit"
+	      value="<?php echo esc_attr_x( 'Search', 'submit button' ) ?>"
+	    />
+	</form>
+</li>

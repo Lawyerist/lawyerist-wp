@@ -949,6 +949,34 @@ Menu
 
 
 /*------------------------------
+Mobile Search
+------------------------------*/
+
+#lawyerist_responsive_search,
+.search-results #lawyerist_responsive_search {
+  box-sizing: border-box;
+  display: none;
+  margin: 1.5rem auto 1rem auto;
+  padding: 0 1rem;
+  max-width: 66rem;
+  width: 100%;
+}
+
+  #lawyerist_responsive_search input[type="search"] {
+    width: 100%;
+  }
+
+@media only screen
+and (max-width: 1023px) {
+
+  #lawyerist_responsive_search {
+    display: block;
+  }
+
+}
+
+
+/*------------------------------
 Mobile Ad
 ------------------------------*/
 
@@ -2074,6 +2102,15 @@ Sidebar
   margin-bottom: 2.8rem;
 }
 
+  @media only screen
+  and (max-width:1023px) {
+
+    li#lawyerist_sidebar_search {
+      display: none !important;
+    }
+
+  }
+
 ul#sidebar_column,
 ul#sidebar_column ul {
 	list-style: none;
@@ -2128,6 +2165,15 @@ li.widget {
   .sidebar_ads {
     margin-bottom: 6rem;
   }
+
+    @media only screen
+    and (max-width:1023px) {
+
+      .sidebar_ads {
+        display: none !important;
+      }
+
+    }
 
   li.sidebar_ad {
 		display: inline-block;
@@ -2515,18 +2561,7 @@ and (max-width:1023px) {
     }
 
 
-	/* Hide This Stuff */
-
-  li.widget.sidebar_ads {
-    display: none !important;
-  }
-
-
 	/* Change Layout */
-
-  .menu-default-container {
-    margin-bottom: 0;
-  }
 
     #menu-item-74549 {
       float: none;
@@ -2557,14 +2592,6 @@ and (max-width:1023px) {
       padding: 0;
       width: auto;
 		}
-
-      li#lawyerist_sidebar_search {
-        margin-bottom: 5.6rem;
-      }
-
-      li#lawyerist_sidebar_search input#st-search-input {
-        width: 100%;
-      }
 
 }
 
