@@ -659,7 +659,6 @@ Title
 
   #mc_embed_signup {
     display: inline-block;
-    float: right;
     height: 32px;
     width: 300px;
     }
@@ -737,7 +736,7 @@ Title
 
     #header_signup {
       float: none;
-      margin: 1rem auto 0 auto;
+      margin: 1rem 0 0 0;
     }
 
   }
