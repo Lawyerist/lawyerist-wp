@@ -21,6 +21,7 @@ CONTENT
 - Featured Images in RSS Feeds
 
 TAXONOMY
+- Rename "Aside" Post Format
 - Series Custom Taxonomy
 - Sponsors Custom Taxonomy
 
@@ -65,7 +66,7 @@ function lawyerist_theme_setup() {
 
 	add_theme_support('title-tag');
 	add_theme_support('post-thumbnails');
-	add_theme_support( 'post-formats', array( 'aside', 'audio' ) );
+	add_theme_support( 'post-formats', array( 'aside' ) );
 	add_theme_support( 'html5', array( 'search-form' ) );
 
 }
@@ -419,6 +420,48 @@ add_filter('the_content_feed', 'featuredtoRSS');
 
 
 /* TAXONOMY *******************/
+
+/*------------------------------
+Rename Aside Post Format
+------------------------------*/
+
+// Rename Aside post format
+function rename_aside_post_format( $safe_text ) {
+
+  if ( $safe_text == 'Aside' )
+      return 'Not Featured';
+
+  return $safe_text;
+
+}
+
+add_filter( 'esc_html' , 'rename_aside_post_format' );
+
+
+// Rename Aside in posts list table
+function live_rename_aside_format() {
+
+    global $current_screen;
+
+    if ( $current_screen->id == 'edit-post' ) { ?>
+
+      <script type="text/javascript">
+      jQuery('document').ready(function() {
+
+        jQuery("span.post-state-format").each(function() {
+          if ( jQuery(this).text() == "Aside" )
+              jQuery(this).text("Not Featured");
+        });
+
+      });
+      </script>
+
+	<?php }
+
+}
+
+add_action( 'admin_head' , 'live_rename_aside_format' );
+
 
 /*------------------------------
 Series Custom Taxonomy
