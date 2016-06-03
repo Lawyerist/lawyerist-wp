@@ -165,9 +165,7 @@
 
 							$author_avatar  = get_avatar( get_the_author_meta( 'user_email', $author ), 100, '', $author_name );
 
-						?>
-
-						<?php echo $author_avatar; ?>
+						echo $author_avatar; ?>
 
 						<p><?php the_author_description(); ?></p>
 						<div id="author_connect">
@@ -189,25 +187,14 @@
 				<!-- Current posts nav -->
 				<?php
 
-				$this_post[] = $post->ID;
+				$this_post[]	= $post->ID;
 
-				$today = getdate();
+				$after_date		= date( 'Y-m-d H:i:s', strtotime( '-6 days' ) );
 
 				$current_posts_query_args = array(
 					'category__not_in'			=> 1320, // Excludes sponsor-submitted posts.
 					'date_query'						=> array(
-						array(
-							'before'	=> array(						// Before tomorrow.
-								'year'  => $today['year'],
-								'month' => $today['mon'],
-								'day'   => $today['mday']+1,
-							),
-							'after'		=> array(						// After 7 days ago.
-								'year'  => $today['year'],
-								'month' => $today['mon'],
-								'day'   => $today['mday']-7,
-							),
-						),
+						'after'			=> $after_date,
 					),
 					'ignore_sticky_posts'		=> TRUE,
 					'orderby'								=> 'rand',
@@ -217,7 +204,7 @@
 
 				$current_posts_query = new WP_Query( $current_posts_query_args );
 
-				if ( $current_posts_query->post_count > 1 ) { ?>
+				if ( $current_posts_query->post_count > 1 ) : ?>
 
 					<div class="fp_tab"><h2>Current posts</h2></div>
 					<div id="current_posts_nav">
@@ -259,16 +246,14 @@
 								} ?>
 							</a>
 
-						<?php endwhile; ?>
+						<?php endwhile; wp_reset_postdata(); ?>
 
-					</div><!-- end #current_posts -->
+					</div><!-- end #current_posts_nav -->
 					<div class="clear"></div>
 					<div class="fp_bottom_tab current_posts_bottom_tab"><h2><a href="https://lawyerist.com/articles/">Read all articles</a></h2></div>
 					<div class="clear"></div>
 
-					<?php wp_reset_postdata();
-
-				} ?>
+				<?php endif; ?>
 				<!-- End current posts nav -->
 
 	      <?php comments_template(); ?>
