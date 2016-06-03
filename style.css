@@ -2130,16 +2130,16 @@ li.widget {
     margin-bottom: 6rem;
   }
 
-  .sidebar_ads > ul li:last-child {
-    margin: 2.8rem 0 0 0 !important;
-  }
-
   li.sidebar_ad {
-		display:inline-block;
-    float:left;
-		margin:0 0 2.8rem 0 !important;
-		width:30rem;
+		display: inline-block;
+    float: left;
+		margin: 0;
+		width: 30rem;
 	}
+
+  li.sidebar_ad:first-child {
+    margin:0 0 2.8rem 0;
+  }
 
 
 	/*------------------------------
