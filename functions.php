@@ -117,7 +117,7 @@ add_action( 'widgets_init', 'lawyerist_sidebar_1' );
 Popular Posts Widget
 ------------------------------*/
 
-function l_pp_tabbed_widget_display($args) {
+function lawyerist_popular_posts_widget( $args ) {
 
 	echo $args['before_widget'];
 	echo $args['before_title'] . 'Popular Posts' .  $args['after_title'];
@@ -149,10 +149,10 @@ function l_pp_tabbed_widget_display($args) {
 
 wp_register_sidebar_widget(
 
-	'popular-posts-tabbed-widget',	// your unique widget id
-	'Popular Posts',								// widget name
-	'l_pp_tabbed_widget_display',		// callback function
-	array(													// options
+	'popular-posts-tabbed-widget',			// your unique widget id
+	'Popular Posts',										// widget name
+	'lawyerist_popular_posts_widget',		// callback function
+	array(															// options
 		'description' => 'Displays a tabbed list of current and all-time popular posts.'
 	)
 
