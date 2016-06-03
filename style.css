@@ -447,9 +447,15 @@ p.wp-caption-text {
   margin-bottom: 1em;
 }
 
-.postmeta_break {
-  display: inline-block;
-}
+  .author_link {
+    margin-right: .5em;
+  }
+
+  .author_link,
+  .on_date,
+  .comment_link {
+    display: inline-block;
+  }
 
 pre {
 	color: #555;
