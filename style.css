@@ -216,7 +216,6 @@ button,
 #footer,
 #header,
 input[type="button"],
-.flag,
 .fp_tab h2,
 .fp_bottom_tab h2,
 label,
@@ -1136,17 +1135,6 @@ a.post.fp_sticky:hover {
 		width: auto;
 		z-index: 1;
 	}
-
-  #featured_posts .tag-updated .flag {
-    background: #eee;
-    border: 1px solid #ddd;
-    color: #333;
-    display: inline-block;
-    font-size: 1.2rem;
-    line-height: 1em;
-    padding: .3rem .5rem;
-    text-transform: uppercase;
-  }
 
   #featured_posts h2 {
 		font-size: 2.4rem;
