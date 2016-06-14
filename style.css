@@ -1418,7 +1418,7 @@ Content
 		margin-bottom: 0;
 	}
 
-	#archive_header:last-child {
+	#archive_header p:last-child {
 		margin-bottom: 0;
 	}
 
