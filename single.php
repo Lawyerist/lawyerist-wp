@@ -145,7 +145,7 @@
 
 							}	?>
 							<p class="category_list"><?php echo get_the_category_list( ', ' ); ?></p>
-							<?php // echo get_the_tag_list( '<p class="tag_list">', ', ', '</p>' ); ?>
+							<?php echo get_the_tag_list( '<p class="tag_list">', ', ', '</p>' ); ?>
 						</div>
 
 					</div><!-- end #post_footer -->
