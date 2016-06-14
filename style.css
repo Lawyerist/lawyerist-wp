@@ -451,19 +451,21 @@ p.wp-caption-text {
 
 .postmeta {
 	color: #777;
+  display: block;
   font-size: 1.6rem;
   line-height: 1.4;
   margin-bottom: 1em;
 }
 
-  .author_link {
-    margin-right: .5em;
-  }
-
   .author_link,
+  .sponsored_by,
   .on_date,
   .comment_link {
     display: inline-block;
+  }
+
+  .comment_link {
+    margin-left: .5em;
   }
 
 pre {

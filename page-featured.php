@@ -82,7 +82,7 @@
   						<div class="postmeta">
                 <?php lawyerist_get_byline(); ?>
                 <?php if ( $num_comments > 0 ) { ?>
-                  <div class="comment_link"><?php comments_number( 'Leave a comment', '1 comment', '% comments' ); ?></div>
+                  <span class="comment_link"><?php comments_number( 'Leave a comment', '1 comment', '% comments' ); ?></span>
                 <?php } ?>
   						</div>
 
@@ -128,7 +128,7 @@
   						<div class="postmeta">
                 <?php lawyerist_get_byline(); ?>
                 <?php if ( $num_comments > 0 ) { ?>
-                  <div class="comment_link"><?php comments_number( 'Leave a comment', '1 comment', '% comments' ); ?></div>
+                  <span class="comment_link"><?php comments_number( 'Leave a comment', '1 comment', '% comments' ); ?></span>
                 <?php } ?>
   						</div>
 
@@ -180,7 +180,7 @@
             <div class="postmeta">
               <?php lawyerist_get_byline(); ?>
               <?php if ( $num_comments > 0 ) { ?>
-                <div class="comment_link"><?php comments_number( 'Leave a comment', '1 comment', '% comments' ); ?></div>
+                <span class="comment_link"><?php comments_number( 'Leave a comment', '1 comment', '% comments' ); ?></span>
               <?php } ?>
             </div>
             <div class="clear"></div>

@@ -239,7 +239,7 @@ function lawyerist_get_byline() {
 		if ( is_single() ) {
 			$author = '<a href="' . get_author_posts_url( get_the_author_meta( 'ID' ) ) . '">' . get_the_author() . '</a>, sponsored by ' . '<a href="' . $sponsor_url . '" rel="nofollow">' . $sponsor . '</a>,';
 		} else {
-			$author = get_the_author() . ', sponsored by ' . $sponsor . ',';
+			$author = get_the_author() . '<span class="sponsored_by">, sponsored by ' . $sponsor . ',</span>';
 		}
 
 	// Regular posts
@@ -261,7 +261,7 @@ function lawyerist_get_byline() {
 	$date = get_the_time( 'F jS, Y' );
 
 	// Output the results
-	echo '<div class="author_link">By ' . $author . ' <span class="on_date">on ' . $date. '</span></div>';
+	echo '<span class="author_link">By ' . $author . '</span> <span class="on_date">on ' . $date. '</span>';
 
 }
 

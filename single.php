@@ -20,7 +20,7 @@
 
 				<div class="postmeta">
 					<?php lawyerist_get_byline(); ?>
-					<div class="comment_link"><a href="#disqus_thread">&nbsp;</a></div>
+					<span class="comment_link"><a href="#disqus_thread">&nbsp;</a></span>
 					<div class="clear"></div>
 				</div>
 
