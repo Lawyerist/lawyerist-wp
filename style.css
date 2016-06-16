@@ -1403,6 +1403,10 @@ Content
 		padding: 1.5rem 2.5rem 2rem 2.5rem;
 	}
 
+    body.search-results #archive_header {
+      margin-bottom: 2.8rem;
+    }
+
 	#archive_header img {
 		float:left;
 		margin-bottom: 1.5rem;
@@ -2442,6 +2446,10 @@ body .gforms_confirmation_message {
   border: .1rem solid #ddd;
   padding: 1.5rem 2.5rem 2rem 2.5rem;
   background-color: #ffffa0;
+}
+
+body label {
+  line-height: 1;
 }
 
 body #sidebar_column .gform_footer {
