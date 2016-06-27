@@ -863,21 +863,12 @@ Menu
   position: relative;
 }
 
-#main-menu .menu-item.menu-item-has-children > a:after {
-  content: '\f431';
-  display: inline-block;
-  -webkit-font-smoothing: antialiased;
-  font:normal 1.6rem/1em Genericons;
-  height: 1.4rem;
-  vertical-align: top;
-}
-
 #main-menu .menu-item a {
 	color: #fff;
 	display: block;
 	font-size: 1.6rem;
 	line-height: 1em;
-	padding: .8rem 1rem;
+	padding: 1rem;
 	text-decoration: none;
 }
 
@@ -886,8 +877,12 @@ Menu
     color: #fff;
   }
 
-  #main-menu .sub-menu .menu-item:hover a {
-    color: #ddd;
+  #main-menu .menu-item.menu-item-has-children > a:after {
+    content: '\f431';
+    display: inline-block;
+    -webkit-font-smoothing: antialiased;
+    font:normal 1.6rem/1em Genericons;
+    vertical-align: top;
   }
 
 #main-menu .sub-menu {
@@ -904,14 +899,32 @@ Menu
     height: auto;
   }
 
-  #menu-item-119566 {
-    float: right;
+  #main-menu .sub-menu .menu-item {
+    display: block;
   }
 
-    #menu-item-119566:hover .sub-menu {
-      left: auto;
-      right: 0;
-    }
+  #main-menu .menu-item-object-page a.has-sub-menu:hover,
+  #main-menu .sub-menu .menu-item:hover a {
+    color: #ddd;
+  }
+
+
+  /* Articles sub-menu */
+  #menu-item-119517 .sub-menu {
+    column-count: 2;
+    width: 28rem;
+  }
+
+
+/* About menu */
+#menu-item-119566 {
+  float: right;
+}
+
+  #menu-item-119566:hover .sub-menu {
+    left: auto;
+    right: 0;
+  }
 
 /* 800px */
 @media only screen and (max-width:799px) {
@@ -932,7 +945,6 @@ Menu
     width: 100%;
 	}
 
-
   #main-menu,
   #main-menu .menu-item.menu-item-has-children > a:after,
   #main-menu .sub-menu {
@@ -948,7 +960,7 @@ Menu
     -webkit-font-smoothing: antialiased;
     float: right;
     font: normal 1.6rem/1em 'Genericons';
-    padding: .8rem 1rem;
+    padding: 1rem;
     position: absolute;
       right: 0;
       top: 0;
@@ -960,6 +972,7 @@ Menu
   }
 
   #main-menu .sub-menu {
+    column-count: 1;
     height: auto;
     position: static;
     width: 100%;
@@ -982,13 +995,15 @@ Menu
     content: '- '
   }
 
-    #menu-item-119566 {
-      float: none;
-    }
+  /* About menu */
+  #menu-item-119566 {
+    float: none;
+  }
 
     #menu-item-119566:hover .sub-menu {
       left: 0;
     }
+
 }
 
 

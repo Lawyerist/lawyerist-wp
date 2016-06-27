@@ -6,7 +6,6 @@ jQuery(function( $ ){
 		$(this).next("#main-menu").slideToggle();
 	});
 
-
   $(".sub-menu").before('<div class="mobile-sub-menu-icon"></div>');
   $(".mobile-sub-menu-icon").prev("a").addClass("has-sub-menu");
 
