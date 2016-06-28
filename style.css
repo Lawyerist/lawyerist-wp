@@ -1022,7 +1022,9 @@ Menu
   #main-menu .sub-menu .menu-item a:before {
     color: #c00;
     content: '\2022';
+    display: inline-block;
     margin-right: .5rem;
+    width: 1.6rem;
   }
 
   /* About menu */
