@@ -1081,6 +1081,7 @@ Front Page
 
 a.post.fp_sticky {
   background-color: #333;
+  border: 0;
 	margin-bottom: .2rem !important;
   padding: 2rem 2.5rem;
   transition: background-color .2s;
