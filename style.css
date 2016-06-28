@@ -896,7 +896,7 @@ Menu
   height: 0;
   overflow: hidden;
   position: absolute;
-  width: 14rem;
+  width: 16rem;
   z-index: 10;
 }
 
@@ -905,23 +905,36 @@ Menu
     height: auto;
   }
 
-  #main-menu .sub-menu .menu-item {
-    display: block;
-  }
-
-  #main-menu .sub-menu .menu-item:last-child a {
-    padding-bottom: 1.3rem;
-  }
-
   #main-menu .menu-item-object-page a:hover,
   #main-menu .sub-menu .menu-item:hover a {
     color: #ddd;
   }
 
-/* About Lawyerist & All Articles menu items */
-#menu-item-119517 a,
-#menu-item-80035 a {
-  border-bottom: 1px dashed #c00;
+
+/* Articles menu*/
+#menu-item-119599 .sub-menu {
+  column-count: 2;
+  width: 32rem;
+}
+
+/* All Articles menu item */
+#menu-item-119517 a:before {
+  content: '\f505';
+  display: inline-block;
+  -webkit-font-smoothing: antialiased;
+  font:normal 1.6rem/1em Genericons;
+  margin-right: .25rem;
+  vertical-align: top;
+}
+
+/* About Lawyerist menu item */
+#menu-item-80035 a:before {
+  content: '\f455';
+  display: inline-block;
+  -webkit-font-smoothing: antialiased;
+  font:normal 1.6rem/1em Genericons;
+  margin-right: .25rem;
+  vertical-align: top;
 }
 
 /* About menu */
