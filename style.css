@@ -900,6 +900,10 @@ Menu
   z-index: 10;
 }
 
+  #main-menu .sub-menu .menu-item {
+    width: 100%;
+  }
+
   /* This is what makes the sub menu show up */
   #main-menu .menu-item:hover .sub-menu {
     height: auto;
