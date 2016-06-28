@@ -919,6 +919,7 @@ Menu
 
 /* All Articles menu item */
 #menu-item-119517 a:before {
+  color: #c00;
   content: '\f505';
   display: inline-block;
   -webkit-font-smoothing: antialiased;
@@ -929,6 +930,7 @@ Menu
 
 /* About Lawyerist menu item */
 #menu-item-80035 a:before {
+  color: #c00;
   content: '\f455';
   display: inline-block;
   -webkit-font-smoothing: antialiased;
