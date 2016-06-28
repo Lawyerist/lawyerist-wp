@@ -920,7 +920,7 @@ Menu
 /* All Articles menu item */
 #menu-item-119517 a:before {
   color: #c00;
-  content: '\f505';
+  content: '\f505' !important;
   display: inline-block;
   -webkit-font-smoothing: antialiased;
   font:normal 1.6rem/1em Genericons;
@@ -931,7 +931,7 @@ Menu
 /* About Lawyerist menu item */
 #menu-item-80035 a:before {
   color: #c00;
-  content: '\f455';
+  content: '\f455' !important;
   display: inline-block;
   -webkit-font-smoothing: antialiased;
   font:normal 1.6rem/1em Genericons;
