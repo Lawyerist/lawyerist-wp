@@ -868,13 +868,17 @@ Menu
 	display: block;
 	font-size: 1.6rem;
 	line-height: 1em;
-	padding: 1rem;
+	padding: 1rem 1rem 1.1rem 1rem;
 	text-decoration: none;
 }
 
   #main-menu .menu > .menu-item:hover a {
-    background: #aa0000;
+    background: #a00;
     color: #fff;
+  }
+
+  .menu-item-has-children:hover > a {
+    cursor: default;
   }
 
   #main-menu .menu-item.menu-item-has-children > a:after {
@@ -882,6 +886,7 @@ Menu
     display: inline-block;
     -webkit-font-smoothing: antialiased;
     font:normal 1.6rem/1em Genericons;
+    margin-left: .25rem;
     vertical-align: top;
   }
 
@@ -895,6 +900,7 @@ Menu
   z-index: 10;
 }
 
+  /* This is what makes the sub menu show up */
   #main-menu .menu-item:hover .sub-menu {
     height: auto;
   }
@@ -903,18 +909,20 @@ Menu
     display: block;
   }
 
-  #main-menu .menu-item-object-page a.has-sub-menu:hover,
+  #main-menu .sub-menu .menu-item:last-child a {
+    padding-bottom: 1.3rem;
+  }
+
+  #main-menu .menu-item-object-page a:hover,
   #main-menu .sub-menu .menu-item:hover a {
     color: #ddd;
   }
 
-
-  /* Articles sub-menu */
-  #menu-item-119517 .sub-menu {
-    column-count: 2;
-    width: 28rem;
-  }
-
+/* About Lawyerist & All Articles menu items */
+#menu-item-119517 a,
+#menu-item-80035 a {
+  border-bottom: 1px dashed #c00;
+}
 
 /* About menu */
 #menu-item-119566 {
@@ -925,6 +933,7 @@ Menu
     left: auto;
     right: 0;
   }
+
 
 /* 800px */
 @media only screen and (max-width:799px) {
@@ -938,7 +947,7 @@ Menu
     -moz-osx-font-smoothing: grayscale;
   	-webkit-font-smoothing: antialiased;
 		font: normal 1.6rem/1em 'Genericons';
-    padding: .5em;
+    padding: 1rem;
     speak: none;
     text-align: center;
 		vertical-align: top;
@@ -960,7 +969,7 @@ Menu
     -webkit-font-smoothing: antialiased;
     float: right;
     font: normal 1.6rem/1em 'Genericons';
-    padding: 1rem;
+    padding: 1rem 1rem 1.1rem 1rem;
     position: absolute;
       right: 0;
       top: 0;
@@ -992,7 +1001,9 @@ Menu
   }
 
   #main-menu .sub-menu .menu-item a:before {
-    content: '- '
+    color: #c00;
+    content: '\2022';
+    margin-right: .5rem;
   }
 
   /* About menu */
@@ -1082,7 +1093,7 @@ a.post.fp_sticky:hover {
   a.fp_sticky h2.headline {
     color: #fff;
     font-size: 2.4rem;
-    letter-spacing: .1rem;
+    letter-spacing: .05rem;
     margin-bottom: 0;
     padding-left: 4.2rem;
     text-shadow: .1rem .1rem 0 #111;
@@ -1230,7 +1241,7 @@ a.post.fp_sticky:hover {
 
   #featured_posts h2 {
 		font-size: 2.4rem;
-    letter-spacing: .1rem;
+    letter-spacing: .05rem;
     line-height: 1.2;
 		margin-bottom: 1.65rem;
 	}
@@ -2628,15 +2639,6 @@ and (max-width:1023px) {
 
 	/* Change Layout */
 
-    #menu-item-74549 {
-      float: none;
-    }
-
-    #menu-item-74549:hover .sub-menu {
-      left: 0;
-      right: auto;
-    }
-
 	#content_column_container,
 	#footer {
 		max-width: 64rem;
@@ -2720,7 +2722,7 @@ and (max-width:1023px) {
   #featured_posts a:first-child.smaller-title h2,
   #featured_notes h2 {
     font-size: 2.4rem;
-    letter-spacing: .1rem;
+    letter-spacing: .05rem;
     margin-bottom: 1.65rem;
 	}
 
