@@ -9,6 +9,23 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
+<?php /* Meta descriptions */
+
+	if ( is_front_page() ) {
+
+		$description = get_bloginfo('description'); ?>
+
+		<meta name="description" content="<?php echo $description; ?>"><?php }
+
+	elseif ( is_single() || is_page() ) {
+
+		global $post;
+		$excerpt = get_the_excerpt( $post->ID ) ?>
+
+		<meta name="description" content="<?php echo $excerpt; ?>">
+
+<?php } ?>
+
 <!-- Google Webmaster Tools site verification tag for Sam -->
 <meta name="google-site-verification" content="GwbQ-BLG3G-tXV4-uG-_kZIaxXxm_Wqmzg5wFSBa9hI" />
 <!-- Google Webmaster Tools site verification tag for Aaron -->
@@ -40,24 +57,5 @@
   });
 </script>
 <!-- End DoubleClick tags -->
-
-<title><?php wp_title(); ?></title>
-
-<?php /* Meta descriptions */
-
-	if ( is_front_page() ) {
-
-		$description = get_bloginfo('description'); ?>
-
-		<meta name="description" content="<?php echo $description; ?>"><?php }
-
-	elseif ( is_single() || is_page() ) {
-
-		global $post;
-		$excerpt = get_the_excerpt( $post->ID ) ?>
-
-		<meta name="description" content="<?php echo $excerpt; ?>">
-
-<?php } ?>
 
 </head>
