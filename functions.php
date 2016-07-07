@@ -239,7 +239,7 @@ function lawyerist_get_byline() {
 		if ( is_single() ) {
 			$author = '<a href="' . get_author_posts_url( get_the_author_meta( 'ID' ) ) . '">' . get_the_author() . '</a>, sponsored by ' . '<a href="' . $sponsor_url . '" rel="nofollow">' . $sponsor . '</a>,';
 		} else {
-			$author = get_the_author() . '<span class="sponsored_by">, sponsored by ' . $sponsor . ',</span>';
+			$author = get_the_author() . ', <span class="sponsored_by">sponsored by ' . $sponsor . ',</span>';
 		}
 
 	// Regular posts
