@@ -206,7 +206,7 @@
 
 				if ( $current_posts_query->post_count > 1 ) : ?>
 
-					<div class="fp_tab"><h2>Current posts</h2></div>
+					<div class="fp_tab">Current posts</div>
 					<div id="current_posts_nav">
 
 						<?php while ( $current_posts_query->have_posts() ) : $current_posts_query->the_post();
@@ -250,7 +250,7 @@
 
 					</div><!-- end #current_posts_nav -->
 					<div class="clear"></div>
-					<div class="fp_bottom_tab current_posts_bottom_tab"><h2><a href="https://lawyerist.com/articles/">Read all articles</a></h2></div>
+					<div class="fp_bottom_tab current_posts_bottom_tab"><a href="https://lawyerist.com/articles/">Read all articles</a></div>
 					<div class="clear"></div>
 
 				<?php endif; ?>

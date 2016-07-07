@@ -191,12 +191,12 @@
       /* END NOTES LOOP */ ?>
 
     </div><!--end #featured_posts-->
-    <div class="fp_bottom_tab"><h2><a href="<?php echo bloginfo('url') . '/articles/'; ?>">All Articles</a></h2></div>
+    <div class="fp_bottom_tab"><a href="<?php echo bloginfo('url') . '/articles/'; ?>">All Articles</a></div>
 
     <div class="clear"></div>
 
 
-    <div class="fp_tab"><h2>Q&amp;A Forum</h2></div>
+    <div class="fp_tab">Q&amp;A Forum</div>
     <div id="lab_posts">
 
       <?php // Get RSS Feed(s)
@@ -233,7 +233,7 @@
         <?php endif; ?>
       </ul>
     </div><!--end #lab_posts-->
-    <div class="fp_bottom_tab"><h2><a href="http://lab.lawyerist.com">All Questions</a></h2></div>
+    <div class="fp_bottom_tab"><a href="http://lab.lawyerist.com">All Questions</a></div>
 
     <div class="clear"></div>
 

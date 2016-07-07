@@ -226,8 +226,8 @@ button,
 #footer,
 #header,
 input[type="button"],
-.fp_tab h2,
-.fp_bottom_tab h2,
+.fp_tab,
+.fp_bottom_tab,
 label,
 #lab_posts,
 #pagenav,
@@ -1144,7 +1144,10 @@ a.post.fp_sticky:hover {
 	border-color: #ddd;
 	border-style: solid;
 	border-width: .1rem 0 .1rem .1rem;
+  color: #333;
 	display: inline-block;
+  height: 1.6rem;
+  line-height: 1;
 	margin-bottom: .2rem;
 	padding: 1rem 1.5rem 1rem 2.5rem;
 	position: relative;
@@ -1194,9 +1197,8 @@ a.post.fp_sticky:hover {
     z-index:-1;
   }
 
-	.fp_tab h2,
-  .fp_bottom_tab h2 {
-		color: #333;
+	.fp_tab,
+  .fp_bottom_tab a {
 		font-size: 1.6rem;
 		font-weight: normal;
 		line-height: 1em;
