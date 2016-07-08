@@ -109,7 +109,7 @@
 
 								if ( $series_query->post_count > 1 ) { ?>
 
-									<h3>More in this Series: <?php echo $series_title; ?></h3>
+									<p class="h3">More in this Series: <?php echo $series_title; ?></p>
 
 									<?php if ( $series_description != 0 ) { echo '<p>' . $series_description . '</p>'; } ?>
 
