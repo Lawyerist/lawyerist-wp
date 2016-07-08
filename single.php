@@ -73,6 +73,20 @@
 								);
 								$series_slug = $series_slug[0];
 
+								$series_ID = wp_get_post_terms(
+									$post->ID,
+									'series',
+									array(
+										'fields' 	=> 'ids',
+										'orderby' => 'count',
+										'order' 	=> 'DESC'
+									)
+								);
+								$series_ID = $series_ID[0];
+
+								$series_description = term_description( $series_ID, 'series' );
+								$series_description = trim( $series_description );
+
 								$series_query_args = array(
 									'orderby'					=> 'date',
 									'order'						=> 'ASC',
@@ -96,6 +110,8 @@
 								if ( $series_query->post_count > 1 ) { ?>
 
 									<h3>More in this Series: <?php echo $series_title; ?></h3>
+
+									<?php if ( $series_description != 0 ) { echo '<p>' . $series_description . '</p>'; } ?>
 
 									<ul>
 
