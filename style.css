@@ -471,8 +471,8 @@ p.wp-caption-text {
     display: inline-block;
   }
 
-  .comment_link {
-    margin-left: .5em;
+  .on_date {
+    margin-right: .5em;
   }
 
 pre {
