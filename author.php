@@ -48,21 +48,14 @@
 
     $post_num = 1;
 
-    if ( have_posts() ) : while ( have_posts() ) : the_post();
-
-      $num_comments = get_comments_number(); ?>
+    if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
 			<a <?php post_class($class); ?> href="<?php the_permalink(); ?>" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
 
 				<?php if ( has_post_thumbnail() ) { the_post_thumbnail('thumbnail'); } ?>
 
 				<h2 class="headline remove_bottom" id="post-<?php the_ID(); ?>"><?php the_title(); ?></h2>
-				<div class="postmeta">
-          <?php lawyerist_get_byline(); ?>
-          <?php if ( $num_comments > 0 ) { ?>
-            <span class="comment_link"><?php comments_number( 'Leave a comment', '1 comment', '% comments' ); ?></span>
-          <?php } ?>
-				</div>
+				<?php lawyerist_get_postmeta(); ?>
 				<p class="excerpt remove_bottom<?php if ( has_post_thumbnail() ) { echo ' excerpt_with_thumb'; } ?>"><?php echo get_the_excerpt(); ?></p>
 
 				<div class="clear"></div>

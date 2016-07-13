@@ -165,11 +165,13 @@ wp_register_sidebar_widget(
 Bylines
 ------------------------------*/
 
-function lawyerist_get_byline() {
+function lawyerist_get_postmeta() {
 
 	// This function must be used within the Loop
 
-	$this_post_id = get_the_ID();
+	$this_post_id	= get_the_ID();
+	$url 					= get_the_permalink();
+	$num_comments	= get_comments_number();
 
 	// Sponsor-submitted posts will have a sponsor and the category will be set
 	// to Sponsored Post.
@@ -247,21 +249,55 @@ function lawyerist_get_byline() {
 
 		/* Bylines should only have links to the author page on single post pages. */
 		if ( is_single() ) {
-
 			$author = '<a href="' . get_author_posts_url( get_the_author_meta( 'ID' ) ) . '">' . get_the_author() . '</a>';
-
 		} else {
-
 			$author = get_the_author();
-
 		}
 
 	}
 
+	// Get the date
 	$date = get_the_time( 'F jS, Y' );
 
+
+	// Calculate shares
+
+	/* Twitter (via http://newsharecounts.com/) */
+	$tw_api_call	= file_get_contents( 'http://public.newsharecounts.com/count.json?url=' . $url );
+	$tw_shares		= json_decode( $tw_api_call );
+
+	/* Facebook */
+	$fb_api_call	= file_get_contents( 'https://graph.facebook.com/?id=' . $url );
+	$fb_shares		= json_decode( $fb_api_call );
+
+	/* LinkedIn */
+	$li_api_call	= file_get_contents( 'https://www.linkedin.com/countserv/count/share?url=' . $url . '&format=json' );
+	$li_shares		= json_decode( $li_api_call );
+
+	$shares						= $tw_shares->count + $fb_shares->shares + $li_shares->count;
+	$shares_formatted	= number_format( $shares );
+
+
+	// Comments
+	if ( is_single() ) {
+		$comments = '<a href="#disqus_thread">&nbsp;</a>';
+	} else {
+		$comments = '<span class="disqus-comment-count" data-disqus-url="' . $url . '">&nbsp;</span>';
+	}
+
+
 	// Output the results
-	echo '<span class="author_link">By ' . $author . '</span> <span class="on_date">on ' . $date. '</span>';
+	echo '<div class="postmeta"><span class="author_link">By ' . $author . '</span> <span class="on_date">on ' . $date. '</span> ';
+
+	if ( $shares > 10 ) {
+		echo '<span class="share_count">' . $shares_formatted . ' Shares </span> ';
+	}
+
+	if ( $num_comments > 10 ) {
+		echo '<span class="comment_link">' . $comments . '</span>';
+	}
+
+	echo '</div>';
 
 }
 

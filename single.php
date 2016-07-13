@@ -13,15 +13,11 @@
 
 		<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
-			<div <?php post_class('hentry'); ?>>
+			<div <?php post_class( 'hentry' ); ?>>
 
 				<h1 class="headline entry-title"><?php the_title(); ?></h1>
-
-				<div class="postmeta">
-					<?php lawyerist_get_byline(); ?>
-					<span class="comment_link"><a href="#disqus_thread">&nbsp;</a></span>
-					<div class="clear"></div>
-				</div>
+				<?php lawyerist_get_postmeta(); ?>
+				<div class="clear"></div>
 
 				<?php /* Show featured image (1) if the post has a featured image AND
 								 (2) if it's the first page of the post AND (3) the post DOES
@@ -221,7 +217,7 @@
 
 				if ( $current_posts_query->post_count > 1 ) : ?>
 
-					<div class="fp_tab">Current posts</div>
+					<div class="fp_tab">Current Articles</div>
 					<div id="current_posts_nav">
 
 						<?php while ( $current_posts_query->have_posts() ) : $current_posts_query->the_post();
@@ -265,7 +261,7 @@
 
 					</div><!-- end #current_posts_nav -->
 					<div class="clear"></div>
-					<div class="fp_bottom_tab current_posts_bottom_tab"><a href="https://lawyerist.com/articles/">Read all articles</a></div>
+					<div class="fp_bottom_tab current_posts_bottom_tab"><a href="https://lawyerist.com/articles/">View All Articles</a></div>
 					<div class="clear"></div>
 
 				<?php endif; ?>
@@ -277,7 +273,8 @@
 
 			</div><!-- end #after_post -->
 
-			<?php endwhile; endif; ?>
+
+		<?php endwhile; endif; ?>
 
 
 	</div><!-- end #content_column -->

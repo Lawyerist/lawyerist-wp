@@ -64,8 +64,6 @@
 
           $do_not_duplicate[] = $post->ID;
 
-  				$num_comments = get_comments_number();
-
           $title = the_title( '', '', FALSE );
           if ( strlen( $title ) > 80 ) {
             $classes[] = 'smaller-title';
@@ -78,14 +76,9 @@
               <?php if ( has_tag('updated') ) { echo '<div class="flag no_shadow">Updated</div>'; } ?>
 
   						<h2 class="headline"><?php the_title(); ?></h2>
-  						<div class="postmeta">
-                <?php lawyerist_get_byline(); ?>
-                <?php if ( $num_comments > 0 ) { ?>
-                  <span class="comment_link"><?php comments_number( 'Leave a comment', '1 comment', '% comments' ); ?></span>
-                <?php } ?>
-  						</div>
+  						<?php lawyerist_get_postmeta(); ?>
 
-  					</div><!--end .headline_excerpt-->
+  					</div><!-- end .headline_excerpt -->
 
   					<?php if ( has_post_thumbnail() && !is_mobile() ) { the_post_thumbnail( 'featured_top' ); }
             elseif ( has_post_thumbnail() ) { the_post_thumbnail( 'featured' ); }
@@ -115,21 +108,15 @@
 
   			while ( $featured_query->have_posts() ) : $featured_query->the_post();
 
-          $do_not_duplicate[] = $post->ID;
-
-  				$num_comments = get_comments_number(); ?>
+          $do_not_duplicate[] = $post->ID; ?>
 
   				<a <?php post_class($classes); ?> href="<?php the_permalink(); ?>" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
 
   					<div class="headline_excerpt">
 
   						<h2 class="headline"><?php the_title(); ?></h2>
-  						<div class="postmeta">
-                <?php lawyerist_get_byline(); ?>
-                <?php if ( $num_comments > 0 ) { ?>
-                  <span class="comment_link"><?php comments_number( 'Leave a comment', '1 comment', '% comments' ); ?></span>
-                <?php } ?>
-  						</div>
+  						<?php lawyerist_get_postmeta(); ?>
+              <div class="clear"></div>
 
   					</div><!--end .headline_excerpt-->
 
@@ -166,22 +153,12 @@
 
         $featured_query = new WP_Query( $featured_query_args );
 
-        while ( $featured_query->have_posts() ) : $featured_query->the_post();
+        while ( $featured_query->have_posts() ) : $featured_query->the_post(); ?>
 
-          $num_comments = get_comments_number();
-          $classes = array(
-            'featured_note'
-          ); ?>
-
-          <a <?php post_class($classes); ?> href="<?php the_permalink(); ?>" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
+          <a <?php post_class(); ?> href="<?php the_permalink(); ?>" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
             <?php if ( has_post_thumbnail() ) { the_post_thumbnail( 'thumbnail' ); } ?>
             <h2 class="headline"><?php the_title(); ?></h2>
-            <div class="postmeta">
-              <?php lawyerist_get_byline(); ?>
-              <?php if ( $num_comments > 0 ) { ?>
-                <span class="comment_link"><?php comments_number( 'Leave a comment', '1 comment', '% comments' ); ?></span>
-              <?php } ?>
-            </div>
+            <?php lawyerist_get_postmeta(); ?>
             <div class="clear"></div>
           </a>
 
@@ -190,12 +167,12 @@
       /* END NOTES LOOP */ ?>
 
     </div><!--end #featured_posts-->
-    <div class="fp_bottom_tab"><a href="<?php echo bloginfo('url') . '/articles/'; ?>">All Articles</a></div>
+    <div class="fp_bottom_tab"><a href="<?php echo bloginfo('url') . '/articles/'; ?>">View All Articles</a></div>
 
     <div class="clear"></div>
 
 
-    <div class="fp_tab">Q&amp;A Forum</div>
+    <div class="fp_tab">Lab Discussion Forum</div>
     <div id="lab_posts">
 
       <?php // Get RSS Feed(s)
@@ -232,7 +209,7 @@
         <?php endif; ?>
       </ul>
     </div><!--end #lab_posts-->
-    <div class="fp_bottom_tab"><a href="http://lab.lawyerist.com">All Questions</a></div>
+    <div class="fp_bottom_tab"><a href="http://lab.lawyerist.com">View All Discussions</a></div>
 
     <div class="clear"></div>
 

@@ -14,7 +14,7 @@
 
 <!-- Load scripts -->
 
-<!--MailChimp Goal tracking-->
+<!-- MailChimp Goal tracking -->
 <script type="text/javascript">
 	var $mcGoal = {'settings':{'uuid':'a5da2382c098b6541dcd6cf8e','dc':'us2'}};
 	(function() {
