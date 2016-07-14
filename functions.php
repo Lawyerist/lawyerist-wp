@@ -14,7 +14,7 @@ WIDGETS
 - Popular Posts Widget
 
 CONTENT
-- Bylines
+- Postmeta
 - Mobile Ad
 - Add Image Sizes
 - Page Navigation
@@ -162,7 +162,7 @@ wp_register_sidebar_widget(
 /* CONTENT ********************/
 
 /*------------------------------
-Bylines
+Postmeta
 ------------------------------*/
 
 function lawyerist_get_postmeta() {
@@ -267,14 +267,14 @@ function lawyerist_get_postmeta() {
 	$tw_shares		= json_decode( $tw_api_call );
 
 	/* Facebook */
-	$fb_api_call	= file_get_contents( 'https://graph.facebook.com/?id=' . $url );
-	$fb_shares		= json_decode( $fb_api_call );
+	$fb_rest_url = 'http://api.facebook.com/restserver.php?format=json&method=links.getStats&urls=' . urlencode( $url );
+	$fb_shares = json_decode( file_get_contents( $fb_rest_url ), true );
 
 	/* LinkedIn */
 	$li_api_call	= file_get_contents( 'https://www.linkedin.com/countserv/count/share?url=' . $url . '&format=json' );
 	$li_shares		= json_decode( $li_api_call );
 
-	$shares						= $tw_shares->count + $fb_shares->shares + $li_shares->count;
+	$shares						= $tw_shares->count + $fb_shares[0][share_count] + $li_shares->count;
 	$shares_formatted	= number_format( $shares );
 
 
