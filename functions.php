@@ -267,8 +267,8 @@ function lawyerist_get_postmeta() {
 	$tw_shares		= json_decode( $tw_api_call );
 
 	/* Facebook */
-	$fb_rest_url = 'http://api.facebook.com/restserver.php?format=json&method=links.getStats&urls=' . urlencode( $url );
-	$fb_shares = json_decode( file_get_contents( $fb_rest_url ), true );
+	$fb_api_call	= 'http://api.facebook.com/restserver.php?format=json&method=links.getStats&urls=' . urlencode( $url );
+	$fb_shares		= json_decode( file_get_contents( $fb_api_call ), true );
 
 	/* LinkedIn */
 	$li_api_call	= file_get_contents( 'https://www.linkedin.com/countserv/count/share?url=' . $url . '&format=json' );
