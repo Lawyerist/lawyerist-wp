@@ -269,7 +269,7 @@
 
 
 				<!-- Discussions -->
-				<div class="fp_tab">Current Discussions</div>
+				<div class="fp_tab">Current Lab Discussions</div>
 		    <div id="lab_posts">
 
 		      <?php // Get RSS Feed(s)
