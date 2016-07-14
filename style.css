@@ -1161,10 +1161,13 @@ a.post.fp_sticky:hover {
 	display: inline-block;
   height: 1.6rem;
   line-height: 1;
-	margin-bottom: .2rem;
 	padding: 1rem 1.5rem 1rem 2.5rem;
 	position: relative;
   z-index: 0;
+}
+
+.fp_tab {
+  margin-bottom: .2rem;
 }
 
 .fp_bottom_tab {
@@ -1215,7 +1218,6 @@ a.post.fp_sticky:hover {
 		font-size: 1.6rem;
 		font-weight: normal;
 		line-height: 1em;
-		margin: 0;
 		text-transform: uppercase;
 	}
 
@@ -1326,33 +1328,33 @@ a.post.fp_sticky:hover {
 	Questions
 	------------------------------*/
 
-	.front_page #lab_posts {
+	#lab_posts {
     background:#1e79a7;
 		display:inline-block;
 		margin-bottom:.2rem;
     width:100%;
 	}
 
-	.front_page #lab_posts ul {
+	#lab_posts ul {
 		list-style:none;
 		margin:2rem 2.5rem 2.8rem 2.5rem;
 	}
 
-    .front_page #lab_posts li {
+    #lab_posts li {
       margin-bottom: 1em;
     }
 
-    .front_page #lab_posts li a {
+    #lab_posts li a {
   		color:#fff;
   	}
 
-	.front_page #lab_posts img {
+	#lab_posts img {
 		border-radius:1.6rem;
 		float:left;
 		opacity:1;
 	}
 
-	.front_page #lab_posts .lab_headline {
+	#lab_posts .lab_headline {
 		display:block;
 		padding-left:42px;
 	}
@@ -1565,6 +1567,11 @@ Content
     display: none !important;
   }
 
+  #series_nav {
+    clear: both;
+		margin: 5.6rem 0;
+  }
+
 	#author_bio_footer {
 		clear: both;
 		margin-bottom: 6rem;
@@ -1662,15 +1669,6 @@ Content
   		vertical-align: middle;
   	}
 
-  .theiaPostSlider_nav {
-    margin-bottom: 2.8rem;
-  }
-
-	.theiaPostSlider_nav ._text {
-		color: #777;
-		font-size: 3.2rem;
-	}
-
 
   /*------------------------------
   Tables
@@ -1754,14 +1752,8 @@ Content
       opacity: .1;
     }
 
-  .current_posts_nav_bottom_tab {
+  #after_post .fp_bottom_tab {
     margin-bottom: 6rem;
-  }
-
-
-  #series_nav {
-    clear: both;
-		margin: 5.6rem 0;
   }
 
 

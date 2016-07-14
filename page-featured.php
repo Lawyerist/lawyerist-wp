@@ -172,7 +172,7 @@
     <div class="clear"></div>
 
 
-    <div class="fp_tab">Lab Discussion Forum</div>
+    <div class="fp_tab">Current Discussions</div>
     <div id="lab_posts">
 
       <?php // Get RSS Feed(s)
