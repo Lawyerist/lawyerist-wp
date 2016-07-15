@@ -371,35 +371,34 @@ h6 a {
 }
 
 h1,
-h2 {
+.headline {
 	font-size: 3.8rem;
 	margin-bottom: .25em;
 }
 
-h3,
-.h3 {
+h2 {
 	font-size: 2.8rem;
 	margin-bottom: .5em;
 }
 
-h4,
-h5,
-h6 {
-  color: #555;
-}
-
-h4 {
+h3,
+.h3 {
 	font-size: 2.4rem;
 	margin-bottom: .5em;
 }
 
-h5 {
+h4 {
 	font-size: 2.2rem;
 	margin-bottom: .5em;
 }
 
-h6 {
+h5 {
 	font-size: 2rem;
+	margin-bottom: .75em;
+}
+
+h6 {
+	font-size: 1.8rem;
 	margin-bottom: .75em;
 }
 
@@ -1125,7 +1124,7 @@ a.post.fp_sticky:hover {
   background-color: #111;
 }
 
-  a.fp_sticky h2.headline {
+  a.post.fp_sticky .headline {
     color: #fff;
     font-size: 2.4rem;
     letter-spacing: .05rem;
@@ -1134,11 +1133,11 @@ a.post.fp_sticky:hover {
     text-shadow: .1rem .1rem 0 #111;
   }
 
-  a.fp_sticky:hover h2.headline {
+  a.post.fp_sticky:hover .headline {
     text-decoration:none;
   }
 
-	a.fp_sticky .pin:before {
+	a.post.fp_sticky .pin:before {
 		color: #cc0000;
 		content: '\f308';
     display: inline-block;
@@ -1278,22 +1277,22 @@ a.post.fp_sticky:hover {
 		z-index: 1;
 	}
 
-  #featured_posts h2 {
+  #featured_posts .headline {
 		font-size: 2.4rem;
     letter-spacing: .05rem;
     line-height: 1.2;
 		margin-bottom: 1.65rem;
 	}
 
-    #featured_posts a:first-child h2 {
+    #featured_posts a:first-child .headline {
   		font-size: 4.8rem;
   	}
 
-    #featured_posts a:hover h2 {
+    #featured_posts a:hover .headline {
       text-decoration: none;
     }
 
-    #featured_posts a:first-child.smaller-title h2 {
+    #featured_posts a:first-child.smaller-title .headline {
   		font-size: 3.8rem;
   		margin-bottom: 2.6rem;
   	}
@@ -1302,7 +1301,7 @@ a.post.fp_sticky:hover {
 		color: #fff !important;
 	}
 
-  #featured_posts h2,
+  #featured_posts .headline,
   #featured_posts .postmeta,
   #featured_posts .comment_link:before {
     color: #fff !important;
@@ -2760,16 +2759,16 @@ and (max-width:1023px) {
 		width: 100%;
 	}
 
-  #featured_posts h2,
-  #featured_posts a:first-child h2,
-  #featured_posts a:first-child.smaller-title h2,
-  #featured_notes h2 {
+  #featured_posts .headline,
+  #featured_posts a:first-child .headline,
+  #featured_posts a:first-child.smaller-title .headline,
+  #featured_notes .headline {
     font-size: 2.4rem;
     letter-spacing: .05rem;
     margin-bottom: 1.65rem;
 	}
 
-  a.fp_sticky h2.headline {
+  a.fp_sticky .headline {
     font-weight: normal;
   }
 
