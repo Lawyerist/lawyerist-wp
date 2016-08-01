@@ -2603,7 +2603,7 @@ body #sidebar_column .gform_footer {
     display: inline-block;
     font-size: 1.3rem !important;
     height: 3.2rem;
-    line-height: 1;
+    line-height: 3.2rem;
     margin-bottom: 2.8rem;
     outline: none;
     padding: 0 1.6rem;
