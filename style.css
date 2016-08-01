@@ -208,6 +208,7 @@ body {
 /* Things that use Concourse */
 h1,
 h2,
+.h2,
 h3,
 .h3,
 h4,
@@ -336,6 +337,7 @@ iframe {
 
 h1,
 h2,
+.h2,
 h3,
 .h3,
 h4,
@@ -349,6 +351,7 @@ h6 {
 
 h1 em,
 h2 em,
+.h2 em,
 h3 em,
 .h3 em,
 h4 em,
@@ -362,6 +365,7 @@ h6 em {
 
 h1 a,
 h2 a,
+.h2 a,
 h3 a,
 .h3 a,
 h4 a,
@@ -376,7 +380,8 @@ h1,
 	margin-bottom: .25em;
 }
 
-h2 {
+h2,
+.h2 {
 	font-size: 2.8rem;
 	margin-bottom: .5em;
 }
@@ -690,25 +695,11 @@ Title
     #mc_embed_signup input[type="email"] {
       background-color: #ddd;
       border: 0;
-      border-radius: 2px;
-      box-sizing: border-box;
-      color: #555;
-      display: block;
       float: left;
-      font-family: concourse, 'Helvetica Neue', Helvetica, Arial, sans-serif;
       font-size: 18px;
-      font-variant-ligatures: common-ligatures;
       height: 32px;
-      line-height: 1;
-      outline: none;
       padding: 0 8px;
-      vertical-align: middle;
-      -webkit-appearance: none;
       width: 195px;
-    }
-
-    #mc_embed_signup input[type="email"]::-webkit-input-placeholder {
-      padding-top: 2px;
     }
 
     #mc_embed_signup input[type="email"]:focus {
@@ -717,38 +708,16 @@ Title
 
     #mc_embed_signup input[type="submit"] {
       background-color: #ffa000;
-      border: 0;
-      border-radius: 2px;
-      box-shadow: none;
-      box-sizing: border-box;
-      color: #fff;
-      cursor: pointer;
-      display: block;
-      float: right;
-      font-family: concourse, 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      font-variant-ligatures: common-ligatures;
-      height: 32px;
-      line-height: 1;
       margin: 0 0 0 5px;
-      padding: 0;
-      outline: none;
-      text-align: center;
-      text-decoration: none;
-      text-transform: uppercase;
-      vertical-align: middle;
-      -webkit-appearance: none;
-      width: 100px;
+      width: 10rem;
     }
 
     #mc_embed_signup input[type="submit"]:hover {
       background-color: #ffb333;
-      color: #fff;
-      text-decoration: none;
     }
 
     #mc_embed_signup input[type="submit"]:active {
       background-color: #e69000;
-      color: #ddd;
     }
 
   /* 800px */
@@ -1693,6 +1662,76 @@ Content
     font-size: 80%;
   }
 
+
+
+  /*------------------------------
+  After-Post Signup
+  ------------------------------*/
+
+  #after_post_signup {
+    background-color: #eee;
+    border: 1px solid #ddd;
+    margin-bottom: 6rem;
+    padding: 2rem 2.5rem;
+  }
+
+    #mc_embed_signup_after_post {
+      display: inline-block;
+      float: right;
+      margin-left: 1.5rem;
+      width: 100%;
+    }
+
+    #after_post_signup input {
+      font-family: concourse, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 1.8rem;
+      height: 3.2rem;
+      padding: 0 .8rem;
+      vertical-align: middle;
+    }
+
+    .name_input_container {
+      display: block;
+      width: 100%;
+      margin-bottom: .4rem;
+    }
+
+      .name_input_container .mc_input {
+        box-sizing: border-box;
+        display: inline-block;
+        float: left;
+        width: 50%;
+      }
+
+      .name_input_container .mc_input:first-child {
+        padding-right: .4rem;
+      }
+
+      .name_input_container input {
+        width: 100%;
+      }
+
+    #mc_embed_signup_after_post input[type="email"] {
+      margin-bottom: .4rem;
+      width: 100%;
+    }
+
+    #mc_embed_signup_after_post input[type="submit"] {
+      background-color: #ffa000;
+      float: right;
+      margin: 0;
+      width: 10rem;
+    }
+
+    #mc_embed_signup_after_post input[type="submit"]:hover {
+      background-color: #ffb333;
+    }
+
+    #mc_embed_signup_after_post input[type="submit"]:active {
+      background-color: #e69000;
+    }
+
+
   /*------------------------------
   Post Footer Nav
   ------------------------------*/
@@ -2432,6 +2471,9 @@ body #sidebar_column .gform_heading {
   width: auto;
 }
 
+input,
+select,
+textarea,
 body .gform_wrapper input[type=text],
 body .gform_wrapper input[type=email],
 body .gform_wrapper input[type=tel],
@@ -2456,10 +2498,16 @@ body input[type="search"],
   -webkit-appearance: none;
 }
 
+  input::-webkit-input-placeholder {
+    padding-top: 2px;
+  }
+
+select,
 body .gform_wrapper select {
   padding: .4rem !important;
 }
 
+#sidebar_column input,
 body #sidebar_column .gform_wrapper input[type=text],
 body #sidebar_column .gform_wrapper input[type=email],
 body #sidebar_column .gform_wrapper input[type=tel],
@@ -2472,11 +2520,14 @@ body #sidebar_column input[type="search"], {
   width: 30rem;
 }
 
+input[type=checkbox],
+input[type=radio],
 body .gform_wrapper input[type=checkbox],
 body .gform_wrapper input[type=radio] {
   margin-left: .1rem;
 }
 
+input:focus,
 body .gform_wrapper input[type=text]:focus,
 body .gform_wrapper input[type=email]:focus,
 body .gform_wrapper input[type=tel]:focus,
@@ -2487,13 +2538,14 @@ body .gform_wrapper select:focus,
 body .gform_wrapper textarea:focus,
 body input[type="search"]:focus,
 #edd-free-downloads-modal input[type='text']:focus {
-  border-color: #cc0000;
+  border-color: #c00;
   color: #333;
 }
 
-body .gform_wrapper label.gfield_label,
-body label {
+label,
+body .gform_wrapper label.gfield_label {
   font-size: 1.8rem;
+  line-height: 1;
   margin-bottom: 0 !important;
 }
 
@@ -2515,10 +2567,6 @@ body .gforms_confirmation_message {
   border: .1rem solid #ddd;
   padding: 1.5rem 2.5rem 2rem 2.5rem;
   background-color: #ffffa0;
-}
-
-body label {
-  line-height: 1;
 }
 
 body #sidebar_column .gform_footer {
@@ -2555,7 +2603,7 @@ body #sidebar_column .gform_footer {
     display: inline-block;
     font-size: 1.3rem !important;
     height: 3.2rem;
-    line-height: 3.2rem;
+    line-height: 1;
     margin-bottom: 2.8rem;
     outline: none;
     padding: 0 1.6rem;

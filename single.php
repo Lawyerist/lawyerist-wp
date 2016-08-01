@@ -195,6 +195,37 @@
 
 			<div id="after_post">
 
+				<!-- Email signup form -->
+				<div class="fp_tab">Subscribe</div>
+				<div id="after_post_signup">
+
+					<p class="h3">Get <em>Lawyerist</em> in Your Inbox, Daily</p>
+
+					<!-- Email signup form -->
+					<div id="mc_embed_signup_after_post">
+					<form action="//lawyerist.us2.list-manage.com/subscribe/post?u=a5da2382c098b6541dcd6cf8e&amp;id=30d7a1f6e2&SOURCE=after_post_signup" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+						<div class="name_input_container">
+							<div class="mc_input"><input type="text" value="" name="FNAME" class="" id="mce-FNAME" placeholder="First name"></div>
+							<div class="mc_input"><input type="text" value="" name="LNAME" class="" id="mce-LNAME" placeholder="Last name"></div>
+							<div class="clear"></div>
+						</div>
+						<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Email address">
+						<div id="mce-responses" class="clear">
+							<div class="response" id="mce-error-response" style="display:none"></div>
+							<div class="response" id="mce-success-response" style="display:none"></div>
+						</div>
+						<!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+					  <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_a5da2382c098b6541dcd6cf8e_30d7a1f6e2" tabindex="-1" value=""></div>
+					  <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+					</form>
+					</div><!-- End mc_embed_signup -->
+
+					<div class="clear"></div>
+
+				</div><!-- end #after_post_signup -->
+				<div class="clear"></div>
+
+
 				<!-- Current posts nav -->
 				<?php
 
