@@ -1764,7 +1764,7 @@ Content
     width: 21.2rem;
   }
 
-  #current_posts_nav .current_posts_headline {
+  .current_posts_headline {
     color: #fff;
     font-size: 2rem;
     line-height: 2.5rem;
@@ -1789,6 +1789,36 @@ Content
     #current_posts_nav a:hover img {
       opacity: .1;
     }
+
+  /* Content column width (640px) + 20px for padding */
+  @media only screen and (max-width:659px) {
+
+    #current_posts_nav a,
+    #current_posts_nav a.two_in_current_posts_nav,
+    #current_posts_nav a.three_in_current_posts_nav {
+      display: block;
+      float: none;
+      height: 7rem;
+      margin-right: 0;
+      width: auto;
+    }
+
+    #current_posts_nav .current_posts_headline {
+      padding: 2rem 2.5rem;
+    }
+
+    #current_posts_contents {
+      padding: 0;
+    }
+
+    #current_posts_contents li,
+    #current_posts_contents li:nth-child(odd) {
+      float: none;
+      margin: 0 0 2.8rem 0;
+      width: auto;
+    }
+
+  }
 
   #after_post .fp_bottom_tab {
     margin-bottom: 6rem;
@@ -2842,27 +2872,6 @@ and (max-width:1023px) {
 		margin: 0 0 1.5rem 0;
 		width: auto;
 	}
-
-  #current_posts_contents {
-    padding: 0;
-  }
-
-  #current_posts_contents li,
-  #current_posts_contents li:nth-child(odd) {
-    float: none;
-    margin: 0 0 2.8rem 0;
-    width: auto;
-  }
-
-  #current_posts_nav a,
-  #current_posts_nav a.two_in_current_posts_nav,
-  #current_posts_nav a.three_in_current_posts_nav {
-    display: block;
-    float: none;
-    height: 7rem;
-    margin-right: 0;
-    width: auto;
-  }
 
 	#pagenav .pagenav_link_block {
 			display:block;
