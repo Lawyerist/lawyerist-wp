@@ -267,14 +267,14 @@
 									'three_in_current_posts_nav'
 								);
 
-							} elseif ( !wp_is_mobile() && strlen( $title ) > 80 ) {
-
-								$title = substr( $title, 0, 79 );
-								$title .= ' …';
-
-							} elseif ( wp_is_mobile() && strlen( $title ) > 70 ) {
+							} elseif ( !wp_is_mobile() && strlen( $title ) > 70 ) {
 
 								$title = substr( $title, 0, 69 );
+								$title .= ' …';
+
+							} elseif ( wp_is_mobile() && strlen( $title ) > 60 ) {
+
+								$title = substr( $title, 0, 59 );
 								$title .= ' …';
 
 							} ?>
