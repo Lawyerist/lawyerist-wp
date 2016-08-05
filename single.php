@@ -96,7 +96,11 @@
 									)
 								);
 
-								if ( $series_slug == 'briefs' || $series_slug == 'lawyerist-podcast' ) {
+								if (
+									$series_slug == 'briefs' ||
+									$series_slug == 'first-looks' ||
+									$series_slug == 'lawyerist-podcast'
+								) {
 									$series_query_args['order'] = 'DESC';
 									$series_query_args['posts_per_page'] = 4;
 								}
