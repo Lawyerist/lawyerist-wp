@@ -384,8 +384,7 @@ Page Navigation
 
 function lawyerist_get_pagenav() {
 
-	// This function must be used within the Loop in single.php.
-	// It doesn't matter in other template files.
+	// This function is only meant for index and archive pages.
 
 	if ( is_home() || is_archive() || is_search() ) {
 
@@ -409,24 +408,7 @@ function lawyerist_get_pagenav() {
 			<?php
 		$pagenav = ob_get_clean();
 
-	} elseif ( is_single() ) {
-
-		ob_start();
-			?>
-
-			<div class="alignleft pagenav_link_block">
-				<?php next_post_link('%link','<div class="genericon pagenav_leftarrow"></div><div class="pagenav_link">%title</div>',0) ?>
-			</div>
-			<div class="alignright pagenav_link_block">
-				<?php previous_post_link('%link','<div class="pagenav_link">%title</div><div class="genericon pagenav_rightarrow"></div>',0) ?>
-			</div>
-			<div class="clear"></div>
-
-			<?php
-		$pagenav = ob_get_clean();
-
 	}
-
 
 	echo '<div id="pagenav">';
 	echo $pagenav;

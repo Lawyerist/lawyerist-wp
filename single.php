@@ -225,7 +225,6 @@
 				</div><!-- end #after_post_signup -->
 				<div class="clear"></div>
 
-
 				<!-- Current posts nav -->
 				<?php
 
@@ -298,7 +297,6 @@
 				<?php endif; ?>
 				<!-- End current posts nav -->
 
-
 				<!-- Discussions -->
 				<div class="fp_tab">Current Lab Discussions</div>
 		    <div id="lab_posts">
@@ -342,16 +340,11 @@
 
 				<!-- End discussions -->
 
-
 	      <?php comments_template(); ?>
-
-				<?php lawyerist_get_pagenav(); ?>
 
 			</div><!-- end #after_post -->
 
-
 		<?php endwhile; endif; ?>
-
 
 	</div><!-- end #content_column -->
 

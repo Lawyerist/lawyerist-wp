@@ -6,7 +6,7 @@ Author:       Sam Glover
 Author URI:   http://samglover.net
 Version:      [see README.md for version history]
 
-License:      Copyright 2015 Lawyerist Media, LLC
+License:      Copyright 2016 Lawyerist Media, LLC
 ------------------------------*/
 
 
@@ -2123,75 +2123,6 @@ Content
     background: #ccc;
     text-decoration: none;
   }
-
-  #pagenav .pagenav_link_block {
-      display:inline-block;
-      max-width:30rem;
-      position:relative;
-  }
-
-  	.pagenav_leftarrow:before {
-  		float:left;
-  		position:absolute;
-  			top:0;
-  			left:0;
-  	}
-
-  	.pagenav_rightarrow:before {
-  		float:right;
-  		position:absolute;
-  			top:0;
-  			right:0;
-  	}
-
-  	.pagenav_leftarrow:before,
-  	.pagenav_rightarrow:before {
-  		background-color:#cc0000;
-  		border-radius:1.6rem;
-  		color:#fff;
-  		display:inline-block;
-  		-webkit-font-smoothing:antialiased;
-  		font:normal 3.2rem/1em 'Genericons';
-      speak: none;
-      transition:background-color .2s;
-  		vertical-align:top;
-  	}
-
-  	#pagenav a:hover .pagenav_leftarrow:before,
-  	#pagenav a:hover .pagenav_rightarrow:before {
-      background-color:#aa0000;
-  	}
-
-  		.pagenav_leftarrow:before {
-  			content:'\f430';
-  		}
-
-  		.pagenav_rightarrow:before {
-  			content:'\f429';
-  		}
-
-      .pagenav_link {
-        display:inline-block;
-        font-size:2.2rem;
-        line-height:3.2rem;
-      }
-
-        a:hover .pagenav_link {
-          text-decoration:underline;
-        }
-
-  		#pagenav .alignleft .pagenav_link {
-  			padding-left:4.7rem;
-  			text-align:left;
-  		}
-
-  		#pagenav .alignright .pagenav_link {
-  			padding-right:4.7rem;
-  		}
-
-      #pagenav .alignright.pagenav_link_block {
-        text-align:right;
-      }
 
 
 	/*------------------------------
