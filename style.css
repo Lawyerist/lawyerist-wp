@@ -2426,6 +2426,11 @@ body .gform_wrapper {
   font-size: inherit !important;
 }
 
+body .ginput_full {
+  display: block;
+  margin-bottom: 2.8rem;
+}
+
 body #sidebar_column .gform_wrapper,
 body #sidebar_column .gform_heading {
   max-width: 100%;
@@ -2442,6 +2447,7 @@ body .gform_wrapper input[type=url],
 body .gform_wrapper input[type=number],
 body .gform_wrapper input[type=password],
 body .gform_wrapper select,
+body .gform_wrapper.gf_browser_chrome select,
 body .gform_wrapper textarea,
 body input[type="search"],
 #edd-free-downloads-modal input[type='text'] {
@@ -2455,18 +2461,15 @@ body input[type="search"],
   font-size: 1.6rem;
   outline: none;
   line-height: 2.4rem;
-  padding: .4rem;
+  margin-bottom: .4rem;
+  margin-top: 0 !important;
+  padding: .5rem .4rem;
   -webkit-appearance: none;
 }
 
   input::-webkit-input-placeholder {
     padding-top: 2px;
   }
-
-select,
-body .gform_wrapper select {
-  padding: .4rem !important;
-}
 
 #sidebar_column input,
 body #sidebar_column .gform_wrapper input[type=text],
@@ -2486,6 +2489,18 @@ input[type=radio],
 body .gform_wrapper input[type=checkbox],
 body .gform_wrapper input[type=radio] {
   margin-left: .1rem;
+}
+
+input[type=checkbox],
+body .gform_wrapper input[type=checkbox] {
+  margin-left: .1rem;
+  -webkit-appearance: checkbox;
+}
+
+input[type=radio],
+body .gform_wrapper input[type=radio] {
+  margin-left: .1rem;
+  -webkit-appearance: radio;
 }
 
 input:focus,
@@ -2512,7 +2527,6 @@ body .gform_wrapper label.gfield_label {
 
 body .gform_wrapper span.ginput_card_security_code_icon {
   left: 0 !important;
-  top: .4rem !important;
 }
 
 body .gform_wrapper .instruction {
@@ -2530,8 +2544,9 @@ body .gforms_confirmation_message {
   background-color: #ffffa0;
 }
 
-body #sidebar_column .gform_footer {
-  padding: 0;
+body .gform_footer {
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 #lawyerist_content_search input[type="search"],
@@ -2553,6 +2568,7 @@ body #sidebar_column .gform_footer {
   .button,
   a.button,
   body .gform_wrapper input.button,
+  body .gform_wrapper .gform_footer input.button,
   input.button,
   input[type="button"] {
     background-color: #b00;
