@@ -3,7 +3,7 @@
 
 <?php include('head.php'); ?>
 
-<body <?php body_class('front_page'); ?>">
+<body <?php body_class('front_page'); ?>>
 
 <?php get_header(); ?>
 
