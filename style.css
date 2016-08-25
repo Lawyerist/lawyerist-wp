@@ -2497,6 +2497,10 @@ body .gform_wrapper input[type=checkbox] {
   -webkit-appearance: checkbox;
 }
 
+input[type=checkbox]#edd_free_download_optin {
+  display: inline-block;
+}
+
 input[type=radio],
 body .gform_wrapper input[type=radio] {
   margin-left: .1rem;
