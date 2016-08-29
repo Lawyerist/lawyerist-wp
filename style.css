@@ -1227,7 +1227,7 @@ a.post.fp_sticky:hover {
   #featured_posts img {
     min-height: 100%;
 		margin: 0 !important;
-		opacity: .5;
+		opacity: .3;
     transition: opacity .2s;
 		width: 100%;
 		z-index: 0;
