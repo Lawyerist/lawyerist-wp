@@ -64,8 +64,8 @@ Theme Setup
 
 function lawyerist_theme_setup() {
 
-	add_theme_support('title-tag');
-	add_theme_support('post-thumbnails');
+	add_theme_support( 'title-tag' );
+	add_theme_support( 'post-thumbnails' );
 	add_theme_support( 'post-formats', array( 'aside' ) );
 	add_theme_support( 'html5', array( 'search-form' ) );
 
@@ -81,9 +81,11 @@ Nav Menu
 ------------------------------*/
 
 function register_my_menus() {
-	register_nav_menus( array(
-		'main_nav' => 'Responsive Nav Menu (Below Header)'
-	)	);
+	register_nav_menus(
+		array(
+		 'main_nav' => 'Responsive Nav Menu (Below Header)'
+		)
+	);
 }
 
 add_action('init','register_my_menus');
