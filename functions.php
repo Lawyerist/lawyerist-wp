@@ -46,8 +46,7 @@ function lawyerist_stylesheets_scripts() {
 	wp_register_style( 'normalize-css', get_template_directory_uri() . '/normalize.min.css' );
 	wp_enqueue_style( 'normalize-css' );
 
-	$cacheBusterCSS = date("Y m d", filemtime( get_stylesheet_directory() . '/style.css'));
-	wp_register_style( 'stylesheet', get_template_directory_uri() . '/style.css', array(), $cacheBusterCSS, 'all' );
+	wp_register_style( 'stylesheet', get_template_directory_uri() . '/style.css' );
 	wp_enqueue_style( 'stylesheet' );
 
 	wp_enqueue_script( 'idTabs', get_template_directory_uri() . '/jquery.idTabs.min.js', array( 'jquery' ), '2.2', 'true' );
