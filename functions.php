@@ -392,22 +392,6 @@ function lawyerist_get_pagenav() {
 			echo paginate_links( 'mid_size=3' );
 		$pagenav = ob_get_clean();
 
-	} elseif ( is_single() && has_term( true, 'series' ) ) {
-
-		ob_start();
-			?>
-
-			<div class="alignleft pagenav_link_block">
-				<?php next_post_link( '%link', '<div class="genericon pagenav_leftarrow"></div><div class="pagenav_link">%title</div>', TRUE, '', 'series', 0 ) ?>
-			</div>
-			<div class="alignright pagenav_link_block">
-				<?php previous_post_link( '%link', '<div class="pagenav_link">%title</div><div class="genericon pagenav_rightarrow"></div>', TRUE, '', 'series', 0 ) ?>
-			</div>
-			<div class="clear"></div>
-
-			<?php
-		$pagenav = ob_get_clean();
-
 	}
 
 	echo '<div id="pagenav">';
