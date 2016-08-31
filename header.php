@@ -26,9 +26,9 @@
 		<?php } ?>
 
 		<ul id="email_social">
-			<li><a class="linkedin sprite" href="https://www.linkedin.com/company/lawyerist-media-llc" title="Connect with Lawyerist on LinkedIn" target="_blank"></a></li>
 			<li><a class="facebook sprite" href="https://facebook.com/lawyerist" title="Friend Lawyerist on Facebook" target="_blank"></a></li>
 			<li><a class="twitter sprite" href="https://twitter.com/lawyerist" title="Follow Lawyerist on Twitter" target="_blank"></a></li>
+			<li><a class="linkedin sprite" href="https://www.linkedin.com/company/lawyerist-media-llc" title="Connect with Lawyerist on LinkedIn" target="_blank"></a></li>
 			<li><a class="more_social sprite" href="http://lawyerist.com/subscribe/" title="More ways to subscribe to connect with Lawyerist"></a></li>
 		</ul>
 
