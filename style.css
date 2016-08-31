@@ -1437,7 +1437,7 @@ Content
 		padding: 1.5rem 2.5rem 2rem 2.5rem;
 	}
 
-    body.search-results #archive_header {
+    body.search #archive_header {
       margin-bottom: 2.8rem;
     }
 
@@ -2560,7 +2560,7 @@ body .gform_footer {
 
 #lawyerist_content_search label span {
   display: block;
-  margin-bottom: .5em;
+  margin-bottom: .25em;
 }
 
 
