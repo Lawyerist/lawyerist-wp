@@ -14,7 +14,7 @@
 	</form>
 </li>
 
-<?php if ( !has_tag('no-ads') || !is_mobile() ) { ?>
+<?php if ( !has_tag('no-ads') && !is_mobile() ) { ?>
 
 	<li class="sidebar_ads widget">
 		<ul>
