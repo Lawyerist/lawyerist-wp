@@ -895,15 +895,8 @@ Menu
     color: #ddd;
   }
 
-
-/* Articles menu*/
-#menu-item-119599 .sub-menu {
-  column-count: 2;
-  width: 32rem;
-}
-
 /* All Articles menu item */
-#menu-item-119517 a:before {
+#menu-item-120891 a:before {
   color: #c00;
   content: '\f505' !important;
   display: inline-block;
