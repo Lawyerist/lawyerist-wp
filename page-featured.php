@@ -73,8 +73,6 @@
 
   					<div class="headline_excerpt">
 
-              <?php if ( has_tag('updated') ) { echo '<div class="flag no_shadow">Updated</div>'; } ?>
-
   						<h2 class="headline"><?php the_title(); ?></h2>
   						<?php lawyerist_get_postmeta(); ?>
 
