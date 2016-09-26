@@ -290,6 +290,7 @@ a:focus {
 blockquote {
 	border-left: 1px solid #ddd;
 	color: #666;
+  font-size: 2.2rem;
 	margin: 0 0 2.8rem 0;
 	padding: 0 0 0 1.9rem;
 }
