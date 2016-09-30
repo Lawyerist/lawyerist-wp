@@ -38,7 +38,7 @@ Content
   Author List Shortcode
 	Sharing Buttons
   Survival Guides
-	Buyers Guide
+	Full-Width Template
 	Pagenav
 	Comments
 Author Page
@@ -2015,68 +2015,45 @@ Content
 
   }
 
-
-	/*------------------------------
-	Buyers Guide
+  /*------------------------------
+	Full-Width Template
 	------------------------------*/
 
-	a.buy_button {
-		clear:right;
-		float:right;
-	}
+  .full-width #content_column {
+    float: none;
+    margin: 0 auto;
+    max-width: 80rem;
+    width: auto;
+  }
 
-	ul.cets_embedRSS {
-		list-style:none;
-		margin:0;
-	}
+  .full-width .half_row {
+    clear: both;
+  }
 
-		ul.cets_embedRSS a.post {
-			border:0;
-			margin:0;
-			padding:0;
-		}
+  .full-width .half {
+    box-sizing: border-box;
+    float: left;
+    margin: 2.8rem 0;
+    width: 50%;
+  }
 
-		ul.cets_embedRSS a.post:hover {
-			text-decoration:underline;
-		}
+  @media only screen and (max-width:499px) {
 
-	#post-43048 .post_body ul {
-		display:block;
-		list-style:none;
-		margin:0 !important;
-	}
+    .full-width .half {
+      float: none;
+      padding: 0 !important;
+      width: 100%;
+    }
 
-	#post-43048 .post_body ul a {
-		color:inherit;
-		text-decoration:none !important;
-	}
+  }
 
-	#post-43048 .post_body ul a:hover {
-		color:#cc0000;
-	}
+  .full-width .half:nth-child(odd) {
+    padding-right: 2.8rem;
+  }
 
-	#post-43048 .post_body ul img {
-		margin:24px 0 !important;
-	}
-
-	#post-43048 .post_body ul > li {
-		display:inline-block;
-		float:left;
-		margin-bottom:48px !important;
-		margin-right:10px;
-		width:15rem;
-	}
-
-	#post-43048 .post_body ul > ul {
-		list-style:none;
-		margin-left:0 !important;
-	}
-
-	#post-43048 .post_body ul ul li {
-		font-size:13px;
-		margin-bottom:0 !important;
-		width:140px;
-	}
+  .full-width .half:nth-child(even) {
+    padding-left: 2.8rem;
+  }
 
 
 	/*------------------------------
