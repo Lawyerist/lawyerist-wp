@@ -38,6 +38,7 @@ Content
   Author List Shortcode
 	Sharing Buttons
   Survival Guides
+  No Sidebar Template
 	TBD Law Template
 	Pagenav
 	Comments
@@ -228,6 +229,7 @@ button,
 #footer,
 #header,
 input[type="button"],
+input[type="submit"],
 .fp_tab,
 .fp_bottom_tab,
 label,
@@ -2037,6 +2039,15 @@ Content
   }
 
   /*------------------------------
+  No Sidebar Template
+  ------------------------------*/
+
+  .no-sidebar #content_column {
+    float: none;
+    margin: 0 auto;
+  }
+
+  /*------------------------------
 	TBD Law Template
 	------------------------------*/
 
@@ -2054,7 +2065,7 @@ Content
   .tbd-law h1.headline {
     height: 0;
     margin: 0;
-    text-indent: -100000px;
+    text-indent: -10000px;
   }
 
   .tbd-law .wp-post-image {
@@ -2559,6 +2570,19 @@ body .gform_footer {
   margin-bottom: .25em;
 }
 
+.post-password-form {
+  background-color: #eee;
+  border: .1rem solid #ddd;
+  border-radius: .2rem;
+  box-shadow: .1rem .1rem .3rem #bbb;
+  padding: 2rem 2.5rem;
+  margin: 0 auto;
+  max-width: 32rem;
+}
+
+.post-password-form input[type="password"] {
+  width: 100%;
+}
 
   /*------------------------------
   Buttons
@@ -2570,7 +2594,8 @@ body .gform_footer {
   body .gform_wrapper input.button,
   body .gform_wrapper .gform_footer input.button,
   input.button,
-  input[type="button"] {
+  input[type="button"],
+  input[type="submit"] {
     background-color: #b00;
     border: 0;
     border-radius: .2rem;
@@ -2595,7 +2620,8 @@ body .gform_footer {
   a.button:focus,
   body .gform_wrapper input.button:focus,
   input.button:focus,
-  input[type="button"]:focus {
+  input[type="button"]:focus,
+  input[type="submit"]:focus {
     outline: none !important;
   }
 
@@ -2604,7 +2630,8 @@ body .gform_footer {
     #sidebar_column a.button,
     #sidebar_column body .gform_wrapper input.button,
     #sidebar_column input.button,
-    #sidebar_column input[type="button"] {
+    #sidebar_column input[type="button"],
+    #sidebar_column input[type="submit"] {
       margin-bottom: 0;
     }
 
@@ -2613,7 +2640,8 @@ body .gform_footer {
   a.button:hover,
   body .gform_wrapper input.button:hover,
   input.button:hover,
-  input[type="button"]:hover {
+  input[type="button"]:hover,
+  input[type="submit"]:hover {
     background-color: #c00;
     color: #fff;
     text-decoration: none;
@@ -2624,7 +2652,8 @@ body .gform_footer {
   a.button:active,
   body .gform_wrapper input.button:active,
   input.button:active,
-  input[type="button"]:active {
+  input[type="button"]:active,
+  input[type="submit"]:active {
     background-color: #a00;
     color: #ddd;
   }

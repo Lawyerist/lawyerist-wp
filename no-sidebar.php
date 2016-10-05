@@ -1,4 +1,4 @@
-<?php /* Template Name: TBD Law Landing Page */ ?>
+<?php /* Template Name: No Sidebar */ ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -6,7 +6,7 @@
 <?php include('head.php'); ?>
 
 
-<body <?php body_class( 'tbd-law' ); ?>>
+<body <?php body_class( 'no-sidebar' ); ?>>
 
 <?php get_header(); ?>
 
