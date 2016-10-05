@@ -366,16 +366,9 @@ add_filter( 'the_content', 'lawyerist_mobile_ad' );
 Add Image Sizes
 ------------------------------*/
 
-
 if ( function_exists( 'add_image_size' ) ) {
 	add_image_size( '60px_thumb', 60, 60, true);
-}
-
-if ( function_exists( 'add_image_size' ) ) {
 	add_image_size( 'featured', 320, 255.5, true);
-}
-
-if ( function_exists( 'add_image_size' ) ) {
 	add_image_size( 'featured_top', 640, 344.5, true);
 }
 

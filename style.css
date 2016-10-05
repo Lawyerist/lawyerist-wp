@@ -38,7 +38,7 @@ Content
   Author List Shortcode
 	Sharing Buttons
   Survival Guides
-	Full-Width Template
+	TBD Law Template
 	Pagenav
 	Comments
 Author Page
@@ -540,24 +540,27 @@ Images
 ------------------------------*/
 
 img {
+  box-sizing: border-box;
   height: auto;
+  margin-bottom: 1em;
   max-width: 100%;
 }
 
 img.aligncenter {
 	clear: both;
 	display: block;
-	margin: 0 auto 1em auto;
+	margin-left: auto;
+  margin-right: auto;
 }
 
 img.alignleft {
 	float: left;
-	margin: 0 1.5rem 1em 0;
+	padding-right: 1.5rem;
 }
 
 img.alignright {
 	float: right;
-	margin: 0 0 1em 1.5rem;
+	padding-left: 1.5rem;
 }
 
 img.avatar {
@@ -570,16 +573,36 @@ img.size-thumbnail {
 }
 
 img.size-medium {
+  width: 30rem;
 }
+
+  @media only screen and (max-width:659px) {
+
+    img.size-medium {
+      width: 50%;
+    }
+
+  }
+
+  @media only screen and (max-width:499px) {
+
+    img.size-medium {
+      clear: both;
+    	display: block;
+      float: none;
+      padding: 0;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 30rem;
+      width: 100%;
+    }
+
+  }
+
 
 img.size-large {
 	height: auto;
-	width: 100%;
-}
-
-img.size-full {
-	height: auto;
-	width: auto;
+	width: 64rem;
 }
 
 img.wp-post-image.attachment-medium {
@@ -2014,21 +2037,35 @@ Content
   }
 
   /*------------------------------
-	Full-Width Template
+	TBD Law Template
 	------------------------------*/
 
-  .full-width #content_column {
+  .tbd-law #content_column {
     float: none;
-    margin: 0 auto;
-    max-width: 80rem;
-    width: auto;
+    max-width: 100%;
+    width: 100%;
   }
 
-  .full-width .half_row {
+  .tbd-law .post_body {
+    max-width: 64rem;
+    margin: 0 auto;
+  }
+
+  .tbd-law h1.headline {
+    height: 0;
+    margin: 0;
+    text-indent: -100000px;
+  }
+
+  .tbd-law .wp-post-image {
+    width: 100%;
+  }
+
+  .tbd-law .half_row {
     clear: both;
   }
 
-  .full-width .half {
+  .tbd-law .half {
     box-sizing: border-box;
     float: left;
     margin: 2.8rem 0;
@@ -2037,7 +2074,7 @@ Content
 
   @media only screen and (max-width:499px) {
 
-    .full-width .half {
+    .tbd-law .half {
       float: none;
       padding: 0 !important;
       width: 100%;
@@ -2045,11 +2082,11 @@ Content
 
   }
 
-  .full-width .half:nth-child(odd) {
+  .tbd-law .half:nth-child(odd) {
     padding-right: 2.8rem;
   }
 
-  .full-width .half:nth-child(even) {
+  .tbd-law .half:nth-child(even) {
     padding-left: 2.8rem;
   }
 
@@ -2796,22 +2833,6 @@ and (max-width:1023px) {
 
   .author_list li {
     width:50%;
-  }
-
-}
-
-
-/* When notes and medium-sized images start looking bad (500px) */
-
-@media only screen and (max-width:499px) {
-
-  img.size-medium {
-    margin: 0 0 1.5rem 0;
-  	width: 100%;
-  }
-
-  .wp-caption {
-    width: 100% !important;
   }
 
 }

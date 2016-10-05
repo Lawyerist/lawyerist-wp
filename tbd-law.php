@@ -1,4 +1,4 @@
-<?php /* Template Name: Full Width */ ?>
+<?php /* Template Name: TBD Law */ ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -6,7 +6,7 @@
 <?php include('head.php'); ?>
 
 
-<body <?php body_class( 'full-width' ); ?>>
+<body <?php body_class( 'tbd-law' ); ?>>
 
 <?php get_header(); ?>
 
@@ -26,7 +26,7 @@
 				<h1 class="headline"><?php the_title(); ?></h1>
 
 				<?php if ( has_post_thumbnail() ) {
-					the_post_thumbnail('large');
+					the_post_thumbnail('full');
 				} ?>
 
 				<div class="post_body">
