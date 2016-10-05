@@ -570,8 +570,6 @@ img.size-thumbnail {
 }
 
 img.size-medium {
-	height: auto;
-	width: 46.875%;
 }
 
 img.size-large {
@@ -2186,15 +2184,6 @@ Sidebar
 #lawyerist_sidebar_search {
   margin-bottom: 2.8rem;
 }
-
-  @media only screen
-  and (max-width:1023px) {
-
-    li#lawyerist_sidebar_search {
-      display: none !important;
-    }
-
-  }
 
 ul#sidebar_column,
 ul#sidebar_column ul {
