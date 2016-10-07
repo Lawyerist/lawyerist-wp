@@ -33,6 +33,7 @@
 				<div class="post_body" style="margin-bottom: 3rem;">
 					<?php include('notes.php'); ?>
 					<?php the_content(); ?>
+					<div class="clear"></div>
 				</div>
 
 			</div>

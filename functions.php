@@ -17,6 +17,7 @@ CONTENT
 - Postmeta
 - Mobile Ad
 - Add Image Sizes
+- Remove Inline Width from Image Captions
 - Page Navigation
 - Featured Images in RSS Feeds
 
@@ -371,6 +372,17 @@ if ( function_exists( 'add_image_size' ) ) {
 	add_image_size( 'featured', 320, 255.5, true);
 	add_image_size( 'featured_top', 640, 344.5, true);
 }
+
+
+/*------------------------------
+Remove Inline Width from Image Captions
+------------------------------*/
+
+function lawyerist_remove_caption_padding( $width ) {
+	return $width - 10;
+}
+
+add_filter( 'img_caption_shortcode_width', 'lawyerist_remove_caption_padding' );
 
 
 /*------------------------------

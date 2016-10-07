@@ -16,6 +16,7 @@ Index
 Load Genericons
 Layout
 	Index & Archive Lists
+Useful Stuff
 Typography
 Images
 Leaderboard Ad
@@ -51,7 +52,6 @@ Footer
 Forms
 	Buttons
   Easy Digital Downloads
-Useful Stuff
 Media Queries
 Print
 
@@ -196,6 +196,37 @@ body {
 
 
 /*------------------------------
+Useful Stuff
+------------------------------*/
+
+.aligncenter {
+	clear: both;
+	display: block;
+	margin: 0 auto;
+}
+
+.alignleft {
+	float: left;
+}
+
+.alignright {
+	float: right;
+}
+
+.clear {
+	clear: both;
+}
+
+.remove_bottom {
+	margin-bottom: 0 !important;
+}
+
+.text_right {
+    text-align: right;
+}
+
+
+/*------------------------------
 Typography
 ------------------------------*/
 
@@ -275,6 +306,13 @@ body {
 #footer {
 	font-size: 1.8rem;
 	line-height: 1.5;
+}
+
+p,
+pre,
+ol,
+ul {
+  margin-bottom: 1.5em;
 }
 
 a,
@@ -419,8 +457,12 @@ hr {
 }
 
 p {
-	margin-bottom: 1em;
   margin-top: 0;
+}
+
+p:empty {
+  height: 0;
+  margin: 0;
 }
 
 p.note {
@@ -486,7 +528,6 @@ p.wp-caption-text {
 
 pre {
 	color: #555;
-	margin-bottom: 1em;
 	margin-left: 2.8rem;
 	white-space: pre-wrap; /* css-3 */
 	white-space: -moz-pre-wrap !important; /* Mozilla, since 1999 */
@@ -516,7 +557,7 @@ sup {
 
 ol,
 ul {
-	margin-bottom: 1em;
+	margin-bottom: 1.5em;
 	margin-left: 2.8rem;
   padding: 0;
 }
@@ -542,10 +583,14 @@ Images
 ------------------------------*/
 
 img {
-  box-sizing: border-box;
   height: auto;
-  margin-bottom: 1em;
+  margin-bottom: 2.8rem;
   max-width: 100%;
+}
+
+img.alignone {
+  clear: both;
+  display: block;
 }
 
 img.aligncenter {
@@ -555,103 +600,88 @@ img.aligncenter {
   margin-right: auto;
 }
 
-img.alignleft {
-	float: left;
-	padding-right: 1.5rem;
+img.alignleft,
+.wp-caption.alignleft {
+	margin-right: 1.5rem;
 }
 
-img.alignright {
-	float: right;
-	padding-left: 1.5rem;
+img.alignright,
+.wp-caption.alignright {
+	margin-left: 1.5rem;
 }
 
-img.avatar {
-	border-radius: 5rem;
+img.size-large {
+  width: 64rem;
 }
 
-img.size-thumbnail {
-	height: auto;
-	width: 15rem;
-}
-
-img.size-medium {
+img.size-medium,
+img.wp-post-image.attachment-medium {
   width: 30rem;
 }
 
   @media only screen and (max-width:659px) {
 
-    img.size-medium {
-      width: 50%;
-    }
-
-  }
-
-  @media only screen and (max-width:499px) {
-
-    img.size-medium {
+    img.size-medium,
+    img.wp-post-image.attachment-medium {
       clear: both;
     	display: block;
       float: none;
-      padding: 0;
-      margin-left: auto;
+    	margin-left: auto;
       margin-right: auto;
-      max-width: 30rem;
-      width: 100%;
     }
 
   }
 
-
-img.size-large {
-	height: auto;
-	width: 64rem;
+img.size-thumbnail {
+  width: 15rem;
 }
 
-img.wp-post-image.attachment-medium {
-	float: right;
-	height: auto;
-	margin: 0 0 1em 1.5rem;
-	width: 46.875%;
+  @media only screen and (max-width:349px) {
+
+    img.size-thumbnail {
+      clear: both;
+    	display: block;
+      float: none;
+    	margin-left: auto;
+      margin-right: auto;
+    }
+
+  }
+
+.gallery-size-thumbnail img {
+  border-radius: 50%;
 }
 
-img.wp-post-image.attachment-large {
-	clear: both;
-	height: auto;
-	margin: 0 auto 2.8rem auto !important;
-	width: 100%;
+img.avatar {
+	border-radius: 50%;
 }
 
 img.inline {
   display: inline !important;
 }
 
-.gallery-size-thumbnail img {
-  border-radius: 50%;
-}
-
 .wp-caption {
-  margin-bottom: 1.5rem;
+  margin-bottom: 2.8rem;
   max-width: 100%;
 }
-
-  .wp-caption.alignleft {
-  	margin-right: 1.5rem;
-  }
-
-  .wp-caption.alignright {
-  	margin-left: 1.5rem;
-  }
-
-  .wp-caption .alignone {
-    clear: both;
-    display: block;
-  }
 
 .wp-caption img {
-  margin-bottom: .1em !important;
-  max-width: 100%;
-	width: 100%;
+  display: inline-block;
+  margin-bottom: .1rem;
 }
+
+  @media only screen and (max-width:659px) {
+
+    .wp-caption {
+      clear: both;
+      display: block;
+      float: none;
+      margin-left: auto !important;
+      margin-right: auto !important;
+      width: auto;
+    }
+
+  }
 
 
 /*------------------------------
@@ -2682,46 +2712,6 @@ body .gform_footer {
 
 
 /*------------------------------
-Useful Stuff
-------------------------------*/
-
-.aligncenter {
-	clear: both;
-	display: block;
-	margin: 0 auto;
-}
-
-.alignleft {
-	float: left;
-}
-
-.alignright {
-	float: right;
-}
-
-.clear {
-	clear: both;
-}
-
-.hidden {
-	display: none;
-}
-
-.no_shadow {
-  box-shadow: none !important;
-  text-shadow: none !important;
-}
-
-.remove_bottom {
-	margin-bottom: 0 !important;
-}
-
-.text_right {
-    text-align: right;
-}
-
-
-/*------------------------------
 Media Queries
 ------------------------------*/
 
@@ -2836,11 +2826,6 @@ and (max-width:1023px) {
 
   blockquote {
     font-weight: normal;
-  }
-
-  img.size-full {
-    display: block;
-    width: 100%;
   }
 
 	p.pullout {

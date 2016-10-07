@@ -30,6 +30,7 @@
 				<div class="post_body" itemprop="articleBody">
 
 					<?php the_content(); ?>
+					<div class="clear"></div>
 
 					<?php if ( !is_feed() ) { wp_link_pages(); } ?>
 

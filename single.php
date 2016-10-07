@@ -34,6 +34,7 @@
 					<?php if ( !has_tag( 'no-note' ) ) { include('notes.php'); } ?>
 
 					<?php the_content(); ?>
+					<div class="clear"></div>
 
 					<div id="post_footer">
 

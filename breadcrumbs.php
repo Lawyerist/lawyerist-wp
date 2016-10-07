@@ -34,6 +34,7 @@
 				<div class="post_body">
 					<?php include('notes.php'); ?>
 					<?php the_content(); ?>
+					<div class="clear"></div>
 				</div>
 
 			</div>
