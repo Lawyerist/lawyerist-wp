@@ -52,7 +52,6 @@ function lawyerist_stylesheets_scripts() {
 	wp_enqueue_style( 'stylesheet' );
 
 	wp_enqueue_script( 'idTabs', get_template_directory_uri() . '/jquery.idTabs.min.js', array( 'jquery' ), '2.2', 'true' );
-	wp_enqueue_script( 'responsive-menu', get_template_directory_uri() . '/responsive-menu.js', array( 'jquery' ), '1.0.0', 'true' );
 
 }
 
