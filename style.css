@@ -47,7 +47,6 @@ Author Page
 Landing Page Template
 Sidebar
 	Sidebar Ads
-	Sidebar Popular Posts Widget
 Footer
 Forms
 	Buttons
@@ -1364,9 +1363,10 @@ a.post.fp_sticky:hover {
   	}
 
 	#lab_posts img {
-		border-radius:1.6rem;
-		float:left;
-		opacity:1;
+		border-radius: 50%;
+		float: left;
+    margin-bottom: 0;
+		opacity: 1;
 	}
 
 	#lab_posts .lab_headline {
@@ -2337,105 +2337,6 @@ li.widget {
 
   li.sidebar_ad:first-child {
     margin:0 0 2.8rem 0;
-  }
-
-
-	/*------------------------------
-	Sidebar Popular Posts Widget
-	------------------------------*/
-
-	#popular_posts_tabbed ul.idTabs {
-		line-height: 1em;
-		list-style: none;
-		margin: 0 0 .2rem 0;
-	}
-
-  #popular_posts_tabbed ul.idTabs > li {
-    display: inline-block;
-    line-height: 1em;
-    margin: 0;
-  }
-
-	#popular_posts_tabbed ul.idTabs > li a {
-    background: #eee;
-    border-color: #ddd;
-    border-style: solid;
-    border-width: .1rem 0 .1rem .1rem;
-    color: #111;
-    display: inline-block;
-    font-size: 1.2rem;
-    line-height: 1em;
-    margin-right: 1.2rem;
-    padding: .5rem .75rem .5rem 1.25rem;
-    position: relative;
-    text-transform: uppercase;
-	}
-
-  #popular_posts_tabbed ul.idTabs > li a:after {
-    background: #eee;
-    border-color: #ddd;
-    border-style: solid;
-    border-width: .1rem .1rem .1rem 0;
-    content: " ";
-    display: block;
-    height: 2.2rem;
-    position: absolute;
-      right: -.5rem;
-      top: -.1rem;
-    transform: skewX(20deg);
-    -ms-transform: skewX(20deg);
-    -webkit-transform: skewX(20deg);
-    width: 1rem;
-    z-index: -1;
-  }
-
-  #popular_posts_tabbed ul.idTabs li a.selected,
-  #popular_posts_tabbed ul.idTabs li a.selected:after {
-    background: #ddd;
-    border-color: #ccc;
-  }
-
-  #popular_posts_tabbed ul.idTabs > li a:hover,
-  #popular_posts_tabbed ul.idTabs > li a:hover:after {
-    background: #ccc;
-    border-color: #aaa;
-    color: #cc0000;
-    text-decoration: none;
-  }
-
-  #popular_posts_tabbed .tabs_sublist {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    padding: 1rem 1.25rem 0 1.25rem;
-  }
-
-	#popular_posts_tabbed .tabs_sublist ul.wpp-list {
-		margin: 0;
-	}
-
-	#popular_posts_tabbed .tabs_sublist ul.wpp-list li {
-		font-size: 10px;
-		margin: 0 0 1.5em 0;
-		min-height: 75px;
-	}
-
-  #popular_posts_tabbed .tabs_sublist ul.wpp-list li a img {
-    border-radius: 3.75rem;
-		float: left;
-	}
-
-	#popular_posts_tabbed .tabs_sublist a.wpp_headline {
-    color: #333;
-		display: block;
-		font-size: 1.8em;
-    line-height: 1.35;
-		padding-left: 7.5rem;
-		text-decoration: none;
-	}
-
-  #popular_posts_tabbed .tabs_sublist li:hover a.wpp_headline {
-    color: #333;
-    text-decoration: underline;
   }
 
 
