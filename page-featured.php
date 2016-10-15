@@ -11,23 +11,6 @@
 
   <div id="content_column">
 
-    <style type="text/css">
-      #gform_wrapper_34 {
-        background-color: #eee;
-        border: .1rem solid #ddd;
-        border-radius: .2rem;
-        box-shadow: .1rem .1rem .3rem #bbb;
-        margin: 0 0 2.8rem 0;
-        padding: 2rem 2.5rem;
-      }
-
-      input#gform_submit_button_34 {
-        margin-bottom: 0;
-      }
-    </style>
-
-    <?php gravity_form( 34, false, true, false, '', true ) ?>
-
     <?php /* PINNED POST LOOP */
 
       $sticky = get_option( 'sticky_posts' );
