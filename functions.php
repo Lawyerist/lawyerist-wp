@@ -10,9 +10,6 @@ STRUCTURE
 - Nav Menu
 - Sidebar
 
-WIDGETS
-- Popular Posts Widget
-
 CONTENT
 - Postmeta
 - Mobile Ad
@@ -109,54 +106,6 @@ function lawyerist_sidebar_1()  {
 }
 
 add_action( 'widgets_init', 'lawyerist_sidebar_1' );
-
-
-/* WIDGETS ********************/
-
-/*------------------------------
-Popular Posts Widget
-------------------------------*/
-
-function lawyerist_popular_posts_widget( $args ) {
-
-	echo $args['before_widget'];
-	echo $args['before_title'] . 'Popular Posts' .  $args['after_title'];
-
-		?>
-
-		<div id="popular_posts_tabbed">
-
-		<ul class="idTabs">
-			<li><a href="#current">This Week</a></li>
-			<li><a href="#all-time">All Time</a></li>
-		</ul>
-
-		<div id="current" class="tabs_sublist">
-			<?php wpp_get_mostpopular("post_type='post'&range=weekly&limit=5&freshness=1&stats_comments=0&thumbnail_height=60&thumbnail_width=60&post_html='<li>{thumb}<a class=\"wpp_headline\" href=\"{url}\">{text_title}</a></li>'"); ?>
-		</div>
-
-		<div id="all-time" class="tabs_sublist">
-			<?php wpp_get_mostpopular("post_type='post'&range=all&limit=5&stats_comments=0&thumbnail_height=60&thumbnail_width=60&post_html='<li>{thumb}<a class=\"wpp_headline\" href=\"{url}\">{text_title}</a></li>'"); ?>
-		</div>
-
-		</div>
-
-		<?php
-
-	echo $args['after_widget'];
-
-}
-
-wp_register_sidebar_widget(
-
-	'popular-posts-tabbed-widget',			// your unique widget id
-	'Popular Posts',										// widget name
-	'lawyerist_popular_posts_widget',		// callback function
-	array(															// options
-		'description' => 'Displays a tabbed list of current and all-time popular posts.'
-	)
-
-);
 
 
 /* CONTENT ********************/
