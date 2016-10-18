@@ -34,9 +34,19 @@
 
     <?php /* THE LOOP */
 
+    $index_query_args = array(
+      'post_type' => array(
+        'post',
+        'page',
+        'download',
+      ),
+    );
+
+    $index_query = new WP_Query( $index_query_args );
+
     $post_num = 1;
 
-		if ( have_posts() ) : while ( have_posts() ) : the_post();
+		if ( $index_query->have_posts() ) : while ( $index_query->have_posts() ) : $index_query->the_post();
     ?>
 
 			<a <?php post_class(); ?> href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
@@ -53,7 +63,9 @@
 
   				<h2 class="headline" id="post-<?php the_ID(); ?>"><?php the_title(); ?></h2>
 
-  				<p class="excerpt<?php if ( has_post_thumbnail() ) { echo ' excerpt_with_thumb'; } ?>"><?php echo get_the_excerpt(); ?></p>
+  				<?php if ( !is_mobile() ) { ?>
+            <p class="excerpt<?php if ( has_post_thumbnail() ) { echo ' excerpt_with_thumb'; } ?>"><?php echo get_the_excerpt(); ?></p>
+          <?php } ?>
 
           <?php lawyerist_get_postmeta(); ?>
 
@@ -79,9 +91,7 @@
 
 	</div><!-- end #content_column -->
 
-	<div id="ads_sidebar">
-		<?php include('ads-sidebar.php'); ?>
-	</div>
+	<?php if ( !is_mobile() ) { include('sidebar.php'); } ?>
 
 	<div class="clear"></div>
 

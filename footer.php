@@ -1,7 +1,9 @@
 <div id="footer_container">
 
 	<div id="footer">
-		
+
+		<?php dynamic_sidebar('footer_widgets'); ?>
+
 		<div id="footer_legal">
 			<p class="text_right">The original content within this website is &copy; 2007&ndash;<?php echo date('Y') ?>.</p>
 			<p class="text_right">LAWYERIST, LAWYERIST LAB, and LAWYERIST SITES<br />are trademarks registered by Lawyerist Media, LLC.</p>

@@ -8,6 +8,8 @@ SETUP
 
 STRUCTURE
 - Nav Menu
+- Sidebar
+- Footer
 
 CONTENT
 - Postmeta
@@ -83,6 +85,42 @@ function register_my_menus() {
 }
 
 add_action('init','register_my_menus');
+
+
+/*------------------------------
+Sidebar
+------------------------------*/
+
+function lawyerist_sidebar()  {
+	$args = array(
+		'id'            => 'sidebar',
+		'name'          => 'Sidebar',
+		'description'   => 'Widgets start below the ads. Not visible on mobile.',
+		'class'         => 'sidebar',
+		'before_title'  => '<h3>',
+		'after_title'   => '</h3>',
+	);
+	register_sidebar( $args );
+}
+add_action( 'widgets_init', 'lawyerist_sidebar' );
+
+
+/*------------------------------
+Footer
+------------------------------*/
+
+function lawyerist_footer()  {
+	$args = array(
+		'id'            => 'footer_widgets',
+		'name'          => 'Footer Widget Area',
+		'before_title'  => '<h3>',
+		'after_title'   => '</h3>',
+		'before_widget' => '<li id="%1$s" class="footer_widget %2$s">',
+		'after_widget'  => '</li>',
+	);
+	register_sidebar( $args );
+}
+add_action( 'widgets_init', 'lawyerist_sidebar' );
 
 
 /* CONTENT ********************/

@@ -23,7 +23,6 @@ Header
   Leaderboard Ad
   Title
   Header Signup
-	Social Icons
 Menu
 Front Page
 	Discussions
@@ -142,7 +141,7 @@ body {
       margin-bottom: 4rem;
     }
 
-	#ads_sidebar {
+	#sidebar_column {
 		float: right;
 		margin: 0;
     padding: 0;
@@ -718,7 +717,6 @@ Header
   #header_signup {
     float: right;
     height: 3.2rem;
-    margin-right: 1rem;
     width: 30rem;
   }
 
@@ -793,81 +791,6 @@ Header
     }
 
   }
-
-
-	/*------------------------------
-  Social Icons
-	------------------------------*/
-
-  #email_social {
-    display: block;
-    float: right;
-    list-style: none;
-		margin: 0;
-  }
-
-  /* 800px */
-  @media only screen and (max-width:799px) {
-
-    #email_social {
-      display:none;
-    }
-
-  }
-
-		#email_social li {
-			display: inline-block;
-			float: left;
-      font-size: 3.2rem;
-      line-height: 1em;
-			margin: 0;
-			padding: 0;
-		}
-
-		#email_social a.sprite {
-			color: #fff;
-      display: block;
-      margin-left: .8rem;
-			padding: 0;
-		}
-
-		#email_social a.sprite:before {
-			display: block;
-			-webkit-font-smoothing: antialiased;
-			font-family: 'Genericons';
-		}
-
-			#email_social a.facebook.sprite:hover {
-				color: #3b5998;
-			}
-
-			#email_social a.facebook.sprite:before {
-				content: '\f203';
-			}
-
-			#email_social a.linkedin.sprite:hover {
-				color: #4875b4;
-			}
-
-			#email_social a.linkedin.sprite:before {
-				content: '\f208';
-			}
-
-			#email_social a.twitter.sprite:hover {
-				color: #4099ff;
-			}
-
-			#email_social a.twitter.sprite:before {
-				content: '\f202';
-			}
-
-      #email_social a.more_social.sprite:hover {
-        color: #cc0000;
-      }
-
-      #email_social a.more_social.sprite:before {
-        content: '\f476';
-      }
 
 
 /*------------------------------
@@ -1342,7 +1265,8 @@ Content
 	}
 
   .post_body {
-    margin-bottom: 6rem;
+    margin: 0 0 4rem auto;
+    max-width: 60rem;
   }
 
 	.post_index {
@@ -2047,7 +1971,7 @@ p.author_website:before {
 Sidebar
 ------------------------------*/
 
-#ads_sidebar div {
+#sidebar_ads div {
   margin-bottom: 1rem;
 }
 

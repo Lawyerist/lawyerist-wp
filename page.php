@@ -45,9 +45,7 @@
 	</div><!-- end #content_column -->
 
 
-	<div id="ads_sidebar">
-		<?php include('ads-sidebar.php'); ?>
-	</div>
+	<?php if ( !is_mobile() ) { include('sidebar.php'); } ?>
 
 	<div class="clear"></div>
 
