@@ -52,7 +52,11 @@
 			<a <?php post_class(); ?> href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
 
         <?php
-        if ( has_post_thumbnail() && has_post_format( 'aside' ) ) {
+        if ( has_post_thumbnail() && (
+          has_post_format( 'aside' ) ||
+          get_post_type( get_the_ID() ) == 'page' ||
+          get_post_type( get_the_ID() ) == 'download'
+        ) ) {
           the_post_thumbnail( 'aside_thumbnail' );
         } elseif ( has_post_thumbnail() ) {
           the_post_thumbnail( 'standard_thumbnail' );
