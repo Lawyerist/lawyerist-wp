@@ -8,11 +8,10 @@ SETUP
 
 STRUCTURE
 - Nav Menu
-- Sidebar
 
 CONTENT
 - Postmeta
-- Mobile Ad
+- Ads
 - Add Image Sizes
 - Remove Inline Width from Image Captions
 - Page Navigation
@@ -61,7 +60,7 @@ function lawyerist_theme_setup() {
 
 	add_theme_support( 'title-tag' );
 	add_theme_support( 'post-thumbnails' );
-	add_theme_support( 'post-formats', array( 'aside' ) );
+	add_theme_support( 'post-formats', array( 'aside', 'audio' ) );
 	add_theme_support( 'html5', array( 'search-form' ) );
 
 }
@@ -84,28 +83,6 @@ function register_my_menus() {
 }
 
 add_action('init','register_my_menus');
-
-
-/*------------------------------
-Sidebar
-------------------------------*/
-
-function lawyerist_sidebar_1()  {
-	$args = array(
-		'id'            => 'sidebar_1',
-		'name'          => 'Sidebar 1',
-		'description'   => 'Right sidebar on Lawyerist.com',
-		'class'         => 'sidebar',
-		'before_title'  => '<h3>',
-		'after_title'   => '</h3>',
-		'before_widget' => '<li id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</li>',
-	);
-
-	register_sidebar( $args );
-}
-
-add_action( 'widgets_init', 'lawyerist_sidebar_1' );
 
 
 /* CONTENT ********************/
@@ -252,61 +229,50 @@ function lawyerist_get_postmeta() {
 
 
 /*------------------------------
-Mobile Ad
+Ads
 ------------------------------*/
 
-function insert_lawyerist_mobile_ad() { ?>
+function insert_lawyerist_ap1() { ?>
 
-	<div id="mobile_ad">
+	<?php if ( !has_tag('no-ads') && !is_mobile() ) { ?>
+
+		<div id="lawyerist_ap1">
+			<div id='div-gpt-ad-1429843825352-0' style='height:90px; width:728px;'>
+				<script type='text/javascript'>
+				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1429843825352-0'); });
+				</script>
+			</div>
+		</div>
+
+	<?php } ?>
+
+<?php }
+
+
+function insert_lawyerist_ap2() { ?>
+
+	<div id="lawyerist_ap2">
 		<div id='div-gpt-ad-1429843825352-1' style='height:250px; width:300px;'>
-		<script type='text/javascript'>
-		googletag.cmd.push(function() { googletag.display('div-gpt-ad-1429843825352-1'); });
-		</script>
+			<script type='text/javascript'>
+			googletag.cmd.push(function() { googletag.display('div-gpt-ad-1429843825352-1'); });
+			</script>
 		</div>
 	</div>
 
 <?php }
 
 
-function lawyerist_mobile_ad( $content ) {
+function insert_lawyerist_ap3() { ?>
 
-	// Show on single posts but not pages.
-	if ( is_mobile() && is_single() && !is_page() ) {
+	<div id="lawyerist_ap3">
+		<div id='div-gpt-ad-1429843825352-2' style='height:250px; width:300px;'>
+			<script type='text/javascript'>
+			googletag.cmd.push(function() { googletag.display('div-gpt-ad-1429843825352-2'); });
+			</script>
+		</div>
+	</div>
 
-		$p_close		= '</p>';
-		$paragraphs = explode( $p_close, $content );
-
-		ob_start();
-			echo insert_lawyerist_mobile_ad();
-		$dfp_code		= ob_get_clean();
-
-		foreach ( $paragraphs as $p_num => $paragraph ) {
-
-			// Only add closing tag to non-empty paragraphs
-			if ( trim( $paragraph ) ) {
-				// Adding closing markup now, rather than at implode, means insertion
-				// is outside of the paragraph markup, and not just inside of it.
-				$paragraphs[$p_num] .= $p_close;
-			}
-
-			// Insert DFP code after 2nd paragraph
-			// (0 is paragraph #1 in the $paragraphs array)
-			if ( $p_num == 0 ) {
-				$paragraphs[$p_num] .= $dfp_code;
-			}
-		}
-
-		return implode( '', $paragraphs );
-
-	} else {
-
-		return $content;
-
-	}
-
-}
-
-add_filter( 'the_content', 'lawyerist_mobile_ad' );
+<?php }
 
 
 /*------------------------------
@@ -314,8 +280,9 @@ Add Image Sizes
 ------------------------------*/
 
 if ( function_exists( 'add_image_size' ) ) {
-	add_image_size( 'featured', 320, 255.5, true);
-	add_image_size( 'featured_top', 640, 344.5, true);
+	add_image_size( 'standard_thumbnail', 860, 322.5, true );
+	add_image_size( 'aside_thumbnail', 300, 250, true);
+	add_image_size( 'single_featured', 1180, 0);
 }
 
 

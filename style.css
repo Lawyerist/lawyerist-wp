@@ -19,16 +19,14 @@ Layout
 Useful Stuff
 Typography
 Images
-Leaderboard Ad
 Header
+  Leaderboard Ad
   Title
+  Header Signup
 	Social Icons
 Menu
-Mobile Ad
 Front Page
-	Featured Posts
-  Featured Notes
-	Questions
+	Discussions
 Content
 	Index & Archive Lists
 	Posts
@@ -44,9 +42,7 @@ Content
 	Pagenav
 	Comments
 Author Page
-Landing Page Template
 Sidebar
-	Sidebar Ads
 Footer
 Forms
 	Buttons
@@ -101,46 +97,22 @@ body {
 	padding: 0;
 }
 
-#leaderboard_container {
-  background-color: #eee;
-  padding: 1rem 0;
-	width: 100%;
-}
-
-  /* Leaderboard ad width (728px) + 20px for padding */
-  @media only screen and (max-width:747px) {
-
-  	#leaderboard_container {
-  		display: none;
-  	}
-
-  }
-
 #header_container {
   background-color: #111;
 }
 
   #header {
     margin: 0 auto;
-    max-width: 96.8rem;
+    max-width: 118rem;
     padding: 1.2rem 1rem;
   }
 
 .menu-default-container {
-	background-color: #cc0000;
-	margin-bottom: 2.8rem;
+	background-color: #c00;
+  box-shadow: 0 .2rem .3rem #ccc;
+	margin-bottom: 2rem;
 	width: 100%;
 }
-
-  /* Content width with padding (1024px) */
-  @media only screen
-  and (max-width: 1023px) {
-
-    .menu-default-container {
-      margin-bottom: 0;
-    }
-
-  }
 
 	.menu-default-container > ul {
 		display: block;
@@ -148,34 +120,33 @@ body {
 		list-style: none;
 		margin: 0 auto;
 		padding: 0;
-    max-width: 98.8rem;
+    max-width: 120rem;
 	}
 
 #content_column_container {
-	margin: 0 auto 2.8rem auto;
-	width: 96.8rem;
+	margin: 0 auto 2rem auto;
+	width: 118rem;
 }
 
 	#content_column {
 		float: left;
-		width: 64rem;
-		max-width: 64rem;
+    max-width: 86rem;
+    width: 86rem;
 	}
 
 		.post {
-			margin-bottom: 6rem;
-			position: relative;
+			margin-bottom: 4rem;
 		}
 
     #survival_guides {
-      margin-bottom: 6rem;
+      margin-bottom: 4rem;
     }
 
-	ul#sidebar_column {
+	#ads_sidebar {
 		float: right;
 		margin: 0;
     padding: 0;
-		width: 30rem;
+		max-width: 30rem;
 	}
 
 #footer_container {
@@ -187,9 +158,8 @@ body {
 
 	#footer {
 		margin: 0 auto;
-		min-height: 18rem;
-		padding: 2.8rem 1rem;
-		width: 96.8rem;
+		padding: 2rem 1rem;
+		width: 118rem;
 	}
 
 
@@ -301,7 +271,7 @@ body {
 .post_body,
 .single,
 #footer {
-	font-size: 1.8rem;
+	font-size: 2.2rem;
 	line-height: 1.5;
 }
 
@@ -325,11 +295,11 @@ a:focus {
 }
 
 blockquote {
-	border-left: .2rem solid #ddd;
+	border-left: .4rem solid #ddd;
 	color: #666;
-  font-size: 2rem;
-	margin: 0 0 2.8rem 0;
-	padding: 0 0 0 1.9rem;
+  font-size: 2.4rem;
+	margin: 0 0 2rem 0;
+	padding: 0 0 0 2rem;
 }
 
   aside blockquote,
@@ -337,15 +307,15 @@ blockquote {
     border: none;
     clear: both;
     color: #888;
-    font-size: 2.8rem;
+    font-size: 3.2rem;
     font-style: italic;
-    margin: 0 2.8rem 2.8rem 2.8rem;
+    margin: 0 3rem 3rem 3rem;
     padding: 0;
   }
 
 code {
 	color: #777;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
 	white-space: pre-wrap; /* css-3 */
 	white-space: -moz-pre-wrap !important; /* Mozilla, since 1999 */
 	white-space: -pre-wrap; /* Opera 4-6 */
@@ -355,7 +325,7 @@ code {
 
 .drop_cap {
 	float: left;
-	font-size: 3.2rem;
+	font-size: 4.8rem;
 	font-weight: bold;
 	line-height: 1em;
 	padding-right: .5em;
@@ -370,7 +340,7 @@ italics {
 
 embed,
 iframe {
-  margin-bottom: 2.8rem !important;
+  margin-bottom: 3rem !important;
 }
 
 h1,
@@ -682,15 +652,6 @@ img.inline {
 
 
 /*------------------------------
-Leaderboard Ad
-------------------------------*/
-
-#div-gpt-ad-1429843825352-0 {
-	margin:0 auto;
-}
-
-
-/*------------------------------
 Header
 ------------------------------*/
 
@@ -700,31 +661,55 @@ Header
 }
 
 
-/*------------------------------
-Title
-------------------------------*/
+  /*------------------------------
+  Leaderboard Ad
+  ------------------------------*/
 
-#title {
-	display: block;
-	float: left;
-  font-size: 3.2rem;
-  font-family: 'adler', serif;
-  font-weight: normal;
-  height: 3.2rem;
-  line-height: 1.2;
-  margin: 0;
-  padding: 0;
-	width: auto;
-}
-
-	#title a {
-    color: #fff;
-		display: block;
-	}
-
-  #title a:hover {
-    color: #ddd;
+  #lawyerist_ap1 {
+    background-color: #eee;
+    padding: 1rem 0;
+  	width: 100%;
   }
+
+    /* Leaderboard ad width (728px) + 20px for padding */
+    @media only screen and ( max-width: 747px ) {
+
+    	#lawyerist_ap1 {
+    		display: none;
+    	}
+
+    }
+
+    #div-gpt-ad-1429843825352-0 {
+    	margin:0 auto;
+    }
+
+
+  /*------------------------------
+  Title
+  ------------------------------*/
+
+  #title {
+  	display: block;
+  	float: left;
+    font-size: 3.2rem;
+    font-family: 'adler', serif;
+    font-weight: normal;
+    height: 3.2rem;
+    line-height: 1.2;
+    margin: 0;
+    padding: 0;
+  	width: auto;
+  }
+
+  	#title a {
+      color: #fff;
+  		display: block;
+  	}
+
+    #title a:hover {
+      color: #ddd;
+    }
 
   /*------------------------------
   Header Signup
@@ -1065,103 +1050,8 @@ Menu
 
 
 /*------------------------------
-Mobile Search
-------------------------------*/
-
-#lawyerist_responsive_search,
-.search-results #lawyerist_responsive_search {
-  box-sizing: border-box;
-  display: none;
-  margin: 1.5rem auto 1rem auto;
-  padding: 0 1rem;
-  max-width: 66rem;
-  width: 100%;
-}
-
-  #lawyerist_responsive_search input[type="search"] {
-    width: 100%;
-  }
-
-@media only screen
-and (max-width: 1023px) {
-
-  #lawyerist_responsive_search {
-    display: block;
-  }
-
-}
-
-
-/*------------------------------
-Mobile Ad
-------------------------------*/
-
-#mobile_ad {
-  border-bottom: 1px solid #ddd;
-  border-top: 1px solid #ddd;
-  clear: both;
-  height: 25rem;
-  margin: 1em 0;
-  padding: 2.8rem 0;
-  width: 100%;
-}
-
-#mobile_ad > div {
-  margin: 0 auto;
-}
-
-#featured_posts #mobile_ad {
-  margin: .2rem 0;
-}
-
-.index #mobile_ad,
-.archive #mobile_ad {
-  border-top: 1px solid #ddd;
-  margin: 0;
-}
-
-
-/*------------------------------
 Front Page
 ------------------------------*/
-
-a.post.fp_sticky {
-  background-color: #333;
-  border: 0;
-	margin-bottom: .2rem !important;
-  padding: 2rem 2.5rem;
-  transition: background-color .2s;
-}
-
-a.post.fp_sticky:hover {
-  background-color: #111;
-}
-
-  a.post.fp_sticky .headline {
-    color: #fff;
-    font-size: 2.4rem;
-    letter-spacing: .05rem;
-    margin-bottom: 0;
-    padding-left: 4.2rem;
-    text-shadow: .1rem .1rem 0 #111;
-  }
-
-  a.post.fp_sticky:hover .headline {
-    text-decoration:none;
-  }
-
-	a.post.fp_sticky .pin:before {
-		color: #cc0000;
-		content: '\f308';
-    display: inline-block;
-    float:left;
-    -moz-osx-font-smoothing: grayscale;
-  	-webkit-font-smoothing: antialiased;
-		font: normal 3.2rem/1em 'Genericons';
-    speak: none;
-    text-shadow: .1rem .1rem 0 #111;
-		vertical-align: top;
-	}
 
 .fp_tab,
 .fp_bottom_tab {
@@ -1235,109 +1125,7 @@ a.post.fp_sticky:hover {
 
 
 	/*------------------------------
-	Featured Posts
-	------------------------------*/
-
-	#featured_posts a {
-    background: #111;
-		background: linear-gradient(135deg, #111111 0%,#555555 100%);
-		border: none;
-		clear: none;
-		display: inline-block;
-		float: left;
-		height: 25.55rem;
-		overflow: hidden;
-		margin: 0 0 .2rem 0;
-		max-width: 31.9rem;
-		padding: 0;
-		position: relative;
-		text-decoration: none;
-    width: 31.9rem;
-	}
-
-  #featured_posts a:first-child {
-		clear:both;
-		display:block;
-		float:none;
-		height:34.45rem;
-		max-width:64rem;
-    width:64rem;
-	}
-
-  #featured_posts a:nth-child(even) {
-		margin-right:.2rem;
-	}
-
-  #featured_posts img {
-    min-height: 100%;
-		margin: 0 !important;
-		opacity: .3;
-    transition: opacity .2s;
-		width: 100%;
-		z-index: 0;
-	}
-
-    #featured_posts a:hover img {
-      opacity: .2;
-    }
-
-  #featured_posts .headline_excerpt {
-		padding: 2rem 2.5rem;
-		position: absolute;
-			top: 0;
-			left: 0;
-		width: auto;
-		z-index: 1;
-	}
-
-  #featured_posts .headline {
-		font-size: 2.4rem;
-    letter-spacing: .05rem;
-    line-height: 1.2;
-		margin-bottom: 1.65rem;
-	}
-
-    #featured_posts a:first-child .headline {
-  		font-size: 4.8rem;
-  	}
-
-    #featured_posts a:hover .headline {
-      text-decoration: none;
-    }
-
-    #featured_posts a:first-child.smaller-title .headline {
-  		font-size: 3.8rem;
-  		margin-bottom: 2.6rem;
-  	}
-
-  #featured_posts {
-		color: #fff !important;
-	}
-
-  #featured_posts .headline,
-  #featured_posts .postmeta,
-  #featured_posts .comment_link:before {
-    color: #fff !important;
-    text-shadow: .1rem .1rem 0 #111;
-  }
-
-
-  /*------------------------------
-  Featured Notes
-  ------------------------------*/
-
-  #featured_notes {
-    border-top: .1rem solid #ddd;
-    width: 100%;
-  }
-
-  #featured_notes a:last-child {
-    margin-bottom:.2rem;
-  }
-
-
-	/*------------------------------
-	Questions
+	Discussions
 	------------------------------*/
 
 	#lab_posts {
@@ -1377,6 +1165,10 @@ a.post.fp_sticky:hover {
 Content
 ------------------------------*/
 
+.home {
+  background-color: #f9f9f9;
+}
+
 .breadcrumbs:before {
   content: '\f417';
   display: inline-block;
@@ -1388,133 +1180,141 @@ Content
 }
 
 .error404 .tag_cloud {
-	margin-bottom: 2.8rem;
+	margin-bottom: 1em;
 }
 
 #lawyerist_content_search {
-	margin-bottom: 2.8rem;
+	margin-bottom: 1em;
+}
+
+#archive_header {
+  background-color: #eee;
+  padding: 1.5rem 2.5rem 2rem 2.5rem;
+}
+
+  body.search #archive_header {
+    margin-bottom: 2.8rem;
+  }
+
+#archive_header img {
+  float:left;
+  margin-bottom: 1.5rem;
+}
+
+#archive_header p {
+  color:#333;
+  font-size: 1.8rem;
+  line-height: 1.5;
+}
+
+#archive_header p.author_descr {
+  padding-left: 11.5rem;
+  margin-bottom: 0;
+}
+
+#archive_header p:last-child {
+  margin-bottom: 0;
+}
+
+#archive_header li {
+  color:#333;
+  font-size: 1.8rem;
+  line-height: 1.2
 }
 
 
 	/*------------------------------
-	Index & Archive Lists
+	Index Lists
 	------------------------------*/
 
-  a.post,
-	a.index_post {
-    border-bottom: .1rem solid #ddd;
-    clear: both;
+  a.post {
+    background-color: #fff;
+    border: .1rem solid #ddd;
+    border-radius: .2rem;
+    box-shadow: .1rem .1rem .3rem #ddd;
     display: block;
-    margin-bottom: 0;
-    padding: 2.8rem 0;
+    margin-bottom: 1rem;
+    padding: 0;
 		text-decoration: none;
 	}
 
-  a.post:last-of-type,
-  a.index_post:last-of-type {
-    margin-bottom: 2.8rem;
+  a.post:last-of-type {
+    margin-bottom: 4rem;
   }
 
-	a.post .headline,
-  a.index_post .headline {
-		color: #333;
-    font-size: 2.8rem;
-  	line-height: 1.2;
-  	margin-bottom: .1em;
-	}
-
-  a.page .headline {
-    margin-bottom: 1.6rem;
+  a.post .headline_excerpt {
+    padding: 2rem;
   }
 
-  a.post:hover .headline,
-	a.index_post:hover .headline {
-		text-decoration: underline;
-	}
+  	a.post .headline {
+  		color: #333;
+    	margin-bottom: .2em;
+  	}
 
-	a.post .comment_link:before {
-		color: #777;
-	}
+    a.post:hover .headline {
+  		text-decoration: underline;
+  	}
 
-	a.post:hover .postmeta,
-	a.post:hover .comment_link:before {
-		color: #555;
-	}
-
-  a.page .postmeta {
-    display: none;
-  }
-
-  a.post img,
-  a.index_post img {
-    float: right;
-    height: auto;
-    margin: 0 0 0 1.5rem;
-    width: 23.4375%;
-  }
-
-  a.post p,
-	a.index_post p {
-		color: #333;
-	}
-
-  a.post p.excerpt_with_thumb,
-	a.index_post p.excerpt_with_thumb {
-		padding-right: 17rem;
-	}
-
-  a.post:hover p,
-	a.index_post:hover p {
-		color: #111;
-	}
-
-  body.notes a.post .postmeta {
-    margin-bottom: 0;
-  }
-
-	a.sticky {
-		background-color:#eee;
-		padding: 2.5rem;
-	}
-
-	#archive_header {
-		background-color: #eee;
-		padding: 1.5rem 2.5rem 2rem 2.5rem;
-	}
-
-    body.search #archive_header {
-      margin-bottom: 2.8rem;
+    a.post .postmeta {
+      margin-bottom: 0;
     }
 
-	#archive_header img {
-		float:left;
-		margin-bottom: 1.5rem;
-	}
+    a.post .postmeta,
+    a.post .comment_link:before {
+    	color: #777;
+  	}
 
-	#archive_header p {
-		color:#333;
-		font-size: 1.8rem;
-		line-height: 1.5;
-	}
+    	a.post:hover .postmeta,
+    	a.post:hover .comment_link:before {
+    		color: #555;
+    	}
 
-	#archive_header p.author_descr {
-		padding-left: 11.5rem;
-		margin-bottom: 0;
-	}
+    a.post p {
+  		color: #666;
+      line-height: 1.2;
+      margin-bottom: .75em;
+  	}
 
-	#archive_header p:last-child {
-		margin-bottom: 0;
-	}
+    a.post:hover p {
+  		color: #333;
+  	}
 
-  #archive_header li {
-    color:#333;
-    font-size: 1.8rem;
-    line-height: 1.2
+
+  /* Standard Posts */
+  a.post .wp-post-image {
+    display: block;
+    margin-bottom: .5em;
+    width: 100%;
   }
 
-	.index p.excerpt_with_thumb {
-		padding-right: 16.5rem;
-	}
+  a.post p {
+    font-size: 1.8rem;
+  }
+
+  a.post .postmeta {
+    font-size: 1.4rem;
+  }
+
+  /* Asides / Not-Featured Posts */
+  a.format-aside .wp-post-image {
+    float: left;
+    margin-bottom: 0;
+    margin-right: 1.5rem;
+    width: 25rem;
+  }
+
+  a.format-aside .headline {
+    font-size: 2.2rem;
+    margin-bottom: .5em;
+  }
+
+  a.format-aside p {
+    font-size: 1.6rem;
+  }
+
+  a.format-aside .postmeta {
+    font-size: 1.2rem;
+  }
 
 
 	/*------------------------------
@@ -2244,98 +2044,12 @@ p.author_website:before {
 
 
 /*------------------------------
-Landing Page Template
-------------------------------*/
-
-  .page-template-landing-page-php #content_column {
-    float: none;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-
-/*------------------------------
 Sidebar
 ------------------------------*/
 
-#lawyerist_sidebar_search {
-  margin-bottom: 2.8rem;
+#ads_sidebar div {
+  margin-bottom: 1rem;
 }
-
-ul#sidebar_column,
-ul#sidebar_column ul {
-	list-style: none;
-}
-
-ul#sidebar_column a {
-	text-decoration: none;
-}
-
-ul#sidebar_column a:hover {
-	text-decoration: underline;
-}
-
-ul#sidebar_column h3 {
-	color:#999;
-	font-size:1.4rem;
-	line-height:1.714em;
-	text-transform:uppercase;
-}
-
-ul#sidebar_column h3 a.rsswidget img {
-	float:right;
-}
-
-li.widget {
-	line-height: 1em;
-	margin: 0 0 5.6rem 0;
-	padding: 0;
-}
-
-  li.widget p {
-    font-size: 1.6rem;
-    line-height: 1.35;
-    margin-bottom: 2.8rem;
-  }
-
-	li.widget > ul {
-		margin:0;
-	}
-
-	li.widget > ul li {
-		font-size: 1.8rem;
-		line-height: 1.556rem;
-		margin-bottom: .778rem;
-	}
-
-
-	/*------------------------------
-	Sidebar Ads
-	------------------------------*/
-
-  .sidebar_ads {
-    margin-bottom: 6rem;
-  }
-
-    @media only screen
-    and (max-width:1023px) {
-
-      .sidebar_ads {
-        display: none !important;
-      }
-
-    }
-
-  li.sidebar_ad {
-		display: inline-block;
-    float: left;
-		margin: 0;
-		width: 30rem;
-	}
-
-  li.sidebar_ad:first-child {
-    margin:0 0 2.8rem 0;
-  }
 
 
 /*------------------------------
@@ -2343,15 +2057,7 @@ Footer
 ------------------------------*/
 
 #footer {
-    background: url('images/L-watermark.png') no-repeat left 3rem;
     color: #666;
-    font-size: 1.6rem;
-    line-height: 1.5;
-    min-height: 16rem;
-}
-
-#footer p {
-	padding-left: 13.7rem;
 }
 
 
@@ -2712,14 +2418,6 @@ and (max-width:1023px) {
     margin-bottom: 1.65rem;
 	}
 
-  a.fp_sticky .headline {
-    font-weight: normal;
-  }
-
-	.front_page ul#sidebar_column {
-		max-width: 64rem;
-	}
-
 
 	/* Content */
 
@@ -2793,13 +2491,6 @@ Load Genericons
     width: auto;
   }
 
-  #footer {
-    background: none;
-  }
-
-    #footer p {
-      padding: 0;
-    }
 
   /* Page Breaks */
 

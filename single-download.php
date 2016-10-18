@@ -44,9 +44,9 @@
 
 	</div><!-- end #content_column -->
 
-	<ul id="sidebar_column">
-		<?php include('sidebar.php'); ?>
-	</ul>
+	<div id="ads_sidebar">
+		<?php include('ads-sidebar.php'); ?>
+	</div>
 
 	<div class="clear"></div>
 

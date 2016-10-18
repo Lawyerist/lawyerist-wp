@@ -25,7 +25,7 @@
 
 				if ( has_post_thumbnail() && $page == 1 && !has_tag('no-image') ) { ?>
 
-					<div itemprop="image"><?php the_post_thumbnail('large'); ?></div>
+					<div itemprop="image"><?php the_post_thumbnail('single_featured'); ?></div>
 
 				<?php } ?>
 
@@ -353,9 +353,9 @@
 
 	</div><!-- end #content_column -->
 
-	<ul id="sidebar_column">
-		<?php include('sidebar.php'); ?>
-	</ul>
+	<div id="ads_sidebar">
+		<?php include('ads-sidebar.php'); ?>
+	</div>
 
 	<div class="clear"></div>
 

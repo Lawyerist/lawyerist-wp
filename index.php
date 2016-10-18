@@ -11,37 +11,65 @@
 
   <div id="content_column">
 
-    <?php if ( is_search() ) {
+    <?php if ( is_archive() ) {
 
-			echo '<div id="archive_header"><h1>Search results for "' . get_search_query() . '"</h1></div>'; ?>
-      <div id="lawyerist_content_search">
-        <?php get_search_form(); ?>
-      </div>
+      $title = single_term_title( '', FALSE);
+      $descr = term_description();
 
-		<?php } ?>
+      echo '<div id="archive_header"><h1>' . $title . '</h1>';
+      echo "\n" . $descr;
+      echo '</div>';
+
+    }
+
+    if ( is_search() ) {
+
+			echo '<div id="archive_header"><h1>Search results for "' . get_search_query() . '"</h1></div>';
+      echo '<div id="lawyerist_content_search">';
+        get_search_form();
+      echo '</div>';
+
+		} ?>
 
 
-		<?php /* THE LOOP */
+    <?php /* THE LOOP */
 
     $post_num = 1;
 
-		if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+		if ( have_posts() ) : while ( have_posts() ) : the_post();
+    ?>
 
-			<a <?php post_class('index_post'); ?> href="<?php the_permalink(); ?>" title="<?php the_title(); ?>, posted on <?php the_time('F jS, Y'); ?>">
+			<a <?php post_class(); ?> href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
 
-				<?php if ( has_post_thumbnail() ) { the_post_thumbnail('thumbnail'); } ?>
+        <?php
+        if ( has_post_thumbnail() && has_post_format( 'aside' ) ) {
+          the_post_thumbnail( 'aside_thumbnail' );
+        } elseif ( has_post_thumbnail() ) {
+          the_post_thumbnail( 'standard_thumbnail' );
+        }
+        ?>
 
-				<h2 class="headline" id="post-<?php the_ID(); ?>"><?php the_title(); ?></h2>
-				<?php lawyerist_get_postmeta(); ?>
-				<p class="excerpt remove_bottom<?php if ( has_post_thumbnail() ) { echo ' excerpt_with_thumb'; } ?>"><?php echo get_the_excerpt(); ?></p>
+        <div class="headline_excerpt">
+
+  				<h2 class="headline" id="post-<?php the_ID(); ?>"><?php the_title(); ?></h2>
+
+  				<p class="excerpt<?php if ( has_post_thumbnail() ) { echo ' excerpt_with_thumb'; } ?>"><?php echo get_the_excerpt(); ?></p>
+
+          <?php lawyerist_get_postmeta(); ?>
+
+        </div>
 
 				<div class="clear"></div>
 
-			</a>
+			</a><!-- End .post -->
 
-      <?php if ( $post_num == 1 && is_mobile() ) { insert_lawyerist_mobile_ad(); } $post_num++; ?>
+      <?php
+      if ( $post_num == 1 && is_mobile() ) { insert_lawyerist_ap2(); }
+      if ( $post_num == 3 && is_mobile() ) { insert_lawyerist_ap3(); }
 
-		<?php endwhile; endif;
+      $post_num++;
+
+		endwhile; endif;
 
 		/* END LOOP */ ?>
 
@@ -51,9 +79,9 @@
 
 	</div><!-- end #content_column -->
 
-	<ul id="sidebar_column">
-		<?php include('sidebar.php'); ?>
-	</ul>
+	<div id="ads_sidebar">
+		<?php include('ads-sidebar.php'); ?>
+	</div>
 
 	<div class="clear"></div>
 
