@@ -82,7 +82,7 @@
           $series_slug = $series_slug[0];
           ?>
 
-          <h2 class="series_title"><?php echo $series_title; ?></h2>
+          <h2 class="series_title"><a href="<?php echo get_term_link( $series_slug, 'series' ); ?>" title="<?php echo $series_title; ?>"><?php echo $series_title; ?></a></h2>
 
           <a <?php post_class( 'post_in_series' ); ?> href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
             <?php if ( has_post_thumbnail() ) { the_post_thumbnail( 'aside_thumbnail' ); } ?>
@@ -101,6 +101,7 @@
           $series_query_args = array(
             'orderby'					=> 'date',
             'order'						=> 'DESC',
+            'post__not_in'		=> $this_post,
             'posts_per_page'	=> 4,
             'tax_query'     	=> array(
               array(
@@ -135,12 +136,7 @@
 
             <div class="clear"></div>
 
-            <?php if ( $series_query->found_posts > 5 ) { ?>
-
-              <p><a href="<?php echo get_term_link( $series_slug, 'series' ); ?>">See all the posts in this series.</a></p>
-
-            <?php }
-
+          <?php // End series loop.
           }
 
           wp_reset_postdata(); ?>
