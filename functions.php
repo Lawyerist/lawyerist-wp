@@ -62,7 +62,7 @@ function lawyerist_theme_setup() {
 
 	add_theme_support( 'title-tag' );
 	add_theme_support( 'post-thumbnails' );
-	add_theme_support( 'post-formats', array( 'aside', 'audio' ) );
+	add_theme_support( 'post-formats', array( 'aside' ) );
 	add_theme_support( 'html5', array( 'search-form' ) );
 
 }
@@ -470,6 +470,58 @@ function series_tax() {
 
 // Hook into the 'init' action
 add_action( 'init', 'series_tax', 0 );
+
+// Get series information (must be used within the Loop)
+function get_series_info() {
+
+	$current_post	= get_the_ID();
+	$this_post[]	= $post->ID;
+
+	$series_title = wp_get_post_terms(
+		$post->ID,
+		'series',
+		array(
+			'fields' 	=> 'names',
+			'orderby' => 'count',
+			'order' 	=> 'DESC'
+		)
+	);
+	$series_title = $series_title[0];
+
+	$series_slug = wp_get_post_terms(
+		$post->ID,
+		'series',
+		array(
+			'fields' 	=> 'slugs',
+			'orderby' => 'count',
+			'order' 	=> 'DESC'
+		)
+	);
+	$series_slug = $series_slug[0];
+
+	$series_ID = wp_get_post_terms(
+		$post->ID,
+		'series',
+		array(
+			'fields' 	=> 'ids',
+			'orderby' => 'count',
+			'order' 	=> 'DESC'
+		)
+	);
+	$series_ID = $series_ID[0];
+
+	$series_description = term_description( $series_ID, 'series' );
+	$series_description = trim( $series_description );
+
+	$series_info = array(
+		'series_title'				=> $series_title,
+		'series_slug'					=> $series_slug,
+		'series_description'	=> $series_description,
+	);
+
+	return $series_info;
+
+}
 
 
 /*------------------------------

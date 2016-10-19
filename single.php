@@ -31,8 +31,6 @@
 
 				<div class="post_body" itemprop="articleBody">
 
-					<?php if ( !has_tag( 'no-note' ) ) { include('notes.php'); } ?>
-
 					<?php the_content(); ?>
 					<div class="clear"></div>
 
@@ -45,44 +43,10 @@
 
 								/* SERIES LOOP */
 
-								$current_post	= get_the_ID();
-								$this_post[]	= $post->ID;
-
-								$series_title = wp_get_post_terms(
-									$post->ID,
-									'series',
-									array(
-										'fields' 	=> 'names',
-										'orderby' => 'count',
-										'order' 	=> 'DESC'
-									)
-								);
-								$series_title = $series_title[0];
-
-								$series_slug = wp_get_post_terms(
-									$post->ID,
-									'series',
-									array(
-										'fields' 	=> 'slugs',
-										'orderby' => 'count',
-										'order' 	=> 'DESC'
-									)
-								);
-								$series_slug = $series_slug[0];
-
-								$series_ID = wp_get_post_terms(
-									$post->ID,
-									'series',
-									array(
-										'fields' 	=> 'ids',
-										'orderby' => 'count',
-										'order' 	=> 'DESC'
-									)
-								);
-								$series_ID = $series_ID[0];
-
-								$series_description = term_description( $series_ID, 'series' );
-								$series_description = trim( $series_description );
+								$series_info				= get_series_info();
+								$series_title				= $series_info->series_title;
+								$series_slug				= $series_info->series_slug;
+								$series_description	= $series_info->series_description;
 
 								$series_query_args = array(
 									'orderby'					=> 'date',
@@ -96,15 +60,6 @@
 										)
 									)
 								);
-
-								if (
-									$series_slug == 'briefs' ||
-									$series_slug == 'first-looks' ||
-									$series_slug == 'lawyerist-podcast'
-								) {
-									$series_query_args['order'] = 'DESC';
-									$series_query_args['posts_per_page'] = 4;
-								}
 
 								$series_query = new WP_Query( $series_query_args );
 

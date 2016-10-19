@@ -43,48 +43,29 @@
       ),
     );
 
-    $index_query = new WP_Query( $index_query_args );
+    $index_query  = new WP_Query( $index_query_args );
+    $post_num     = 1; // Counter for inserting mobile ads.
 
-    $post_num = 1; // Counter for inserting mobile ads.
+    if ( has_term( true, 'sponsor' ) ) {
+      $classes = array( 'sponsored_post' );
+    }
 
     if ( $index_query->have_posts() ) : while ( $index_query->have_posts() ) : $index_query->the_post();
     ?>
 
       <?php // Embedded loop for posts in a series.
-      if ( has_term( true , 'series' ) ) { ?>
+      if ( has_term( true, 'series' ) ) { ?>
 
         <div class="series_post_container">
 
-          <?php // Get series information.
-          $current_post	= get_the_ID();
-          $this_post[]	= $post->ID;
-
-          $series_title = wp_get_post_terms(
-            $post->ID,
-            'series',
-            array(
-              'fields' 	=> 'names',
-              'orderby' => 'count',
-              'order' 	=> 'DESC'
-            )
-          );
-          $series_title = $series_title[0];
-
-          $series_slug = wp_get_post_terms(
-            $post->ID,
-            'series',
-            array(
-              'fields' 	=> 'slugs',
-              'orderby' => 'count',
-              'order' 	=> 'DESC'
-            )
-          );
-          $series_slug = $series_slug[0];
+          <?php
+          get_series_info();
+          array_push( $classes, 'post_in_series' );
           ?>
 
           <h2 class="series_title"><a href="<?php echo get_term_link( $series_slug, 'series' ); ?>" title="<?php echo $series_title; ?>"><?php echo $series_title; ?></a></h2>
 
-          <a <?php post_class( 'post_in_series' ); ?> href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+          <a <?php post_class( $classes ); ?> href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
             <?php if ( has_post_thumbnail() ) { the_post_thumbnail( 'aside_thumbnail' ); } ?>
             <div class="headline_excerpt">
               <h2 class="headline" id="post-<?php the_ID(); ?>"><?php the_title(); ?></h2>
@@ -121,13 +102,9 @@
               <?php while ( $series_query->have_posts() ) : $series_query->the_post();
 
                 if ( get_the_ID() == $current_post ) { ?>
-
                   <li><h3 class="headline post_in_series" id="post-<?php the_ID(); ?>"><?php the_title(); ?></h3></li>
-
                 <?php } else { ?>
-
                   <li><a class="post_in_series" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><h3 class="headline" id="post-<?php the_ID(); ?>"><?php the_title(); ?></h3></a></li>
-
                 <?php } ?>
 
               <?php endwhile; ?>
@@ -146,20 +123,19 @@
       <?php // Loop through remaining post types/formats.
       } else { ?>
 
-        <a <?php post_class(); ?> href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+        <a <?php post_class( $classes ); ?> href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
 
           <?php // Select the appropriate thumbnail based on post type/format.
-          if ( has_post_thumbnail() && (
-            has_post_format( 'aside' ) ||
-            get_post_type( get_the_ID() ) == 'page'
-          ) ) {
-            the_post_thumbnail( 'aside_thumbnail' );
-          } elseif ( has_post_thumbnail() && get_post_type( get_the_ID() ) == 'download' ) {
-            the_post_thumbnail( 'medium' );
-          } elseif ( has_post_thumbnail() && has_post_format( 'audio' ) ) {
-            the_post_thumbnail( 'aside_thumbnail' );
-          } elseif ( has_post_thumbnail() ) {
-            the_post_thumbnail( 'standard_thumbnail' );
+          if ( has_post_thumbnail() ) {
+
+            if ( has_post_format( 'aside' ) || get_post_type( get_the_ID() ) == 'page' ) {
+              the_post_thumbnail( 'aside_thumbnail' );
+            } elseif ( get_post_type( get_the_ID() ) == 'download' ) {
+              the_post_thumbnail( 'medium' );
+            } else {
+              the_post_thumbnail( 'standard_thumbnail' );
+            }
+
           }
           ?>
 

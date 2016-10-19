@@ -15,7 +15,6 @@ Index
 
 Load Genericons
 Layout
-	Index & Archive Lists
 Useful Stuff
 Typography
 Images
@@ -27,11 +26,10 @@ Menu
 Front Page
 	Discussions
 Content
-	Index & Archive Lists
+	Index Lists
 	Posts
   Tables
   Post Footer Nav
-  Notes (see notes.php)
   Galleries
   Author List Shortcode
 	Sharing Buttons
@@ -1149,10 +1147,10 @@ Content
 	Index Lists
 	------------------------------*/
 
-  .series_post_container,
-  a.post,
-  a.download,
-  a.page {
+  .index .series_post_container,
+  .index a.post,
+  .index a.download,
+  .index a.page {
     background-color: #fff;
     border: .1rem solid #ddd;
     border-radius: .2rem;
@@ -1165,77 +1163,75 @@ Content
 		text-decoration: none;
 	}
 
-  .series_post_container a,
-  a.post a,
-  a.download a,
-  a.page a {
+  .index .series_post_container a,
+  .index a.post a,
+  .index a.download a,
+  .index a.page a {
     color: inherit;
     text-decoration: none;
   }
 
-    .series_post_container a:hover,
-    a.post a:hover,
-    a.download a:hover,
-    a.page a:hover {
+    .index .series_post_container a:hover,
+    .index a.post a:hover,
+    .index a.download a:hover,
+    .index a.page a:hover {
       color: #a00;
       text-decoration: none;
     }
 
-  .headline_excerpt {
+  .index .headline_excerpt {
     color: #111;
     padding: 2rem;
   }
 
-    .post_in_series .headline,
-    .post_in_series:hover .headline,
-  	a.post .headline,
-    a.page .headline,
-    a.download .headline {
+    .index .post_in_series .headline,
+  	.index a.post .headline,
+    .index a.page .headline,
+    .index a.download .headline {
   		color: #333;
     	margin-bottom: .2em;
   	}
 
-    .post_in_series .headline:hover,
-    a.post .headline:hover,
-    a.page .headline:hover,
-    a.download .headline:hover {
+    .index .post_in_series .headline:hover,
+    .index a.post .headline:hover,
+    .index a.page .headline:hover,
+    .index a.download .headline:hover {
   		color: #a00;
       text-decoration: none;
   	}
 
-    .post_in_series .postmeta,
-    a.post .postmeta,
-    a.page .postmeta,
-    a.download .postmeta {
+    .index .post_in_series .postmeta,
+    .index a.post .postmeta,
+    .index a.page .postmeta,
+    .index a.download .postmeta {
       font-size: 1.4rem;
       margin-bottom: 0;
     }
 
-    .post_in_series p,
-    a.post p,
-    a.page p,
-    a.download p {
+    .index .post_in_series p,
+    .index a.post p,
+    .index a.page p,
+    .index a.download p {
       margin-bottom: .75em;
   	}
 
   /* Standard Posts */
 
-  a.format-standard .wp-post-image {
+  .index a.format-standard .wp-post-image {
     display: block;
     margin-bottom: .5em;
     width: 100%;
   }
 
-  a.format-standard p {
+  .index a.format-standard p {
     font-size: 1.8rem;
   }
 
 
   /* Asides/Not-Featured Posts */
 
-  a.format-aside .wp-post-image,
-  a.format-audio .wp-post-image,
-  a.page .wp-post-image {
+  .index a.format-aside .wp-post-image,
+  .index a.page .wp-post-image {
     float: left;
     margin-bottom: 0;
     margin-right: 1.5rem;
@@ -1243,42 +1239,40 @@ Content
     max-width: 50%;
   }
 
-  a.format-aside .headline,
-  a.format-audio .headline,
-  a.page .headline,
-  a.download .headline {
+  .index a.format-aside .headline,
+  .index a.page .headline,
+  .index a.download .headline {
     font-size: 2.4rem;
     margin-bottom: .5em;
   }
 
-  a.format-aside p,
-  a.format-audio p,
-  a.page p,
-  a.download p {
+  .index a.format-aside p,
+  .index a.page p,
+  .index a.download p {
     font-size: 1.6rem;
   }
 
 
   /* Posts in a Series */
 
-  .series_post_container {
+  .index .series_post_container {
     border-top: .7rem solid #ddd;
     padding: 2rem;
   }
 
-  h2.series_title {
+  .index h2.series_title {
     color: #666;
     font-size: 1.4rem;
     text-transform: uppercase;
   }
 
-  a.post_in_series {
+  .index a.post_in_series {
     border: 0;
     box-shadow: none;
     margin-bottom: 2rem;
   }
 
-  a.post_in_series .wp-post-image {
+  .index a.post_in_series .wp-post-image {
     float: left;
     margin-bottom: 0;
     margin-right: 1.5rem;
@@ -1286,18 +1280,18 @@ Content
     max-width: 50%;
   }
 
-  a.post_in_series .headline_excerpt {
+  .index a.post_in_series .headline_excerpt {
     padding: 0;
   }
 
-  .series_post_container ul {
+  .index .series_post_container ul {
     display: block;
     list-style: none;
     margin: 0;
     padding: 0;
   }
 
-    .series_post_container li {
+    .index .series_post_container li {
       box-sizing: border-box;
       display: inline-block;
       float: left;
@@ -1306,7 +1300,7 @@ Content
       width: 25%;
     }
 
-    .series_post_container li .headline {
+    .index .series_post_container li .headline {
       font-family: concourse, 'Helvetica Neue', Helvetica, Arial, sans-serif;
       font-size: 1.8rem;
       font-weight: normal;
@@ -1316,22 +1310,26 @@ Content
 
   /* Downloads */
 
-  a.type-download .wp-post-image {
+  .index a.type-download {
+    min-height: 25rem;
+  }
+
+  .index a.type-download .wp-post-image {
     height: auto;
     margin-bottom: 0;
     position: absolute;
-      right: 1.1rem;
+      right: 2.1rem;
       top: 3rem;
     transform: rotate( .015turn );
   }
 
-  a.type-download .headline_excerpt {
-    padding-right: 32rem;
+  .index a.type-download .headline_excerpt {
+    padding: 4rem 34rem 4rem 4rem;
   }
 
   /* Pages */
 
-  a.type-page {
+  .index a.type-page {
 
   }
 
@@ -1340,7 +1338,7 @@ Content
   .sponsored_by {
     background-color: #ffffa0;
   }
-
+  
 
 	/*------------------------------
 	Posts
@@ -1692,68 +1690,6 @@ Content
 
   #after_post .fp_bottom_tab {
     margin-bottom: 6rem;
-  }
-
-
-  /*------------------------------
-  Notes (see notes.php)
-  ------------------------------*/
-
-  .survival_guide_note {
-    background-color: #eee;
-    border: .1rem solid #ddd;
-    display: block;
-    margin: 0 0 2.8rem 0;
-    overflow: hidden;
-    padding: 2rem 22.5rem 2rem 2.5rem;
-    position: relative;
-  }
-
-  .survival_guide_note h3 {
-    font-size: 2.2rem;
-    margin-bottom: .5em;
-    margin-top: 0;
-  }
-
-  .survival_guide_note p {
-    font-size: 1.6rem;
-  }
-
-  .survival_guide_note img {
-    height: auto;
-    margin-bottom: 0;
-    position: absolute;
-      right: 1.1rem;
-      top: 3rem;
-    transform: rotate( .015turn );
-    width: 20rem;
-  }
-
-  .survival_guide_note .button {
-    font-size: 1.3rem;
-    height: 3.2rem;
-    line-height: 3.2rem;
-    padding: 0 1.6rem;
-    text-transform: uppercase;
-    width: auto;
-  }
-
-  /* When notes start looking bad (500px) */
-
-  @media only screen and (max-width:499px) {
-
-    .survival_guide_note {
-      padding-right: 17.5rem;
-    }
-
-    .survival_guide_note img {
-      width: 15rem;
-    }
-
-  }
-
-  .survival_guide_note .button {
-    margin-bottom: 0;
   }
 
 
