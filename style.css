@@ -46,7 +46,6 @@ Footer
 Forms
 	Buttons
   Easy Digital Downloads
-Media Queries
 Print
 
 ------------------------------*/
@@ -102,7 +101,7 @@ body {
 
   #header {
     margin: 0 auto;
-    max-width: 118rem;
+    max-width: 108rem;
     padding: 1.2rem 1rem;
   }
 
@@ -119,18 +118,18 @@ body {
 		list-style: none;
 		margin: 0 auto;
 		padding: 0;
-    max-width: 120rem;
+    max-width: 110rem;
 	}
 
 #content_column_container {
 	margin: 0 auto 2rem auto;
-	width: 118rem;
+	width: 108rem;
 }
 
 	#content_column {
 		float: left;
-    max-width: 86rem;
-    width: 86rem;
+    max-width: 76rem;
+    width: 76rem;
 	}
 
 		.post {
@@ -158,7 +157,7 @@ body {
 	#footer {
 		margin: 0 auto;
 		padding: 2rem 1rem;
-		width: 118rem;
+		width: 108rem;
 	}
 
 
@@ -1150,93 +1149,167 @@ Content
 	Index Lists
 	------------------------------*/
 
-  a.post {
+  .series_post_container,
+  a.post,
+  a.download,
+  a.page {
     background-color: #fff;
     border: .1rem solid #ddd;
     border-radius: .2rem;
     box-shadow: .1rem .1rem .3rem #ddd;
     display: block;
     margin-bottom: 1rem;
+    overflow: hidden;
     padding: 0;
+    position: relative;
 		text-decoration: none;
 	}
 
-  a.post:last-of-type {
-    margin-bottom: 4rem;
-  }
-
-  a.post .headline_excerpt {
+  .headline_excerpt {
+    color: #111;
     padding: 2rem;
   }
 
-  	a.post .headline {
+    .post_in_series .headline,
+  	a.post .headline,
+    a.page .headline,
+    a.download .headline {
   		color: #333;
     	margin-bottom: .2em;
   	}
 
-    a.post:hover .headline {
-  		text-decoration: underline;
+    .post_in_series .headline:hover,
+    a.post .headline:hover,
+    a.page .headline:hover,
+    a.download .headline:hover {
+  		color: #a00;
+      text-decoration: none;
   	}
 
-    a.post .postmeta {
+    .post_in_series .postmeta,
+    a.post .postmeta,
+    a.page .postmeta,
+    a.download .postmeta {
+      font-size: 1.4rem;
       margin-bottom: 0;
     }
 
-    a.post .postmeta,
-    a.post .comment_link:before {
-    	color: #777;
-  	}
-
-    	a.post:hover .postmeta,
-    	a.post:hover .comment_link:before {
-    		color: #555;
-    	}
-
-    a.post p {
-  		color: #666;
-      line-height: 1.2;
+    .post_in_series p,
+    a.post p,
+    a.page p,
+    a.download p {
       margin-bottom: .75em;
   	}
 
-    a.post:hover p {
-  		color: #333;
-  	}
-
-
   /* Standard Posts */
-  a.post .wp-post-image {
+
+  a.format-standard .wp-post-image {
     display: block;
     margin-bottom: .5em;
     width: 100%;
   }
 
-  a.post p {
+  a.format-standard p {
     font-size: 1.8rem;
   }
 
-  a.post .postmeta {
-    font-size: 1.4rem;
-  }
 
-  /* Asides / Not-Featured Posts */
-  a.format-aside .wp-post-image {
+  /* Asides/Not-Featured Posts */
+
+  a.format-aside .wp-post-image,
+  a.format-audio .wp-post-image,
+  a.page .wp-post-image {
     float: left;
     margin-bottom: 0;
     margin-right: 1.5rem;
     width: 25rem;
+    max-width: 50%;
   }
 
-  a.format-aside .headline {
-    font-size: 2.2rem;
+  a.format-aside .headline,
+  a.format-audio .headline,
+  a.page .headline,
+  a.download .headline {
+    font-size: 2.4rem;
     margin-bottom: .5em;
   }
 
-  a.format-aside p {
+  a.format-aside p,
+  a.format-audio p,
+  a.page p,
+  a.download p {
     font-size: 1.6rem;
   }
 
-  a.format-aside .postmeta {
-    font-size: 1.2rem;
+
+  /* Posts in a Series */
+
+  .series_post_container {
+    padding: 2rem;
+  }
+
+  h2.series_title {
+    font-size: 1.4rem;
+    text-transform: uppercase;
+  }
+
+  a.post_in_series {
+    border: 0;
+    box-shadow: none;
+  }
+
+  a.post_in_series .wp-post-image {
+    float: left;
+    margin-bottom: 0;
+    margin-right: 1.5rem;
+    width: 25rem;
+    max-width: 50%;
+  }
+
+  a.post_in_series .headline_excerpt {
+    margin-bottom: 3rem;
+  }
+
+  .series_post_container ul {
+    display: block;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+    .series_post_container li {
+      box-sizing: border-box;
+      display: inline-block;
+      float: left;
+      padding-right: 2rem;
+      width: 25%;
+    }
+
+    .series_post_container li .headline {
+      font-size: 2.2rem;
+    }
+
+
+
+  /* Downloads */
+
+  a.type-download .wp-post-image {
+    height: auto;
+    margin-bottom: 0;
+    position: absolute;
+      right: 1.1rem;
+      top: 3rem;
+    transform: rotate( .015turn );
+  }
+
+  a.type-download .headline_excerpt {
+    padding-right: 32rem;
+  }
+
+  /* Pages */
+
+  a.type-page {
+
   }
 
 
@@ -2241,141 +2314,7 @@ body .gform_footer {
 
 
 /*------------------------------
-Media Queries
-------------------------------*/
-
-/* Content width (1024px) */
-
-@media only screen
-and (max-width:1023px) {
-
-	html, body {
-    overflow-x: hidden;
-  }
-
-	/* Change Layout */
-
-	#content_column_container,
-	#footer {
-		max-width: 64rem;
-	}
-
-	#content_column_container {
-		padding: 1rem;
-	}
-
-		#content_column {
-			float: none;
-			width: 100%;
-		}
-
-		ul#sidebar_column {
-			float: none;
-			margin: 0 auto;
-      padding: 0;
-      width: auto;
-		}
-
-}
-
-
-/* Content column width (640px) + 20px for padding */
-
-@media only screen and (max-width:659px) {
-
-	/* Hide This Stuff */
-
-	#related_posts {
-		display: none;
-	}
-
-
-	/* Change Layout */
-
-	#content_column_container {
-		max-width: none;
-		width: auto;
-	}
-
-		#content_column {
-			max-width: none;
-		}
-
-	a.post p.excerpt_with_thumb {
-		padding-right: 0;
-	}
-
-	#footer {
-		background: none;
-		width: auto;
-	}
-
-		#footer p {
-			padding: 0;
-		}
-
-
-	/* Front Page */
-
-  #featured_posts a,
-  #featured_posts a:first-child {
-		display: block;
-		float: none;
-		height: 22.45rem;
-		margin: 0 0 .2rem 0 !important;
-		max-width: none;
-		width: auto;
-	}
-
-  #featured_posts img,
-  #featured_posts a:first-child img {
-		height: auto;
-		width: 100%;
-	}
-
-  #featured_posts .headline,
-  #featured_posts a:first-child .headline,
-  #featured_posts a:first-child.smaller-title .headline,
-  #featured_notes .headline {
-    font-size: 2.4rem;
-    letter-spacing: .05rem;
-    margin-bottom: 1.65rem;
-	}
-
-
-	/* Content */
-
-  blockquote {
-    font-weight: normal;
-  }
-
-	p.pullout {
-		display: block;
-		float: none;
-		margin: 0 0 1.5rem 0;
-		width: auto;
-	}
-
-	#pagenav .pagenav_link_block {
-			display:block;
-			float:none;
-			position:relative;
-			max-width:100%;
-	}
-
-		#pagenav .alignleft.pagenav_link_block {
-			margin-bottom: 2.8rem;
-		}
-
-  .author_list li {
-    width:50%;
-  }
-
-}
-
-
-/*------------------------------
-Load Genericons
+Print
 ------------------------------*/
 
 @media print {

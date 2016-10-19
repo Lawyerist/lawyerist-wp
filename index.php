@@ -32,8 +32,9 @@
 		} ?>
 
 
-    <?php /* THE LOOP */
+    <!--/* THE LOOP */-->
 
+    <?php // Prime the main query.
     $index_query_args = array(
       'post_type' => array(
         'post',
@@ -44,50 +45,154 @@
 
     $index_query = new WP_Query( $index_query_args );
 
-    $post_num = 1;
+    $post_num = 1; // Counter for inserting mobile ads.
 
-		if ( $index_query->have_posts() ) : while ( $index_query->have_posts() ) : $index_query->the_post();
+    if ( $index_query->have_posts() ) : while ( $index_query->have_posts() ) : $index_query->the_post();
     ?>
 
-			<a <?php post_class(); ?> href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+      <?php // Embedded loop for posts in a series.
+      if ( has_term( true , 'series' ) ) { ?>
 
-        <?php
-        if ( has_post_thumbnail() && (
-          has_post_format( 'aside' ) ||
-          get_post_type( get_the_ID() ) == 'page' ||
-          get_post_type( get_the_ID() ) == 'download'
-        ) ) {
-          the_post_thumbnail( 'aside_thumbnail' );
-        } elseif ( has_post_thumbnail() ) {
-          the_post_thumbnail( 'standard_thumbnail' );
-        }
-        ?>
+        <div class="series_post_container">
 
-        <div class="headline_excerpt">
+          <?php // Get series information.
+          $current_post	= get_the_ID();
+          $this_post[]	= $post->ID;
 
-  				<h2 class="headline" id="post-<?php the_ID(); ?>"><?php the_title(); ?></h2>
+          $series_title = wp_get_post_terms(
+            $post->ID,
+            'series',
+            array(
+              'fields' 	=> 'names',
+              'orderby' => 'count',
+              'order' 	=> 'DESC'
+            )
+          );
+          $series_title = $series_title[0];
 
-  				<?php if ( !is_mobile() ) { ?>
-            <p class="excerpt<?php if ( has_post_thumbnail() ) { echo ' excerpt_with_thumb'; } ?>"><?php echo get_the_excerpt(); ?></p>
-          <?php } ?>
+          $series_slug = wp_get_post_terms(
+            $post->ID,
+            'series',
+            array(
+              'fields' 	=> 'slugs',
+              'orderby' => 'count',
+              'order' 	=> 'DESC'
+            )
+          );
+          $series_slug = $series_slug[0];
+          ?>
 
-          <?php lawyerist_get_postmeta(); ?>
+          <h2 class="series_title"><?php echo $series_title; ?></h2>
+
+          <a <?php post_class( 'post_in_series' ); ?> href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+            <?php if ( has_post_thumbnail() ) { the_post_thumbnail( 'aside_thumbnail' ); } ?>
+            <h2 class="headline" id="post-<?php the_ID(); ?>"><?php the_title(); ?></h2>
+            <?php if ( !is_mobile() ) { ?>
+              <p class="excerpt<?php if ( has_post_thumbnail() ) { echo ' excerpt_with_thumb'; } ?>"><?php echo get_the_excerpt(); ?></p>
+            <?php } ?>
+            <?php lawyerist_get_postmeta(); ?>
+          </a>
+
+
+          <?php // Series loop
+
+          $series_query_args = array(
+            'orderby'					=> 'date',
+            'order'						=> 'ASC',
+            'posts_per_page'	=> 4,
+            'tax_query'     	=> array(
+              array(
+                'taxonomy'  => 'series',
+                'field'			=> 'slug',
+                'terms'			=> $series_slug,
+              )
+            )
+          );
+
+          $series_query = new WP_Query( $series_query_args );
+
+          if ( $series_query->post_count > 1 ) { ?>
+
+            <ul>
+
+              <?php while ( $series_query->have_posts() ) : $series_query->the_post();
+
+                if ( get_the_ID() == $current_post ) { ?>
+
+                  <li><h3 class="headline post_in_series" id="post-<?php the_ID(); ?>"><?php the_title(); ?></h3></li>
+
+                <?php } else { ?>
+
+                  <li><a class="post_in_series" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><h3 class="headline" id="post-<?php the_ID(); ?>"><?php the_title(); ?></h3></a></li>
+
+                <?php } ?>
+
+              <?php endwhile; ?>
+
+            </ul>
+
+            <div class="clear"></div>
+
+            <?php if ( $series_query->found_posts > 5 ) { ?>
+
+              <p><a href="<?php echo get_term_link( $series_slug, 'series' ); ?>">See all the posts in this series.</a></p>
+
+            <?php }
+
+          }
+
+          wp_reset_postdata(); ?>
 
         </div>
 
-				<div class="clear"></div>
+      <?php // Loop through remaining post types/formats.
+      } else { ?>
 
-			</a><!-- End .post -->
+        <a <?php post_class(); ?> href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
 
-      <?php
-      if ( $post_num == 1 && is_mobile() ) { insert_lawyerist_ap2(); }
-      if ( $post_num == 3 && is_mobile() ) { insert_lawyerist_ap3(); }
+          <?php // Select the appropriate thumbnail based on post type/format.
+          if ( has_post_thumbnail() && (
+            has_post_format( 'aside' ) ||
+            get_post_type( get_the_ID() ) == 'page'
+          ) ) {
+            the_post_thumbnail( 'aside_thumbnail' );
+          } elseif ( has_post_thumbnail() && get_post_type( get_the_ID() ) == 'download' ) {
+            the_post_thumbnail( 'medium' );
+          } elseif ( has_post_thumbnail() && has_post_format( 'audio' ) ) {
+            the_post_thumbnail( 'aside_thumbnail' );
+          } elseif ( has_post_thumbnail() ) {
+            the_post_thumbnail( 'standard_thumbnail' );
+          }
+          ?>
 
-      $post_num++;
+          <div class="headline_excerpt">
+
+    				<h2 class="headline" id="post-<?php the_ID(); ?>"><?php the_title(); ?></h2>
+
+    				<?php if ( !is_mobile() ) { ?>
+              <p class="excerpt<?php if ( has_post_thumbnail() ) { echo ' excerpt_with_thumb'; } ?>"><?php echo get_the_excerpt(); ?></p>
+            <?php } ?>
+
+            <?php lawyerist_get_postmeta(); ?>
+
+          </div>
+
+  				<div class="clear"></div>
+
+  			</a><!-- End .post -->
+
+      <?php } ?>
+
+    <?php // Insert ads on mobile.
+    if ( $post_num == 1 && is_mobile() ) { insert_lawyerist_ap2(); }
+    if ( $post_num == 3 && is_mobile() ) { insert_lawyerist_ap3(); }
+
+    $post_num++; // Increment counter.
 
 		endwhile; endif;
+    ?>
 
-		/* END LOOP */ ?>
+		<!--/* END LOOP */-->
 
 
 		<?php lawyerist_get_pagenav(); ?>
