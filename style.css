@@ -1262,6 +1262,7 @@ Content
   /* Posts in a Series */
 
   .series_post_container {
+    border-top: .7rem solid #ddd;
     padding: 2rem;
   }
 
