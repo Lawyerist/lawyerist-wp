@@ -86,11 +86,13 @@
 
           <a <?php post_class( 'post_in_series' ); ?> href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
             <?php if ( has_post_thumbnail() ) { the_post_thumbnail( 'aside_thumbnail' ); } ?>
-            <h2 class="headline" id="post-<?php the_ID(); ?>"><?php the_title(); ?></h2>
-            <?php if ( !is_mobile() ) { ?>
-              <p class="excerpt<?php if ( has_post_thumbnail() ) { echo ' excerpt_with_thumb'; } ?>"><?php echo get_the_excerpt(); ?></p>
-            <?php } ?>
-            <?php lawyerist_get_postmeta(); ?>
+            <div class="headline_excerpt">
+              <h2 class="headline" id="post-<?php the_ID(); ?>"><?php the_title(); ?></h2>
+              <?php if ( !is_mobile() ) { ?>
+                <p class="excerpt<?php if ( has_post_thumbnail() ) { echo ' excerpt_with_thumb'; } ?>"><?php echo get_the_excerpt(); ?></p>
+              <?php } ?>
+              <?php lawyerist_get_postmeta(); ?>
+            </div>
           </a>
 
 
@@ -98,7 +100,7 @@
 
           $series_query_args = array(
             'orderby'					=> 'date',
-            'order'						=> 'ASC',
+            'order'						=> 'DESC',
             'posts_per_page'	=> 4,
             'tax_query'     	=> array(
               array(

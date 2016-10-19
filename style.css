@@ -1171,6 +1171,7 @@ Content
   }
 
     .post_in_series .headline,
+    .post_in_series:hover .headline,
   	a.post .headline,
     a.page .headline,
     a.download .headline {
@@ -1256,6 +1257,7 @@ Content
   a.post_in_series {
     border: 0;
     box-shadow: none;
+    margin-bottom: 2rem;
   }
 
   a.post_in_series .wp-post-image {
@@ -1264,10 +1266,6 @@ Content
     margin-right: 1.5rem;
     width: 25rem;
     max-width: 50%;
-  }
-
-  a.post_in_series .headline_excerpt {
-    margin-bottom: 3rem;
   }
 
   .series_post_container ul {
@@ -1286,7 +1284,9 @@ Content
     }
 
     .series_post_container li .headline {
-      font-size: 2.2rem;
+      font-family: concourse, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 1.8rem;
+      font-weight: normal;
     }
 
 
