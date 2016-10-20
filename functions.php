@@ -333,8 +333,9 @@ Add Image Sizes
 
 if ( function_exists( 'add_image_size' ) ) {
 	add_image_size( 'standard_thumbnail', 758, 379, true );
-	add_image_size( 'aside_thumbnail', 300, 250, true);
-	add_image_size( 'single_featured', 1180, 0);
+	add_image_size( 'aside_thumbnail', 300, 250, true );
+	add_image_size( 'single_featured', 1180, 0 );
+	add_image_size( 'download_thumbnail', 220, 0 );
 }
 
 

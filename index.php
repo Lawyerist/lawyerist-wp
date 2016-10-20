@@ -146,7 +146,7 @@
             if ( has_post_format( 'aside' ) || get_post_type( get_the_ID() ) == 'page' ) {
               the_post_thumbnail( 'aside_thumbnail' );
             } elseif ( get_post_type( get_the_ID() ) == 'download' ) {
-              the_post_thumbnail( 'medium' );
+              the_post_thumbnail( 'download_thumbnail' );
             } else {
               the_post_thumbnail( 'standard_thumbnail' );
             }
@@ -159,7 +159,9 @@
 
     				if ( !is_mobile() ) { echo '<p class="excerpt">' . $post_excerpt . '</p>'; }
 
-            if ( !get_post_type( get_the_ID() ) == 'page' && !get_post_type( get_the_ID() ) == 'download' ) { lawyerist_get_postmeta(); }
+            if ( get_post_type( get_the_ID() ) != 'page' && get_post_type( get_the_ID() ) != 'download' ) {
+              lawyerist_get_postmeta();
+            }
 
           echo '</div>'; // End .headline_excerpt.
 
