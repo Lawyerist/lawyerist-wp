@@ -130,14 +130,6 @@ body {
     width: 76rem;
 	}
 
-		.post {
-			margin-bottom: 4rem;
-		}
-
-    #survival_guides {
-      margin-bottom: 4rem;
-    }
-
 	#sidebar_column {
 		float: right;
 		margin: 0;
@@ -380,34 +372,34 @@ h6 a {
 
 h1,
 .headline {
-	font-size: 3.8rem;
+	font-size: 4.2rem;
 	margin-bottom: .25em;
 }
 
 h2,
 .h2 {
-	font-size: 2.8rem;
+	font-size: 3.2rem;
 	margin-bottom: .5em;
 }
 
 h3,
 .h3 {
-	font-size: 2.4rem;
+	font-size: 2.8rem;
 	margin-bottom: .5em;
 }
 
 h4 {
-	font-size: 2.2rem;
+	font-size: 2.6rem;
 	margin-bottom: .5em;
 }
 
 h5 {
-	font-size: 2rem;
+	font-size: 2.4rem;
 	margin-bottom: .75em;
 }
 
 h6 {
-	font-size: 1.8rem;
+	font-size: 2.2rem;
 	margin-bottom: .75em;
 }
 
@@ -1286,7 +1278,7 @@ Content
 
   .index .series_post_container ul {
     display: block;
-    list-style: none;
+    list-style:  none;
     margin: 0;
     padding: 0;
   }
@@ -1311,6 +1303,7 @@ Content
   /* Downloads */
 
   .index a.type-download {
+    border-top: .7rem solid #ed9c28;
     min-height: 25rem;
   }
 
@@ -1338,7 +1331,7 @@ Content
   .sponsored_by {
     background-color: #ffffa0;
   }
-  
+
 
 	/*------------------------------
 	Posts

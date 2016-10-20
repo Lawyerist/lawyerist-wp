@@ -9,25 +9,29 @@
 
 <div id="content_column_container">
 
-	<div id="content_column">
-
 		<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
 			<div <?php post_class( 'hentry' ); ?>>
 
-				<h1 class="headline entry-title"><?php the_title(); ?></h1>
-				<?php lawyerist_get_postmeta(); ?>
-				<div class="clear"></div>
+				<div class="headline_postmeta">
+
+					<h1 class="headline entry-title"><?php the_title(); ?></h1>
+					<?php lawyerist_get_postmeta(); ?>
+					<div class="clear"></div>
+
+				</div>
 
 				<?php /* Show featured image (1) if the post has a featured image AND
 								 (2) if it's the first page of the post AND (3) the post DOES
 								 NOT have the no-image tag. */
 
-				if ( has_post_thumbnail() && $page == 1 && !has_tag('no-image') ) { ?>
+				if ( has_post_thumbnail() && !has_tag('no-image') ) { ?>
 
 					<div itemprop="image"><?php the_post_thumbnail('single_featured'); ?></div>
 
 				<?php } ?>
+
+			<div id="content_column">
 
 				<div class="post_body" itemprop="articleBody">
 
@@ -43,10 +47,21 @@
 
 								/* SERIES LOOP */
 
-								$series_info				= get_series_info();
-								$series_title				= $series_info->series_title;
-								$series_slug				= $series_info->series_slug;
-								$series_description	= $series_info->series_description;
+								$series_ID = wp_get_post_terms(
+									$post->ID,
+									'series',
+									array(
+										'fields' 	=> 'ids',
+										'orderby' => 'count',
+										'order' 	=> 'DESC'
+									)
+								);
+
+								$series_info				= get_term( $series_ID[0] );
+								$series_title				= $series_info->name;
+								$series_description = $series_info->description;
+								$series_slug				= $series_info->slug;
+								$series_url					=	get_term_link( $series_ID[0], 'series' );
 
 								$series_query_args = array(
 									'orderby'					=> 'date',
@@ -67,7 +82,7 @@
 
 									<p class="h3">More in this Series: <?php echo $series_title; ?></p>
 
-									<?php if ( $series_description != 0 ) { echo '<p>' . $series_description . '</p>'; } ?>
+									<?php if ( $series_description != false ) { echo '<p>' . $series_description . '</p>'; } ?>
 
 									<ul>
 
@@ -89,7 +104,7 @@
 
 									<?php if ( $series_query->found_posts > 4 ) { ?>
 
-										<p><a href="<?php echo get_term_link( $series_slug, 'series' ); ?>">See all the posts in this series.</a></p>
+										<p><a href="<?php echo $series_url ?>">See all the posts in this series.</a></p>
 
 									<?php }
 

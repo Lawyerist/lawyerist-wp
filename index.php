@@ -11,17 +11,21 @@
 
   <div id="content_column">
 
-    <?php if ( is_archive() ) {
+    <?php
 
-      $title = single_term_title( '', FALSE);
+    // Display the archive header if we're on an archive page.
+    if ( is_archive() ) {
+
+      $title = single_term_title( '', FALSE );
       $descr = term_description();
 
       echo '<div id="archive_header"><h1>' . $title . '</h1>';
-      echo "\n" . $descr;
+      echo '\n' . $descr;
       echo '</div>';
 
     }
 
+    // Display the search header if we're on a search page.
     if ( is_search() ) {
 
 			echo '<div id="archive_header"><h1>Search results for "' . get_search_query() . '"</h1></div>';
@@ -29,55 +33,62 @@
         get_search_form();
       echo '</div>';
 
-		} ?>
+		}
 
+    /* THE LOOP */
 
-    <!--/* THE LOOP */-->
+    $post_num     = 1;                      // Counter for inserting mobile ads.
 
-    <?php // Prime the main query.
-    $index_query_args = array(
-      'post_type' => array(
-        'post',
-        'page',
-        'download',
-      ),
-    );
+    if ( have_posts() ) : while ( have_posts() ) : the_post();
 
-    $index_query  = new WP_Query( $index_query_args );
-    $post_num     = 1; // Counter for inserting mobile ads.
+      // Group a post that is in a series with other posts in that series.
+      if ( has_term( true, 'series' ) ) {
 
-    if ( has_term( true, 'sponsor' ) ) {
-      $classes = array( 'sponsored_post' );
-    }
+        echo '<div class="series_post_container">';
 
-    if ( $index_query->have_posts() ) : while ( $index_query->have_posts() ) : $index_query->the_post();
-    ?>
+          $this_post[] = $post->ID;
 
-      <?php // Embedded loop for posts in a series.
-      if ( has_term( true, 'series' ) ) { ?>
+          $series_ID = wp_get_post_terms(
+            $post->ID,
+            'series',
+            array(
+              'fields' 	=> 'ids',
+              'orderby' => 'count',
+              'order' 	=> 'DESC'
+            )
+          );
 
-        <div class="series_post_container">
+          $series_info				= get_term( $series_ID[0] );
+          $series_title				= $series_info->name;
+          $series_description = $series_info->description;
+          $series_slug				= $series_info->slug;
+          $series_url					=	get_term_link( $series_ID[0], 'series' );
 
-          <?php
-          get_series_info();
-          array_push( $classes, 'post_in_series' );
-          ?>
+          $post_title   = the_title( '', '', FALSE );
+          $post_excerpt = get_the_excerpt();
+          $post_url     = get_permalink();
 
-          <h2 class="series_title"><a href="<?php echo get_term_link( $series_slug, 'series' ); ?>" title="<?php echo $series_title; ?>"><?php echo $series_title; ?></a></h2>
+          echo '<h2 class="series_title"><a href="' . $series_url . '" title="' . $series_title . '">' . $series_title . '</a></h2>';
 
-          <a <?php post_class( $classes ); ?> href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
-            <?php if ( has_post_thumbnail() ) { the_post_thumbnail( 'aside_thumbnail' ); } ?>
-            <div class="headline_excerpt">
-              <h2 class="headline" id="post-<?php the_ID(); ?>"><?php the_title(); ?></h2>
-              <?php if ( !is_mobile() ) { ?>
-                <p class="excerpt<?php if ( has_post_thumbnail() ) { echo ' excerpt_with_thumb'; } ?>"><?php echo get_the_excerpt(); ?></p>
-              <?php } ?>
-              <?php lawyerist_get_postmeta(); ?>
-            </div>
-          </a>
+          echo '<a ';
+          post_class( 'post_in_series' );
+          echo 'href="' . $post_url . '" title="' . $post_title . '">';
 
+            if ( has_post_thumbnail() ) { the_post_thumbnail( 'aside_thumbnail' ); }
 
-          <?php // Series loop
+            echo '<div class="headline_excerpt">';
+
+              echo '<h2 class="headline">' . $post_title . '</h2>';
+
+              if ( !is_mobile() ) { echo '<p class="excerpt">' . $post_excerpt . '</p>'; }
+
+              lawyerist_get_postmeta();
+
+            echo '</div>'; // End .headline_excerpt.
+
+          echo '</a>';
+
+          // Begin series loop.
 
           $series_query_args = array(
             'orderby'					=> 'date',
@@ -95,37 +106,41 @@
 
           $series_query = new WP_Query( $series_query_args );
 
-          if ( $series_query->post_count > 1 ) { ?>
+          if ( $series_query->post_count > 1 ) {
 
-            <ul>
+            echo '<ul>';
 
-              <?php while ( $series_query->have_posts() ) : $series_query->the_post();
+              while ( $series_query->have_posts() ) : $series_query->the_post();
 
-                if ( get_the_ID() == $current_post ) { ?>
-                  <li><h3 class="headline post_in_series" id="post-<?php the_ID(); ?>"><?php the_title(); ?></h3></li>
-                <?php } else { ?>
-                  <li><a class="post_in_series" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><h3 class="headline" id="post-<?php the_ID(); ?>"><?php the_title(); ?></h3></a></li>
-                <?php } ?>
+                $post_title = the_title( '', '', FALSE );
+                $post_url   = get_permalink();
 
-              <?php endwhile; ?>
+                echo '<li><a class="post_in_series" href="' . $post_url . '" title="' . $post_title . '"><h3 class="headline">' . $post_title . '</h3></a></li>';
 
-            </ul>
+              endwhile;
 
-            <div class="clear"></div>
+            echo '</ul>';
 
-          <?php // End series loop.
-          }
+            echo '<div class="clear"></div>';
 
-          wp_reset_postdata(); ?>
+          } // End series loop.
 
-        </div>
+          wp_reset_postdata(); // Necessary because the series loop is nested in the main loop.
 
-      <?php // Loop through remaining post types/formats.
-      } else { ?>
+        echo '</div>'; // End #series_post_container.
 
-        <a <?php post_class( $classes ); ?> href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+      // Remaining post types/formats.
+      } else {
 
-          <?php // Select the appropriate thumbnail based on post type/format.
+        $post_title   = the_title( '', '', FALSE );
+        $post_excerpt = get_the_excerpt();
+        $post_url     = get_permalink();
+
+        echo '<a ';
+        post_class();
+        echo 'href="' . $post_url . '" title="' . $post_title . '">';
+
+          // Select the appropriate thumbnail based on post type/format.
           if ( has_post_thumbnail() ) {
 
             if ( has_post_format( 'aside' ) || get_post_type( get_the_ID() ) == 'page' ) {
@@ -137,40 +152,36 @@
             }
 
           }
-          ?>
 
-          <div class="headline_excerpt">
+          echo '<div class="headline_excerpt">';
 
-    				<h2 class="headline" id="post-<?php the_ID(); ?>"><?php the_title(); ?></h2>
+    				echo '<h2 class="headline">' . $post_title . '</h2>';
 
-    				<?php if ( !is_mobile() ) { ?>
-              <p class="excerpt<?php if ( has_post_thumbnail() ) { echo ' excerpt_with_thumb'; } ?>"><?php echo get_the_excerpt(); ?></p>
-            <?php } ?>
+    				if ( !is_mobile() ) { echo '<p class="excerpt">' . $post_excerpt . '</p>'; }
 
-            <?php lawyerist_get_postmeta(); ?>
+            if ( !get_post_type( get_the_ID() ) == 'page' && !get_post_type( get_the_ID() ) == 'download' ) { lawyerist_get_postmeta(); }
 
-          </div>
+          echo '</div>'; // End .headline_excerpt.
 
-  				<div class="clear"></div>
+  				echo '<div class="clear"></div>';
 
-  			</a><!-- End .post -->
+  			echo '</a>'; // End .post.
 
-      <?php } ?>
+      }
 
-    <?php // Insert ads on mobile.
+    // Insert ads on mobile.
     if ( $post_num == 1 && is_mobile() ) { insert_lawyerist_ap2(); }
     if ( $post_num == 3 && is_mobile() ) { insert_lawyerist_ap3(); }
 
     $post_num++; // Increment counter.
 
 		endwhile; endif;
+
+		/* END LOOP */
+
+		lawyerist_get_pagenav();
+
     ?>
-
-		<!--/* END LOOP */-->
-
-
-		<?php lawyerist_get_pagenav(); ?>
-
 
 	</div><!-- end #content_column -->
 

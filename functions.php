@@ -12,6 +12,7 @@ STRUCTURE
 - Footer
 
 CONTENT
+- Query Mods
 - Postmeta
 - Ads
 - Add Image Sizes
@@ -124,6 +125,19 @@ add_action( 'widgets_init', 'lawyerist_sidebar' );
 
 
 /* CONTENT ********************/
+
+/*------------------------------
+Query Mods
+------------------------------*/
+
+function lawyerist_query_mod( $wp_query ) {
+
+	// Add pages and downloads to the main query.
+	set_query_var( 'post_type' , array( 'post', 'page', 'download' ) );
+
+}
+add_action('pre_get_posts','lawyerist_query_mod');
+
 
 /*------------------------------
 Postmeta
@@ -470,58 +484,6 @@ function series_tax() {
 
 // Hook into the 'init' action
 add_action( 'init', 'series_tax', 0 );
-
-// Get series information (must be used within the Loop)
-function get_series_info() {
-
-	$current_post	= get_the_ID();
-	$this_post[]	= $post->ID;
-
-	$series_title = wp_get_post_terms(
-		$post->ID,
-		'series',
-		array(
-			'fields' 	=> 'names',
-			'orderby' => 'count',
-			'order' 	=> 'DESC'
-		)
-	);
-	$series_title = $series_title[0];
-
-	$series_slug = wp_get_post_terms(
-		$post->ID,
-		'series',
-		array(
-			'fields' 	=> 'slugs',
-			'orderby' => 'count',
-			'order' 	=> 'DESC'
-		)
-	);
-	$series_slug = $series_slug[0];
-
-	$series_ID = wp_get_post_terms(
-		$post->ID,
-		'series',
-		array(
-			'fields' 	=> 'ids',
-			'orderby' => 'count',
-			'order' 	=> 'DESC'
-		)
-	);
-	$series_ID = $series_ID[0];
-
-	$series_description = term_description( $series_ID, 'series' );
-	$series_description = trim( $series_description );
-
-	$series_info = array(
-		'series_title'				=> $series_title,
-		'series_slug'					=> $series_slug,
-		'series_description'	=> $series_description,
-	);
-
-	return $series_info;
-
-}
 
 
 /*------------------------------
