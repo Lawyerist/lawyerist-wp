@@ -137,6 +137,23 @@ body {
 		max-width: 30rem;
 	}
 
+    @media only screen and ( max-width: 1099px ) {
+
+      #content_column_container {
+      	width: 100%;
+      }
+
+        #content_column {
+      		float: none;
+          margin: 0 auto;
+      	}
+
+        #sidebar_column {
+          display: none;
+        }
+
+    }
+
 #footer_container {
   background-color: #ddd;
 	margin: 0;
