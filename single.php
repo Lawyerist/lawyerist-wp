@@ -166,6 +166,8 @@
 
 			</div><!--end .post-->
 
+			<?php if ( !is_mobile() ) { include('sidebar.php'); } ?>
+
       <div class="clear"></div>
 
 			<div id="after_post">
@@ -322,8 +324,6 @@
 		<?php endwhile; endif; ?>
 
 	</div><!-- end #content_column -->
-
-	<?php if ( !is_mobile() ) { include('sidebar.php'); } ?>
 
 	<div class="clear"></div>
 

@@ -138,14 +138,18 @@ body {
 	}
 
     @media only screen and ( max-width: 1099px ) {
+    /* Includes 20px for padding (10px on each side). */
 
       #content_column_container {
       	width: 100%;
       }
 
         #content_column {
+          box-sizing: border-box;
       		float: none;
           margin: 0 auto;
+          padding:0 10px;
+          width: 100%;
       	}
 
         #sidebar_column {
@@ -632,6 +636,14 @@ img.inline {
   display: inline !important;
 }
 
+.single div[itemprop="image"] {
+  line-height: 1; /* Otherwise the bottom margin (see below) won't be correct. */
+}
+
+.single img.wp-post-image.size-single_featured {
+  margin-bottom: 2rem;
+}
+
 .wp-caption {
   margin-bottom: 2.8rem;
   max-width: 100%;
@@ -716,6 +728,15 @@ Header
       color: #ddd;
     }
 
+    /* 620px */
+    @media only screen and (max-width:619px) {
+
+      #title {
+        float: none;
+      }
+
+    }
+
   /*------------------------------
   Header Signup
 	------------------------------*/
@@ -723,6 +744,7 @@ Header
   #header_signup {
     float: right;
     height: 3.2rem;
+    line-height: 1;
     width: 30rem;
   }
 
@@ -771,10 +793,6 @@ Header
 
   /* 620px */
   @media only screen and (max-width:619px) {
-
-    .responsive_clear {
-      clear: both;
-    }
 
     #header_signup {
       float: none;
@@ -1290,7 +1308,7 @@ Content
   }
 
   .index a.post_in_series .headline_excerpt {
-    padding: 0;
+    padding: 0 0 0 26.5rem;
   }
 
   .index .series_post_container ul {
