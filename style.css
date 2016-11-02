@@ -1134,7 +1134,8 @@ Content
 
 #archive_header {
   background-color: #eee;
-  padding: 1.5rem 2.5rem 2rem 2.5rem;
+  margin-bottom: 2rem;
+  padding: 2rem;
 }
 
   body.search #archive_header {
@@ -1945,8 +1946,9 @@ Author Pages
 
 #author_header {
   border-bottom: .1rem solid #ddd;
+  margin-bottom: 2rem;
   min-height: 30rem;
-  padding-bottom: 2.8rem;
+  padding-bottom: 2rem;
 }
 
 #author_header img {
