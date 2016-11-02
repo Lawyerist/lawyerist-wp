@@ -49,9 +49,6 @@ function lawyerist_stylesheets_scripts() {
 	wp_register_style( 'stylesheet', get_template_directory_uri() . '/style.css', array(), $cacheBusterCSS, 'all' );
 	wp_enqueue_style( 'stylesheet' );
 
-	wp_register_script( 'sticky-js', get_template_directory_uri() . '/jquery.sticky.js' );
-	wp_enqueue_script( 'sticky-js' );
-
 }
 
 add_action( 'wp_enqueue_scripts', 'lawyerist_stylesheets_scripts' );

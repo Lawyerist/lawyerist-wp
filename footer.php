@@ -21,47 +21,6 @@
 Load scripts
 --------------------------->
 
-<!-- Fixed sidebar -->
-<script type='text/javascript'>
-  $(window).load(function(){
-    $("#sidebar_ads").sticky({ topSpacing:10 });
-  });
-</script>
-
-<!-- Responsive menu -->
-<script type="text/javascript">
-	jQuery(function( $ ){
-
-	  $("#main-menu").before('<div class="mobile-menu-icon"></div>');
-
-	  $(".mobile-menu-icon").click(function(){
-			$(this).next("#main-menu").slideToggle();
-		});
-
-	  $(".sub-menu").before('<div class="mobile-sub-menu-icon"></div>');
-	  $(".mobile-sub-menu-icon").prev("a").addClass("has-sub-menu");
-
-	  $(".mobile-sub-menu-icon").click(function(){
-	    $(this).prev("a").toggleClass("open-menu");
-			$(this).next(".sub-menu").slideToggle();
-		});
-
-	});
-</script>
-
-
-<!-- Reload ads on infinite scroll trigger -->
-<script type="text/javascript">
-	jQuery(function( $ ){
-
-	  $(".infinite-wrap").ready(function(){
-			console("Reloaded!");
-			googletag.pubads().refresh();return false;
-		});
-
-	});
-</script>
-
 
 
 <!--

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php include('head.php'); ?>
+<?php get_template_part('head'); ?>
 
-<body <?php body_class('archive'); ?>>
+<body <?php body_class('index'); ?>>
 
 <?php get_header(); ?>
 
