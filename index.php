@@ -37,7 +37,7 @@
 
     /* THE LOOP */
 
-    $post_num     = 1;                      // Counter for inserting mobile ads.
+    $post_num     = 1; // Counter for inserting mobile ads.
 
     if ( have_posts() ) : while ( have_posts() ) : the_post();
 

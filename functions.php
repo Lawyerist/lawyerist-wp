@@ -62,6 +62,12 @@ Theme Setup
 function lawyerist_theme_setup() {
 
 	add_theme_support( 'title-tag' );
+	add_theme_support( 'infinite-scroll', array(
+    'container'				=> 'content_column',
+    'footer'					=> 'footer_container',
+		'footer_widgets'	=> 'footer_widgets',
+		)
+	);
 	add_theme_support( 'post-thumbnails' );
 	add_theme_support( 'post-formats', array( 'aside' ) );
 	add_theme_support( 'html5', array( 'search-form' ) );
@@ -121,7 +127,7 @@ function lawyerist_footer()  {
 	);
 	register_sidebar( $args );
 }
-add_action( 'widgets_init', 'lawyerist_sidebar' );
+add_action( 'widgets_init', 'lawyerist_footer' );
 
 
 /* CONTENT ********************/
