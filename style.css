@@ -36,7 +36,6 @@ Content
   Survival Guides
   No Sidebar Template
 	TBD Law Template
-	Pagenav
 	Comments
 Author Page
 Sidebar
@@ -243,7 +242,6 @@ input[type="submit"],
 label,
 #lab_posts,
 .page_links,
-#pagenav,
 .postmeta,
 .price_tag,
 p.pullout,
@@ -1242,6 +1240,13 @@ Content
       margin-bottom: .75em;
   	}
 
+  span.infinite-loader {
+    display: block;
+    margin: 2rem auto;
+    width: 2.8rem;
+  }
+
+
   /* Standard Posts */
 
   .index a.format-standard .wp-post-image {
@@ -1923,45 +1928,6 @@ Content
 
   .tbd-law .half:nth-child(even) {
     padding-left: 2.8rem;
-  }
-
-
-	/*------------------------------
-	Pagenav
-	------------------------------*/
-
-  #pagenav {
-  	margin-bottom: 6rem;
-  }
-
-  #pagenav .page-numbers {
-    color: #111;
-    display: inline-block;
-    font-size: 1.2rem;
-    font-weight: normal;
-    line-height: 1;
-    margin-right: .4rem;
-    padding:.6rem;
-    text-align: center;
-    text-transform: uppercase;
-  }
-
-  #pagenav a.page-numbers {
-    background: #ddd;
-    border-radius: 1.2rem;
-    min-width: 1.2rem;
-    text-decoration: none;
-  }
-
-  #pagenav .prev,
-  #pagenav .next {
-    padding: .6rem 1.2rem;
-  }
-
-  #pagenav a.page-numbers:active,
-  #pagenav a.page-numbers:hover {
-    background: #ccc;
-    text-decoration: none;
   }
 
 

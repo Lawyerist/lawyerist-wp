@@ -9,15 +9,14 @@ SETUP
 STRUCTURE
 - Nav Menu
 - Sidebar
-- Footer
 
 CONTENT
 - Query Mods
 - Postmeta
+- Loops
 - Ads
 - Add Image Sizes
 - Remove Inline Width from Image Captions
-- Page Navigation
 - Featured Images in RSS Feeds
 
 TAXONOMY
@@ -50,6 +49,9 @@ function lawyerist_stylesheets_scripts() {
 	wp_register_style( 'stylesheet', get_template_directory_uri() . '/style.css', array(), $cacheBusterCSS, 'all' );
 	wp_enqueue_style( 'stylesheet' );
 
+	wp_register_script( 'sticky-js', get_template_directory_uri() . '/jquery.sticky.js' );
+	wp_enqueue_script( 'sticky-js' );
+
 }
 
 add_action( 'wp_enqueue_scripts', 'lawyerist_stylesheets_scripts' );
@@ -64,8 +66,8 @@ function lawyerist_theme_setup() {
 	add_theme_support( 'title-tag' );
 	add_theme_support( 'infinite-scroll', array(
     'container'				=> 'content_column',
-    'footer'					=> 'footer_container',
-		'footer_widgets'	=> 'footer_widgets',
+    'footer'					=> false,
+		'render'					=> 'lawyerist_loops', // Found below.
 		)
 	);
 	add_theme_support( 'post-thumbnails' );
@@ -110,24 +112,6 @@ function lawyerist_sidebar()  {
 	register_sidebar( $args );
 }
 add_action( 'widgets_init', 'lawyerist_sidebar' );
-
-
-/*------------------------------
-Footer
-------------------------------*/
-
-function lawyerist_footer()  {
-	$args = array(
-		'id'            => 'footer_widgets',
-		'name'          => 'Footer Widget Area',
-		'before_title'  => '<h3>',
-		'after_title'   => '</h3>',
-		'before_widget' => '<li id="%1$s" class="footer_widget %2$s">',
-		'after_widget'  => '</li>',
-	);
-	register_sidebar( $args );
-}
-add_action( 'widgets_init', 'lawyerist_footer' );
 
 
 /* CONTENT ********************/
@@ -287,6 +271,19 @@ function lawyerist_get_postmeta() {
 
 
 /*------------------------------
+Loops
+------------------------------*/
+
+function lawyerist_loops() {
+
+	if ( is_home() || is_archive() || is_search() ) {
+		get_template_part( 'loop', 'index' );
+	}
+
+}
+
+
+/*------------------------------
 Ads
 ------------------------------*/
 
@@ -354,29 +351,6 @@ function lawyerist_remove_caption_padding( $width ) {
 }
 
 add_filter( 'img_caption_shortcode_width', 'lawyerist_remove_caption_padding' );
-
-
-/*------------------------------
-Page Navigation
-------------------------------*/
-
-function lawyerist_get_pagenav() {
-
-	// This function is only meant for index and archive pages.
-
-	if ( is_home() || is_archive() || is_search() ) {
-
-		ob_start();
-			echo paginate_links( 'mid_size=3' );
-		$pagenav = ob_get_clean();
-
-	}
-
-	echo '<div id="pagenav">';
-	echo $pagenav;
-	echo '</div>';
-
-}
 
 
 /*------------------------------
