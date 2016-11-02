@@ -106,9 +106,9 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
       // Select the appropriate thumbnail based on post type/format.
       if ( has_post_thumbnail() ) {
 
-        if ( has_post_format( 'aside' ) || get_post_type( get_the_ID() ) == 'page' ) {
+        if ( has_post_format( 'aside' ) || get_post_type( $post->ID ) == 'page' ) {
           the_post_thumbnail( 'aside_thumbnail' );
-        } elseif ( get_post_type( get_the_ID() ) == 'download' ) {
+        } elseif ( get_post_type( $post->ID ) == 'download' ) {
           the_post_thumbnail( 'download_thumbnail' );
         } else {
           the_post_thumbnail( 'standard_thumbnail' );
@@ -122,11 +122,15 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
         if ( !is_mobile() ) { echo '<p class="excerpt">' . $post_excerpt . '</p>'; }
 
-        if ( get_post_type( get_the_ID() ) != 'page' && get_post_type( get_the_ID() ) != 'download' ) {
+        if ( get_post_type( $post->ID ) != 'page' && get_post_type( $post->ID ) != 'download' ) {
           lawyerist_get_postmeta();
         }
 
       echo '</div>'; // End .headline_excerpt.
+
+      if ( get_post_type( $post->ID ) == 'download' ) {
+        echo edd_get_purchase_link( array( 'download_id' => $post->ID ) );
+      }
 
       echo '<div class="clear"></div>';
 
