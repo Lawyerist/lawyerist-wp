@@ -1390,9 +1390,21 @@ Content
 	}
 
   .post_body {
-    margin: 0 0 4rem auto;
+    margin-bottom: 4rem;
+    padding-left: 6.2rem;
     max-width: 60rem;
   }
+
+    /* When the width reaches 600px (.post_body) plus 62px on either side
+    (the width of the Jetpack sharing buttons) plus 20px (.content_column padding). */
+    @media only screen and (max-width:743px) {
+
+      .post_body {
+        padding-left: 0;
+        margin: 0 auto;
+      }
+
+    }
 
 	.post_index {
 		background-color:#f5f5f5;
@@ -1556,6 +1568,39 @@ Content
     font-size: 80%;
   }
 
+
+  /*------------------------------
+	Sharing Buttons
+	------------------------------*/
+
+  .post_body {
+    position: relative;
+  }
+
+	.sharedaddy {
+		position: absolute;
+			top: 0;
+			left: 0;
+	}
+
+    .sd-content ul li {
+      display:block !important;
+    }
+
+    /* When the width reaches 600px (.post_body) plus 62px on either side
+    (the width of the Jetpack sharing buttons) plus 20px (.content_column padding). */
+    @media only screen and (max-width:743px) {
+
+    	.sharedaddy {
+    			margin-bottom: 4rem;
+    			position: static;
+    	}
+
+    		.sd-content ul li {
+    				display: inline !important;
+    		}
+
+    }
 
 
   /*------------------------------
@@ -1757,43 +1802,6 @@ Content
     margin-bottom: 2.8rem;
     width: 33.333%;
   }
-
-
-	/*------------------------------
-	Sharing Buttons
-	------------------------------*/
-
-	.sharedaddy {
-		position:absolute;
-			top:0;
-			left:-5.6rem;
-	}
-
-		.sd-content ul {
-			position:fixed;
-		}
-
-    .sd-content ul li {
-      display:block !important;
-    }
-
-    /* Content width (960px) + social icons (52px on each side + 20px offset on each side) + 30px for padding */
-    @media only screen and (max-width:1083px) {
-
-    	.sharedaddy {
-    			margin-bottom:1.6rem;
-    			position:static;
-    	}
-
-    		.sd-content ul {
-    			position:static;
-    		}
-
-    		.sd-content ul li {
-    				display:inline !important;
-    		}
-
-    }
 
 
   /*------------------------------
