@@ -84,23 +84,26 @@ add_action( 'after_setup_theme', 'lawyerist_theme_setup' );
 Nav Menu
 ------------------------------*/
 
-function register_my_menus() {
+function lawyerist_register_menus() {
+
 	register_nav_menus(
 		array(
 		 'main_nav' => 'Responsive Nav Menu (Below Header)'
 		)
 	);
+
 }
 
-add_action('init','register_my_menus');
+add_action('init','lawyerist_register_menus');
 
 
 /*------------------------------
 Sidebar
 ------------------------------*/
 
-function lawyerist_sidebar()  {
-	$args = array(
+function lawyerist_register_sidebars()  {
+
+	$sidebar_args = array(
 		'id'            => 'sidebar',
 		'name'          => 'Sidebar',
 		'description'   => 'Widgets start below the ads. Not visible on mobile.',
@@ -108,9 +111,11 @@ function lawyerist_sidebar()  {
 		'before_title'  => '<h3>',
 		'after_title'   => '</h3>',
 	);
-	register_sidebar( $args );
+	register_sidebar( $sidebar_args );
+
 }
-add_action( 'widgets_init', 'lawyerist_sidebar' );
+
+add_action( 'widgets_init', 'lawyerist_register_sidebars' );
 
 
 /* CONTENT ********************/
@@ -125,6 +130,7 @@ function lawyerist_query_mod( $wp_query ) {
 	set_query_var( 'post_type' , array( 'post', 'page', 'download' ) );
 
 }
+
 add_action('pre_get_posts','lawyerist_query_mod');
 
 
@@ -362,7 +368,7 @@ function lawyerist_loops() {
 Ads
 ------------------------------*/
 
-function insert_lawyerist_ap1() { ?>
+function lawyerist_get_ap1() { ?>
 
 	<?php if ( !has_tag('no-ads') && !is_mobile() ) { ?>
 
@@ -379,7 +385,7 @@ function insert_lawyerist_ap1() { ?>
 <?php }
 
 
-function insert_lawyerist_ap2() { ?>
+function lawyerist_get_ap2() { ?>
 
 	<div id="lawyerist_ap2">
 		<div id='div-gpt-ad-1429843825352-1' style='height:250px; width:300px;'>
@@ -392,7 +398,7 @@ function insert_lawyerist_ap2() { ?>
 <?php }
 
 
-function insert_lawyerist_ap3() { ?>
+function lawyerist_get_ap3() { ?>
 
 	<div id="lawyerist_ap3">
 		<div id='div-gpt-ad-1429843825352-2' style='height:250px; width:300px;'>
@@ -422,7 +428,9 @@ Remove Inline Width from Image Captions
 ------------------------------*/
 
 function lawyerist_remove_caption_padding( $width ) {
+
 	return $width - 10;
+	
 }
 
 add_filter( 'img_caption_shortcode_width', 'lawyerist_remove_caption_padding' );

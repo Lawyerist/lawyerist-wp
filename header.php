@@ -1,4 +1,4 @@
-<?php insert_lawyerist_ap1(); ?>
+<?php lawyerist_get_ap1(); ?>
 
 <div id="header_container">
 
