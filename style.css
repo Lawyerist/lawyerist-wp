@@ -1391,7 +1391,7 @@ Content
 
     }
 
-    /* Cut padding to 2rem. */
+    /* Cut padding to 3rem. */
     @media only screen and (max-width:419px) {
 
       .index .download_post_container {
@@ -1399,7 +1399,7 @@ Content
       }
 
       .index .download_post_container .wp-post-image {
-        margin-top: 2rem;
+        margin-top: 2rem; /* The top of the image just needs a bit of extra room. */
       }
 
     }
