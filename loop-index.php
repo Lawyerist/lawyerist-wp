@@ -92,6 +92,39 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
     echo '</div>'; // End #series_post_container.
 
+  // End series post.
+
+  // Downloads (need different formatting so the button shows up and is clickable.)
+  } elseif ( get_post_type( $post->ID ) == 'download' ) {
+
+    $post_title   = the_title( '', '', FALSE );
+    $post_excerpt = get_the_excerpt();
+    $post_url     = get_permalink();
+
+    echo '<div ';
+    echo post_class( 'download_post_container' );
+    echo '>';
+
+      echo '<a href="' . $post_url . '" title="' . $post_title . '">';
+
+        if ( has_post_thumbnail() ) { the_post_thumbnail( 'download_thumbnail' ); }
+
+        echo '<div class="headline_excerpt">';
+
+          echo '<h2 class="headline">' . $post_title . '</h2>';
+
+          echo '<p class="excerpt">' . $post_excerpt . '</p>';
+
+        echo '</div>'; // End .headline_excerpt.
+
+      echo '</a>';
+
+      echo edd_get_purchase_link( array( 'download_id' => $post->ID ) );
+
+    echo '</div>'; // End #download_post_container.
+
+  // End download.
+
   // Remaining post types/formats.
   } else {
 
@@ -108,8 +141,6 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
         if ( has_post_format( 'aside' ) || get_post_type( $post->ID ) == 'page' ) {
           the_post_thumbnail( 'aside_thumbnail' );
-        } elseif ( get_post_type( $post->ID ) == 'download' ) {
-          the_post_thumbnail( 'download_thumbnail' );
         } else {
           the_post_thumbnail( 'standard_thumbnail' );
         }
@@ -122,15 +153,11 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
         if ( !is_mobile() ) { echo '<p class="excerpt">' . $post_excerpt . '</p>'; }
 
-        if ( get_post_type( $post->ID ) != 'page' && get_post_type( $post->ID ) != 'download' ) {
+        if ( get_post_type( $post->ID ) != 'page' ) {
           lawyerist_get_postmeta();
         }
 
       echo '</div>'; // End .headline_excerpt.
-
-      if ( get_post_type( $post->ID ) == 'download' ) {
-        echo edd_get_purchase_link( array( 'download_id' => $post->ID ) );
-      }
 
       echo '<div class="clear"></div>';
 

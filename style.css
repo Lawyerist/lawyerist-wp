@@ -1173,6 +1173,7 @@ Content
 	Index Lists
 	------------------------------*/
 
+  .index .download_post_container,
   .index .series_post_container,
   .index a.post,
   .index a.download,
@@ -1189,6 +1190,7 @@ Content
 		text-decoration: none;
 	}
 
+  .index .download_post_container a,
   .index .series_post_container a,
   .index a.post a,
   .index a.download a,
@@ -1197,6 +1199,7 @@ Content
     text-decoration: none;
   }
 
+    .index .download_post_container a:hover,
     .index .series_post_container a:hover,
     .index a.post a:hover,
     .index a.download a:hover,
@@ -1210,6 +1213,7 @@ Content
     padding: 2rem;
   }
 
+    .index .download_post_container .headline,
     .index .post_in_series .headline,
   	.index a.post .headline,
     .index a.page .headline,
@@ -1218,6 +1222,7 @@ Content
     	margin-bottom: .2em;
   	}
 
+    .index .download_post_container .headline:hover,
     .index .post_in_series .headline:hover,
     .index a.post .headline:hover,
     .index a.page .headline:hover,
@@ -1234,6 +1239,7 @@ Content
       margin-bottom: 0;
     }
 
+    .index .download_post_container p,
     .index .post_in_series p,
     .index a.post p,
     .index a.page p,
@@ -1343,20 +1349,60 @@ Content
 
   /* Downloads */
 
-  .index a.type-download {
+  .index .download_post_container {
     border-top: .7rem solid #ed9c28;
     min-height: 25rem;
+    padding: 6rem;
   }
 
-  .index a.type-download .wp-post-image {
-    float: right;
-    margin: 2rem;
-    transform: rotate( .015turn );
-  }
+    .index .download_post_container .headline_excerpt {
+      padding: 0 25rem 0 0;
+    }
 
-  .index a.type-download .headline_excerpt {
-    padding: 4rem 34rem 4rem 4rem;
-  }
+      .index .download_post_container .wp-post-image {
+        float: right;
+        margin: 0;
+        transform: rotate( .015turn );
+      }
+
+      .index .download_post_container p {
+        font-size: 1.8rem;
+        margin-bottom: 1.5em;
+      }
+
+    .index .download_post_container .edd_download_purchase_form .button {
+      margin-bottom: 0;
+    }
+
+    /* Bump post image to the top when it's about half the width of the
+    .headline_excerpt element. */
+    @media only screen and (max-width:649px) {
+
+      .index .download_post_container .headline_excerpt {
+        padding: 0;
+      }
+
+        .index .download_post_container .wp-post-image {
+          display: block;
+          float: none;
+          margin: 0 auto 2rem auto;
+          transform: rotate( .015turn );
+        }
+
+    }
+
+    /* Cut padding to 2rem. */
+    @media only screen and (max-width:419px) {
+
+      .index .download_post_container {
+        padding: 3rem;
+      }
+
+      .index .download_post_container .wp-post-image {
+        margin-top: 2rem;
+      }
+
+    }
 
   /* Pages */
 
