@@ -1412,6 +1412,15 @@ Content
 
   /* Sponsored Posts */
 
+  .index a.sponsored_post {
+    padding-top: .7rem;
+  }
+
+  .index a.sponsored_post .headline_excerpt {
+    border-top: .7rem solid #ffffa0;
+    margin-top: -.7rem;
+  }
+
   .sponsored_by {
     background-color: #ffffa0;
   }

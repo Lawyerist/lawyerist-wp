@@ -131,9 +131,12 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
     $post_title   = the_title( '', '', FALSE );
     $post_excerpt = get_the_excerpt();
     $post_url     = get_permalink();
+    $post_classes = [];
+
+    if ( has_term( true, 'sponsor' ) ) { $post_classes[] = 'sponsored_post'; }
 
     echo '<a ';
-    post_class();
+    post_class( $post_classes );
     echo 'href="' . $post_url . '" title="' . $post_title . '">';
 
       // Select the appropriate thumbnail based on post type/format.
