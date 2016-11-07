@@ -142,8 +142,10 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
       // Select the appropriate thumbnail based on post type/format.
       if ( has_post_thumbnail() ) {
 
-        if ( has_post_format( 'aside' ) || get_post_type( $post->ID ) == 'page' ) {
+        if ( has_post_format( 'aside' ) ) {
           the_post_thumbnail( 'aside_thumbnail' );
+        } elseif ( get_post_type( $post->ID ) == 'page' ) {
+          the_post_thumbnail( 'thumbnail' );
         } else {
           the_post_thumbnail( 'standard_thumbnail' );
         }
@@ -154,9 +156,8 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
         echo '<h2 class="headline">' . $post_title . '</h2>';
 
-        if ( !is_mobile() ) { echo '<p class="excerpt">' . $post_excerpt . '</p>'; }
-
         if ( get_post_type( $post->ID ) != 'page' ) {
+          if ( !is_mobile() ) { echo '<p class="excerpt">' . $post_excerpt . '</p>'; }
           lawyerist_get_postmeta();
         }
 

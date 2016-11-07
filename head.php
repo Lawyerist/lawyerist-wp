@@ -13,7 +13,7 @@
 
 	if ( is_front_page() ) {
 
-		$description = get_bloginfo('description');
+		$description = get_bloginfo( 'description' );
 
 	} elseif ( is_single() || is_page() ) {
 

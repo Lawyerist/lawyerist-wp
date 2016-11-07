@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php get_template_part('head'); ?>
+<?php get_template_part( 'head' ); ?>
 
-<body <?php body_class($class); ?>>
+<body <?php body_class( $class ); ?>>
 
 <?php get_header(); ?>
 
