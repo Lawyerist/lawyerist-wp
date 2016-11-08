@@ -212,7 +212,6 @@ function lawyerist_get_postmeta() {
 
 	// This function must be used within the Loop
 
-	$this_post_id	= get_the_ID();
 	$url 					= get_the_permalink();
 	$num_comments	= get_comments_number();
 
@@ -221,7 +220,7 @@ function lawyerist_get_postmeta() {
 	if ( has_term( true, 'sponsor' ) && has_category( 'sponsored-posts' ) ) {
 
 		$sponsors = wp_get_post_terms(
-			$this_post_id,
+			$post->ID,
 			'sponsor',
 			array(
 				'fields' 	=> 'names',
@@ -232,7 +231,7 @@ function lawyerist_get_postmeta() {
 		$sponsor = $sponsors[0];
 
 		$sponsor_ids = wp_get_post_terms(
-			$this_post_id,
+			$post->ID,
 			'sponsor',
 			array(
 				'fields' 	=> 'ids',
@@ -256,7 +255,7 @@ function lawyerist_get_postmeta() {
 	} elseif ( has_term( true, 'sponsor' ) && !has_category( 'sponsored-posts' ) ) {
 
 		$sponsors = wp_get_post_terms(
-			$this_post_id,
+			$post->ID,
 			'sponsor',
 			array(
 				'fields' 	=> 'names',
@@ -267,7 +266,7 @@ function lawyerist_get_postmeta() {
 		$sponsor = $sponsors[0];
 
 		$sponsor_ids = wp_get_post_terms(
-			$this_post_id,
+			$post->ID,
 			'sponsor',
 			array(
 				'fields' 	=> 'ids',
@@ -332,7 +331,7 @@ function lawyerist_get_postmeta() {
 	// Output the results
 	echo '<div class="postmeta">';
 
-	if ( has_tag( 'lawyerist-podcast' ) ) {
+	if ( get_the_author_meta( 'user_nicename' ) == 'lawyerist'  ) {
 		echo '<span class="on_date">' . $date. '</span> ';
 	} else {
 		echo '<span class="author_link">By ' . $author . '</span> <span class="on_date">on ' . $date. '</span> ';

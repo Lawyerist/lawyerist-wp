@@ -1,17 +1,18 @@
 <?php
 
 
-/******************************
+/*
 Selectors
 
-$post_type == 'aside'
+$post_type == 'post' && $post_format == 'standard'
+$post_format == 'aside'
 has_tag( 'lawyerist-podcast' )
 has_term( true, 'series' )
 has_term( true, 'sponsor' )
 $post_type == 'download'
 $post_type == 'page'
 
-******************************/
+*/
 
 // Start the Loop.
 if ( have_posts() ) : while ( have_posts() ) : the_post();
@@ -21,6 +22,9 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
   $post_title     = the_title( '', '', FALSE );
   $post_url       = get_permalink();
   $post_type      = get_post_type( $post->ID );
+  if ( $post_type == 'post' ) {
+    $post_format  = get_post_format() ? : 'standard';
+  }
   $post_classes[] = 'index_post_container'; // .post, .page, and .download are added automatically, as are tags and formats.
 
   // Assign classes.
@@ -70,10 +74,10 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
       if ( has_post_thumbnail() ) {
 
         if ( has_term( true, 'series' ) ) {
-          the_post_thumbnail( 'standard_thumbnail' );
+          the_post_thumbnail( 'default_thumbnail' );
         } elseif ( $post_type == 'download' ) {
           the_post_thumbnail( 'download_thumbnail' );
-        } elseif ( $post_type == 'post' ) {
+        } elseif ( $post_type == 'post' && $post_format == 'standard' ) {
           the_post_thumbnail( 'standard_thumbnail' );
         } else {
           echo '<div class="default_thumbnail" style="background-image: url( ';
@@ -102,10 +106,8 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
           lawyerist_get_postmeta();
         }
 
-        // Clearfix for series posts.
-        if ( has_term( true, 'series' ) ) {
-          echo '<div class="clear"></div>';
-        }
+        // Clearfix
+        echo '<div class="clear"></div>';
 
       echo '</div>'; // Close .headline_excerpt.
 

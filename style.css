@@ -1103,6 +1103,19 @@ Content
 	Index Lists
 	------------------------------*/
 
+  /*
+  Selectors
+
+  .format-standard
+  .format-aside
+  .tag-lawyerist-podcast
+  .series
+  .sponsored
+  .download
+  .page
+
+  */
+
   /* Default layout, typography, and colors. */
 
   .index_post_container {
@@ -1161,6 +1174,10 @@ Content
 
   /* Post container styles. */
 
+  .index .tag-lawyerist-podcast {
+    padding-top: 2rem; /* Otherwise the mic is smushed against the top border. */
+  }
+
   .index .series {
     border-top: .7rem solid #ddd;
     padding: 2rem;
@@ -1184,10 +1201,6 @@ Content
 
     }
 
-  .index .page {
-    height: 15rem;
-  }
-
 
   /* Series title. */
 
@@ -1202,6 +1215,9 @@ Content
 
   .index .default_thumbnail {
     background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: .2rem 0 0 .2rem;
     height: 100%;
     position: absolute;
       top: 0;
@@ -1249,24 +1265,23 @@ Content
     width: 25rem;
   }
 
-  /* At 690px wide, the .index_post_container is 535px, or 280px for the image,
-  15px for the right margin of the image, and 240px for the headline and excerpt,
-  which seems about right. */
-  @media only screen and ( max-width:689px ) {
+    /* At 690px wide, the .index_post_container is 535px, or 280px for the image,
+    15px for the right margin of the image, and 240px for the headline and excerpt,
+    which seems about right. */
+    @media only screen and ( max-width:689px ) {
 
-    .index .download .wp-post-image {
-      display: block;
-      float: none;
-      margin: 0 auto 1.5rem auto;
+      .index .download .wp-post-image {
+        display: block;
+        float: none;
+        margin: 0 auto 1.5rem auto;
+      }
+
     }
-
-  }
 
   .index .page .wp-post-image {
     float: left;
     margin-bottom: 0;
-    margin-right: 1.5rem;
-    width: 15rem;
+    width: 20%;
   }
 
 
@@ -1276,19 +1291,31 @@ Content
     padding: 2rem;
   }
 
-  .index .format-aside .headline_excerpt {
-    padding: 2rem 2rem 0 2rem;
+  .index .format-aside .headline_excerpt,
+  .index .sponsored .headline_excerpt,
+  .index .page .headline_excerpt {
+    padding: 2rem;
   }
 
-  .index .series .headline_excerpt {
-    margin-bottom: 3rem;
-    padding: 0 0 0 28rem;
+  .index .format-aside.has-post-thumbnail .headline_excerpt,
+  .index .sponsored.has-post-thumbnail .headline_excerpt,
+  .index .page.has-post-thumbnail .headline_excerpt {
+    padding: 2rem 2rem 2rem 20%;
+    margin-left: 1.5rem;
+  }
+
+  .index .series .headline_excerpt,
+  .index .series.has-post-thumbnail .headline_excerpt {
+    margin: 0 0 3rem 0;
+    padding: 0 0 0 27rem;
   }
 
     /* See .index .series .wp-post-image, above. */
     @media only screen and ( max-width:639px ) {
 
-      .index .series .headline_excerpt {
+      .index .series .headline_excerpt,
+      .index .series.has-post-thumbnail .headline_excerpt {
+        margin: 0 0 3rem 0;
         padding: 0;
       }
 
@@ -1307,10 +1334,6 @@ Content
 
     }
 
-  .index .page .headline_excerpt {
-    padding: 2rem;
-  }
-
 
     /* Headline styles. */
 
@@ -1321,7 +1344,7 @@ Content
 
     .index .page .headline {
       font-size: 4.5rem;
-      margin-bottom: .5em;
+      margin-bottom: .1em;
     }
 
 
@@ -1332,6 +1355,10 @@ Content
     }
 
     .index .format-aside p {
+      font-size: 1.6rem;
+    }
+
+    .index .series p {
       font-size: 1.6rem;
     }
 
