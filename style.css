@@ -165,8 +165,7 @@ body {
 
 	#footer {
 		margin: 0 auto;
-		padding: 2rem 1rem;
-		width: 108rem;
+		padding: 2rem;
 	}
 
 
@@ -912,91 +911,6 @@ Menu
     left: auto;
     right: 0;
   }
-
-
-/* 800px */
-@media only screen and (max-width:799px) {
-
-  .mobile-menu-icon:before {
-    background-color: #c00;
-		color: #fff;
-		content: '\f419';
-    cursor: pointer;
-    display: block;
-    -moz-osx-font-smoothing: grayscale;
-  	-webkit-font-smoothing: antialiased;
-		font: normal 1.6rem/1em 'Genericons';
-    padding: 1rem;
-    speak: none;
-    text-align: center;
-		vertical-align: top;
-    width: 100%;
-	}
-
-  #main-menu,
-  #main-menu .menu-item.menu-item-has-children > a:after,
-  #main-menu .sub-menu {
-    display: none;
-  }
-
-  #main-menu .mobile-sub-menu-icon:after {
-    color: #fff;
-    content: '\f431';
-    cursor: pointer;
-    display: inline-block;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
-    float: right;
-    font: normal 1.6rem/1em 'Genericons';
-    padding: 1rem 1rem 1.1rem 1rem;
-    position: absolute;
-      right: 0;
-      top: 0;
-    speak: none;
-    text-align: right;
-    vertical-align: top;
-    width: 100%;
-    z-index: 100;
-  }
-
-  #main-menu .sub-menu {
-    column-count: 1;
-    height: auto;
-    position: static;
-    width: 100%;
-  }
-
-  #main-menu .menu-item {
-    display: block;
-    width: 100%;
-  }
-
-  #main-menu .has-sub-menu {
-    background-color: #c00;
-  }
-
-  #main-menu .open-menu {
-    background-color: #a00;
-  }
-
-  #main-menu .sub-menu .menu-item a:before {
-    color: #c00;
-    content: '\2022';
-    display: inline-block;
-    margin-right: .5rem;
-    width: 1.6rem;
-  }
-
-  /* About menu */
-  #menu-item-119566 {
-    float: none;
-  }
-
-    #menu-item-119566:hover .sub-menu {
-      left: 0;
-    }
-
-}
 
 
 /*------------------------------
@@ -2079,8 +1993,9 @@ Sidebar
 Footer
 ------------------------------*/
 
-#footer {
+#footer p {
     color: #666;
+    font-size: 1.6rem;
 }
 
 
