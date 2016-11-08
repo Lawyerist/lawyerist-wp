@@ -46,7 +46,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
     // Check for a series, get the series information, then output the series title.
     if ( has_term( true, 'series' ) ) {
 
-      $series_ID = wp_get_post_terms(
+      $series_IDs = wp_get_post_terms(
         $post->ID,
         'series',
         array(
@@ -56,11 +56,11 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
         )
       );
 
-      $series_info				= get_term( $series_ID[0] );
+      $series_info				= get_term( $series_IDs[0] );
       $series_title				= $series_info->name;
       $series_description = $series_info->description;
       $series_slug				= $series_info->slug;
-      $series_url					=	get_term_link( $series_ID[0], 'series' );
+      $series_url					=	get_term_link( $series_IDs[0], 'series' );
 
       echo '<h2 class="series_title"><a href="' . $series_url . '" title="' . $series_title . '">' . $series_title . '</a></h2>';
 
@@ -103,7 +103,12 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
         // Output the post meta unless we're showing a page or a download.
         if ( $post_type != 'page' && $post_type != 'download' ) {
-          lawyerist_get_postmeta();
+          lawyerist_postmeta();
+        }
+
+        // Show a button for downloads.
+        if ( $post_type == 'download' ) {
+          echo edd_get_purchase_link( array( 'download_id' => $post->ID ) );
         }
 
         // Clearfix
@@ -112,12 +117,6 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
       echo '</div>'; // Close .headline_excerpt.
 
     echo '</a>'; // This closes the post link container (.post).
-
-
-    // Show a button for downloads.
-    if ( $post_type == 'download' ) {
-      echo edd_get_purchase_link( array( 'download_id' => $post->ID ) );
-    }
 
 
     // If the post is in a series, show up to 4 additional posts in that series.
@@ -158,6 +157,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
         echo '</ul>';
 
+        // Clearfix
         echo '<div class="clear"></div>';
 
       endif; // End series sub-Loop.

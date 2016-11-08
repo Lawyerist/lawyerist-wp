@@ -486,16 +486,16 @@ p.wp-caption-text {
   margin-bottom: 1em;
 }
 
-  .author_link,
-  .sponsored_by,
-  .on_date,
-  .share_count,
-  .comment_link {
+  .author,
+  .sponsor,
+  .date,
+  .shares,
+  .comments {
     display: inline-block;
   }
 
-  .on_date,
-  .share_count {
+  .date,
+  .shares {
     margin-right: .5em;
   }
 
@@ -1370,7 +1370,7 @@ Content
 
     /* Postmeta styles */
 
-    .sponsored_by {
+    .sponsor {
       background-color: #ffffa0;
     }
 
@@ -1421,7 +1421,7 @@ Content
 	Posts
 	------------------------------*/
 
-  .share_count:before {
+  .shares:before {
 		content: '\f415';
 		display: inline-block;
 		-webkit-font-smoothing: antialiased;
@@ -1431,7 +1431,7 @@ Content
     vertical-align: text-top;
 	}
 
-	.comment_link:before {
+	.comments:before {
 		content:'\f300';
 		display:inline-block;
 		-webkit-font-smoothing:antialiased;
@@ -2350,7 +2350,7 @@ Print
   #email_social,
   #header_signup,
   .sharedaddy,
-  .comment_link,
+  .comments,
   .survival_guide_note,
   #mobile_ad,
   #post_footer,

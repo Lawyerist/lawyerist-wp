@@ -16,7 +16,7 @@
 				<div class="headline_postmeta">
 
 					<h1 class="headline entry-title"><?php the_title(); ?></h1>
-					<?php lawyerist_get_postmeta(); ?>
+					<?php lawyerist_postmeta(); ?>
 					<div class="clear"></div>
 
 				</div>
