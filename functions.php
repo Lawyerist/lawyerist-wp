@@ -416,10 +416,10 @@ Add Image Sizes
 ------------------------------*/
 
 if ( function_exists( 'add_image_size' ) ) {
-	add_image_size( 'standard_thumbnail', 758, 379, true );
-	add_image_size( 'aside_thumbnail', 300, 250, true );
+	add_image_size( 'default_thumbnail', 300, 250, true );
+	add_image_size( 'standard_thumbnail', 740, 416.25, true );
 	add_image_size( 'single_featured', 1180, 0 );
-	add_image_size( 'download_thumbnail', 220, 0 );
+	add_image_size( 'download_thumbnail', 250, 0 );
 }
 
 
@@ -430,7 +430,7 @@ Remove Inline Width from Image Captions
 function lawyerist_remove_caption_padding( $width ) {
 
 	return $width - 10;
-	
+
 }
 
 add_filter( 'img_caption_shortcode_width', 'lawyerist_remove_caption_padding' );

@@ -1103,14 +1103,17 @@ Content
 	Index Lists
 	------------------------------*/
 
+  /* Default layout, typography, and colors. */
+
   .index_post_container {
     background-color: #fff;
-    border: .1rem solid #ddd;
     border-radius: .2rem;
-    box-shadow: .1rem .1rem .3rem #ddd;
+    box-shadow:
+      0 0 0 .1rem #ddd,
+      .1rem .1rem .3rem #ddd
+    ;
     display: block;
     margin-bottom: 1rem;
-    overflow: hidden;
     padding: 0;
     position: relative;
 		text-decoration: none;
@@ -1128,7 +1131,6 @@ Content
 
   .index_post_container .headline_excerpt {
     color: #111;
-    padding: 2rem;
   }
 
     .index_post_container .headline {
@@ -1143,7 +1145,7 @@ Content
 
     .index_post_container .postmeta {
       font-size: 1.4rem;
-      margin-bottom: 0;
+      margin-bottom: .5rem;
     }
 
     .index_post_container p {
@@ -1157,45 +1159,37 @@ Content
   }
 
 
-  /* Standard Posts */
+  /* Post container styles. */
 
-  .index a.format-standard .wp-post-image {
-    display: block;
-    margin: 0;
-    width: 100%;
-  }
-
-  .index a.format-standard p {
-    font-size: 1.8rem;
-  }
-
-
-  /* Asides/Not-Featured Posts */
-
-  .index a.format-aside .wp-post-image {
-    float: left;
-    margin-bottom: 0;
-    margin-right: 1.5rem;
-    width: 25rem;
-    max-width: 50%;
-  }
-
-  .index a.format-aside .headline {
-    font-size: 2.4rem;
-    margin-bottom: .5em;
-  }
-
-  .index a.format-aside p {
-    font-size: 1.6rem;
-  }
-
-
-  /* Posts in a Series */
-
-  .index .index_post_container {
+  .index .series {
     border-top: .7rem solid #ddd;
     padding: 2rem;
   }
+
+  .index .sponsored {
+    border-top: .7rem solid #ffffa0;
+  }
+
+  .index .download {
+    border-top: .7rem solid #ed9c28;
+    padding: 6rem;
+  }
+
+    /* Just feels right. */
+    @media only screen and ( max-width:399px ) {
+
+      .index .download {
+        padding: 3rem;
+      }
+
+    }
+
+  .index .page {
+    height: 15rem;
+  }
+
+
+  /* Series title. */
 
   .index h2.series_title {
     color: #666;
@@ -1203,41 +1197,165 @@ Content
     text-transform: uppercase;
   }
 
-  .index a.series {
-    border: 0;
-    box-shadow: none;
-    margin-bottom: 3rem;
+
+  /* Post image styles. */
+
+  .index .default_thumbnail {
+    background-position: center top;
+    height: 100%;
+    position: absolute;
+      top: 0;
+      left: 0;
+    width: 20%;
   }
 
-  .index a.series .wp-post-image {
+  .index .format-standard .wp-post-image {
+    display: block;
+    margin: 0;
+    width: 100%;
+  }
+
+  .index .format-aside .wp-post-image {
     float: left;
     margin-bottom: 0;
     margin-right: 1.5rem;
     width: 25rem;
-    max-width: 50%;
   }
 
-  .index a.series .headline_excerpt {
-    margin-left: 1.5rem;
-    padding: 0 0 0 25rem;
+  .index .series .wp-post-image {
+    float: left;
+    margin-bottom: 0;
+    margin-right: 1.5rem;
+    width: 25rem;
   }
 
-    /* Images begin to shrink with the column at 576px. */
-    @media only screen and (max-width:576px) {
+    /* At 640px wide, the .index_post_container is 565px, or 250px for the image,
+    15px for the right margin of the image, and 300px for the headline. Seems
+    like a good place to break. */
+    @media only screen and ( max-width:639px ) {
 
-      .index a.series .wp-post-image {
+      .index .series .wp-post-image {
         float: none;
-        margin-bottom: 2rem;
-        max-width: 100%;
+        margin: 0 0 1.5rem 0;
         width: 100%;
       }
 
-      .index a.series .headline_excerpt {
-        margin: 0;
+    }
+
+  .index .download .wp-post-image {
+    float: right;
+    margin: 0;
+    transform: rotate( .015turn );
+    width: 25rem;
+  }
+
+  /* At 690px wide, the .index_post_container is 535px, or 280px for the image,
+  15px for the right margin of the image, and 240px for the headline and excerpt,
+  which seems about right. */
+  @media only screen and ( max-width:689px ) {
+
+    .index .download .wp-post-image {
+      display: block;
+      float: none;
+      margin: 0 auto 1.5rem auto;
+    }
+
+  }
+
+  .index .page .wp-post-image {
+    float: left;
+    margin-bottom: 0;
+    margin-right: 1.5rem;
+    width: 15rem;
+  }
+
+
+  /* .headline_excerpt styles. */
+
+  .index .format-standard .headline_excerpt {
+    padding: 2rem;
+  }
+
+  .index .format-aside .headline_excerpt {
+    padding: 2rem 2rem 0 2rem;
+  }
+
+  .index .series .headline_excerpt {
+    margin-bottom: 3rem;
+    padding: 0 0 0 28rem;
+  }
+
+    /* See .index .series .wp-post-image, above. */
+    @media only screen and ( max-width:639px ) {
+
+      .index .series .headline_excerpt {
         padding: 0;
       }
 
     }
+
+  .index .download .headline_excerpt {
+    padding: 0 26.5rem 0 0;
+  }
+
+    /* See .index .download .wp-post-image, above. */
+    @media only screen and ( max-width:689px ) {
+
+      .index .download .headline_excerpt {
+        padding: 0;
+      }
+
+    }
+
+  .index .page .headline_excerpt {
+    padding: 2rem;
+  }
+
+
+    /* Headline styles. */
+
+    .index .format-aside .headline {
+      font-size: 2.4rem;
+      margin-bottom: .5em;
+    }
+
+    .index .page .headline {
+      font-size: 4.5rem;
+      margin-bottom: .5em;
+    }
+
+
+    /* Excerpt styles. */
+
+    .index .format-standard p {
+      font-size: 1.8rem;
+    }
+
+    .index .format-aside p {
+      font-size: 1.6rem;
+    }
+
+    .index .download p {
+      font-size: 1.8rem;
+      margin-bottom: 1.5em;
+    }
+
+
+    /* Postmeta styles */
+
+    .sponsored_by {
+      background-color: #ffffa0;
+    }
+
+
+  /* Button for downloads. */
+
+  .index .edd_download_purchase_form .button {
+    margin-bottom: 0;
+  }
+
+
+  /* Additional series posts. */
 
   .index .series ul {
     display: block;
@@ -1255,140 +1373,21 @@ Content
       width: 25%;
     }
 
+      @media only screen and (max-width:624px) {
+
+        .index .series li {
+          margin-bottom: .5em;
+          padding: 0;
+          width: 100%;
+        }
+
+      }
+
     .index .series li .headline {
       font-family: concourse, 'Helvetica Neue', Helvetica, Arial, sans-serif;
       font-size: 1.8rem;
       font-weight: normal;
     }
-
-    /* Keep center margin between 15px and 20px. */
-    @media only screen and (max-width:576px) {
-
-      .index .series ul > li {
-        margin-bottom: 2rem;
-        padding: 0;
-        width: 48%;
-      }
-
-      .index .series ul > li:nth-child(odd) {
-        margin-right: 4%;
-      }
-
-    }
-
-    @media only screen and (max-width:477px) {
-
-      .index .series ul > li {
-        width: 47.5%;
-      }
-
-      .index .series ul > li:nth-child(odd) {
-        margin-right: 5%;
-      }
-
-    }
-
-    @media only screen and (max-width:374px) {
-
-      .index .series ul > li {
-        width: 46.64%;
-      }
-
-      .index .series ul > li:nth-child(odd) {
-        margin-right: 6.72%;
-      }
-
-    }
-
-
-  /* Downloads */
-
-  .index .download {
-    border-top: .7rem solid #ed9c28;
-    min-height: 25rem;
-    padding: 6rem;
-  }
-
-    .index .download .headline_excerpt {
-      padding: 0 25rem 0 0;
-    }
-
-      .index .download .wp-post-image {
-        float: right;
-        margin: 0;
-        transform: rotate( .015turn );
-      }
-
-      .index .download p {
-        font-size: 1.8rem;
-        margin-bottom: 1.5em;
-      }
-
-    .index .download .edd_download_purchase_form .button {
-      margin-bottom: 0;
-    }
-
-    /* Bump post image to the top when it's about half the width of the
-    .headline_excerpt element. */
-    @media only screen and (max-width:649px) {
-
-      .index .download .headline_excerpt {
-        padding: 0;
-      }
-
-        .index .download .wp-post-image {
-          display: block;
-          float: none;
-          margin: 0 auto 2rem auto;
-          transform: rotate( .015turn );
-        }
-
-    }
-
-    /* Cut padding to 3rem. */
-    @media only screen and (max-width:419px) {
-
-      .index .download {
-        padding: 3rem;
-      }
-
-      .index .download .wp-post-image {
-        margin-top: 2rem; /* The top of the image just needs a bit of extra room. */
-      }
-
-    }
-
-
-  /* Pages */
-
-  .index a.page .wp-post-image {
-    float: left;
-    margin-bottom: 0;
-    margin-right: 1.5rem;
-    width: 15rem;
-    max-width: 25%;
-  }
-
-  .index a.page .headline {
-    font-size: 2.4rem;
-    margin-bottom: .5em;
-  }
-
-
-  /* Sponsored Posts */
-
-  .index a.sponsored {
-    padding-top: .7rem;
-  }
-
-  .index a.sponsored .headline_excerpt {
-    border-top: .7rem solid #ffffa0;
-    margin-top: -.7rem;
-  }
-
-  .sponsored_by {
-    background-color: #ffffa0;
-  }
 
 
 	/*------------------------------

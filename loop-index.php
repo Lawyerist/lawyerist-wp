@@ -4,12 +4,12 @@
 /******************************
 Selectors
 
+$post_type == 'aside'
 has_tag( 'lawyerist-podcast' )
 has_term( true, 'series' )
 has_term( true, 'sponsor' )
-get_post_type( $post->ID ) == 'download'
-get_post_type( $post->ID ) == 'page'
-get_post_type( $post->ID ) == 'aside'
+$post_type == 'download'
+$post_type == 'page'
 
 ******************************/
 
@@ -17,10 +17,11 @@ get_post_type( $post->ID ) == 'aside'
 if ( have_posts() ) : while ( have_posts() ) : the_post();
 
   // Assign post variables.
-  $post_num = 1; // Counter for inserting mobile ads.
-  $post_title   = the_title( '', '', FALSE );
-  $post_url     = get_permalink();
-  $post_classes = []; // .post, .page, and .download are added automatically, as are tags and formats.
+  $post_num       = 1; // Counter for inserting mobile ads.
+  $post_title     = the_title( '', '', FALSE );
+  $post_url       = get_permalink();
+  $post_type      = get_post_type( $post->ID );
+  $post_classes[] = 'index_post_container'; // .post, .page, and .download are added automatically, as are tags and formats.
 
   // Assign classes.
   if ( has_term( true, 'series' ) ) {
@@ -33,7 +34,9 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
 
   // This is the container for all posts/groups of posts.
-  echo '<div class="index_post_container">';
+  echo '<div ' ;
+  post_class( $post_classes );
+  echo '>';
 
     // Series title:
     // Check for a series, get the series information, then output the series title.
@@ -61,21 +64,21 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
 
     // Post link container (.post). The whole thing is a link!
-    echo '<a href="' . $post_url . '" title="' . $post_title . '"';
-    post_class( $post_classes );
-    echo '>';
+    echo '<a href="' . $post_url . '" title="' . $post_title . '">';
 
-      // Show the post image if there is one.
+      // Post images for series,
       if ( has_post_thumbnail() ) {
 
-        if ( has_post_format( 'aside' ) ) {
-          the_post_thumbnail( 'aside_thumbnail' );
-        } elseif ( has_post_thumbnail() ) {
-          the_post_thumbnail( 'download_thumbnail' );
-        } elseif ( get_post_type( $post->ID ) == 'page' ) {
-          the_post_thumbnail( 'thumbnail' );
-        } else {
+        if ( has_term( true, 'series' ) ) {
           the_post_thumbnail( 'standard_thumbnail' );
+        } elseif ( $post_type == 'download' ) {
+          the_post_thumbnail( 'download_thumbnail' );
+        } elseif ( $post_type == 'post' ) {
+          the_post_thumbnail( 'standard_thumbnail' );
+        } else {
+          echo '<div class="default_thumbnail" style="background-image: url( ';
+          echo the_post_thumbnail_url( 'default_thumbnail' );
+          echo ' );"></div>';
         }
 
       }
@@ -86,7 +89,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
         echo '<h2 class="headline">' . $post_title . '</h2>';
 
         // Output the excerpt unless we're showing a page.
-        if ( get_post_type( $post->ID ) != 'page' ) {
+        if ( $post_type != 'page' ) {
 
           $post_excerpt = get_the_excerpt();
 
@@ -95,8 +98,13 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
         }
 
         // Output the post meta unless we're showing a page or a download.
-        if ( get_post_type( $post->ID ) != ( 'page' || 'download' ) ) {
+        if ( $post_type != 'page' && $post_type != 'download' ) {
           lawyerist_get_postmeta();
+        }
+
+        // Clearfix for series posts.
+        if ( has_term( true, 'series' ) ) {
+          echo '<div class="clear"></div>';
         }
 
       echo '</div>'; // Close .headline_excerpt.
@@ -105,7 +113,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
 
     // Show a button for downloads.
-    if ( get_post_type( $post->ID ) == 'download' ) {
+    if ( $post_type == 'download' ) {
       echo edd_get_purchase_link( array( 'download_id' => $post->ID ) );
     }
 
@@ -142,7 +150,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
             $post_title = the_title( '', '', FALSE );
             $post_url   = get_permalink();
 
-            echo '<li><a class="series" href="' . $post_url . '" title="' . $post_title . '"><h3 class="headline">' . $post_title . '</h3></a></li>';
+            echo '<li><a href="' . $post_url . '" title="' . $post_title . '"><h3 class="headline">' . $post_title . '</h3></a></li>';
 
           endwhile;
 
@@ -158,12 +166,15 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
 
   echo '</div>'; // Close .index_post_container.
+  echo "\n\n";
 
   // Insert ads on mobile.
   if ( $post_num == 1 && is_mobile() ) { lawyerist_get_ap2(); }
   if ( $post_num == 3 && is_mobile() ) { lawyerist_get_ap3(); }
 
   $post_num++; // Increment counter.
+
+  unset ( $post_classes ); // Clear the post classes for the next trip through the Loop.
 
 endwhile; endif; // Close the Loop.
 
