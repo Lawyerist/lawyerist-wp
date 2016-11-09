@@ -108,7 +108,7 @@ body {
 		list-style: none;
 		margin: 0 auto;
 		padding: 0;
-    max-width: 110rem; /* Without padding so the text lines up along the left. */
+    max-width: 109rem; /* Same width #header and #content_column_container, minus padding. */
 	}
 
 #content_column_container {
@@ -131,14 +131,6 @@ body {
 
     @media only screen and ( max-width: 1099px ) {
     /* Includes 20px for padding (10px on each side). */
-
-      #header {
-        max-width: 74rem; /* Same as #content_column max width, but w/o padding. */
-      }
-
-      .menu-default-container > ul {
-        max-width: 76rem; /* Same as #content_column max width. */
-      }
 
       #content_column_container {
       	width: 100%;
@@ -868,9 +860,13 @@ Menu
 	display: block;
 	font-size: 1.6rem;
 	line-height: 1;
-	padding: 1rem;
+	padding: .5rem;
 	text-decoration: none;
 }
+
+  #main-menu .menu-item a.open {
+    background: #a00;
+  }
 
   #main-menu .menu > .menu-item:hover a {
     background: #a00;
@@ -915,8 +911,10 @@ Menu
 
 #main-menu .sub-menu {
   background: #a00;
+  box-shadow: 0 .2rem .3rem rgba(0, 0, 0, 0.2);
+  display: none;
   margin: 0;
-  height: 0;
+  min-width: 18rem;
   overflow: hidden;
   position: absolute;
   width: 100%;
@@ -924,15 +922,15 @@ Menu
 }
 
   #main-menu .sub-menu .menu-item {
+    box-sizing: border-box;
+    padding: .5rem;
     width: 100%;
   }
 
-  /* This is what makes the sub menu show up */
-  #main-menu .menu-item:hover .sub-menu {
-    height: auto;
+  #main-menu .sub-menu a {
+    line-height: 1.2;
   }
 
-  #main-menu .menu-item-object-page a:hover,
   #main-menu .sub-menu .menu-item:hover a {
     color: #ddd;
   }
@@ -941,14 +939,31 @@ Menu
 /* Mobile menu. */
 @media only screen and ( max-width: 659px ) {
 
+  #main-menu .menu-item {
+    position: static;
+  }
+
   #main-menu .menu-item > a {
-    font-size: .9rem;
+    font-size: 1.2rem;
     text-align: center;
   }
 
   #main-menu .menu-item > a:before {
     display: block;
     margin: 0;
+  }
+
+  #main-menu .sub-menu {
+    box-shadow: 0 -.2rem .3rem rgba(0, 0, 0, 0.2);
+    bottom: 5.4rem;
+    left: 0;
+    width: 100%;
+  }
+
+  #main-menu .sub-menu a {
+    font-size: 1.8rem;
+    padding: 1rem;
+    text-align: left;
   }
 
 }
