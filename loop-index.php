@@ -144,7 +144,9 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
       if ( $series_query->post_count > 1 ) :
 
-        echo '<ul>';
+        $posts_in_series = 'series_of_' . $series_query->post_count;
+
+        echo '<ul class="' . $posts_in_series . '">';
 
           while ( $series_query->have_posts() ) : $series_query->the_post();
 
