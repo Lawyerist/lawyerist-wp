@@ -949,10 +949,6 @@ Menu
     position: static;
   }
 
-  #main-menu .menu > .menu-item:hover a {
-    background: #c00;
-  }
-
   #main-menu .menu-item > a {
     font-size: 1.2rem;
     text-align: center;
