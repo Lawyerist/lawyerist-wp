@@ -156,7 +156,7 @@ body {
       #header_container {
         border-bottom: 1.4rem solid #c00;
         box-shadow: 0 .2rem .3rem rgba(0, 0, 0, 0.2);
-        margin-bottom: 2rem;
+        margin-bottom: 1rem;
       }
 
         #header {
@@ -851,7 +851,7 @@ Menu
   width: 20%;
 }
 
-  #main-menu .menu-item:nth-child(n+6) { /* Limits menu to 5 items. */
+  #main-menu ul.menu > .menu-item:nth-child(n+6) { /* Limits menu to 5 items. */
     display: none;
   }
 
@@ -885,7 +885,13 @@ Menu
 
     /* Home */
     .menu-item-home > a:before {
-      content: '\f417';
+      background-color: #fff;
+      border-radius: 50%;
+      color: #c00;
+      content: 'L';
+      font-family: 'adler', serif !important;
+      text-align: center;
+      width: 3.2rem;
     }
 
     /* Topics */
@@ -941,6 +947,10 @@ Menu
 
   #main-menu .menu-item {
     position: static;
+  }
+
+  #main-menu .menu > .menu-item:hover a {
+    background: #c00;
   }
 
   #main-menu .menu-item > a {
