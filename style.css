@@ -1300,7 +1300,7 @@ Content
     /* See .index .download .wp-post-image, above. */
     @media only screen and ( max-width:689px ) {
 
-      .index .download .headline_excerpt {
+      .index .download.has-post-thumbnail .headline_excerpt {
         padding: 0;
       }
 
