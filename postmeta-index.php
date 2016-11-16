@@ -37,7 +37,7 @@ echo '<div class="postmeta">';
 
   } else {
 
-    echo '<span class="author">By ' . $author . '</span> ';
+    echo '<span class="author">By ' . $author . '&nbsp;</span>';
     echo '<span class="date">on ' . $date . '</span>';
 
   }

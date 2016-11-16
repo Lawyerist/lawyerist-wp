@@ -24,7 +24,12 @@ echo '<div class="postmeta">';
     $sponsor      = $sponsor_info->name;
     $sponsor_url  = $sponsor_info->description;
 
-    echo '<span class="author sponsor">Sponsored by <a href="' . $sponsor_url . '">' . $sponsor . '</a></span> ';
+    if ( has_category( 'sponsored-posts' ) ) {
+      echo '<span class="author sponsor">Sponsored by <a href="' . $sponsor_url . '">' . $sponsor . '</a></span> ';
+    } else {
+      echo '<span class="author">By <a href="' . $author_url . '">' . $author . '</a>,&nbsp;</span><span class="author sponsor">sponsored by <a href="' . $sponsor_url . '">' . $sponsor . '</a>,&nbsp;</span> ';
+    }
+
     echo '<span class="date">on ' . $date . '</span>';
 
   } elseif ( $author == 'Lawyerist' ) {
@@ -35,7 +40,7 @@ echo '<div class="postmeta">';
 
     $author_url = get_author_posts_url( get_the_author_meta( 'ID' ) );
 
-    echo '<span class="author">By <a href="' . $author_url . '">' . $author . '</a></span> ';
+    echo '<span class="author">By <a href="' . $author_url . '">' . $author . '</a>&nbsp;</span>';
     echo '<span class="date">on ' . $date . '</span>';
 
   }
