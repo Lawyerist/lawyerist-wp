@@ -185,7 +185,7 @@ body {
 	#footer {
 		margin: 0 auto;
     max-width: 108rem;
-		padding: 2rem 1rem;
+		padding: 2rem 1rem 7.6rem 1rem;
 	}
 
 
@@ -2071,6 +2071,10 @@ Footer
 #footer p {
     color: #666;
     font-size: 1.6rem;
+}
+
+#footer p:last-child {
+  margin-bottom: 0;
 }
 
 
