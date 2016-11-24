@@ -662,6 +662,7 @@ img.inline {
 
 .single img.wp-post-image.size-single_featured {
   margin-bottom: 2rem;
+  width: 100%;
 }
 
 .wp-caption {
@@ -945,6 +946,7 @@ Menu
 
   #main-menu .menu-item > a {
     font-size: 1.2rem;
+    padding: .5rem .5rem .7rem .5rem;
     text-align: center;
   }
 
