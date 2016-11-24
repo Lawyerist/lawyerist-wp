@@ -23,13 +23,10 @@ Header
   Title
   Header Signup
 Menu
-Discussions
 Content
 	Index Lists
 	Posts
   Tables
-  Post Footer Nav
-  Galleries
   Author List Shortcode
 	Sharing Buttons
   Survival Guides
@@ -131,6 +128,10 @@ body {
 
     @media only screen and ( max-width: 1099px ) {
     /* Includes 20px for padding (10px on each side). */
+
+      .headline_postmeta {
+        padding: 0 1rem;
+      }
 
       #content_column_container {
       	width: 100%;
@@ -255,8 +256,6 @@ button,
 #header,
 input[type="button"],
 input[type="submit"],
-.fp_tab,
-.fp_bottom_tab,
 label,
 #lab_posts,
 .page_links,
@@ -690,6 +689,26 @@ img.inline {
 
   }
 
+.gallery {
+  margin-bottom: 2.8rem !important;
+}
+
+#gallery-2 img {
+  border: 0 !important;
+}
+
+#gallery-3 dl.gallery-item {
+  border: 1px solid #ddd !important;
+  margin: 0 .2rem .2rem 0!important;
+  width: 32.708333333% !important;
+}
+
+#gallery-3 img {
+  border: 0 !important;
+  height: auto;
+  width: 100%;
+}
+
 
 /*------------------------------
 Header
@@ -968,43 +987,6 @@ Menu
     text-align: left;
   }
 
-}
-
-
-/*------------------------------
-Discussions
-------------------------------*/
-
-#lab_posts {
-  background:#1e79a7;
-	display:inline-block;
-	margin-bottom:.2rem;
-  width:100%;
-}
-
-#lab_posts ul {
-	list-style:none;
-	margin:2rem 2.5rem 2.8rem 2.5rem;
-}
-
-  #lab_posts li {
-    margin-bottom: 1em;
-  }
-
-  #lab_posts li a {
-		color:#fff;
-	}
-
-#lab_posts img {
-	border-radius: 50%;
-	float: left;
-  margin-bottom: 0;
-	opacity: 1;
-}
-
-#lab_posts .lab_headline {
-	display:block;
-	padding-left:42px;
 }
 
 
@@ -1642,191 +1624,6 @@ Content
     		}
 
     }
-
-
-  /*------------------------------
-  After-Post Signup
-  ------------------------------*/
-
-  #after_post_signup {
-    background-color: #eee;
-    border: 1px solid #ddd;
-    margin-bottom: 6rem;
-    padding: 2rem 2.5rem;
-  }
-
-    #mc_embed_signup_after_post {
-      display: inline-block;
-      float: right;
-      margin-left: 1.5rem;
-      width: 100%;
-    }
-
-    #after_post_signup input {
-      font-family: concourse, 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      font-size: 1.8rem;
-      height: 3.2rem;
-      padding: 0 .8rem;
-      vertical-align: middle;
-    }
-
-    .name_input_container {
-      display: block;
-      width: 100%;
-    }
-
-      .name_input_container .mc_input {
-        box-sizing: border-box;
-        display: inline-block;
-        float: left;
-        width: 50%;
-      }
-
-      .name_input_container .mc_input:first-child {
-        padding-right: .4rem;
-      }
-
-      .name_input_container input {
-        width: 100%;
-      }
-
-    #mc_embed_signup_after_post input[type="email"] {
-      margin-bottom: .4rem;
-      width: 100%;
-    }
-
-    #mc_embed_signup_after_post input[type="submit"] {
-      background-color: #ffa000;
-      float: right;
-      margin: 0;
-      width: 10rem;
-    }
-
-    #mc_embed_signup_after_post input[type="submit"]:hover {
-      background-color: #ffb333;
-    }
-
-    #mc_embed_signup_after_post input[type="submit"]:active {
-      background-color: #e69000;
-    }
-
-
-  /*------------------------------
-  Post Footer Nav
-  ------------------------------*/
-
-  #current_posts_nav a {
-    background: #111;
-		background: linear-gradient(135deg, #111111 0%, #555555 100%);
-		border: none;
-		clear: none;
-		display: inline-block;
-		float: left;
-		height: 17rem;
-		overflow: hidden;
-		margin: 0 .2rem .2rem 0;
-		padding: 0;
-		position: relative;
-		text-decoration: none;
-    width: 15.85rem;
-  }
-
-  #current_posts_nav a:last-child {
-    margin-right: 0;
-  }
-
-  #current_posts_nav a.two_in_current_posts_nav {
-    width: 31.9rem;
-  }
-
-  #current_posts_nav a.three_in_current_posts_nav {
-    width: 21.2rem;
-  }
-
-  .current_posts_headline {
-    color: #fff;
-    font-size: 2rem;
-    line-height: 2.5rem;
-    padding: 1rem;
-    position: absolute;
-      top: 0;
-      left: 0;
-    text-shadow: .1rem .1rem 0 #111, 0 0 2.8rem #555;
-    width: auto;
-    z-index: 1;
-  }
-
-  #current_posts_nav img {
-    min-height: 100%;
-		margin: 0 !important;
-		opacity: .3;
-    transition: opacity .2s;
-		width: 100%;
-		z-index: 0;
-  }
-
-    #current_posts_nav a:hover img {
-      opacity: .1;
-    }
-
-  /* Content column width (640px) + 20px for padding */
-  @media only screen and (max-width:659px) {
-
-    #current_posts_nav a,
-    #current_posts_nav a.two_in_current_posts_nav,
-    #current_posts_nav a.three_in_current_posts_nav {
-      display: block;
-      float: none;
-      height: 9rem;
-      margin-right: 0;
-      width: auto;
-    }
-
-    #current_posts_nav .current_posts_headline {
-      padding: 2rem 2.5rem;
-    }
-
-    #current_posts_contents {
-      padding: 0;
-    }
-
-    #current_posts_contents li,
-    #current_posts_contents li:nth-child(odd) {
-      float: none;
-      margin: 0 0 2.8rem 0;
-      width: auto;
-    }
-
-  }
-
-  #after_post .fp_bottom_tab {
-    margin-bottom: 6rem;
-  }
-
-
-  /*------------------------------
-  Galleries
-  ------------------------------*/
-
-  .gallery {
-    margin-bottom: 2.8rem !important;
-  }
-
-  #gallery-2 img {
-    border: 0 !important;
-  }
-
-  #gallery-3 dl.gallery-item {
-    border: 1px solid #ddd !important;
-    margin: 0 .2rem .2rem 0!important;
-    width: 32.708333333% !important;
-  }
-
-  #gallery-3 img {
-    border: 0 !important;
-    height: auto;
-    width: 100%;
-  }
 
 
   /*------------------------------
