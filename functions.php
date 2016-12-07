@@ -87,7 +87,8 @@ function lawyerist_register_menus() {
 
 	register_nav_menus(
 		array(
-		 'main_nav' => 'Responsive Nav Menu (Below Header)'
+		 'main_topics'	=> 'Main Menu: Topics',
+		 'main_discuss'	=> 'Main Menu: Discuss'
 		)
 	);
 

@@ -32,5 +32,23 @@
 </div><!-- #header_container -->
 
 <div id="main-menu">
-	<?php wp_nav_menu( array( 'theme_location' => 'main_nav' ) ); ?>
+	<ul>
+		<li id="main-menu-home">
+			<a href="<?php echo home_url(); ?>">Home</a>
+		</li>
+		<li id="main-menu-topics">
+			<a href="#">Topics</a>
+			<?php wp_nav_menu( array( 'theme_location' => 'main_topics' ) ); ?>
+		</li>
+		<li id="main-menu-discuss">
+			<a href="#">Discuss</a>
+			<?php wp_nav_menu( array( 'theme_location' => 'main_discuss' ) ); ?>
+		</li>
+		<li id="main-menu-subscribe">
+			<a href="#">Subscribe</a>
+		</li>
+		<li id="main-menu-search">
+			<a href="#">Search</a>
+		</li>
+	</ul>
 </div>
