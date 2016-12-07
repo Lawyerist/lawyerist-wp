@@ -18,32 +18,40 @@
 
 </div><!-- #header_container -->
 
-<div id="main-menu">
-	<ul>
-		<li id="main-menu-home">
+<div id="main_menu_container">
+	<ul id="main-menu">
+		<li id="main-menu-home" class="main-menu-item">
 			<a href="<?php echo home_url(); ?>">Home</a>
 		</li>
-		<li id="main-menu-topics">
+		<li id="main-menu-topics" class="main-menu-item">
 			<a href="#">Topics</a>
-			<?php wp_nav_menu( array( 'theme_location' => 'main_topics' ) ); ?>
+			<div class="main-menu-dropdown">
+				<?php wp_nav_menu( array( 'theme_location' => 'main_topics' ) ); ?>
+			</div>
 		</li>
-		<li id="main-menu-discuss">
+		<li id="main-menu-discuss" class="main-menu-item">
 			<a href="#">Discuss</a>
-			<?php wp_nav_menu( array( 'theme_location' => 'main_discuss' ) ); ?>
+			<div class="main-menu-dropdown">
+				<?php wp_nav_menu( array( 'theme_location' => 'main_discuss' ) ); ?>
+			</div>
 		</li>
-		<li id="main-menu-subscribe">
+		<li id="main-menu-subscribe" class="main-menu-item">
 			<a href="#">Subscribe</a>
-			<?php gravity_form( 14, false, false, false, '', true, 1010, true ); ?>
+			<div class="main-menu-dropdown">
+				<?php gravity_form( 14, false, false, false, '', true, 1010, true ); ?>
+			</div>
 		</li>
-		<li id="main-menu-search">
+		<li id="main-menu-search" class="main-menu-item">
 			<a href="#">Search</a>
-			<form role="search" method="get" class="search-form" action="<?php echo home_url( '/' ); ?>">
-			<label for="main-menu-search-box">
-				<span hidden class="screen-reader-text"><?php echo _x( 'Search Lawyerist.com: ', 'label' ) ?></span>
-			</label>
-			<input id="main-menu-search-box" type="search" class="search-field" name="s" placeholder="<?php echo esc_attr_x( 'Search Lawyerist.com …', 'placeholder' ) ?>" title="<?php echo esc_attr_x( 'Search Lawyerist.com', 'label' ) ?>" />
-			<input hidden type="submit" class="search-submit" value="<?php echo esc_attr_x( 'Search', 'submit button' ) ?>" />
-			</form>
+			<div class="main-menu-dropdown">
+				<form role="search" method="get" class="search-form" action="<?php echo home_url( '/' ); ?>">
+				<label for="main-menu-search-box">
+					<span hidden class="screen-reader-text"><?php echo _x( 'Search Lawyerist.com: ', 'label' ) ?></span>
+				</label>
+				<input id="main-menu-search-box" type="search" class="search-field" name="s" placeholder="<?php echo esc_attr_x( 'Search Lawyerist.com …', 'placeholder' ) ?>" title="<?php echo esc_attr_x( 'Search Lawyerist.com', 'label' ) ?>" />
+				<input hidden type="submit" class="search-submit" value="<?php echo esc_attr_x( 'Search', 'submit button' ) ?>" />
+				</form>
+			</div>
 		</li>
 	</ul>
 </div>
