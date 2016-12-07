@@ -293,9 +293,10 @@ body {
 .page,
 .post,
 .post_body,
+.sidebar,
 .single,
 #footer {
-	font-size: 2.2rem;
+	font-size: 2rem;
 	line-height: 1.5;
 }
 
@@ -1879,35 +1880,57 @@ Footer
 Forms
 ------------------------------*/
 
-body .gform_wrapper {
-  font-size: inherit !important;
+#content_column_container .gform_wrapper {
+  font-size: inherit;
 }
 
-body .ginput_full {
-  display: block;
-  margin-bottom: 2.8rem;
+#content_column_container .gform_body {
+  width: 100%;
 }
 
-body #sidebar_column .gform_wrapper,
-body #sidebar_column .gform_heading {
-  max-width: 100%;
-  width: auto;
+#content_column_container ul.gform_fields li {
+  margin: 0 0 1em 0;
+  padding-right: 0;
+}
+
+#content_column_container ul.gform_fields li:last-of-type {
+  margin-bottom: 1.5em;
+}
+
+#content_column_container .ginput_container {
+  margin: 0;
+}
+
+#content_column_container .gfield_label {
+  font-size: 1.8rem;
+}
+
+#content_column_container .ginput_complex label {
+  font-size: 1.6rem;
+  margin-bottom: .5em;
+}
+
+#content_column_container .name_first,
+#content_column_container .name_middle,
+#content_column_container .name_last {
+    padding-top: 0;
 }
 
 input,
 select,
 textarea,
-body .gform_wrapper input[type=text],
-body .gform_wrapper input[type=email],
-body .gform_wrapper input[type=tel],
-body .gform_wrapper input[type=url],
-body .gform_wrapper input[type=number],
-body .gform_wrapper input[type=password],
+body .gform_wrapper input[type="text"],
+body .gform_wrapper input[type="email"],
+body .gform_wrapper input[type="file"],
+body .gform_wrapper input[type="tel"],
+body .gform_wrapper input[type="url"],
+body .gform_wrapper input[type="number"],
+body .gform_wrapper input[type="password"],
 body .gform_wrapper select,
 body .gform_wrapper.gf_browser_chrome select,
 body .gform_wrapper textarea,
 body input[type="search"],
-#edd-free-downloads-modal input[type='text'] {
+#edd-free-downloads-modal input[type="text"] {
   border: .1rem solid #bbb;
   border-radius: .2rem;
   box-shadow: none;
@@ -1929,12 +1952,13 @@ body input[type="search"],
   }
 
 #sidebar_column input,
-body #sidebar_column .gform_wrapper input[type=text],
-body #sidebar_column .gform_wrapper input[type=email],
-body #sidebar_column .gform_wrapper input[type=tel],
-body #sidebar_column .gform_wrapper input[type=url],
-body #sidebar_column .gform_wrapper input[type=number],
-body #sidebar_column .gform_wrapper input[type=password],
+body #sidebar_column .gform_wrapper input[type="text"],
+body #sidebar_column .gform_wrapper input[type="email"],
+body #sidebar_column .gform_wrapper input[type="file"],
+body #sidebar_column .gform_wrapper input[type="tel"],
+body #sidebar_column .gform_wrapper input[type="url"],
+body #sidebar_column .gform_wrapper input[type="number"],
+body #sidebar_column .gform_wrapper input[type="password"],
 body #sidebar_column .gform_wrapper select,
 body #sidebar_column .gform_wrapper textarea,
 body #sidebar_column input[type="search"], {
@@ -1943,13 +1967,13 @@ body #sidebar_column input[type="search"], {
 
 input[type=checkbox],
 input[type=radio],
-body .gform_wrapper input[type=checkbox],
-body .gform_wrapper input[type=radio] {
+body .gform_wrapper input[type="checkbox"],
+body .gform_wrapper input[type="radio"] {
   margin-left: .1rem;
 }
 
 input[type=checkbox],
-body .gform_wrapper input[type=checkbox] {
+body .gform_wrapper input[type="checkbox"] {
   margin-left: .1rem;
   -webkit-appearance: checkbox;
 }
@@ -1959,31 +1983,47 @@ input[type=checkbox]#edd_free_download_optin {
 }
 
 input[type=radio],
-body .gform_wrapper input[type=radio] {
+body .gform_wrapper input[type="radio"] {
   margin-left: .1rem;
   -webkit-appearance: radio;
 }
 
 input:focus,
-body .gform_wrapper input[type=text]:focus,
-body .gform_wrapper input[type=email]:focus,
-body .gform_wrapper input[type=tel]:focus,
-body .gform_wrapper input[type=url]:focus,
-body .gform_wrapper input[type=number]:focus,
-body .gform_wrapper input[type=password]:focus,
+body .gform_wrapper input[type="text"]:focus,
+body .gform_wrapper input[type="email"]:focus,
+body .gform_wrapper input[type="file"]:focus,
+body .gform_wrapper input[type="tel"]:focus,
+body .gform_wrapper input[type="url"]:focus,
+body .gform_wrapper input[type="number"]:focus,
+body .gform_wrapper input[type="password"]:focus,
 body .gform_wrapper select:focus,
 body .gform_wrapper textarea:focus,
 body input[type="search"]:focus,
-#edd-free-downloads-modal input[type='text']:focus {
+#edd-free-downloads-modal input[type="text"]:focus {
   border-color: #c00;
   color: #333;
 }
 
-label,
-body .gform_wrapper label.gfield_label {
+label {
   font-size: 1.8rem;
   line-height: 1;
-  margin-bottom: 0 !important;
+  margin-bottom: 0;
+}
+
+  body .gfield_label {
+    font-size: inherit;
+    line-height: 1;
+    margin-bottom: 0;
+  }
+
+  body .gfield_complex label {
+    font-size: 1.4rem;
+    line-height: 1;
+    margin-bottom: 0;
+  }
+
+body gfield {
+
 }
 
 body .gform_wrapper span.ginput_card_security_code_icon {
