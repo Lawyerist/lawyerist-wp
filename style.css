@@ -21,7 +21,6 @@ Images
 Header
   Leaderboard Ad
   Title
-  Header Signup
 Menu
 Content
 	Index Lists
@@ -780,85 +779,6 @@ Header
       }
 
     }
-
-  /*------------------------------
-  Header Signup
-	------------------------------*/
-
-  #header_signup {
-    float: right;
-    height: 3.2rem;
-    line-height: 1;
-    width: 30rem;
-  }
-
-  #mc_embed_signup {
-    display: inline-block;
-    height: 32px;
-    width: 300px;
-    }
-
-    #mc_embed_signup input[type="email"] {
-      background-color: #ddd;
-      border: 0;
-      float: left;
-      font-size: 18px;
-      height: 32px;
-      padding: 0 8px;
-      width: 195px;
-    }
-
-    #mc_embed_signup input[type="email"]:focus {
-      background-color: #fff;
-    }
-
-    #mc_embed_signup input[type="submit"] {
-      background-color: #ffa000;
-      margin: 0 0 0 5px;
-      width: 10rem;
-    }
-
-    #mc_embed_signup input[type="submit"]:hover {
-      background-color: #ffb333;
-    }
-
-    #mc_embed_signup input[type="submit"]:active {
-      background-color: #e69000;
-    }
-
-  /* 800px */
-  @media only screen and (max-width:799px) {
-
-    #header_signup {
-      margin-right: 0;
-    }
-
-  }
-
-  /* 620px */
-  @media only screen and (max-width:619px) {
-
-    #header_signup {
-      float: none;
-      margin: 1rem 0 0 0;
-      width: 100%;
-    }
-
-    #mc_embed_signup {
-      width: 100%;
-    }
-
-    .email_input_container {
-      box-sizing: border-box;
-      padding-right: 10.5rem;
-      width: 100%;
-    }
-
-    #mc_embed_signup input[type="email"] {
-      width: 100%;
-    }
-
-  }
 
 
 /*------------------------------
@@ -2112,7 +2032,6 @@ Print
   /* Don't Print */
   #leaderboard_container,
   #email_social,
-  #header_signup,
   .sharedaddy,
   .comments,
   .survival_guide_note,
