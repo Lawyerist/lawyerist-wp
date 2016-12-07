@@ -49,7 +49,7 @@
 	<div class="clear"></div>
 
 
-</div><!-- end #content -->
+</div><!-- end #content_column_container -->
 
 <div class="clear"></div>
 
