@@ -7,7 +7,7 @@
 
 <?php get_header(); ?>
 
-<div id="content_column_container">
+<div id="column_container">
 
 	<div id="content_column">
 

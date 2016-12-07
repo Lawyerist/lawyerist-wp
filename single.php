@@ -7,7 +7,7 @@
 
 <?php get_header(); ?>
 
-<div id="content_column_container">
+<div id="column_container">
 
 		<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 

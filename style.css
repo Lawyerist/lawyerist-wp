@@ -38,6 +38,7 @@ Sidebar
 Footer
 Forms
 	Buttons
+  Gravity Forms Components
   Easy Digital Downloads
 Print
 
@@ -1880,57 +1881,17 @@ Footer
 Forms
 ------------------------------*/
 
-#column_container .gform_wrapper {
-  font-size: inherit;
-}
-
-  #column_container .gform_body {
-    width: 100%;
-  }
-
-#column_container ul.gform_fields li {
-  margin: 0 0 1em 0;
-  padding-right: 0;
-}
-
-#column_container ul.gform_fields li:last-of-type {
-  margin-bottom: 1.5em;
-}
-
-#column_container .ginput_container {
-  margin: 0;
-}
-
-#column_container .gfield_label {
-  font-size: 1.8rem;
-}
-
-#column_container .ginput_complex label {
-  font-size: 1.6rem;
-  margin-bottom: .5em;
-}
-
-#column_container .name_first,
-#column_container .name_middle,
-#column_container .name_last {
-    padding-top: 0;
-}
-
 input,
+input[type="text"],
+input[type="email"],
+input[type="file"],
+input[type="tel"],
+input[type="url"],
+input[type="number"],
+input[type="password"],
+input[type="search"],
 select,
-textarea,
-body .gform_wrapper input[type="text"],
-body .gform_wrapper input[type="email"],
-body .gform_wrapper input[type="file"],
-body .gform_wrapper input[type="tel"],
-body .gform_wrapper input[type="url"],
-body .gform_wrapper input[type="number"],
-body .gform_wrapper input[type="password"],
-body .gform_wrapper select,
-body .gform_wrapper.gf_browser_chrome select,
-body .gform_wrapper textarea,
-body input[type="search"],
-#edd-free-downloads-modal input[type="text"] {
+textarea {
   border: .1rem solid #bbb;
   border-radius: .2rem;
   box-shadow: none;
@@ -1938,7 +1899,7 @@ body input[type="search"],
   color: #555;
   display: block;
   font-family: inherit;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   outline: none;
   line-height: 2.4rem;
   margin-bottom: .4rem;
@@ -1951,123 +1912,75 @@ body input[type="search"],
     padding-top: 2px;
   }
 
+input[type="search"] {
+  width: 100%;
+}
+
 #sidebar_column input,
-body #sidebar_column .gform_wrapper input[type="text"],
-body #sidebar_column .gform_wrapper input[type="email"],
-body #sidebar_column .gform_wrapper input[type="file"],
-body #sidebar_column .gform_wrapper input[type="tel"],
-body #sidebar_column .gform_wrapper input[type="url"],
-body #sidebar_column .gform_wrapper input[type="number"],
-body #sidebar_column .gform_wrapper input[type="password"],
-body #sidebar_column .gform_wrapper select,
-body #sidebar_column .gform_wrapper textarea,
-body #sidebar_column input[type="search"], {
-  width: 30rem;
+#sidebar_column input[type="text"],
+#sidebar_column input[type="email"],
+#sidebar_column input[type="file"],
+#sidebar_column input[type="tel"],
+#sidebar_column input[type="url"],
+#sidebar_column input[type="number"],
+#sidebar_column input[type="password"],
+#sidebar_column input[type="search"],
+#sidebar_column select,
+#sidebar_column textarea {
+  width: 100%;
 }
 
-input[type=checkbox],
-input[type=radio],
-body .gform_wrapper input[type="checkbox"],
-body .gform_wrapper input[type="radio"] {
+input[type="checkbox"],
+input[type="radio"] {
   margin-left: .1rem;
 }
 
-input[type=checkbox],
-body .gform_wrapper input[type="checkbox"] {
-  margin-left: .1rem;
-  -webkit-appearance: checkbox;
-}
+  input[type="checkbox"] {
+    -webkit-appearance: checkbox;
+  }
 
-input[type=checkbox]#edd_free_download_optin {
-  display: inline-block;
-}
-
-input[type=radio],
-body .gform_wrapper input[type="radio"] {
-  margin-left: .1rem;
-  -webkit-appearance: radio;
-}
+  input[type="radio"] {
+    -webkit-appearance: radio;
+  }
 
 input:focus,
-body .gform_wrapper input[type="text"]:focus,
-body .gform_wrapper input[type="email"]:focus,
-body .gform_wrapper input[type="file"]:focus,
-body .gform_wrapper input[type="tel"]:focus,
-body .gform_wrapper input[type="url"]:focus,
-body .gform_wrapper input[type="number"]:focus,
-body .gform_wrapper input[type="password"]:focus,
-body .gform_wrapper select:focus,
-body .gform_wrapper textarea:focus,
-body input[type="search"]:focus,
-#edd-free-downloads-modal input[type="text"]:focus {
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="file"]:focus,
+input[type="tel"]:focus,
+input[type="url"]:focus,
+input[type="number"]:focus,
+input[type="password"]:focus,
+input[type="search"]:focus,
+select:focus,
+textarea:focus {
   border-color: #c00;
   color: #333;
 }
 
 label {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   line-height: 1;
   margin-bottom: 0;
 }
 
-  body .gfield_label {
-    font-size: inherit;
-    line-height: 1;
-    margin-bottom: 0;
+  #lawyerist_content_search label span {
+    display: block;
+    margin-bottom: .25em;
   }
-
-  body .gfield_complex label {
-    font-size: 1.4rem;
-    line-height: 1;
-    margin-bottom: 0;
-  }
-
-body gfield {
-
-}
-
-body .gform_wrapper span.ginput_card_security_code_icon {
-  left: 0 !important;
-}
-
-body .gform_wrapper .instruction {
-  font-size: 80%;
-}
-
-body .gform_wrapper .gfield_description {
-  font-size: 80%;
-}
-
-body .gforms_confirmation_message {
-  margin-bottom: 2.8rem;
-  border: .1rem solid #ddd;
-  padding: 1.5rem 2.5rem 2rem 2.5rem;
-  background-color: #ffffa0;
-}
-
-body .gform_footer {
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-#lawyerist_content_search input[type="search"],
-#lawyerist_sidebar_search input[type="search"] {
-  width: 100%;
-}
-
-#lawyerist_content_search label span {
-  display: block;
-  margin-bottom: .25em;
-}
 
 .post-password-form {
-  background-color: #eee;
-  border: .1rem solid #ddd;
+  background-color: #fbfbfb;
   border-radius: .2rem;
-  box-shadow: .1rem .1rem .3rem #bbb;
-  padding: 2rem 2.5rem;
-  margin: 0 auto;
+  box-shadow:
+    0 0 0 .1rem #ddd,
+    .1rem .1rem .3rem rgba(0, 0, 0, 0.2)
+  ;
+  display: block;
+  margin-bottom: 1rem;
   max-width: 32rem;
+  padding: 2rem;
+  text-decoration: none;
 }
 
 .post-password-form input[type="password"] {
@@ -2081,8 +1994,6 @@ body .gform_footer {
   button,
   .button,
   a.button,
-  body .gform_wrapper input.button,
-  body .gform_wrapper .gform_footer input.button,
   input.button,
   input[type="button"],
   input[type="submit"] {
@@ -2108,7 +2019,6 @@ body .gform_footer {
   button:focus,
   .button:focus,
   a.button:focus,
-  body .gform_wrapper input.button:focus,
   input.button:focus,
   input[type="button"]:focus,
   input[type="submit"]:focus {
@@ -2118,7 +2028,6 @@ body .gform_footer {
     #sidebar_column button,
     #sidebar_column .button,
     #sidebar_column a.button,
-    #sidebar_column body .gform_wrapper input.button,
     #sidebar_column input.button,
     #sidebar_column input[type="button"],
     #sidebar_column input[type="submit"] {
@@ -2128,7 +2037,6 @@ body .gform_footer {
   button:hover,
   .button:hover,
   a.button:hover,
-  body .gform_wrapper input.button:hover,
   input.button:hover,
   input[type="button"]:hover,
   input[type="submit"]:hover {
@@ -2140,7 +2048,6 @@ body .gform_footer {
   button:active,
   .button:active,
   a.button:active,
-  body .gform_wrapper input.button:active,
   input.button:active,
   input[type="button"]:active,
   input[type="submit"]:active {
@@ -2150,11 +2057,37 @@ body .gform_footer {
 
 
   /*------------------------------
+  Gravity Forms Components
+  ------------------------------*/
+
+  .gform_wrapper {
+    background-color: #fbfbfb;
+    border-radius: .2rem;
+    box-shadow:
+      0 0 0 .1rem #ddd,
+      .1rem .1rem .3rem rgba(0, 0, 0, 0.2)
+    ;
+    display: block;
+    margin-bottom: 1rem;
+    padding: 2rem;
+    text-decoration: none;
+  }
+
+    #sidebar_column .gform_wrapper {
+      font-size: 1.8rem;
+    }
+
+
+  /*------------------------------
   Easy Digital Downloads
   ------------------------------*/
 
+  input[type="checkbox"]#edd_free_download_optin {
+    display: inline-block;
+  }
+
   .jBox-Modal .jBox-content {
-    padding: 2rem 2.5rem;
+    padding: 2rem;
   }
 
   #edd_purchase_form #edd_mailchimp {
