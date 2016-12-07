@@ -2069,7 +2069,7 @@ label {
     ;
     display: block;
     margin-bottom: 1rem;
-    padding: 2rem;
+    padding: .1rem 2rem 2rem 2rem;
     text-decoration: none;
   }
 
