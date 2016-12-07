@@ -178,7 +178,7 @@
 
 	<div class="clear"></div>
 
-</div><!--end #content_column_container-->
+</div><!--end #column_container-->
 
 <div class="clear"></div>
 
