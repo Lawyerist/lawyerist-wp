@@ -870,6 +870,7 @@ Menu
 
   #main-menu .main-menu-dropdown .menu-item {
     box-sizing: border-box;
+    margin: 0;
     padding: .5rem;
     width: 100%;
   }
