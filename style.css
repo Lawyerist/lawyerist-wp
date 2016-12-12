@@ -281,7 +281,9 @@ pre {
 #description,
 .gfield_checkbox label,
 .gfield_radio label,
-input[type="search"] {
+input,
+select,
+textarea {
   font-family: equity, serif;
 }
 
@@ -865,20 +867,25 @@ Menu
       content: '\f410';
     }
 
+      #main-menu-subscribe .subscribe-email-field {
+        margin: 0;
+        width: 100%;
+      }
+
+      #main-menu-subscribe .subscribe-submit {
+        display: none;
+      }
+
     /* Search */
     #main-menu-search > a:before {
       content: '\f400';
     }
 
-    #main-menu-search form {
-      padding: 1rem;
-    }
-
-      #main-menu-search input[type="search"] {
+      #main-menu-search .search-field {
         margin-bottom: 0;
       }
 
-      #main-menu-search input[type="submit"] {
+      #main-menu-search .search-submit {
         display: none;
       }
 
