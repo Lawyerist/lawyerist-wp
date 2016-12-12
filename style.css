@@ -930,6 +930,13 @@ Menu
 /* Mobile menu. */
 @media only screen and ( max-width: 659px ) {
 
+  #main_menu_container {
+    margin-bottom: 0;
+    position: fixed;
+      bottom: 0;
+    z-index: 100;
+  }
+
   #main-menu .main-menu-item {
     position: static;
   }
