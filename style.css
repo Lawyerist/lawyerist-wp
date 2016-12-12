@@ -972,7 +972,9 @@ Menu
 Content
 ------------------------------*/
 
-.home {
+.home,
+.archive,
+.search-results {
   background-color: #f9f9f9;
 }
 
