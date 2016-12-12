@@ -278,6 +278,7 @@ pre {
 }
 
 /* Font overrides. */
+#description,
 .gfield_checkbox label,
 .gfield_radio label,
 input[type="search"] {
@@ -770,6 +771,24 @@ Header
 
     #title a:hover {
       color: #ddd;
+    }
+
+  #description {
+    color: #ccc;
+    float: right;
+    font-size: 1.8rem;
+    line-height: 3.2rem;
+    margin: 0;
+  }
+
+
+    /* 780px */
+    @media only screen and (max-width:779px) {
+
+      #description {
+        display: none;
+      }
+
     }
 
     /* 620px */

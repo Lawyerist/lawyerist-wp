@@ -6,10 +6,12 @@
 
 		<?php if ( is_front_page() ) { ?>
 			<h1 id="title"><a href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a></h1>
+			<p id="description"><?php bloginfo('description'); ?></p>
 		<?php }
 
 		else { ?>
 			<p id="title"><a href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a></p>
+			<p id="description"><?php bloginfo('description'); ?></p>
 		<?php } ?>
 
 		<div class="clear"></div>
