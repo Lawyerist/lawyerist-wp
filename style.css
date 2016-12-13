@@ -1484,12 +1484,12 @@ Content
 		padding-left: 12rem;
 	}
 
-  #pages_categories_tags p {
+  #categories_tags p {
     font-size: 1.4rem;
     margin-bottom: .56rem;
   }
 
-  #pages_categories_tags p:last-child {
+  #categories_tags p:last-child {
     margin-bottom: 6rem;
   }
 
@@ -2109,7 +2109,6 @@ Print
   .comments,
   .survival_guide_note,
   #mobile_ad,
-  #post_footer,
   #after_post,
   #sidebar_column {
     display: none !important;

@@ -14,11 +14,12 @@ $post_type == 'page'
 
 */
 
+$post_num = 1; // Counter for inserting mobile ads.
+
 // Start the Loop.
 if ( have_posts() ) : while ( have_posts() ) : the_post();
 
   // Assign post variables.
-  $post_num       = 1; // Counter for inserting mobile ads.
   $post_title     = the_title( '', '', FALSE );
   $post_url       = get_permalink();
   $post_type      = get_post_type( $post->ID );
@@ -168,8 +169,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
     } // End the additional series posts.
 
-
-  echo '</div>'; // Close .index_post_container.
+  echo '</div>'; // Close .post.
   echo "\n\n";
 
   // Insert ads on mobile.
