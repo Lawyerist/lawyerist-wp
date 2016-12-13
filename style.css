@@ -972,7 +972,7 @@ Menu
 Content
 ------------------------------*/
 
-.home,
+.index,
 .archive,
 .search-results {
   background-color: #f9f9f9;
@@ -1114,6 +1114,17 @@ Content
     .index_post_container p {
       margin-bottom: .75em;
   	}
+
+
+  .index.mobile #lawyerist_ap2,
+  .index.mobile #lawyerist_ap3,
+  .archive.mobile #lawyerist_ap2,
+  .archive.mobile #lawyerist_ap3,
+  .search-results.mobile #lawyerist_ap2,
+  .search-results.mobile #lawyerist_ap2 {
+    margin: 0 auto 1rem auto;
+    width: 30rem;
+  }
 
   span.infinite-loader {
     display: block;
