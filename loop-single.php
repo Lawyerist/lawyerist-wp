@@ -209,9 +209,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
 		if ( $current_posts_query->post_count > 1 ) :
 
-      $current_numposts = 'current_posts_' . $current_posts_query->post_count;
-
-			echo '<div id="current_posts" class="' . $current_numposts . '">';
+			echo '<div id="current_posts">';
 
         echo '<p class="current_posts_heading">Current Posts</p>';
 
@@ -224,7 +222,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
           echo '<a href="' . $current_post_url . '" title="' . $current_post_title . '">';
 
             if ( has_post_thumbnail() ) {
-              the_post_thumbnail( 'thumbnail' );
+              the_post_thumbnail( 'current_posts_thumbnail' );
             } else {
               echo '<img src="' . get_template_directory_uri() . '/images/fff-thumb.png" class="attachment-thumbnail wp-post-image" />';
             }

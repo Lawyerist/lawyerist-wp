@@ -287,6 +287,7 @@ if ( function_exists( 'add_image_size' ) ) {
 	add_image_size( 'default_thumbnail', 300, 250, true );
 	add_image_size( 'standard_thumbnail', 760, 426, true );
 	add_image_size( 'download_thumbnail', 250, 0 );
+	add_image_size( 'current_posts_thumbnail', 160, 90 );
 }
 
 
