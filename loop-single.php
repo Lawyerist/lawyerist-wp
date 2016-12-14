@@ -189,6 +189,60 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
     echo '</div>'; // Close #categories_tags.
 
+
+    // Current posts.
+		$this_post[]	= $post->ID;
+		$after_date		= date( 'Y-m-d H:i:s', strtotime( '-6 days' ) );
+
+		$current_posts_query_args = array(
+      'category__not_in'		=> 1320, // Excludes sponsor-submitted posts.
+      'date_query'					=> array(
+        'after'             => $after_date,
+      ),
+      'ignore_sticky_posts' => TRUE,
+      'orderby'							=> 'rand',
+      'post__not_in'				=> $this_post,
+      'posts_per_page'			=> 4,  // Determines how many posts are displayed in the list.
+		);
+
+		$current_posts_query = new WP_Query( $current_posts_query_args );
+
+		if ( $current_posts_query->post_count > 1 ) :
+
+      $current_numposts = 'current_posts_' . $current_posts_query->post_count;
+
+			echo '<div id="current_posts" class="' . $current_numposts . '">';
+
+        echo '<p class="current_posts_heading">Current Posts</p>';
+
+        // Start the current posts sub-Loop.
+        while ( $current_posts_query->have_posts() ) : $current_posts_query->the_post();
+
+					$current_post_title = the_title( '', '', FALSE );
+          $current_post_url   = get_permalink();
+
+          echo '<a href="' . $current_post_url . '" title="' . $current_post_title . '">';
+
+            if ( has_post_thumbnail() ) {
+              the_post_thumbnail( 'thumbnail' );
+            } else {
+              echo '<img src="' . get_template_directory_uri() . '/images/fff-thumb.png" class="attachment-thumbnail wp-post-image" />';
+            }
+
+            echo '<p class="current_post_title">' . $current_post_title . '</p>';
+
+          echo '</a>';
+
+				endwhile;
+
+        wp_reset_postdata();
+
+        echo '<div class="clear"></div>';
+
+			echo '</div>'; // Close #current_posts.
+
+    endif; // End current posts.
+
     comments_template();
 
   echo '</div>'; // Close .post.
