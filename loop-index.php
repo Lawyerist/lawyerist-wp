@@ -63,7 +63,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
       $series_slug				= $series_info->slug;
       $series_url					=	get_term_link( $series_IDs[0], 'series' );
 
-      echo '<h2 class="series_title"><a href="' . $series_url . '" title="' . $series_title . '">' . $series_title . '</a></h2>';
+      echo '<p class="series_title"><a href="' . $series_url . '" title="' . $series_title . '">' . $series_title . '</a></p>';
 
     }
 
@@ -151,10 +151,10 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
           while ( $series_query->have_posts() ) : $series_query->the_post();
 
-            $post_title = the_title( '', '', FALSE );
-            $post_url   = get_permalink();
+            $series_post_title = the_title( '', '', FALSE );
+            $series_post_url   = get_permalink();
 
-            echo '<li><a href="' . $post_url . '" title="' . $post_title . '"><h3 class="headline">' . $post_title . '</h3></a></li>';
+            echo '<li><a href="' . $post_url . '" title="' . $series_post_title . '"><h3 class="headline">' . $series_post_title . '</h3></a></li>';
 
           endwhile;
 

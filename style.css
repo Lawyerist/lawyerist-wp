@@ -264,6 +264,7 @@ label,
 .price_tag,
 p.pullout,
 p.pullquote,
+.series_title,
 #series_nav li,
 .tag_list,
 .theiaPostSlider_nav ._text {
@@ -1165,11 +1166,21 @@ Content
 
   /* Series title. */
 
-  .index h2.series_title {
-    color: #666;
+  .series_title {
     font-size: 1.4rem;
+    font-weight: bold;
+    margin-bottom: .5em;
     text-transform: uppercase;
   }
+
+    .series_title a {
+      color: #666;
+    }
+
+    .series_title a:hover {
+      color: #a00;
+      text-decoration: none;
+    }
 
 
   /* Post image styles. */
@@ -1313,19 +1324,19 @@ Content
 
     /* Excerpt styles. */
 
-    .index .format-standard p {
+    .index .format-standard .excerpt {
       font-size: 1.8rem;
     }
 
-    .index .format-aside p {
+    .index .format-aside .excerpt {
       font-size: 1.6rem;
     }
 
-    .index .series p {
+    .index .series .excerpt {
       font-size: 1.6rem;
     }
 
-    .index .download p {
+    .index .download .excerpt {
       font-size: 1.8rem;
       margin-bottom: 1.5em;
     }

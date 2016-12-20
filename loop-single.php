@@ -13,6 +13,31 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
     echo '<div class="headline_postmeta">';
 
+      // Series Title
+      if ( has_term( true , 'series' ) ) {
+
+        // Get the series variables (we'll use them again after the post).
+        $series_ID = wp_get_post_terms(
+          $post->ID,
+          'series',
+          array(
+            'fields' 	=> 'ids',
+            'orderby' => 'count',
+            'order' 	=> 'DESC'
+          )
+        );
+
+        $series_info				= get_term( $series_ID[0] );
+        $series_title				= $series_info->name;
+        $series_description = $series_info->description;
+        $series_slug				= $series_info->slug;
+        $series_url					=	get_term_link( $series_ID[0], 'series' );
+        $series_numposts    = 4; // Determines how many posts are displayed in the list.
+
+        echo '<p class="series_title"><a href="' . $series_url . '" title="' . $series_title . '">' . $series_title . '</a></p>';
+
+      }
+
       // Headline
       echo '<h1 class="headline entry-title">' . $post_title . '</h1>';
 
@@ -93,23 +118,8 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
       echo '<div id="series_nav">';
 
         // Start the series sub-Loop.
-        $series_ID = wp_get_post_terms(
-          $post->ID,
-          'series',
-          array(
-            'fields' 	=> 'ids',
-            'orderby' => 'count',
-            'order' 	=> 'DESC'
-          )
-        );
-
-        $series_info				= get_term( $series_ID[0] );
-        $series_title				= $series_info->name;
-        $series_description = $series_info->description;
-        $series_slug				= $series_info->slug;
-        $series_url					=	get_term_link( $series_ID[0], 'series' );
-        $series_numposts    = 4; // Determines how many posts are displayed in the list.
-
+        // Uses variables from earlier in the loop, when we put the series title
+        // above the headline.
         $series_query_args = array(
           'orderby'					=> 'date',
           'order'						=> 'ASC',
@@ -139,8 +149,8 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
             while ( $series_query->have_posts() ) : $series_query->the_post();
 
-              $series_post_title  = $series_query->the_title();
-              $series_post_url    = get_permalink();
+              $series_post_title = the_title( '', '', FALSE );
+              $series_post_url   = get_permalink();
 
               // This doesn't link the current post's title to the current post,
               // because that would be silly.
