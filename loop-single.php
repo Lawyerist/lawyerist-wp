@@ -4,7 +4,11 @@
 if ( have_posts() ) : while ( have_posts() ) : the_post();
 
   // Assign post variables.
-  $post_title = the_title( '', '', FALSE );
+  $post_title   = the_title( '', '', FALSE );
+
+  // Assign this post to a variable so we can exclude it from series posts and
+  // current posts.
+  $this_post[] = $post->ID;
 
   // This is the post container.
   echo '<div ';
@@ -32,7 +36,6 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
         $series_description = $series_info->description;
         $series_slug				= $series_info->slug;
         $series_url					=	get_term_link( $series_ID[0], 'series' );
-        $series_numposts    = 4; // Determines how many posts are displayed in the list.
 
         echo '<p class="series_title"><a href="' . $series_url . '" title="' . $series_title . '">' . $series_title . '</a></p>';
 
@@ -115,24 +118,27 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
     // If the post is in a series, list the other posts in the series.
     if ( has_term( true , 'series' ) ) {
 
+      $series_numposts  = 4;          // Determines how many posts are displayed in the list.
+
+      // Uses variables from earlier in the loop, when we put the series title
+      // above the headline.
+      $series_query_args = array(
+        'orderby'					=> 'date',
+        'order'						=> 'ASC',
+        'post__not_in'		=> $this_post,
+        'posts_per_page'	=> $series_numposts,
+        'tax_query'     	=> array(
+          array(
+            'taxonomy'  => 'series',
+            'field'			=> 'slug',
+            'terms'			=> $series_slug,
+          )
+        )
+      );
+
       echo '<div id="series_nav">';
 
         // Start the series sub-Loop.
-        // Uses variables from earlier in the loop, when we put the series title
-        // above the headline.
-        $series_query_args = array(
-          'orderby'					=> 'date',
-          'order'						=> 'ASC',
-          'posts_per_page'	=> $series_numposts,
-          'tax_query'     	=> array(
-            array(
-              'taxonomy'  => 'series',
-              'field'			=> 'slug',
-              'terms'			=> $series_slug,
-            )
-          )
-        );
-
         $series_query = new WP_Query( $series_query_args );
 
         // Only show the series if there is more than one post in the series.
@@ -152,18 +158,8 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
               $series_post_title = the_title( '', '', FALSE );
               $series_post_url   = get_permalink();
 
-              // This doesn't link the current post's title to the current post,
-              // because that would be silly.
-              if ( get_the_ID() == $current_post ) {
-
-                echo '<li>' . $series_post_title . '</li>';
-
               // This links all the other post's titles to those posts.
-              } else {
-
-                echo '<li><a href="' . $series_post_url . '" title="' . $series_post_title . '">' . $series_post_title . '</a></li>';
-
-              }
+              echo '<li><a href="' . $series_post_url . '" title="' . $series_post_title . '">' . $series_post_title . '</a></li>';
 
             endwhile; // End the series sub-Loop while statement.
 
@@ -201,7 +197,6 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
 
     // Current posts.
-		$this_post[]	= $post->ID;
 		$after_date		= date( 'Y-m-d H:i:s', strtotime( '-6 days' ) );
 
 		$current_posts_query_args = array(
@@ -212,7 +207,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
       'ignore_sticky_posts' => TRUE,
       'orderby'							=> 'rand',
       'post__not_in'				=> $this_post,
-      'posts_per_page'			=> 4,  // Determines how many posts are displayed in the list.
+      'posts_per_page'			=> 4, // Determines how many posts are displayed in the list.
 		);
 
 		$current_posts_query = new WP_Query( $current_posts_query_args );
