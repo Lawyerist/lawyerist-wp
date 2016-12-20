@@ -196,7 +196,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
     echo '</div>'; // Close #categories_tags.
 
 
-    // Current posts.
+    // Current Posts
 		$after_date		= date( 'Y-m-d H:i:s', strtotime( '-6 days' ) );
 
 		$current_posts_query_args = array(
@@ -245,6 +245,60 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 			echo '</div>'; // Close #current_posts.
 
     endif; // End current posts.
+
+
+    // Recent Discussions
+    echo '<div id="recent_discussions">';
+
+      echo '<p class="recent_discussions_heading">Recent Discussions</p>';
+
+      // Get RSS feed. (I don't think I need this.)
+      // include_once( ABSPATH . WPINC . '/feed.php' );
+
+      // Get the Lab feed.
+      $rss = fetch_feed( 'http://lab.lawyerist.com/discussions/feed.rss' );
+
+      if ( ! is_wp_error( $rss ) ) { // Checks that the object is created correctly.
+
+        // Figure out how many total items there are, but limit it to 5.
+        $maxitems = $rss->get_item_quantity( 5 );
+
+        // Build an array of all the items, starting with element 0 (first element).
+        $rss_items = $rss->get_items( 0, $maxitems );
+
+      }
+
+      echo '<ul>';
+
+        // Loop through the feed items.
+        if ( $maxitems == 0 ) :
+
+          echo '<li>';
+          _e( 'No items', 'my-text-domain' );
+          echo '</li>';
+
+        else :
+
+          // Loop through each feed item and display each item as a hyperlink.
+          foreach ( $rss_items as $item ) :
+          ?>
+
+            <li>
+              <a href="<?php echo esc_url( $item->get_permalink() ); ?>" title="<?php printf( __( 'Updated on %s', 'my-text-domain' ), $item->get_date('F jS, Y @ g:i a') ); ?>">
+                <div class="discussion_title"><?php echo esc_html( $item->get_title() ); ?></div>
+              </a>
+            </li>
+
+          <?php
+          endforeach;
+
+        endif;
+
+      echo '</ul>';
+
+    echo '</div>'; // Close #recent_discussions.
+
+    // End recent discussions.
 
     comments_template();
 

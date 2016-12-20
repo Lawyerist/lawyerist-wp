@@ -252,12 +252,12 @@ button,
 .drop_cap,
 .category_list,
 #current_posts,
+#recent_discussions,
 #footer,
 #header,
 input[type="button"],
 input[type="submit"],
 label,
-#lab_posts,
 #main-menu,
 .page_links,
 .postmeta,
@@ -815,10 +815,6 @@ Menu
   position: relative;
   width: 20%;
 }
-
-  #main-menu ul.menu > .menu-item:nth-child(n+6) { /* Limits menu to 5 items. */
-    display: none;
-  }
 
 #main-menu .main-menu-item a {
 	color: #fff;
@@ -1584,7 +1580,8 @@ Content
   		vertical-align: middle;
   	}
 
-  #current_posts {
+  #current_posts,
+  #recent_discussions {
     background-color: #fbfbfb;
     border-radius: .2rem;
     box-shadow:
@@ -1592,17 +1589,29 @@ Content
       .1rem .1rem .3rem rgba(0, 0, 0, 0.2)
     ;
     display: block;
-    margin-bottom: 6rem;
-    padding: 2rem 0 0 2rem; // Right padding and bottom margin are provided by #current_posts a.
     text-decoration: none;
   }
 
-    .current_posts_heading {
+  #current_posts {
+    border-top: .7rem solid #c00;
+    margin-bottom: 1rem;
+    padding: 2rem 0 0 2rem; // Right padding and bottom margin are provided by #current_posts a.
+  }
+
+  #recent_discussions {
+    border-top: .7rem solid #1e79a7;
+    margin-bottom: 6rem;
+    padding: 2rem;
+  }
+
+    .current_posts_heading,
+    .recent_discussions_heading {
       color: #666;
       font-size: 1.4rem;
       font-weight: bold;
       text-transform: uppercase;
     }
+
 
     #current_posts a {
       box-sizing: border-box;
@@ -1623,17 +1632,30 @@ Content
 
       }
 
-      #current_posts a:hover {
+    #recent_discussions a {
+      color: inherit;
+    }
+
+      #current_posts a:hover,
+      #current_posts a:focus,
+      #recent_discussions a:hover,
+      #recent_discussions a:focus {
         color: #a00;
         text-decoration: none;
       }
+
+    #recent_discussions ul {
+      list-style: none;
+      margin: 0;
+    }
 
     #current_posts .wp-post-image {
       margin-bottom: 1rem;
       width: 100%;
     }
 
-    .current_post_title {
+    .current_post_title,
+    .discussion_title {
       font-size: 1.8rem;
       line-height: 1.2;
       margin-bottom: .2rem;
