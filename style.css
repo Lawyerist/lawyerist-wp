@@ -1594,7 +1594,7 @@ Content
 
   #current_posts {
     border-top: .7rem solid #c00;
-    margin-bottom: 1rem;
+    margin-bottom: 3rem;
     padding: 2rem 0 0 2rem; // Right padding and bottom margin are provided by #current_posts a.
   }
 
