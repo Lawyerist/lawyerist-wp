@@ -1604,6 +1604,11 @@ Content
     padding: 2rem;
   }
 
+    .index #recent_discussions {
+      background-color: #fff;
+      margin-bottom: 1rem;
+    }
+
     .current_posts_heading,
     .recent_discussions_heading {
       color: #666;
