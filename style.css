@@ -1613,7 +1613,7 @@ Content
     background: #fbfbfb url('images/lab-icon.png') no-repeat right center/25.6rem;
     border-top: .7rem solid #1e79a7;
     margin-bottom: 6rem;
-    min-height: 20rem; /* Roughly the height of the beaker. */
+    min-height: 21rem; /* Roughly the height of the beaker. */
     padding: 2rem 21.2rem 2rem 2rem; /* Padding gives 20px right margin to the background image. */
   }
 
@@ -1632,17 +1632,19 @@ Content
 
     }
 
-    .current_posts_heading,
-    .recent_discussions_heading {
+    .current_posts_heading > a,
+    .recent_discussions_heading > a {
       color: #666;
+      display: block;
       font-size: 1.4rem;
       font-weight: bold;
       line-height: 1.5;
+      margin-bottom: .75em;
       text-transform: uppercase;
     }
 
-    .recent_discussions_heading a:before {
-      content: '\f108';
+    .current_posts_heading > a:before,
+    .recent_discussions_heading > a:before {
       display: inline-block;
       -moz-osx-font-smoothing: grayscale;
       -webkit-font-smoothing: antialiased;
@@ -1652,7 +1654,15 @@ Content
       vertical-align: top;
     }
 
-    #current_posts a {
+    .current_posts_heading > a:before {
+      content: '\f409';
+    }
+
+    .recent_discussions_heading > a:before {
+      content: '\f108';
+    }
+
+    #current_posts a.current_post  {
       box-sizing: border-box;
       color: inherit;
       display: inline-block;
@@ -1665,15 +1675,11 @@ Content
       /* 700px */
       @media only screen and (max-width:699px) {
 
-        #current_posts a {
+        #current_posts a.current_post {
           width: 50%;
         }
 
       }
-
-    #recent_discussions a {
-      color: inherit;
-    }
 
       #current_posts a:hover,
       #current_posts a:focus,
@@ -1686,6 +1692,10 @@ Content
     #recent_discussions ul {
       list-style: none;
       margin: 0;
+    }
+
+    #recent_discussions li a {
+      color: inherit;
     }
 
     #current_posts .wp-post-image {

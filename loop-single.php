@@ -210,7 +210,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
 			echo '<div id="current_posts">';
 
-        echo '<p class="current_posts_heading">Current Posts</p>';
+        echo '<div class="current_posts_heading"><a href="' . home_url() . '">Current Posts</a></div>';
 
         // Start the current posts sub-Loop.
         while ( $current_posts_query->have_posts() ) : $current_posts_query->the_post();
@@ -218,7 +218,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 					$current_post_title = the_title( '', '', FALSE );
           $current_post_url   = get_permalink();
 
-          echo '<a href="' . $current_post_url . '" title="' . $current_post_title . '">';
+          echo '<a href="' . $current_post_url . '" title="' . $current_post_title . '" class="current_post">';
 
             if ( has_post_thumbnail() ) {
               the_post_thumbnail( 'current_posts_thumbnail' );
@@ -244,7 +244,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
     // Recent Discussions
     echo '<div id="recent_discussions">';
 
-      echo '<p class="recent_discussions_heading"><a href="http://lab.lawyerist.com">Recent Discussions in the Lawyerist Lab</a></p>';
+      echo '<div class="recent_discussions_heading"><a href="http://lab.lawyerist.com">Recent Discussions in the Lawyerist Lab</a></div>';
 
       // Get RSS feed. (I don't think I need this.)
       // include_once( ABSPATH . WPINC . '/feed.php' );

@@ -181,7 +181,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
     echo '<div id="recent_discussions">';
 
-      echo '<p class="recent_discussions_heading"><a href="http://lab.lawyerist.com">Recent Discussions in the Lawyerist Lab</a></p>';
+      echo '<div class="recent_discussions_heading"><a href="http://lab.lawyerist.com">Recent Discussions in the Lawyerist Lab</a></div>';
 
       // Get RSS feed. (I don't think I need this.)
       // include_once( ABSPATH . WPINC . '/feed.php' );
