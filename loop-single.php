@@ -197,15 +197,9 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
 
     // Current Posts
-		$after_date		= date( 'Y-m-d H:i:s', strtotime( '-6 days' ) );
-
 		$current_posts_query_args = array(
       'category__not_in'		=> 1320, // Excludes sponsor-submitted posts.
-      'date_query'					=> array(
-        'after'             => $after_date,
-      ),
       'ignore_sticky_posts' => TRUE,
-      'orderby'							=> 'rand',
       'post__not_in'				=> $this_post,
       'posts_per_page'			=> 4, // Determines how many posts are displayed in the list.
 		);
@@ -250,7 +244,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
     // Recent Discussions
     echo '<div id="recent_discussions">';
 
-      echo '<p class="recent_discussions_heading">Recent Discussions</p>';
+      echo '<p class="recent_discussions_heading"><a href="http://lab.lawyerist.com">Recent Discussions in the Lawyerist Lab</a></p>';
 
       // Get RSS feed. (I don't think I need this.)
       // include_once( ABSPATH . WPINC . '/feed.php' );

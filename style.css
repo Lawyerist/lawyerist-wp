@@ -1173,6 +1173,17 @@ Content
       color: #666;
     }
 
+    .series_title a:before {
+      content: '\f505';
+      display: inline-block;
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-font-smoothing: antialiased;
+      font: normal 1.4rem/1.5 Genericons;
+      margin-right: .25em;
+      speak: none;
+      vertical-align: top;
+    }
+
     .series_title a:hover {
       color: #a00;
       text-decoration: none;
@@ -1595,13 +1606,15 @@ Content
   #current_posts {
     border-top: .7rem solid #c00;
     margin-bottom: 3rem;
-    padding: 2rem 0 0 2rem; // Right padding and bottom margin are provided by #current_posts a.
+    padding: 2rem 0 0 2rem; /* Right padding and bottom margin are provided by #current_posts a. */
   }
 
   #recent_discussions {
+    background: #fbfbfb url('images/lab-icon.png') no-repeat right center/25.6rem;
     border-top: .7rem solid #1e79a7;
     margin-bottom: 6rem;
-    padding: 2rem;
+    min-height: 20rem; /* Roughly the height of the beaker. */
+    padding: 2rem 21.2rem 2rem 2rem; /* Padding gives 20px right margin to the background image. */
   }
 
     .index #recent_discussions {
@@ -1609,14 +1622,35 @@ Content
       margin-bottom: 1rem;
     }
 
+    /* 500px */
+    @media only screen and (max-width:499px) {
+
+      #recent_discussions {
+        background-image: none;
+        padding: 2rem;
+      }
+
+    }
+
     .current_posts_heading,
     .recent_discussions_heading {
       color: #666;
       font-size: 1.4rem;
       font-weight: bold;
+      line-height: 1.5;
       text-transform: uppercase;
     }
 
+    .recent_discussions_heading a:before {
+      content: '\f108';
+      display: inline-block;
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-font-smoothing: antialiased;
+      font: normal 1.4rem/1.5 Genericons;
+      margin-right: .25em;
+      speak: none;
+      vertical-align: top;
+    }
 
     #current_posts a {
       box-sizing: border-box;
