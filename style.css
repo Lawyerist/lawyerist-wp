@@ -59,7 +59,7 @@ If they aren't loading, add the following code to .htacess in /fonts:
 
 @font-face {
   font-family: 'Genericons';
-  src: url('fonts/genericons/Genericons.woff') format('woff');
+  src: url('fonts/genericons/Genericons-Neue.woff2') format('woff');
   font-weight: normal;
   font-style: normal;
 }
