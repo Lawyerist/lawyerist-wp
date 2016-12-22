@@ -59,7 +59,7 @@ If they aren't loading, add the following code to .htacess in /fonts:
 
 @font-face {
   font-family: 'Genericons';
-  src: url('fonts/genericons/Genericons-Neue.woff2') format('woff');
+  src: url('fonts/genericons/Genericons.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
@@ -1474,21 +1474,6 @@ Content
 			margin-bottom: 0;
 		}
 
-	.sd-block {
-		border: none !important;
-		padding: 0 !important;
-		margin-bottom: 2.8rem !important;
-	}
-
-	.sd-content {
-		float: none !important;
-		width: auto !important;
-	}
-
-  .sd-content .share-count {
-    display: none !important;
-  }
-
   #series_nav {
     clear: both;
 		margin: 5.6rem 0;
@@ -1750,24 +1735,57 @@ Content
 			left: 0;
 	}
 
-    .sd-content ul li {
-      display:block !important;
+  .sd-block {
+		border: none;
+		padding: 0;
+		margin-bottom: 0;
+	}
+
+  .sd-content ul li {
+    display: block !important;
+  }
+
+
+  /* Sticky Sharing Icons */
+  .sharedaddy.stick .sd-block {
+    position: fixed;
+      top: 10%;
+  }
+
+  /* Move Sharedaddy to bottom of post when finished reading. */
+  .sharedaddy.stop {
+      margin-bottom: 4rem;
+      position: static;
+  }
+
+    .sharedaddy.stop .sd-block {
+      margin-bottom: 3rem;
+      position: static;
     }
 
-    /* When the width reaches 600px (.post_body) plus 62px on either side
-    (the width of the Jetpack sharing buttons) plus 20px (.content_column padding). */
-    @media only screen and (max-width:743px) {
-
-    	.sharedaddy {
-    			margin-bottom: 4rem;
-    			position: static;
-    	}
-
-    		.sd-content ul li {
-    				display: inline !important;
-    		}
-
+    .sharedaddy.stop .sd-content ul li {
+        display: inline !important;
     }
+
+  /* When the width reaches 600px (.post_body) plus 62px on either side
+  (the width of the Jetpack sharing buttons) plus 20px (.content_column padding). */
+  @media only screen and (max-width:743px) {
+
+  	.sharedaddy {
+  			margin-bottom: 4rem;
+  			position: static;
+  	}
+
+      .sd-block {
+        margin-bottom: 3rem;
+        position: static;
+      }
+
+  		.sd-content ul li {
+  				display: inline !important;
+  		}
+
+  }
 
 
   /*------------------------------
