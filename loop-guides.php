@@ -1,56 +1,40 @@
 <?php
 
-// Start the Loop.
-if ( have_posts() ) : while ( have_posts() ) : the_post();
+$downloads_args = array(
+  'post_type'	=> 'download',
+  'tax_query'	=> array(
+    array(
+      'taxonomy'	=> 'download_category',
+      'field'			=> 'slug',
+      'terms'			=> 'survival-guides',
+    ),
+  ),
+);
 
-  // Assign post variables.
-  $post_title   = the_title( '', '', FALSE );
+$downloads = new WP_Query( $downloads_args );
 
-  // Assign this post to a variable so we can exclude it from series posts and
-  // current posts.
-  $this_post[] = $post->ID;
+if ( $downloads->have_posts() ) :
+while ( $downloads->have_posts() ) : $downloads->the_post();
 
-  // This is the post container.
-  echo '<div ';
-  post_class( 'hentry' );
-  echo '>';
+?>
 
-    echo '<div class="headline_postmeta">';
+  <a <?php post_class($class); ?> href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
 
-      // Headline
-      echo '<h1 class="headline entry-title">' . $post_title . '</h1>';
+    <?php if ( has_post_thumbnail() ) { the_post_thumbnail('medium'); }
 
-      if ( function_exists( 'yoast_breadcrumb' ) ) {
-        yoast_breadcrumb( '<div class="postmeta"><div class="breadcrumbs">', '</div></div>' );
-      }
+    $price = edd_get_download_price( get_the_ID() );
 
-    echo '</div>'; // Close .headline_postmeta.
+    if ( $price == 0 ) { ?>
+      <div class="price_tag">FREE</div>
+    <?php } else { ?>
+      <div class="price_tag"><?php edd_price( get_the_ID() ); ?></div>
+    <?php } ?>
 
-    // Show featured image (1) if the post has a featured image AND (2) if it's
-    // the first page of the post AND (3) the post DOES NOT have the no-image tag.
-    if ( has_post_thumbnail() && !has_tag('no-image') ) {
+  </a>
 
-      echo '<div itemprop="image">';
-      the_post_thumbnail('standard_thumbnail');
-      echo '</div>';
+<?php
 
-    }
-
-    // Output the post.
-    echo '<div class="post_body" itemprop="articleBody">';
-
-      the_content();
-
-      echo '<div class="clear"></div>';
-
-    echo '</div>'; // Close .post_body.
-
-    lawyerist_current_posts();
-
-    lawyerist_recent_discussions();
-
-  echo '</div>'; // Close .post.
-
-endwhile; endif; // Close the Loop.
+endwhile;
+endif;
 
 ?>

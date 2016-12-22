@@ -14,6 +14,19 @@
 			<p id="description"><?php bloginfo('description'); ?></p>
 		<?php } ?>
 
+		<?php
+
+		$cart_num	= edd_get_cart_quantity();
+
+		if ( $cart_num > 0 ) {
+
+			$cart_url	= edd_get_checkout_uri();
+			
+			echo '<a class="edd_cart" href="' . $cart_url . '">' . $cart_num . '</a>';
+		}
+
+		?>
+
 		<div class="clear"></div>
 
 	</div><!-- #header -->

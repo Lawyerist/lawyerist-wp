@@ -294,7 +294,7 @@ body {
 	color: #111;
 }
 
-.download,
+.type-download,
 .page,
 .post,
 .post_body,
@@ -614,6 +614,11 @@ img.size-large {
 img.size-medium,
 img.wp-post-image.attachment-medium {
   width: 30rem;
+}
+
+img.wp-post-image.attachment-medium {
+  float: right;
+  margin-left: 1.5rem;
 }
 
   /* 2x the max width of the image (600px), plus 2x the image margin (630px),
@@ -1058,7 +1063,7 @@ Content
   .tag-lawyerist-podcast
   .series
   .sponsored
-  .download
+  .type-download
   .page
 
   */
@@ -1145,7 +1150,7 @@ Content
     border-top: .7rem solid #ffffa0;
   }
 
-  .index .download {
+  .index .type-download {
     border-top: .7rem solid #ed9c28;
     padding: 6rem;
   }
@@ -1153,7 +1158,7 @@ Content
     /* Just feels right. */
     @media only screen and ( max-width:399px ) {
 
-      .index .download {
+      .index .type-download {
         padding: 3rem;
       }
 
@@ -1237,7 +1242,7 @@ Content
 
     }
 
-  .index .download .wp-post-image {
+  .index .type-download .wp-post-image {
     float: right;
     margin: 0;
     transform: rotate( .015turn );
@@ -1249,7 +1254,7 @@ Content
     which seems about right. */
     @media only screen and ( max-width:689px ) {
 
-      .index .download .wp-post-image {
+      .index .type-download .wp-post-image {
         display: block;
         float: none;
         margin: 0 auto 1.5rem auto;
@@ -1298,18 +1303,18 @@ Content
 
     }
 
-  .index .download .headline_excerpt {
+  .index .type-download .headline_excerpt {
     padding: 0;
   }
 
-  .index .download.has-post-thumbnail .headline_excerpt {
-    padding: 0 26.5rem 0 0;
+  .index .type-download.has-post-thumbnail .headline_excerpt {
+    padding: 0 28rem 0 0;
   }
 
-    /* See .index .download .wp-post-image, above. */
+    /* See .index .type-download .wp-post-image, above. */
     @media only screen and ( max-width:689px ) {
 
-      .index .download.has-post-thumbnail .headline_excerpt {
+      .index .type-download.has-post-thumbnail .headline_excerpt {
         padding: 0;
       }
 
@@ -1343,7 +1348,7 @@ Content
       font-size: 1.6rem;
     }
 
-    .index .download .excerpt {
+    .index .type-download .excerpt {
       font-size: 1.8rem;
       margin-bottom: 1.5em;
     }
@@ -1442,6 +1447,11 @@ Content
     padding-left: 6.2rem;
     max-width: 60rem;
   }
+
+    .survival-guides .post_body {
+      padding-left: 0;
+      max-width: 100%;
+    }
 
     /* When the width reaches 600px (.post_body) plus 62px on either side
     (the width of the Jetpack sharing buttons) plus 20px (.content_column padding). */
@@ -1806,26 +1816,30 @@ Content
 	Survival Guides
 	------------------------------*/
 
+  /* Landing page & widget. */
+
   #survival_guides a {
+    box-sizing: border-box;
     display: inline-block;
     float: left;
-    margin-right: 3.125%;
+    margin: 0;
+    padding-right: 1.5rem;
     position: relative;
     transition: transform .2s;
-    width: 46.875%;
+    width: 33.333%;
   }
 
-  #survival_guides a img.wp-post-image {
-    float: none;
-    height: auto;
-    margin:0;
-    width: 100%;
-  }
+    #survival_guides a:hover,
+    #survival_guides a:focus {
+      transform: scale(1.05, 1.05);
+    }
 
-  #survival_guides a:hover,
-  #survival_guides a:focus {
-    transform: scale(1.05, 1.05);
-  }
+    #survival_guides a img.wp-post-image {
+      float: none;
+      height: auto;
+      margin:0;
+      width: 100%;
+    }
 
   #survival_guides .price_tag {
     background-color: #c00;
@@ -1836,7 +1850,7 @@ Content
     line-height: 1.2;
     padding: .4rem .8rem;
     position: absolute;
-      right: 10%;
+      right: 20%;
       top: 0;
     transition: background-color .2s;
   }
@@ -1846,10 +1860,20 @@ Content
     background-color: #a00;
   }
 
+  /* 675px (content column = 640px). */
+  @media only screen and (max-width:674px) {
+
+    #survival_guides a {
+      width: 50%;
+    }
+
+  }
+
+  /* 500px */
   @media only screen and (max-width:499px) {
 
-    #survival_guides img.wp-post-image {
-      margin: 0;
+    #survival_guides a {
+      padding-right: 0;
     }
 
     #survival_guides .price_tag {
@@ -2245,6 +2269,31 @@ label {
 
   .jBox-Modal .jBox-content {
     padding: 2rem;
+  }
+
+  a.edd_cart {
+    background-color: #333;
+    border-radius: .2rem;
+    color: #fff;
+    font-size: 1.6rem;
+    line-height: 3.2rem;
+    padding: .8rem;
+    margin-left: .75em;
+  }
+
+  a.edd_cart:hover {
+    color: #ddd;
+  }
+
+  .edd_cart:before {
+    content: '\f447';
+    display: inline-block;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font: normal 2rem/3.2rem Genericons;
+    margin-right: .25em;
+    speak: none;
+    vertical-align: top;
   }
 
   #edd_purchase_form #edd_mailchimp {

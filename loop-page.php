@@ -5,10 +5,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
   // Assign post variables.
   $post_title   = the_title( '', '', FALSE );
-
-  // Assign this post to a variable so we can exclude it from series posts and
-  // current posts.
-  $this_post[] = $post->ID;
+  $post_type    = get_post_type( $post->ID );
 
   // This is the post container.
   echo '<div ';
@@ -31,7 +28,13 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
     if ( has_post_thumbnail() && !has_tag('no-image') ) {
 
       echo '<div itemprop="image">';
-      the_post_thumbnail('standard_thumbnail');
+
+      if ( $post_type == 'download' ) {
+        the_post_thumbnail( 'medium' );
+      } else {
+        the_post_thumbnail( 'standard_thumbnail' );
+      }
+
       echo '</div>';
 
     }
@@ -45,9 +48,13 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
     echo '</div>'; // Close .post_body.
 
-    lawyerist_current_posts();
+    if ( !$post_type == 'download' ) {
 
-    lawyerist_recent_discussions();
+      lawyerist_current_posts();
+
+      lawyerist_recent_discussions();
+
+    }
 
   echo '</div>'; // Close .post.
 

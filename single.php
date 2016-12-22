@@ -13,8 +13,15 @@
 
 		<?php
 
+		// Assign post variables.
+		$post_type	= get_post_type( $post->ID );
+
 		// Get the Loop.
-    get_template_part( 'loop', 'single' );
+		if ( $post_type == 'download' ) {
+			get_template_part( 'loop', 'page' );
+		} else {
+			get_template_part( 'loop', 'single' );
+		}
 
 		?>
 
