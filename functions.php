@@ -14,7 +14,8 @@ CONTENT
 - Query Mods
 - Archive Headers
 - Postmeta
-- Loops
+- Current Posts Widget
+- Recent Discussions Widget
 - Ads
 - Add Image Sizes
 - Remove Inline Width from Image Captions
@@ -53,7 +54,7 @@ function lawyerist_stylesheets_scripts() {
 	wp_register_script( 'responsive_menu', get_template_directory_uri() . '/js/responsive_menu.js', array( 'jquery' ), $cacheBusterMenu, true );
 	wp_enqueue_script( 'responsive_menu' );
 
-	if ( !is_mobile() && class_exists( 'Jetpack' ) && Jetpack::is_module_active( 'sharedaddy' ) ) {
+	if ( !is_mobile() && ( ( is_single() || is_page() ) ) && class_exists( 'Jetpack' ) && Jetpack::is_module_active( 'sharedaddy' ) ) {
 		$cacheBusterSharedaddy = date("Y m d", filemtime( get_stylesheet_directory() . '/js/sticky_sharedaddy.js') );
 		wp_register_script( 'sticky_sharedaddy', get_template_directory_uri() . '/js/sticky_sharedaddy.js', array( 'jquery' ), $cacheBusterSharedaddy, true );
 		wp_enqueue_script( 'sticky_sharedaddy' );
@@ -230,17 +231,115 @@ function lawyerist_postmeta() {
 
 
 /*------------------------------
-Loops
+Current Posts Widget
 ------------------------------*/
 
-function lawyerist_loops() {
+function lawyerist_current_posts() {
 
-	if ( is_home() || is_archive() || is_search() ) {
-		get_template_part( 'loop', 'index' );
-	}
+	// Current Posts
+	$current_posts_query_args = array(
+		'category__not_in'		=> 1320, // Excludes sponsor-submitted posts.
+		'ignore_sticky_posts' => TRUE,
+		'post__not_in'				=> $this_post,
+		'posts_per_page'			=> 4, // Determines how many posts are displayed in the list.
+	);
+
+	$current_posts_query = new WP_Query( $current_posts_query_args );
+
+	if ( $current_posts_query->post_count > 1 ) :
+
+		echo '<div id="current_posts">';
+
+			echo '<div class="current_posts_heading"><a href="' . home_url() . '">Current Posts</a></div>';
+
+			// Start the current posts sub-Loop.
+			while ( $current_posts_query->have_posts() ) : $current_posts_query->the_post();
+
+				$current_post_title = the_title( '', '', FALSE );
+				$current_post_url   = get_permalink();
+
+				echo '<a href="' . $current_post_url . '" title="' . $current_post_title . '" class="current_post">';
+
+					if ( has_post_thumbnail() ) {
+						the_post_thumbnail( 'current_posts_thumbnail' );
+					} else {
+						echo '<img src="' . get_template_directory_uri() . '/images/fff-thumb.png" class="attachment-thumbnail wp-post-image" />';
+					}
+
+					echo '<p class="current_post_title">' . $current_post_title . '</p>';
+
+				echo '</a>';
+
+			endwhile;
+
+			wp_reset_postdata();
+
+			echo '<div class="clear"></div>';
+
+		echo '</div>'; // Close #current_posts.
+
+	endif; // End current posts.
 
 }
 
+/*------------------------------
+Recent Discussions Widget
+------------------------------*/
+
+function lawyerist_recent_discussions() {
+
+	// Recent Discussions
+	echo '<div id="recent_discussions">';
+
+		echo '<div class="recent_discussions_heading"><a href="http://lab.lawyerist.com">Recent Discussions in the Lawyerist Lab</a></div>';
+
+		// Get RSS feed. (I don't think I need this.)
+		// include_once( ABSPATH . WPINC . '/feed.php' );
+
+		// Get the Lab feed.
+		$rss = fetch_feed( 'http://lab.lawyerist.com/discussions/feed.rss' );
+
+		if ( ! is_wp_error( $rss ) ) { // Checks that the object is created correctly.
+
+			// Figure out how many total items there are, but limit it to 5.
+			$maxitems = $rss->get_item_quantity( 5 );
+
+			// Build an array of all the items, starting with element 0 (first element).
+			$rss_items = $rss->get_items( 0, $maxitems );
+
+		}
+
+		echo '<ul>';
+
+			// Loop through the feed items.
+			if ( $maxitems == 0 ) :
+
+				echo '<li>';
+				_e( 'No items', 'my-text-domain' );
+				echo '</li>';
+
+			else :
+
+				// Loop through each feed item and display each item as a hyperlink.
+				foreach ( $rss_items as $item ) :
+				?>
+
+					<li>
+						<a href="<?php echo esc_url( $item->get_permalink() ); ?>" title="<?php printf( __( 'Updated on %s', 'my-text-domain' ), $item->get_date('F jS, Y @ g:i a') ); ?>">
+							<div class="discussion_title"><?php echo esc_html( $item->get_title() ); ?></div>
+						</a>
+					</li>
+
+				<?php
+				endforeach;
+
+			endif;
+
+		echo '</ul>';
+
+	echo '</div>'; // Close #recent_discussions.
+
+}
 
 /*------------------------------
 Ads
