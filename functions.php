@@ -53,7 +53,7 @@ function lawyerist_stylesheets_scripts() {
 	wp_register_script( 'responsive_menu', get_template_directory_uri() . '/js/responsive_menu.js', array( 'jquery' ), $cacheBusterMenu, true );
 	wp_enqueue_script( 'responsive_menu' );
 
-	if ( is_single() || is_page() || get_post_type( $post->ID ) == 'download' ) {
+	if ( !is_mobile() && class_exists( 'Jetpack' ) && Jetpack::is_module_active( 'sharedaddy' ) ) {
 		$cacheBusterSharedaddy = date("Y m d", filemtime( get_stylesheet_directory() . '/js/sticky_sharedaddy.js') );
 		wp_register_script( 'sticky_sharedaddy', get_template_directory_uri() . '/js/sticky_sharedaddy.js', array( 'jquery' ), $cacheBusterSharedaddy, true );
 		wp_enqueue_script( 'sticky_sharedaddy' );

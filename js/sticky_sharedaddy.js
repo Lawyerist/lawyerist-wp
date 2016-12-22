@@ -19,6 +19,10 @@ function sticky_sharedaddy( $ ) {
     jQuery( '.sharedaddy' ).addClass( 'stop' );
   }
 
+  if ( sharedaddy_top > (window_top + window_height/10) ) {
+    jQuery( '.sharedaddy' ).removeClass( 'stop' );
+  }
+
 }
 
 jQuery(

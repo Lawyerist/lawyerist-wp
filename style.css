@@ -1754,29 +1754,27 @@ Content
 
   /* Move Sharedaddy to bottom of post when finished reading. */
   .sharedaddy.stop {
-      margin-bottom: 4rem;
-      position: static;
+    bottom: -.7em; /* Jetpack adds a bottom margin that can't be overridden. This just cancels it out. */
+    top: auto;
   }
 
     .sharedaddy.stop .sd-block {
-      margin-bottom: 3rem;
       position: static;
-    }
-
-    .sharedaddy.stop .sd-content ul li {
-        display: inline !important;
     }
 
   /* When the width reaches 600px (.post_body) plus 62px on either side
   (the width of the Jetpack sharing buttons) plus 20px (.content_column padding). */
   @media only screen and (max-width:743px) {
 
-  	.sharedaddy {
+  	.sharedaddy,
+    .sharedaddy.stop {
   			margin-bottom: 4rem;
   			position: static;
   	}
 
-      .sd-block {
+      .sd-block,
+      .sharedaddy.stick .sd-block,
+      .sharedaddy.stop .sd-block {
         margin-bottom: 3rem;
         position: static;
       }
