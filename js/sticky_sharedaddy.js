@@ -17,7 +17,6 @@ function sticky_sharedaddy( $ ) {
 
   if ( sharedaddy_bottom >= post_body_bottom ) {
     jQuery( '.sharedaddy' ).addClass( 'stop' );
-    jQuery( '.sharedaddy' ).css( 'top', post_body_height-sharedaddy_height );
   }
 
 }
