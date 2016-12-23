@@ -14,6 +14,7 @@ CONTENT
 - Query Mods
 - Archive Headers
 - Postmeta
+- Loops for Infinite Scrolling
 - Current Posts Widget
 - Recent Discussions Widget
 - Ads
@@ -227,6 +228,16 @@ function lawyerist_postmeta() {
 		get_template_part( 'postmeta', 'single' );
 	}
 
+}
+
+
+/*------------------------------
+Loops for Infinite Scrolling
+------------------------------*/
+function lawyerist_loops() {
+	if ( is_home() || is_archive() || is_search() ) {
+		get_template_part( 'loop', 'index' );
+	}
 }
 
 
