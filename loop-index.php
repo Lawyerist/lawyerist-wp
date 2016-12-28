@@ -187,6 +187,12 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
   unset ( $post_classes ); // Clear the post classes for the next trip through the Loop.
 
-endwhile; endif; // Close the Loop.
+endwhile;
+
+else :
+
+  echo '<p class="post">No posts match your query.</p>';
+
+endif; // Close the Loop.
 
 ?>
