@@ -1146,6 +1146,11 @@ Content
     padding: 2rem;
   }
 
+  .archive.tax-series .series {
+    border-top: 0;
+    padding: 0;
+  }
+
   .index .sponsored {
     border-top: .7rem solid #ffffa0;
   }
@@ -1290,6 +1295,15 @@ Content
   .index .series.has-post-thumbnail .headline_excerpt {
     margin: 0 0 3rem 1.5rem;
     padding: 0 0 0 25rem;
+  }
+
+  .archive.tax-series .series .headline_excerpt {
+    padding: 2rem;
+  }
+
+  .archive.tax-series .series.has-post-thumbnail .headline_excerpt {
+    padding: 2rem 2rem 2rem 25%;
+    margin: 0 0 0 1.5rem;
   }
 
     /* See .index .series .wp-post-image, above. */
@@ -1484,15 +1498,18 @@ Content
 			margin-bottom: 0;
 		}
 
+  .theiaPostSlider_nav._lower {
+    margin: 1em 0 6rem 0;
+  }
+
   #series_nav {
     clear: both;
-		margin: 5.6rem 0;
+		margin: 6rem 0;
   }
 
 	#author_bio_footer {
 		clear: both;
-		margin-bottom: 6rem;
-    margin-top: 5.6rem;
+		margin: 6rem 0;
 		min-height: 10rem;
 	}
 
@@ -1510,7 +1527,7 @@ Content
 
   #categories_tags p {
     font-size: 1.4rem;
-    margin-bottom: .56rem;
+    margin-bottom: .6rem;
   }
 
   #categories_tags p:last-child {
@@ -2316,13 +2333,14 @@ Print
 @media print {
 
   /* Don't Print */
-  #leaderboard_container,
-  #email_social,
+  #lawyerist_ap1,
+  .edd_cart,
   .sharedaddy,
-  .comments,
-  .survival_guide_note,
+  #categories_tags,
+  #current_posts,
+  #recent_discussions,
+  #disqus_thread,
   #mobile_ad,
-  #after_post,
   #sidebar_column {
     display: none !important;
   }

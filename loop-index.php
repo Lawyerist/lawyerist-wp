@@ -45,7 +45,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
     // Series title:
     // Check for a series, get the series information, then output the series title.
-    if ( has_term( true, 'series' ) ) {
+    if ( has_term( true, 'series' ) && !is_tax( 'series' ) ) {
 
       $series_IDs = wp_get_post_terms(
         $post->ID,
@@ -74,8 +74,12 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
       // Post images for series,
       if ( has_post_thumbnail() ) {
 
-        if ( has_term( true, 'series' ) ) {
+        if ( has_term( true, 'series' ) && !is_tax( 'series' ) ) {
           the_post_thumbnail( 'default_thumbnail' );
+        } elseif ( has_term( true, 'series' ) && is_tax( 'series' ) ) {
+          echo '<div class="default_thumbnail" style="background-image: url( ';
+          echo the_post_thumbnail_url( 'default_thumbnail' );
+          echo ' );"></div>';
         } elseif ( $post_type == 'download' ) {
           the_post_thumbnail( 'download_thumbnail' );
         } elseif ( $post_type == 'post' && $post_format == 'standard' ) {
@@ -121,7 +125,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
 
     // If the post is in a series, show up to 4 additional posts in that series.
-    if ( has_term( true, 'series' ) ) {
+    if ( has_term( true, 'series' ) && !is_tax( 'series' ) ) {
 
       $this_post[] = $post->ID; // We use this to exclude the current post.
 
@@ -177,7 +181,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
   if ( $post_num == 3 && is_mobile() ) { lawyerist_get_ap3(); }
 
   // Insert recent discussions on index (but not archive) pages.
-  if ( $post_num == 5 && !is_archive() ) { lawyerist_recent_discussions(); }
+  if ( $post_num == 5 && !is_archive() && !is_search() ) { lawyerist_recent_discussions(); }
 
   $post_num++; // Increment counter.
 
