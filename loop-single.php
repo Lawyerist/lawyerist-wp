@@ -33,7 +33,6 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
         $series_info				= get_term( $series_ID[0] );
         $series_title				= $series_info->name;
-        $series_description = $series_info->description;
         $series_slug				= $series_info->slug;
         $series_url					=	get_term_link( $series_ID[0], 'series' );
 
@@ -60,12 +59,58 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
     }
 
+    // If the post is in a series, link to the series.
+    if ( has_term( true , 'series' ) ) {
+
+      // Uses variables from earlier in the loop, when we put the series title
+      // above the headline.
+      $series_query_args = array(
+        'orderby'					=> 'date',
+        'order'						=> 'ASC',
+        'tax_query'     	=> array(
+          array(
+            'taxonomy'  => 'series',
+            'field'			=> 'slug',
+            'terms'			=> $series_slug,
+          )
+        )
+      );
+
+      echo '<div id="series_note">';
+
+        // Start the series sub-Loop.
+        $series_query = new WP_Query( $series_query_args );
+
+        // Only show the series if there is more than one post in the series.
+        if ( $series_query->have_posts() ) : $series_query->the_post();
+
+          $first_post_url = get_the_permalink();
+
+          echo '<p class="remove_bottom">';
+          echo 'This post is part of "' . $series_title . '," a series of ' . $series_query->post_count . ' posts.';
+          echo ' You can ';
+          if ( $this_post[0] != $post->ID ) {
+            echo '<a href="' . $first_post_url . '">start at the beginning</a> or ';
+          }
+          echo '<a href="' . $series_url . '">see all posts in the series</a>.';
+          echo '</p>';
+
+        endif; // End the series sub-Loop if statement.
+
+        wp_reset_postdata(); // Necessary because the series loop is nested in the main loop.
+
+      echo '</div>'; // Close #series_note.
+
+    } // End series footer.
+
     // Output the post.
     echo '<div class="post_body" itemprop="articleBody">';
 
       the_content();
 
       echo '<div class="clear"></div>';
+
+      previous_post_link( '<p><strong>Read the next post in this series: "%link."</em></strong>', '%title', true, '', 'series' );
 
       // Show page navigation if the post is paginated unless we're displaying
       // the RSS feed.
@@ -113,73 +158,6 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
       echo '</div>'; // Close #author_connect.
 
     echo '</div>'; // Close #author_bio_footer.
-
-
-    // If the post is in a series, list the other posts in the series.
-    if ( has_term( true , 'series' ) ) {
-
-      $series_numposts  = 4;          // Determines how many posts are displayed in the list.
-
-      // Uses variables from earlier in the loop, when we put the series title
-      // above the headline.
-      $series_query_args = array(
-        'orderby'					=> 'date',
-        'order'						=> 'ASC',
-        'post__not_in'		=> $this_post,
-        'posts_per_page'	=> $series_numposts,
-        'tax_query'     	=> array(
-          array(
-            'taxonomy'  => 'series',
-            'field'			=> 'slug',
-            'terms'			=> $series_slug,
-          )
-        )
-      );
-
-      echo '<div id="series_nav">';
-
-        // Start the series sub-Loop.
-        $series_query = new WP_Query( $series_query_args );
-
-        // Only show the series if there is more than one post in the series.
-        if ( $series_query->post_count > 1 ) :
-
-          // Series title.
-          echo '<p class="h3">More in this Series: ' . $series_title . '</p>';
-
-          // Show the series description if there is one.
-          if ( $series_description != false ) { echo '<p>' . $series_description . '</p>'; }
-
-          // Start the list of posts in the series.
-          echo '<ul>';
-
-            while ( $series_query->have_posts() ) : $series_query->the_post();
-
-              $series_post_title = the_title( '', '', FALSE );
-              $series_post_url   = get_permalink();
-
-              // This links all the other post's titles to those posts.
-              echo '<li><a href="' . $series_post_url . '" title="' . $series_post_title . '">' . $series_post_title . '</a></li>';
-
-            endwhile; // End the series sub-Loop while statement.
-
-          echo '</ul>'; // End the list of posts in the series.
-
-          // If there are more than the number of posts shown, show a link to
-          // the series landing page.
-          if ( $series_query->found_posts > $series_numposts ) {
-
-            echo '<p><a href="' . $series_url . '">See all the posts in this series.</a></p>';
-
-          }
-
-        endif; // End the series sub-Loop while statement.
-
-        wp_reset_postdata(); // Necessary because the series loop is nested in the main loop.
-
-      echo '</div>'; // Close #series_nav.
-
-    } // End series footer.
 
 
     // Display page navigation, categories, and tags.

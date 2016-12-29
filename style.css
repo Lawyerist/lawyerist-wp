@@ -265,7 +265,6 @@ label,
 p.pullout,
 p.pullquote,
 .series_title,
-#series_nav li,
 .tag_list,
 .theiaPostSlider_nav ._text {
   font-family: concourse, sans-serif;
@@ -525,7 +524,7 @@ p.wp-caption-text {
 
 pre {
 	color: #555;
-	margin-left: 2.8rem;
+	margin-left: 3rem;
 	white-space: pre-wrap; /* css-3 */
 	white-space: -moz-pre-wrap !important; /* Mozilla, since 1999 */
 	white-space: -pre-wrap; /* Opera 4-6 */
@@ -549,13 +548,13 @@ sup {
 
 .syntaxhighlighter {
 	font-size: 1.4rem;
-	margin-bottom: 2.8rem;
+	margin-bottom: 3rem;
 }
 
 ol,
 ul {
 	margin-bottom: 1.5em;
-	margin-left: 2.8rem;
+	margin-left: 3rem;
   padding: 0;
 }
 
@@ -581,7 +580,7 @@ Images
 
 img {
   height: auto;
-  margin-bottom: 2.8rem;
+  margin-bottom: 3rem;
   max-width: 100%;
 }
 
@@ -676,7 +675,7 @@ img.inline {
 }
 
 .wp-caption {
-  margin-bottom: 2.8rem;
+  margin-bottom: 3rem;
   max-width: 100%;
 }
 
@@ -701,7 +700,7 @@ img.inline {
   }
 
 .gallery {
-  margin-bottom: 2.8rem !important;
+  margin-bottom: 3rem !important;
 }
 
 #gallery-2 img {
@@ -1021,7 +1020,7 @@ Content
 }
 
   body.search #archive_header {
-    margin-bottom: 2.8rem;
+    margin-bottom: 3rem;
   }
 
 #archive_header img {
@@ -1194,6 +1193,7 @@ Content
       vertical-align: top;
     }
 
+    .series_title a:focus,
     .series_title a:hover {
       color: #a00;
       text-decoration: none;
@@ -1481,7 +1481,7 @@ Content
 	.post_index {
 		background-color:#f5f5f5;
     border:1px solid #ddd;
-		margin-bottom: 2.8rem;
+		margin-bottom: 3rem;
 		padding:1.5rem 2.5rem 2rem 2.5rem;
 	}
 
@@ -1502,9 +1502,16 @@ Content
     margin: 1em 0 6rem 0;
   }
 
-  #series_nav {
-    clear: both;
-		margin: 6rem 0;
+  #series_note {
+    background-color: #fbfbfb;
+    border-radius: .2rem;
+    border-top: .7rem solid #ddd;
+    box-shadow:
+      0 0 0 .1rem #ddd,
+      .1rem .1rem .3rem rgba(0, 0, 0, 0.2)
+    ;
+		margin-bottom: 3rem;
+    padding: 2rem;
   }
 
 	#author_bio_footer {
@@ -1515,7 +1522,7 @@ Content
 
 	#author_bio_footer img.avatar {
     float: left;
-		margin-bottom: 2.8rem;
+		margin-bottom: 3rem;
 		margin-right: 2rem;
 	}
 
@@ -1728,7 +1735,7 @@ Content
   ------------------------------*/
 
   table {
-    margin-bottom: 2.8rem;
+    margin-bottom: 3rem;
   }
 
   td,
@@ -1824,7 +1831,7 @@ Content
 
   .author_list li {
     display: inline-block;
-    margin-bottom: 2.8rem;
+    margin-bottom: 3rem;
     width: 33.333%;
   }
 
@@ -1942,7 +1949,7 @@ Content
   .tbd-law .half {
     box-sizing: border-box;
     float: left;
-    margin: 2.8rem 0;
+    margin: 3rem 0;
     width: 50%;
   }
 
@@ -1957,11 +1964,11 @@ Content
   }
 
   .tbd-law .half:nth-child(odd) {
-    padding-right: 2.8rem;
+    padding-right: 3rem;
   }
 
   .tbd-law .half:nth-child(even) {
-    padding-left: 2.8rem;
+    padding-left: 3rem;
   }
 
 
@@ -2205,7 +2212,7 @@ label {
     font-size: 1.4rem !important;
     height: 3.6rem;
     line-height: 3.6rem;
-    margin-bottom: 2.8rem;
+    margin-bottom: 3rem;
     outline: none;
     padding: 0 1.6rem;
     text-decoration: none;
