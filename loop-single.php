@@ -86,7 +86,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
           $first_post_url = get_the_permalink();
 
-          echo '<p class="remove_bottom">';
+          echo '<div class="series_icon"></div><p class="remove_bottom">';
           echo 'This post is part of "' . $series_title . '," a series of ' . $series_query->post_count . ' posts.';
           echo ' You can ';
           if ( $this_post[0] != $post->ID ) {
