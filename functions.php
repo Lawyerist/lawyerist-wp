@@ -61,6 +61,10 @@ function lawyerist_stylesheets_scripts() {
 		wp_enqueue_script( 'sticky_sharedaddy' );
 	}
 
+	$cacheBusterMC = date("Y m d", filemtime( get_stylesheet_directory() . '/js/mailchimp_goal_tracking.js') );
+	wp_register_script( 'mailchimp_goal_tracking', get_template_directory_uri() . '/js/mailchimp_goal_tracking.js', '', $cacheBusterMC, true );
+	wp_enqueue_script( 'mailchimp_goal_tracking' );
+
 }
 
 add_action( 'wp_enqueue_scripts', 'lawyerist_stylesheets_scripts' );
