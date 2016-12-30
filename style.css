@@ -475,13 +475,20 @@ p.alert {
 }
 
 p.pullout {
-	background: #eee;
-  border: 1px solid #ddd;
-	display: inline-block;
-	float: right;
-	margin: 0 0 1.5rem 1.5rem;
-	padding: 1.5rem 2.5rem 2rem 2.5rem;
-	width: 39.0625%;
+  background-color: #fbfbfb;
+  border-radius: .2rem;
+  box-shadow:
+    0 0 0 .1rem #ddd,
+    .1rem .1rem .3rem rgba(0, 0, 0, 0.2)
+  ;
+  box-sizing: border-box;
+  color: #777;
+  display: inline-block;
+  float: right;
+  font-size: 1.8rem;
+  margin: 0 0 1.5rem 1.5rem;
+  padding: 2rem;
+	width: 40%;
 }
 
 	p.pullout .pullout_label {
@@ -496,6 +503,16 @@ p.pullout {
 		float: left;
 		margin: 0 1.5rem 1.5rem 0;
 	}
+
+  /* 500px */
+  @media only screen and (max-width:499px) {
+
+    p.pullout {
+      margin: 0 0 3rem 0;
+    	width: 100%;
+    }
+
+  }
 
 p.wp-caption-text {
      color: #666;
