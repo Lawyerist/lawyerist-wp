@@ -3,14 +3,14 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php include('head.php'); ?>
+<?php get_template_part('head'); ?>
 
 
 <body <?php body_class( 'tbd-law' ); ?>>
 
 <?php get_header(); ?>
 
-<div id="content_column_container">
+<div id="column_container">
 
 	<div id="content_column">
 
@@ -46,7 +46,7 @@
 	</div><!-- end #content_column -->
 
 
-</div><!-- end #content_column_container -->
+</div><!-- end #column_container -->
 
 <div class="clear"></div>
 

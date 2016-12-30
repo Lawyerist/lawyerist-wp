@@ -11,11 +11,15 @@ STRUCTURE
 - Sidebar
 
 CONTENT
+- Query Mods
+- Archive Headers
 - Postmeta
-- Mobile Ad
+- Loops for Infinite Scrolling
+- Current Posts Widget
+- Recent Discussions Widget
+- Ads
 - Add Image Sizes
 - Remove Inline Width from Image Captions
-- Page Navigation
 - Featured Images in RSS Feeds
 
 TAXONOMY
@@ -25,7 +29,6 @@ TAXONOMY
 
 PATCHES
 - RSS Feed Caching
-- Fix Gravity Form Tab Index Conflicts
 
 */
 
@@ -44,9 +47,19 @@ function lawyerist_stylesheets_scripts() {
 	wp_register_style( 'normalize-css', get_template_directory_uri() . '/normalize.min.css' );
 	wp_enqueue_style( 'normalize-css' );
 
-	$cacheBusterCSS = date("Y m d", filemtime( get_stylesheet_directory() . '/style.css'));
+	$cacheBusterCSS = date("Y m d", filemtime( get_stylesheet_directory() . '/style.css') );
 	wp_register_style( 'stylesheet', get_template_directory_uri() . '/style.css', array(), $cacheBusterCSS, 'all' );
 	wp_enqueue_style( 'stylesheet' );
+
+	$cacheBusterMenu = date("Y m d", filemtime( get_stylesheet_directory() . '/js/responsive_menu.js') );
+	wp_register_script( 'responsive_menu', get_template_directory_uri() . '/js/responsive_menu.js', array( 'jquery' ), $cacheBusterMenu, true );
+	wp_enqueue_script( 'responsive_menu' );
+
+	if ( !is_mobile() && ( ( is_single() || is_page() ) ) && class_exists( 'Jetpack' ) && Jetpack::is_module_active( 'sharedaddy' ) ) {
+		$cacheBusterSharedaddy = date("Y m d", filemtime( get_stylesheet_directory() . '/js/sticky_sharedaddy.js') );
+		wp_register_script( 'sticky_sharedaddy', get_template_directory_uri() . '/js/sticky_sharedaddy.js', array( 'jquery' ), $cacheBusterSharedaddy, true );
+		wp_enqueue_script( 'sticky_sharedaddy' );
+	}
 
 }
 
@@ -60,6 +73,13 @@ Theme Setup
 function lawyerist_theme_setup() {
 
 	add_theme_support( 'title-tag' );
+	add_theme_support( 'infinite-scroll', array(
+    'container'				=> 'content_column',
+    'footer'					=> false,
+		'posts_per_page'	=> 10,
+		'render'					=> 'lawyerist_loops', // Found below.
+		)
+	);
 	add_theme_support( 'post-thumbnails' );
 	add_theme_support( 'post-formats', array( 'aside' ) );
 	add_theme_support( 'html5', array( 'search-form' ) );
@@ -75,238 +95,313 @@ add_action( 'after_setup_theme', 'lawyerist_theme_setup' );
 Nav Menu
 ------------------------------*/
 
-function register_my_menus() {
+function lawyerist_register_menus() {
+
 	register_nav_menus(
 		array(
-		 'main_nav' => 'Responsive Nav Menu (Below Header)'
+		 'main_topics'	=> 'Main Menu: Topics',
+		 'main_discuss'	=> 'Main Menu: Discuss'
 		)
 	);
+
 }
 
-add_action('init','register_my_menus');
+add_action('init','lawyerist_register_menus');
 
 
 /*------------------------------
 Sidebar
 ------------------------------*/
 
-function lawyerist_sidebar_1()  {
-	$args = array(
-		'id'            => 'sidebar_1',
-		'name'          => 'Sidebar 1',
-		'description'   => 'Right sidebar on Lawyerist.com',
+function lawyerist_register_sidebars()  {
+
+	$sidebar_args = array(
+		'id'            => 'sidebar',
+		'name'          => 'Sidebar',
+		'description'   => 'Widgets start below the ads. Not visible on mobile.',
 		'class'         => 'sidebar',
 		'before_title'  => '<h3>',
 		'after_title'   => '</h3>',
-		'before_widget' => '<li id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</li>',
 	);
+	register_sidebar( $sidebar_args );
 
-	register_sidebar( $args );
 }
 
-add_action( 'widgets_init', 'lawyerist_sidebar_1' );
+add_action( 'widgets_init', 'lawyerist_register_sidebars' );
 
 
 /* CONTENT ********************/
 
 /*------------------------------
-Postmeta
+Query Mods
 ------------------------------*/
 
-function lawyerist_get_postmeta() {
+function lawyerist_query_mod( $wp_query ) {
 
-	// This function must be used within the Loop
+	// Add pages and downloads to the main query.
+	set_query_var( 'post_type', array( 'post', 'page', 'download' ) );
 
-	$this_post_id	= get_the_ID();
-	$url 					= get_the_permalink();
-	$num_comments	= get_comments_number();
+	// If displaying a series archive page, show the oldest post first.
+	if ( is_tax( 'series' ) ) {
+		set_query_var( 'order', 'ASC' );
+	}
 
-	// Sponsor-submitted posts will have a sponsor and the category will be set
-	// to Sponsored Post.
-	if ( has_term( true, 'sponsor' ) && has_category( 'sponsored-posts' ) ) {
+}
 
-		$sponsors = wp_get_post_terms(
-			$this_post_id,
-			'sponsor',
-			array(
-				'fields' 	=> 'names',
-				'orderby' => 'count',
-				'order' 	=> 'DESC'
-			)
-		);
-		$sponsor = $sponsors[0];
+add_action('pre_get_posts','lawyerist_query_mod');
 
-		$sponsor_ids = wp_get_post_terms(
-			$this_post_id,
-			'sponsor',
-			array(
-				'fields' 	=> 'ids',
-				'orderby' => 'count',
-				'order' 	=> 'DESC'
-			)
-		);
-		$sponsor_id = $sponsor_ids[0];
 
-		$sponsor_url = term_description( $sponsor_id, 'sponsor' );
-		$sponsor_url = strip_tags( $sponsor_url );
+/*------------------------------
+Archive Headers
+------------------------------*/
 
-		if ( is_single() ) {
-			$author = '<a href="' . $sponsor_url . '" rel="nofollow">' . $sponsor . '</a>';
-		} else {
-			$author = $sponsor;
-		}
+function lawyerist_get_archive_header() {
 
-	// Sponsored collaborative posts will have a sponsor but the
-	// category will *not* be set to Sponsored Posts.
-	} elseif ( has_term( true, 'sponsor' ) && !has_category( 'sponsored-posts' ) ) {
+	// Display the author header if we're on an author page.
+	if ( is_author() ) {
 
-		$sponsors = wp_get_post_terms(
-			$this_post_id,
-			'sponsor',
-			array(
-				'fields' 	=> 'names',
-				'orderby' => 'count',
-				'order' 	=> 'DESC'
-			)
-		);
-		$sponsor = $sponsors[0];
+		$author = $wp_query->query_vars['author'];
 
-		$sponsor_ids = wp_get_post_terms(
-			$this_post_id,
-			'sponsor',
-			array(
-				'fields' 	=> 'ids',
-				'orderby' => 'count',
-				'order' 	=> 'DESC'
-			)
-		);
-		$sponsor_id = $sponsor_ids[0];
+		$author_name					= get_the_author_meta( 'display_name', $author );
+		$author_website				= get_the_author_meta( 'user_url', $author );
+		$parsed_url						= parse_url( $author_website );
+		$author_nice_website	= $parsed_url['host'];
+		$author_bio						= get_the_author_meta( 'description', $author );
+		$author_twitter				= get_the_author_meta( 'twitter', $author );
 
-		$sponsor_url = term_description( $sponsor_id, 'sponsor' );
-		$sponsor_url = strip_tags( $sponsor_url );
+		$author_avatar  = get_avatar( get_the_author_meta( 'user_email', $author ), 300, '', $author_name );
 
-		/* Bylines should only have links to the author page on single post pages. */
-		if ( is_single() ) {
-			$author = '<a href="' . get_author_posts_url( get_the_author_meta( 'ID' ) ) . '">' . get_the_author() . '</a>, sponsored by ' . '<a href="' . $sponsor_url . '" rel="nofollow">' . $sponsor . '</a>,';
-		} else {
-			$author = get_the_author() . ', <span class="sponsored_by">sponsored by ' . $sponsor . ',</span>';
-		}
+		echo '<div id="author_header">' . "\n";
+		echo '<h1>' . $author_name . '</h1>' . "\n";
 
-	// Regular posts
-	} else {
+		echo $author_avatar;
 
-		/* Bylines should only have links to the author page on single post pages. */
-		if ( is_single() ) {
-			$author = '<a href="' . get_author_posts_url( get_the_author_meta( 'ID' ) ) . '">' . get_the_author() . '</a>';
-		} else {
-			$author = get_the_author();
-		}
+		echo '<p class="author_bio">' . $author_bio . '</p>' . "\n";
+
+		echo '<div id="author_connect">' . "\n";
+
+			if ( $author_twitter == true ) {
+				echo '<p class="author_twitter"><a href="https://twitter.com/' . $author_twitter . '">@' . $author_twitter . '</a></p>';
+			}
+
+			if ( $author_website == true ) {
+				echo '<p class="author_website"><a href="' . $author_website . '">' . $author_nice_website . '</a></p>';
+			}
+
+		echo '</div>' . "\n";
+
+		echo '<div class="clear"></div>';
+
+		echo '</div>'; // End #author_header.
 
 	}
 
-	// Get the date
-	$date = get_the_time( 'F jS, Y' );
+	// Display the archive header if we're on an archive page (but not on an author page).
+	if ( is_archive() && !is_author() ) {
 
+		$title = single_term_title( '', FALSE );
+		$descr = term_description();
 
-	// Calculate shares
+		echo '<div id="archive_header"><h1>' . $title . '</h1>' . "\n";
+		echo $descr . "\n";
+		echo '</div>';
 
-	/* Twitter (via http://newsharecounts.com/) */
-	$tw_api_call	= file_get_contents( 'http://public.newsharecounts.com/count.json?url=' . $url );
-	$tw_shares		= json_decode( $tw_api_call );
-
-	/* Facebook */
-	// $fb_api_call	= 'http://api.facebook.com/restserver.php?format=json&method=links.getStats&urls=' . urlencode( $url );
-	// $fb_shares		= json_decode( file_get_contents( $fb_api_call ), true );
-
-	/* LinkedIn */
-	$li_api_call	= file_get_contents( 'https://www.linkedin.com/countserv/count/share?url=' . $url . '&format=json' );
-	$li_shares		= json_decode( $li_api_call );
-
-	$shares						= $tw_shares->count /* + $fb_shares[0][share_count] */ + $li_shares->count;
-	$shares_formatted	= number_format( $shares );
-
-
-	// Comments
-	if ( is_single() ) {
-		$comments = '<a href="#disqus_thread">&nbsp;</a>';
-	} else {
-		$comments = '<span class="disqus-comment-count" data-disqus-url="' . $url . '">&nbsp;</span>';
 	}
 
+	// Display the search header if we're on a search page.
+	if ( is_search() ) {
 
-	// Output the results
-	echo '<div class="postmeta"><span class="author_link">By ' . $author . '</span> <span class="on_date">on ' . $date. '</span> ';
+		echo '<div id="archive_header"><h1>Search results for "' . get_search_query() . '"</h1></div>';
+		echo '<div id="lawyerist_content_search">';
+			get_search_form();
+		echo '</div>';
 
-	if ( $shares > 10 ) {
-		echo '<span class="share_count">' . $shares_formatted . ' Shares </span> ';
 	}
-
-	if ( $num_comments > 10 ) {
-		echo '<span class="comment_link">' . $comments . '</span>';
-	}
-
-	echo '</div>';
 
 }
 
 
 /*------------------------------
-Mobile Ad
+Postmeta
 ------------------------------*/
 
-function insert_lawyerist_mobile_ad() { ?>
+function lawyerist_postmeta() {
 
-	<div id="mobile_ad">
+	if ( is_home() || is_archive() || is_search() ) {
+		get_template_part( 'postmeta', 'index' );
+	} elseif ( is_single() ) {
+		get_template_part( 'postmeta', 'single' );
+	}
+
+}
+
+
+/*------------------------------
+Loops for Infinite Scrolling
+------------------------------*/
+function lawyerist_loops() {
+	if ( is_home() || is_archive() || is_search() ) {
+		get_template_part( 'loop', 'index' );
+	}
+}
+
+
+/*------------------------------
+Current Posts Widget
+------------------------------*/
+
+function lawyerist_current_posts() {
+
+	// Current Posts
+	$current_posts_query_args = array(
+		'category__not_in'		=> 1320, // Excludes sponsor-submitted posts.
+		'ignore_sticky_posts' => TRUE,
+		'post__not_in'				=> $this_post,
+		'posts_per_page'			=> 4, // Determines how many posts are displayed in the list.
+	);
+
+	$current_posts_query = new WP_Query( $current_posts_query_args );
+
+	if ( $current_posts_query->post_count > 1 ) :
+
+		echo '<div id="current_posts">';
+
+			echo '<div class="current_posts_heading"><a href="' . home_url() . '">Current Posts</a></div>';
+
+			// Start the current posts sub-Loop.
+			while ( $current_posts_query->have_posts() ) : $current_posts_query->the_post();
+
+				$current_post_title = the_title( '', '', FALSE );
+				$current_post_url   = get_permalink();
+
+				echo '<a href="' . $current_post_url . '" title="' . $current_post_title . '" class="current_post">';
+
+					if ( has_post_thumbnail() ) {
+						the_post_thumbnail( 'current_posts_thumbnail' );
+					} else {
+						echo '<img src="' . get_template_directory_uri() . '/images/fff-thumb.png" class="attachment-thumbnail wp-post-image" />';
+					}
+
+					echo '<p class="current_post_title">' . $current_post_title . '</p>';
+
+				echo '</a>';
+
+			endwhile;
+
+			wp_reset_postdata();
+
+			echo '<div class="clear"></div>';
+
+		echo '</div>'; // Close #current_posts.
+
+	endif; // End current posts.
+
+}
+
+/*------------------------------
+Recent Discussions Widget
+------------------------------*/
+
+function lawyerist_recent_discussions() {
+
+	// Recent Discussions
+	echo '<div id="recent_discussions">';
+
+		echo '<div class="recent_discussions_heading"><a href="http://lab.lawyerist.com">Recent Discussions in the Lawyerist Lab</a></div>';
+
+		// Get RSS feed. (I don't think I need this.)
+		// include_once( ABSPATH . WPINC . '/feed.php' );
+
+		// Get the Lab feed.
+		$rss = fetch_feed( 'http://lab.lawyerist.com/discussions/feed.rss' );
+
+		if ( ! is_wp_error( $rss ) ) { // Checks that the object is created correctly.
+
+			// Figure out how many total items there are, but limit it to 5.
+			$maxitems = $rss->get_item_quantity( 5 );
+
+			// Build an array of all the items, starting with element 0 (first element).
+			$rss_items = $rss->get_items( 0, $maxitems );
+
+		}
+
+		echo '<ul>';
+
+			// Loop through the feed items.
+			if ( $maxitems == 0 ) :
+
+				echo '<li>';
+				_e( 'No items', 'my-text-domain' );
+				echo '</li>';
+
+			else :
+
+				// Loop through each feed item and display each item as a hyperlink.
+				foreach ( $rss_items as $item ) :
+				?>
+
+					<li>
+						<a href="<?php echo esc_url( $item->get_permalink() ); ?>" title="<?php printf( __( 'Updated on %s', 'my-text-domain' ), $item->get_date('F jS, Y @ g:i a') ); ?>">
+							<div class="discussion_title"><?php echo esc_html( $item->get_title() ); ?></div>
+						</a>
+					</li>
+
+				<?php
+				endforeach;
+
+			endif;
+
+		echo '</ul>';
+
+	echo '</div>'; // Close #recent_discussions.
+
+}
+
+/*------------------------------
+Ads
+------------------------------*/
+
+function lawyerist_get_ap1() { ?>
+
+	<?php if ( !has_tag('no-ads') && !is_mobile() ) { ?>
+
+		<div id="lawyerist_ap1">
+			<div id='div-gpt-ad-1429843825352-0' style='height:90px; width:728px;'>
+				<script type='text/javascript'>
+				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1429843825352-0'); });
+				</script>
+			</div>
+		</div>
+
+	<?php } ?>
+
+<?php }
+
+
+function lawyerist_get_ap2() { ?>
+
+	<div id="lawyerist_ap2">
 		<div id='div-gpt-ad-1429843825352-1' style='height:250px; width:300px;'>
-		<script type='text/javascript'>
-		googletag.cmd.push(function() { googletag.display('div-gpt-ad-1429843825352-1'); });
-		</script>
+			<script type='text/javascript'>
+			googletag.cmd.push(function() { googletag.display('div-gpt-ad-1429843825352-1'); });
+			</script>
 		</div>
 	</div>
 
 <?php }
 
 
-function lawyerist_mobile_ad( $content ) {
+function lawyerist_get_ap3() { ?>
 
-	// Show on single posts but not pages.
-	if ( is_mobile() && is_single() && !is_page() ) {
+	<div id="lawyerist_ap3">
+		<div id='div-gpt-ad-1429843825352-2' style='height:250px; width:300px;'>
+			<script type='text/javascript'>
+			googletag.cmd.push(function() { googletag.display('div-gpt-ad-1429843825352-2'); });
+			</script>
+		</div>
+	</div>
 
-		$p_close		= '</p>';
-		$paragraphs = explode( $p_close, $content );
-
-		ob_start();
-			echo insert_lawyerist_mobile_ad();
-		$dfp_code		= ob_get_clean();
-
-		foreach ( $paragraphs as $p_num => $paragraph ) {
-
-			// Only add closing tag to non-empty paragraphs
-			if ( trim( $paragraph ) ) {
-				// Adding closing markup now, rather than at implode, means insertion
-				// is outside of the paragraph markup, and not just inside of it.
-				$paragraphs[$p_num] .= $p_close;
-			}
-
-			// Insert DFP code after 2nd paragraph
-			// (0 is paragraph #1 in the $paragraphs array)
-			if ( $p_num == 0 ) {
-				$paragraphs[$p_num] .= $dfp_code;
-			}
-		}
-
-		return implode( '', $paragraphs );
-
-	} else {
-
-		return $content;
-
-	}
-
-}
-
-add_filter( 'the_content', 'lawyerist_mobile_ad' );
+<?php }
 
 
 /*------------------------------
@@ -314,8 +409,10 @@ Add Image Sizes
 ------------------------------*/
 
 if ( function_exists( 'add_image_size' ) ) {
-	add_image_size( 'featured', 320, 255.5, true);
-	add_image_size( 'featured_top', 640, 344.5, true);
+	add_image_size( 'default_thumbnail', 300, 250, true );
+	add_image_size( 'standard_thumbnail', 760, 426, true );
+	add_image_size( 'download_thumbnail', 250, 0 );
+	add_image_size( 'current_posts_thumbnail', 160, 90 );
 }
 
 
@@ -324,33 +421,12 @@ Remove Inline Width from Image Captions
 ------------------------------*/
 
 function lawyerist_remove_caption_padding( $width ) {
+
 	return $width - 10;
+
 }
 
 add_filter( 'img_caption_shortcode_width', 'lawyerist_remove_caption_padding' );
-
-
-/*------------------------------
-Page Navigation
-------------------------------*/
-
-function lawyerist_get_pagenav() {
-
-	// This function is only meant for index and archive pages.
-
-	if ( is_home() || is_archive() || is_search() ) {
-
-		ob_start();
-			echo paginate_links( 'mid_size=3' );
-		$pagenav = ob_get_clean();
-
-	}
-
-	echo '<div id="pagenav">';
-	echo $pagenav;
-	echo '</div>';
-
-}
 
 
 /*------------------------------
@@ -530,17 +606,3 @@ function return_3600( $seconds ) {
 add_filter( 'wp_feed_cache_transient_lifetime' , 'return_3600' );
 $feed = fetch_feed( $feed_url );
 remove_filter( 'wp_feed_cache_transient_lifetime' , 'return_3600' );
-
-
-/*------------------------------
-Fix Gravity Form Tab Index Conflicts
-http://gravitywiz.com/fix-gravity-form-tabindex-conflicts/
-------------------------------*/
-
-function gform_tabindexer( $tab_index, $form = false ) {
-    $starting_index = 1000; // if you need a higher tabindex, update this number
-    if( $form )
-        add_filter( 'gform_tabindex_' . $form['id'], 'gform_tabindexer' );
-    return GFCommon::$tab_index >= $starting_index ? GFCommon::$tab_index : $starting_index;
-}
-add_filter( 'gform_tabindex', 'gform_tabindexer', 10, 2 );

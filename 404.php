@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php include('head.php'); ?>
+<?php get_template_part('head'); ?>
 
 <body <?php body_class($class); ?>>
 
 <?php get_header(); ?>
 
-<div id="content_column_container">
+<div id="column_container">
 
 	<div id="content_column">
 
@@ -37,9 +37,7 @@
 
 	</div>
 
-	<ul id="sidebar_column">
-		<?php include('sidebar.php'); ?>
-	</ul>
+	<?php if ( !is_mobile() ) { get_template_part( 'sidebar' ); } ?>
 
 	<div class="clear"></div>
 

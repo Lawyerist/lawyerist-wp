@@ -1,64 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php include('head.php'); ?>
+<?php get_template_part( 'head' ); ?>
 
-<body <?php body_class($class); ?>>
+<body <?php body_class( $class ); ?>>
 
 <?php get_header(); ?>
 
-<div id="content_column_container">
+<div id="column_container">
 
 	<div id="content_column">
 
 		<?php
 
-		if ( have_posts() ) :
-		while ( have_posts() ) : the_post();
+		// Get the Loop.
+    get_template_part( 'loop', 'page' );
 
 		?>
-
-			<div <?php post_class($class); ?>>
-
-				<h1 class="headline"><?php the_title(); ?></h1>
-
-				<?php if ( has_post_thumbnail() ) {
-					the_post_thumbnail('large');
-				} ?>
-
-				<div class="post_body">
-					<?php include('notes.php'); ?>
-					<?php the_content(); ?>
-					<div class="clear"></div>
-				</div>
-
-			</div>
-
-		<?php
-
-		endwhile;
-		endif;
-
-		?>
-
 
 	</div><!-- end #content_column -->
 
-
-	<ul id="sidebar_column">
-		<?php include('sidebar.php'); ?>
-	</ul>
+	<?php if ( !is_mobile() ) { include('sidebar.php'); } ?>
 
 	<div class="clear"></div>
 
-
-</div><!-- end #content_column_container -->
+</div><!--end #column_container-->
 
 <div class="clear"></div>
 
-
 <?php get_footer(); ?>
-
 
 </body>
 </html>
