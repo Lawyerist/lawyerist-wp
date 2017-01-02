@@ -131,7 +131,7 @@ body {
     /* Includes 20px for padding (10px on each side). */
 
       .headline_postmeta {
-        padding: 0 1rem;
+        padding: 0;
       }
 
       #column_container {
