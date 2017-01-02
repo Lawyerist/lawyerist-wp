@@ -530,13 +530,11 @@ p.wp-caption-text {
   .author,
   .sponsor,
   .date,
-  .shares,
   .comments {
     display: inline-block;
   }
 
-  .date,
-  .shares {
+  .date {
     margin-right: .5em;
   }
 
@@ -1457,16 +1455,6 @@ Content
 	/*------------------------------
 	Posts
 	------------------------------*/
-
-  .shares:before {
-		content: '\f415';
-		display: inline-block;
-		-webkit-font-smoothing: antialiased;
-		font: normal 1.6rem/1 'Genericons';
-		margin-right: .1em;
-    speak: none;
-    vertical-align: text-top;
-	}
 
 	.comments:before {
 		content: '\f300';
