@@ -1309,7 +1309,7 @@ Content
   }
 
   .index .series.has-post-thumbnail .headline_excerpt {
-    margin: 0 0 3rem 1.5rem;
+    margin: 0 0 0 1.5rem;
     padding: 0 0 0 25rem;
   }
 
@@ -1327,8 +1327,8 @@ Content
 
       .index .series .headline_excerpt,
       .index .series.has-post-thumbnail .headline_excerpt {
-        margin: 0 0 3rem 0;
-        padding: 0 0 0 0;
+        margin: 0;
+        padding: 0;
       }
 
     }
@@ -1408,7 +1408,7 @@ Content
   .index .series ul {
     display: block;
     list-style:  none;
-    margin: 0;
+    margin: 3rem 0 0 0;
     padding: 0;
   }
 
