@@ -1808,6 +1808,10 @@ Content
     display: block !important;
   }
 
+  .sharedaddy .share-count {
+    display: none !important;
+  }
+
 
   /* Sticky Sharing Icons */
   .sharedaddy.stick .sd-block {
