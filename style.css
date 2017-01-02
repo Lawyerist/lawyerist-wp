@@ -87,7 +87,7 @@ body {
 
   #header {
     margin: 0 auto;
-    max-width: 108rem;
+    max-width: 100.4rem;
     padding: 1.2rem 1rem;
   }
 
@@ -105,18 +105,18 @@ body {
 		list-style: none;
 		margin: 0 auto;
 		padding: 0;
-    max-width: 109rem; /* Same width #header and #column_container, minus padding. */
+    max-width: 101.4rem; /* Same width #header and #column_container, minus padding. */
 	}
 
 #column_container {
 	margin: 0 auto 2rem auto;
-	width: 108rem;
+	width: 100.4rem;
 }
 
 	#content_column {
 		float: left;
-    max-width: 76rem;
-    width: 76rem;
+    max-width: 68.4rem;
+    width: 68.4rem;
 	}
 
 	#sidebar_column {
@@ -126,7 +126,7 @@ body {
 		max-width: 30rem;
 	}
 
-    @media only screen and ( max-width: 1099px ) {
+    @media only screen and ( max-width: 1023px ) {
     /* Includes 20px for padding (10px on each side). */
 
       .headline_postmeta {
@@ -162,7 +162,7 @@ body {
 
         #header {
           margin: 0 auto;
-          max-width: 108rem;
+          max-width: 100.4rem;
           padding: 1.2rem 1rem;
         }
 
@@ -185,7 +185,7 @@ body {
 
 	#footer {
 		margin: 0 auto;
-    max-width: 108rem;
+    max-width: 100.4rem;
 		padding: 2rem 1rem 7.6rem 1rem;
 	}
 
