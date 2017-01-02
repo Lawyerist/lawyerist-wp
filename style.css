@@ -2091,6 +2091,7 @@ Sidebar
 
 #sidebar_column > li {
   list-style: none;
+  margin-bottom: 4rem;
 }
 
 #sidebar_ads #lawyerist_ap2 {
@@ -2101,6 +2102,12 @@ Sidebar
   margin-bottom: 4rem;
 }
 
+/* Platinum Sponsors widget. */
+#text-2 a,
+#text-2 img {
+  display: block;
+  margin: 0;
+}
 
 /*------------------------------
 Footer
