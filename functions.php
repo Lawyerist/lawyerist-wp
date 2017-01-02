@@ -145,7 +145,7 @@ function lawyerist_query_mod( $wp_query ) {
 
 	// Add pages and downloads to the main query, but not in admin lists or download
 	// archive lists.
-	if ( !is_admin() && !is_post_type_archive( 'download' ) ) {
+	if ( is_front_page() ) {
 		set_query_var( 'post_type', array( 'post', 'page', 'download' ) );
 	}
 
