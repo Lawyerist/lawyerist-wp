@@ -143,10 +143,12 @@ Query Mods
 function lawyerist_query_mod( $wp_query ) {
 
 	// Add pages and downloads to the main query.
-	set_query_var( 'post_type', array( 'post', 'page', 'download' ) );
+	if ( !is_admin() ) {
+		set_query_var( 'post_type', array( 'post', 'page', 'download' ) );
+	}
 
 	// If displaying a series archive page, show the oldest post first.
-	if ( is_tax( 'series' ) ) {
+	if ( !is_admin() && is_tax( 'series' ) ) {
 		set_query_var( 'order', 'ASC' );
 	}
 
