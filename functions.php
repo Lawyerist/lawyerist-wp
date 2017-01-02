@@ -18,6 +18,7 @@ CONTENT
 - Current Posts Widget
 - Recent Discussions Widget
 - Ads
+- Mobile Ads
 - Add Image Sizes
 - Remove Inline Width from Image Captions
 - Featured Images in RSS Feeds
@@ -408,6 +409,59 @@ function lawyerist_get_ap3() { ?>
 	</div>
 
 <?php }
+
+
+/*------------------------------
+Mobile Ad
+------------------------------*/
+
+function lawyerist_mobile_ads( $content ) {
+
+	// Show on single posts.
+	if ( is_mobile() && is_single() ) {
+
+		$p_close		= '</p>';
+		$paragraphs = explode( $p_close, $content );
+
+		ob_start();
+			echo lawyerist_get_ap2();
+		$ap2 = ob_get_clean();
+
+		ob_start();
+			echo lawyerist_get_ap3();
+		$ap3 = ob_get_clean();
+
+		foreach ( $paragraphs as $p_num => $paragraph ) {
+
+			// Only add closing tag to non-empty paragraphs
+			if ( trim( $paragraph ) ) {
+				// Adding closing markup now, rather than at implode, means insertion
+				// is outside of the paragraph markup, and not just inside of it.
+				$paragraphs[$p_num] .= $p_close;
+			}
+
+			// Insert DFP code after 2nd and 4th paragraphs
+			// (0 is paragraph #1 in the $paragraphs array)
+			if ( $p_num == 1 ) {
+				$paragraphs[$p_num] .= $ap2;
+			}
+
+			if ( $p_num == 3 ) {
+				$paragraphs[$p_num] .= $ap3;
+			}
+
+		}
+		return implode( '', $paragraphs );
+
+	} else {
+
+		return $content;
+
+	}
+
+}
+
+add_filter( 'the_content', 'lawyerist_mobile_ads' );
 
 
 /*------------------------------
