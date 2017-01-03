@@ -52,19 +52,22 @@ function lawyerist_stylesheets_scripts() {
 	wp_register_style( 'stylesheet', get_template_directory_uri() . '/style.css', array(), $cacheBusterCSS, 'all' );
 	wp_enqueue_style( 'stylesheet' );
 
-	$cacheBusterMenu = date("Y m d", filemtime( get_stylesheet_directory() . '/js/responsive_menu.js') );
-	wp_register_script( 'responsive_menu', get_template_directory_uri() . '/js/responsive_menu.js', array( 'jquery' ), $cacheBusterMenu, true );
-	wp_enqueue_script( 'responsive_menu' );
+	// Load consolidated scripts in the header.
+	$cacheBusterMC = date("Y m d", filemtime( get_stylesheet_directory() . '/js/header-scripts.js') );
+	wp_register_script( 'header-scripts', get_template_directory_uri() . '/js/header-scripts.js', '', $cacheBusterMC );
+	wp_enqueue_script( 'header-scripts' );
 
+	// Load consolidated scripts in the footer.
+	$cacheBusterMC = date("Y m d", filemtime( get_stylesheet_directory() . '/js/footer-scripts.js') );
+	wp_register_script( 'footer-scripts', get_template_directory_uri() . '/js/footer-scripts.js', '', $cacheBusterMC, true );
+	wp_enqueue_script( 'footer-scripts' );
+
+	// Load sticky sharing buttons on single posts and pages.
 	if ( !is_mobile() && ( ( is_single() || is_page() ) ) && class_exists( 'Jetpack' ) && Jetpack::is_module_active( 'sharedaddy' ) ) {
 		$cacheBusterSharedaddy = date("Y m d", filemtime( get_stylesheet_directory() . '/js/sticky_sharedaddy.js') );
-		wp_register_script( 'sticky_sharedaddy', get_template_directory_uri() . '/js/sticky_sharedaddy.js', array( 'jquery' ), $cacheBusterSharedaddy, true );
+		wp_register_script( 'sticky_sharedaddy', get_template_directory_uri() . '/js/sticky_sharedaddy.js', '', $cacheBusterSharedaddy, true );
 		wp_enqueue_script( 'sticky_sharedaddy' );
 	}
-
-	$cacheBusterMC = date("Y m d", filemtime( get_stylesheet_directory() . '/js/mailchimp_goal_tracking.js') );
-	wp_register_script( 'mailchimp_goal_tracking', get_template_directory_uri() . '/js/mailchimp_goal_tracking.js', '', $cacheBusterMC, true );
-	wp_enqueue_script( 'mailchimp_goal_tracking' );
 
 }
 
