@@ -1680,6 +1680,10 @@ Content
 
     }
 
+    #recent_discussions li:last-child {
+      margin-bottom: 0;
+    }
+
     .current_posts_heading > a,
     .recent_discussions_heading > a {
       color: #666;
