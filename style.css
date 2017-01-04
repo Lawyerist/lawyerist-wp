@@ -1314,6 +1314,7 @@ Content
   }
 
   .archive.tax-series .series .headline_excerpt {
+    margin: 0;
     padding: 2rem;
   }
 
