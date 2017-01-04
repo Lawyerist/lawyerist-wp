@@ -110,7 +110,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
       echo '<div class="clear"></div>';
 
-      previous_post_link( '<p class="series_next_post"><strong>Read the next post in this series: "%link."</em></strong>', '%title', true, '', 'series' );
+      next_post_link( '<p class="series_next_post"><strong>Read the next post in this series: "%link."</em></strong>', '%title', true, '', 'series' );
 
       // Show page navigation if the post is paginated unless we're displaying
       // the RSS feed.
