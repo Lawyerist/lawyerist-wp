@@ -1132,6 +1132,12 @@ Content
     width: 30rem;
   }
 
+    .infinite-wrap #lawyerist_ap2,
+    .infinite-wrap #lawyerist_ap3,
+    .infinite-wrap #recent_discussions {
+      display: none;
+    }
+
   span.infinite-loader {
     display: block;
     margin: 2rem auto;
