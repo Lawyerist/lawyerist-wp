@@ -528,13 +528,6 @@ p.wp-caption-text {
   margin-bottom: 1em;
 }
 
-  .author,
-  .sponsor,
-  .date,
-  .comments {
-    display: inline-block;
-  }
-
   .date {
     margin-right: .5em;
   }
@@ -1133,13 +1126,9 @@ Content
       margin-bottom: .75em;
   	}
 
-  .index.mobile #lawyerist_ap2,
-  .index.mobile #lawyerist_ap3,
-  .archive.mobile #lawyerist_ap2,
-  .archive.mobile #lawyerist_ap3,
-  .search-results.mobile #lawyerist_ap2,
-  .search-results.mobile #lawyerist_ap2 {
-    margin: 0 auto 1rem auto;
+  #lawyerist_ap2,
+  #lawyerist_ap3 {
+    margin: 0 auto 3rem auto;
     width: 30rem;
   }
 
