@@ -14,7 +14,7 @@ $post_type == 'page'
 
 */
 
-$post_num = 1; // Counter for inserting mobile ads.
+$post_num = 1; // Counter for inserting mobile ads and other stuff.
 
 // Start the Loop.
 if ( have_posts() ) : while ( have_posts() ) : the_post();

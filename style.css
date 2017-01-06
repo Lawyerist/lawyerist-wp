@@ -1233,6 +1233,7 @@ Content
   }
 
   .index .format-standard .wp-post-image {
+    border-radius: .2rem .2rem 0 0;
     display: block;
     margin: 0;
     width: 100%;
@@ -1246,10 +1247,15 @@ Content
   }
 
   .index .series .wp-post-image {
+    border-radius: 0;
     float: left;
     margin-bottom: 0;
     margin-right: 1.5rem;
     width: 25rem;
+  }
+
+  .index .sponsored .default_thumbnail {
+    border-top-left-radius: 0;
   }
 
     /* At 640px wide, the .index_post_container is 565px, or 250px for the image,
