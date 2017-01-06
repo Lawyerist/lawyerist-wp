@@ -2340,6 +2340,14 @@ label {
   Easy Digital Downloads
   ------------------------------*/
 
+  .download_category-presentation-materials .wp-post-image {
+    border-radius: .2rem;
+    box-shadow:
+      0 0 0 .1rem #ddd,
+      .1rem .1rem .3rem rgba(0, 0, 0, 0.2)
+    ;
+	}
+
   input[type="checkbox"]#edd_free_download_optin {
     display: inline-block;
   }
