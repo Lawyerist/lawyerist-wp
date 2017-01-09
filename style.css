@@ -1796,6 +1796,41 @@ Content
     font-size: 80%;
   }
 
+    .tablepress td,
+    .tablepress th,
+    .tablepress thead th {
+      min-width: 9rem;
+      vertical-align: top;
+    }
+
+
+    /* LPMS Main Landing Page */
+
+    .page-id-121024 #tablepress-40-scroll-wrapper {
+      position: relative;
+    }
+
+    .page-id-121024 #tablepress-40-scroll-wrapper .dataTables_scrollBody {
+      position: static !important;
+    }
+
+    .page-id-121024 .lpms-features-table .column-1 {
+      position: absolute;
+        left: 0;
+    }
+
+
+    /* LPMS Individual Landing Pages */
+
+    .lpms-features-table .column-1 {
+      background-color: #fff;
+      border-right: .1rem solid #ddd;
+    }
+
+    .lpms-features-table tr th {
+      min-width: 16rem;
+    }
+
 
   /*------------------------------
 	Sharing Buttons
