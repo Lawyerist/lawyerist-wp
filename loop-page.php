@@ -46,6 +46,21 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
       echo '<div class="clear"></div>';
 
+      // Show page navigation if the post is paginated unless we're displaying
+      // the RSS feed.
+      if ( $numpages > 1 && !is_feed() ) {
+
+        $wp_link_pages_args = array(
+          'before'           => '<p class="page_links">',
+          'after'            => '</p>',
+          'link_before'      => '<span class="page_number">',
+          'link_after'       => '</span>',
+        );
+
+        wp_link_pages( $wp_link_pages_args );
+
+      }
+
     echo '</div>'; // Close .post_body.
 
     if ( !$post_type == 'download' ) {
