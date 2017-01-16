@@ -1177,7 +1177,7 @@ Content
     padding: 6rem;
   }
 
-    /* Just feels right. */
+    /* 400px; just feels right. */
     @media only screen and ( max-width:399px ) {
 
       .index .type-download {
@@ -1392,8 +1392,8 @@ Content
       margin-bottom: 1.5em;
     }
 
-    .index .type-download a .excerpt:focus,
-    .index .type-download a .excerpt:hover {
+    .index .type-download a:hover .excerpt,
+    .index .type-download a:focus .excerpt {
       color: #111;
     }
 
