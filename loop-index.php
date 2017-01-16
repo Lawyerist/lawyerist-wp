@@ -82,7 +82,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
           echo ' );"></div>';
         } elseif ( $post_type == 'download' ) {
           the_post_thumbnail( 'download_thumbnail' );
-        } elseif ( $post_type == 'post' && $post_format == 'standard' ) {
+        } elseif ( $post_type == 'post' && $post_format == 'standard' && !has_term( true, 'sponsor' ) ) {
           the_post_thumbnail( 'standard_thumbnail' );
         } else {
           echo '<div class="default_thumbnail" style="background-image: url( ';
