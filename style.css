@@ -664,7 +664,16 @@ img.size-thumbnail {
 
   }
 
-.page-id-3379 .gallery-size-thumbnail img {
+.gallery-item {
+  margin: 0 0 2rem 0;
+}
+
+.gallery-item img {
+  margin-bottom: 0;
+}
+
+/* About */   .page-id-3379 .gallery-size-thumbnail img,
+/* TBD Law */ .page-id-128819 .gallery-size-thumbnail img {
   border-radius: 50%;
 }
 
