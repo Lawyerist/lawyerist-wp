@@ -874,6 +874,11 @@ Menu
       content: '\f108';
     }
 
+      /* Prevent Engage menu item from being clicked. */
+      #menu-item-143087 > a {
+        pointer-events: none !important;
+      }
+
     /* Subscribe */
     #main-menu-subscribe > a:before {
       content: '\f410';
@@ -933,8 +938,28 @@ Menu
       padding-bottom: 1rem;
     }
 
-  #main-menu .main-menu-dropdown .menu-item:hover a {
+  #main-menu .main-menu-dropdown .menu-item a:hover {
     color: #ddd;
+  }
+
+  #main-menu ul.sub-menu {
+    margin: 0;
+  }
+
+  #main-menu ul.sub-menu .menu-item a {
+    margin-left: 1rem;
+  }
+
+  #main-menu ul.sub-menu .menu-item a:before {
+    color: #c00;
+    content: "\f428";
+    display: inline-block;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font: normal 1.6rem/1.2 'Genericons';
+    speak: none;
+    text-indent: -1em;
+    vertical-align: top;
   }
 
 
