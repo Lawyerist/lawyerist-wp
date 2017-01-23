@@ -269,7 +269,8 @@ p.pullquote,
 .series_next_post,
 .series_title,
 .tag_list,
-.theiaPostSlider_nav ._text {
+.theiaPostSlider_nav ._text,
+ul.blogroll {
   font-family: concourse, sans-serif;
 }
 
@@ -2189,6 +2190,14 @@ Sidebar
   display: block;
   margin: 0;
 }
+
+ul.blogroll {
+  font-size: 1.8rem;
+  line-height: 1.5;
+  list-style: none;
+  margin: 0 0 1.5em 0;
+}
+
 
 /*------------------------------
 Footer
