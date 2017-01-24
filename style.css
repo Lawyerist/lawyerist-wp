@@ -690,7 +690,7 @@ img.inline {
   line-height: 1; /* Otherwise the bottom margin (see below) won't be correct. */
 }
 
-.single img.wp-post-image.size-single_featured {
+.single img.wp-post-image.size-standard_thumbnail {
   margin-bottom: 2rem;
   width: 100%;
 }
