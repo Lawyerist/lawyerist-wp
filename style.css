@@ -1106,6 +1106,7 @@ Content
   .format-standard
   .format-aside
   .tag-lawyerist-podcast
+  .tag-tbd-law-community
   .series
   .sponsored
   .type-download
@@ -1193,6 +1194,11 @@ Content
     padding-top: 2rem; /* Otherwise the mic is smushed against the top border. */
   }
 
+  .index .tag-tbd-law-community {
+    border-top: .7rem solid #0074ff;
+    padding: 2rem;
+  }
+
   .index .series {
     border-top: .7rem solid #ddd;
     padding: 2rem;
@@ -1235,7 +1241,7 @@ Content
       color: #666;
     }
 
-    .series_title a:before {
+    .series_title > a:before {
       content: '\f505';
       display: inline-block;
       -moz-osx-font-smoothing: grayscale;
@@ -1279,6 +1285,13 @@ Content
     margin-bottom: 0;
     margin-right: 1.5rem;
     width: 25rem;
+  }
+
+  .index .tag-tbd-law-community .avatar {
+    float: left;
+    margin-bottom: 0;
+    margin-right: 1.5rem;
+    width: 10rem;
   }
 
   .index .series .wp-post-image {
@@ -1346,6 +1359,11 @@ Content
     margin: 0 0 0 1.5rem;
   }
 
+  .index .tag-tbd-law-community .headline_excerpt {
+    margin: 0;
+    padding: 0 0 0 11.5rem;
+  }
+
   .index .series .headline_excerpt {
     margin: 0 0 3rem 0;
     padding: 0 0 0 0;
@@ -1397,7 +1415,8 @@ Content
 
     /* Headline styles. */
 
-    .index .format-aside .headline {
+    .index .format-aside .headline,
+    .index .tag-tbd-law-community .headline {
       font-size: 2.4rem;
       margin-bottom: .5em;
     }

@@ -7,6 +7,7 @@ Selectors
 $post_type == 'post' && $post_format == 'standard'
 $post_format == 'aside'
 has_tag( 'lawyerist-podcast' )
+has_tag( 'tbd-law-community' )
 has_term( true, 'series' )
 has_term( true, 'sponsor' )
 $post_type == 'download'
@@ -63,8 +64,13 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
       $series_slug				= $series_info->slug;
       $series_url					=	get_term_link( $series_IDs[0], 'series' );
 
-      echo '<p class="series_title"><a href="' . $series_url . '" title="' . $series_title . '">' . $series_title . '</a></p>';
+      echo '<p class="series_title"><a href="' . $series_url . '" title="Read more posts in ' . $series_title . '">' . $series_title . '</a></p>';
 
+    }
+
+    // TBD Law Community Flag
+    if ( has_tag( 'tbd-law-community' ) ) {
+      echo '<p class="series_title"><a href="https://lawyerist.com/tag/tbd-law-community/" title="Read more posts from the TBD Law community.">TBD Law community</a></p>';
     }
 
 
@@ -82,6 +88,8 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
           echo ' );"></div>';
         } elseif ( $post_type == 'download' ) {
           the_post_thumbnail( 'download_thumbnail' );
+        } elseif ( has_tag( 'tbd-law-community' ) ) {
+          echo get_avatar( get_the_author_meta( 'ID' ), 100, '', get_the_author_meta( 'nicename' ) );
         } elseif ( $post_type == 'post' && $post_format == 'standard' && !has_term( true, 'sponsor' ) ) {
           the_post_thumbnail( 'standard_thumbnail' );
         } else {
@@ -97,8 +105,9 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
         // Headline
         echo '<h2 class="headline">' . $post_title . '</h2>';
 
-        // Output the excerpt unless we're showing a page.
-        if ( $post_type != 'page' ) {
+        // Output the excerpt unless we're showing a page or a post from the
+        // TBD Law community.
+        if ( $post_type != 'page' && !has_tag( 'tbd-law-community' ) ) {
 
           $post_excerpt = get_the_excerpt();
 

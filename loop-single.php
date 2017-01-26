@@ -129,36 +129,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
     echo '</div>'; // Close .post_body.
 
-    // Author bio footer.
-    echo '<div id="author_bio_footer">';
-
-      $author               = $wp_query->query_vars['author'];
-      $author_name          = get_the_author_meta( 'display_name' );
-      $author_bio           = get_the_author_meta( 'description' );
-      $author_website       = get_the_author_meta( 'user_url' );
-      $parsed_url           = parse_url( $author_website );
-      $author_nice_website  = $parsed_url['host'];
-      $author_twitter       = get_the_author_meta( 'twitter' );
-      $author_avatar        = get_avatar( get_the_author_meta( 'user_email' ), 100, '', $author_name );
-
-      // Show the author's headshot.
-      echo $author_avatar;
-
-      // Show the author bio.
-      echo '<p>' . $author_bio . '</p>';
-
-      // Show links to the author's website and Twitter and LinkedIn profiles.
-      echo '<div id="author_connect">';
-        if ( $author_twitter == true ) {
-          echo '<p class="author_twitter"><a href="https://twitter.com/' . $author_twitter . '">@' . $author_twitter . '</a></p>';
-        }
-        if ( $author_website == true ) {
-          echo '<p class="author_website"><a href="' . $author_website . '">' . $author_nice_website . '</a></p>';
-        }
-      echo '</div>'; // Close #author_connect.
-
-    echo '</div>'; // Close #author_bio_footer.
-
+  	lawyerist_get_author_bio();
 
     // Display page navigation, categories, and tags.
     echo '<div id="categories_tags">';

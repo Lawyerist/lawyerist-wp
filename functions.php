@@ -14,6 +14,7 @@ CONTENT
 - Query Mods
 - Archive Headers
 - Postmeta
+- Author Bios
 - Loops for Infinite Scrolling
 - Current Posts Widget
 - Recent Discussions Widget
@@ -171,39 +172,7 @@ function lawyerist_get_archive_header() {
 	// Display the author header if we're on an author page.
 	if ( is_author() ) {
 
-		$author = $wp_query->query_vars['author'];
-
-		$author_name					= get_the_author_meta( 'display_name', $author );
-		$author_website				= get_the_author_meta( 'user_url', $author );
-		$parsed_url						= parse_url( $author_website );
-		$author_nice_website	= $parsed_url['host'];
-		$author_bio						= get_the_author_meta( 'description', $author );
-		$author_twitter				= get_the_author_meta( 'twitter', $author );
-
-		$author_avatar  = get_avatar( get_the_author_meta( 'user_email', $author ), 300, '', $author_name );
-
-		echo '<div id="author_header">' . "\n";
-		echo '<h1>' . $author_name . '</h1>' . "\n";
-
-		echo $author_avatar;
-
-		echo '<p class="author_bio">' . $author_bio . '</p>' . "\n";
-
-		echo '<div id="author_connect">' . "\n";
-
-			if ( $author_twitter == true ) {
-				echo '<p class="author_twitter"><a href="https://twitter.com/' . $author_twitter . '">@' . $author_twitter . '</a></p>';
-			}
-
-			if ( $author_website == true ) {
-				echo '<p class="author_website"><a href="' . $author_website . '">' . $author_nice_website . '</a></p>';
-			}
-
-		echo '</div>' . "\n";
-
-		echo '<div class="clear"></div>';
-
-		echo '</div>'; // End #author_header.
+		lawyerist_get_author_bio();
 
 	}
 
@@ -256,8 +225,53 @@ function lawyerist_postmeta() {
 
 
 /*------------------------------
+Author Bios
+------------------------------*/
+
+function lawyerist_get_author_bio() {
+
+	$author               = $wp_query->query_vars['author'];
+	$author_name          = get_the_author_meta( 'display_name' );
+	$author_bio           = get_the_author_meta( 'description' );
+	$author_website       = get_the_author_meta( 'user_url' );
+	$parsed_url           = parse_url( $author_website );
+	$author_nice_website  = $parsed_url['host'];
+	$author_twitter       = get_the_author_meta( 'twitter' );
+	$author_avatar_sm     = get_avatar( get_the_author_meta( 'user_email' ), 100, '', $author_name );
+	$author_avatar_lg     = get_avatar( get_the_author_meta( 'user_email' ), 300, '', $author_name );
+
+
+	if ( is_single() ) {
+		echo '<div id="author_bio_footer">' . "\n";
+		echo $author_avatar_sm;
+	} elseif ( is_author() ) {
+		echo '<div id="author_header">' . "\n";
+		echo $author_avatar_lg;
+		echo '<h1>' . $author_name . '</h1>' . "\n";
+	}
+
+	echo '<p class="author_bio">' . $author_bio . '</p>';
+
+	// Show links to the author's website and Twitter and LinkedIn profiles.
+	echo '<div id="author_connect">';
+		if ( $author_twitter == true ) {
+			echo '<p class="author_twitter"><a href="https://twitter.com/' . $author_twitter . '">@' . $author_twitter . '</a></p>';
+		}
+		if ( $author_website == true ) {
+			echo '<p class="author_website"><a href="' . $author_website . '">' . $author_nice_website . '</a></p>';
+		}
+	echo '</div>'; // Close #author_connect.
+
+	echo '</div>'; // End author bio.
+
+}
+
+
+
+/*------------------------------
 Loops for Infinite Scrolling
 ------------------------------*/
+
 function lawyerist_loops() {
 	if ( is_home() || is_archive() || is_search() ) {
 		get_template_part( 'loop', 'index' );
