@@ -40,6 +40,11 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
       }
 
+      // TBD Law Community Flag
+      if ( has_tag( 'tbd-law-community' ) ) {
+        echo '<p class="series_title"><a href="https://lawyerist.com/tag/tbd-law-community/" title="Read more posts from the TBD Law community.">TBD Law community</a></p>';
+      }
+
       // Headline
       echo '<h1 class="headline entry-title">' . $post_title . '</h1>';
 
