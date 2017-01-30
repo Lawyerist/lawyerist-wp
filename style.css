@@ -252,6 +252,9 @@ button,
 .button,
 .drop_cap,
 .category_list,
+.comment-author,
+.comment-meta,
+.comment .reply,
 #current_posts,
 #recent_discussions,
 #footer,
@@ -2110,9 +2113,65 @@ Content
 	Comments
 	------------------------------*/
 
-  #disqus_thread {
-      margin-bottom: 6rem;
+  ol.commentlist,
+  ul.children {
+    list-style: none;
   }
+
+  .commentlist {
+    margin: 0 0 3rem 0;
+  }
+
+  .comment-body {
+    font-size: 1.8rem;
+    margin-bottom: 3rem;
+  }
+
+    .comment-author {
+
+    }
+
+      .comment-author .avatar {
+        float: left;
+        margin: 0 1rem 1rem 0;
+      }
+
+      .comment-author cite {
+        font-style: normal;
+      }
+
+    .comment-meta {
+      font-size: 1.4rem;
+      margin-bottom: 1em;
+    }
+
+      .comment-meta a {
+        color: #777;
+      }
+
+    .comment-body p:last-of-type {
+      margin-bottom: .75rem;
+    }
+
+  .comment .reply {
+    font-size: 1.6rem;
+  }
+
+  #commentform {
+
+  }
+
+    #commentform p {
+      margin-bottom: .75rem;
+    }
+
+    .comment-form-comment {
+      margin-bottom: .6rem;
+    }
+
+    textarea#comment {
+      width: 100%;
+    }
 
 /*------------------------------
 Author Pages
@@ -2504,7 +2563,7 @@ Print
   #current_posts,
   #recent_discussions,
   #respond,
-  #disqus_thread,
+  #comments,
   #mobile_ad,
   #sidebar_column {
     display: none !important;
