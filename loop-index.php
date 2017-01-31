@@ -81,21 +81,33 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
       if ( has_post_thumbnail() ) {
 
         if ( has_term( true, 'series' ) && !is_tax( 'series' ) ) {
+
           the_post_thumbnail( 'default_thumbnail' );
+
         } elseif ( has_term( true, 'series' ) && is_tax( 'series' ) ) {
+
           echo '<div class="default_thumbnail" style="background-image: url( ';
           echo the_post_thumbnail_url( 'default_thumbnail' );
           echo ' );"></div>';
+
         } elseif ( $post_type == 'download' ) {
+
           the_post_thumbnail( 'download_thumbnail' );
+
         } elseif ( has_tag( 'tbd-law-community' ) ) {
+
           echo get_avatar( get_the_author_meta( 'ID' ), 100, '', get_the_author_meta( 'nicename' ) );
+
         } elseif ( $post_type == 'post' && $post_format == 'standard' && !has_term( true, 'sponsor' ) ) {
+
           the_post_thumbnail( 'standard_thumbnail' );
+
         } else {
+
           echo '<div class="default_thumbnail" style="background-image: url( ';
           echo the_post_thumbnail_url( 'default_thumbnail' );
           echo ' );"></div>';
+
         }
 
       }
