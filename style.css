@@ -479,9 +479,9 @@ p.alert {
 
 p.pullout {
   background-color: #fbfbfb;
+  border: .1rem solid #ddd;
   border-radius: .2rem;
   box-shadow:
-    0 0 0 .1rem #ddd,
     .1rem .1rem .3rem rgba(0, 0, 0, 0.2)
   ;
   box-sizing: border-box;
@@ -2253,7 +2253,7 @@ textarea {
   box-sizing: border-box;
   color: #555;
   display: block;
-  font-size: 1.8rem;
+  font-size: 1.8rem !important;
   outline: none;
   line-height: 2.4rem;
   margin-bottom: .4rem;
@@ -2414,17 +2414,22 @@ label {
   Gravity Forms Components
   ------------------------------*/
 
-  .gform_wrapper {
+  .gform_wrapper,
+  .gform_confirmation_message {
     background-color: #fbfbfb;
+    border: .1rem solid #ddd;
     border-radius: .2rem;
     box-shadow:
-      0 0 0 .1rem #ddd,
       .1rem .1rem .3rem rgba(0, 0, 0, 0.2)
     ;
     display: block;
-    margin-bottom: 1rem;
+    margin: 0 .3rem 1rem .3rem !important;
     padding: .1rem 2rem 2rem 2rem;
     text-decoration: none;
+  }
+
+  .gform_footer {
+    padding-top: 0 !important;
   }
 
     #sidebar_column .gform_wrapper {
