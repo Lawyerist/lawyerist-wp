@@ -15,6 +15,7 @@ CONTENT
 - Archive Headers
 - Postmeta
 - Author Bios
+- Custom Default Gravatar
 - Loops for Infinite Scrolling
 - Current Posts Widget
 - Recent Discussions Widget
@@ -266,6 +267,21 @@ function lawyerist_get_author_bio() {
 
 }
 
+
+/*------------------------------
+Custom Default Gravatar
+------------------------------*/
+
+function lawyerist_custom_gravatar ( $avatar_defaults ) {
+
+	$lawyerist_avatar = get_bloginfo('template_directory') . '/images/lawyerist-default-gravatar.png';
+	$avatar_defaults[ $lawyerist_avatar ] = "Lawyerist.com Logo";
+
+	return $avatar_defaults;
+
+}
+
+add_filter( 'avatar_defaults', 'lawyerist_custom_gravatar' );
 
 
 /*------------------------------
