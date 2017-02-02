@@ -1360,7 +1360,8 @@ Content
     margin: 0 0 0 1.5rem;
   }
 
-  .index .tag-tbd-law-community .headline_excerpt {
+  .index .format-standard.tag-tbd-law-community .headline_excerpt,
+  .index .format-aside.tag-tbd-law-community .headline_excerpt {
     margin: 0;
     padding: 0 0 0 11.5rem;
   }
