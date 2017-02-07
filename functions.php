@@ -299,7 +299,7 @@ function lawyerist_loops() {
 Current Posts Widget
 ------------------------------*/
 
-function lawyerist_current_posts() {
+function lawyerist_current_posts( $this_post ) {
 
 	// Current Posts
 	$current_posts_query_args = array(
