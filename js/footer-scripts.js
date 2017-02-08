@@ -22,36 +22,6 @@ fbq('init', '254894638282349', {
 em: 'insert_email_variable,'
 });
 fbq('track', 'PageView');
-
-// Insider confirmation page.
-if ( footer_script_vars.page_slug == thanks-for-confirming-subscription ) {
-  fbq('track', 'CompleteRegistration');
-}
-
-// TBD Law application.
-if ( footer_script_vars.page_slug == thanks-for-applying ) {
-  fbq('track', 'Lead');
-}
-
-// Paid download.
-if ( footer_script_vars.page_slug == purchase-confirmation ) {
-  fbq('track', 'Purchase', {value: '10.00', currency: 'USD'});
-}
-
-// Free download.
-if ( footer_script_vars.page_slug == free-download-confirmation ) {
-  fbq('track', 'Purchase', {value: '0.00', currency: 'USD'});
-}
-
-// Media kit request.
-if ( footer_script_vars.page_slug == thanks-for-requesting-media-kit ) {
-  fbq('track', 'Lead');
-}
-
-// Website assessments.
-if ( footer_script_vars.page_slug == thanks-website-needs-assessment ) {
-  fbq('track', 'Lead');
-}
 // End Facebook Pixel
 
 
