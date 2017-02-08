@@ -62,6 +62,13 @@ function lawyerist_stylesheets_scripts() {
 	// Load consolidated scripts in the footer.
 	$cacheBusterMC = date("Y m d", filemtime( get_stylesheet_directory() . '/js/footer-scripts.js') );
 	wp_register_script( 'footer-scripts', get_template_directory_uri() . '/js/footer-scripts.js', '', $cacheBusterMC, true );
+	if ( is_singular() ) {
+		global $post;
+		$footer_script_vars_array = array(
+			'page_slug' => $post->post_name
+		);
+		wp_localize_script( 'footer-scripts', 'footer_script_vars', $footer_script_vars_array );
+	}
 	wp_enqueue_script( 'footer-scripts' );
 
 	// Load sticky sharing buttons on single posts and pages.
