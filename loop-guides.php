@@ -24,9 +24,13 @@ if ( $downloads->have_posts() ) : while ( $downloads->have_posts() ) : $download
     $price = edd_get_download_price( get_the_ID() );
 
     if ( $price == 0 ) { ?>
+
       <div class="price_tag">FREE</div>
+
     <?php } else { ?>
+
       <div class="price_tag"><?php edd_price( get_the_ID() ); ?></div>
+
     <?php } ?>
 
   </a>

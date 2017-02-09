@@ -44,6 +44,18 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
       the_content();
 
+      if ( $post_type == 'download' ) {
+
+        $price = edd_get_download_price( get_the_ID() );
+
+        if ( $price > 0 ) {
+
+          echo '<p class="note"><em>Want this for free? <a href="https://lawyerist.com/lawyerist-insider-newsletter/">Subscribe to our email newsletter</a> and we will send you a coupon good for one free survival guide.</em></p>';
+
+        }
+
+      }
+
       echo '<div class="clear"></div>';
 
       // Show page navigation if the post is paginated unless we're displaying
