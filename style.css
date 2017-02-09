@@ -1271,7 +1271,7 @@ Content
     position: absolute;
       top: 0;
       left: 0;
-    width: 25%;
+    width: 30%;
   }
 
   .index .format-standard .wp-post-image {
@@ -1356,7 +1356,7 @@ Content
   .index .format-aside.has-post-thumbnail .headline_excerpt,
   .index .sponsored.has-post-thumbnail .headline_excerpt,
   .index .page.has-post-thumbnail .headline_excerpt {
-    padding: 2rem 2rem 2rem 25%;
+    padding: 2rem 2rem 2rem 30%;
     margin: 0 0 0 1.5rem;
   }
 
@@ -1382,7 +1382,7 @@ Content
   }
 
   .archive.tax-series .series.has-post-thumbnail .headline_excerpt {
-    padding: 2rem 2rem 2rem 25%;
+    padding: 2rem 2rem 2rem 30%;
     margin: 0 0 0 1.5rem;
   }
 
