@@ -20,6 +20,8 @@ $post_num = 1; // Counter for inserting mobile ads and other stuff.
 // Start the Loop.
 if ( have_posts() ) : while ( have_posts() ) : the_post();
 
+  $this_post[] = $post->ID; // We use this to exclude the current post from things.
+
   // Assign post variables.
   $post_title     = the_title( '', '', FALSE );
   $post_url       = get_permalink();
@@ -147,8 +149,6 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
     // If the post is in a series, show up to 4 additional posts in that series.
     if ( has_term( true, 'series' ) && !is_tax( 'series' ) ) {
-
-      $this_post[] = $post->ID; // We use this to exclude the current post.
 
       $series_query_args = array(
         'orderby'					=> 'date',

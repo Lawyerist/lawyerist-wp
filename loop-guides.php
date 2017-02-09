@@ -13,8 +13,7 @@ $downloads_args = array(
 
 $downloads = new WP_Query( $downloads_args );
 
-if ( $downloads->have_posts() ) :
-while ( $downloads->have_posts() ) : $downloads->the_post();
+if ( $downloads->have_posts() ) : while ( $downloads->have_posts() ) : $downloads->the_post();
 
 ?>
 

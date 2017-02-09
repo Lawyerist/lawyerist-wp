@@ -30,14 +30,6 @@
 
 		</div><!-- end #survival_guides -->
 
-		<?php
-
-		lawyerist_current_posts();
-
-		lawyerist_recent_discussions();
-
-		?>
-
 	</div><!-- end #content_column -->
 
 

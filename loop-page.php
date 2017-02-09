@@ -63,14 +63,6 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
     echo '</div>'; // Close .post_body.
 
-    if ( !$post_type == 'download' ) {
-
-      lawyerist_current_posts();
-
-      lawyerist_recent_discussions();
-
-    }
-
   echo '</div>'; // Close .post.
 
 endwhile; endif; // Close the Loop.

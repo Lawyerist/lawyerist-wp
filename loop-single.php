@@ -3,12 +3,10 @@
 // Start the Loop.
 if ( have_posts() ) : while ( have_posts() ) : the_post();
 
-  // Assign post variables.
-  $post_title   = the_title( '', '', FALSE );
+  $this_post[] = $post->ID; // We use this to exclude the current post from things.
 
-  // Assign this post to a variable so we can exclude it from series posts and
-  // current posts.
-  $this_post[] = $post->ID;
+  // Assign post variables.
+  $post_title = the_title( '', '', FALSE );
 
   // This is the post container.
   echo '<div ';
@@ -149,7 +147,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
     echo '</div>'; // Close #categories_tags.
 
-    lawyerist_current_posts();
+    lawyerist_current_posts( $this_post );
 
     lawyerist_recent_discussions();
 
