@@ -60,13 +60,17 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
       // Show page navigation if the post is paginated unless we're displaying
       // the RSS feed.
-      if ( $numpages > 1 && !is_feed() ) {
+      if ( !is_feed() ) {
 
         $wp_link_pages_args = array(
-          'before'           => '<p class="page_links">',
-          'after'            => '</p>',
-          'link_before'      => '<span class="page_number">',
-          'link_after'       => '</span>',
+          'before'            => '<p class="page_links">',
+          'after'             => '</p>',
+          'link_before'       => '<span class="page_number">',
+          'link_after'        => '</span>',
+          'next_or_number'    => 'next',
+          'nextpagelink'      => 'Next Page &raquo;',
+          'previouspagelink'  => '&laquo; Previous Page',
+          'separator'         => '|',
         );
 
         wp_link_pages( $wp_link_pages_args );
