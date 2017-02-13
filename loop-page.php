@@ -23,6 +23,18 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
     echo '</div>'; // Close .headline_postmeta.
 
+    if ( $post_type == 'download' ) {
+
+      $price = edd_get_download_price( get_the_ID() );
+
+      if ( $price > 0 ) {
+
+        echo '<p class="note">Want this for free? <a href="https://lawyerist.com/lawyerist-insider-newsletter/">Subscribe to our email newsletter</a> and we will send you a coupon good for one free survival guide.</p>';
+
+      }
+
+    }
+
     // Show featured image (1) if the post has a featured image AND (2) if it's
     // the first page of the post AND (3) the post DOES NOT have the no-image tag.
     if ( has_post_thumbnail() && !has_tag('no-image') ) {
@@ -43,18 +55,6 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
     echo '<div class="post_body" itemprop="articleBody">';
 
       the_content();
-
-      if ( $post_type == 'download' ) {
-
-        $price = edd_get_download_price( get_the_ID() );
-
-        if ( $price > 0 ) {
-
-          echo '<p class="note"><em>Want this for free? <a href="https://lawyerist.com/lawyerist-insider-newsletter/">Subscribe to our email newsletter</a> and we will send you a coupon good for one free survival guide.</em></p>';
-
-        }
-
-      }
 
       echo '<div class="clear"></div>';
 
