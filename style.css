@@ -1597,6 +1597,10 @@ Content
   	padding: 2rem;
   }
 
+  .theiaPostSlider_slides #lawyerist_ap2 {
+    display: none;
+  }
+
   .theiaPostSlider_nav._lower {
     margin: 1em 0 6rem 0;
   }
