@@ -2110,6 +2110,14 @@ Content
     list-style: none;
   }
 
+  ul.children {
+    border-bottom: .1rem solid #ddd;
+    border-left: .1rem solid #ddd;
+    border-radius: 0 0 0 .2rem;
+    margin-left: 0;
+    padding-left: 2rem;
+  }
+
   .commentlist {
     margin: 0 0 3rem 0;
   }
