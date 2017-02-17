@@ -470,14 +470,26 @@ p:empty {
 
 p.note {
 	background-color: #f5f5f5;
-  border: 1px solid #ddd;
-	padding: 1.5rem 2.5rem;
+  border: .1rem solid #ddd;
+  border-radius: .2rem;
+  box-shadow:
+    .1rem .1rem .3rem rgba(0, 0, 0, 0.2)
+  ;
+  margin-left: .1rem;
+  margin-right: .3rem;
+	padding: 2rem;
 }
 
 p.alert {
 	background-color: #ffffa0;
-  border: 1px solid #ddd;
-	padding: 1.5rem 2.5rem;
+  border: .1rem solid #ddd;
+  border-radius: .2rem;
+  box-shadow:
+    .1rem .1rem .3rem rgba(0, 0, 0, 0.2)
+  ;
+  margin-left: .1rem;
+  margin-right: .3rem;
+	padding: 2rem;
 }
 
 p.pullout {
@@ -1274,7 +1286,7 @@ Content
     position: absolute;
       top: 0;
       left: 0;
-    width: 25%;
+    width: 30%;
   }
 
   .index .format-standard .wp-post-image {
@@ -1359,7 +1371,7 @@ Content
   .index .format-aside.has-post-thumbnail .headline_excerpt,
   .index .sponsored.has-post-thumbnail .headline_excerpt,
   .index .page.has-post-thumbnail .headline_excerpt {
-    padding: 2rem 2rem 2rem 25%;
+    padding: 2rem 2rem 2rem 30%;
     margin: 0 0 0 1.5rem;
   }
 
@@ -1385,7 +1397,7 @@ Content
   }
 
   .archive.tax-series .series.has-post-thumbnail .headline_excerpt {
-    padding: 2rem 2rem 2rem 25%;
+    padding: 2rem 2rem 2rem 30%;
     margin: 0 0 0 1.5rem;
   }
 
@@ -1576,6 +1588,22 @@ Content
 			margin-bottom: 0;
 		}
 
+  .theiaPostSlider_slides {
+    background-color: #fafafa;
+    border: .1rem solid #ddd;
+    border-radius: .2rem;
+    box-shadow:
+      .1rem .1rem .3rem rgba(0, 0, 0, 0.2)
+    ;
+    margin-left: .1rem;
+    margin-right: .3rem;
+  	padding: 2rem;
+  }
+
+  .theiaPostSlider_slides #lawyerist_ap2 {
+    display: none;
+  }
+
   .theiaPostSlider_nav._lower {
     margin: 1em 0 6rem 0;
   }
@@ -1637,48 +1665,6 @@ Content
     margin-bottom: 6rem;
   }
 
-    .page_links {
-      line-height: 3.2rem;
-    }
-
-    .page_links .page_number {
-      background-color: #eee;
-      border-radius: 1.1rem;
-      display: inline-block;
-      font-weight: bold;
-      height: 1.4rem;
-      line-height: 1em;
-      margin-right: .1rem;
-      padding: .4rem;
-      text-align: center;
-      vertical-align: middle;
-      min-width: 1.4rem;
-    }
-
-    .page_links a {
-      display: inline-block;
-    }
-
-    .page_links a .page_number {
-      font-weight: normal;
-    }
-
-    .page_links a .page_number:hover {
-      background-color: #ddd;
-      text-decoration: none;
-    }
-
-    .page_links:before {
-      color: #bbb;
-      content: '\f443';
-      display: inline-block;
-      float: left;
-      -webkit-font-smoothing: antialiased;
-      font: normal 3.2rem/1em 'Genericons';
-      speak: none;
-      vertical-align: middle;
-    }
-
     .category_list,
     .tag_list {
       line-height: 3.2rem;
@@ -1705,6 +1691,10 @@ Content
       speak: none;
   		vertical-align: middle;
   	}
+
+  .page_links {
+    text-align: center;
+  }
 
   #current_posts,
   #recent_discussions {
@@ -2484,7 +2474,7 @@ label {
       .1rem .1rem .3rem rgba(0, 0, 0, 0.2)
     ;
     display: block;
-    margin: 0 .3rem 1rem .3rem !important;
+    margin: 0 .3rem 1rem .1rem !important;
     padding: .1rem 2rem 2rem 2rem;
     text-decoration: none;
   }

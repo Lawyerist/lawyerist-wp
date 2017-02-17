@@ -23,6 +23,18 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
     echo '</div>'; // Close .headline_postmeta.
 
+    if ( $post_type == 'download' ) {
+
+      $price = edd_get_download_price( get_the_ID() );
+
+      if ( $price > 0 ) {
+
+        echo '<p class="note">Want this for free? <a href="https://lawyerist.com/lawyerist-insider-newsletter/">Subscribe to our email newsletter</a> and we will send you a coupon good for one free survival guide.</p>';
+
+      }
+
+    }
+
     // Show featured image (1) if the post has a featured image AND (2) if it's
     // the first page of the post AND (3) the post DOES NOT have the no-image tag.
     if ( has_post_thumbnail() && !has_tag('no-image') ) {
@@ -48,13 +60,17 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
       // Show page navigation if the post is paginated unless we're displaying
       // the RSS feed.
-      if ( $numpages > 1 && !is_feed() ) {
+      if ( !is_feed() ) {
 
         $wp_link_pages_args = array(
-          'before'           => '<p class="page_links">',
-          'after'            => '</p>',
-          'link_before'      => '<span class="page_number">',
-          'link_after'       => '</span>',
+          'before'            => '<p class="page_links">',
+          'after'             => '</p>',
+          'link_before'       => '<span class="page_number">',
+          'link_after'        => '</span>',
+          'next_or_number'    => 'next',
+          'nextpagelink'      => 'Next Page &raquo;',
+          'previouspagelink'  => '&laquo; Previous Page',
+          'separator'         => '|',
         );
 
         wp_link_pages( $wp_link_pages_args );
