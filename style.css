@@ -2420,8 +2420,24 @@ label {
     text-decoration: none;
   }
 
+  .gform_heading .gform_title:first-child,
+  .gform_heading .gform_description:first-child {
+    margin-top: 2rem;
+  }
+
   .gform_footer {
     padding-top: 0 !important;
+  }
+
+  /* Lawyerist Insider Survival Guide Form */
+
+  #gform_wrapper_38 {
+    margin-bottom: 3rem !important;
+  }
+
+  #gform_wrapper_38 .gform_description,
+  #gform_wrapper_38 .gform_body {
+    font-size: 1.8rem;
   }
 
     #sidebar_column .gform_wrapper {

@@ -23,14 +23,12 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
     echo '</div>'; // Close .headline_postmeta.
 
-    if ( $post_type == 'download' ) {
+    if ( !is_user_logged_in() && $post_type == 'download' ) {
 
       $price = edd_get_download_price( get_the_ID() );
 
       if ( $price > 0 ) {
-
-        echo '<p class="note">Want this for free? <a href="https://lawyerist.com/lawyerist-insider-newsletter/">Subscribe to our email newsletter</a> and we will send you a coupon good for one free survival guide.</p>';
-
+        gravity_form( 38, true, true, '', '', true, 1000, true );
       }
 
     }
