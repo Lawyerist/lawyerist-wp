@@ -73,8 +73,8 @@ function lawyerist_stylesheets_scripts() {
 
 	// Load sticky sharing buttons on single posts and pages.
 	if ( !is_mobile() && ( ( is_single() || is_page() ) ) && class_exists( 'Jetpack' ) && Jetpack::is_module_active( 'sharedaddy' ) ) {
-		$cacheBusterSharedaddy = date("Y m d", filemtime( get_stylesheet_directory() . '/js/sticky_sharedaddy.js') );
-		wp_register_script( 'sticky_sharedaddy', get_template_directory_uri() . '/js/sticky_sharedaddy.js', '', $cacheBusterSharedaddy, true );
+		$cacheBusterSharedaddy = date("Y m d", filemtime( get_stylesheet_directory() . '/js/sticky-sharedaddy.js') );
+		wp_register_script( 'sticky_sharedaddy', get_template_directory_uri() . '/js/sticky-sharedaddy.js', '', $cacheBusterSharedaddy, true );
 		wp_enqueue_script( 'sticky_sharedaddy' );
 	}
 
