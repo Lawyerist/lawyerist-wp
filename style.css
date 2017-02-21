@@ -268,6 +268,7 @@ p.pullquote,
 #series_note,
 .series_next_post,
 .series_title,
+.single-format-link .post_body a,
 .tag_list,
 .theiaPostSlider_nav ._text,
 ul.blogroll {
@@ -2353,7 +2354,8 @@ label {
   a.button,
   input.button,
   input[type="button"],
-  input[type="submit"] {
+  input[type="submit"],
+  .single-format-link .post_body a {
     background-color: #b00;
     border: 0;
     border-radius: .2rem;
@@ -2370,6 +2372,7 @@ label {
     text-decoration: none;
     text-transform: uppercase;
     -webkit-appearance: none;
+    transition: background-color .2s, color .2s, box-shadow .2s;
     width: auto;
   }
 
@@ -2378,7 +2381,8 @@ label {
   a.button:focus,
   input.button:focus,
   input[type="button"]:focus,
-  input[type="submit"]:focus {
+  input[type="submit"]:focus,
+  .single-format-link .post_body a:focus {
     outline: none !important;
   }
 
@@ -2396,8 +2400,10 @@ label {
   a.button:hover,
   input.button:hover,
   input[type="button"]:hover,
-  input[type="submit"]:hover {
+  input[type="submit"]:hover,
+  .single-format-link .post_body a:hover {
     background-color: #c00;
+    box-shadow: .1rem .1rem .3rem rgba(0, 0, 0, 0.4);
     color: #fff;
     text-decoration: none;
   }
@@ -2407,8 +2413,10 @@ label {
   a.button:active,
   input.button:active,
   input[type="button"]:active,
-  input[type="submit"]:active {
+  input[type="submit"]:active,
+  .single-format-link .post_body a:active {
     background-color: #a00;
+    box-shadow: none;
     color: #ddd;
   }
 
@@ -2467,6 +2475,11 @@ label {
       .1rem .1rem .3rem rgba(0, 0, 0, 0.2)
     ;
 	}
+
+  .edd-submit.button:active {
+    box-shadow: none;
+    -webkit-box-shadow: none;
+  }
 
   a.edd_cart {
     background-color: #333;
