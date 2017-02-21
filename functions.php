@@ -158,7 +158,7 @@ function lawyerist_query_mod( $wp_query ) {
 	// Add pages and downloads to the main query, but not in admin lists or download
 	// archive lists.
 	if ( is_front_page() || is_feed() ) {
-		set_query_var( 'post_type', array( 'post', 'page', 'download' ) );
+		set_query_var( 'post_type', array( 'post', 'download' ) );
 	}
 
 	// If displaying a series archive page, show the oldest post first.
