@@ -155,7 +155,11 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
     lawyerist_recent_discussions();
 
-    comments_template();
+    if ( !has_post_format( 'link' ) ) {
+
+      comments_template();
+      
+    }
 
   echo '</div>'; // Close .post.
 

@@ -2,53 +2,57 @@
 
 // This must be used within the Loop.
 
-echo '<div class="postmeta">';
+if ( !has_post_format( 'link' ) ) {
 
-  // Get author and date.
-  $author = get_the_author_meta( 'display_name' );
-  $date   = get_the_time( 'F jS, Y' );
+  echo '<div class="postmeta">';
 
-  if ( has_term( true, 'sponsor' ) || has_category( 'sponsored-posts' ) ) {
+    // Get author and date.
+    $author = get_the_author_meta( 'display_name' );
+    $date   = get_the_time( 'F jS, Y' );
 
-    $sponsor_IDs = wp_get_post_terms(
-      $post->ID,
-      'sponsor',
-      array(
-        'fields' 	=> 'ids',
-        'orderby' => 'count',
-        'order' 	=> 'DESC'
-      )
-    );
+    if ( has_term( true, 'sponsor' ) || has_category( 'sponsored-posts' ) ) {
 
-    $sponsor_info = get_term( $sponsor_IDs[0] );
-    $sponsor      = $sponsor_info->name;
+      $sponsor_IDs = wp_get_post_terms(
+        $post->ID,
+        'sponsor',
+        array(
+          'fields' 	=> 'ids',
+          'orderby' => 'count',
+          'order' 	=> 'DESC'
+        )
+      );
 
-    if ( has_category( 'sponsored-posts' ) ) {
-      echo '<span class="author sponsor">Sponsored by ' . $sponsor . '</span> ';
+      $sponsor_info = get_term( $sponsor_IDs[0] );
+      $sponsor      = $sponsor_info->name;
+
+      if ( has_category( 'sponsored-posts' ) ) {
+        echo '<span class="author sponsor">Sponsored by ' . $sponsor . '</span> ';
+      } else {
+        echo '<span class="author">By ' . $author . ',&nbsp;</span><span class="author sponsor">sponsored by ' . $sponsor . ',&nbsp;</span>';
+      }
+
+      echo '<span class="date">on ' . $date . '</span>';
+
+    } elseif ( $author == 'Lawyerist' ) {
+
+      echo '<span class="date">' . $date . '</span>';
+
     } else {
-      echo '<span class="author">By ' . $author . ',&nbsp;</span><span class="author sponsor">sponsored by ' . $sponsor . ',&nbsp;</span>';
+
+      echo '<span class="author">By ' . $author . '&nbsp;</span>';
+      echo '<span class="date">on ' . $date . '</span>';
+
     }
 
-    echo '<span class="date">on ' . $date . '</span>';
+    // Comments
+    $num_comments	= get_comments_number();
 
-  } elseif ( $author == 'Lawyerist' ) {
+    if ( $num_comments > 10 ) {
+      echo '<span class="comment_link">' . $comments . '</span>';
+    }
 
-    echo '<span class="date">' . $date . '</span>';
+  echo '</div>'; // Close .postmeta.
 
-  } else {
-
-    echo '<span class="author">By ' . $author . '&nbsp;</span>';
-    echo '<span class="date">on ' . $date . '</span>';
-
-  }
-
-  // Comments
-  $num_comments	= get_comments_number();
-
-  if ( $num_comments > 10 ) {
-    echo '<span class="comment_link">' . $comments . '</span>';
-  }
-
-echo '</div>'; // Close .postmeta.
+}
 
 ?>
