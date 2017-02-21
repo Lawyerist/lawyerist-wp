@@ -1569,10 +1569,15 @@ Content
     }
 
 	.post_index {
-		background-color:#f5f5f5;
-    border:1px solid #ddd;
-		margin-bottom: 3rem;
-		padding:1.5rem 2.5rem 2rem 2.5rem;
+    background-color: #f5f5f5;
+    border: .1rem solid #ddd;
+    border-radius: .2rem;
+    box-shadow:
+      .1rem .1rem .3rem rgba(0, 0, 0, 0.2)
+    ;
+    margin-left: .1rem;
+    margin-right: .3rem;
+    padding: 2rem;
 	}
 
 		.post_index > ul {
@@ -2487,8 +2492,24 @@ label {
     text-decoration: none;
   }
 
+  .gform_heading .gform_title:first-child,
+  .gform_heading .gform_description:first-child {
+    margin-top: 2rem;
+  }
+
   .gform_footer {
     padding-top: 0 !important;
+  }
+
+  /* Lawyerist Insider Survival Guide Form */
+
+  #gform_wrapper_38 {
+    margin-bottom: 3rem !important;
+  }
+
+  #gform_wrapper_38 .gform_description,
+  #gform_wrapper_38 .gform_body {
+    font-size: 1.8rem;
   }
 
     #sidebar_column .gform_wrapper {
@@ -2507,14 +2528,6 @@ label {
       .1rem .1rem .3rem rgba(0, 0, 0, 0.2)
     ;
 	}
-
-  input[type="checkbox"]#edd_free_download_optin {
-    display: inline-block;
-  }
-
-  .jBox-Modal .jBox-content {
-    padding: 2rem;
-  }
 
   a.edd_cart {
     background-color: #333;
@@ -2545,12 +2558,35 @@ label {
     margin-bottom: 1.2em;
   }
 
-  #edd-free-downloads-modal button {
-    margin-bottom: 0;
+  /* EDD Free Downloads Modal */
+
+  .jBox-Modal .jBox-content {
+    padding: 2rem;
+  }
+
+#edd-free-downloads-modal p {
+  font-size: 1.4rem;
+  line-height: 1.2;
+  margin-bottom: 2rem;
+}
+
+  #edd-free-downloads-modal input[type="checkbox"]#edd_free_download_optin {
+    display: inline-block;
+  }
+
+  #edd-free-downloads-modal label {
+    font-size: 1.4rem;
+    font-weight: bold;
+    line-height: 1.2;
   }
 
   #edd-free-downloads-modal label.edd-free-downloads-checkbox-label {
     display: inline;
+    font-weight: normal;
+  }
+
+  #edd-free-downloads-modal button {
+    margin-bottom: 0;
   }
 
 
