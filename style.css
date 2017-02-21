@@ -2462,14 +2462,6 @@ label {
     ;
 	}
 
-  input[type="checkbox"]#edd_free_download_optin {
-    display: inline-block;
-  }
-
-  .jBox-Modal .jBox-content {
-    padding: 2rem;
-  }
-
   a.edd_cart {
     background-color: #333;
     border-radius: .2rem;
@@ -2499,12 +2491,35 @@ label {
     margin-bottom: 1.2em;
   }
 
-  #edd-free-downloads-modal button {
-    margin-bottom: 0;
+  /* EDD Free Downloads Modal */
+
+  .jBox-Modal .jBox-content {
+    padding: 2rem;
+  }
+
+#edd-free-downloads-modal p {
+  font-size: 1.4rem;
+  line-height: 1.2;
+  margin-bottom: 2rem;
+}
+
+  #edd-free-downloads-modal input[type="checkbox"]#edd_free_download_optin {
+    display: inline-block;
+  }
+
+  #edd-free-downloads-modal label {
+    font-size: 1.4rem;
+    font-weight: bold;
+    line-height: 1.2;
   }
 
   #edd-free-downloads-modal label.edd-free-downloads-checkbox-label {
     display: inline;
+    font-weight: normal;
+  }
+
+  #edd-free-downloads-modal button {
+    margin-bottom: 0;
   }
 
 
