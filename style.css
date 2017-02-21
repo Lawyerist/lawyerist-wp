@@ -2468,6 +2468,30 @@ label {
   Easy Digital Downloads
   ------------------------------*/
 
+  .edd-submit.button,
+  .edd-submit.button.orange {
+    background: #e59016;
+    border: none !important;
+  }
+
+  .edd-submit.button:focus,
+  .edd-submit.button.orange:focus {
+    outline: none !important;
+  }
+
+  .edd-submit.button:hover,
+  .edd-submit.button.orange:hover {
+    background: #eb9b2a
+  }
+
+  .edd-submit.button:active,
+  .edd-submit.button.orange:active {
+    background: #ce8114;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    color: #ddd;
+  }
+
   .download_category-presentation-materials .wp-post-image {
     border-radius: .2rem;
     box-shadow:
@@ -2475,11 +2499,6 @@ label {
       .1rem .1rem .3rem rgba(0, 0, 0, 0.2)
     ;
 	}
-
-  .edd-submit.button:active {
-    box-shadow: none;
-    -webkit-box-shadow: none;
-  }
 
   a.edd_cart {
     background-color: #333;
