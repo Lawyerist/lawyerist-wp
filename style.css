@@ -28,6 +28,7 @@ Content
   Tables
   Author List Shortcode
 	Sharing Buttons
+  Law Practice Management Software Landing Page
   Survival Guides
   No Sidebar Template
 	TBD Law Template
@@ -1971,6 +1972,52 @@ Content
     display: inline-block;
     margin-bottom: 3rem;
     width: 33.333%;
+  }
+
+  /*------------------------------
+  Law Practice Management Software
+  Landing Page
+  ------------------------------*/
+
+  #lpms-list {
+    list-style: none;
+    margin-top: 0;
+    margin-left: 0;
+  }
+
+  #lpms-list li {
+    background-color: #f5f5f5;
+    border: .1rem solid #ddd;
+    border-radius: .2rem;
+    box-shadow:
+      .1rem .1rem .3rem rgba(0, 0, 0, 0.2)
+    ;
+  	padding: 2rem;
+    display: block;
+    margin: 0 .3rem 1rem .1rem;
+    min-height: 15rem;
+  }
+
+  #lpms-list .image {
+    float: left;
+    margin-right: 1.5rem;
+  }
+
+    #lpms-list img {
+      margin-bottom: 0;
+    }
+
+  #lpms-list .title {
+    display: block;
+    font-family: concourse-headings;
+  }
+
+  #lpms-list .excerpt-dash {
+    display: none;
+  }
+
+  #lpms-list .excerpt {
+
   }
 
 
