@@ -1992,7 +1992,6 @@ Content
     box-shadow:
       .1rem .1rem .3rem rgba(0, 0, 0, 0.2)
     ;
-  	padding: 2rem;
     display: block;
     margin: 0 .3rem 1rem .1rem;
     min-height: 15rem;
@@ -2010,6 +2009,10 @@ Content
   #lpms-list .title {
     display: block;
     font-family: concourse-headings;
+    font-size: 2.4rem;
+    line-height: 1.2;
+    margin-bottom: .5em;
+    padding: 2rem 2rem 0 2rem;
   }
 
   #lpms-list .excerpt-dash {
@@ -2017,7 +2020,9 @@ Content
   }
 
   #lpms-list .excerpt {
-
+    display: block;
+    font-size: 1.6rem;
+    padding: 0 2rem 2rem 2rem;
   }
 
 
