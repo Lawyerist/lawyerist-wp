@@ -2303,6 +2303,7 @@ input[type="password"],
 input[type="search"],
 select,
 textarea {
+  background-color: #fff;
   border: .1rem solid #bbb;
   border-radius: .2rem;
   box-shadow: none;
@@ -2396,6 +2397,11 @@ label {
 .post-password-form input[type="password"] {
   width: 100%;
 }
+
+select {
+  -webkit-appearance: menulist;
+}
+
 
   /*------------------------------
   Buttons
