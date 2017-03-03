@@ -22,7 +22,7 @@
 			<?php
 
 			// Get the Loop.
-	    get_template_part( 'loop', 'guides' );
+	    get_template_part( 'loop', 'page-guides' );
 
 			?>
 

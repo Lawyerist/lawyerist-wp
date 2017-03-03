@@ -18,9 +18,17 @@
 
 		// Get the Loop.
 		if ( $post_type == 'download' ) {
-			get_template_part( 'loop', 'page' );
+
+			get_template_part( 'loop', 'single-download' );
+
+		} elseif ( has_post_format( 'link' ) ) {
+
+			get_template_part( 'loop', 'single-link' );
+
 		} else {
+
 			get_template_part( 'loop', 'single' );
+
 		}
 
 		?>

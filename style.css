@@ -28,6 +28,7 @@ Content
   Tables
   Author List Shortcode
 	Sharing Buttons
+  Law Practice Management Software Landing Page
   Survival Guides
   No Sidebar Template
 	TBD Law Template
@@ -271,6 +272,7 @@ p.pullquote,
 #series_note,
 .series_next_post,
 .series_title,
+.single-format-link .post_body a,
 .tag_list,
 .theiaPostSlider_nav ._text,
 ul.blogroll {
@@ -1296,7 +1298,8 @@ Content
     width: 100%;
   }
 
-  .index .format-aside .wp-post-image {
+  .index .format-aside .wp-post-image,
+  .index .format-link .wp-post-image {
     float: left;
     margin-bottom: 0;
     margin-right: 1.5rem;
@@ -1363,12 +1366,14 @@ Content
   }
 
   .index .format-aside .headline_excerpt,
+  .index .format-link .headline_excerpt,
   .index .sponsored .headline_excerpt,
   .index .page .headline_excerpt {
     padding: 2rem;
   }
 
   .index .format-aside.has-post-thumbnail .headline_excerpt,
+  .index .format-link.has-post-thumbnail .headline_excerpt,
   .index .sponsored.has-post-thumbnail .headline_excerpt,
   .index .page.has-post-thumbnail .headline_excerpt {
     padding: 2rem 2rem 2rem 30%;
@@ -1376,7 +1381,8 @@ Content
   }
 
   .index .format-standard.tag-tbd-law-community .headline_excerpt,
-  .index .format-aside.tag-tbd-law-community .headline_excerpt {
+  .index .format-aside.tag-tbd-law-community .headline_excerpt,
+  .index .format-link.tag-tbd-law-community .headline_excerpt {
     margin: 0;
     padding: 0 0 0 11.5rem;
   }
@@ -1433,6 +1439,7 @@ Content
     /* Headline styles. */
 
     .index .format-aside .headline,
+    .index .format-link .headline,
     .index .tag-tbd-law-community .headline {
       font-size: 2.4rem;
       margin-bottom: .5em;
@@ -1450,7 +1457,8 @@ Content
       font-size: 1.8rem;
     }
 
-    .index .format-aside .excerpt {
+    .index .format-aside .excerpt,
+    .index .format-link .excerpt {
       font-size: 1.6rem;
     }
 
@@ -1969,6 +1977,57 @@ Content
     width: 33.333%;
   }
 
+  /*------------------------------
+  Law Practice Management Software
+  Landing Page
+  ------------------------------*/
+
+  #lpms-list {
+    list-style: none;
+    margin-top: 0;
+    margin-left: 0;
+  }
+
+  #lpms-list li {
+    background-color: #f5f5f5;
+    border: .1rem solid #ddd;
+    border-radius: .2rem;
+    box-shadow:
+      .1rem .1rem .3rem rgba(0, 0, 0, 0.2)
+    ;
+    display: block;
+    margin: 0 .3rem 1rem .1rem;
+    min-height: 15rem;
+  }
+
+  #lpms-list .image {
+    float: left;
+    margin-right: 1.5rem;
+  }
+
+    #lpms-list img {
+      margin-bottom: 0;
+    }
+
+  #lpms-list .title {
+    display: block;
+    font-family: concourse-headings;
+    font-size: 2.4rem;
+    line-height: 1.2;
+    margin-bottom: .5em;
+    padding: 2rem 2rem 0 2rem;
+  }
+
+  #lpms-list .excerpt-dash {
+    display: none;
+  }
+
+  #lpms-list .excerpt {
+    display: block;
+    font-size: 1.6rem;
+    padding: 0 2rem 2rem 2rem;
+  }
+
 
   /*------------------------------
 	Survival Guides
@@ -2311,6 +2370,7 @@ input[type="password"],
 input[type="search"],
 select,
 textarea {
+  background-color: #fff;
   border: .1rem solid #bbb;
   border-radius: .2rem;
   box-shadow: none;
@@ -2405,6 +2465,11 @@ label {
   width: 100%;
 }
 
+select {
+  -webkit-appearance: menulist;
+}
+
+
   /*------------------------------
   Buttons
   ------------------------------*/
@@ -2414,7 +2479,8 @@ label {
   a.button,
   input.button,
   input[type="button"],
-  input[type="submit"] {
+  input[type="submit"],
+  .single-format-link .post_body a {
     background-color: #b00;
     border: 0;
     border-radius: .2rem;
@@ -2431,6 +2497,7 @@ label {
     text-decoration: none;
     text-transform: uppercase;
     -webkit-appearance: none;
+    transition: background-color .2s, color .2s, box-shadow .2s;
     width: auto;
   }
 
@@ -2439,7 +2506,8 @@ label {
   a.button:focus,
   input.button:focus,
   input[type="button"]:focus,
-  input[type="submit"]:focus {
+  input[type="submit"]:focus,
+  .single-format-link .post_body a:focus {
     outline: none !important;
   }
 
@@ -2457,8 +2525,10 @@ label {
   a.button:hover,
   input.button:hover,
   input[type="button"]:hover,
-  input[type="submit"]:hover {
+  input[type="submit"]:hover,
+  .single-format-link .post_body a:hover {
     background-color: #c00;
+    box-shadow: .1rem .1rem .3rem rgba(0, 0, 0, 0.4);
     color: #fff;
     text-decoration: none;
   }
@@ -2468,8 +2538,10 @@ label {
   a.button:active,
   input.button:active,
   input[type="button"]:active,
-  input[type="submit"]:active {
+  input[type="submit"]:active,
+  .single-format-link .post_body a:active {
     background-color: #a00;
+    box-shadow: none;
     color: #ddd;
   }
 
@@ -2520,6 +2592,30 @@ label {
   /*------------------------------
   Easy Digital Downloads
   ------------------------------*/
+
+  .edd-submit.button,
+  .edd-submit.button.orange {
+    background: #e59016;
+    border: none !important;
+  }
+
+  .edd-submit.button:focus,
+  .edd-submit.button.orange:focus {
+    outline: none !important;
+  }
+
+  .edd-submit.button:hover,
+  .edd-submit.button.orange:hover {
+    background: #eb9b2a
+  }
+
+  .edd-submit.button:active,
+  .edd-submit.button.orange:active {
+    background: #ce8114;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    color: #ddd;
+  }
 
   .download_category-presentation-materials .wp-post-image {
     border-radius: .2rem;
