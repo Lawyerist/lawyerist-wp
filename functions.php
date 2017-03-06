@@ -10,6 +10,9 @@ STRUCTURE
 - Nav Menu
 - Sidebar
 
+ADMIN
+- Login Form
+
 CONTENT
 - Query Mods
 - Archive Headers
@@ -145,6 +148,38 @@ function lawyerist_register_sidebars()  {
 }
 
 add_action( 'widgets_init', 'lawyerist_register_sidebars' );
+
+
+/* ADMIN ********************/
+
+/*------------------------------
+Login Form
+------------------------------*/
+
+function lawyerist_login_logo() { ?>
+
+	<style type="text/css">
+
+		#login h1 a, .login h1 a {
+			background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/images/L-dot-login.png);
+		}
+
+	</style>
+
+<?php }
+
+function lawyerist_login_logo_url() {
+    return home_url();
+}
+
+function lawyerist_login_logo_url_title() {
+    return 'Lawyerist.com';
+}
+
+add_action( 'login_enqueue_scripts', 'lawyerist_login_logo' );
+add_filter( 'login_headerurl', 'lawyerist_login_logo_url' );
+add_filter( 'login_headertitle', 'lawyerist_login_logo_url_title' );
+
 
 
 /* CONTENT ********************/
