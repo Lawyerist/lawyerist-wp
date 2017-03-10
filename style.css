@@ -2198,6 +2198,7 @@ Content
       .comment-author .avatar {
         float: left;
         margin: .45rem 1rem 1rem 0;
+        /* The top margin compensates for .comment-author line height. */
       }
 
       .comment-author cite {
