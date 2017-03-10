@@ -253,6 +253,10 @@ button,
 .button,
 .drop_cap,
 .category_list,
+#cancel-comment-reply-link,
+.comment-author,
+.comment-meta,
+.comment .reply,
 #current_posts,
 #recent_discussions,
 #footer,
@@ -260,6 +264,7 @@ button,
 input[type="button"],
 input[type="submit"],
 label,
+.logged-in-as, /* Logged-in message on comment form. */
 #main-menu,
 .page_links,
 .postmeta,
@@ -2166,9 +2171,114 @@ Content
 	Comments
 	------------------------------*/
 
-  #disqus_thread {
-      margin-bottom: 6rem;
+  ol.commentlist,
+  ul.children {
+    list-style: none;
   }
+
+  ul.children {
+    border-left: .3rem solid #ddd;
+    margin-left: 0;
+    padding-left: 2rem;
+  }
+
+  .commentlist {
+    margin: 0 0 3rem 0;
+  }
+
+  .comment-body {
+    font-size: 1.8rem;
+    margin-bottom: 3rem;
+  }
+
+    .comment-author {
+
+    }
+
+      .comment-author .avatar {
+        float: left;
+        margin: .45rem 1rem 1rem 0;
+        /* The top margin compensates for .comment-author line height. */
+      }
+
+      .comment-author cite {
+        font-style: normal;
+      }
+
+    .comment-meta {
+      font-size: 1.4rem;
+      margin-bottom: 1em;
+    }
+
+      .comment-meta a {
+        color: #777;
+      }
+
+    .comment-body p:last-of-type {
+      margin-bottom: .75rem;
+    }
+
+  .comment .reply {
+    font-size: 1.6rem;
+  }
+
+  #commentform {
+
+  }
+
+    #respond {
+      background-color: #fbfbfb;
+      border: .1rem solid #ddd;
+      border-radius: .2rem;
+      box-shadow:
+        .1rem .1rem .3rem rgba(0, 0, 0, 0.2)
+      ;
+      display: block;
+      margin: 0 .3rem 3rem .1rem !important;
+      padding: 2rem;
+    }
+
+    #cancel-comment-reply-link {
+      color: #777;
+      display: block;
+      font-size: 1.2rem;
+      font-weight: normal;
+      line-height: 1.5;
+      text-transform: uppercase;
+    }
+
+    .logged-in-as {
+      font-size: 1.4rem;
+      margin-bottom: 1em;
+    }
+
+    #commentform p {
+      margin-bottom: .75rem;
+    }
+
+    .comment-notes {
+      font-size: 1.4rem;
+    }
+
+    .comment-form-comment {
+      margin-bottom: .6rem;
+    }
+
+    textarea#comment {
+      width: 100%;
+    }
+
+    #commentform .comment-form-email {
+      margin-bottom: 1em;
+    }
+
+    .comment-form-url {
+      display: none;
+    }
+
+    #commentform input#submit {
+      margin-bottom: 0;
+    }
 
 /*------------------------------
 Author Pages
@@ -2422,6 +2532,7 @@ select {
     color: #fff;
     display: inline-block;
     font-size: 1.4rem !important;
+    font-weight: normal;
     height: 3.6rem;
     line-height: 3.6rem;
     margin-bottom: 3rem;
@@ -2476,6 +2587,18 @@ select {
     background-color: #a00;
     box-shadow: none;
     color: #ddd;
+  }
+
+  a.greybutton {
+    background-color: #ccc;
+  }
+
+  a.greybutton:hover {
+    background-color: #ddd;
+  }
+
+  a.greybutton:active {
+    background-color: #bbb;
   }
 
 
@@ -2633,7 +2756,7 @@ Print
   #current_posts,
   #recent_discussions,
   #respond,
-  #disqus_thread,
+  #comments,
   #mobile_ad,
   #sidebar_column {
     display: none !important;
