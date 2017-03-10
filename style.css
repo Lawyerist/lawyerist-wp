@@ -253,6 +253,7 @@ button,
 .button,
 .drop_cap,
 .category_list,
+#cancel-comment-reply-link,
 .comment-author,
 .comment-meta,
 .comment .reply,
@@ -263,6 +264,7 @@ button,
 input[type="button"],
 input[type="submit"],
 label,
+.logged-in-as, /* Logged-in message on comment form. */
 #main-menu,
 .page_links,
 .postmeta,
@@ -2195,7 +2197,7 @@ Content
 
       .comment-author .avatar {
         float: left;
-        margin: 0 1rem 1rem 0;
+        margin: .45rem 1rem 1rem 0;
       }
 
       .comment-author cite {
@@ -2223,8 +2225,38 @@ Content
 
   }
 
+    #respond {
+      background-color: #fbfbfb;
+      border: .1rem solid #ddd;
+      border-radius: .2rem;
+      box-shadow:
+        .1rem .1rem .3rem rgba(0, 0, 0, 0.2)
+      ;
+      display: block;
+      margin: 0 .3rem 3rem .1rem !important;
+      padding: 2rem;
+    }
+
+    #cancel-comment-reply-link {
+      color: #777;
+      display: block;
+      font-size: 1.2rem;
+      font-weight: normal;
+      line-height: 1.5;
+      text-transform: uppercase;
+    }
+
+    .logged-in-as {
+      font-size: 1.4rem;
+      margin-bottom: 1em;
+    }
+
     #commentform p {
       margin-bottom: .75rem;
+    }
+
+    .comment-notes {
+      font-size: 1.4rem;
     }
 
     .comment-form-comment {
@@ -2233,6 +2265,18 @@ Content
 
     textarea#comment {
       width: 100%;
+    }
+
+    #commentform .comment-form-email {
+      margin-bottom: 1em;
+    }
+
+    .comment-form-url {
+      display: none;
+    }
+
+    #commentform input#submit {
+      margin-bottom: 0;
     }
 
 /*------------------------------
@@ -2487,6 +2531,7 @@ select {
     color: #fff;
     display: inline-block;
     font-size: 1.4rem !important;
+    font-weight: normal;
     height: 3.6rem;
     line-height: 3.6rem;
     margin-bottom: 3rem;
@@ -2541,6 +2586,18 @@ select {
     background-color: #a00;
     box-shadow: none;
     color: #ddd;
+  }
+
+  a.greybutton {
+    background-color: #ccc;
+  }
+
+  a.greybutton:hover {
+    background-color: #ddd;
+  }
+
+  a.greybutton:active {
+    background-color: #bbb;
   }
 
 
