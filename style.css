@@ -2191,6 +2191,18 @@ Content
     margin-bottom: 3rem;
   }
 
+  .comment-body blockquote {
+    background-color: #eee;
+    color: #444 ;
+    font-size: 2rem;
+    margin-bottom: 1.8rem;
+    padding: 1.8rem;
+  }
+
+    .comment-body blockquote > p:last-of-type {
+      margin-bottom: 0;
+    }
+
     .comment-author {
 
     }
@@ -2214,7 +2226,7 @@ Content
         color: #777;
       }
 
-    .comment-body p:last-of-type {
+    .comment-body > p:last-of-type {
       margin-bottom: .75rem;
     }
 
