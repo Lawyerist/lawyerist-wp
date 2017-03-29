@@ -609,6 +609,7 @@ Images
 ------------------------------*/
 
 img {
+  box-sizing: border-box;
   height: auto;
   margin-bottom: 3rem;
   max-width: 100%;
@@ -628,12 +629,12 @@ img.aligncenter {
 
 img.alignleft,
 .wp-caption.alignleft {
-	margin-right: 1.5rem;
+	padding-right: 1.5rem;
 }
 
 img.alignright,
 .wp-caption.alignright {
-	margin-left: 1.5rem;
+	padding-left: 1.5rem;
 }
 
 img.size-large {
@@ -642,12 +643,13 @@ img.size-large {
 
 img.size-medium,
 img.wp-post-image.attachment-medium {
+  max-width: 50%;
   width: 30rem;
 }
 
 img.wp-post-image.attachment-medium {
   float: right;
-  margin-left: 1.5rem;
+  padding-left: 1.5rem;
 }
 
   /* 2x the max width of the image (600px), plus 2x the image margin (630px),
@@ -661,11 +663,14 @@ img.wp-post-image.attachment-medium {
       float: none;
     	margin-left: auto;
       margin-right: auto;
+      max-width: auto;
+      padding: 0;
     }
 
   }
 
 img.size-thumbnail {
+  max-width: 25%;
   width: 15rem;
 }
 
@@ -679,6 +684,7 @@ img.size-thumbnail {
       float: none;
     	margin-left: auto;
       margin-right: auto;
+      max-width: auto;
     }
 
   }
