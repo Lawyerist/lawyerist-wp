@@ -31,7 +31,6 @@ Content
   Law Practice Management Software Landing Page
   Survival Guides
   No Sidebar Template
-	TBD Law Template
 	Comments
 Author Page
 Sidebar
@@ -2109,61 +2108,6 @@ Content
   .no-sidebar #content_column {
     float: none;
     margin: 0 auto;
-  }
-
-  /*------------------------------
-	TBD Law Template
-	------------------------------*/
-
-  .tbd-law #content_column {
-    float: none;
-    max-width: 100%;
-    width: 100%;
-  }
-
-  .tbd-law .post_body {
-    max-width: 64rem;
-    margin: 0 auto;
-  }
-
-  .tbd-law h1.headline {
-    height: 0;
-    margin: 0;
-    text-indent: -10000px;
-  }
-
-  .tbd-law .wp-post-image {
-    margin-bottom: 2em;
-    width: 100%;
-  }
-
-  .tbd-law .half_row {
-    clear: both;
-  }
-
-  .tbd-law .half {
-    box-sizing: border-box;
-    float: left;
-    margin: 3rem 0;
-    width: 50%;
-  }
-
-  @media only screen and (max-width:499px) {
-
-    .tbd-law .half {
-      float: none;
-      padding: 0 !important;
-      width: 100%;
-    }
-
-  }
-
-  .tbd-law .half:nth-child(odd) {
-    padding-right: 3rem;
-  }
-
-  .tbd-law .half:nth-child(even) {
-    padding-left: 3rem;
   }
 
 
