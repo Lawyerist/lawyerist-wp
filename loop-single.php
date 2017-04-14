@@ -48,7 +48,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
       // Call the lawyerist_postmeta function, which outputs the byline, date,
       // and share and comment counts.
-      lawyerist_postmeta();
+      get_template_part( 'postmeta', 'single' );
 
     echo '</div>'; // Close .headline_postmeta.
 

@@ -46,7 +46,7 @@ echo '<div class="postmeta">';
   $num_comments	= get_comments_number();
 
   if ( $num_comments > 10 ) {
-    echo '<span class="comment_link">' . $comments . '</span>';
+    echo '<span class="comment_link">' . $num_comments . ' comments</span>';
   }
 
 echo '</div>'; // Close .postmeta.

@@ -552,6 +552,21 @@ p.wp-caption-text {
     margin-right: .5em;
   }
 
+  .comment_link:before {
+    content: '\f300';
+    display: inline-block;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font: normal 1.6rem/1 'Genericons';
+    speak: none;
+    -webkit-transform: scale(-1, 1);
+  	-moz-transform: scale(-1, 1);
+  	-ms-transform: scale(-1, 1);
+  	-o-transform: scale(-1, 1);
+  	transform: scale(-1, 1);
+    vertical-align: top;
+  }
+
 pre {
 	color: #555;
 	margin-left: 3rem;
