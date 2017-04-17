@@ -652,6 +652,10 @@ img.alignright,
 	padding-left: 1.5rem;
 }
 
+img.size-full {
+  max-width: 100%;
+}
+
 img.size-large {
   width: 64rem;
 }
