@@ -657,7 +657,8 @@ img.size-full {
 }
 
 img.size-large {
-  width: 64rem;
+  max-width: 100%;
+  width: 100%;
 }
 
 img.size-medium,
