@@ -30,6 +30,7 @@ CONTENT
 
 TAXONOMY
 - Rename "Aside" Post Format
+- Page Type Custom Taxonomy
 - Series Custom Taxonomy
 - Sponsors Custom Taxonomy
 
@@ -643,6 +644,53 @@ function live_rename_aside_format() {
 }
 
 add_action( 'admin_head' , 'live_rename_aside_format' );
+
+
+/*------------------------------
+Page Type Custom Taxonomy
+------------------------------*/
+
+// Register Custom Taxonomy
+function page_type_tax() {
+
+	$labels = array(
+		'name'                       => 'Page Types',
+		'singular_name'              => 'Page Type',
+		'menu_name'                  => 'Page Types',
+		'all_items'                  => 'Page Types',
+		'parent_item'                => 'Parent Page Type',
+		'parent_item_colon'          => 'Parent Page Type:',
+		'new_item_name'              => 'New Page Type',
+		'add_new_item'               => 'Add New Page Type',
+		'edit_item'                  => 'Edit Page Type',
+		'update_item'                => 'Update Page Type',
+		'view_item'                  => 'View Page Type',
+		'separate_items_with_commas' => 'Separate page types with commas',
+		'add_or_remove_items'        => 'Add or remove page types',
+		'choose_from_most_used'      => 'Choose from the most used page types',
+		'popular_items'              => 'Popular Page Types',
+		'search_items'               => 'Search Page Types',
+		'not_found'                  => 'Page Type Not Found',
+		'no_terms'                   => 'No page types',
+		'items_list'                 => 'Page type list',
+		'items_list_navigation'      => 'Page type list navigation',
+	);
+
+	$args = array(
+		'labels'                     => $labels,
+		'hierarchical'               => true,
+		'public'                     => true,
+		'show_ui'                    => true,
+		'show_admin_column'          => true,
+		'show_in_nav_menus'          => true,
+		'show_tagcloud'              => false,
+	);
+
+	register_taxonomy( 'page-type', array( 'page' ), $args );
+
+}
+
+add_action( 'init', 'page_type_tax', 0 );
 
 
 /*------------------------------
