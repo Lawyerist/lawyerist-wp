@@ -33,15 +33,8 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
     }
 
-    // Show featured image (1) if the post has a featured image AND (2) if it's
-    // the first page of the post AND (3) the post DOES NOT have the no-image tag.
-    if ( has_post_thumbnail() ) {
-      if ( $post_type == 'download' ) {
-        the_post_thumbnail( 'medium' );
-      } else {
-        the_post_thumbnail( 'standard_thumbnail' );
-      }
-    }
+    // Show featured image if there is one.
+    if ( has_post_thumbnail() ) { the_post_thumbnail( 'medium' ); }
 
     // Output the post.
     echo '<div class="post_body" itemprop="articleBody">';
