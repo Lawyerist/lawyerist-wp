@@ -2005,6 +2005,22 @@ Content
   Resource Pages
   ------------------------------*/
 
+  .page-template-resource-page .headline_postmeta {
+    margin-bottom: 3rem;
+  }
+
+    .page-template-resource-page .headline,
+    .page-template-resource-page .postmeta {
+      padding-left: 9.75rem;
+    }
+
+  .page-template-resource-page img.wp-post-image.size-thumbnail {
+    float: left;
+    height: 8.25rem;
+    margin: 0 1.5rem 0 0;
+    width: auto;
+  }
+
   .resource-pages-list {
     list-style: none;
     margin-top: 0;
@@ -2080,6 +2096,7 @@ Content
       float: none;
       height: auto;
       margin:0;
+      max-width: none;
       width: 100%;
     }
 
