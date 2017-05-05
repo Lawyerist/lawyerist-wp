@@ -731,10 +731,6 @@ img.inline {
   display: inline !important;
 }
 
-.single div[itemprop="image"] {
-  line-height: 1; /* Otherwise the bottom margin (see below) won't be correct. */
-}
-
 .page img.wp-post-image.size-standard_thumbnail,
 .single img.wp-post-image.size-standard_thumbnail {
   margin-bottom: 2rem;

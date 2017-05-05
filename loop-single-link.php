@@ -20,13 +20,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
     // Show featured image (1) if the post has a featured image AND (2) if it's
     // the first page of the post AND (3) the post DOES NOT have the no-image tag.
-    if ( has_post_thumbnail() ) {
-
-      echo '<div itemprop="image">';
-      the_post_thumbnail( 'standard_thumbnail' );
-      echo '</div>';
-
-    }
+    if ( has_post_thumbnail() ) { the_post_thumbnail( 'standard_thumbnail' ); }
 
     // Output the post.
     echo '<div class="post_body" itemprop="articleBody">';
