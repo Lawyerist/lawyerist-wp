@@ -2017,14 +2017,14 @@ Content
 
   .page-template-resource-page div[itemprop="image"] {
     background-color: #ddd;
-    border: .1rem solid #ddd;
     position: absolute;
       top: 0;
       bottom: 0;
-    width: 8.25rem;
+    width: 8.45rem;
   }
 
     .page-template-resource-page img.wp-post-image.size-thumbnail {
+      border: .1rem solid #ddd;
       height: auto;
       margin: auto 0;
       max-width: none;
