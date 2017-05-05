@@ -5,7 +5,6 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
   // Assign post variables.
   $post_title   = the_title( '', '', FALSE );
-  $post_type    = get_post_type( $post->ID );
 
   // This is the post container.
   echo '<div ';
@@ -15,7 +14,11 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
     echo '<div class="headline_postmeta">';
 
       // Show featured image if there is one.
-      if ( has_post_thumbnail() ) { the_post_thumbnail( 'thumbnail' ); }
+      if ( has_post_thumbnail() ) {
+        echo '<div itemprop="image">';
+        the_post_thumbnail( 'thumbnail' );
+        echo '</div>';
+      }
 
       // Headline
       echo '<h1 class="headline entry-title">' . $post_title . '</h1>';

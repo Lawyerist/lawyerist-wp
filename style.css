@@ -2007,6 +2007,7 @@ Content
 
   .page-template-resource-page .headline_postmeta {
     margin-bottom: 3rem;
+    position: relative;
   }
 
     .page-template-resource-page .headline,
@@ -2014,12 +2015,23 @@ Content
       padding-left: 9.75rem;
     }
 
-  .page-template-resource-page img.wp-post-image.size-thumbnail {
-    float: left;
-    height: 8.25rem;
-    margin: 0 1.5rem 0 0;
-    width: auto;
+  .page-template-resource-page div[itemprop="image"] {
+    background-color: #ddd;
+    position: absolute;
+      top: 0;
+      bottom: 0;
+    width: 8.25rem;
   }
+
+    .page-template-resource-page img.wp-post-image.size-thumbnail {
+      height: auto;
+      margin: auto 0;
+      max-width: none;
+      position: absolute;
+        top: 0;
+        bottom: 0;
+      width: 100%;
+    }
 
   .resource-pages-list {
     list-style: none;
@@ -2035,39 +2047,48 @@ Content
       .1rem .1rem .3rem rgba(0, 0, 0, 0.2)
     ;
     display: block;
-    height: 15rem;
     margin: 0 .3rem 1rem .1rem;
+    min-height: 10rem;
     overflow: hidden;
+    position: relative;
   }
 
-  .resource-pages-list .image {
-    float: left;
-    margin-right: 1.5rem;
-  }
-
-    .resource-pages-list img {
-      margin-bottom: 0;
-      max-width: none;
+    .resource-pages-list .image {
+      background-color: #ddd;
+      position: absolute;
+        top: 0;
+        bottom: 0;
+      width: 10rem;
     }
 
-  .resource-pages-list .title {
-    display: block;
-    font-family: concourse-headings;
-    font-size: 2.4rem;
-    line-height: 1.2;
-    margin-bottom: .5em;
-    padding: 2rem 2rem 0 2rem;
-  }
+      .resource-pages-list img {
+        height: auto;
+        margin: auto 0;
+        max-width: none;
+        position: absolute;
+          top: 0;
+          bottom: 0;
+        width: 100%;
+      }
 
-  .resource-pages-list .excerpt-dash {
-    display: none;
-  }
+    .resource-pages-list .title {
+      display: block;
+      font-family: concourse-headings;
+      font-size: 2.4rem;
+      line-height: 1.2;
+      margin-bottom: .33em;
+      padding: 2rem 2rem 0 11.5rem;
+    }
 
-  .resource-pages-list .excerpt {
-    display: block;
-    font-size: 1.6rem;
-    padding: 0 2rem;
-  }
+    .resource-pages-list .excerpt-dash {
+      display: none;
+    }
+
+    .resource-pages-list .excerpt {
+      display: block;
+      font-size: 1.6rem;
+      padding: 0 2rem 2rem 11.5rem;
+    }
 
 
   /*------------------------------
