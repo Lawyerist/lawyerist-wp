@@ -2017,6 +2017,7 @@ Content
 
   .page-template-resource-page div[itemprop="image"] {
     background-color: #ddd;
+    border: .1rem solid #ddd;
     position: absolute;
       top: 0;
       bottom: 0;
