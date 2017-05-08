@@ -260,6 +260,19 @@ function lawyerist_get_archive_header() {
 }
 
 
+
+/*------------------------------
+Postmeta
+------------------------------*/
+function lawyerist_postmeta() {
+	if ( is_home() || is_archive() || is_search() ) {
+		get_template_part( 'postmeta', 'index' );
+	} elseif ( is_single() ) {
+		get_template_part( 'postmeta', 'single' );
+	}
+}
+
+
 /*------------------------------
 Author Bios
 ------------------------------*/
