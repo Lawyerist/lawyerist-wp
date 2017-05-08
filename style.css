@@ -690,7 +690,7 @@ img.wp-post-image.attachment-medium {
   }
 
 img.size-thumbnail {
-  max-width: 25%;
+  max-width: 33.333%;
   width: 15rem;
 }
 
