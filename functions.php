@@ -200,8 +200,8 @@ function lawyerist_query_mod( $wp_query ) {
 		set_query_var( 'post_type', array( 'post', 'download' ) );
 	}
 
-	if ( !is_front_page() ) {
-
+	if ( is_author() ) {
+		set_query_var( 'post_type', array( 'post', 'page', 'download' ) );
 	}
 
 	// If displaying a series archive page, show the oldest post first.
