@@ -16,7 +16,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
       yoast_breadcrumb( '<div class="breadcrumbs">', '</div>' );
     }
 
-    echo '<div class="headline_postmeta">';
+    echo '<div class="headline_container">';
 
       // Show featured image if there is one.
       if ( has_post_thumbnail() ) {

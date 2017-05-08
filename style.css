@@ -2024,17 +2024,16 @@ Content
   Resource Pages
   ------------------------------*/
 
-  .page-template-resource-page .headline_postmeta {
+  .page-template-resource-page .headline_container {
     margin-bottom: 3rem;
     position: relative;
   }
 
-    .page-template-resource-page .has-post-thumbnail .headline_postmeta {
+    .page-template-resource-page .has-post-thumbnail .headline_container {
       min-height: 8.45rem;
     }
 
-    .page-template-resource-page .headline,
-    .page-template-resource-page .postmeta {
+    .page-template-resource-page .headline {
       padding-left: 9.75rem;
     }
 
