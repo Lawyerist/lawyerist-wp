@@ -131,7 +131,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
         // Output the post meta unless we're showing a page, download or Link post.
         if ( $post_type != 'page' && $post_type != 'download' && !has_post_format( 'link' ) ) {
-          lawyerist_postmeta();
+          get_template_part( 'postmeta', 'page' );
         }
 
         // Show a button for downloads.

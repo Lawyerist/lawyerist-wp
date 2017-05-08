@@ -18,6 +18,7 @@ Layout
 Useful Stuff
 Typography
 Images
+Embedded Content
 Header
   Leaderboard Ad
   Title
@@ -248,6 +249,7 @@ th {
 
 #archive_header li,
 aside blockquote,
+.breadcrumbs,
 button,
 .button,
 .drop_cap,
@@ -784,6 +786,15 @@ img.inline {
 
 
 /*------------------------------
+Embedded Content
+------------------------------*/
+
+iframe.youtube-player {
+  max-width: 100%;
+}
+
+
+/*------------------------------
 Header
 ------------------------------*/
 
@@ -1067,15 +1078,23 @@ Content
   background-color: #f9f9f9;
 }
 
-.breadcrumbs:before {
-  content: '\f417';
-  display: inline-block;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  font: normal 1.6rem/1.4 'Genericons';
-  speak: none;
-  vertical-align: top;
+.breadcrumbs {
+  color: #777;
+  display: block;
+  font-size: 1.6rem;
+  line-height: 1.4;
+  margin-bottom: .5em;
 }
+
+  .breadcrumbs:before {
+    content: '\f417';
+    display: inline-block;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font: normal 1.6rem/1.4 'Genericons';
+    speak: none;
+    vertical-align: top;
+  }
 
 .error404 .tag_cloud {
 	margin-bottom: 1em;
@@ -2010,6 +2029,10 @@ Content
     position: relative;
   }
 
+    .page-template-resource-page .has-post-thumbnail .headline_postmeta {
+      min-height: 8.45rem;
+    }
+
     .page-template-resource-page .headline,
     .page-template-resource-page .postmeta {
       padding-left: 9.75rem;
@@ -2017,6 +2040,7 @@ Content
 
   .page-template-resource-page div[itemprop="image"] {
     background-color: #ddd;
+    height: 8.45rem;
     position: absolute;
       top: 0;
       bottom: 0;

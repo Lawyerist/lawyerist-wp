@@ -12,14 +12,15 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
   post_class( 'hentry' );
   echo '>';
 
+    // Breadcrumbs
+    if ( function_exists( 'yoast_breadcrumb' ) ) {
+      yoast_breadcrumb( '<div class="breadcrumbs">', '</div>' );
+    }
+
     echo '<div class="headline_postmeta">';
 
       // Headline
       echo '<h1 class="headline entry-title">' . $post_title . '</h1>';
-
-      if ( function_exists( 'yoast_breadcrumb' ) ) {
-        yoast_breadcrumb( '<div class="postmeta"><div class="breadcrumbs">', '</div></div>' );
-      }
 
     echo '</div>'; // Close .headline_postmeta.
 
@@ -47,6 +48,9 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
     echo '<div class="post_body" itemprop="articleBody">';
 
       the_content();
+
+      // Byline
+      get_template_part( 'postmeta', 'page' );
 
       echo '<div class="clear"></div>';
 

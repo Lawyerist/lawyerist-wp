@@ -16,7 +16,6 @@ ADMIN
 CONTENT
 - Query Mods
 - Archive Headers
-- Postmeta
 - Author Bios
 - Custom Default Gravatar
 - Loops for Infinite Scrolling
@@ -256,21 +255,6 @@ function lawyerist_get_archive_header() {
 
 		echo '<div id="archive_header"><h1>All Downloads</h1></div>';
 
-	}
-
-}
-
-
-/*------------------------------
-Postmeta
-------------------------------*/
-
-function lawyerist_postmeta() {
-
-	if ( is_home() || is_archive() || is_search() ) {
-		get_template_part( 'postmeta', 'index' );
-	} elseif ( is_single() ) {
-		get_template_part( 'postmeta', 'single' );
 	}
 
 }
