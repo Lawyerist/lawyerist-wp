@@ -28,9 +28,6 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
       // Headline
       echo '<h1 class="headline entry-title">' . $post_title . '</h1>';
 
-      // Byline
-      get_template_part( 'postmeta', 'page' );
-
       echo '<div class="clear"></div>';
 
     echo '</div>'; // Close .headline_postmeta.
@@ -39,6 +36,9 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
     echo '<div class="post_body" itemprop="articleBody">';
 
       the_content();
+
+      // Byline
+      get_template_part( 'postmeta', 'page' );
 
       echo '<div class="clear"></div>';
 
