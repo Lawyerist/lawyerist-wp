@@ -18,7 +18,6 @@ Layout
 Useful Stuff
 Typography
 Images
-Embedded Content
 Header
   Leaderboard Ad
   Title
@@ -382,6 +381,7 @@ italics {
 embed,
 iframe {
   margin-bottom: 3rem !important;
+  max-width: 100%;
 }
 
 h1,
@@ -782,15 +782,6 @@ img.inline {
   border: 0 !important;
   height: auto;
   width: 100%;
-}
-
-
-/*------------------------------
-Embedded Content
-------------------------------*/
-
-iframe.youtube-player {
-  max-width: 100%;
 }
 
 
