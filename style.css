@@ -1617,8 +1617,7 @@ Content
     box-shadow:
       .1rem .1rem .3rem rgba(0, 0, 0, 0.2)
     ;
-    margin-left: .1rem;
-    margin-right: .3rem;
+    margin: 0 .3rem 3rem .1rem;  
     padding: 2rem;
 	}
 
@@ -2021,20 +2020,20 @@ Content
   }
 
     .page-template-resource-page .has-post-thumbnail .headline_container {
-      min-height: 8.45rem;
+      min-height: 10rem;
     }
 
     .page-template-resource-page .headline {
-      padding-left: 9.75rem;
+      padding-left: 11.5rem;
     }
 
   .page-template-resource-page div[itemprop="image"] {
     background-color: #ddd;
-    height: 8.45rem;
+    height: 10rem;
     position: absolute;
       top: 0;
       bottom: 0;
-    width: 8.45rem;
+    width: 10 rem;
   }
 
     .page-template-resource-page img.wp-post-image.size-thumbnail {
