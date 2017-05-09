@@ -1627,8 +1627,11 @@ Content
 
 		.post_index ul {
 			list-style: none;
-			margin-bottom: 0;
 		}
+
+    .post_index ul:last-of-type {
+      margin-bottom: 0;
+    }
 
 		.post_index li {
 			margin-bottom: 0;
