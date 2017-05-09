@@ -1617,7 +1617,7 @@ Content
     box-shadow:
       .1rem .1rem .3rem rgba(0, 0, 0, 0.2)
     ;
-    margin: 0 .3rem 3rem .1rem;  
+    margin: 0 .3rem 3rem .1rem;
     padding: 2rem;
 	}
 
@@ -2033,7 +2033,7 @@ Content
     position: absolute;
       top: 0;
       bottom: 0;
-    width: 10 rem;
+    width: 10rem;
   }
 
     .page-template-resource-page img.wp-post-image.size-thumbnail {
