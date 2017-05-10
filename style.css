@@ -602,6 +602,7 @@ ol,
 ul {
 	margin-bottom: 1.5em;
 	margin-left: 3rem;
+  -webkit-margin-before: 0;
   padding: 0;
 }
 
@@ -615,10 +616,9 @@ li {
   padding: 0;
 }
 
-li li:first-child {
+li:first-child {
   margin-top: 1.4rem;
 }
-
 
 
 /*------------------------------
@@ -1635,15 +1635,16 @@ Content
 
 		.post_index ul {
 			list-style: none;
+      margin-bottom: .5rem;
 		}
-
-    .post_index ul:last-of-type {
-      margin-bottom: 0;
-    }
 
 		.post_index li {
-			margin-bottom: 0;
+			margin-bottom: .5rem;
 		}
+
+    .post_index li li:first-child {
+      margin-top: .5rem;
+    }
 
   .theiaPostSlider_slides {
     background-color: #fafafa;
