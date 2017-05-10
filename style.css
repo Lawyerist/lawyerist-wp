@@ -1579,6 +1579,14 @@ Content
 	Posts
 	------------------------------*/
 
+  h2:target,
+  h3:target,
+  h4:target,
+  h5:target,
+  h6:target {
+    padding-top: 5rem;
+  }
+
 	.comments:before {
 		content: '\f300';
 		display: inline-block;
