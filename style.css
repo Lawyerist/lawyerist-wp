@@ -593,6 +593,7 @@ bold {
 
 sup {
 	font-size: 75%;
+  font-style: normal;
 }
 
 .syntaxhighlighter {
