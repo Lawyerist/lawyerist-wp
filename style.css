@@ -666,6 +666,11 @@ img.size-large {
   width: 100%;
 }
 
+.page-id-128819 .wp-post-image {
+  border-top: .6rem solid #0074ff;
+  border-bottom: .6rem solid #0074ff;
+}
+
 img.size-medium,
 img.wp-post-image.attachment-medium {
   max-width: 50%;
@@ -1581,6 +1586,12 @@ Content
 	/*------------------------------
 	Posts
 	------------------------------*/
+
+  .page-id-128819 .headline {
+    height: 0;
+    margin: 0;
+    text-indent: -99999px;
+  }
 
 	.comments:before {
 		content: '\f300';
