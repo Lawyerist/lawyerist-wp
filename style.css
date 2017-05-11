@@ -29,6 +29,7 @@ Content
   Author List Shortcode
 	Sharing Buttons
   Resource Pages
+  Full Width Template
   Survival Guides
   No Sidebar Template
 	Comments
@@ -2118,6 +2119,39 @@ Content
       display: block;
       font-size: 1.6rem;
       padding: 0 2rem 2rem 11.5rem;
+    }
+
+
+  /*------------------------------
+  Full Width Template
+  ------------------------------*/
+
+  .full-width #content_column {
+    box-sizing: border-box;
+    max-width: none;
+    padding: 0 2rem;
+    width: 100%;
+  }
+
+    .full-width .post_body {
+      padding-left: 0;
+    }
+
+  .full-width .sharedaddy,
+  .full-width .sharedaddy.stop {
+      margin-bottom: 4rem;
+      position: static;
+  }
+
+    .full-width .sd-block,
+    .full-width .sharedaddy.stick .sd-block,
+    .full-width .sharedaddy.stop .sd-block {
+      margin-bottom: 3rem;
+      position: static;
+    }
+
+    .full-width .sd-content ul li {
+        display: inline !important;
     }
 
 
