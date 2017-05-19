@@ -2374,6 +2374,11 @@ Content
       margin-bottom: 0;
     }
 
+p.comment-subscription-form input[type="checkbox"] {
+  display: inline;
+}
+
+
 /*------------------------------
 Author Pages
 ------------------------------*/
