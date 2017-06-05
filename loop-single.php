@@ -149,7 +149,9 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
     lawyerist_recent_discussions();
 
+    echo '<div id="comments_container">';
     comments_template();
+    echo '</div>';
 
   echo '</div>'; // Close .post.
 

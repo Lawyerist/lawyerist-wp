@@ -2855,7 +2855,7 @@ Print
   #current_posts,
   #recent_discussions,
   #respond,
-  #comments,
+  #comments_container,
   #mobile_ad,
   #sidebar_column {
     display: none !important;
