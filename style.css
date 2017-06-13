@@ -243,6 +243,7 @@ h3,
 h4,
 h5,
 h6,
+#main-menu .menu-item-has-children > a,
 th,
 .toc_title {
   font-family: concourse-headings, sans-serif;
