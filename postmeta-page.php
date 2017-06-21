@@ -11,11 +11,11 @@
 
     if ( $author != 'Lawyerist' ) {
 
-      echo '<span class="author">Page edited by <a href="' . $author_url . '">' . $author . '</a>.</span> ';
+      echo 'Page edited by <span class="vcard author author_name"><a href="' . $author_url . '">' . $author . '</a></span>.&nbsp;';
 
     }
 
-    echo '<span class="date">Last updated ' . $updated_date . '.</span>';
+    echo 'Last updated <span class="date updated published">' . $updated_date . '</span>.';
 
   echo '</div>'; // Close .postmeta.
 

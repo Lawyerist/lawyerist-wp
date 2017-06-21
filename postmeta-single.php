@@ -25,23 +25,23 @@ echo '<div class="postmeta">';
     $sponsor_url  = $sponsor_info->description;
 
     if ( has_category( 'sponsored-posts' ) ) {
-      echo '<span class="author sponsor">Sponsored by <a href="' . $sponsor_url . '">' . $sponsor . '</a></span> ';
+      echo '<span class="sponsor">Sponsored by <a href="' . $sponsor_url . '">' . $sponsor . '</a></span> ';
     } else {
-      echo '<span class="author">By <a href="' . $author_url . '">' . $author . '</a>,&nbsp;</span><span class="author sponsor">sponsored by <a href="' . $sponsor_url . '">' . $sponsor . '</a>,&nbsp;</span> ';
+      echo 'By <span class="vcard author author_name"><a href="' . $author_url . '">' . $author . '</a></span>,&nbsp;<span class="sponsor">sponsored by <a href="' . $sponsor_url . '">' . $sponsor . '</a></span>,&nbsp;';
     }
 
-    echo '<span class="date">on ' . $date . '</span>';
+    echo 'on <span class="date updated published">' . $date . '</span>';
 
   } elseif ( $author == 'Lawyerist' ) {
 
-    echo '<span class="date">' . $date . '</span>';
+    echo '<span class="date updated published">' . $date . '</span>';
 
   } else {
 
     $author_url = get_author_posts_url( get_the_author_meta( 'ID' ) );
 
-    echo '<span class="author">By <a href="' . $author_url . '">' . $author . '</a>&nbsp;</span>';
-    echo '<span class="date">on ' . $date . '</span>';
+    echo 'By <span class="vcard author author_name"><a href="' . $author_url . '">' . $author . '</a></span>&nbsp;';
+    echo 'on <span class="date updated published">' . $date . '</span>';
 
   }
 

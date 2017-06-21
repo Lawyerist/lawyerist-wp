@@ -24,21 +24,21 @@ echo '<div class="postmeta">';
     $sponsor      = $sponsor_info->name;
 
     if ( has_category( 'sponsored-posts' ) ) {
-      echo '<span class="author sponsor">Sponsored by ' . $sponsor . '</span> ';
+      echo '<span class="sponsor">Sponsored by ' . $sponsor . '</span> ';
     } else {
-      echo '<span class="author">By ' . $author . ',&nbsp;</span><span class="author sponsor">sponsored by ' . $sponsor . ',&nbsp;</span>';
+      echo 'By <span class="vcard author author_name">' . $author . '</span>,&nbsp;<span class="sponsor">sponsored by ' . $sponsor . '</span>,&nbsp;';
     }
 
-    echo '<span class="date">on ' . $date . '</span>';
+    echo 'on <span class="date updated published">' . $date . '</span>';
 
   } elseif ( $author == 'Lawyerist' ) {
 
-    echo '<span class="date">' . $date . '</span>';
+    echo '<span class="date updated published">' . $date . '</span>';
 
   } else {
 
-    echo '<span class="author">By ' . $author . '&nbsp;</span>';
-    echo '<span class="date">on ' . $date . '</span>';
+    echo 'By <span class="vcard author author_name">' . $author . '</span>&nbsp;';
+    echo 'on <span class="date updated published">' . $date . '</span>';
 
   }
 
