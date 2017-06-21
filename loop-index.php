@@ -201,9 +201,6 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
   if ( $post_num == 1 && is_mobile() ) { lawyerist_get_ap2(); }
   if ( $post_num == 3 && is_mobile() ) { lawyerist_get_ap3(); }
 
-  // Insert recent discussions on index (but not archive) pages.
-  if ( $post_num == 5 && !is_archive() && !is_search() ) { lawyerist_recent_discussions(); }
-
   $post_num++; // Increment counter.
 
   unset ( $post_classes ); // Clear the post classes for the next trip through the Loop.

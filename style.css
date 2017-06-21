@@ -261,7 +261,6 @@ button,
 .comment-meta,
 .comment .reply,
 #current_posts,
-#recent_discussions,
 #footer,
 #header,
 input[type="button"],
@@ -1237,8 +1236,7 @@ Content
     }
 
     .infinite-wrap #lawyerist_ap2,
-    .infinite-wrap #lawyerist_ap3,
-    .infinite-wrap #recent_discussions {
+    .infinite-wrap #lawyerist_ap3 {
       display: none;
     }
 
@@ -1771,8 +1769,7 @@ Content
     text-align: center;
   }
 
-  #current_posts,
-  #recent_discussions {
+  #current_posts {
     background-color: #fbfbfb;
     border-radius: .2rem;
     box-shadow:
@@ -1789,35 +1786,10 @@ Content
     padding: 2rem 0 0 2rem; /* Right padding and bottom margin are provided by #current_posts a. */
   }
 
-  #recent_discussions {
-    background: #fbfbfb url('images/lab-icon.png') no-repeat right center/25.6rem;
-    border-top: .7rem solid #1e79a7;
-    margin-bottom: 6rem;
-    min-height: 21rem; /* Roughly the height of the beaker. */
-    padding: 2rem 21.2rem 2rem 2rem; /* Padding gives 20px right margin to the background image. */
-  }
-
-    .index #recent_discussions {
-      background-color: #fff;
-      margin-bottom: 1rem;
-    }
-
     /* 500px */
     @media only screen and (max-width:499px) {
 
-      #recent_discussions {
-        background-image: none;
-        padding: 2rem;
-      }
-
-    }
-
-    #recent_discussions li:last-child {
-      margin-bottom: 0;
-    }
-
-    .current_posts_heading > a,
-    .recent_discussions_heading > a {
+    .current_posts_heading > a {
       color: #666;
       display: block;
       font-size: 1.4rem;
@@ -1827,8 +1799,7 @@ Content
       text-transform: uppercase;
     }
 
-    .current_posts_heading > a:before,
-    .recent_discussions_heading > a:before {
+    .current_posts_heading > a:before {
       display: inline-block;
       -moz-osx-font-smoothing: grayscale;
       -webkit-font-smoothing: antialiased;
@@ -1840,10 +1811,6 @@ Content
 
     .current_posts_heading > a:before {
       content: '\f409';
-    }
-
-    .recent_discussions_heading > a:before {
-      content: '\f108';
     }
 
     #current_posts a.current_post  {
@@ -1866,21 +1833,10 @@ Content
       }
 
       #current_posts a:hover,
-      #current_posts a:focus,
-      #recent_discussions a:hover,
-      #recent_discussions a:focus {
+      #current_posts a:focus {
         color: #a00;
         text-decoration: none;
       }
-
-    #recent_discussions ul {
-      list-style: none;
-      margin: 0;
-    }
-
-    #recent_discussions li a {
-      color: inherit;
-    }
 
     #current_posts .wp-post-image {
       margin-bottom: 1rem;
@@ -2854,7 +2810,6 @@ Print
   .sharedaddy,
   #categories_tags,
   #current_posts,
-  #recent_discussions,
   #respond,
   #comments_container,
   #mobile_ad,
