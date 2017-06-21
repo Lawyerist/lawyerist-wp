@@ -2052,8 +2052,8 @@ Content
       min-height: 10.45rem;
     }
 
-    .page-template-resource-page .headline,
-    .page-template-resource-page .postmeta {
+    .page-template-resource-page .has-post-thumbnail .headline,
+    .page-template-resource-page .has-post-thumbnail .postmeta {
       padding-left: 11.95rem;
     }
 
