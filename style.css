@@ -1786,9 +1786,6 @@ Content
     padding: 2rem 0 0 2rem; /* Right padding and bottom margin are provided by #current_posts a. */
   }
 
-    /* 500px */
-    @media only screen and (max-width:499px) {
-
     .current_posts_heading > a {
       color: #666;
       display: block;
