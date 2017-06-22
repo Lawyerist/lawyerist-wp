@@ -24,7 +24,7 @@ googletag.cmd.push(function() {
   googletag.display( 'div-gpt-ad-1429843825352-0', 'div-gpt-ad-1429843825352-1', 'div-gpt-ad-1429843825352-2' );
 
   // Set timer to refresh slot every 30 seconds
-  setInterval( function() { googletag.pubads().refresh( [ ap1, ap2, ap3 ] ); }, 30000 );
+  setInterval( function() { googletag.pubads().refresh( [ ap1, ap2, ap3 ] ); }, 60000 );
 
 });
 // End DoubleClick Tags
