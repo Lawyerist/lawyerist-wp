@@ -442,7 +442,7 @@ function lawyerist_get_ap3() { ?>
 
 
 /*------------------------------
-Mobile Ad
+Mobile Ads
 ------------------------------*/
 
 function lawyerist_mobile_ads( $content ) {
