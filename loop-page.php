@@ -34,8 +34,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
     }
 
-    // Show featured image (1) if the post has a featured image AND (2) if it's
-    // the first page of the post AND (3) the post DOES NOT have the no-image tag.
+    // Featured image
     if ( has_post_thumbnail() ) {
       if ( $post_type == 'download' ) {
         the_post_thumbnail( 'medium' );

@@ -552,10 +552,6 @@ p.wp-caption-text {
   margin-bottom: 1em;
 }
 
-  .date {
-    margin-right: .5em;
-  }
-
   .comment_link:before {
     content: '\f300';
     display: inline-block;
@@ -2006,8 +2002,8 @@ Content
       min-height: 10.45rem;
     }
 
-    .page-template-resource-page .has-post-thumbnail .headline,
-    .page-template-resource-page .has-post-thumbnail .postmeta {
+    .page-template-resource-page .has-post-thumbnail .headline_container .headline,
+    .page-template-resource-page .has-post-thumbnail .headline_container .postmeta {
       padding-left: 11.95rem;
     }
 

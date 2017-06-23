@@ -5,6 +5,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
   // Assign post variables.
   $post_title   = the_title( '', '', FALSE );
+  $post_ID      = $post->ID;
 
   // This is the post container.
   echo '<div ';
@@ -16,24 +17,44 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
       yoast_breadcrumb( '<div class="breadcrumbs">', '</div>' );
     }
 
-    echo '<div class="headline_container">';
+    if ( $post->post_parent > 0 ) {
 
-      // Show featured image if there is one.
-      if ( has_post_thumbnail() ) {
-        echo '<div itemprop="image">';
-        the_post_thumbnail( 'thumbnail' );
-        echo '</div>';
-      }
+      echo '<div class="headline_container">';
 
-      // Headline
-      echo '<h1 class="headline entry-title">' . $post_title . '</h1>';
+        // Show featured image if there is one.
+        if ( has_post_thumbnail() ) {
+          echo '<div itemprop="image">';
+          the_post_thumbnail( 'thumbnail' );
+          echo '</div>';
+        }
 
-      // Byline
-      get_template_part( 'postmeta', 'page' );
+        // Headline
+        echo '<h1 class="headline entry-title">' . $post_title . '</h1>';
 
-      echo '<div class="clear"></div>';
+        // Byline
+        get_template_part( 'postmeta', 'page' );
 
-    echo '</div>'; // Close .headline_postmeta.
+        echo '<div class="clear"></div>';
+
+      echo '</div>'; // Close .headline_container.
+
+    } else {
+
+      echo '<div class="headline_postmeta">';
+
+        // Headline
+        echo '<h1 class="headline entry-title">' . $post_title . '</h1>';
+
+        // Byline
+        get_template_part( 'postmeta', 'page' );
+
+        // Featured image
+        if ( has_post_thumbnail() ) { the_post_thumbnail( 'standard_thumbnail' ); }
+
+      echo '</div>'; // Close .headline_postmeta.
+
+    }
+
 
     // Output the post.
     echo '<div class="post_body" itemprop="articleBody">';
