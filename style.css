@@ -552,6 +552,10 @@ p.wp-caption-text {
   margin-bottom: 1em;
 }
 
+  .postmeta cite {
+    font-style: normal;
+  }
+
   .comment_link:before {
     content: '\f300';
     display: inline-block;

@@ -14,11 +14,43 @@
 
 <?php /* Meta descriptions */
 
+// Authors, series, downloads, categories with empty descriptions
+
 	if ( is_front_page() ) {
 
 		$description = get_bloginfo( 'description' );
 
-	} elseif ( is_single() || is_page() ) {
+	} elseif ( is_archive() && !is_author() && !is_post_type_archive( 'download' ) ) {
+
+		$description = term_description();
+
+		if ( empty( $description ) ) {
+
+			$title = single_term_title( '', FALSE );
+			$description = 'All our posts labeled ' . $title . '.';
+		}
+
+	} elseif ( is_author() ) {
+
+		$description = get_the_author_meta( 'description' );
+
+		if ( empty( $description ) ) {
+
+			$name = get_the_author_meta( 'display_name' );
+			$description = 'Posts by ' . $name . ' on Lawyerist.com.';
+		}
+
+	} elseif ( is_post_type_archive( 'download' ) ) {
+
+		$description = term_description();
+
+		if ( empty( $description ) ) {
+
+			$title = single_term_title( '', FALSE );
+			$description = 'All our ' . $title . ' downloads.';
+		}
+
+	} elseif ( is_singular() ) {
 
 		global $post;
 		$description = get_the_excerpt( $post->ID );
