@@ -21,7 +21,7 @@
 		if ( $cart_num > 0 ) {
 
 			$cart_url	= edd_get_checkout_uri();
-			
+
 			echo '<a class="edd_cart" href="' . $cart_url . '">' . $cart_num . '</a>';
 		}
 
