@@ -932,14 +932,9 @@ Menu
     }
 
     /* Discuss */
-    #main-menu-discuss > a:before {
-      content: '\f108';
+    #main-menu-about > a:before {
+      content: '\f455';
     }
-
-      /* Prevent Engage menu item from being clicked. */
-      #menu-item-143087 > a {
-        pointer-events: none !important;
-      }
 
     /* Subscribe */
     #main-menu-subscribe > a:before {

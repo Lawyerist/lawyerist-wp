@@ -44,10 +44,10 @@
 				<?php wp_nav_menu( array( 'theme_location' => 'main_topics' ) ); ?>
 			</div>
 		</li>
-		<li id="main-menu-discuss" class="main-menu-item">
-			<a href="#">Discuss</a>
+		<li id="main-menu-about" class="main-menu-item">
+			<a href="#">About</a>
 			<div class="main-menu-dropdown">
-				<?php wp_nav_menu( array( 'theme_location' => 'main_discuss' ) ); ?>
+				<?php wp_nav_menu( array( 'theme_location' => 'main_about' ) ); ?>
 			</div>
 		</li>
 		<li id="main-menu-subscribe" class="main-menu-item">

@@ -123,7 +123,7 @@ function lawyerist_register_menus() {
 	register_nav_menus(
 		array(
 		 'main_topics'	=> 'Main Menu: Topics',
-		 'main_discuss'	=> 'Main Menu: Discuss'
+		 'main_about'	=> 'Main Menu: About'
 		)
 	);
 
@@ -266,7 +266,7 @@ Postmeta
 function lawyerist_postmeta() {
 
 	if ( is_home() || is_archive() || is_search() ) {
-		
+
 		get_template_part( 'postmeta', 'index' );
 
 	} elseif ( is_single() ) {
