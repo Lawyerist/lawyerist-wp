@@ -1656,7 +1656,7 @@ Content
       margin-top: .5rem;
     }
 
-  .theiaPostSlider_slides {
+  .theiaPostSlider_bodyWithMultiplePages .theiaPostSlider_slides {
     background-color: #fafafa;
     border: .1rem solid #ddd;
     border-radius: .2rem;
