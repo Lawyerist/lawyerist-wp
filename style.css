@@ -2419,9 +2419,9 @@ Sidebar
 }
 
 /* Platinum Sponsors widget. */
-#text-2 a,
-#text-2 img,
-#text-2 p {
+#custom_html-2 a,
+#custom_html-2 img,
+#custom_html-2 p {
   display: block;
   margin: 0;
 }
