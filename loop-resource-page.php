@@ -35,7 +35,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
         // Rating
         if ( function_exists( 'wp_review_show_total' ) ) {
 
-          $rating = wp_review_show_total();
+          $rating = get_post_meta( $post->ID, 'wp_review_total', true );
 
           echo '<div class="user-rating">';
 
