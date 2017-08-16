@@ -42,7 +42,6 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
           if ( $rating > 0 ) {
             echo 'User rating: ';
             wp_review_show_total();
-            echo ' ';
           }
 
           echo '<a href="#respond">Leave a review below.</a></div>';

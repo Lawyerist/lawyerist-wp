@@ -255,7 +255,8 @@ p.pullquote,
 .tag_list,
 .theiaPostSlider_nav ._text,
 ul.blogroll,
-.user-rating {
+.user-rating,
+.wp-review-feedback {
   font-family: concourse, sans-serif;
 }
 
@@ -1487,13 +1488,37 @@ Content
     }
 
 
-    /* User rating styles */
+    /* WP Review Pro styles */
 
     .review-total-only,
     .review-star {
       margin: 0;
       padding: 0;
     }
+
+    .wp-review-feedback {
+      color: #777;
+      font-size: 1.4rem;
+      line-height: 1.5;
+    }
+
+    .wp-review-feedback a.review-btn {
+      background: #ccc;
+      border: none;
+      height: auto;
+      line-height: 1;
+      margin-bottom: 0;
+      padding: .35rem .8rem;
+    }
+
+    .wp-review-feedback a.review-btn:hover {
+      background: #ddd;
+    }
+
+    .wp-review-feedback a.review-btn:active {
+      background: #bbb;
+    }
+
 
 
   /* Button for downloads. */
@@ -2549,6 +2574,7 @@ select {
   input.button,
   input[type="button"],
   input[type="submit"],
+  a.review-btn,
   .single-format-link .post_body a {
     background-color: #b00;
     border: 0;
@@ -2577,6 +2603,7 @@ select {
   input.button:focus,
   input[type="button"]:focus,
   input[type="submit"]:focus,
+  a.review-btn:focus,
   .single-format-link .post_body a:focus {
     outline: none !important;
   }
@@ -2596,6 +2623,7 @@ select {
   input.button:hover,
   input[type="button"]:hover,
   input[type="submit"]:hover,
+  a.review-btn:hover,
   .single-format-link .post_body a:hover {
     background-color: #c00;
     box-shadow: .1rem .1rem .3rem rgba(0, 0, 0, 0.4);
@@ -2609,6 +2637,7 @@ select {
   input.button:active,
   input[type="button"]:active,
   input[type="submit"]:active,
+  a.review-btn:active,
   .single-format-link .post_body a:active {
     background-color: #a00;
     box-shadow: none;
