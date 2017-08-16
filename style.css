@@ -153,30 +153,6 @@ body {
 
     }
 
-    /* Move menu to the bottom and fix it in place. */
-    @media only screen and ( max-width: 659px ) {
-
-      #header_container {
-        border-bottom: 1.4rem solid #c00;
-        box-shadow: 0 .2rem .3rem rgba(0, 0, 0, 0.2);
-        margin-bottom: 1rem;
-      }
-
-        #header {
-          margin: 0 auto;
-          max-width: 100.4rem;
-          padding: 1.2rem 1rem;
-        }
-
-      .menu-default-container {
-        position: fixed;
-          bottom: 0;
-        box-shadow: 0 -.2rem .3rem rgba(0, 0, 0, 0.2);
-      	margin: 0;
-        z-index: 100;
-      }
-
-    }
 
 #footer_container {
   background-color: #ddd;
@@ -1023,14 +999,6 @@ Menu
 /* Mobile menu. */
 @media only screen and ( max-width: 659px ) {
 
-  #main_menu_container {
-    box-shadow: 0 -.2rem .3rem rgba(0, 0, 0, 0.2);
-    margin-bottom: 0;
-    position: fixed;
-      bottom: 0;
-    z-index: 100;
-  }
-
   #main-menu .main-menu-item {
     position: static;
   }
@@ -1047,8 +1015,6 @@ Menu
   }
 
   #main-menu .main-menu-dropdown {
-    box-shadow: 0 -.2rem .3rem rgba(0, 0, 0, 0.2);
-    bottom: 5.4rem;
     left: 0;
     width: 100%;
   }
