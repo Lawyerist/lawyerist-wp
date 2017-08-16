@@ -1519,6 +1519,28 @@ Content
       background: #bbb;
     }
 
+    form.wp-review-comment-form > div,
+    #commentform.wp-review-comment-form > div {
+      width: 100%;
+      margin-bottom: 0;
+      float: none;
+    }
+
+    #commentform.wp-review-comment-form .wp-review-comment-form-rating {
+      margin-bottom: .4rem;
+    }
+
+    #commentform.wp-review-comment-form .wp-review-comment-form-rating label {
+      line-height: 1.5;
+    }
+
+    #commentform.wp-review-comment-form .wp-review-comment-form-email {
+      margin-bottom: 1em;
+    }
+
+    #commentform.wp-review-comment-form .wp-review-comment-form-url {
+      display: none;
+    }
 
 
   /* Button for downloads. */
@@ -2292,13 +2314,13 @@ Content
       text-transform: uppercase;
     }
 
-    .logged-in-as {
-      font-size: 1.4rem;
-      margin-bottom: 1em;
-    }
-
     #commentform p {
       margin-bottom: .75rem;
+    }
+
+    #commentform p.logged-in-as {
+      font-size: 1.4rem;
+      margin-bottom: 1em;
     }
 
     .comment-notes {
@@ -2463,7 +2485,9 @@ input[type="number"],
 input[type="password"],
 input[type="search"],
 select,
-textarea {
+textarea,
+#commentform.wp-review-comment-form input,
+#commentform.wp-review-comment-form textarea {
   background-color: #fff;
   border: .1rem solid #bbb;
   border-radius: .2rem;
@@ -2472,6 +2496,7 @@ textarea {
   color: #555;
   display: block;
   font-size: 1.8rem !important;
+  height: auto;
   outline: none;
   line-height: 2.4rem;
   margin-bottom: .4rem;
@@ -2525,7 +2550,9 @@ input[type="number"]:focus,
 input[type="password"]:focus,
 input[type="search"]:focus,
 select:focus,
-textarea:focus {
+textarea:focus,
+#commentform.wp-review-comment-form input:focus,
+#commentform.wp-review-comment-form textarea:focus {
   border-color: #c00;
   color: #333;
 }
@@ -2575,7 +2602,8 @@ select {
   input[type="button"],
   input[type="submit"],
   a.review-btn,
-  .single-format-link .post_body a {
+  .single-format-link .post_body a,
+  #commentform.wp-review-comment-form input[type="submit"] {
     background-color: #b00;
     border: 0;
     border-radius: .2rem;
@@ -2604,7 +2632,8 @@ select {
   input[type="button"]:focus,
   input[type="submit"]:focus,
   a.review-btn:focus,
-  .single-format-link .post_body a:focus {
+  .single-format-link .post_body a:focus,
+  #commentform.wp-review-comment-form input[type="submit"]:focus {
     outline: none !important;
   }
 
@@ -2624,7 +2653,8 @@ select {
   input[type="button"]:hover,
   input[type="submit"]:hover,
   a.review-btn:hover,
-  .single-format-link .post_body a:hover {
+  .single-format-link .post_body a:hover,
+  #commentform.wp-review-comment-form input[type="submit"]:hover {
     background-color: #c00;
     box-shadow: .1rem .1rem .3rem rgba(0, 0, 0, 0.4);
     color: #fff;
@@ -2638,7 +2668,8 @@ select {
   input[type="button"]:active,
   input[type="submit"]:active,
   a.review-btn:active,
-  .single-format-link .post_body a:active {
+  .single-format-link .post_body a:active,
+  #commentform.wp-review-comment-form input[type="submit"]:active {
     background-color: #a00;
     box-shadow: none;
     color: #ddd;

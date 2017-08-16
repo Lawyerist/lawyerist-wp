@@ -39,6 +39,8 @@
 
 <?php
 
+wp_reset_query();
+
 if ( is_page_template( 'resource-page.php' ) ) {
   comment_form( array( 'title_reply'=>'Leave a Review' ) );
 } else {
