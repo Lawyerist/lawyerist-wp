@@ -17,6 +17,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
       yoast_breadcrumb( '<div class="breadcrumbs">', '</div>' );
     }
 
+    // Show a small image and ratings for child posts.
     if ( $post->post_parent > 0 ) {
 
       echo '<div class="headline_container">';
@@ -31,22 +32,34 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
         // Headline
         echo '<h1 class="headline entry-title">' . $post_title . '</h1>';
 
-        // Byline
-        get_template_part( 'postmeta', 'page' );
+        // Rating
+        if ( function_exists( 'wp_review_show_total' ) ) {
+
+          $rating = wp_review_show_total();
+
+          echo '<div class="user-rating">';
+
+          if ( $rating > 0 ) {
+            echo 'User rating: ';
+            wp_review_show_total();
+            echo ' ';
+          }
+
+          echo '<a href="#respond">Leave a review below.</a></div>';
+
+        }
 
         echo '<div class="clear"></div>';
 
       echo '</div>'; // Close .headline_container.
 
+    // Show a big image for parent posts.
     } else {
 
       echo '<div class="headline_postmeta">';
 
         // Headline
         echo '<h1 class="headline entry-title">' . $post_title . '</h1>';
-
-        // Byline
-        get_template_part( 'postmeta', 'page' );
 
         // Featured image
         if ( has_post_thumbnail() ) { the_post_thumbnail( 'standard_thumbnail' ); }
@@ -60,6 +73,9 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
     echo '<div class="post_body" itemprop="articleBody">';
 
       the_content();
+
+      // Byline
+      get_template_part( 'postmeta', 'page' );
 
       echo '<div class="clear"></div>';
 
@@ -89,7 +105,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
       echo '<div id="comments_container">';
       comments_template();
       echo '</div>';
-      
+
     }
 
   echo '</div>'; // Close .post.

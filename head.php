@@ -18,21 +18,20 @@
 
 	if ( is_front_page() ) {
 
-		$description = get_bloginfo( 'description' );
+		$description = wp_strip_all_tags( get_bloginfo( 'description' ), true );
 
 	} elseif ( is_archive() && !is_author() && !is_post_type_archive( 'download' ) ) {
 
-		$description = term_description();
+		$description = wp_strip_all_tags( term_description(), true );
 
 		if ( empty( $description ) ) {
-
 			$title = single_term_title( '', FALSE );
 			$description = 'All our posts labeled ' . $title . '.';
 		}
 
 	} elseif ( is_author() ) {
 
-		$description = get_the_author_meta( 'description' );
+		$description = wp_strip_all_tags( get_the_author_meta( 'description' ), true );
 
 		if ( empty( $description ) ) {
 
@@ -42,7 +41,7 @@
 
 	} elseif ( is_post_type_archive( 'download' ) ) {
 
-		$description = term_description();
+		$description = wp_strip_all_tags( term_description(), true );
 
 		if ( empty( $description ) ) {
 
@@ -55,7 +54,9 @@
 		global $post;
 		$description = get_the_excerpt( $post->ID );
 
-	} ?>
+	}
+
+?>
 
 <meta name="description" content="<?php echo $description; ?>">
 

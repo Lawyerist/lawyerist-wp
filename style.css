@@ -255,7 +255,8 @@ p.pullquote,
 .single-format-link .post_body a,
 .tag_list,
 .theiaPostSlider_nav ._text,
-ul.blogroll {
+ul.blogroll,
+.user-rating {
   font-family: concourse, sans-serif;
 }
 
@@ -520,7 +521,8 @@ p.wp-caption-text {
      font-size: 1.4rem;
 }
 
-.postmeta {
+.postmeta,
+.user-rating {
 	color: #777;
   display: block;
   font-size: 1.6rem;
@@ -1486,6 +1488,15 @@ Content
     }
 
 
+    /* User rating styles */
+
+    .review-total-only,
+    .review-star {
+      margin: 0;
+      padding: 0;
+    }
+
+
   /* Button for downloads. */
 
   .index .edd_download_purchase_form .button {
@@ -1968,7 +1979,7 @@ Content
     }
 
     .page-template-resource-page .has-post-thumbnail .headline_container .headline,
-    .page-template-resource-page .has-post-thumbnail .headline_container .postmeta {
+    .page-template-resource-page .has-post-thumbnail .headline_container .user-rating {
       padding-left: 11.95rem;
     }
 
