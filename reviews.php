@@ -3,11 +3,11 @@
 		<?php
 			if ( 1 == get_comments_number() ) {
 				/* translators: %s: post title */
-				printf( __( 'One response to %s' ),  '&#8220;' . get_the_title() . '&#8221;' );
+				printf( __( 'One Review of %s' ),  get_the_title() );
 			} else {
 				/* translators: 1: number of comments, 2: post title */
-				printf( _n( '%1$s response to %2$s', '%1$s responses to %2$s', get_comments_number() ),
-					number_format_i18n( get_comments_number() ),  '&#8220;' . get_the_title() . '&#8221;' );
+				printf( _n( '%1$s Review of %2$s', '%1$s Reviews of %2$s', get_comments_number() ),
+				number_format_i18n( get_comments_number() ),  get_the_title() );
 			}
 		?>
 	</h3>
@@ -41,10 +41,10 @@
 
 wp_reset_query();
 
-if ( is_page_template( 'resource-page.php' ) ) {
-  comment_form( array( 'title_reply'=>'Leave a Review' ) );
-} else {
-  comment_form();
-}
+comment_form( array(
+		'comment_notes_before'	=> '<p class="comment-notes">' . __( 'Your email address will not be published. All fields are required.' ) . '</p>',
+		'title_reply'						=> __( 'Leave a Review' )
+	)
+);
 
 ?>

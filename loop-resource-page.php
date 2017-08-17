@@ -35,13 +35,13 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
         // Rating
         if ( function_exists( 'wp_review_show_total' ) ) {
 
-          $rating = get_post_meta( $post->ID, 'wp_review_total', true );
+          $rating = get_post_meta( $post_ID, 'wp_review_comments_rating_value', true );
 
           echo '<div class="user-rating">';
 
-          if ( $rating > 0 ) {
-            echo 'User rating: ';
+          if ( !empty( $rating ) ) {
             wp_review_show_total();
+            echo '<br />';
           }
 
           echo '<a href="#respond">Leave a review below.</a></div>';
@@ -102,7 +102,13 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
     if ( comments_open() ) {
 
       echo '<div id="comments_container">';
-      comments_template();
+
+      if ( function_exists( 'wp_review_show_total' ) ) {
+        comments_template( '/reviews.php' );
+      } else {
+        comments_template();
+      }
+
       echo '</div>';
 
     }
