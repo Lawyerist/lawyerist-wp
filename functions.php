@@ -25,6 +25,7 @@ CONTENT
 - Add Image Sizes
 - Remove Inline Width from Image Captions
 - Featured Images in RSS Feeds
+- Add Container to Theia Post Slider
 
 TAXONOMY
 - Rename "Aside" Post Format
@@ -544,6 +545,33 @@ function featuredtoRSS($content) {
 
 add_filter('the_excerpt_rss', 'featuredtoRSS');
 add_filter('the_content_feed', 'featuredtoRSS');
+
+
+/*------------------------------
+Add Container to Theia Post Slider
+------------------------------*/
+
+function tps_before_slideshow( $html, $content ) {
+    $html .= '<div class="tps_slideshow">';
+
+    return $html;
+}
+
+$priority = 10;
+
+add_filter( 'tps_the_content_before', 'tps_before_slideshow', $priority, 2 );
+
+
+function tps_after_slideshow( $html, $content ) {
+    $html .= '</div>';
+
+    return $html;
+}
+
+$priority = 10;
+
+add_filter( 'tps_the_content_after', 'tps_after_slideshow', $priority, 2 );
+
 
 
 /* TAXONOMY *******************/
