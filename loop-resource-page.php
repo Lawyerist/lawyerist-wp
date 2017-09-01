@@ -33,7 +33,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
         echo '<h1 class="headline entry-title">' . $post_title . '</h1>';
 
         // Rating
-        if ( function_exists( 'wp_review_show_total' ) ) {
+        if ( comments_open() && function_exists( 'wp_review_show_total' ) ) {
 
           $rating = get_post_meta( $post_ID, 'wp_review_comments_rating_value', true );
 
