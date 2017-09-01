@@ -11,7 +11,7 @@
 
     if ( $author != 'Lawyerist' ) {
 
-      echo 'Page edited by <span class="vcard author"><cite class="fn"><a href="' . $author_url . '" class="url">' . $author . '</a></cite></span>.&nbsp;';
+      echo 'Page edited by <span class="vcard author"><cite class="fn"><a href="' . $author_url . '" class="url">' . $author . '</a></cite></span>.';
 
     }
 
