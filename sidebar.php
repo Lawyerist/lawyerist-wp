@@ -13,8 +13,8 @@ echo '<div id="sidebar_column">';
 
 	}
 
-	dynamic_sidebar('sidebar');
+	dynamic_sidebar( 'sidebar' );
 
-echo '</div>';
+echo '</div><!--end #sidebar_column"';
 
 ?>
