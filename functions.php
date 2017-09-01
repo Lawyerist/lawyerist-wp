@@ -559,7 +559,7 @@ function tps_before_slideshow( $html, $content ) {
 
 $priority = 10;
 
-add_filter( 'tps_the_content_before', 'tps_before_slideshow', $priority, 2 );
+add_filter( 'tps_the_content_after_header', 'tps_before_slideshow', $priority, 2 );
 
 
 function tps_after_slideshow( $html, $content ) {

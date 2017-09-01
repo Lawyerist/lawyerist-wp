@@ -37,8 +37,8 @@ echo '<div class="postmeta">';
 
   } else {
 
-    echo 'By <span class="vcard author"><cite class="fn">' . $author . '</cite></span>&nbsp;';
-    echo 'on <span class="date updated published">' . $date . '</span>';
+    echo 'By <span class="vcard author"><cite class="fn">' . $author . '</cite></span> ';
+    echo 'on <span class="date updated published">' . $date . '</span> ';
 
   }
 
