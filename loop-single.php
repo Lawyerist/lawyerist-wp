@@ -132,19 +132,6 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
   	lawyerist_get_author_bio();
 
-    // Display page navigation, categories, and tags.
-    echo '<div id="categories_tags">';
-
-      // Show the category list.
-      $cats = get_the_category_list( ', ' );
-
-      echo '<p class="category_list">' . $cats . '</p>';
-
-      // Show the tag list.
-      echo get_the_tag_list( '<p class="tag_list">', ', ', '</p>' );
-
-    echo '</div>'; // Close #categories_tags.
-
     lawyerist_current_posts( $this_post );
 
     echo '<div id="comments_container">';

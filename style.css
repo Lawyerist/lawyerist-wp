@@ -1749,42 +1749,6 @@ Content
 		padding-left: 12rem;
 	}
 
-  #categories_tags p {
-    font-size: 1.4rem;
-    margin-bottom: .6rem;
-  }
-
-  #categories_tags p:last-child {
-    margin-bottom: 6rem;
-  }
-
-    .category_list,
-    .tag_list {
-      line-height: 3.2rem;
-    }
-
-    .category_list:before {
-      color: #bbb;
-      content: '\f301';
-      display: inline-block;
-      float: left;
-      -webkit-font-smoothing: antialiased;
-      font: normal 3.2rem/1em 'Genericons';
-      speak: none;
-      vertical-align: middle;
-    }
-
-  	.tag_list:before {
-  		color: #bbb;
-  		content: '\f302';
-  		display: inline-block;
-  		float: left;
-  		-webkit-font-smoothing: antialiased;
-  		font: normal 3.2rem/1em 'Genericons';
-      speak: none;
-  		vertical-align: middle;
-  	}
-
   .page_links {
     text-align: center;
   }
