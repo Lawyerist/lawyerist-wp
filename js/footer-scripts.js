@@ -9,7 +9,8 @@ jQuery(
     );
   }
 );
-//End Responsive Menu
+// End Responsive Menu
+
 
 // MailChimp Goal Tracking
 var $mcGoal = {'settings':{'uuid':'a5da2382c098b6541dcd6cf8e','dc':'us2'}};
