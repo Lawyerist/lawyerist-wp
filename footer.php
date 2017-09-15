@@ -18,7 +18,7 @@
 Load trackers
 --------------------------->
 
-// LinkedIn Insight Tag
+<!-- LinkedIn Insight Tag -->
 <script type="text/javascript">
 _linkedin_data_partner_id = "86294";
 </script><script type="text/javascript">
@@ -31,4 +31,4 @@ s.parentNode.insertBefore(b, s);})();
 <noscript>
 <img height="1" width="1" style="display:none;" alt="" src="https://dc.ads.linkedin.com/collect/?pid=86294&fmt=gif" />
 </noscript>
-// End LinkedIn Insight Tag
+<!-- End LinkedIn Insight Tag -->
