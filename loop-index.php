@@ -23,6 +23,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
   // Assign post variables.
   $post_title     = the_title( '', '', FALSE );
+  $seo_title      = get_post_meta( $post->ID, '_yoast_wpseo_title', true );
   $post_url       = get_permalink();
   $post_type      = get_post_type( $post->ID );
   if ( $post_type == 'post' ) {
@@ -119,7 +120,15 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
       echo '<div class="headline_excerpt">';
 
         // Headline
-        echo '<h2 class="headline">' . $post_title . '</h2>';
+        echo '<h2 class="headline">';
+
+        if ( $post_type == 'page' && !empty( $seo_title ) ) {
+          echo $seo_title;
+        } else {
+          echo $post_title;
+        }
+
+        echo '</h2>';
 
         // Output the excerpt unless we're showing a page or a post from the
         // TBD Law community.
