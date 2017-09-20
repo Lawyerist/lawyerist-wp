@@ -849,15 +849,6 @@ Header
 
     }
 
-    /* 620px */
-    @media only screen and (max-width:619px) {
-
-      #title {
-        float: none;
-      }
-
-    }
-
 
 /*------------------------------
 Menu
@@ -2684,8 +2675,15 @@ select {
     padding-top: 0 !important;
   }
 
-  /* Lawyerist Insider Survival Guide Form */
+  #sidebar_column .gform_wrapper {
+    font-size: 1.8rem;
+  }
 
+  #sidebar_column .gform_wrapper ul.gform_fields li.gfield {
+    padding-right: 0;
+  }
+
+  /* Lawyerist Insider Survival Guide Form */
   #gform_wrapper_38 {
     margin-bottom: 3rem !important;
   }
@@ -2694,10 +2692,6 @@ select {
   #gform_wrapper_38 .gform_body {
     font-size: 1.8rem;
   }
-
-    #sidebar_column .gform_wrapper {
-      font-size: 1.8rem;
-    }
 
 
   /*------------------------------
