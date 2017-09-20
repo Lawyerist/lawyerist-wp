@@ -5,8 +5,8 @@
 echo '<div class="postmeta">';
 
   // Get author and date.
-  $author     = get_the_author_meta( 'display_name' );
-  $date       = get_the_time( 'F jS, Y' );
+  $author         = get_the_author_meta( 'display_name' );
+  $date           = get_the_time( 'F jS, Y' );
 
   if ( has_term( true, 'sponsor' ) ) {
 
@@ -41,7 +41,7 @@ echo '<div class="postmeta">';
     $author_url = get_author_posts_url( get_the_author_meta( 'ID' ) );
 
     echo 'By <span class="vcard author"><cite class="fn"><a href="' . $author_url . '" class="url">' . $author . '</a></cite></span> ';
-    echo 'on <span class="date updated published">' . $date . '</span> ';
+    echo 'on <span class="date published">' . $date . '</span> ';
 
   }
 

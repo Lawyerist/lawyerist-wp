@@ -48,7 +48,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
       // Call the lawyerist_postmeta function, which outputs the byline, date,
       // and share and comment counts.
-      get_template_part( 'postmeta', 'single' );
+      get_template_part( 'postmeta', 'single_top' );
 
     echo '</div>'; // Close .headline_postmeta.
 
@@ -104,6 +104,9 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
     echo '<div class="post_body" itemprop="articleBody">';
 
       the_content();
+
+      // Show date modified if it's different than the date published.
+      get_template_part( 'postmeta', 'single_bottom' );
 
       echo '<div class="clear"></div>';
 
