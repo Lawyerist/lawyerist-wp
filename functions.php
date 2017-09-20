@@ -630,7 +630,7 @@ function page_type_tax() {
 		'show_tagcloud'              => false,
 	);
 
-	register_taxonomy( 'page-type', array( 'page' ), $args );
+	register_taxonomy( 'page_type', array( 'page' ), $args );
 
 }
 
