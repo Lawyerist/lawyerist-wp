@@ -2671,6 +2671,10 @@ select {
     text-decoration: none;
   }
 
+  .gform_confirmation_message {
+    padding-top: 2rem;
+  }
+
   .gform_heading .gform_title:first-child,
   .gform_heading .gform_description:first-child {
     margin-top: 2rem;
