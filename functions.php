@@ -193,7 +193,7 @@ Query Mods
 
 function lawyerist_query_mod( $wp_query ) {
 
-	// Add new product pages and downloads to the front page.
+	// Add downloads to the front page.
 	if ( is_front_page() || is_feed() ) {
 		set_query_var( 'post_type', array( 'post', 'download' ) );
 	}
