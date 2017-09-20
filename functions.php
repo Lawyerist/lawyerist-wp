@@ -198,7 +198,7 @@ function lawyerist_query_mod( $wp_query ) {
 		set_query_var( 'post_type', array( 'post', 'download' ) );
 	}
 
-	if ( is_author() ) {
+	if ( !is_admin() && is_author() ) {
 		set_query_var( 'post_type', array( 'post', 'page', 'download' ) );
 	}
 

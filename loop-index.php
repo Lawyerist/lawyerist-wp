@@ -1,7 +1,6 @@
 <?php
 
-
-/*
+/*------------------------------
 Selectors
 
 $post_type == 'post' && $post_format == 'standard'
@@ -13,7 +12,7 @@ has_term( true, 'sponsor' )
 $post_type == 'download'
 $post_type == 'page'
 
-*/
+------------------------------*/
 
 $post_num = 1; // Counter for inserting mobile ads and other stuff.
 
@@ -46,40 +45,42 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
   post_class( $post_classes );
   echo '>';
 
-    // Series title:
-    // Check for a series, get the series information, then output the series title.
-    if ( has_term( true, 'series' ) && !is_tax( 'series' ) ) {
+    // First we look for labels to show above the post container.
 
-      $series_IDs = wp_get_post_terms(
-        $post->ID,
-        'series',
-        array(
-          'fields' 	=> 'ids',
-          'orderby' => 'count',
-          'order' 	=> 'DESC'
-        )
-      );
+      // Series title:
+      // Check for a series, get the series information, then output the series title.
+      if ( has_term( true, 'series' ) && !is_tax( 'series' ) ) {
 
-      $series_info				= get_term( $series_IDs[0] );
-      $series_title				= $series_info->name;
-      $series_description = $series_info->description;
-      $series_slug				= $series_info->slug;
-      $series_url					=	get_term_link( $series_IDs[0], 'series' );
+        $series_IDs = wp_get_post_terms(
+          $post->ID,
+          'series',
+          array(
+            'fields' 	=> 'ids',
+            'orderby' => 'count',
+            'order' 	=> 'DESC'
+          )
+        );
 
-      echo '<p class="series_title"><a href="' . $series_url . '" title="Read more posts in ' . $series_title . '">' . $series_title . '</a></p>';
+        $series_info				= get_term( $series_IDs[0] );
+        $series_title				= $series_info->name;
+        $series_description = $series_info->description;
+        $series_slug				= $series_info->slug;
+        $series_url					=	get_term_link( $series_IDs[0], 'series' );
 
-    }
+        echo '<p class="series_title"><a href="' . $series_url . '" title="Read more posts in ' . $series_title . '">' . $series_title . '</a></p>';
 
-    // TBD Law Community Flag
-    if ( has_tag( 'tbd-law-community' ) ) {
-      echo '<p class="series_title"><a href="https://lawyerist.com/tag/tbd-law-community/" title="Read more posts from the TBD Law community.">TBD Law community</a></p>';
-    }
+      }
+
+      // TBD Law Community Flag
+      if ( has_tag( 'tbd-law-community' ) ) {
+        echo '<p class="series_title"><a href="https://lawyerist.com/tag/tbd-law-community/" title="Read more posts from the TBD Law community.">TBD Law community</a></p>';
+      }
 
 
-    // Post link container (.post). The whole thing is a link!
+    // Now we output the post link container (.post). The whole thing is a link!
     echo '<a href="' . $post_url . '" title="' . $post_title . '">';
 
-      // Post images for series,
+      // First we figure out the post image based on the type of post.
       if ( has_post_thumbnail() ) {
 
         if ( has_term( true, 'series' ) && !is_tax( 'series' ) ) {
@@ -114,6 +115,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
       }
 
+      // Now we get the headline and excerpt (except for certain kinds of posts).
       echo '<div class="headline_excerpt">';
 
         // Headline
