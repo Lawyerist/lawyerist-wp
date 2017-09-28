@@ -42,8 +42,6 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
   if ( $post_type == 'page' && !has_term( 'show-in-feed', 'page_type' ) ) {
 
-    echo 'NOPE!';
-
     continue;
 
   } else {
