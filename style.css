@@ -2658,7 +2658,7 @@ select {
       .1rem .1rem .3rem rgba(0, 0, 0, 0.2)
     ;
     display: block;
-    margin: 0 .3rem 1rem .1rem !important;
+    margin: 0 .3rem 1.5em .1rem !important;
     padding: .1rem 2rem 2rem 2rem;
     text-decoration: none;
   }
@@ -2685,10 +2685,6 @@ select {
   }
 
   /* Lawyerist Insider Survival Guide Form */
-  #gform_wrapper_38 {
-    margin-bottom: 3rem !important;
-  }
-
   #gform_wrapper_38 .gform_description,
   #gform_wrapper_38 .gform_body {
     font-size: 1.8rem;
