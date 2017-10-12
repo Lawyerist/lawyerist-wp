@@ -194,10 +194,16 @@ Query Mods
 function lawyerist_query_mod( $wp_query ) {
 
 	// Add pages and downloads to the front page.
-	if ( is_front_page() || is_feed() ) {
+	if ( is_feed() ) {
 		set_query_var( 'post_type', array( 'post', 'page', 'download' ) );
 	}
 
+	// Add downloads to the feed.
+	if ( is_front_page() ) {
+		set_query_var( 'post_type', array( 'post', 'page', 'download' ) );
+	}
+
+	// Add pages and downloads to author feeds in the admin dashboard.
 	if ( !is_admin() && is_author() ) {
 		set_query_var( 'post_type', array( 'post', 'page', 'download' ) );
 	}
