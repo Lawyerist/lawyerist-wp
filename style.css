@@ -1596,7 +1596,8 @@ Content
 	Posts
 	------------------------------*/
 
-  .page-id-128819 .headline {
+  .page-id-128819 .headline,
+  .page-id-205271 .headline {
     height: 0;
     margin: 0;
     text-indent: -99999px;
