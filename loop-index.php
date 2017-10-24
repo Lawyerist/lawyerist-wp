@@ -146,7 +146,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
           }
 
           // Output the post meta unless we're showing a page or a sticky, download or Link post.
-          if ( !$post_type == 'page' && !is_sticky() && $post_type != 'download' && !has_post_format( 'link' ) ) {
+          if ( !$post_type == 'page' || !is_sticky() || $post_type != 'download' || !has_post_format( 'link' ) ) {
             lawyerist_postmeta();
           }
 
