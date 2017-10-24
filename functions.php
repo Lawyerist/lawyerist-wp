@@ -112,6 +112,14 @@ function lawyerist_theme_setup() {
 add_action( 'after_setup_theme', 'lawyerist_theme_setup' );
 
 
+/* Declare WooCommerce support. */
+function woocommerce_support() {
+    add_theme_support( 'woocommerce' );
+}
+
+add_action( 'after_setup_theme', 'woocommerce_support' );
+
+
 /* STRUCTURE ******************/
 
 /*------------------------------
