@@ -14,7 +14,7 @@
 			<p id="description"><?php bloginfo('description'); ?></p>
 		<?php } ?>
 
-		<?php
+		<?php /* This used to be a small shopping-cart indicator next to the logo.
 
 		$cart_num	= edd_get_cart_quantity();
 
@@ -25,7 +25,7 @@
 			echo '<a class="edd_cart" href="' . $cart_url . '">' . $cart_num . '</a>';
 		}
 
-		?>
+		*/ ?>
 
 		<div class="clear"></div>
 

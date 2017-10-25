@@ -39,7 +39,6 @@ Footer
 Forms
 	Buttons
   Gravity Forms Components
-  Easy Digital Downloads
 WooCommerce
 Print
 
@@ -1539,13 +1538,6 @@ Content
     }
 
 
-  /* Button for downloads. */
-
-  .index .edd_download_purchase_form .button {
-    margin-bottom: 0;
-  }
-
-
   /* Additional series posts. */
 
   .index .series ul {
@@ -2744,103 +2736,6 @@ a.greybutton:active,
   }
 
 
-  /*------------------------------
-  Easy Digital Downloads
-  ------------------------------*/
-
-  .edd-submit.button,
-  .edd-submit.button.orange {
-    background: #e59016;
-    border: none !important;
-  }
-
-  .edd-submit.button:focus,
-  .edd-submit.button.orange:focus {
-    outline: none !important;
-  }
-
-  .edd-submit.button:hover,
-  .edd-submit.button.orange:hover {
-    background: #eb9b2a
-  }
-
-  .edd-submit.button:active,
-  .edd-submit.button.orange:active {
-    background: #ce8114;
-    box-shadow: none;
-    -webkit-box-shadow: none;
-    color: #ddd;
-  }
-
-  .download_category-presentation-materials .wp-post-image {
-    border-radius: .2rem;
-    box-shadow:
-      0 0 0 .1rem #ddd,
-      .1rem .1rem .3rem rgba(0, 0, 0, 0.2)
-    ;
-	}
-
-  a.edd_cart {
-    background-color: #333;
-    border-radius: .2rem;
-    color: #fff;
-    font-size: 1.6rem;
-    line-height: 3.2rem;
-    padding: .8rem;
-    margin-left: .75em;
-  }
-
-  a.edd_cart:hover {
-    color: #ddd;
-  }
-
-  .edd_cart:before {
-    content: '\f447';
-    display: inline-block;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
-    font: normal 2rem/3.2rem Genericons;
-    margin-right: .25em;
-    speak: none;
-    vertical-align: top;
-  }
-
-  #edd_purchase_form #edd_mailchimp {
-    margin-bottom: 1.2em;
-  }
-
-  /* EDD Free Downloads Modal */
-
-  .jBox-Modal .jBox-content {
-    padding: 2rem;
-  }
-
-  #edd-free-downloads-modal p {
-    font-size: 1.4rem;
-    line-height: 1.2;
-    margin-bottom: 2rem;
-  }
-
-    #edd-free-downloads-modal input[type="checkbox"]#edd_free_download_optin {
-      display: inline-block;
-    }
-
-    #edd-free-downloads-modal label {
-      font-size: 1.4rem;
-      font-weight: bold;
-      line-height: 1.2;
-    }
-
-    #edd-free-downloads-modal label.edd-free-downloads-checkbox-label {
-      display: inline;
-      font-weight: normal;
-    }
-
-    #edd-free-downloads-modal button {
-      margin-bottom: 0;
-    }
-
-
 /*------------------------------
 WooCommerce
 ------------------------------*/
@@ -2849,8 +2744,10 @@ WooCommerce
   background-color: #f9f9f9;
 }
 
-.woocommerce-page.single-product {
-  background-color: #fff;
+/* This is a hack to keep Jetpack from loading a mess of products under the product categories. */
+.woocommerce-page .infinite-loader,
+.woocommerce-page .infinite-wrap {
+  display: none;
 }
 
 .woocommerce #content_column {
@@ -2895,6 +2792,44 @@ WooCommerce
   .woocommerce ul.products li.product .woocommerce-loop-category__title mark {
     background: none;
     color: #777;
+  }
+
+  p.woocommerce-result-count {
+    color: #777;
+    display: block;
+    font-size: 1.6rem;
+    line-height: 1.4;
+    margin-bottom: 1em;
+  }
+
+  .woocommerce-info {
+    background-color: #fbfbfb;
+    border-radius: .2rem;
+    border-top: .5rem solid #c00;
+    box-shadow:
+      0 0 0 0.1rem #ddd,
+      .1rem .1rem .3rem rgba(0, 0, 0, 0.2)
+    ;
+    color: #111;
+    margin: 0 .3rem 1.5em .1rem !important;
+    padding: 2rem;
+    text-decoration: none;
+  }
+
+  .woocommerce-error::before,
+  .woocommerce-info::before,
+  .woocommerce-message::before {
+    content: none;
+    display: none;
+  }
+
+  .woocommerce table.cart td.actions .input-text,
+  .woocommerce-page table.cart td.actions .input-text {
+    width: auto;
+  }
+
+  .woocommerce section h2 {
+    text-transform: capitalize;
   }
 
 /* Product Category Pages */
@@ -2953,42 +2888,24 @@ WooCommerce
       left: 20rem;
     }
 
-p.woocommerce-result-count {
-  color: #777;
-  display: block;
-  font-size: 1.6rem;
-  line-height: 1.4;
+/* WooCommerce single product pages. */
+
+.single-product {
+  background-color: #fff;
+}
+
+.single-product .breadcrumbs {
   margin-bottom: 1em;
 }
 
-.woocommerce-info {
-  background-color: #fbfbfb;
-  border-radius: .2rem;
-  border-top: .5rem solid #c00;
-  box-shadow:
-    0 0 0 0.1rem #ddd,
-    .1rem .1rem .3rem rgba(0, 0, 0, 0.2)
-  ;
-  color: #111;
-  margin: 0 .3rem 1.5em .1rem !important;
-  padding: 2rem;
-  text-decoration: none;
+/* WooCommerce shopping cart page. */
+
+.woocommerce-cart img {
+  margin-bottom: unset;
 }
 
-.woocommerce-error::before,
-.woocommerce-info::before,
-.woocommerce-message::before {
-  content: none;
-  display: none;
-}
-
-.woocommerce table.cart td.actions .input-text,
-.woocommerce-page table.cart td.actions .input-text {
-  width: auto;
-}
-
-.woocommerce section h2 {
-  text-transform: capitalize;
+.woocommerce-checkout .download-file a.button {
+  margin-bottom: unset;
 }
 
 
@@ -3000,7 +2917,6 @@ Print
 
   /* Don't Print */
   #lawyerist_ap1,
-  .edd_cart,
   .sharedaddy,
   #categories_tags,
   #current_posts,
