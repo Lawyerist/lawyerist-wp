@@ -50,9 +50,9 @@
 				<?php wp_nav_menu( array( 'theme_location' => 'main_about' ) ); ?>
 			</div>
 		</li>
-		<li id="main-menu-subscribe" class="main-menu-item">
+		<!-- <li id="main-menu-subscribe" class="main-menu-item">
 			<a href="https://lawyerist.com/product/insider/">Join</a>
-		</li>
+		</li> -->
 		<li id="main-menu-search" class="main-menu-item">
 			<a href="#">Search</a>
 			<div class="main-menu-dropdown">
