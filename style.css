@@ -243,6 +243,7 @@ input[type="submit"],
 label,
 .logged-in-as, /* Logged-in message on comment form. */
 #main-menu,
+.onsale,
 .page_links,
 .postmeta,
 .price_tag,
@@ -2853,40 +2854,65 @@ WooCommerce
   width: 100%;
 }
 
-    .tax-product_cat ul.products li.product a img {
-      position: absolute;
-        left: 4rem;
-        top: 4rem;
-      margin: 0 1.5rem 1.5rem 0;
-      transform: rotate( .015turn );
-      width: 15rem;
-    }
+  .tax-product_cat ul.products li.product a img {
+    position: absolute;
+      left: 4rem;
+      top: 4rem;
+    margin: 0 1.5rem 1.5rem 0;
+    transform: rotate( .015turn );
+    width: 15rem;
+  }
 
-    .tax-product_cat ul.products li.product .woocommerce-loop-product__title {
-      color: #333;
-      font-size: 3.2rem;
-      line-height: 1.2;
-      margin: 0 0 .2em 0;
-      padding: 0 0 0 20rem;
-    }
+  .tax-product_cat ul.products li.product .woocommerce-loop-product__title {
+    color: #333;
+    font-size: 3.2rem;
+    line-height: 1.2;
+    margin: 0 0 .2em 0;
+    padding: 0 0 0 20rem;
+  }
 
-    .tax-product_cat ul.products li.product .woocommerce-loop-product__title:hover {
-      color: #a00;
-      text-decoration: none;
-    }
+  .tax-product_cat ul.products li.product .woocommerce-loop-product__title:hover {
+    color: #a00;
+    text-decoration: none;
+  }
 
-    .tax-product_cat ul.products li.product a .price {
-      display: block;
-      font-size: 1.8rem;
-      line-height: 1.5;
-      margin-bottom: .75em;
-      padding-left: 20rem;
-    }
+  .tax-product_cat ul.products li.product a .price {
+    display: block;
+    font-size: 1.8rem;
+    line-height: 1.5;
+    margin-bottom: .75em;
+    padding-left: 20rem;
+  }
 
-    .tax-product_cat ul.products li.product .button {
-      margin: 0;
-      left: 20rem;
-    }
+  .tax-product_cat ul.products li.product .button {
+    margin: 0;
+    left: 20rem;
+  }
+
+.woocommerce span.onsale {
+  background-color: #aaa;
+  border-radius: 0 0 .2rem .2rem;
+  box-shadow: .1rem .1rem .3rem rgba(0, 0, 0, 0.2);
+  font-weight: normal;
+  font-size: 1.4rem;
+  left: 3rem !important;
+  line-height: 1.2;
+  margin: 0 !important;
+  min-height: unset;
+  padding: .6rem .8rem .4rem .8rem;
+  text-transform: uppercase;
+}
+
+  .single-product span.onsale {
+    border-radius: .2rem;
+    box-sizing: border-box;
+    display: block;
+    margin-bottom: 1em !important;
+    position: relative;
+      left: unset !important;
+    width: 100%;
+  }
+
 
 /* WooCommerce single product pages. */
 

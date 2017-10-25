@@ -51,20 +51,7 @@
 			</div>
 		</li>
 		<li id="main-menu-subscribe" class="main-menu-item">
-			<a href="#">Subscribe</a>
-			<div class="main-menu-dropdown">
-				<div id="mc_embed_signup">
-				<form action="//lawyerist.us2.list-manage.com/subscribe/post?u=a5da2382c098b6541dcd6cf8e&amp;id=30d7a1f6e2&SOURCE=nav_menu_signup" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-					<label for="mce-EMAIL">
-						<span hidden class="screen-reader-text"><?php echo _x( 'Enter email address:', 'label' ) ?></span>
-					</label>
-					<input type="email" value="" name="EMAIL" class="email subscribe-email-field" id="mce-EMAIL" placeholder="Email address" required>
-					<!-- Real people should not fill this in and expect good things—do not remove this or risk form bot signups. -->
-					<div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_a5da2382c098b6541dcd6cf8e_30d7a1f6e2" tabindex="-1" value=""></div>
-					<input type="submit" value="Subscribe!" name="subscribe" id="mc-embedded-subscribe" class="button subscribe-submit">
-				</form>
-			</div><!--End mc_embed_signup-->
-			</div>
+			<a href="https://lawyerist.com/product/insider/">Join</a>
 		</li>
 		<li id="main-menu-search" class="main-menu-item">
 			<a href="#">Search</a>
