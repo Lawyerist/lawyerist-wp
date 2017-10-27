@@ -1,10 +1,9 @@
 // Responsive Menu
 jQuery(
   function( $ ){
-    $( ".main-menu-item a" ).click(
-      function() {
-        $( this ).toggleClass( "open" ).next( ".main-menu-dropdown" ).slideToggle( 145 );
-        $( ".open" ).not( this ).toggleClass( "open" ).next( ".main-menu-dropdown" ).slideToggle( 95 );
+    $( ".menu-item-has-children > a" ).click( function() {
+        $( this ).toggleClass( "open" ).next( ".sub-menu" ).slideToggle( 145 );
+        $( ".open" ).not( this ).toggleClass( "open" ).next( ".sub-menu" ).slideToggle( 95 );
       }
     );
   }

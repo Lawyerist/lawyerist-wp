@@ -130,8 +130,7 @@ function lawyerist_register_menus() {
 
 	register_nav_menus(
 		array(
-		 'main_topics'	=> 'Main Menu: Topics',
-		 'main_about'	=> 'Main Menu: About'
+			'header_nav'	=> 'Header Nav'
 		)
 	);
 
@@ -139,6 +138,30 @@ function lawyerist_register_menus() {
 
 add_action('init','lawyerist_register_menus');
 
+/* function lawyerist_add_search_to_menu( $items, $args ) {
+
+	if ( $args->theme_location == 'header_nav' ) {
+		return $items.'
+
+			<li id="main-menu-search" class="menu-item">
+				<a href="#">Search</a>
+				<div class="sub-menu">
+					<form role="search" method="get" class="search-form" action="' . echo home_url( '/' ); ?>">
+					<label for="main-menu-search-box">
+					<span hidden class="screen-reader-text"><?php echo _x( 'Search Lawyerist.com:', 'label' ) ?></span>
+					</label>
+					<input id="main-menu-search-box" type="search" class="search-field" name="s" placeholder="<?php echo esc_attr_x( 'Search Lawyerist.com …', 'placeholder' ) ?>" title="<?php echo esc_attr_x( 'Search Lawyerist.com', 'label' ) ?>" />
+					<input type="submit" class="search-submit" value="<?php echo esc_attr_x( 'Search', 'submit button' ) ?>" />
+					</form>
+				</div>
+			</li>
+
+			';
+	}
+
+}
+
+add_filter( 'wp_nav_menu_items', 'lawyerist_add_search_to_menu', 10, 2 ); */
 
 /*------------------------------
 Sidebar
@@ -187,9 +210,18 @@ function lawyerist_login_logo_url_title() {
     return 'Lawyerist.com';
 }
 
+function lawyerist_login_message( $message ) {
+    if ( empty($message) ){
+        return '<p>Don\'t have an account yet? <a href="https://lawyerist.com/insider/">Click here to apply for a Lawyerist Insider subscription today (it\'s free)!</a></p>';
+    } else {
+        return $message;
+    }
+}
+
 add_action( 'login_enqueue_scripts', 'lawyerist_login_logo' );
 add_filter( 'login_headerurl', 'lawyerist_login_logo_url' );
 add_filter( 'login_headertitle', 'lawyerist_login_logo_url_title' );
+add_filter( 'login_message', 'lawyerist_login_message' );
 
 
 
