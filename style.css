@@ -914,6 +914,15 @@ Menu
       content: '\f455';
     }
 
+    /* Log In */
+    #menu-item-208861 {
+       display: none !important;
+    }
+
+    .menu-item-208861 > a:before {
+      content: '\f304';
+    }
+
     /* Search */
     #main-menu-search > a:before {
       content: '\f400';
