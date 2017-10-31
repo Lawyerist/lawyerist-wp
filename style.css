@@ -904,9 +904,9 @@ Menu
       content: '\f505';
     }
 
-    /* Shop */
+    /* Library */
     .menu-item-208341 > a:before {
-      content: '\f447';
+      content: '\f444';
     }
 
     /* About */
@@ -915,10 +915,6 @@ Menu
     }
 
     /* Log In */
-    #menu-item-208861 {
-       display: none !important;
-    }
-
     .menu-item-208861 > a:before {
       content: '\f304';
     }
@@ -1087,7 +1083,8 @@ Content
   margin-bottom: 1.5rem;
 }
 
-#archive_header p {
+#archive_header p,
+.woocommerce .term-description p {
   color:#333;
   font-size: 1.8rem;
   line-height: 1.5;
@@ -1098,7 +1095,8 @@ Content
   margin-bottom: 0;
 }
 
-#archive_header p:last-child {
+#archive_header p:last-child,
+.woocommerce .term-description p:last-child {
   margin-bottom: 0;
 }
 

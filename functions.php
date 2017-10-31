@@ -5,6 +5,7 @@
 SETUP
 - Stylesheets & Scripts
 - Theme Setup
+- WooCommerce Setup
 
 STRUCTURE
 - Nav Menu
@@ -112,9 +113,13 @@ function lawyerist_theme_setup() {
 add_action( 'after_setup_theme', 'lawyerist_theme_setup' );
 
 
+/*------------------------------
+WooCommerce Setup
+------------------------------*/
+
 /* Declare WooCommerce support. */
 function woocommerce_support() {
-    add_theme_support( 'woocommerce' );
+	add_theme_support( 'woocommerce' );
 }
 
 add_action( 'after_setup_theme', 'woocommerce_support' );
@@ -130,13 +135,33 @@ function lawyerist_register_menus() {
 
 	register_nav_menus(
 		array(
-			'header_nav'	=> 'Header Nav'
+			'header-nav-menu' => 'Header Nav Menu'
 		)
 	);
 
 }
 
-add_action('init','lawyerist_register_menus');
+add_action( 'init','lawyerist_register_menus' );
+
+
+function lawyerist_loginout( $items, $args ) {
+
+    if ( is_user_logged_in() && $args->theme_location == 'header-nav-menu' ) {
+
+        $items .= '<li><a href="https://lawyerist.com/account/">Account</a></li>';
+
+    } elseif ( !is_user_logged_in() && $args->theme_location == 'header-nav-menu' ) {
+
+        $items .= '<li><a href="https://lawyerist.com/account/">Log In</a> / <a href="https://lawyerist.com/product/insider/">Join</a></li>';
+
+    }
+
+    return $items;
+
+}
+
+add_filter( 'wp_nav_menu_items', 'lawyerist_loginout', 10, 2 );
+
 
 /* function lawyerist_add_search_to_menu( $items, $args ) {
 
