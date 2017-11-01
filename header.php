@@ -14,18 +14,20 @@
 			<p id="description"><?php bloginfo('description'); ?></p>
 		<?php } ?>
 
-		<?php /* This used to be a small shopping-cart indicator next to the logo.
+		<?php
 
-		$cart_num	= edd_get_cart_quantity();
+		global $woocommerce;
+
+		$cart_num	= $woocommerce->cart->cart_contents_count;
 
 		if ( $cart_num > 0 ) {
 
-			$cart_url	= edd_get_checkout_uri();
+			$cart_url	= $woocommerce->cart->get_cart_url();
 
-			echo '<a class="edd_cart" href="' . $cart_url . '">' . $cart_num . '</a>';
+			echo '<a class="cart-in-header" href="' . $cart_url . '">' . $cart_num . '</a>';
 		}
 
-		*/ ?>
+		?>
 
 		<div class="clear"></div>
 
