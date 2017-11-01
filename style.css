@@ -250,7 +250,6 @@ label,
 .product_meta,
 p.pullout,
 p.pullquote,
-p.woocommerce-result-count,
 #series_note,
 .series_next_post,
 .series_title,
@@ -259,6 +258,8 @@ p.woocommerce-result-count,
 .theiaPostSlider_nav ._text,
 ul.blogroll,
 .user-rating,
+p.woocommerce-result-count,
+.woocommerce a.added_to_cart,
 .wp-review-feedback {
   font-family: concourse, sans-serif;
 }
@@ -831,7 +832,8 @@ Header
   		display: block;
   	}
 
-    #title a:hover {
+    #title a:hover,
+    #title a:focus {
       color: #ddd;
     }
 
@@ -959,7 +961,8 @@ Menu
     padding: .75rem 1rem;
   }
 
-    #menu-main-menu .sub-menu .menu-item a:hover {
+    #menu-main-menu .sub-menu .menu-item a:hover,
+    #menu-main-menu .sub-menu .menu-item a:focus {
       color: #ddd;
     }
 
@@ -1146,7 +1149,8 @@ Content
     text-decoration: none;
   }
 
-    .index_post_container a:hover {
+    .index_post_container a:hover,
+    .index_post_container a:focus {
       color: #a00;
       text-decoration: none;
     }
@@ -1160,8 +1164,8 @@ Content
     	margin-bottom: .2em;
   	}
 
-    .index_post_container .headline:focus,
-    .index_post_container .headline:hover {
+    .index_post_container .headline:hover,
+    .index_post_container .headline:focus {
   		color: #a00;
       text-decoration: none;
   	}
@@ -1262,8 +1266,8 @@ Content
       vertical-align: top;
     }
 
-    .series_title a:focus,
-    .series_title a:hover {
+    .series_title a:hover,
+    .series_title a:focus {
       color: #a00;
       text-decoration: none;
     }
@@ -2878,9 +2882,18 @@ WooCommerce
   }
 
   .tax-product_cat ul.products li.product .button {
-    margin: 0;
-    left: 20rem;
+    margin: 0 0 0 20rem;
   }
+
+  .woocommerce a.added_to_cart {
+    font-size: 1.6rem;
+    margin-left: .5rem;
+  }
+
+    .woocommerce li.product a.added_to_cart:hover,
+    .woocommerce li.product a.added_to_cart:focus {
+      text-decoration: underline;
+    }
 
 .woocommerce span.onsale {
   background-color: #aaa;
