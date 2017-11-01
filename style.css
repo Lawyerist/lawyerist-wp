@@ -260,6 +260,7 @@ ul.blogroll,
 .user-rating,
 p.woocommerce-result-count,
 .woocommerce a.added_to_cart,
+.woocommerce-account .woocommerce-MyAccount-navigation,
 .wp-review-feedback {
   font-family: concourse, sans-serif;
 }
@@ -2964,6 +2965,23 @@ a.cart-in-header {
 .woocommerce-checkout .download-file a.button {
   margin-bottom: unset;
 }
+
+/* WooCommerce account pages. */
+
+.woocommerce-account .post_body {
+  padding-left: 0;
+}
+
+.woocommerce-account .woocommerce-MyAccount-navigation ul {
+  list-style: none;
+  margin-left: 0;
+}
+
+  .woocommerce-account .woocommerce-MyAccount-navigation ul li {
+    font-size: 1.6rem;
+    line-height: 1.2;
+    margin-top: 0;
+  }
 
 
 /*------------------------------

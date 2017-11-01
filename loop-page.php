@@ -49,7 +49,9 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
       the_content();
 
       // Byline
-      get_template_part( 'postmeta', 'page' );
+      if ( !is_cart() && !is_checkout() && !is_account_page() ) {
+        get_template_part( 'postmeta', 'page' );
+      }
 
       echo '<div class="clear"></div>';
 
