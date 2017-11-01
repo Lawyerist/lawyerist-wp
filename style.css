@@ -917,7 +917,7 @@ Menu
     }
 
     /* Log In */
-    .menu-item-208861 > a:before {
+    .menu-item-loginout > a:before {
       content: '\f304';
     }
 

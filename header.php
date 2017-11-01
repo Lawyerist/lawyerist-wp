@@ -36,5 +36,5 @@
 </div><!-- #header_container -->
 
 <div id="main_menu_container">
-	<?php wp_nav_menu( array( 'theme_location' => 'header_nav' ) ); ?>
+	<?php wp_nav_menu( array( 'theme_location' => 'header-nav-menu' ) ); ?>
 </div>

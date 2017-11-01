@@ -146,13 +146,13 @@ add_action( 'init','lawyerist_register_menus' );
 
 function lawyerist_loginout( $items, $args ) {
 
-    if ( is_user_logged_in() && $args->theme_location == 'header-nav-menu' ) {
+  	if ( is_user_logged_in() && $args->theme_location == 'header-nav-menu' ) {
 
-        $items .= '<li><a href="https://lawyerist.com/account/">Account</a></li>';
+        $items .= '<li class="menu-item menu-item-loginout"><a href="https://lawyerist.com/account/">Account</a></li>';
 
     } elseif ( !is_user_logged_in() && $args->theme_location == 'header-nav-menu' ) {
 
-        $items .= '<li><a href="https://lawyerist.com/account/">Log In</a> / <a href="https://lawyerist.com/product/insider/">Join</a></li>';
+        $items .= '<li class="menu-item menu-item-loginout"><a href="https://lawyerist.com/account/">Log In</a></li>';
 
     }
 
