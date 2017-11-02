@@ -2827,7 +2827,11 @@ WooCommerce
     width: auto;
   }
 
-  .woocommerce section h2 {
+  .woocommerce-checkout .headline,
+  .woocommerce section h2,
+  .woocommerce-Tabs-panel h2:first-child,
+  .woocommerce-table thead,
+  .woocommerce .additional_information_tab {
     text-transform: capitalize;
   }
 
