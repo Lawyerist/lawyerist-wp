@@ -9,7 +9,7 @@ has_tag( 'lawyerist-podcast' )
 has_tag( 'tbd-law-community' )
 has_term( true, 'series' )
 has_term( true, 'sponsor' )
-$post_type == 'download'
+$post_type == 'product'
 $post_type == 'page'
 
 ------------------------------*/
@@ -29,7 +29,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
   if ( $post_type == 'post' ) {
     $post_format  = get_post_format() ? : 'standard';
   }
-  $post_classes[] = 'index_post_container'; // .post, .page, and .download are added automatically, as are tags and formats.
+  $post_classes[] = 'index_post_container'; // .post, .page, and .product are added automatically, as are tags and formats.
 
   // Assign classes.
   if ( has_term( true, 'series' ) ) {
@@ -99,7 +99,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
             echo the_post_thumbnail_url( 'default_thumbnail' );
             echo ' );"></div>';
 
-          } elseif ( $post_type == 'download' ) {
+          } elseif ( $post_type == 'product' ) {
 
             the_post_thumbnail( 'download_thumbnail' );
 
@@ -145,14 +145,14 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
           }
 
-          // Output the post meta unless we're showing a page or a sticky, download or Link post.
-          if ( !$post_type == 'page' || !is_sticky() || $post_type != 'download' || !has_post_format( 'link' ) ) {
+          // Output the post meta only for posts.
+          if ( $post_type == 'post' ) {
             lawyerist_postmeta();
           }
 
-          // Show a button for downloads.
-          if ( $post_type == 'download' ) {
-            echo edd_get_purchase_link( array( 'download_id' => $post->ID ) );
+          // Show a button for products.
+          if ( $post_type == 'product' ) {
+            echo '<a href="' . $post_url . '" class="button">Learn More</a>';
           }
 
           // Clearfix

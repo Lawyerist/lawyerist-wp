@@ -276,19 +276,19 @@ Query Mods
 
 function lawyerist_query_mod( $wp_query ) {
 
-	// Add downloads to the feed.
+	// Add products to the feed.
 	if ( is_feed() ) {
-		set_query_var( 'post_type', array( 'post', 'download' ) );
+		set_query_var( 'post_type', array( 'post', 'product' ) );
 	}
 
-	// Add pages and downloads to the front page.
+	// Add pages and products to the front page.
 	if ( is_front_page() ) {
-		set_query_var( 'post_type', array( 'post', 'page', 'download' ) );
+		set_query_var( 'post_type', array( 'post', 'page', 'product' ) );
 	}
 
-	// Add pages and downloads to author feeds in the admin dashboard.
+	// Add pages and products to author feeds in the admin dashboard.
 	if ( !is_admin() && is_author() ) {
-		set_query_var( 'post_type', array( 'post', 'page', 'download' ) );
+		set_query_var( 'post_type', array( 'post', 'page', 'product' ) );
 	}
 
 	// If displaying a series archive page, show the oldest post first.
@@ -314,9 +314,8 @@ function lawyerist_get_archive_header() {
 
 	}
 
-	// Display the archive header if we're on an archive page (but not on an author
-	// or downloads page).
-	if ( is_archive() && !is_author() && !is_post_type_archive( 'download' ) ) {
+	// Display the archive header if we're on an archive page (but not on an author page).
+	if ( is_archive() && !is_author() ) {
 
 		$title = single_term_title( '', FALSE );
 		$descr = term_description();
@@ -334,13 +333,6 @@ function lawyerist_get_archive_header() {
 		echo '<div id="lawyerist_content_search">';
 			get_search_form();
 		echo '</div>';
-
-	}
-
-	// Display the download header if we're showing the download page.
-	if ( is_post_type_archive( 'download' ) ) {
-
-		echo '<div id="archive_header"><h1>All Downloads</h1></div>';
 
 	}
 

@@ -24,23 +24,9 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
     echo '</div>'; // Close .headline_postmeta.
 
-    if ( !is_user_logged_in() && $post_type == 'download' ) {
-
-      $price = edd_get_download_price( get_the_ID() );
-
-      if ( $price > 0 ) {
-        gravity_form( 38, true, true, '', '', true, 1000, true );
-      }
-
-    }
-
     // Featured image
     if ( has_post_thumbnail() ) {
-      if ( $post_type == 'download' ) {
-        the_post_thumbnail( 'medium' );
-      } else {
         the_post_thumbnail( 'standard_thumbnail' );
-      }
     }
 
     // Output the post.

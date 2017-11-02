@@ -17,11 +17,7 @@
 		$post_type	= get_post_type( $post->ID );
 
 		// Get the Loop.
-		if ( $post_type == 'download' ) {
-
-			get_template_part( 'loop', 'single-download' );
-
-		} elseif ( has_post_format( 'link' ) ) {
+		if ( has_post_format( 'link' ) ) {
 
 			get_template_part( 'loop', 'single-link' );
 

@@ -14,13 +14,13 @@
 
 <?php /* Meta descriptions */
 
-// Authors, series, downloads, categories with empty descriptions
+// Authors, series, products, categories with empty descriptions
 
 	if ( is_front_page() ) {
 
 		$description = wp_strip_all_tags( get_bloginfo( 'description' ), true );
 
-	} elseif ( is_archive() && !is_author() && !is_post_type_archive( 'download' ) ) {
+	} elseif ( is_archive() && !is_author() && !is_post_type_archive( 'product' ) ) {
 
 		$description = wp_strip_all_tags( term_description(), true );
 
@@ -39,14 +39,14 @@
 			$description = 'Posts by ' . $name . ' on Lawyerist.com.';
 		}
 
-	} elseif ( is_post_type_archive( 'download' ) ) {
+	} elseif ( is_post_type_archive( 'product' ) ) {
 
 		$description = wp_strip_all_tags( term_description(), true );
 
 		if ( empty( $description ) ) {
 
 			$title = single_term_title( '', FALSE );
-			$description = 'All our ' . $title . ' downloads.';
+			$description = 'All our ' . $title . ' products.';
 		}
 
 	} elseif ( is_singular() ) {

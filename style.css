@@ -288,7 +288,7 @@ body {
 	color: #111;
 }
 
-.type-download,
+.type-product,
 .page,
 .post,
 .post_body,
@@ -1124,7 +1124,7 @@ Content
   .tag-tbd-law-community
   .series
   .sponsored
-  .type-download
+  .type-product
   .page
 
   */
@@ -1228,7 +1228,7 @@ Content
     border-top: .7rem solid #ffffa0;
   }
 
-  .index .type-download {
+  .index .type-product {
     border-top: .7rem solid #ed9c28;
     padding: 6rem;
   }
@@ -1236,7 +1236,7 @@ Content
     /* 400px; just feels right. */
     @media only screen and ( max-width:399px ) {
 
-      .index .type-download {
+      .index .type-product {
         padding: 3rem;
       }
 
@@ -1335,7 +1335,7 @@ Content
 
     }
 
-  .index .type-download .wp-post-image {
+  .index .type-product .wp-post-image {
     float: right;
     margin: 0;
     transform: rotate( .015turn );
@@ -1347,7 +1347,7 @@ Content
     which seems about right. */
     @media only screen and ( max-width:689px ) {
 
-      .index .type-download .wp-post-image {
+      .index .type-product .wp-post-image {
         display: block;
         float: none;
         margin: 0 auto 1.5rem auto;
@@ -1415,18 +1415,18 @@ Content
 
     }
 
-  .index .type-download .headline_excerpt {
+  .index .type-product .headline_excerpt {
     padding: 0;
   }
 
-  .index .type-download.has-post-thumbnail .headline_excerpt {
+  .index .type-product.has-post-thumbnail .headline_excerpt {
     padding: 0 28rem 0 0;
   }
 
-    /* See .index .type-download .wp-post-image, above. */
+    /* See .index .type-product .wp-post-image, above. */
     @media only screen and ( max-width:689px ) {
 
-      .index .type-download.has-post-thumbnail .headline_excerpt {
+      .index .type-product.has-post-thumbnail .headline_excerpt {
         padding: 0;
       }
 
@@ -1463,13 +1463,13 @@ Content
       font-size: 1.6rem;
     }
 
-    .index .type-download .excerpt {
+    .index .type-product .excerpt {
       font-size: 1.8rem;
       margin-bottom: 1.5em;
     }
 
-    .index .type-download a:hover .excerpt,
-    .index .type-download a:focus .excerpt {
+    .index .type-product a:hover .excerpt,
+    .index .type-product a:focus .excerpt {
       color: #111;
     }
 
@@ -2962,7 +2962,7 @@ a.cart-in-header {
   margin-bottom: unset;
 }
 
-.woocommerce-checkout .download-file a.button {
+.woocommerce-checkout .product-file a.button {
   margin-bottom: unset;
 }
 
