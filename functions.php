@@ -118,11 +118,29 @@ WooCommerce Setup
 ------------------------------*/
 
 /* Declare WooCommerce support. */
-function woocommerce_support() {
+function lawyerist_woocommerce_support() {
 	add_theme_support( 'woocommerce' );
 }
 
-add_action( 'after_setup_theme', 'woocommerce_support' );
+add_action( 'after_setup_theme', 'lawyerist_woocommerce_support' );
+
+
+/* Display price of free products as "Free!" not "$0.00". */
+function lawyerist_wc_free_products( $price, $product ) {
+
+	if ( $price == wc_price( 0.00 ) ) {
+
+		return 'Free!';
+
+	} else {
+
+		return $price;
+
+	}
+
+}
+
+add_filter('woocommerce_get_price_html', 'lawyerist_wc_free_products', 10, 2);
 
 
 /* STRUCTURE ******************/
