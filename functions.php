@@ -129,13 +129,9 @@ add_action( 'after_setup_theme', 'lawyerist_woocommerce_support' );
 function lawyerist_wc_free_products( $price, $product ) {
 
 	if ( $price == wc_price( 0.00 ) ) {
-
 		return 'Free!';
-
 	} else {
-
 		return $price;
-
 	}
 
 }
