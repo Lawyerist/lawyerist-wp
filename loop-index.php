@@ -101,7 +101,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
           } elseif ( $post_type == 'product' ) {
 
-            the_post_thumbnail( 'download_thumbnail' );
+            the_post_thumbnail( 'shop_single' );
 
           } elseif ( has_tag( 'tbd-law-community' ) ) {
 
