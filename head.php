@@ -63,9 +63,28 @@
 
 <?php if ( is_single() && has_post_format( 'link', $post->ID ) ) { echo '<meta name="robots" content="noindex">'; } ?>
 
+<!-- DoubleClick Tags -->
+<script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
+<script>
+  var googletag = googletag || {};
+  googletag.cmd = googletag.cmd || [];
+</script>
+
+<script>
+  googletag.cmd.push(function() {
+    googletag.defineSlot('/12659965/lawyerist_ap1_leaderboard', [728, 90], 'div-gpt-ad-1510163574833-0').addService(googletag.pubads());
+    googletag.defineSlot('/12659965/lawyerist_ap2_sidebar1', [300, 250], 'div-gpt-ad-1510163574833-1').addService(googletag.pubads());
+    googletag.defineSlot('/12659965/lawyerist_ap3_sidebar2', [300, 250], 'div-gpt-ad-1510163574833-2').addService(googletag.pubads());
+    googletag.pubads().enableSingleRequest();
+    googletag.pubads().collapseEmptyDivs();
+    googletag.enableServices();
+  });
+</script>
+<!-- End DoubleClick Tags -->
 
 <!-- Google Webmaster Tools site verification tag for Sam -->
 <meta name="google-site-verification" content="GwbQ-BLG3G-tXV4-uG-_kZIaxXxm_Wqmzg5wFSBa9hI" />
+
 <!-- Google Webmaster Tools site verification tag for Aaron -->
 <meta name="google-site-verification" content="d_OrAi2nt_o3Y3uQ-dicRpRYaxZSynFLUhHY15cnJUY" />
 

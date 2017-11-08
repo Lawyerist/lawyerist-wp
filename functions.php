@@ -47,35 +47,32 @@ Stylesheets & Scripts
 
 function lawyerist_stylesheets_scripts() {
 
+	// Load the Lawyerist fonts.
 	wp_register_style( 'lawyerist-fonts', 'https://lawyerist.com/lawyerist-fonts/lawyerist-fonts.css' );
 	wp_enqueue_style( 'lawyerist-fonts' );
 
+	// Normalize the default styles. From https://github.com/necolas/normalize.css/
 	wp_register_style( 'normalize-css', get_template_directory_uri() . '/normalize.min.css' );
 	wp_enqueue_style( 'normalize-css' );
 
+	// Load the stylesheet, with a cachebuster.
 	$cacheBusterCSS = date("Y m d", filemtime( get_stylesheet_directory() . '/style.css') );
 	wp_register_style( 'stylesheet', get_template_directory_uri() . '/style.css', array(), $cacheBusterCSS, 'all' );
 	wp_enqueue_style( 'stylesheet' );
 
-	if ( !is_admin() && is_singular() && comments_open() && get_option('thread_comments') ) {
+	// Load the comment-reply script, but only if we're on a single page and comments are open and threaded.
+	if ( !is_admin() && is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
 
-	// Load consolidated scripts in the header.
-	$cacheBusterMC = date("Y m d", filemtime( get_stylesheet_directory() . '/js/header-scripts.js') );
-	wp_register_script( 'header-scripts', get_template_directory_uri() . '/js/header-scripts.js', '', $cacheBusterMC );
-	wp_enqueue_script( 'header-scripts' );
+	// Load consolidated scripts in the header. NOT CURRENTLY IN USE.
+	// $cacheBusterMC = date("Y m d", filemtime( get_stylesheet_directory() . '/js/header-scripts.js') );
+	// wp_register_script( 'header-scripts', get_template_directory_uri() . '/js/header-scripts.js', '', $cacheBusterMC );
+	// wp_enqueue_script( 'header-scripts' );
 
 	// Load consolidated scripts in the footer.
 	$cacheBusterMC = date("Y m d", filemtime( get_stylesheet_directory() . '/js/footer-scripts.js') );
 	wp_register_script( 'footer-scripts', get_template_directory_uri() . '/js/footer-scripts.js', '', $cacheBusterMC, true );
-	if ( is_singular() ) {
-		global $post;
-		$footer_script_vars_array = array(
-			'page_slug' => $post->post_name
-		);
-		wp_localize_script( 'footer-scripts', 'footer_script_vars', $footer_script_vars_array );
-	}
 	wp_enqueue_script( 'footer-scripts' );
 
 	// Load sticky sharing buttons on single posts and pages.
@@ -491,9 +488,9 @@ function lawyerist_get_ap1() { ?>
 	<?php if ( !has_tag('no-ads') && !is_mobile() ) { ?>
 
 		<div id="lawyerist_ap1">
-			<div id='div-gpt-ad-1429843825352-0' style='height:90px; width:728px;'>
-				<script type='text/javascript'>
-				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1429843825352-0'); });
+			<div id='div-gpt-ad-1510163574833-0' style='height:90px; width:728px;'>
+				<script>
+					googletag.cmd.push(function() { googletag.display('div-gpt-ad-1510163574833-0'); });
 				</script>
 			</div>
 		</div>
@@ -506,9 +503,9 @@ function lawyerist_get_ap1() { ?>
 function lawyerist_get_ap2() { ?>
 
 	<div id="lawyerist_ap2">
-		<div id='div-gpt-ad-1429843825352-1' style='height:250px; width:300px;'>
-			<script type='text/javascript'>
-			googletag.cmd.push(function() { googletag.display('div-gpt-ad-1429843825352-1'); });
+		<div id='div-gpt-ad-1510163574833-1' style='height:250px; width:300px;'>
+			<script>
+				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1510163574833-1'); });
 			</script>
 		</div>
 	</div>
@@ -519,9 +516,9 @@ function lawyerist_get_ap2() { ?>
 function lawyerist_get_ap3() { ?>
 
 	<div id="lawyerist_ap3">
-		<div id='div-gpt-ad-1429843825352-2' style='height:250px; width:300px;'>
-			<script type='text/javascript'>
-			googletag.cmd.push(function() { googletag.display('div-gpt-ad-1429843825352-2'); });
+		<div id='div-gpt-ad-1510163574833-2' style='height:250px; width:300px;'>
+			<script>
+				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1510163574833-2'); });
 			</script>
 		</div>
 	</div>
