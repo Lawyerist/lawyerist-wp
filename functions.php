@@ -126,13 +126,9 @@ add_action( 'after_setup_theme', 'lawyerist_woocommerce_support' );
 function lawyerist_wc_free_products( $price, $product ) {
 
 	if ( $price == wc_price( 0.00 ) ) {
-
 		return 'Free!';
-
 	} else {
-
 		return $price;
-
 	}
 
 }
@@ -162,13 +158,9 @@ add_action( 'init','lawyerist_register_menus' );
 function lawyerist_loginout( $items, $args ) {
 
   	if ( is_user_logged_in() && $args->theme_location == 'header-nav-menu' ) {
-
         $items .= '<li class="menu-item menu-item-loginout"><a href="https://lawyerist.com/account/">Account</a></li>';
-
     } elseif ( !is_user_logged_in() && $args->theme_location == 'header-nav-menu' ) {
-
         $items .= '<li class="menu-item menu-item-loginout"><a href="https://lawyerist.com/account/">Log In</a></li>';
-
     }
 
     return $items;
@@ -177,31 +169,6 @@ function lawyerist_loginout( $items, $args ) {
 
 add_filter( 'wp_nav_menu_items', 'lawyerist_loginout', 10, 2 );
 
-
-/* function lawyerist_add_search_to_menu( $items, $args ) {
-
-	if ( $args->theme_location == 'header_nav' ) {
-		return $items.'
-
-			<li id="main-menu-search" class="menu-item">
-				<a href="#">Search</a>
-				<div class="sub-menu">
-					<form role="search" method="get" class="search-form" action="' . echo home_url( '/' ); ?>">
-					<label for="main-menu-search-box">
-					<span hidden class="screen-reader-text"><?php echo _x( 'Search Lawyerist.com:', 'label' ) ?></span>
-					</label>
-					<input id="main-menu-search-box" type="search" class="search-field" name="s" placeholder="<?php echo esc_attr_x( 'Search Lawyerist.com …', 'placeholder' ) ?>" title="<?php echo esc_attr_x( 'Search Lawyerist.com', 'label' ) ?>" />
-					<input type="submit" class="search-submit" value="<?php echo esc_attr_x( 'Search', 'submit button' ) ?>" />
-					</form>
-				</div>
-			</li>
-
-			';
-	}
-
-}
-
-add_filter( 'wp_nav_menu_items', 'lawyerist_add_search_to_menu', 10, 2 ); */
 
 /*------------------------------
 Sidebar
