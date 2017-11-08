@@ -23,7 +23,7 @@ var $mcGoal = {'settings':{'uuid':'a5da2382c098b6541dcd6cf8e','dc':'us2'}};
 
 // LinkedIn Insight Tag
 _linkedin_data_partner_id = "86294";
-</script><script type="text/javascript">
+
 (function(){var s = document.getElementsByTagName("script")[0];
 var b = document.createElement("script");
 b.type = "text/javascript";b.async = true;
