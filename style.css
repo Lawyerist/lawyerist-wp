@@ -3034,6 +3034,7 @@ body.woocommerce-account {
     .1rem .1rem .3rem rgba(0, 0, 0, 0.2)
   ;
   box-sizing: border-box;
+  float: left;
   margin-bottom: .3rem;
   margin-left: .1rem;
   margin-right: .3rem;
@@ -3058,10 +3059,11 @@ body.woocommerce-account {
     }
 
 .woocommerce-account .woocommerce-MyAccount-content {
+  float: right;
   width: 78%;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and ( max-width: 768px ) {
 
   .woocommerce-account .woocommerce-MyAccount-navigation {
     margin-bottom: 3rem;
