@@ -2066,7 +2066,6 @@ Content
   .full-width #content_column {
     box-sizing: border-box;
     max-width: none;
-    padding: 0 2rem;
     width: 100%;
   }
 
