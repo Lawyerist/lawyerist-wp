@@ -71,6 +71,15 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
     // Output the post.
     echo '<div class="post_body" itemprop="articleBody">';
 
+    ?>
+    <!-- /12659965/lawyerist_product_page_trial_button -->
+    <div id='div-gpt-ad-1510782188785-0'>
+    <script>
+    googletag.cmd.push(function() { googletag.display('div-gpt-ad-1510782188785-0'); });
+    </script>
+    </div>
+    <?
+
       the_content();
 
       // Byline
