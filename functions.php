@@ -499,38 +499,44 @@ Mobile Ads
 
 function lawyerist_mobile_ads( $content ) {
 
-	$p_close		= '</p>';
-	$paragraphs = explode( $p_close, $content );
+	if ( is_mobile() && is_single() && is_main_query() ) {
 
-	ob_start();
-		echo lawyerist_get_ap2();
-	$ap2 = ob_get_clean();
+		$p_close		= '</p>';
+		$paragraphs = explode( $p_close, $content );
 
-	ob_start();
-		echo lawyerist_get_ap3();
-	$ap3 = ob_get_clean();
+		ob_start();
+			echo lawyerist_get_ap2();
+		$ap2 = ob_get_clean();
 
-	foreach ( $paragraphs as $p_num => $paragraph ) {
+		ob_start();
+			echo lawyerist_get_ap3();
+		$ap3 = ob_get_clean();
 
-		// Only add closing tag to non-empty paragraphs
-		if ( trim( $paragraph ) ) {
-			// Adding closing markup now, rather than at implode, means insertion
-			// is outside of the paragraph markup, and not just inside of it.
-			$paragraphs[$p_num] .= $p_close;
+		foreach ( $paragraphs as $p_num => $paragraph ) {
+
+			// Only add closing tag to non-empty paragraphs
+			if ( trim( $paragraph ) ) {
+				// Adding closing markup now, rather than at implode, means insertion
+				// is outside of the paragraph markup, and not just inside of it.
+				$paragraphs[$p_num] .= $p_close;
+			}
+
+			// Insert DFP code after 2nd and 4th paragraphs
+			// (0 is paragraph #1 in the $paragraphs array)
+			if ( $p_num == 1 ) {
+				$paragraphs[$p_num] .= $ap2;
+			}
+
+			if ( $p_num == 3 ) {
+				$paragraphs[$p_num] .= $ap3;
+			}
+
 		}
-
-		// Insert DFP code after 2nd and 4th paragraphs
-		// (0 is paragraph #1 in the $paragraphs array)
-		if ( $p_num == 1 ) {
-			$paragraphs[$p_num] .= $ap2;
-		}
-
-		if ( $p_num == 3 ) {
-			$paragraphs[$p_num] .= $ap3;
-		}
+		$content = implode( '', $paragraphs );
 
 	}
-	return implode( '', $paragraphs );
+
+	return $content;
 
 }
 
