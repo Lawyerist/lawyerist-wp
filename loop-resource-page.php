@@ -73,7 +73,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
       the_content();
 
-      lawyerist_get_sponsored_trial_button();
+      echo lawyerist_get_sponsored_trial_button();
 
       // Byline
       get_template_part( 'postmeta', 'page' );
