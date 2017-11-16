@@ -22,6 +22,7 @@ CONTENT
 - Loops for Infinite Scrolling
 - Current Posts Widget
 - Ads
+- Trial Buttons
 - Mobile Ads
 - Add Image Sizes
 - Remove Inline Width from Image Captions
@@ -493,6 +494,61 @@ function lawyerist_get_ap3() { ?>
 <?php }
 
 
+function lawyerist_get_sponsored_trial_button() { ?>
+
+	<div class="sponsored_product_trial_button">
+		<div id='div-gpt-ad-1510786516010-0' style='height:75px; width:300px;'>
+			<script>
+				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1510786516010-0'); });
+			</script>
+		</div>
+	</div>
+
+<?php }
+
+
+/*------------------------------
+Trial Buttons
+------------------------------*/
+
+function lawyerist_sponsored_trial_button( $content ) {
+
+	if ( ( get_page_template_slug( $post->ID ) == 'resource-page.php' ) && is_main_query() ) {
+
+		$p_close		= '</p>';
+		$paragraphs = explode( $p_close, $content );
+
+		ob_start();
+			echo lawyerist_get_sponsored_trial_button();
+		$trial_button = ob_get_clean();
+
+		foreach ( $paragraphs as $p_num => $paragraph ) {
+
+			// Only add closing tag to non-empty paragraphs
+			if ( trim( $paragraph ) ) {
+				// Adding closing markup now, rather than at implode, means insertion
+				// is outside of the paragraph markup, and not just inside of it.
+				$paragraphs[$p_num] .= $p_close;
+			}
+
+			// Insert DFP code after 1st paragraph (0 is paragraph #1).
+			if ( $p_num == 1 ) {
+				$paragraphs[$p_num] .= $trial_button;
+			}
+
+		}
+
+		$content = implode( '', $paragraphs );
+
+	}
+
+	return $content;
+
+}
+
+add_filter( 'the_content', 'lawyerist_sponsored_trial_button' );
+
+
 /*------------------------------
 Mobile Ads
 ------------------------------*/
@@ -532,6 +588,7 @@ function lawyerist_mobile_ads( $content ) {
 			}
 
 		}
+
 		$content = implode( '', $paragraphs );
 
 	}

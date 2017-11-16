@@ -71,16 +71,9 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
     // Output the post.
     echo '<div class="post_body" itemprop="articleBody">';
 
-    ?>
-    <!-- /12659965/lawyerist_product_page_trial_button -->
-    <div id='div-gpt-ad-1510786516010-0' style='height:75px; width:300px;'>
-    <script>
-    googletag.cmd.push(function() { googletag.display('div-gpt-ad-1510786516010-0'); });
-    </script>
-    </div>
-    <?
-
       the_content();
+
+      lawyerist_get_sponsored_trial_button();
 
       // Byline
       get_template_part( 'postmeta', 'page' );

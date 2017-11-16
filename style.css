@@ -2057,6 +2057,11 @@ Content
       padding: 0 2rem 2rem 11.5rem;
     }
 
+  .sponsored_product_trial_button {
+    margin: 0 auto 3rem auto;
+    width: 30rem;
+  }
+
 
   /*------------------------------
   Full Width Template
