@@ -24,10 +24,22 @@ echo '<div class="postmeta">';
     $sponsor      = $sponsor_info->name;
     $sponsor_url  = $sponsor_info->description;
 
-    if ( has_category( 'sponsored-posts' ) ) {
-      echo '<span class="sponsor">Sponsored by <a href="' . $sponsor_url . '">' . $sponsor . '</a></span> ';
+    if ( empty( $sponsor_url ) ) {
+
+      if ( has_category( 'sponsored-posts' ) ) { // Product updates and old sponsored posts.
+        echo '<span class="sponsor">Sponsored by ' . $sponsor . '</span> ';
+      } else { // Product spotlights.
+        echo 'By <span class="vcard author"><cite class="fn">' . $author . '</cite></span>,&nbsp;<span class="sponsor">sponsored by ' . $sponsor . '</span>, ';
+      }
+
     } else {
-      echo 'By <span class="vcard author"><cite class="fn">' . $author . '</cite></span>,&nbsp;<span class="sponsor">sponsored by <a href="' . $sponsor_url . '">' . $sponsor . '</a></span>,&nbsp;';
+
+      if ( has_category( 'sponsored-posts' ) ) { // Product updates and old sponsored posts.
+        echo '<span class="sponsor">Sponsored by <a href="' . $sponsor_url . '">' . $sponsor . '</a></span> ';
+      } else { // Product spotlights.
+        echo 'By <span class="vcard author"><cite class="fn">' . $author . '</cite></span>,&nbsp;<span class="sponsor">sponsored by <a href="' . $sponsor_url . '">' . $sponsor . '</a></span>,&nbsp;';
+      }
+
     }
 
     echo 'on <span class="date updated published">' . $date . '</span>';

@@ -23,9 +23,9 @@ echo '<div class="postmeta">';
     $sponsor_info = get_term( $sponsor_IDs[0] );
     $sponsor      = $sponsor_info->name;
 
-    if ( has_category( 'sponsored-posts' ) ) {
+    if ( has_category( 'sponsored-posts' ) ) { // Product updates and old sponsored posts.
       echo '<span class="sponsor">Sponsored by ' . $sponsor . '</span> ';
-    } else {
+    } else { // Product spotlights.
       echo 'By <span class="vcard author"><cite class="fn">' . $author . '</cite></span>,&nbsp;<span class="sponsor">sponsored by ' . $sponsor . '</span>, ';
     }
 
