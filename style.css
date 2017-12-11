@@ -2827,6 +2827,25 @@ WooCommerce
     text-transform: capitalize;
   }
 
+
+  p.woocommerce.add_to_cart_inline {
+    background-color: #efefef;
+    border: .1rem solid #ddd;
+    border-radius: .2rem;
+    box-shadow:
+      .1rem .1rem .3rem rgba(0, 0, 0, 0.2)
+    ;
+    margin-left: .1rem;
+    margin-right: .3rem;
+  	padding: 2rem;
+  }
+
+    p.woocommerce.add_to_cart_inline a.button {
+      margin-bottom: 0;
+      margin-left: 1em;
+    }
+
+
 /* Product Category Pages */
 
 .tax-product_cat ul.products li.product {
