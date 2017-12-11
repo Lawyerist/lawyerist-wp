@@ -27,7 +27,7 @@ echo '<div class="postmeta">';
     if ( has_category( 'sponsored-posts' ) ) {
       echo '<span class="sponsor">Sponsored by <a href="' . $sponsor_url . '">' . $sponsor . '</a></span> ';
     } else {
-      echo 'By <span class="vcard author"><cite class="fn"><a href="' . $author_url . '" class="url">' . $author . '</a></cite></span>,&nbsp;<span class="sponsor">sponsored by <a href="' . $sponsor_url . '">' . $sponsor . '</a></span>,&nbsp;';
+      echo 'By <span class="vcard author"><cite class="fn">Lawyerist</cite></span>,&nbsp;<span class="sponsor">sponsored by <a href="' . $sponsor_url . '">' . $sponsor . '</a></span>,&nbsp;';
     }
 
     echo 'on <span class="date updated published">' . $date . '</span>';
