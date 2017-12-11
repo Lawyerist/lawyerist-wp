@@ -253,7 +253,6 @@ p.pullquote,
 #series_note,
 .series_next_post,
 .series_title,
-.single-format-link .post_body a,
 .tag_list,
 .theiaPostSlider_nav ._text,
 ul.blogroll,
@@ -1294,8 +1293,7 @@ Content
     width: 100%;
   }
 
-  .index .format-aside .wp-post-image,
-  .index .format-link .wp-post-image {
+  .index .format-aside .wp-post-image {
     float: left;
     margin-bottom: 0;
     margin-right: 1.5rem;
@@ -1362,14 +1360,12 @@ Content
   }
 
   .index .format-aside .headline_excerpt,
-  .index .format-link .headline_excerpt,
   .index .sponsored .headline_excerpt,
   .index .page .headline_excerpt {
     padding: 2rem;
   }
 
   .index .format-aside.has-post-thumbnail .headline_excerpt,
-  .index .format-link.has-post-thumbnail .headline_excerpt,
   .index .sponsored.has-post-thumbnail .headline_excerpt,
   .index .page.has-post-thumbnail .headline_excerpt {
     padding: 2rem 2rem 2rem 30%;
@@ -1377,8 +1373,7 @@ Content
   }
 
   .index .format-standard.tag-tbd-law-community .headline_excerpt,
-  .index .format-aside.tag-tbd-law-community .headline_excerpt,
-  .index .format-link.tag-tbd-law-community .headline_excerpt {
+  .index .format-aside.tag-tbd-law-community .headline_excerpt {
     margin: 0;
     padding: 0 0 0 11.5rem;
   }
@@ -1435,7 +1430,6 @@ Content
     /* Headline styles. */
 
     .index .format-aside .headline,
-    .index .format-link .headline,
     .index .tag-tbd-law-community .headline {
       font-size: 2.4rem;
       margin-bottom: .5em;
@@ -1453,8 +1447,7 @@ Content
       font-size: 1.8rem;
     }
 
-    .index .format-aside .excerpt,
-    .index .format-link .excerpt {
+    .index .format-aside .excerpt {
       font-size: 1.6rem;
     }
 
@@ -2552,7 +2545,6 @@ input.button,
 input[type="button"],
 input[type="submit"],
 a.review-btn,
-.single-format-link .post_body a,
 #commentform.wp-review-comment-form input[type="submit"],
 .woocommerce #respond input#submit,
 .woocommerce a.button,
@@ -2610,7 +2602,6 @@ input.button:focus,
 input[type="button"]:focus,
 input[type="submit"]:focus,
 a.review-btn:focus,
-.single-format-link .post_body a:focus,
 #commentform.wp-review-comment-form input[type="submit"]:focus,
 .woocommerce #respond input#submit:focus,
 .woocommerce a.button:focus,
@@ -2630,7 +2621,6 @@ input.button:hover,
 input[type="button"]:hover,
 input[type="submit"]:hover,
 a.review-btn:hover,
-.single-format-link .post_body a:hover,
 #commentform.wp-review-comment-form input[type="submit"]:hover,
 .woocommerce #respond input#submit:hover,
 .woocommerce a.button:hover,
@@ -2653,7 +2643,6 @@ input.button:active,
 input[type="button"]:active,
 input[type="submit"]:active,
 a.review-btn:active,
-.single-format-link .post_body a:active,
 #commentform.wp-review-comment-form input[type="submit"]:active,
 .woocommerce #respond input#submit:active,
 .woocommerce a.button:active,

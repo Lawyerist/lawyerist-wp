@@ -61,7 +61,7 @@
 <meta name="description" content="<?php echo $description; ?>">
 
 
-<?php if ( is_single() && has_post_format( 'link', $post->ID ) ) { echo '<meta name="robots" content="noindex">'; } ?>
+<?php // if ( is_single() && has_post_format( 'link', $post->ID ) ) { echo '<meta name="robots" content="noindex, nofollow">'; } ?>
 
 <!-- DoubleClick Tags -->
 <script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>

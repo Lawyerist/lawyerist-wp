@@ -11,23 +11,7 @@
 
 	<div id="content_column">
 
-		<?php
-
-		// Assign post variables.
-		$post_type	= get_post_type( $post->ID );
-
-		// Get the Loop.
-		if ( has_post_format( 'link' ) ) {
-
-			get_template_part( 'loop', 'single-link' );
-
-		} else {
-
-			get_template_part( 'loop', 'single' );
-
-		}
-
-		?>
+		<?php get_template_part( 'loop', 'single' ); ?>
 
 	</div><!-- end #content_column -->
 
