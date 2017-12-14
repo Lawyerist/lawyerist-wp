@@ -248,6 +248,7 @@ label,
 .postmeta,
 .price_tag,
 .product_meta,
+#product_updates,
 p.pullout,
 p.pullquote,
 #series_note,
@@ -1578,6 +1579,63 @@ Content
       font-weight: normal;
     }
 
+  #product_updates {
+    background-color: #fff;
+    border-radius: .2rem;
+    border-top: .7rem solid #ffffa0;
+    box-shadow:
+      0 0 0 .1rem #ddd,
+      .1rem .1rem .3rem rgba(0, 0, 0, 0.2)
+    ;
+    display: block;
+    margin-bottom: 1rem;
+    padding: 2rem;
+    position: relative;
+		text-decoration: none;
+	}
+
+    #product_updates ul {
+      list-style: none;
+      margin: 0;
+    }
+
+      #product_updates li {
+        font-size: 1.8rem;
+        line-height: 1.5;
+        margin-top: 0;
+      }
+
+        #product_updates a {
+          color: #333;
+          text-decoration: none;
+        }
+
+        #product_updates a:hover,
+        #product_updates a:focus {
+          color: #a00;
+          text-decoration: none;
+        }
+
+    .product_updates_heading {
+      color: #666;
+      font-size: 1.4rem;
+      font-weight: bold;
+      line-height: 1.5;
+      margin-bottom: .5em;
+      text-transform: uppercase;
+    }
+
+    .product_updates_heading:before {
+      content: '\f420';
+      display: inline-block;
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-font-smoothing: antialiased;
+      font: normal 1.4rem/1.5 Genericons;
+      margin-right: .25em;
+      speak: none;
+      vertical-align: top;
+    }
+
 
 	/*------------------------------
 	Posts
@@ -2804,7 +2862,7 @@ WooCommerce
   }
 
     .woocommerce-info a.button {
-      margin-bottom: 0;      
+      margin-bottom: 0;
     }
 
   .woocommerce-error {

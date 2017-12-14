@@ -20,6 +20,7 @@ CONTENT
 - Author Bios
 - Custom Default Gravatar
 - Loops for Infinite Scrolling
+- Product Updates Widget
 - Current Posts Widget
 - Ads
 - Trial Buttons
@@ -401,6 +402,72 @@ function lawyerist_loops() {
 		get_template_part( 'loop', 'index' );
 	}
 }
+
+
+/*------------------------------
+Product Updates Widget
+------------------------------*/
+
+function lawyerist_product_updates() {
+
+	// Product Updates
+	$product_updates_query_args = array(
+		'category_name'				=> 'sponsored-posts',
+		'ignore_sticky_posts' => TRUE,
+		'posts_per_page'			=> 4, // Determines how many posts are displayed in the list.
+	);
+
+	$product_updates_query = new WP_Query( $product_updates_query_args );
+
+
+	if ( $product_updates_query->post_count > 1 ) :
+
+		echo '<div id="product_updates">';
+
+			echo '<div class="product_updates_heading">Product Updates</div>';
+
+			echo '<ul>';
+
+				// Start the current posts sub-Loop.
+				while ( $product_updates_query->have_posts() ) : $product_updates_query->the_post();
+
+					$product_update_title = the_title( '', '', FALSE );
+					$product_update_ID = get_the_ID();
+
+					if ( has_term( true, 'sponsor' ) ) {
+
+				    $sponsor_IDs = wp_get_post_terms(
+				      $product_update_ID,
+				      'sponsor',
+				      array(
+				        'fields' 	=> 'ids',
+				        'orderby' => 'count',
+				        'order' 	=> 'DESC'
+				      )
+				    );
+
+				    $sponsor_info = get_term( $sponsor_IDs[0] );
+				    $sponsor      = $sponsor_info->name;
+				    $sponsor_url  = $sponsor_info->description;
+
+						echo '<li><a href="' . $sponsor_url . '#product_updates" title="' . $product_update_title . '" class="product_update">' . $product_update_title . '</a></li>';
+
+					}
+
+				endwhile;
+
+				wp_reset_postdata();
+
+			echo '</ul>';
+
+			echo '<div class="clear"></div>';
+
+		echo '</div>'; // Close #product_updates.
+
+	endif; // End product updates.
+
+}
+
 
 
 /*------------------------------
