@@ -28,6 +28,9 @@ CONTENT
 - Remove Inline Width from Image Captions
 - Featured Images in RSS Feeds
 
+WOOCOMMERCE
+- Insider Plus Shopping Cart Upsell
+
 TAXONOMY
 - Rename "Aside" Post Format
 - Page Type Custom Taxonomy
@@ -269,7 +272,7 @@ function lawyerist_query_mod( $wp_query ) {
 
 }
 
-add_action('pre_get_posts','lawyerist_query_mod');
+add_action( 'pre_get_posts', 'lawyerist_query_mod' );
 
 
 /*------------------------------
@@ -629,7 +632,6 @@ function lawyerist_remove_caption_padding( $width ) {
 
 add_filter( 'img_caption_shortcode_width', 'lawyerist_remove_caption_padding' );
 
-
 /*------------------------------
 Featured Images in RSS Feeds
 ------------------------------*/
@@ -648,6 +650,48 @@ function featuredtoRSS( $content ) {
 
 add_filter('the_excerpt_rss', 'featuredtoRSS');
 add_filter('the_content_feed', 'featuredtoRSS');
+
+
+/* WOOCOMMERCE ****************/
+
+/*------------------------------
+Insider Plus Shopping Cart Upsell
+------------------------------*/
+
+function woo_in_cart( $product_id ) {
+
+	global $woocommerce;
+
+	foreach( $woocommerce->cart->get_cart() as $key => $val ) {
+		$_product = $val['data'];
+
+		if( $product_id == $_product->id ) {
+			return true;
+		}
+	}
+
+	return false;
+
+}
+
+function insider_plus_shopping_cart_upsell() {
+
+	if ( is_page( 'cart' ) ) {
+
+		if ( is_user_logged_in() ) {
+			$user_id = get_current_user_id();
+		}
+
+		if ( !wc_memberships_is_user_active_member( $user_id, 'insider-plus' ) && !woo_in_cart( 208247 ) ) {
+			echo '<div id="insider_plus_upsell" class="woocommerce-info">Want to be able to get everything in our library? Upgrade to Insider Plus for just $29.99/year! <a class="button" href="https://lawyerist.com/woo-cart/?add-to-cart=208247">Upgrade Now!</a></div>';
+		}
+
+	}
+
+}
+
+add_action( 'woocommerce_before_cart', 'insider_plus_shopping_cart_upsell' );
+
 
 
 /* TAXONOMY *******************/

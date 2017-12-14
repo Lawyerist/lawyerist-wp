@@ -2803,6 +2803,10 @@ WooCommerce
     text-decoration: none;
   }
 
+    .woocommerce-info a.button {
+      margin-bottom: 0;      
+    }
+
   .woocommerce-error {
     border-top: .5rem solid #c00;
   }
