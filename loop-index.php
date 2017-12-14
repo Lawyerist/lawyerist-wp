@@ -215,8 +215,10 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
     // Insert product updates, and ads on mobile.
     if ( $post_num == 1 && is_mobile() ) { lawyerist_get_ap2(); }
-    // if ( $post_num == 2 ) { lawyerist_product_updates(); }
-    if ( $post_num == 3 && is_mobile() ) { lawyerist_get_ap3(); }
+    if ( $post_num == 3 ) {
+      if ( is_mobile() ) { lawyerist_get_ap3(); }
+      lawyerist_sponsored_product_updates();
+    }
 
     $post_num++; // Increment counter.
 

@@ -20,7 +20,7 @@ CONTENT
 - Author Bios
 - Custom Default Gravatar
 - Loops for Infinite Scrolling
-- Product Updates Widget
+- Sponsored Product Updates Widget
 - Current Posts Widget
 - Ads
 - Trial Buttons
@@ -405,24 +405,35 @@ function lawyerist_loops() {
 
 
 /*------------------------------
-Product Updates Widget
+Sponsored Product Updates Widget
 ------------------------------*/
 
-function lawyerist_product_updates() {
+function lawyerist_sponsored_product_updates() {
 
 	// Product Updates
 	$product_updates_query_args = array(
-		'category_name'				=> 'sponsored-posts',
+		'tax_query' => array(
+			'relation' => 'OR',
+			// Posts with the "Sponsored Posts" category.
+			array(
+				'taxonomy' => 'category',
+				'terms'    => array( 1320 ),
+			),
+			// Posts with the "product spotlight" tag.
+			array(
+				'taxonomy' => 'post_tag',
+				'terms'    => array( 4077 ),
+			),
+		),
 		'ignore_sticky_posts' => TRUE,
 		'posts_per_page'			=> 4, // Determines how many posts are displayed in the list.
 	);
 
 	$product_updates_query = new WP_Query( $product_updates_query_args );
 
-
 	if ( $product_updates_query->post_count > 1 ) :
 
-		echo '<div id="product_updates">';
+		echo '<div id="sponsored_product_updates">';
 
 			echo '<div class="product_updates_heading">Product Updates</div>';
 
@@ -442,7 +453,7 @@ function lawyerist_product_updates() {
 				      array(
 				        'fields' 	=> 'ids',
 				        'orderby' => 'count',
-				        'order' 	=> 'DESC'
+				        'order' 	=> 'DESC',
 				      )
 				    );
 
@@ -450,7 +461,15 @@ function lawyerist_product_updates() {
 				    $sponsor      = $sponsor_info->name;
 				    $sponsor_url  = $sponsor_info->description;
 
-						echo '<li><a href="' . $sponsor_url . '#product_updates" title="' . $product_update_title . '" class="product_update">' . $product_update_title . '</a></li>';
+						if ( !empty( $sponsor_url ) ) {
+
+							echo '<li><a href="' . $sponsor_url . '" title="' . $product_update_title . '" class="product_update">' . $product_update_title . '</a></li>';
+
+						} else {
+
+							echo '<li>' . $product_update_title . '</li>';
+
+						}
 
 					}
 
@@ -462,7 +481,7 @@ function lawyerist_product_updates() {
 
 			echo '<div class="clear"></div>';
 
-		echo '</div>'; // Close #product_updates.
+		echo '</div>'; // Close #sponsored_product_updates.
 
 	endif; // End product updates.
 

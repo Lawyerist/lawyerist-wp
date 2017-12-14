@@ -248,7 +248,7 @@ label,
 .postmeta,
 .price_tag,
 .product_meta,
-#product_updates,
+#sponsored_product_updates,
 p.pullout,
 p.pullquote,
 #series_note,
@@ -1579,7 +1579,7 @@ Content
       font-weight: normal;
     }
 
-  #product_updates {
+  #sponsored_product_updates {
     background-color: #fff;
     border-radius: .2rem;
     border-top: .7rem solid #ffffa0;
@@ -1594,29 +1594,29 @@ Content
 		text-decoration: none;
 	}
 
-    #product_updates ul {
+    #sponsored_product_updates ul {
       list-style: none;
       margin: 0;
     }
 
-      #product_updates li {
+      #sponsored_product_updates li {
         font-size: 1.8rem;
         line-height: 1.5;
         margin-top: 0;
       }
 
-        #product_updates a {
+        #sponsored_product_updates a {
           color: #333;
           text-decoration: none;
         }
 
-        #product_updates a:hover,
-        #product_updates a:focus {
+        #sponsored_product_updates a:hover,
+        #sponsored_product_updates a:focus {
           color: #a00;
           text-decoration: none;
         }
 
-    .product_updates_heading {
+    #sponsored_product_updates .product_updates_heading {
       color: #666;
       font-size: 1.4rem;
       font-weight: bold;
@@ -1625,7 +1625,7 @@ Content
       text-transform: uppercase;
     }
 
-    .product_updates_heading:before {
+    #sponsored_product_updates .product_updates_heading:before {
       content: '\f420';
       display: inline-block;
       -moz-osx-font-smoothing: grayscale;
