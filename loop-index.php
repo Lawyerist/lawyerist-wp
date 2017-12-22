@@ -217,7 +217,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
     if ( $post_num == 1 && is_mobile() ) { lawyerist_get_ap2(); }
     if ( $post_num == 3 ) {
       if ( is_mobile() ) { lawyerist_get_ap3(); }
-      if ( is_front_page() ) { lawyerist_sponsored_product_updates(); }
+      if ( is_front_page() && !is_paged() ) { lawyerist_sponsored_product_updates(); }
     }
 
     $post_num++; // Increment counter.
