@@ -38,7 +38,8 @@ Sidebar
 Footer
 Forms
 	Buttons
-  Gravity Forms Components
+  Gravity Forms Customizations
+  HubSpot Forms Customizations
 WooCommerce
 Print
 
@@ -2735,7 +2736,7 @@ a.greybutton:active,
 
 
   /*------------------------------
-  Gravity Forms Components
+  Gravity Forms Customizations
   ------------------------------*/
 
   .gform_wrapper,
@@ -2779,6 +2780,38 @@ a.greybutton:active,
     font-size: 1.8rem;
   }
 
+  /*------------------------------
+  HubSpot Forms Customizations
+  ------------------------------*/
+
+  .hbspt-form fieldset {
+    margin-bottom: .75em;
+  }
+
+    .hbspt-form fieldset:last-of-type {
+      margin-bottom: 1em;
+    }
+
+    .hbspt-form .form-columns-2 .hs-form-field input {
+      width: 90%;
+    }
+
+  .hbspt-form ul.hs-error-msgs {
+    list-style: none;
+    margin: 0;
+  }
+
+    .hbspt-form ul.hs-error-msgs li label:before {
+      color: #c00;
+      content: '\f456';
+      display: inline-block;
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-font-smoothing: antialiased;
+      font: normal 1.6rem/1 Genericons;
+      margin-right: .25em;
+      speak: none;
+      vertical-align: text-top;
+    }
 
 /*------------------------------
 WooCommerce
