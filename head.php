@@ -52,7 +52,12 @@
 	} elseif ( is_singular() ) {
 
 		global $post;
-		$description = get_the_excerpt( $post->ID );
+
+		if ( defined( 'WPSEO_VERSION' ) ) {
+			$description = get_post_meta( $post->ID, '_yoast_wpseo_metadesc', true );
+		} else {
+			$description = get_the_excerpt( $post->ID );
+		}
 
 	}
 

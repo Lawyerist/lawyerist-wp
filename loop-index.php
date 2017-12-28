@@ -24,6 +24,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
   // Assign post variables.
   $post_title     = the_title( '', '', FALSE );
   $seo_title      = get_post_meta( $post->ID, '_yoast_wpseo_title', true );
+  $seo_descr      = get_post_meta( $post->ID, '_yoast_wpseo_metadesc', true );
   $post_url       = get_permalink();
   $post_type      = get_post_type( $post->ID );
   if ( $post_type == 'post' ) {
@@ -139,7 +140,11 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
           // TBD Law community.
           if ( $post_type != 'page' && !has_tag( 'tbd-law-community' ) ) {
 
-            $post_excerpt = get_the_excerpt();
+            if ( !empty( $seo_descr ) ) {
+              $post_excerpt = $seo_descr;
+            } else {
+              $post_excerpt = get_the_excerpt();
+            }
 
             echo '<p class="excerpt">' . $post_excerpt . '</p>';
 
