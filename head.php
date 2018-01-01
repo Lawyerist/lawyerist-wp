@@ -76,11 +76,12 @@
 
 <script>
   googletag.cmd.push(function() {
-    googletag.defineSlot('/12659965/lawyerist_300x250_ad_position', [300, 250], 'div-gpt-ad-1514822895818-0').setTargeting("test", "refresh").addService(googletag.pubads());
+    googletag.defineSlot('/12659965/lawyerist_300x250_ad_position', [300, 250], 'div-gpt-ad-1514822895818-0').addService(googletag.pubads());
     googletag.defineSlot('/12659965/lawyerist_product_page_trial_button', [300, 75], 'div-gpt-ad-1514822895818-1').addService(googletag.pubads());
     googletag.pubads().enableSingleRequest();
     googletag.pubads().collapseEmptyDivs();
 		googletag.pubads().setTargeting('pageID', '<?php if ( is_singular() ) { echo $post->ID; } ?>');
+		googletag.pubads().setTargeting("test", "refresh")
     googletag.enableServices();
   });
 </script>
