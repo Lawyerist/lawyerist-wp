@@ -546,38 +546,24 @@ function lawyerist_current_posts( $this_post ) {
 Ads
 ------------------------------*/
 
-function lawyerist_get_ap2() { ?>
+function lawyerist_get_display_ad() { ?>
 
-	<div id="lawyerist_ap2">
-		<div id='div-gpt-ad-1510163574833-1' style='height:250px; width:300px;'>
+	<div id="lawyerist_display_ad">
+		<div id='div-gpt-ad-1514822895818-0' style='height:250px; width:300px;'>
 			<script>
-				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1510163574833-1'); });
+				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1514822895818-0'); });
 			</script>
 		</div>
 	</div>
 
 <?php }
-
-
-function lawyerist_get_ap3() { ?>
-
-	<div id="lawyerist_ap3">
-		<div id='div-gpt-ad-1510163574833-2' style='height:250px; width:300px;'>
-			<script>
-				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1510163574833-2'); });
-			</script>
-		</div>
-	</div>
-
-<?php }
-
 
 function lawyerist_get_sponsored_trial_button() { ?>
 
 	<div class="sponsored_product_trial_button">
-		<div id='div-gpt-ad-1510786516010-0' style='height:75px; width:300px;'>
+		<div id='div-gpt-ad-1514822895818-1' style='height:75px; width:300px;'>
 			<script>
-				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1510786516010-0'); });
+				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1514822895818-1'); });
 			</script>
 		</div>
 	</div>
@@ -631,7 +617,9 @@ add_filter( 'the_content', 'lawyerist_sponsored_trial_button' );
 Mobile Ads
 ------------------------------*/
 
-function lawyerist_mobile_ads( $content ) {
+// Inserts the mobile ad on single posts and pages.
+
+function lawyerist_mobile_display_ad( $content ) {
 
 	if ( is_mobile() && is_single() && is_main_query() ) {
 
@@ -639,12 +627,8 @@ function lawyerist_mobile_ads( $content ) {
 		$paragraphs = explode( $p_close, $content );
 
 		ob_start();
-			echo lawyerist_get_ap2();
-		$ap2 = ob_get_clean();
-
-		ob_start();
-			echo lawyerist_get_ap3();
-		$ap3 = ob_get_clean();
+			echo lawyerist_get_display_ad();
+		$display_ad = ob_get_clean();
 
 		foreach ( $paragraphs as $p_num => $paragraph ) {
 
@@ -655,14 +639,10 @@ function lawyerist_mobile_ads( $content ) {
 				$paragraphs[$p_num] .= $p_close;
 			}
 
-			// Insert DFP code after 2nd and 4th paragraphs
+			// Insert DFP code after 3rd paragraph
 			// (0 is paragraph #1 in the $paragraphs array)
-			if ( $p_num == 1 ) {
-				$paragraphs[$p_num] .= $ap2;
-			}
-
-			if ( $p_num == 3 ) {
-				$paragraphs[$p_num] .= $ap3;
+			if ( $p_num == 2 ) {
+				$paragraphs[$p_num] .= $display_ad;
 			}
 
 		}
@@ -675,7 +655,7 @@ function lawyerist_mobile_ads( $content ) {
 
 }
 
-add_filter( 'the_content', 'lawyerist_mobile_ads' );
+add_filter( 'the_content', 'lawyerist_mobile_display_ad' );
 
 
 /*------------------------------

@@ -1155,19 +1155,16 @@ Content
       margin-bottom: .75em;
   	}
 
-  #lawyerist_ap2,
-  #lawyerist_ap3 {
+  #lawyerist_display_ad {
     margin: 0 auto 3rem auto;
     width: 30rem;
   }
 
-    .mobile.index #lawyerist_ap2,
-    .mobile.index #lawyerist_ap3 {
+    .mobile.index #lawyerist_display_ad {
       margin-bottom: 1rem;
     }
 
-    .infinite-wrap #lawyerist_ap2,
-    .infinite-wrap #lawyerist_ap3 {
+    .infinite-wrap #lawyerist_display_ad {
       display: none;
     }
 
@@ -2414,13 +2411,10 @@ Sidebar
   margin-bottom: 4rem;
 }
 
-#sidebar_ads #lawyerist_ap2 {
-  margin-bottom: 1rem;
-}
-
-#sidebar_ads #lawyerist_ap3 {
+#sidebar_ads #lawyerist_display_ad {
   margin-bottom: 4rem;
 }
+
 
 /* Platinum Sponsors widget. */
 #custom_html-2 a,

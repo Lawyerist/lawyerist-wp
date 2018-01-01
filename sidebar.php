@@ -6,8 +6,7 @@ echo '<div id="sidebar_column">';
 
 		echo '<div id="sidebar_ads">';
 
-		lawyerist_get_ap2();
-		lawyerist_get_ap3();
+		lawyerist_get_display_ad();
 
 		echo '</div>';
 
