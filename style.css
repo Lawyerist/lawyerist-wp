@@ -369,6 +369,11 @@ iframe {
   max-width: 100%;
 }
 
+p > embed,
+p > iframe {
+  margin-bottom: 0 !important;
+}
+
 h1,
 h2,
 .h2,
