@@ -81,7 +81,7 @@
     googletag.pubads().enableSingleRequest();
     googletag.pubads().collapseEmptyDivs();
 		googletag.pubads().setTargeting('pageID', '<?php if ( is_singular() ) { echo $post->ID; } ?>');
-		googletag.pubads().setTargeting("test", "refresh")
+		googletag.pubads().setTargeting('test', 'refresh');
     googletag.enableServices();
   });
 </script>
