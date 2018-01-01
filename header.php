@@ -1,5 +1,3 @@
-<?php lawyerist_get_ap1(); ?>
-
 <div id="header_container">
 
 	<div id="header">

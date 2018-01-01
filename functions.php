@@ -546,23 +546,6 @@ function lawyerist_current_posts( $this_post ) {
 Ads
 ------------------------------*/
 
-function lawyerist_get_ap1() { ?>
-
-	<?php if ( !has_tag('no-ads') && !is_mobile() ) { ?>
-
-		<div id="lawyerist_ap1">
-			<div id='div-gpt-ad-1510163574833-0' style='height:90px; width:728px;'>
-				<script>
-					googletag.cmd.push(function() { googletag.display('div-gpt-ad-1510163574833-0'); });
-				</script>
-			</div>
-		</div>
-
-	<?php } ?>
-
-<?php }
-
-
 function lawyerist_get_ap2() { ?>
 
 	<div id="lawyerist_ap2">

@@ -19,7 +19,6 @@ Useful Stuff
 Typography
 Images
 Header
-  Leaderboard Ad
   Title
 Menu
 Content
@@ -787,30 +786,6 @@ Header
 #header a:focus {
 	text-decoration: none;
 }
-
-
-  /*------------------------------
-  Leaderboard Ad
-  ------------------------------*/
-
-  #lawyerist_ap1 {
-    background-color: #eee;
-    padding: 1rem 0;
-  	width: 100%;
-  }
-
-    /* Leaderboard ad width (728px) + 20px for padding */
-    @media only screen and ( max-width: 747px ) {
-
-    	#lawyerist_ap1 {
-    		display: none;
-    	}
-
-    }
-
-    #div-gpt-ad-1510163574833-0 {
-    	margin:0 auto;
-    }
 
 
   /*------------------------------
