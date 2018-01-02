@@ -80,6 +80,12 @@ function lawyerist_stylesheets_scripts() {
 	wp_register_script( 'footer-scripts', get_template_directory_uri() . '/js/footer-scripts.js', '', $cacheBusterMC, true );
 	wp_enqueue_script( 'footer-scripts' );
 
+	if ( is_active_sidebar( 'sidebar' ) ) {
+		$cacheBusterSidebarAd = date("Y m d", filemtime( get_stylesheet_directory() . '/js/sticky-sidebar-ad.js') );
+		wp_register_script( 'sticky_sidebar_ad', get_template_directory_uri() . '/js/sticky-sidebar-ad.js', '', $cacheBusterSharedaddy, true );
+		wp_enqueue_script( 'sticky_sidebar_ad' );
+	}
+
 	// Load sticky sharing buttons on single posts and pages.
 	/* DISABLED BECAUSE IT WAS BREAKING WOOCOMMERCE
 	if ( !is_mobile() && ( ( is_single() || is_page() ) ) && class_exists( 'Jetpack' ) && Jetpack::is_module_active( 'sharedaddy' ) ) {
@@ -195,6 +201,10 @@ function lawyerist_register_sidebars()  {
 }
 
 add_action( 'widgets_init', 'lawyerist_register_sidebars' );
+
+// Enable shortcodes in text widgets
+add_filter( 'widget_text', 'do_shortcode' );
+
 
 
 /* ADMIN ********************/
@@ -548,7 +558,7 @@ Ads
 
 function lawyerist_get_display_ad() { ?>
 
-	<div id="lawyerist_display_ad">
+	<div id="lawyerist_display_ad" class="lawyerist_display_ad_in_sidebar">
 		<div id='div-gpt-ad-1514822895818-0' style='height:250px; width:300px;'>
 			<script>
 				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1514822895818-0'); });
@@ -559,6 +569,7 @@ function lawyerist_get_display_ad() { ?>
 	</div>
 
 <?php }
+
 
 function lawyerist_get_sponsored_trial_button() { ?>
 

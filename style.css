@@ -2416,8 +2416,12 @@ Sidebar
   margin-bottom: 4rem;
 }
 
-#sidebar_ads #lawyerist_display_ad {
+#lawyerist_display_ad {
   margin-bottom: 4rem;
+}
+
+#lawyerist_display_ad.stick {
+  position: fixed;
 }
 
 
