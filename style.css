@@ -2422,6 +2422,11 @@ Sidebar
 
 #lawyerist_display_ad.stick {
   position: fixed;
+  top: 2rem;
+}
+
+.admin-bar #lawyerist_display_ad.stick {
+  top: 5.2rem;
 }
 
 
