@@ -609,7 +609,7 @@ function lawyerist_sponsored_trial_button( $content ) {
 			}
 
 			// Insert DFP code after 1st paragraph (0 is paragraph #1).
-			if ( $p_num == 1 ) {
+			if ( $p_num == 0 ) {
 				$paragraphs[$p_num] .= $trial_button;
 			}
 

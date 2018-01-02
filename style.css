@@ -249,6 +249,7 @@ label,
 .price_tag,
 .product_meta,
 #sponsored_product_updates,
+.sponsored_testimonial_label,
 p.pullout,
 p.pullquote,
 #series_note,
@@ -2088,6 +2089,42 @@ Content
   .sponsored_product_trial_button {
     margin: 0 auto 3rem auto;
     width: 30rem;
+  }
+
+  blockquote.testimonial {
+    background-color: #fff;
+    border-radius: .2rem;
+    border-top: .7rem solid #ffffa0;
+    box-shadow:
+      0 0 0 .1rem #ddd,
+      .1rem .1rem .3rem rgba(0, 0, 0, 0.2)
+    ;
+    color: #333;
+    display: block;
+    font-family: unset;
+    font-size: 2.4rem;
+    font-style: unset;
+    margin: 0 .3rem 1em .1rem;
+    padding: 2rem;
+  }
+
+  blockquote.testimonial .sponsored_testimonial_label {
+    color: #666;
+    display: block;
+    font-size: 1.4rem;
+    font-weight: bold;
+    line-height: 1.5;
+    margin-bottom: .5em;
+    text-transform: uppercase;
+  }
+
+  blockquote.testimonial .sponsored_testimonial_quotation {
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  blockquote.testimonial .sponsored_testimonial_source {
+    text-align: right;
   }
 
 
