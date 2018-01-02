@@ -1573,6 +1573,10 @@ Content
 		text-decoration: none;
 	}
 
+    .page #sponsored_product_updates {
+      margin-bottom: 3rem;
+    }
+
     #sponsored_product_updates ul {
       list-style: none;
       margin: 0;
@@ -1595,7 +1599,8 @@ Content
           text-decoration: none;
         }
 
-    #sponsored_product_updates .product_updates_heading {
+    #sponsored_product_updates .product_updates_heading,
+    #sponsored_product_updates h2 {
       color: #666;
       font-size: 1.4rem;
       font-weight: bold;
@@ -1604,7 +1609,8 @@ Content
       text-transform: uppercase;
     }
 
-    #sponsored_product_updates .product_updates_heading:before {
+    #sponsored_product_updates .product_updates_heading:before,
+    #sponsored_product_updates h2:before {
       content: '\f420';
       display: inline-block;
       -moz-osx-font-smoothing: grayscale;
