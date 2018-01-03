@@ -2120,17 +2120,14 @@ Content
     display: block;
     font-size: 1.4rem;
     line-height: 1.5;
-    margin-bottom: .5em;
+    margin-bottom: 0;
+    text-align: right;
     text-transform: uppercase;
   }
 
   blockquote.testimonial .sponsored_testimonial_quotation {
     display: block;
     margin-bottom: 1rem;
-  }
-
-  blockquote.testimonial .sponsored_testimonial_source {
-    text-align: right;
   }
 
 
