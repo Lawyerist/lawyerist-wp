@@ -370,7 +370,7 @@ function lawyerist_get_author_bio() {
 		echo '<h1>' . $author_name . '</h1>' . "\n";
 	}
 
-	echo '<p class="author_bio">' . $author_bio . '</p>';
+	echo '<div id="author_bio">' . $author_bio . '</div>';
 
 	// Show links to the author's website and Twitter and LinkedIn profiles.
 	echo '<div id="author_connect">';
