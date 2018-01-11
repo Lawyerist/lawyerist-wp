@@ -61,7 +61,7 @@ function lawyerist_stylesheets_scripts() {
 	wp_enqueue_style( 'normalize-css' );
 
 	// Load the stylesheet, with a cachebuster.
-	$cacheBusterCSS = date("Y m d", filemtime( get_stylesheet_directory() . '/style.css') );
+	$cacheBusterCSS = filemtime( get_stylesheet_directory() . '/style.css' );
 	wp_register_style( 'stylesheet', get_template_directory_uri() . '/style.css', array(), $cacheBusterCSS, 'all' );
 	wp_enqueue_style( 'stylesheet' );
 
@@ -71,17 +71,20 @@ function lawyerist_stylesheets_scripts() {
 	}
 
 	// Load consolidated scripts in the header. NOT CURRENTLY IN USE.
-	// $cacheBusterMC = date("Y m d", filemtime( get_stylesheet_directory() . '/js/header-scripts.js') );
+	// $cacheBusterMC = filemtime( get_stylesheet_directory() . '/js/header-scripts.js' );
 	// wp_register_script( 'header-scripts', get_template_directory_uri() . '/js/header-scripts.js', '', $cacheBusterMC );
 	// wp_enqueue_script( 'header-scripts' );
 
 	// Load consolidated scripts in the footer.
-	$cacheBusterMC = date("Y m d", filemtime( get_stylesheet_directory() . '/js/footer-scripts.js') );
+	$cacheBusterMC = filemtime( get_stylesheet_directory() . '/js/footer-scripts.js' );
 	wp_register_script( 'footer-scripts', get_template_directory_uri() . '/js/footer-scripts.js', '', $cacheBusterMC, true );
 	wp_enqueue_script( 'footer-scripts' );
 
-	if ( is_active_sidebar( 'sidebar' ) && !is_checkout() ) {
-		$cacheBusterSidebarAd = date("Y m d", filemtime( get_stylesheet_directory() . '/js/sticky-sidebar-ad.js') );
+
+	// Load the sticky sidebar ad script if the sidebar is being used.
+
+	if ( !is_page_template( 'full-width.php', 'no-sidebar.php' ) ) {
+		$cacheBusterSidebarAd = filemtime( get_stylesheet_directory() . '/js/sticky-sidebar-ad.js' );
 		wp_register_script( 'sticky_sidebar_ad', get_template_directory_uri() . '/js/sticky-sidebar-ad.js', '', $cacheBusterSharedaddy, true );
 		wp_enqueue_script( 'sticky_sidebar_ad' );
 	}
@@ -89,7 +92,7 @@ function lawyerist_stylesheets_scripts() {
 	// Load sticky sharing buttons on single posts and pages.
 	/* DISABLED BECAUSE IT WAS BREAKING WOOCOMMERCE
 	if ( !is_mobile() && ( ( is_single() || is_page() ) ) && class_exists( 'Jetpack' ) && Jetpack::is_module_active( 'sharedaddy' ) ) {
-		$cacheBusterSharedaddy = date("Y m d", filemtime( get_stylesheet_directory() . '/js/sticky-sharedaddy.js') );
+		$cacheBusterSharedaddy = filemtime( get_stylesheet_directory() . '/js/sticky-sharedaddy.js' );
 		wp_register_script( 'sticky_sharedaddy', get_template_directory_uri() . '/js/sticky-sharedaddy.js', '', $cacheBusterSharedaddy, true );
 		wp_enqueue_script( 'sticky_sharedaddy' );
 	} */
