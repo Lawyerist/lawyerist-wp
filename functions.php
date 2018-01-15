@@ -562,9 +562,9 @@ Ads
 function lawyerist_get_display_ad() { ?>
 
 	<div id="lawyerist_display_ad" class="lawyerist_display_ad_in_sidebar">
-		<div id='div-gpt-ad-1514822895818-0' style='height:250px; width:300px;'>
+		<div id='div-gpt-ad-1516051566911-0' style='height:250px; width:300px;'>
 			<script>
-				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1514822895818-0'); });
+				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1516051566911-0'); });
 				// Set timer to refresh the display ad slot every 15 seconds
 				setInterval(function(){googletag.pubads().refresh();}, 15000);
 			</script>
@@ -574,12 +574,24 @@ function lawyerist_get_display_ad() { ?>
 <?php }
 
 
-function lawyerist_get_sponsored_trial_button() { ?>
+function lawyerist_get_sponsored_trial_button_top() { ?>
 
 	<div class="sponsored_product_trial_button">
-		<div id='div-gpt-ad-1514822895818-1' style='height:75px; width:300px;'>
+		<div id='div-gpt-ad-1516051566911-1' style='height:75px; width:300px;'>
 			<script>
-				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1514822895818-1'); });
+				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1516051566911-1'); });
+			</script>
+		</div>
+	</div>
+
+<?php }
+
+function lawyerist_get_sponsored_trial_button_bottom() { ?>
+
+	<div class="sponsored_product_trial_button">
+		<div id='div-gpt-ad-1516051566911-2' style='height:75px; width:300px;'>
+			<script>
+				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1516051566911-2'); });
 			</script>
 		</div>
 	</div>
@@ -599,8 +611,12 @@ function lawyerist_sponsored_trial_button( $content ) {
 		$paragraphs = explode( $p_close, $content );
 
 		ob_start();
-			echo lawyerist_get_sponsored_trial_button();
-		$trial_button = ob_get_clean();
+			echo lawyerist_get_sponsored_trial_button_top();
+		$trial_button_top = ob_get_clean();
+
+		ob_start();
+			echo lawyerist_get_sponsored_trial_button_bottom();
+		$trial_button_bottom = ob_get_clean();
 
 		foreach ( $paragraphs as $p_num => $paragraph ) {
 
@@ -613,12 +629,13 @@ function lawyerist_sponsored_trial_button( $content ) {
 
 			// Insert DFP code after 1st paragraph (0 is paragraph #1).
 			if ( $p_num == 0 ) {
-				$paragraphs[$p_num] .= $trial_button;
+				$paragraphs[$p_num] .= $trial_button_top;
 			}
 
 		}
 
 		$content = implode( '', $paragraphs );
+		$content .= $trial_button_bottom;
 
 	}
 
