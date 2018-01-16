@@ -1946,22 +1946,23 @@ Content
 
 
   /* Sticky Sharing Icons */
-  .sharedaddy.stick .sd-block {
+  .sd-block.stick {
+    padding-top: 2rem;
     position: fixed;
-      top: 2rem;
+      top: 0;
   }
 
-  .admin-bar .sharedaddy.stick .sd-block {
-    top: 5.2rem;
+  .admin-bar .sd-block.stick {
+    top: 3.2rem;
   }
 
   /* Move Sharedaddy to bottom of post when finished reading. */
-  .sharedaddy.stop {
+  .sd-block.stop {
     bottom: -.7em; /* Jetpack adds a bottom margin that can't be overridden. This just cancels it out. */
     top: auto;
   }
 
-    .sharedaddy.stop .sd-block {
+    .sd-block.stop {
       position: static;
     }
 
@@ -1970,14 +1971,14 @@ Content
   @media only screen and (max-width:743px) {
 
   	.sharedaddy,
-    .sharedaddy.stop {
+    .sd-block.stop {
   			margin-bottom: 4rem;
   			position: static;
   	}
 
       .sd-block,
-      .sharedaddy.stick .sd-block,
-      .sharedaddy.stop .sd-block {
+      .sd-block.stick,
+      .sd-block.stop {
         margin-bottom: 3rem;
         position: static;
       }
@@ -2254,14 +2255,14 @@ Content
     }
 
   .full-width .sharedaddy,
-  .full-width .sharedaddy.stop {
+  .full-width .sd-block.stop {
       margin-bottom: 4rem;
       position: static;
   }
 
     .full-width .sd-block,
-    .full-width .sharedaddy.stick .sd-block,
-    .full-width .sharedaddy.stop .sd-block {
+    .full-width .sd-block.stick,
+    .full-width .sd-block.stop {
       margin-bottom: 3rem;
       position: static;
     }

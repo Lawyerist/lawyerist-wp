@@ -1,24 +1,24 @@
 function stickySharedaddy( $ ) {
 
-  var windowTop          = jQuery( window ).scrollTop();
+  var windowTop         = jQuery( window ).scrollTop();
   var postBodyTop       = jQuery( '.post_body' ).offset().top;
   var postBodyHeight    = jQuery( '.post_body' ).outerHeight();
   var postBodyBottom    = postBodyTop+postBodyHeight;
-  var sharedaddyTop      = jQuery( '.sd-content' ).offset().top;
-  var sharedaddyHeight   = jQuery( '.sd-content' ).outerHeight();
-  var sharedaddyBottom   = sharedaddyTop+sharedaddyHeight;
+  var sharedaddyTop     = jQuery( '.sd-block' ).offset().top;
+  var sharedaddyHeight  = jQuery( '.sd-block' ).outerHeight();
+  var sharedaddyBottom  = sharedaddyTop+sharedaddyHeight;
 
   if ( windowTop > postBodyTop && sharedaddyBottom < postBodyBottom ) {
-    jQuery( '.sharedaddy' ).addClass( 'stick' );
+    jQuery( '.sd-block' ).addClass( 'stick' );
   }
 
   if ( sharedaddyBottom >= postBodyBottom ) {
-    jQuery( '.sharedaddy' ).addClass( 'stop' );
+    jQuery( '.sd-block' ).addClass( 'stop' );
   }
 
-  if ( windowTop < postBodyBottom - sharedaddyHeight ) {
-    jQuery( '.sharedaddy' ).removeClass( 'stop' );
-  }
+  // if ( ??? ) {
+  //   jQuery( '.sd-block' ).removeClass( 'stop' );
+  // }
 
 }
 
