@@ -2203,6 +2203,11 @@ Content
       padding: 0 2rem 2rem 17rem;
     }
 
+    .product-pages-list .trial_button {
+      margin-bottom: 2rem;
+      padding-left: 17rem;
+    }
+
   blockquote.testimonial {
     background-color: #fff;
     border-radius: .2rem;
