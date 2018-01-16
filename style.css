@@ -221,7 +221,9 @@ h5,
 h6,
 #menu-main-menu .sub-menu .menu-item-has-children > a,
 th,
-.toc_title {
+.toc_title,
+.product-pages-list .title,
+.resource-pages-list .title {
   font-family: concourse-headings, sans-serif;
 }
 
@@ -2033,7 +2035,7 @@ Content
   }
 
     .page-template-resource-page img.wp-post-image.size-thumbnail {
-      border: .1rem solid #ddd;
+      border-right: .1rem solid #ddd;
       height: auto;
       margin: auto 0;
       max-width: none;
@@ -2083,7 +2085,6 @@ Content
 
     .resource-pages-list .title {
       display: block;
-      font-family: concourse-headings;
       font-size: 2.4rem;
       line-height: 1.2;
       margin-bottom: .33em;
@@ -2136,7 +2137,7 @@ Content
   }
 
     .page-template-product-page img.wp-post-image.size-thumbnail {
-      border: .1rem solid #ddd;
+      border-right: .1rem solid #ddd;
       height: auto;
       margin: auto 0;
       max-width: none;
@@ -2161,7 +2162,7 @@ Content
     ;
     display: block;
     margin: 0 .3rem 1rem .1rem;
-    min-height: 10rem;
+    min-height: 15rem;
     overflow: hidden;
     position: relative;
   }
@@ -2171,7 +2172,7 @@ Content
       position: absolute;
         top: 0;
         bottom: 0;
-      width: 10rem;
+      width: 15rem;
     }
 
       .product-pages-list img {
@@ -2186,11 +2187,10 @@ Content
 
     .product-pages-list .title {
       display: block;
-      font-family: concourse-headings;
       font-size: 2.4rem;
       line-height: 1.2;
       margin-bottom: .33em;
-      padding: 2rem 2rem 0 11.5rem;
+      padding: 2rem 2rem 0 17rem;
     }
 
     .product-pages-list .excerpt-dash {
@@ -2200,7 +2200,7 @@ Content
     .product-pages-list .excerpt {
       display: block;
       font-size: 1.6rem;
-      padding: 0 2rem 2rem 11.5rem;
+      padding: 0 2rem 2rem 17rem;
     }
 
   blockquote.testimonial {

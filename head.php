@@ -67,7 +67,7 @@
 
 <?php if ( is_single() && has_category( 'sponsored-posts', $post->ID ) ) { echo '<meta name="robots" content="noindex, nofollow">'; } ?>
 
-<!-- DoubleClick Tags -->
+<!-- DoubleClick Tag for Sidebar Ad-->
 <script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
 <script>
   var googletag = googletag || {};
@@ -77,16 +77,37 @@
 <script>
   googletag.cmd.push(function() {
 		googletag.defineSlot('/12659965/lawyerist_300x250_ad_position', [300, 250], 'div-gpt-ad-1516051566911-0').addService(googletag.pubads());
-    googletag.defineSlot('/12659965/lawyerist_product_page_trial_button', [300, 75], 'div-gpt-ad-1516051566911-1').addService(googletag.pubads());
-    googletag.defineSlot('/12659965/lawyerist_product_page_trial_button_bottom', [300, 75], 'div-gpt-ad-1516051566911-2').addService(googletag.pubads());
     googletag.pubads().enableSingleRequest();
     googletag.pubads().collapseEmptyDivs();
-		googletag.pubads().setTargeting('pageID', '<?php if ( is_singular() ) { echo $post->ID; } ?>');
 		googletag.pubads().setTargeting('test', 'refresh');
     googletag.enableServices();
   });
 </script>
-<!-- End DoubleClick Tags -->
+<!-- End DoubleClick Tag for Sidebar Ad -->
+
+<!-- DoubleClick Tags for Trial Buttons-->
+<script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
+<script>
+  var googletag = googletag || {};
+  googletag.cmd = googletag.cmd || [];
+</script>
+
+<script>
+  googletag.cmd.push(function() {
+		googletag.defineSlot('/12659965/lawyerist_product_page_trial_button', [300, 75], 'div-gpt-ad-1516051566911-1').addService(googletag.pubads());
+    googletag.defineSlot('/12659965/lawyerist_product_page_trial_button_bottom', [300, 75], 'div-gpt-ad-1516051566911-2').addService(googletag.pubads());
+    googletag.defineSlot('/12659965/product_portal_trial_button_01', [300, 75], 'div-gpt-ad-1516133426824-0').addService(googletag.pubads());
+    googletag.defineSlot('/12659965/product_portal_trial_button_02', [300, 75], 'div-gpt-ad-1516133426824-1').addService(googletag.pubads());
+    googletag.defineSlot('/12659965/product_portal_trial_button_03', [300, 75], 'div-gpt-ad-1516133426824-2').addService(googletag.pubads());
+    googletag.defineSlot('/12659965/product_portal_trial_button_04', [300, 75], 'div-gpt-ad-1516133426824-3').addService(googletag.pubads());
+    googletag.defineSlot('/12659965/product_portal_trial_button_05', [300, 75], 'div-gpt-ad-1516133426824-4').addService(googletag.pubads());
+    googletag.pubads().enableSingleRequest();
+    googletag.pubads().collapseEmptyDivs();
+		googletag.pubads().setTargeting('pageID', '<?php if ( is_singular() ) { echo $post->ID; } ?>');
+    googletag.enableServices();
+  });
+</script>
+<!-- End DoubleClick Tags for Trial Buttons-->
 
 <!-- Google Webmaster Tools site verification tag for Sam -->
 <meta name="google-site-verification" content="GwbQ-BLG3G-tXV4-uG-_kZIaxXxm_Wqmzg5wFSBa9hI" />
