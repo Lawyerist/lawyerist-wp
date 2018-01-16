@@ -28,8 +28,8 @@ Content
   Author List Shortcode
 	Sharing Buttons
   Resource Pages
+  Product Pages
   Full Width Template
-  Survival Guides
   No Sidebar Template
 	Comments
 Author Page
@@ -236,6 +236,7 @@ button,
 .comment-meta,
 .comment .reply,
 #current_posts,
+.page-template-product-page .headline_container .excerpt,
 #footer,
 #header,
 input[type="button"],
@@ -536,7 +537,8 @@ p.wp-caption-text {
 
 .postmeta,
 .product_meta,
-.user-rating {
+.user-rating,
+.page-template-product-page .headline_container .excerpt {
 	color: #777;
   display: block;
   font-size: 1.6rem;
@@ -2093,10 +2095,108 @@ Content
       padding: 0 2rem 2rem 11.5rem;
     }
 
-  .sponsored_product_trial_button {
-    margin: 0 auto 3rem auto;
-    width: 30rem;
+
+  /*------------------------------
+  Product Pages
+  ------------------------------*/
+
+  .product-page #content_column {
+    box-sizing: border-box;
+    max-width: none;
+    width: 100%;
   }
+
+  .page-template-product-page .headline_container {
+    margin-bottom: 3rem;
+    position: relative;
+  }
+
+    .page-template-product-page .has-post-thumbnail .headline_container {
+      min-height: 10.45rem;
+    }
+
+    .page-template-product-page .has-post-thumbnail .headline_container .headline,
+    .page-template-product-page .has-post-thumbnail .headline_container .user-rating,
+    .page-template-product-page .has-post-thumbnail .headline_container .excerpt {
+      padding-left: 11.95rem;
+    }
+
+  .page-template-product-page div[itemprop="image"] {
+    background-color: #ddd;
+    height: 10.45rem;
+    position: absolute;
+      top: 0;
+      bottom: 0;
+    width: 10.45rem;
+  }
+
+    .page-template-product-page img.wp-post-image.size-thumbnail {
+      border: .1rem solid #ddd;
+      height: auto;
+      margin: auto 0;
+      max-width: none;
+      position: absolute;
+        top: 0;
+        bottom: 0;
+      width: 100%;
+    }
+
+  .product-pages-list {
+    list-style: none;
+    margin-top: 0;
+    margin-left: 0;
+  }
+
+  .product-pages-list li {
+    background-color: #f5f5f5;
+    border: .1rem solid #ddd;
+    border-radius: .2rem;
+    box-shadow:
+      .1rem .1rem .3rem rgba(0, 0, 0, 0.2)
+    ;
+    display: block;
+    margin: 0 .3rem 1rem .1rem;
+    min-height: 10rem;
+    overflow: hidden;
+    position: relative;
+  }
+
+    .product-pages-list .image {
+      background-color: #ddd;
+      position: absolute;
+        top: 0;
+        bottom: 0;
+      width: 10rem;
+    }
+
+      .product-pages-list img {
+        height: auto;
+        margin: auto 0;
+        max-width: none;
+        position: absolute;
+          top: 0;
+          bottom: 0;
+        width: 100%;
+      }
+
+    .product-pages-list .title {
+      display: block;
+      font-family: concourse-headings;
+      font-size: 2.4rem;
+      line-height: 1.2;
+      margin-bottom: .33em;
+      padding: 2rem 2rem 0 11.5rem;
+    }
+
+    .product-pages-list .excerpt-dash {
+      display: none;
+    }
+
+    .product-pages-list .excerpt {
+      display: block;
+      font-size: 1.6rem;
+      padding: 0 2rem 2rem 11.5rem;
+    }
 
   blockquote.testimonial {
     background-color: #fff;
@@ -2130,6 +2230,10 @@ Content
     margin-bottom: 1rem;
   }
 
+  .sponsored_product_trial_button {
+    margin: 0 auto 3rem auto;
+    width: 30rem;
+  }
 
   /*------------------------------
   Full Width Template
@@ -2162,78 +2266,6 @@ Content
         display: inline !important;
     }
 
-
-  /*------------------------------
-	Survival Guides
-	------------------------------*/
-
-  /* Landing page & widget. */
-
-  #survival_guides a {
-    box-sizing: border-box;
-    display: inline-block;
-    float: left;
-    margin: 0;
-    padding-right: 1.5rem;
-    position: relative;
-    transition: transform .2s;
-    width: 33.333%;
-  }
-
-    #survival_guides a:hover,
-    #survival_guides a:focus {
-      transform: scale(1.05, 1.05);
-    }
-
-    #survival_guides a img.wp-post-image {
-      float: none;
-      height: auto;
-      margin:0;
-      max-width: none;
-      width: 100%;
-    }
-
-  #survival_guides .price_tag {
-    background-color: #c00;
-    border-radius: 0 0 .2rem .2rem;
-    color: #fff;
-    display: block;
-    font-size: 1.2rem;
-    line-height: 1.2;
-    padding: .4rem .8rem;
-    position: absolute;
-      right: 20%;
-      top: 0;
-    transition: background-color .2s;
-  }
-
-  #survival_guides a:hover .price_tag,
-  #survival_guides a:focus .price_tag {
-    background-color: #a00;
-  }
-
-  /* 675px (content column = 640px). */
-  @media only screen and (max-width:674px) {
-
-    #survival_guides a {
-      width: 50%;
-    }
-
-  }
-
-  /* 500px */
-  @media only screen and (max-width:499px) {
-
-    #survival_guides a {
-      padding-right: 0;
-    }
-
-    #survival_guides .price_tag {
-      font-size: 1rem;
-      padding: .2rem .4rem;
-    }
-
-  }
 
   /*------------------------------
   No Sidebar Template
