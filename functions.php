@@ -31,6 +31,7 @@ CONTENT
 
 WOOCOMMERCE
 - Insider Plus Shopping Cart Upsell
+- Check to See if Page is Really a WooCommerce Page
 
 TAXONOMY
 - Rename "Aside" Post Format
@@ -81,20 +82,19 @@ function lawyerist_stylesheets_scripts() {
 	wp_enqueue_script( 'footer-scripts' );
 
 
-	// Load the sticky sidebar ad script if the sidebar is being used.
-	if ( !is_page_template( 'full-width.php', 'no-sidebar.php', 'product-page.php' ) ) {
+	// Load the sticky sidebar ad script if it's not mobile and if the sidebar is being used.
+	if ( !is_mobile() && !is_page_template( 'full-width.php', 'no-sidebar.php', 'product-page.php' ) ) {
 		$cacheBusterSidebarAd = filemtime( get_stylesheet_directory() . '/js/sticky-sidebar-ad.js' );
-		wp_register_script( 'sticky_sidebar_ad', get_template_directory_uri() . '/js/sticky-sidebar-ad.js', '', $cacheBusterSharedaddy, true );
+		wp_register_script( 'sticky_sidebar_ad', get_template_directory_uri() . '/js/sticky-sidebar-ad.js', '', $cacheBusterSidebarAd, true );
 		wp_enqueue_script( 'sticky_sidebar_ad' );
 	}
 
-	// Load sticky sharing buttons.
-	/* DISABLED BECAUSE IT BREAKS THINGS
-	if ( !is_mobile() && ( class_exists( 'Jetpack' ) && Jetpack::is_module_active( 'sharedaddy' ) ) ) {
+	// Load sticky sharing buttons if it's not mobile or a WooCommerce page.
+	if ( !is_mobile() && !is_really_a_woocommerce_page() && ( class_exists( 'Jetpack' ) && Jetpack::is_module_active( 'sharedaddy' ) ) ) {
 		$cacheBusterSharedaddy = filemtime( get_stylesheet_directory() . '/js/sticky-sharedaddy.js' );
 		wp_register_script( 'sticky_sharedaddy', get_template_directory_uri() . '/js/sticky-sharedaddy.js', '', $cacheBusterSharedaddy, true );
 		wp_enqueue_script( 'sticky_sharedaddy' );
-	} */
+	}
 
 }
 
@@ -773,6 +773,45 @@ function insider_plus_shopping_cart_upsell() {
 
 add_action( 'woocommerce_before_cart', 'insider_plus_shopping_cart_upsell' );
 
+
+/*------------------------------
+Check to See if Page is Really a WooCommerce Page
+------------------------------*/
+
+function is_really_a_woocommerce_page() {
+
+	if ( function_exists ( "is_woocommerce" ) && is_woocommerce() ) {
+
+		return true;
+
+	}
+
+	$woocommerce_keys = array (
+		'woocommerce_shop_page_id',
+		'woocommerce_terms_page_id',
+		'woocommerce_cart_page_id',
+		'woocommerce_checkout_page_id',
+		'woocommerce_pay_page_id',
+		'woocommerce_thanks_page_id',
+		'woocommerce_myaccount_page_id',
+		'woocommerce_edit_address_page_id',
+		'woocommerce_view_order_page_id',
+		'woocommerce_change_password_page_id',
+		'woocommerce_logout_page_id',
+		'woocommerce_lost_password_page_id'
+	);
+
+	foreach ( $woocommerce_keys as $wc_page_id ) {
+
+		if ( get_the_ID () == get_option ( $wc_page_id , 0 ) ) {
+			return true ;
+		}
+
+	}
+
+	return false;
+
+}
 
 
 /* TAXONOMY *******************/

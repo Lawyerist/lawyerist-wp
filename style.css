@@ -1948,7 +1948,11 @@ Content
   /* Sticky Sharing Icons */
   .sharedaddy.stick .sd-block {
     position: fixed;
-      top: 10%;
+      top: 2rem;
+  }
+
+  .admin-bar .sharedaddy.stick .sd-block {
+    top: 5.2rem;
   }
 
   /* Move Sharedaddy to bottom of post when finished reading. */

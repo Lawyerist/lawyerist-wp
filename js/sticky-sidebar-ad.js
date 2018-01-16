@@ -1,4 +1,4 @@
-function sticky_sidebar_ad( $ ) {
+function stickySidebarAd( $ ) {
 
   var windowTop      = jQuery( window ).scrollTop();
   var sidebarAdTop   = jQuery( '#lawyerist_display_ad' ).offset().top;
@@ -18,7 +18,7 @@ function sticky_sidebar_ad( $ ) {
 
 jQuery(
   function( $ ) {
-    jQuery( window ).scroll( sticky_sidebar_ad );
-    sticky_sidebar_ad();
+    jQuery( window ).scroll( stickySidebarAd );
+    stickySidebarAd();
   }
 );
