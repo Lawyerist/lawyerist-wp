@@ -224,8 +224,7 @@ th,
 .current_posts_heading,
 .featured_products_heading,
 .toc_title,
-.product-pages-list .title,
-.resource-pages-list .title {
+.product-pages-list .title {
   font-family: concourse-headings, sans-serif;
 }
 
@@ -2042,7 +2041,7 @@ Content
     width: 10.45rem;
   }
 
-    .page-template-resource-page img.wp-post-image.size-thumbnail {
+    .page-template-resource-page .headline_container img.wp-post-image.size-thumbnail {
       height: auto;
       margin: auto 0;
       max-width: none;
@@ -2050,63 +2049,6 @@ Content
         top: 0;
         bottom: 0;
       width: 10.45rem;
-    }
-
-  .resource-pages-list {
-    list-style: none;
-    margin-top: 0;
-    margin-left: 0;
-  }
-
-  .resource-pages-list li {
-    background-color: #f5f5f5;
-    border: .1rem solid #ddd;
-    border-radius: .2rem;
-    box-shadow:
-      .1rem .1rem .3rem rgba(0, 0, 0, 0.2)
-    ;
-    display: block;
-    margin: 0 .3rem 1rem .1rem;
-    min-height: 10rem;
-    overflow: hidden;
-    position: relative;
-  }
-
-    .resource-pages-list .image {
-      background-color: #ddd;
-      border-right: .1rem solid #ddd;
-      position: absolute;
-        top: 0;
-        bottom: 0;
-      width: 10rem;
-    }
-
-      .resource-pages-list img {
-        height: auto;
-        margin: auto 0;
-        max-width: none;
-        position: absolute;
-          top: 0;
-          bottom: 0;
-        width: 100%;
-      }
-
-    .resource-pages-list .title {
-      display: block;
-      font-size: 2.4rem;
-      line-height: 1.2;
-      margin-bottom: .33em;
-      padding: 2rem 2rem 0 11.5rem;
-    }
-
-    .resource-pages-list .excerpt-dash {
-      display: none;
-    }
-
-    .resource-pages-list .excerpt {
-      display: block;
-      font-size: 1.6rem;
-      padding: 0 2rem 2rem 11.5rem;
     }
 
 
