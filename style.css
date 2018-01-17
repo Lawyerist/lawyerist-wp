@@ -221,6 +221,8 @@ h5,
 h6,
 #menu-main-menu .sub-menu .menu-item-has-children > a,
 th,
+.current_posts_heading,
+.featured_products_heading,
 .toc_title,
 .product-pages-list .title,
 .resource-pages-list .title {
@@ -2207,6 +2209,16 @@ Content
         font-size: 1.6rem;
         padding: 0 2rem 2rem 17rem;
       }
+
+    .featured_products_heading {
+      color: #666;
+      display: block;
+      font-size: 1.4rem;
+      font-weight: bold;
+      line-height: 1.5;
+      margin-bottom: .75em;
+      text-transform: uppercase;
+    }
 
     .featured-products-list li {
       min-height: 16rem;

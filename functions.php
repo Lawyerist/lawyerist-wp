@@ -725,6 +725,8 @@ function lawyerist_featured_products_list( $atts ) {
 
 	if ( $featured_products_list_query->post_count > 1 ) :
 
+		echo '<div class="featured_products_heading">Featured Products</div>';
+
 		echo '<ul class="product-pages-list featured-products-list">';
 
 			// Start the Loop.
