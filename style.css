@@ -2023,17 +2023,19 @@ Content
   }
 
     .page-template-resource-page .has-post-thumbnail .headline_container {
-      min-height: 10.45rem;
+      min-height: 11.45rem;
     }
 
     .page-template-resource-page .has-post-thumbnail .headline_container .headline,
     .page-template-resource-page .has-post-thumbnail .headline_container .user-rating {
-      padding-left: 11.95rem;
+      padding-left: 12.95rem;
     }
 
   .page-template-resource-page div[itemprop="image"] {
     background-color: #ddd;
+    border-radius: .2rem;
     height: 10.45rem;
+    padding: .5rem;
     position: absolute;
       top: 0;
       bottom: 0;
@@ -2041,14 +2043,13 @@ Content
   }
 
     .page-template-resource-page img.wp-post-image.size-thumbnail {
-      border-right: .1rem solid #ddd;
       height: auto;
       margin: auto 0;
       max-width: none;
       position: absolute;
         top: 0;
         bottom: 0;
-      width: 100%;
+      width: 10.45rem;
     }
 
   .resource-pages-list {
@@ -2073,6 +2074,7 @@ Content
 
     .resource-pages-list .image {
       background-color: #ddd;
+      border-right: .1rem solid #ddd;
       position: absolute;
         top: 0;
         bottom: 0;
@@ -2124,18 +2126,20 @@ Content
   }
 
     .page-template-product-page .has-post-thumbnail .headline_container {
-      min-height: 10.45rem;
+      min-height: 11.45rem;
     }
 
     .page-template-product-page .has-post-thumbnail .headline_container .headline,
     .page-template-product-page .has-post-thumbnail .headline_container .user-rating,
     .page-template-product-page .has-post-thumbnail .headline_container .excerpt {
-      padding-left: 11.95rem;
+      padding-left: 12.95rem;
     }
 
     .page-template-product-page .headline_container div[itemprop="image"] {
       background-color: #ddd;
+      border-radius: .2rem;
       height: 10.45rem;
+      padding: .5rem;
       position: absolute;
         top: 0;
         bottom: 0;
@@ -2143,14 +2147,13 @@ Content
     }
 
     .page-template-product-page .headline_container img.wp-post-image.size-thumbnail {
-      border-right: .1rem solid #ddd;
       height: auto;
       margin: auto 0;
       max-width: none;
       position: absolute;
         top: 0;
         bottom: 0;
-      width: 100%;
+      width: 10.45rem;
     }
 
   .product-pages-list {
