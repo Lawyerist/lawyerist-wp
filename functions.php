@@ -654,7 +654,7 @@ function lawyerist_featured_products_list( $atts ) {
 
 	// Shortcode attributes.
 	$attributes = shortcode_atts( array(
-    'parent'  => $post->ID,
+    'parent'  => $post_ID,
   ), $atts );
 
 	$parent = $attributes['parent'];
@@ -730,10 +730,11 @@ function lawyerist_featured_products_list( $atts ) {
 			// Start the Loop.
 			while ( $featured_products_list_query->have_posts() ) : $featured_products_list_query->the_post();
 
-				$page_title = the_title( '', '', FALSE );
-				$page_url   = get_permalink();
+				$featured_page_ID			= get_the_ID();
+				$featured_page_title	= the_title( '', '', FALSE );
+				$featured_page_URL		= get_permalink();
 
-        $seo_descr  = get_post_meta( $post->ID, '_yoast_wpseo_metadesc', true );
+        $seo_descr  = get_post_meta( $featured_page_ID, '_yoast_wpseo_metadesc', true );
 
         if ( !empty( $seo_descr ) ) {
           $page_excerpt = $seo_descr;
@@ -744,22 +745,40 @@ function lawyerist_featured_products_list( $atts ) {
 				echo '<li class="listing-item">';
 
 					if ( has_post_thumbnail() ) {
-						echo '<a class="image" href="' . $page_url . '">';
+						echo '<a class="image" href="' . $featured_page_URL . '">';
 						the_post_thumbnail( 'thumbnail' );
 						echo '</a>';
 					}
 
-					echo '<a class="title" href="' . $page_url . '">' . $page_title . '</a>';
+					echo '<div class="title_container">';
 
-					echo '<span class="excerpt">' . $page_excerpt . '</span>';
+						echo '<a class="title" href="' . $featured_page_URL . '">' . $featured_page_title . '</a>';
 
-					echo '<div class="trial_button">';
+						if ( function_exists( 'wp_review_show_total' ) ) {
+
+		          $rating = get_post_meta( $featured_page_ID, 'wp_review_comments_rating_value', true );
+
+		          echo '<span class="user-rating">';
+			          if ( !empty( $rating ) ) {
+			            wp_review_show_total();
+			          }
+							echo '</span>';
+
+		        }
+
+					echo '</div>'; // End .title_container
+
+					echo '<div class="trial-button">';
 						if ( $page_num == 1 ) { echo $button01; }
 						elseif ( $page_num == 2 ) { echo $button02; }
 						elseif ( $page_num == 3 ) { echo $button03; }
 						elseif ( $page_num == 4 ) { echo $button04; }
 						elseif ( $page_num == 5 ) { echo $button05; }
 					echo '</div>';
+
+					echo '<div class="clear"></div>';
+
+					echo '<span class="excerpt">' . $page_excerpt . ' <a href="' . $featured_page_URL . '">Learn more about ' . $featured_page_title . '.</a></span>';
 
 					$page_num++; // Increment counter.
 
