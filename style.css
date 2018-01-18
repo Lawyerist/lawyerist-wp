@@ -25,7 +25,6 @@ Content
 	Index Lists
 	Posts
   Tables
-  Author List Shortcode
 	Sharing Buttons
   Resource Pages
   Product Pages
@@ -1996,21 +1995,6 @@ Content
 
   }
 
-
-  /*------------------------------
-  Author List Shortcode
-  ------------------------------*/
-
-  .author_list {
-    list-style: none;
-    margin-left: 0;
-  }
-
-  .author_list li {
-    display: inline-block;
-    margin-bottom: 3rem;
-    width: 33.333%;
-  }
 
   /*------------------------------
   Resource Pages
