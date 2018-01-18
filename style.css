@@ -238,7 +238,7 @@ button,
 .comment-meta,
 .comment .reply,
 #current_posts,
-.page-template-product-page .headline_container .excerpt,
+.product-page .headline_container .excerpt,
 #footer,
 #header,
 input[type="button"],
@@ -540,7 +540,7 @@ p.wp-caption-text {
 .postmeta,
 .product_meta,
 .user-rating,
-.page-template-product-page .headline_container .excerpt {
+.product-page .headline_container .excerpt {
 	color: #777;
   display: block;
   font-size: 1.6rem;
@@ -2046,22 +2046,22 @@ Content
     width: 100%;
   }
 
-  .page-template-product-page .headline_container {
+  .product-page .headline_container {
     margin-bottom: 3rem;
     position: relative;
   }
 
-    .page-template-product-page .has-post-thumbnail .headline_container {
+    .product-page .has-post-thumbnail .headline_container {
       min-height: 11.45rem;
     }
 
-    .page-template-product-page .has-post-thumbnail .headline_container .headline,
-    .page-template-product-page .has-post-thumbnail .headline_container .user-rating,
-    .page-template-product-page .has-post-thumbnail .headline_container .excerpt {
+    .product-page .has-post-thumbnail .headline_container .headline,
+    .product-page .has-post-thumbnail .headline_container .user-rating,
+    .product-page .has-post-thumbnail .headline_container .excerpt {
       padding-left: 12.95rem;
     }
 
-    .page-template-product-page .headline_container div[itemprop="image"] {
+    .product-page .headline_container div[itemprop="image"] {
       background-color: #ddd;
       border-radius: .2rem;
       height: 10.45rem;
@@ -2072,7 +2072,7 @@ Content
       width: 10.45rem;
     }
 
-    .page-template-product-page .headline_container img.wp-post-image.size-thumbnail {
+    .product-page .headline_container img.wp-post-image.size-thumbnail {
       height: auto;
       margin: auto 0;
       max-width: none;
@@ -2103,8 +2103,6 @@ Content
     }
 
       .product-pages-list .image {
-        background-color: #ddd;
-        border-right: .1rem solid #ddd;
         position: absolute;
           top: 0;
           bottom: 0;
@@ -2112,13 +2110,17 @@ Content
       }
 
         .product-pages-list img {
+          background-color: #ddd;
+          border: .2rem;
+          box-sizing: content-box;
           height: auto;
-          margin: auto 0;
+          margin: auto 2rem;
           max-width: none;
+          padding: .5rem;
           position: absolute;
             bottom: 0;
             top: 0;
-          width: 100%;
+          width: 10rem;
         }
 
       .product-pages-list .title {
@@ -2126,17 +2128,17 @@ Content
         font-size: 2.4rem;
         line-height: 1.2;
         margin-bottom: .33em;
-        padding: 2rem 2rem 0 17rem;
+        padding: 2rem 2rem 0 15rem;
       }
 
-      .product-pages-list .excerpt-dash {
-        display: none;
+      .product-pages-list .user-rating {
+        padding-left: 15rem;
       }
 
       .product-pages-list .excerpt {
         display: block;
         font-size: 1.6rem;
-        padding: 0 2rem 2rem 17rem;
+        padding: 0 2rem 2rem 15rem;
       }
 
     .featured_products_heading {
@@ -2155,19 +2157,17 @@ Content
     }
 
       .featured-products-list .image {
-        border-radius: .2rem;
-        border-width: 0;
-        bottom: auto;
-        display: inline-block;
-        height: 15rem;
-        padding: .5rem;
+        height: 16rem;
         top: 2rem;
+        width: 16rem;
       }
 
         .featured-products-list .image img {
+          margin: auto 0;
           position: relative;
             bottom: auto;
             top: auto;
+          width: 15rem;
         }
 
       .featured-products-list .title_container {
@@ -2175,7 +2175,8 @@ Content
         min-height: 7.5rem;
       }
 
-        .featured-products-list .title {
+        .featured-products-list .title,
+        .featured-products-list .user-rating {
           padding: 0;
         }
 
@@ -2193,15 +2194,35 @@ Content
       /* When the width reaches 700px. */
       @media only screen and (max-width:699px) {
 
+        .product-pages-list .image {
+          width: 12.5rem;
+        }
+
+          .product-pages-list .image img {
+            height: 7.5rem;
+            width: 7.5rem;
+          }
+
+        .product-pages-list .title,
+        .product-pages-list .user-rating,
+        .product-pages-list .excerpt {
+          padding-left: 12.5rem;
+        }
+
         .featured-products-list li {
           padding: 1rem;
         }
 
         .featured-products-list .image {
-          height: 7.5rem;
-          width: 7.5rem;
+          height: 8.5rem;
+          width: 8.5rem;
           top: 1rem;
         }
+
+          .featured-products-list .image img {
+            height: 7.5rem;
+            width: 7.5rem;
+          }
 
         .featured-products-list .title_container {
           margin: 0;
@@ -2209,8 +2230,10 @@ Content
         }
 
           .featured-products-list .title,
-          .featured-products-list .user-rating {
+          .featured-products-list .user-rating,
+          .featured-products-list .excerpt {
             margin-left: 9.5rem;
+            padding-left: 0;
           }
 
           .featured-products-list .trial-button {
