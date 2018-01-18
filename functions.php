@@ -24,7 +24,6 @@ CONTENT
 - Current Posts Widget
 - Ads
 - Trial Buttons
-- Featured Product Lists
 - Mobile Ads
 - Add Image Sizes
 - Remove Inline Width from Image Captions
