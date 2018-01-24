@@ -83,20 +83,20 @@ function lawyerist_stylesheets_scripts() {
 
 
 	// Load the sticky sidebar ad script if it's not mobile and if the sidebar is being used.
-	/* DISABLED because it still doesn't work properly.
 	if ( !is_mobile() && !is_page_template( 'full-width.php', 'no-sidebar.php', 'product-page.php' ) ) {
 		$cacheBusterSidebarAd = filemtime( get_stylesheet_directory() . '/js/sticky-sidebar-ad.js' );
 		wp_register_script( 'sticky_sidebar_ad', get_template_directory_uri() . '/js/sticky-sidebar-ad.js', '', $cacheBusterSidebarAd, true );
 		wp_enqueue_script( 'sticky_sidebar_ad' );
 	}
-	*/
 
 	// Load sticky sharing buttons if it's not mobile or a WooCommerce page.
+	/* DISABLED because it still doesn't work properly.
 	if ( !is_mobile() && !is_really_a_woocommerce_page() && ( class_exists( 'Jetpack' ) && Jetpack::is_module_active( 'sharedaddy' ) ) ) {
 		$cacheBusterSharedaddy = filemtime( get_stylesheet_directory() . '/js/sticky-sharedaddy.js' );
 		wp_register_script( 'sticky_sharedaddy', get_template_directory_uri() . '/js/sticky-sharedaddy.js', '', $cacheBusterSharedaddy, true );
 		wp_enqueue_script( 'sticky_sharedaddy' );
 	}
+	*/
 
 }
 
