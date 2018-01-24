@@ -2466,9 +2466,10 @@ Author Pages
   width: 46.875%;
 }
 
-#author_bio p {
+#author_bio {
   font-size: 1.6rem;
   line-height: 1.5;
+  margin-bottom: 1.5em;
 }
 
 #author_connect p {
