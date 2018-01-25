@@ -1264,7 +1264,7 @@ Content
   /* Post image styles. */
 
   .index .default_thumbnail {
-    background-position: center top;
+    background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
     border-radius: .2rem 0 0 .2rem;
