@@ -1691,6 +1691,11 @@ Content
 			list-style: none;
 		}
 
+      #toc_container ul ul {
+        margin-bottom: 0;
+        margin-left: 1.5rem;
+      }
+
     #toc_container li {
 			margin: 0 0 .5rem 0;
 		}
