@@ -94,13 +94,13 @@
 
 <script>
   googletag.cmd.push(function() {
-		googletag.defineSlot('/12659965/lawyerist_product_page_trial_button', [300, 75], 'div-gpt-ad-1516051566911-1').addService(googletag.pubads());
-    googletag.defineSlot('/12659965/lawyerist_product_page_trial_button_bottom', [300, 75], 'div-gpt-ad-1516051566911-2').addService(googletag.pubads());
-    googletag.defineSlot('/12659965/product_portal_trial_button_01', [300, 75], 'div-gpt-ad-1516133426824-0').addService(googletag.pubads());
-    googletag.defineSlot('/12659965/product_portal_trial_button_02', [300, 75], 'div-gpt-ad-1516133426824-1').addService(googletag.pubads());
-    googletag.defineSlot('/12659965/product_portal_trial_button_03', [300, 75], 'div-gpt-ad-1516133426824-2').addService(googletag.pubads());
-    googletag.defineSlot('/12659965/product_portal_trial_button_04', [300, 75], 'div-gpt-ad-1516133426824-3').addService(googletag.pubads());
-    googletag.defineSlot('/12659965/product_portal_trial_button_05', [300, 75], 'div-gpt-ad-1516133426824-4').addService(googletag.pubads());
+		googletag.defineSlot('/12659965/lawyerist_product_page_trial_button', [170, 50], 'div-gpt-ad-1516051566911-1').addService(googletag.pubads());
+    googletag.defineSlot('/12659965/lawyerist_product_page_trial_button_bottom', [170, 50], 'div-gpt-ad-1516051566911-2').addService(googletag.pubads());
+    googletag.defineSlot('/12659965/product_portal_trial_button_01', [170, 50], 'div-gpt-ad-1516133426824-0').addService(googletag.pubads());
+    googletag.defineSlot('/12659965/product_portal_trial_button_02', [170, 50], 'div-gpt-ad-1516133426824-1').addService(googletag.pubads());
+    googletag.defineSlot('/12659965/product_portal_trial_button_03', [170, 50], 'div-gpt-ad-1516133426824-2').addService(googletag.pubads());
+    googletag.defineSlot('/12659965/product_portal_trial_button_04', [170, 50], 'div-gpt-ad-1516133426824-3').addService(googletag.pubads());
+    googletag.defineSlot('/12659965/product_portal_trial_button_05', [170, 50], 'div-gpt-ad-1516133426824-4').addService(googletag.pubads());
     googletag.pubads().enableSingleRequest();
     googletag.pubads().collapseEmptyDivs();
 		googletag.pubads().setTargeting('pageID', '<?php if ( is_singular() ) { echo $post->ID; } ?>');
