@@ -27,10 +27,6 @@
 
 				<div class="tag_cloud"><?php wp_tag_cloud('exclude=2580,2602'); ?></div>
 
-				<h3>Before you go, sign up for our email newsletter:</h3>
-
-				<?php echo do_shortcode( '[gravityform id="14" name="Lawyerist Insider Signup" title="false" description="false" ajax="true"]' ) ?>
-
 			</div>
 
 		</div>
