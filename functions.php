@@ -82,7 +82,7 @@ function lawyerist_stylesheets_scripts() {
 	wp_enqueue_script( 'footer-scripts' );
 
 
-	// Load the sticky sidebar ad script if it's not mobile and if the sidebar is being used.
+	// Load the sticky sidebar ad script if it's not mobile.
 	if ( !is_mobile() ) {
 		$cacheBusterSidebarAd = filemtime( get_stylesheet_directory() . '/js/sticky-sidebar-ad.js' );
 		wp_register_script( 'sticky_sidebar_ad', get_template_directory_uri() . '/js/sticky-sidebar-ad.js', '', $cacheBusterSidebarAd, true );
