@@ -574,13 +574,12 @@ function lawyerist_get_display_ad() { ?>
 
 <?php }
 
-
 function lawyerist_get_sponsored_trial_button_top() { ?>
 
 	<div class="sponsored_product_trial_button">
-		<div id='div-gpt-ad-1516051566911-1' style='height:50px; width:170px;'>
+		<div id='div-gpt-ad-1517464941516-0' style='height:50px; width:170px;'>
 			<script>
-				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1516051566911-1'); });
+				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1517464941516-0'); });
 			</script>
 		</div>
 	</div>
@@ -590,9 +589,9 @@ function lawyerist_get_sponsored_trial_button_top() { ?>
 function lawyerist_get_sponsored_trial_button_bottom() { ?>
 
 	<div class="sponsored_product_trial_button">
-		<div id='div-gpt-ad-1516051566911-2' style='height:50px; width:170px;'>
+		<div id='div-gpt-ad-1517464941516-1' style='height:50px; width:170px;'>
 			<script>
-				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1516051566911-2'); });
+				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1517464941516-1'); });
 			</script>
 		</div>
 	</div>
