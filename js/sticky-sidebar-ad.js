@@ -1,7 +1,7 @@
 function stickySidebarAd( $ ) {
 
-  // Checks to make sure we're not on a WooCommerce page.
-  if ( jQuery('.woocommerce-page').length > 0 ) {
+  // Checks to see if the sidebar is present.
+  if ( jQuery('#sidebar_column').length > 0 ) {
 
     var windowTop      = jQuery( window ).scrollTop();
     var sidebarAdTop   = jQuery( '#lawyerist_display_ad' ).offset().top;
