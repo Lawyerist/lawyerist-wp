@@ -1477,21 +1477,25 @@ Content
     }
 
     .wp-review-feedback a.review-btn {
-      background: #ccc;
+      background: #bbb;
       border: none;
       border-radius: .2rem;
+      color: #fff;
       height: auto;
-      line-height: 1;
+      line-height: 2.1rem;
       margin-bottom: 0;
-      padding: .35rem .8rem;
+      padding: 0 .8rem;
     }
 
-    .wp-review-feedback a.review-btn:hover {
-      background: #ddd;
+    .wp-review-feedback a.review-btn[data-value="yes"]:hover,
+    .wp-review-feedback a.review-btn[data-value="no"]:hover {
+      background: #ccc;
     }
 
-    .wp-review-feedback a.review-btn:active {
-      background: #bbb;
+    .wp-review-feedback a.review-btn[data-value="yes"]:active,
+    .wp-review-feedback a.review-btn[data-value="no"]:active {
+      background: #aaa;
+      color: #e9e9e9;
     }
 
     form.wp-review-comment-form > div,
