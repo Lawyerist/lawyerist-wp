@@ -81,23 +81,6 @@ function lawyerist_stylesheets_scripts() {
 	wp_register_script( 'footer-scripts', get_template_directory_uri() . '/js/footer-scripts.js', '', $cacheBusterMC, true );
 	wp_enqueue_script( 'footer-scripts' );
 
-
-	// Load the sticky sidebar ad script if it's not mobile.
-	if ( !is_mobile() ) {
-		$cacheBusterSidebarAd = filemtime( get_stylesheet_directory() . '/js/sticky-sidebar-ad.js' );
-		wp_register_script( 'sticky_sidebar_ad', get_template_directory_uri() . '/js/sticky-sidebar-ad.js', '', $cacheBusterSidebarAd, true );
-		wp_enqueue_script( 'sticky_sidebar_ad' );
-	}
-
-	// Load sticky sharing buttons if it's not mobile.
-	/* DISABLED because it still doesn't work properly.
-	if ( !is_mobile() ) {
-		$cacheBusterSharedaddy = filemtime( get_stylesheet_directory() . '/js/sticky-sharedaddy.js' );
-		wp_register_script( 'sticky_sharedaddy', get_template_directory_uri() . '/js/sticky-sharedaddy.js', '', $cacheBusterSharedaddy, true );
-		wp_enqueue_script( 'sticky_sharedaddy' );
-	}
-	*/
-
 }
 
 add_action( 'wp_enqueue_scripts', 'lawyerist_stylesheets_scripts' );
