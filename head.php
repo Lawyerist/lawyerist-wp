@@ -55,17 +55,15 @@
 
 		if ( defined( 'WPSEO_VERSION' ) ) {
 			$description = get_post_meta( $post->ID, '_yoast_wpseo_metadesc', true );
-		} else {
-			$description = get_the_excerpt( $post->ID );
 		}
 
 	}
 
-?>
+if ( $decription ) {
+	echo '<meta name="description" content="' . $description . '">';
+}
 
-<meta name="description" content="<?php echo $description; ?>">
-
-<?php if ( is_single() && has_category( 'sponsored-posts', $post->ID ) ) { echo '<meta name="robots" content="noindex, nofollow">'; } ?>
+if ( is_single() && has_category( 'sponsored-posts', $post->ID ) ) { echo '<meta name="robots" content="noindex, nofollow">'; } ?>
 
 <!-- DoubleClick Tag for Sidebar Ad-->
 <script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
