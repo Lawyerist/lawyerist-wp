@@ -734,10 +734,18 @@ function lawyerist_comment_author_name( $author = '' ) {
 	// Get the comment ID from WP_Query
 	$comment = get_comment( $comment_ID );
 
-	if ( !empty( $comment->comment_author) && !empty( $comment->user_id ) ) {
+	if ( !empty( $comment->comment_author ) ) {
 
-		$user		= get_userdata( $comment->user_id );
-		$author	= $user->first_name . ' ' . substr( $user->last_name, 0, 1 ) . '. ';
+		if ( !empty( $comment->user_id ) ) {
+
+			$user		= get_userdata( $comment->user_id );
+			$author	= $user->first_name . ' ' . $user->last_name;
+
+		} else {
+
+				$author	= $comment->comment_author;
+
+		}
 
 	} else {
 
