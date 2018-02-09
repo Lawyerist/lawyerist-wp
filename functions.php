@@ -29,6 +29,9 @@ CONTENT
 - Remove Inline Width from Image Captions
 - Featured Images in RSS Feeds
 
+COMMENTS & REVIEWS
+- Show Commenter's First Name & Initial
+
 WOOCOMMERCE
 - Insider Plus Shopping Cart Upsell
 - Check to See if Page is Really a WooCommerce Page
@@ -699,6 +702,7 @@ function lawyerist_remove_caption_padding( $width ) {
 
 add_filter( 'img_caption_shortcode_width', 'lawyerist_remove_caption_padding' );
 
+
 /*------------------------------
 Featured Images in RSS Feeds
 ------------------------------*/
@@ -717,6 +721,35 @@ function featuredtoRSS( $content ) {
 
 add_filter('the_excerpt_rss', 'featuredtoRSS');
 add_filter('the_content_feed', 'featuredtoRSS');
+
+
+/* COMMENTS & REVIEWS *********/
+
+/*------------------------------
+Show Commenter's First Name & Initial
+------------------------------*/
+
+function lawyerist_comment_author_name( $author = '' ) {
+
+	// Get the comment ID from WP_Query
+	$comment = get_comment( $comment_ID );
+
+	if ( !empty( $comment->comment_author) && !empty( $comment->user_id ) ) {
+
+		$user		= get_userdata( $comment->user_id );
+		$author	= $user->first_name . ' ' . substr( $user->last_name, 0, 1 ) . '. ';
+
+	} else {
+
+		$author = __('Anonymous');
+
+	}
+
+	return $author;
+
+}
+
+add_filter( 'get_comment_author', 'lawyerist_comment_author_name', 10, 1 );
 
 
 /* WOOCOMMERCE ****************/
