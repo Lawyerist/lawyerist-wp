@@ -353,12 +353,16 @@ function lawyerist_get_author_bio() {
 
 
 	if ( is_single() ) {
+
 		echo '<div id="author_bio_footer">' . "\n";
 		echo $author_avatar_sm;
+
 	} elseif ( is_author() ) {
+
 		echo '<div id="author_header">' . "\n";
-		echo $author_avatar_lg;
 		echo '<h1>' . $author_name . '</h1>' . "\n";
+		echo $author_avatar_lg;
+
 	}
 
 	echo '<div id="author_bio">' . $author_bio . '</div>';

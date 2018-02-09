@@ -31,7 +31,7 @@ Content
   Full Width Template
   No Sidebar Template
 	Comments
-Author Page
+Author Bios
 Sidebar
 Footer
 Forms
@@ -1780,24 +1780,6 @@ Content
       padding-left: 6.9rem; /* Icon width + 15px. */
     }
 
-	#author_bio_footer {
-		clear: both;
-		margin: 6rem 0;
-		min-height: 10rem;
-	}
-
-	#author_bio_footer img.avatar {
-    float: left;
-		margin-bottom: 3rem;
-		margin-right: 2rem;
-	}
-
-	#author_bio_footer p {
-    color: #666;
-		font-size: 1.6rem;
-		padding-left: 12rem;
-	}
-
   .page_links {
     text-align: center;
   }
@@ -2482,38 +2464,27 @@ p.comment-subscription-form input[type="checkbox"] {
 
 
 /*------------------------------
-Author Pages
+Author Bios
 ------------------------------*/
 
-#author_header {
-  border-bottom: .1rem solid #ddd;
-  margin-bottom: 2rem;
-  min-height: 30rem;
-  padding-bottom: 2rem;
-}
-
-#author_header img {
-  border-radius: 0;
-  float: left;
-  height: auto;
-  margin: 0 2rem 1em 0;
-  width: 46.875%;
+#author_bio,
+#author_connect {
+  color: #666;
+  font-size: 1.6rem;
 }
 
 #author_bio {
-  font-size: 1.6rem;
   line-height: 1.5;
   margin-bottom: 1.5em;
 }
 
 #author_connect p {
-  font-size: 1.6rem;
   line-height: 1em;
   margin-bottom: 1.3rem;
 }
 
 #author_connect p:last-child {
-  margin-bottom: 2.6rem;
+  margin-bottom: 3rem;
 }
 
 p.author_twitter:before,
@@ -2545,6 +2516,58 @@ p.author_twitter:before {
 p.author_website:before {
   color: #555;
   content: '\f475';
+}
+
+#author_bio_footer {
+clear: both;
+margin: 6rem 0;
+min-height: 10rem;
+}
+
+  #author_bio_footer img {
+  float: left;
+  margin-bottom: 3rem;
+  margin-right: 2rem;
+  }
+
+  #author_bio_footer #author_bio,
+  #author_bio_footer #author_connect {
+    padding-left: 12rem;
+  }
+
+#author_header {
+  border-bottom: .1rem solid #ddd;
+  margin-bottom: 2rem;
+  min-height: 30rem;
+  padding-bottom: 2rem;
+}
+
+  #author_header img {
+    border-radius: 0;
+    float: left;
+    height: auto;
+    margin: 0 2rem 1em 0;
+    width: 30rem;
+  }
+
+  #author_header #author_bio,
+  #author_header #author_connect {
+    padding-left: 32rem;
+  }
+
+@media only screen and (max-width: 639px) {
+
+  #author_header img {
+    float: none;
+    height: auto;
+    width: 100%;
+  }
+
+    #author_header #author_bio,
+    #author_header #author_connect {
+      padding-left: 0;
+    }
+
 }
 
 
