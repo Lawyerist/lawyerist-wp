@@ -360,8 +360,8 @@ function lawyerist_get_author_bio() {
 	} elseif ( is_author() ) {
 
 		echo '<div id="author_header">' . "\n";
-		echo '<h1>' . $author_name . '</h1>' . "\n";
 		echo $author_avatar_lg;
+		echo '<h1>' . $author_name . '</h1>' . "\n";
 
 	}
 
