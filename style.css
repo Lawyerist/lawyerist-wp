@@ -3251,6 +3251,10 @@ a.cart-in-header {
   margin-bottom: unset;
 }
 
+.woocommerce-checkout #payment #wc-stripe-cc-form div.form-row {
+  padding: unset;
+}
+
 /* WooCommerce account pages. */
 
 body.woocommerce-account {
