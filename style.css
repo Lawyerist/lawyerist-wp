@@ -770,6 +770,7 @@ img.inline {
       border: none !important;
       box-sizing: border-box;
       display: inline-block;
+      float: left;
       margin: 0 0 3rem 0;
       padding-right: 1.5rem;
       text-align: center;
