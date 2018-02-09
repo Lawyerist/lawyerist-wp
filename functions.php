@@ -28,6 +28,7 @@ CONTENT
 - Add Image Sizes
 - Remove Inline Width from Image Captions
 - Featured Images in RSS Feeds
+- Remove Default Gallery Styles
 
 COMMENTS & REVIEWS
 - Show Commenter's First Name & Initial
@@ -721,6 +722,13 @@ function featuredtoRSS( $content ) {
 
 add_filter('the_excerpt_rss', 'featuredtoRSS');
 add_filter('the_content_feed', 'featuredtoRSS');
+
+
+/*------------------------------
+Remove Default Gallery Styles
+------------------------------*/
+
+add_filter( 'use_default_gallery_style', '__return_false' );
 
 
 /* COMMENTS & REVIEWS *********/

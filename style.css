@@ -532,7 +532,7 @@ p.pullout {
 
   }
 
-p.wp-caption-text {
+.wp-caption-text {
      color: #666;
      font-size: 1.4rem;
 }
@@ -719,20 +719,6 @@ img.size-thumbnail {
 
   }
 
-.gallery-item {
-  margin: 0 0 2rem 0;
-}
-
-.gallery-item img {
-  margin-bottom: 0;
-  max-width: none;
-}
-
-/* About */   .page-id-3379 .gallery-size-thumbnail img,
-/* TBD Law */ .page-id-128819 .gallery-size-thumbnail img {
-  border-radius: 50%;
-}
-
 img.avatar {
 	border-radius: 50%;
 }
@@ -772,25 +758,64 @@ img.inline {
 
   }
 
-.gallery {
-  margin-bottom: 3rem !important;
-}
 
-#gallery-2 img {
-  border: 0 !important;
-}
+  /* The Gallery container (div) */
+  .gallery {
+    clear: both;
+    margin-bottom: 3rem;
+  }
 
-#gallery-3 dl.gallery-item {
-  border: 1px solid #ddd !important;
-  margin: 0 .2rem .2rem 0!important;
-  width: 32.708333333% !important;
-}
+    /* A Gallery item container for 3, 2 and 4 column galleries */
+    .gallery .gallery-item {
+      border: none !important;
+      box-sizing: border-box;
+      display: inline-block;
+      margin: 0 0 3rem 0;
+      padding-right: 1.5rem;
+      text-align: center;
+      width: 33.33333%;
+    }
 
-#gallery-3 img {
-  border: 0 !important;
-  height: auto;
-  width: 100%;
-}
+    .gallery-columns-2 .gallery-item {
+      padding-right: 3rem;
+      width: 50%;
+    }
+
+    .gallery-columns-4 .gallery-item {
+      padding-right: 1rem;
+      width: 25%;
+    }
+
+    /* The actual image inside a container for 3, 2 and 4 column galleries */
+    .gallery img,
+    .gallery-columns-2 .attachment-medium,
+    .gallery-columns-4 .attachment-thumbnail {
+      height: auto;
+      margin-bottom: 0;
+      max-width: unset;
+      width: 100%;
+    }
+
+    /* A gallery image caption */
+    .gallery .gallery-caption {
+      text-align: center;
+      -webkit-margin-start: 0;
+    }
+
+    /* Definition lists elements */
+    .gallery dl,
+    .gallery dt {
+
+    }
+
+    /* Pick the second line break if two line breaks are adjacent */
+    .gallery br+br {
+    }
+
+    /* About */   .page-id-3379 .gallery img,
+    /* TBD Law */ .page-id-128819 .gallery img {
+      border-radius: 50%;
+    }
 
 
 /*------------------------------
