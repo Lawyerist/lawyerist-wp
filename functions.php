@@ -523,7 +523,7 @@ function lawyerist_current_posts( $this_post ) {
 					if ( has_post_thumbnail() ) {
 						the_post_thumbnail( 'current_posts_thumbnail' );
 					} else {
-						echo '<img src="' . get_template_directory_uri() . '/images/fff-thumb.png" class="attachment-thumbnail wp-post-image" />';
+						echo '<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/02/current-posts-placeholder-160x90.png" class="attachment-thumbnail wp-post-image" />';
 					}
 
 					echo '<p class="current_post_title">' . $current_post_title . '</p>';
