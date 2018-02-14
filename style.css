@@ -193,6 +193,12 @@ Useful Stuff
 	margin-bottom: 0 !important;
 }
 
+.shadow {
+  border: .1rem solid #ddd;
+  border-radius: .2rem;
+  box-shadow: .1rem .1rem .3rem rgba(0, 0, 0, 0.2);
+}
+
 .text_right {
     text-align: right;
 }
