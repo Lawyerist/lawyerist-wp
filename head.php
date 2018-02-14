@@ -65,44 +65,42 @@ if ( $decription ) {
 
 if ( is_single() && has_category( 'sponsored-posts', $post->ID ) ) { echo '<meta name="robots" content="noindex, nofollow">'; } ?>
 
-<!-- DoubleClick Tag for Sidebar Ad-->
+
+<!-- DoubleClick Script -->
 <script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
 <script>
   var googletag = googletag || {};
   googletag.cmd = googletag.cmd || [];
 </script>
+<!-- End DoubleClick Script -->
 
+<!-- DoubleClick Tag for Sidebar Ad-->
 <script>
   googletag.cmd.push(function() {
 		googletag.defineSlot('/12659965/lawyerist_300x250_ad_position', [300, 250], 'div-gpt-ad-1516051566911-0').addService(googletag.pubads());
-    googletag.pubads().enableSingleRequest();
-    googletag.pubads().collapseEmptyDivs();
+		googletag.pubads().enableSingleRequest();
+		googletag.pubads().collapseEmptyDivs();
+		googletag.pubads().setTargeting('pageID', '<?php if ( is_singular() ) { echo $post->ID; } ?>');
 		googletag.pubads().setTargeting('test', 'refresh');
-    googletag.enableServices();
+		googletag.enableServices();
   });
 </script>
 <!-- End DoubleClick Tag for Sidebar Ad -->
 
 <!-- DoubleClick Tags for Trial Buttons-->
-<script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
-<script>
-  var googletag = googletag || {};
-  googletag.cmd = googletag.cmd || [];
-</script>
-
 <script>
   googletag.cmd.push(function() {
 		googletag.defineSlot('/12659965/lawyerist_product_page_trial_button', [170, 50], 'div-gpt-ad-1517464941516-0').addService(googletag.pubads());
-    googletag.defineSlot('/12659965/lawyerist_product_page_trial_button_bottom', [170, 50], 'div-gpt-ad-1517464941516-1').addService(googletag.pubads());
-    googletag.defineSlot('/12659965/product_portal_trial_button_01', [170, 50], 'div-gpt-ad-1517464941516-2').addService(googletag.pubads());
-    googletag.defineSlot('/12659965/product_portal_trial_button_02', [170, 50], 'div-gpt-ad-1517464941516-3').addService(googletag.pubads());
-    googletag.defineSlot('/12659965/product_portal_trial_button_03', [170, 50], 'div-gpt-ad-1517464941516-4').addService(googletag.pubads());
-    googletag.defineSlot('/12659965/product_portal_trial_button_04', [170, 50], 'div-gpt-ad-1517464941516-5').addService(googletag.pubads());
-    googletag.defineSlot('/12659965/product_portal_trial_button_05', [170, 50], 'div-gpt-ad-1517464941516-6').addService(googletag.pubads());
-    googletag.pubads().enableSingleRequest();
-    googletag.pubads().collapseEmptyDivs();
+		googletag.defineSlot('/12659965/lawyerist_product_page_trial_button_bottom', [170, 50], 'div-gpt-ad-1517464941516-1').addService(googletag.pubads());
+		googletag.defineSlot('/12659965/product_portal_trial_button_01', [170, 50], 'div-gpt-ad-1517464941516-2').addService(googletag.pubads());
+		googletag.defineSlot('/12659965/product_portal_trial_button_02', [170, 50], 'div-gpt-ad-1517464941516-3').addService(googletag.pubads());
+		googletag.defineSlot('/12659965/product_portal_trial_button_03', [170, 50], 'div-gpt-ad-1517464941516-4').addService(googletag.pubads());
+		googletag.defineSlot('/12659965/product_portal_trial_button_04', [170, 50], 'div-gpt-ad-1517464941516-5').addService(googletag.pubads());
+		googletag.defineSlot('/12659965/product_portal_trial_button_05', [170, 50], 'div-gpt-ad-1517464941516-6').addService(googletag.pubads());
+		googletag.pubads().enableSingleRequest();
+		googletag.pubads().collapseEmptyDivs();
 		googletag.pubads().setTargeting('pageID', '<?php if ( is_singular() ) { echo $post->ID; } ?>');
-    googletag.enableServices();
+		googletag.enableServices();
   });
 </script>
 <!-- End DoubleClick Tags for Trial Buttons-->
