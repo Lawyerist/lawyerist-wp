@@ -106,7 +106,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
           } elseif ( has_tag( 'tbd-law-community' ) ) {
 
-            echo get_avatar( get_the_author_meta( 'ID' ), 100, '', get_the_author_meta( 'nicename' ) );
+            echo get_avatar( get_the_author_meta( 'user_email' ), 100, '', get_the_author_meta( 'display_name' ) );
 
           } elseif ( $post_type == 'post' && $post_format == 'standard' && !has_term( true, 'sponsor' ) ) {
 
