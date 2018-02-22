@@ -2793,6 +2793,16 @@ a.review-btn,
   width: auto;
 }
 
+  .woocommerce button.button:disabled,
+  .woocommerce button.button:disabled:hover,
+  .woocommerce button.button:disabled[disabled],
+  .woocommerce button.button:disabled[disabled]:hover {
+    background-color: #ddd;
+    box-shadow: none;
+    color: #bbb;
+    padding: 0 1.6rem;
+  }
+
   #sidebar_column button,
   #sidebar_column .button,
   #sidebar_column a.button,
