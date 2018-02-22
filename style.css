@@ -3356,6 +3356,10 @@ body.woocommerce-account {
 
 }
 
+body.woocommerce-cart .actions button  {
+  margin-bottom: 0;
+}
+
 
 /*------------------------------
 Print
