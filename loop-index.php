@@ -131,14 +131,12 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
         echo '<div class="headline_excerpt">';
 
           // Headline
-          echo '<h2 class="headline">' . $post_title; '</h2>';
+          echo '<h2 class="headline">' . $post_title . '</h2>';
 
           // Output the excerpt unless we're showing a page or a post from the
           // TBD Law community.
           if ( $post_type != 'page' && !has_tag( 'tbd-law-community' ) ) {
-
             echo '<p class="excerpt">' . $post_excerpt . '</p>';
-
           }
 
           // Output the post meta only for posts.
