@@ -58,7 +58,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
       // Checks for labels to show above the title.
 
-        // Output the series label.
+        // Outputs the series label.
         if ( has_term( true, 'series' ) && !is_tax( 'series' ) ) {
 
           $series_IDs = wp_get_post_terms(
@@ -81,16 +81,16 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
         }
 
-        // TBD Law Community Flag
+        // Outputs the TBD Law Community label.
         if ( has_tag( 'tbd-law-community' ) ) {
           echo '<p class="series_title"><a href="https://lawyerist.com/tag/tbd-law-community/" title="Read more posts from the TBD Law community.">TBD Law community</a></p>';
         }
 
 
-      // Now we output the post link container (.post). The whole thing is a link!
+      // Starts the link container. Makes for big click targets!
       echo '<a href="' . $post_url . '" title="' . $post_title . '">';
 
-        // First we figure out the post image based on the type of post.
+        // Outputs the post image based on the type of post.
         if ( has_post_thumbnail() ) {
 
             if ( has_term( true, 'series' ) && !is_tax( 'series' ) ) {
