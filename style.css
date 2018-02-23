@@ -2952,6 +2952,17 @@ a.greybutton:active,
   color: #efefef;
 }
 
+.mce-toolbar button {
+  text-transform: none;
+}
+
+.mce-toolbar button:hover,
+.mce-toolbar button:focus,
+.mce-toolbar button:active {
+  background-color: unset;
+  box-shadow: unset;
+}
+
 
   /*------------------------------
   Gravity Forms Customizations
