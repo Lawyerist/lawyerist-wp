@@ -1261,6 +1261,10 @@ Content
 
     }
 
+  .index .page {
+    min-height: 15rem;
+  }
+
 
   /* Series title. */
 
@@ -1343,7 +1347,7 @@ Content
     /* At 640px wide, the .index_post_container is 565px, or 250px for the image,
     15px for the right margin of the image, and 300px for the headline. Seems
     like a good place to break. */
-    @media only screen and ( max-width:639px ) {
+    @media only screen and ( max-width: 639px ) {
 
       .index .series .wp-post-image {
         float: none;
@@ -1363,7 +1367,7 @@ Content
     /* At 690px wide, the .index_post_container is 535px, or 280px for the image,
     15px for the right margin of the image, and 240px for the headline and excerpt,
     which seems about right. */
-    @media only screen and ( max-width:689px ) {
+    @media only screen and ( max-width: 689px ) {
 
       .index .type-product .wp-post-image {
         display: block;
@@ -1420,7 +1424,7 @@ Content
   }
 
     /* See .index .series .wp-post-image, above. */
-    @media only screen and ( max-width:639px ) {
+    @media only screen and ( max-width: 639px ) {
 
       .index .series .headline_excerpt,
       .index .series.has-post-thumbnail .headline_excerpt {
@@ -1439,7 +1443,7 @@ Content
   }
 
     /* See .index .type-product .wp-post-image, above. */
-    @media only screen and ( max-width:689px ) {
+    @media only screen and ( max-width: 689px ) {
 
       .index .type-product.has-post-thumbnail .headline_excerpt {
         padding: 0;
@@ -1460,6 +1464,14 @@ Content
       font-size: 4.5rem;
       margin-bottom: .1em;
     }
+
+      @media only screen and ( max-width: 639px ) {
+
+        .index .page .headline {
+          font-size: 2.4rem;
+        }
+
+      }
 
 
     /* Excerpt styles. */
