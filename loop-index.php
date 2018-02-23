@@ -23,14 +23,20 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
   // Assign post variables.
   $post_title     = the_title( '', '', FALSE );
+  $post_excerpt   = get_the_excerpt();
   $seo_title      = get_post_meta( $post->ID, '_yoast_wpseo_title', true );
-  if ( !empty( $seo_title ) ) { $post_title = $seo_title; }
   $seo_descr      = get_post_meta( $post->ID, '_yoast_wpseo_metadesc', true );
   $post_url       = get_permalink();
   $post_type      = get_post_type( $post->ID );
-  if ( $post_type == 'post' ) {
-    $post_format  = get_post_format() ? : 'standard';
-  }
+
+  // Sets the post title to the Yoast SEO Title for pages.
+  if ( !empty( $seo_title ) && is_page() ) { $post_title = $seo_title; }
+
+  // Sets the post excerpt to the Yoast Meta Description.
+  if ( !empty( $seo_descr ) ) { $post_excerpt = $seo_descr; }
+
+  // Sets the post type to 'standard' if it isn't already set.
+  if ( $post_type == 'post' ) { $post_format = get_post_format() ? : 'standard'; }
   $post_classes[] = 'index_post_container'; // .post, .page, and .product are added automatically, as are tags and formats.
 
   // Assign classes.
@@ -134,12 +140,6 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
           // Output the excerpt unless we're showing a page or a post from the
           // TBD Law community.
           if ( $post_type != 'page' && !has_tag( 'tbd-law-community' ) ) {
-
-            if ( !empty( $seo_descr ) ) {
-              $post_excerpt = $seo_descr;
-            } else {
-              $post_excerpt = get_the_excerpt();
-            }
 
             echo '<p class="excerpt">' . $post_excerpt . '</p>';
 
