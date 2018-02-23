@@ -1224,10 +1224,6 @@ Content
 
   /* Post container styles. */
 
-  .index .tag-lawyerist-podcast {
-    padding-top: 2rem; /* Otherwise the mic is smushed against the top border. */
-  }
-
   .index .tag-tbd-law-community {
     border-top: .7rem solid #0074ff;
     padding: 2rem;

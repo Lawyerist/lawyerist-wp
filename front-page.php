@@ -13,9 +13,9 @@
 
     <?php
 
-      if ( is_archive() || is_search() ) { lawyerist_get_archive_header(); }
-
-      // Displays the "hero" call to action.
+      /*------------------------------
+      HERO CALL TO ACTION
+      ------------------------------*/
 
       /*------------------------------
       WHAT'S NEW
@@ -23,7 +23,7 @@
 
       // Displays the latest podcast episode.
     	$podcast_args = array(
-    		'category_name'       => 'lawyerist-podcast',
+    		'tag'                 => 'lawyerist-podcast',
     		'ignore_sticky_posts' => TRUE,
     		'posts_per_page'			=> 1,
     	);
@@ -31,37 +31,44 @@
     	$podcast = new WP_Query( $podcast_args );
 
 			// Starts the podcast sub-Loop.
-			while ( $podcast->have_posts() ) : $podcast->the_post();
+			if ( $podcast->have_posts() ) : while ( $podcast->have_posts() ) : $podcast->the_post();
 
         // Outputs the post container.
-        echo '<div ' ;
-        post_class( $post_classes );
+        echo '<div ';
+        post_class( 'index_post_container' );
         echo '>';
 
-        $episode_title      = the_title( '', '', FALSE );
-        $episode_seo_title  = get_post_meta( $post->ID, '_yoast_wpseo_title', true );
-        if ( !empty( $episode_seo_title ) ) { $episode_title = $episode_seo_title; }
-
-        $episode_seo_descr  = get_post_meta( $post->ID, '_yoast_wpseo_metadesc', true );
-				$episode_url        = get_permalink();
-        $post_classes[]     = 'index_post_container'; // .post, .page, and .product are added automatically, as are tags and formats.
+          $episode_title = the_title( '', '', FALSE );
+  				$episode_url   = get_permalink();
 
   				echo '<a href="' . $episode_url . '" title="' . $episode_title . '">';
 
   					if ( has_post_thumbnail() ) {
-  						the_post_thumbnail( 'current_posts_thumbnail' );
-  					} else {
-  						echo '<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/02/current-posts-placeholder-160x90.png" class="attachment-thumbnail wp-post-image" />';
+
+              echo '<div class="default_thumbnail" style="background-image: url( ';
+              echo the_post_thumbnail_url( 'default_thumbnail' );
+              echo ' );"></div>';
+
   					}
 
-  					echo '<p class="current_post_title">' . $current_post_title . '</p>';
+          echo '</a>';
 
-  				echo '</a>';
+            // Now we get the headline and excerpt (except for certain kinds of posts).
+            echo '<div class="headline_excerpt">';
+
+              echo '<a href="' . $episode_url . '" title="' . $episode_title . '">';
+              echo '<h2 class="headline">' . $episode_title . '</h2>';
+              echo '</a>';
+
+              $home_url = get_home_url( '', '/tag/lawyerist-podcast/' );
+              echo '<a class="button" href="' . $home_url . '">See all episodes</a>.';
+
+            echo '</div>'; // Close .headline_excerpt.
 
         echo '</div>'; // Close .post.
         echo "\n\n";
 
-			endwhile;
+			endwhile; endif;
 
 			wp_reset_postdata();
 

@@ -17,6 +17,7 @@ ADMIN
 CONTENT
 - Query Mods
 - Archive Headers
+- Postmeta
 - Author Bios
 - Custom Default Gravatar
 - Loops for Infinite Scrolling
