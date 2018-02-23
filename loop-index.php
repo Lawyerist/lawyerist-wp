@@ -90,8 +90,6 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
         // First we figure out the post image based on the type of post.
         if ( has_post_thumbnail() ) {
 
-          echo '<div class="thumbnail_wrapper">';
-
             if ( has_term( true, 'series' ) && !is_tax( 'series' ) ) {
 
               the_post_thumbnail( 'default_thumbnail' );
@@ -112,7 +110,9 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
             } elseif ( $post_type == 'post' && $post_format == 'standard' && !has_term( true, 'sponsor' ) ) {
 
-              the_post_thumbnail( 'standard_thumbnail' );
+              echo '<div class="thumbnail_wrapper">';
+                the_post_thumbnail( 'standard_thumbnail' );
+              echo '</div>';
 
             } else {
 
@@ -121,8 +121,6 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
               echo ' );"></div>';
 
             }
-
-          echo '</div>';
 
         }
 
