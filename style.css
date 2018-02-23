@@ -1299,6 +1299,10 @@ Content
 
   /* Post image styles. */
 
+  .thumbnail_wrapper {
+    position: relative;
+  }
+
   .index .default_thumbnail {
     background-position: center center;
     background-repeat: no-repeat;
@@ -1324,6 +1328,39 @@ Content
     margin-right: 1.5rem;
     width: 25rem;
   }
+
+  .index .tag-lawyerist-podcast .thumbnail_wrapper::before {
+    border: .5rem solid #fff;
+    border-radius: 50%;
+    box-shadow: .1rem .1rem .3rem rgba(0, 0, 0, 0.2);
+    color: #fff;
+    content: "\f452";
+    display: block;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font: normal 10rem/1 Genericons;
+    margin-left: -5.5rem;
+    margin-top: -5.5rem;
+    opacity: .9;
+    position: absolute;
+      left: 50%;
+      top: 35%;
+    speak: none;
+    text-shadow: .1rem .1rem .3rem rgba(0, 0, 0, 0.2);
+    transition: box-shadow .2s, text-shadow .2s;
+    vertical-align: top;
+    width: 10rem;
+  }
+
+    .index .tag-lawyerist-podcast .thumbnail_wrapper:hover::before {
+      box-shadow: .1rem .1rem .5rem rgba(0, 0, 0, 0.4);
+      text-shadow: .1rem .1rem .5rem rgba(0, 0, 0, 0.4);
+    }
+
+    .index .tag-lawyerist-podcast .thumbnail_wrapper:active::before {
+      box-shadow: .1rem .1rem .1rem rgba(0, 0, 0, 0.2);
+      text-shadow: .1rem .1rem .1rem rgba(0, 0, 0, 0.2);
+    }
 
   .index .tag-tbd-law-community .avatar {
     float: left;
