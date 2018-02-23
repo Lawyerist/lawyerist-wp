@@ -37,51 +37,47 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
   // Sets the post type to 'standard' if it isn't already set.
   if ( $post_type == 'post' ) { $post_format = get_post_format() ? : 'standard'; }
+
   $post_classes[] = 'index_post_container'; // .post, .page, and .product are added automatically, as are tags and formats.
 
   // Assign classes.
-  if ( has_term( true, 'series' ) ) {
-    $post_classes[] = 'series';
-  }
+  if ( has_term( true, 'series' ) ) { $post_classes[] = 'series'; }
+  if ( has_term( true, 'sponsor' ) ) { $post_classes[] = 'sponsored'; }
 
-  if ( has_term( true, 'sponsor' ) ) {
-    $post_classes[] = 'sponsored';
-  }
-
+  // Skips pages if they don't have the 'Show in Feed' page type.
   if ( $post_type == 'page' && !has_term( 'show-in-feed', 'page_type' ) ) {
 
     continue;
 
   } else {
 
-    // This is the container for all posts/groups of posts.
+    // Starts the post container.
     echo '<div ' ;
     post_class( $post_classes );
     echo '>';
 
-      // First we look for labels to show above the post container.
+      // Checks for labels to show above the title.
 
-        // Series title:
-        // Check for a series, get the series information, then output the series title.
+        // Output the series label.
         if ( has_term( true, 'series' ) && !is_tax( 'series' ) ) {
 
           $series_IDs = wp_get_post_terms(
-            $post->ID,
-            'series',
-            array(
-              'fields' 	=> 'ids',
-              'orderby' => 'count',
-              'order' 	=> 'DESC'
-            )
-          );
+        		$post->ID,
+        		'series',
+        		array(
+        			'fields' 	=> 'ids',
+        			'orderby' => 'count',
+        			'order' 	=> 'DESC'
+        		)
+        	);
 
-          $series_info				= get_term( $series_IDs[0] );
-          $series_title				= $series_info->name;
-          $series_description = $series_info->description;
-          $series_slug				= $series_info->slug;
-          $series_url					=	get_term_link( $series_IDs[0], 'series' );
+        	$series_info				= get_term( $series_IDs[0] );
+        	$series_title				= $series_info->name;
+        	$series_description = $series_info->description;
+        	$series_slug				= $series_info->slug;
+        	$series_url					=	get_term_link( $series_IDs[0], 'series' );
 
-          echo '<p class="series_title"><a href="' . $series_url . '" title="Read more posts in ' . $series_title . '">' . $series_title . '</a></p>';
+        	echo '<p class="series_title"><a href="' . $series_url . '" title="Read more posts in ' . $series_title . '">' . $series_title . '</a></p>';
 
         }
 
