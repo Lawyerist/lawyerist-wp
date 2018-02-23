@@ -1261,6 +1261,10 @@ Content
 
     }
 
+  .index .page {
+    min-height: 15rem;
+  }
+
 
   /* Series title. */
 
@@ -1295,6 +1299,10 @@ Content
 
   /* Post image styles. */
 
+  .thumbnail_wrapper {
+    position: relative;
+  }
+
   .index .default_thumbnail {
     background-position: center center;
     background-repeat: no-repeat;
@@ -1321,6 +1329,39 @@ Content
     width: 25rem;
   }
 
+  .index .tag-lawyerist-podcast .thumbnail_wrapper::before {
+    border: .5rem solid #fff;
+    border-radius: 50%;
+    box-shadow: .1rem .1rem .3rem rgba(0, 0, 0, 0.2);
+    color: #fff;
+    content: "\f452";
+    display: block;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font: normal 10rem/1 Genericons;
+    margin-left: -5.5rem;
+    margin-top: -5.5rem;
+    opacity: .9;
+    position: absolute;
+      left: 50%;
+      top: 35%;
+    speak: none;
+    text-shadow: .1rem .1rem .3rem rgba(0, 0, 0, 0.2);
+    transition: box-shadow .2s, text-shadow .2s;
+    vertical-align: top;
+    width: 10rem;
+  }
+
+    .index .tag-lawyerist-podcast .thumbnail_wrapper:hover::before {
+      box-shadow: .1rem .1rem .5rem rgba(0, 0, 0, 0.4);
+      text-shadow: .1rem .1rem .5rem rgba(0, 0, 0, 0.4);
+    }
+
+    .index .tag-lawyerist-podcast .thumbnail_wrapper:active::before {
+      box-shadow: .1rem .1rem .1rem rgba(0, 0, 0, 0.2);
+      text-shadow: .1rem .1rem .1rem rgba(0, 0, 0, 0.2);
+    }
+
   .index .tag-tbd-law-community .avatar {
     float: left;
     margin-bottom: 0;
@@ -1343,7 +1384,7 @@ Content
     /* At 640px wide, the .index_post_container is 565px, or 250px for the image,
     15px for the right margin of the image, and 300px for the headline. Seems
     like a good place to break. */
-    @media only screen and ( max-width:639px ) {
+    @media only screen and ( max-width: 639px ) {
 
       .index .series .wp-post-image {
         float: none;
@@ -1363,7 +1404,7 @@ Content
     /* At 690px wide, the .index_post_container is 535px, or 280px for the image,
     15px for the right margin of the image, and 240px for the headline and excerpt,
     which seems about right. */
-    @media only screen and ( max-width:689px ) {
+    @media only screen and ( max-width: 689px ) {
 
       .index .type-product .wp-post-image {
         display: block;
@@ -1420,7 +1461,7 @@ Content
   }
 
     /* See .index .series .wp-post-image, above. */
-    @media only screen and ( max-width:639px ) {
+    @media only screen and ( max-width: 639px ) {
 
       .index .series .headline_excerpt,
       .index .series.has-post-thumbnail .headline_excerpt {
@@ -1439,7 +1480,7 @@ Content
   }
 
     /* See .index .type-product .wp-post-image, above. */
-    @media only screen and ( max-width:689px ) {
+    @media only screen and ( max-width: 689px ) {
 
       .index .type-product.has-post-thumbnail .headline_excerpt {
         padding: 0;
@@ -1460,6 +1501,14 @@ Content
       font-size: 4.5rem;
       margin-bottom: .1em;
     }
+
+      @media only screen and ( max-width: 639px ) {
+
+        .index .page .headline {
+          font-size: 2.4rem;
+        }
+
+      }
 
 
     /* Excerpt styles. */
@@ -2793,6 +2842,16 @@ a.review-btn,
   width: auto;
 }
 
+  .woocommerce button.button:disabled,
+  .woocommerce button.button:disabled:hover,
+  .woocommerce button.button:disabled[disabled],
+  .woocommerce button.button:disabled[disabled]:hover {
+    background-color: #ddd;
+    box-shadow: none;
+    color: #bbb;
+    padding: 0 1.6rem;
+  }
+
   #sidebar_column button,
   #sidebar_column .button,
   #sidebar_column a.button,
@@ -2891,6 +2950,17 @@ a.greybutton:active,
 .woocommerce input.button[name="update_cart"]:active {
   background-color: #bbb;
   color: #efefef;
+}
+
+.mce-toolbar button {
+  text-transform: none;
+}
+
+.mce-toolbar button:hover,
+.mce-toolbar button:focus,
+.mce-toolbar button:active {
+  background-color: unset;
+  box-shadow: unset;
 }
 
 
@@ -3344,6 +3414,10 @@ body.woocommerce-account {
     width: auto;
   }
 
+}
+
+body.woocommerce-cart .actions button  {
+  margin-bottom: 0;
 }
 
 

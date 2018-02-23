@@ -91,35 +91,39 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
         // First we figure out the post image based on the type of post.
         if ( has_post_thumbnail() ) {
 
-          if ( has_term( true, 'series' ) && !is_tax( 'series' ) ) {
+          echo '<div class="thumbnail_wrapper">';
 
-            the_post_thumbnail( 'default_thumbnail' );
+            if ( has_term( true, 'series' ) && !is_tax( 'series' ) ) {
 
-          } elseif ( has_term( true, 'series' ) && is_tax( 'series' ) ) {
+              the_post_thumbnail( 'default_thumbnail' );
 
-            echo '<div class="default_thumbnail" style="background-image: url( ';
-            echo the_post_thumbnail_url( 'default_thumbnail' );
-            echo ' );"></div>';
+            } elseif ( has_term( true, 'series' ) && is_tax( 'series' ) ) {
 
-          } elseif ( $post_type == 'product' ) {
+              echo '<div class="default_thumbnail" style="background-image: url( ';
+              echo the_post_thumbnail_url( 'default_thumbnail' );
+              echo ' );"></div>';
 
-            the_post_thumbnail( 'shop_single' );
+            } elseif ( $post_type == 'product' ) {
 
-          } elseif ( has_tag( 'tbd-law-community' ) ) {
+              the_post_thumbnail( 'shop_single' );
 
-            echo get_avatar( get_the_author_meta( 'ID' ), 100, '', get_the_author_meta( 'nicename' ) );
+            } elseif ( has_tag( 'tbd-law-community' ) ) {
 
-          } elseif ( $post_type == 'post' && $post_format == 'standard' && !has_term( true, 'sponsor' ) ) {
+              echo get_avatar( get_the_author_meta( 'user_email' ), 100, '', get_the_author_meta( 'display_name' ) );
 
-            the_post_thumbnail( 'standard_thumbnail' );
+            } elseif ( $post_type == 'post' && $post_format == 'standard' && !has_term( true, 'sponsor' ) ) {
 
-          } else {
+              the_post_thumbnail( 'standard_thumbnail' );
 
-            echo '<div class="default_thumbnail" style="background-image: url( ';
-            echo the_post_thumbnail_url( 'default_thumbnail' );
-            echo ' );"></div>';
+            } else {
 
-          }
+              echo '<div class="default_thumbnail" style="background-image: url( ';
+              echo the_post_thumbnail_url( 'default_thumbnail' );
+              echo ' );"></div>';
+
+            }
+
+          echo '</div>';
 
         }
 

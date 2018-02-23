@@ -226,7 +226,7 @@ function lawyerist_login_logo_url_title() {
 
 function lawyerist_login_message( $message ) {
     if ( empty($message) ){
-        return '<p>Don\'t have an account yet? <a href="https://lawyerist.com/insider/">Click here to apply for a Lawyerist Insider subscription today (it\'s free)!</a></p>';
+        return '<p>Don\'t have an account yet? <a href="https://lawyerist.com/insider/">Click here to join the Lawyerist Insider today (it\'s free)!</a></p>';
     } else {
         return $message;
     }
