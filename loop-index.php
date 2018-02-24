@@ -90,32 +90,25 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
       // Starts the link container. Makes for big click targets!
       echo '<a href="' . $post_url . '" title="' . $post_title . '">';
 
+        // Outputs an image for podcast episodes.
+        if ( has_tag( 'lawyerist-podcast' ) ) {
+          echo '<div class="default_thumbnail" alt="The Lawyerist Podcast logo" style="background-image: url( https://lawyerist.com/lawyerist-dev/wp-content/uploads/2018/02/lawyerist-ltn-podcast-logo-16x9-684x385.png );"></div>';
+        }
+
         // Outputs the post image based on the type of post.
-        if ( has_post_thumbnail() ) {
+        if ( has_post_thumbnail() && !has_tag( 'lawyerist-podcast' ) && !has_term( true, 'series' ) ) {
 
-            if ( has_term( true, 'series' ) && !is_tax( 'series' ) ) {
+            if ( has_tag( 'tbd-law-community' ) ) {
 
-              the_post_thumbnail( 'default_thumbnail' );
-
-            } elseif ( has_term( true, 'series' ) && is_tax( 'series' ) ) {
-
-              echo '<div class="default_thumbnail" style="background-image: url( ';
-              echo the_post_thumbnail_url( 'default_thumbnail' );
-              echo ' );"></div>';
+              echo get_avatar( get_the_author_meta( 'user_email' ), 100, '', get_the_author_meta( 'display_name' ) );
 
             } elseif ( $post_type == 'product' ) {
 
               the_post_thumbnail( 'shop_single' );
 
-            } elseif ( has_tag( 'tbd-law-community' ) ) {
+            } elseif ( $post_type == 'post' && $post_format == 'standard' && !has_term( true, 'series' ) && !has_term( true, 'sponsor' ) ) {
 
-              echo get_avatar( get_the_author_meta( 'user_email' ), 100, '', get_the_author_meta( 'display_name' ) );
-
-            } elseif ( $post_type == 'post' && $post_format == 'standard' && !has_term( true, 'sponsor' ) ) {
-
-              echo '<div class="thumbnail_wrapper">';
-                the_post_thumbnail( 'standard_thumbnail' );
-              echo '</div>';
+              the_post_thumbnail( 'standard_thumbnail' );
 
             } else {
 
@@ -130,17 +123,27 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
         // Now we get the headline and excerpt (except for certain kinds of posts).
         echo '<div class="headline_excerpt">';
 
+          // Outputs the post image for series posts because otherwise the image
+          // would break the series container.
+          if ( has_term( true, 'series' ) ) {
+
+            echo '<div class="default_thumbnail" style="background-image: url( ';
+            echo the_post_thumbnail_url( 'default_thumbnail' );
+            echo ' );"></div>';
+
+          }
+
           // Headline
           echo '<h2 class="headline">' . $post_title . '</h2>';
 
-          // Output the excerpt unless we're showing a page or a post from the
-          // TBD Law community.
-          if ( $post_type != 'page' && !has_tag( 'tbd-law-community' ) ) {
+          // Output the excerpt unless we're showing a podcast episode, a post from the
+          // TBD Law community, or a page.
+          if ( !has_tag( 'lawyerist-podcast' ) && !has_tag( 'tbd-law-community' ) && $post_type != 'page' ) {
             echo '<p class="excerpt">' . $post_excerpt . '</p>';
           }
 
-          // Output the post meta only for posts.
-          if ( $post_type == 'post' ) {
+          // Output the post meta unless we're showing a podcast episode.
+          if ( $post_type == 'post' && !has_tag( 'lawyerist-podcast' ) ) {
             lawyerist_postmeta();
           }
 
