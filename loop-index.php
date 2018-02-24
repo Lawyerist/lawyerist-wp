@@ -88,6 +88,11 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
       echo '<a href="' . $post_url . '" title="' . $post_title . '">';
 
         // First we figure out the post image based on the type of post.
+
+        if ( has_tag( 'tbd-law-community' ) ) {
+          echo get_avatar( get_the_author_meta( 'user_email' ), 100, '', get_the_author_meta( 'display_name' ) );
+        }
+        
         if ( has_post_thumbnail() ) {
 
             if ( has_term( true, 'series' ) && !is_tax( 'series' ) ) {
@@ -103,10 +108,6 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
             } elseif ( $post_type == 'product' ) {
 
               the_post_thumbnail( 'shop_single' );
-
-            } elseif ( has_tag( 'tbd-law-community' ) ) {
-
-              echo get_avatar( get_the_author_meta( 'user_email' ), 100, '', get_the_author_meta( 'display_name' ) );
 
             } elseif ( $post_type == 'post' && $post_format == 'standard' && !has_term( true, 'sponsor' ) ) {
 
