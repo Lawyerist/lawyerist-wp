@@ -780,7 +780,7 @@ img.inline {
       margin: 0 0 3rem 0;
       padding-right: 1.5rem;
       text-align: center;
-      width: 33.33333%;
+      width: 40%;
     }
 
     .gallery-columns-2 .gallery-item {
@@ -1225,7 +1225,7 @@ Content
   /* Post container styles. */
 
   .index .tag-lawyerist-podcast {
-    padding-top: 2rem; /* Otherwise the mic is smushed against the top border. */
+    min-height: 15rem;
   }
 
   .index .tag-tbd-law-community {
@@ -1252,8 +1252,7 @@ Content
     padding: 6rem;
   }
 
-    /* 400px; just feels right. */
-    @media only screen and ( max-width:399px ) {
+    @media only screen and ( max-width:689px ) {
 
       .index .type-product {
         padding: 3rem;
@@ -1299,20 +1298,19 @@ Content
 
   /* Post image styles. */
 
-  .thumbnail_wrapper {
-    position: relative;
-  }
-
   .index .default_thumbnail {
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
     border-radius: .2rem 0 0 .2rem;
+    float: left;
     height: 100%;
+    margin-bottom: 0;
+    margin-right: 1.5rem;
     position: absolute;
       top: 0;
       left: 0;
-    width: 30%;
+    width: 40%;
   }
 
   .index .format-standard .wp-post-image {
@@ -1322,17 +1320,11 @@ Content
     width: 100%;
   }
 
-  .index .format-aside .wp-post-image {
-    float: left;
-    margin-bottom: 0;
-    margin-right: 1.5rem;
-    width: 25rem;
-  }
-
-  .index .tag-lawyerist-podcast .thumbnail_wrapper::before {
+  .index .tag-lawyerist-podcast .default_thumbnail::before {
+    background-color: #e9e9e9;
     border: .5rem solid #fff;
     border-radius: 50%;
-    box-shadow: .1rem .1rem .3rem rgba(0, 0, 0, 0.2);
+    box-shadow: .1rem .1rem 1rem rgba( 0, 0, 0, 0.2 );
     color: #fff;
     content: "\f452";
     display: block;
@@ -1344,22 +1336,19 @@ Content
     opacity: .9;
     position: absolute;
       left: 50%;
-      top: 35%;
+      top: 50%;
     speak: none;
-    text-shadow: .1rem .1rem .3rem rgba(0, 0, 0, 0.2);
-    transition: box-shadow .2s, text-shadow .2s;
+    transition: box-shadow .2s;
     vertical-align: top;
     width: 10rem;
   }
 
-    .index .tag-lawyerist-podcast .thumbnail_wrapper:hover::before {
-      box-shadow: .1rem .1rem .5rem rgba(0, 0, 0, 0.4);
-      text-shadow: .1rem .1rem .5rem rgba(0, 0, 0, 0.4);
+    .index .tag-lawyerist-podcast .default_thumbnail:hover::before {
+      box-shadow: .1rem .1rem 2rem rgba( 0, 0, 0, 0.4 );
     }
 
-    .index .tag-lawyerist-podcast .thumbnail_wrapper:active::before {
-      box-shadow: .1rem .1rem .1rem rgba(0, 0, 0, 0.2);
-      text-shadow: .1rem .1rem .1rem rgba(0, 0, 0, 0.2);
+    .index .tag-lawyerist-podcast .default_thumbnail:active::before {
+      box-shadow: .1rem .1rem .1rem rgba( 0, 0, 0, 0.2 );
     }
 
   .index .tag-tbd-law-community .avatar {
@@ -1369,47 +1358,19 @@ Content
     width: 10rem;
   }
 
-  .index .series .wp-post-image {
-    border-radius: 0;
-    float: left;
-    margin-bottom: 0;
-    margin-right: 1.5rem;
-    width: 25rem;
-  }
-
-  .index .sponsored .default_thumbnail {
-    border-top-left-radius: 0;
-  }
-
-    /* At 640px wide, the .index_post_container is 565px, or 250px for the image,
-    15px for the right margin of the image, and 300px for the headline. Seems
-    like a good place to break. */
-    @media only screen and ( max-width: 639px ) {
-
-      .index .series .wp-post-image {
-        float: none;
-        margin: 0 0 1.5rem 0;
-        width: 100%;
-      }
-
-    }
-
   .index .type-product .wp-post-image {
     float: right;
-    margin: 0;
+    margin: 0 0 3rem 0;
     transform: rotate( .015turn );
     width: 25rem;
   }
 
-    /* At 690px wide, the .index_post_container is 535px, or 280px for the image,
-    15px for the right margin of the image, and 240px for the headline and excerpt,
-    which seems about right. */
     @media only screen and ( max-width: 689px ) {
 
       .index .type-product .wp-post-image {
         display: block;
         float: none;
-        margin: 0 auto 1.5rem auto;
+        margin: 0 auto 3rem auto;
       }
 
     }
@@ -1417,63 +1378,49 @@ Content
 
   /* .headline_excerpt styles. */
 
-  .index .format-standard .headline_excerpt {
-    padding: 2rem;
-  }
-
-  .index .format-aside .headline_excerpt,
-  .index .sponsored .headline_excerpt,
-  .index .page .headline_excerpt {
+  .index .headline_excerpt {
     padding: 2rem;
   }
 
   .index .format-aside.has-post-thumbnail .headline_excerpt,
+  .index .tag-lawyerist-podcast .headline_excerpt,
+  .index .series.has-post-thumbnail .headline_excerpt,
   .index .sponsored.has-post-thumbnail .headline_excerpt,
   .index .page.has-post-thumbnail .headline_excerpt {
-    padding: 2rem 2rem 2rem 30%;
     margin: 0 0 0 1.5rem;
+    padding: 2rem 2rem 2rem 40%;
   }
 
-  .index .format-standard.tag-tbd-law-community .headline_excerpt,
-  .index .format-aside.tag-tbd-law-community .headline_excerpt {
-    margin: 0;
-    padding: 0 0 0 11.5rem;
-  }
-
-  .index .series .headline_excerpt {
-    margin: 0 0 3rem 0;
-    padding: 0 0 0 0;
+  .index .tag-tbd-law-community .headline_excerpt {
+    margin: 0 0 0 1.5rem;
+    padding: 0 0 0 10rem;
   }
 
   .index .series.has-post-thumbnail .headline_excerpt {
-    margin: 0 0 0 1.5rem;
-    padding: 0 0 0 25rem;
+    margin: 0;
+    padding: 0;
+    position: relative;
   }
 
-  .archive.tax-series .series .headline_excerpt {
-    margin: 0;
+    .index .series.has-post-thumbnail .headline_excerpt .headline,
+    .index .series.has-post-thumbnail .headline_excerpt .excerpt,
+    .index .series.has-post-thumbnail .headline_excerpt .postmeta {
+      margin-left: 40%;
+      padding-left: 1.5rem;
+    }
+
+  .archive.tax-series .series .headline_excerpt,
+  .archive.tax-series .series.has-post-thumbnail .headline_excerpt {
     padding: 2rem;
   }
-
-  .archive.tax-series .series.has-post-thumbnail .headline_excerpt {
-    padding: 2rem 2rem 2rem 30%;
-    margin: 0 0 0 1.5rem;
-  }
-
-    /* See .index .series .wp-post-image, above. */
-    @media only screen and ( max-width: 639px ) {
-
-      .index .series .headline_excerpt,
-      .index .series.has-post-thumbnail .headline_excerpt {
-        margin: 0;
-        padding: 0;
-      }
-
-    }
 
   .index .type-product .headline_excerpt {
     padding: 0;
   }
+
+    .index .type-product a.button {
+      margin-bottom: 0;
+    }
 
   .index .type-product.has-post-thumbnail .headline_excerpt {
     padding: 0 28rem 0 0;
@@ -1491,48 +1438,70 @@ Content
 
     /* Headline styles. */
 
-    .index .format-aside .headline,
-    .index .tag-tbd-law-community .headline {
-      font-size: 2.4rem;
-      margin-bottom: .5em;
+    .index .headline {
+      margin-bottom: .5rem;
     }
 
+    .index .format-standard .headline {
+      font-size: 3.6rem;
+    }
+
+    .index .tag-lawyerist-podcast .headline,
     .index .page .headline {
-      font-size: 4.5rem;
-      margin-bottom: .1em;
+      font-size: 3.2rem;
+      margin-bottom: 0;
     }
 
-      @media only screen and ( max-width: 639px ) {
+    .index .format-aside .headline,
+    .index .series .headline,
+    .index .sponsored .headline,
+    .index .page .headline {
+      font-size: 2.4rem;
+    }
 
-        .index .page .headline {
-          font-size: 2.4rem;
-        }
+    @media only screen and ( max-width: 689px ) {
 
+      .index .type-product .headline {
+        margin-bottom: .75em;
       }
+
+    }
+
+    @media only screen and ( max-width: 639px ) {
+
+      .index .headline_excerpt .headline {
+        font-size: 2.4rem !important;
+      }
+
+    }
 
 
     /* Excerpt styles. */
 
-    .index .format-standard .excerpt {
+    .index .excerpt {
       font-size: 1.8rem;
     }
 
-    .index .format-aside .excerpt {
-      font-size: 1.6rem;
-    }
-
+    .index .format-aside .excerpt,
     .index .series .excerpt {
       font-size: 1.6rem;
     }
 
     .index .type-product .excerpt {
-      font-size: 1.8rem;
       margin-bottom: 1.5em;
     }
 
     .index .type-product a:hover .excerpt,
     .index .type-product a:focus .excerpt {
       color: #111;
+    }
+
+    @media only screen and ( max-width: 639px ) {
+
+      .index .excerpt {
+        display: none;
+      }
+
     }
 
 
