@@ -1252,8 +1252,7 @@ Content
     padding: 6rem;
   }
 
-    /* 400px; just feels right. */
-    @media only screen and ( max-width:399px ) {
+    @media only screen and ( max-width:689px ) {
 
       .index .type-product {
         padding: 3rem;
@@ -1361,20 +1360,17 @@ Content
 
   .index .type-product .wp-post-image {
     float: right;
-    margin: 0;
+    margin: 0 0 3rem 0;
     transform: rotate( .015turn );
     width: 25rem;
   }
 
-    /* At 690px wide, the .index_post_container is 535px, or 280px for the image,
-    15px for the right margin of the image, and 240px for the headline and excerpt,
-    which seems about right. */
     @media only screen and ( max-width: 689px ) {
 
       .index .type-product .wp-post-image {
         display: block;
         float: none;
-        margin: 0 auto 1.5rem auto;
+        margin: 0 auto 3rem auto;
       }
 
     }
@@ -1422,6 +1418,10 @@ Content
     padding: 0;
   }
 
+    .index .type-product a.button {
+      margin-bottom: 0;
+    }
+
   .index .type-product.has-post-thumbnail .headline_excerpt {
     padding: 0 28rem 0 0;
   }
@@ -1457,6 +1457,14 @@ Content
     .index .sponsored .headline,
     .index .page .headline {
       font-size: 2.4rem;
+    }
+
+    @media only screen and ( max-width: 689px ) {
+
+      .index .type-product .headline {
+        margin-bottom: .75em;
+      }
+
     }
 
     @media only screen and ( max-width: 639px ) {
