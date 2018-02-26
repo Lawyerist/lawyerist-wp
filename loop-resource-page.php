@@ -35,7 +35,8 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
         // Rating
         if ( comments_open() && function_exists( 'wp_review_show_total' ) ) {
 
-          $rating = get_post_meta( $post_ID, 'wp_review_comments_rating_value', true );
+          $rating       = get_post_meta( $post_ID, 'wp_review_comments_rating_value', true );
+          $num_reviews  = get_post_meta( $post_ID, 'wp_review_comments_rating_count', true );
 
           echo '<div class="user-rating">';
 
@@ -44,7 +45,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
             echo '<br />';
           }
 
-          echo '<a href="#respond">Leave a review below.</a></div>';
+          echo '<a href="#respond">Leave a review below.</a> (' . $num_reviews . ' reviews)</div>';
 
         }
 
