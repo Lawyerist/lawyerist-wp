@@ -21,6 +21,7 @@ Images
 Header
   Title
 Menu
+Front Page
 Content
 	Index Lists
 	Posts
@@ -604,6 +605,7 @@ bold {
 sup {
 	font-size: 75%;
   font-style: normal;
+  vertical-align: super;
 }
 
 .syntaxhighlighter {
@@ -1045,6 +1047,102 @@ Menu
 
 }
 
+/*------------------------------
+Front Page
+------------------------------*/
+
+#big_hero_top {
+  background-image: url('https://lawyerist.com/lawyerist/wp-content/uploads/2018/02/scorecard-hero-background-684x385.jpg');
+  background-size: cover;
+  display: block;
+  padding: 2rem;
+  position: relative;
+}
+
+  #big_hero_top:hover {
+    color: unset;
+  }
+
+  #big_hero_top #scorecard_image_wrapper {
+    box-sizing: border-box;
+    float: left;
+    margin-top: 3rem;
+    position: relative;
+    width: 40%;
+  }
+
+    #big_hero_top #scorecard_image_wrapper img {
+      box-shadow: .3rem .3rem .9rem rgba(0, 0, 0, 0.3);
+      height: auto;
+      margin: 0;
+      width: 100%;
+    }
+
+    #scorecard_image_wrapper::before {
+      background-color: #c00;
+      border-radius: 50%;
+      box-shadow: .3rem .3rem .9rem rgba(0, 0, 0, 0.3);
+      color: #fff;
+      content: 'Free!';
+      font-family: concourse-headings;
+      font-size: 2.4rem;
+      height: 6.5rem;
+      line-height: 6.5rem;
+      position: absolute;
+        top: -3rem;
+        right: -3rem;
+      text-align: center;
+      width: 6.5rem;
+    }
+
+  #scorecard_prompt_wrapper {
+    box-sizing: border-box;
+    float: right;
+    margin-top: 3rem;
+    padding: 2rem;
+    position: relative;
+    text-align: center;
+    text-shadow: .1rem .1rem .9rem #ddd;
+    width: 50%;
+    z-index: 2;
+  }
+
+    #scorecard_prompt_wrapper::after {
+      background-color: #fff;
+      content: '';
+      height: 100%;
+      opacity: .35;
+      position: absolute;
+        left: 0;
+        top: 0;
+      width: 100%;
+      z-index: -1;
+    }
+
+    #big_hero_top h2 {
+      font-size: 4.2rem;
+    }
+
+      #big_hero_top h2 sup {
+        font-size: 1.4rem;
+      }
+
+    #big_hero_top p {
+      font-size: 3.2rem;
+    }
+
+#big_hero_button {
+  padding: 2rem;
+}
+
+  #big_hero_button .button {
+    display: block;
+    font-size: 3.2rem !important;
+    height: auto;
+    margin-bottom: 0;
+    padding: 1.5rem;
+    text-align: center;
+  }
 
 /*------------------------------
 Content
