@@ -11,22 +11,34 @@
 
 	<div id="content_column">
 
-    <?php
+    <!-- Outputs the Scorecard call to action. -->
+		<div id="big_hero_cta" class="index_post_container">
+			<a class="big_hero_top" href="https://lawyerist.com/scorecard/">
+				<div class="scorecard_image_wrapper"><img src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/02/scorecard-page.png" alt="The Small Firm Scorecard example" /></div>
+				<div class="scorecard_prompt_wrapper">
+					<h2>The Small Firm Scorecard<sup>TM</sup></h2>
+					<p>Is your law firm structured to succeed in the future?</p>
+				</div>
+				<div class="clear"></div>
+			</a>
+			<div class="big_hero_button"><a class="button" href="https://lawyerist.com/scorecard/">Get Your Free Score</a></div>
+		</div>
 
-    // Outputs the Scorecard call to action.
-		echo '<div id="big_hero" class="index_post_container">';
-			echo '<a id="big_hero_top" href="https://lawyerist.com/scorecard/">';
-				echo '<div id="scorecard_image_wrapper"><img src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/02/scorecard-page.png" alt="The Small Firm Scorecard example" /></div>';
-				echo '<div id="scorecard_prompt_wrapper">';
-					echo '<h2>The Small Firm Scorecard<sup>TM</sup></h2>';
-					echo '<p>Is your law firm structured to succeed in the future?</p>';
-				echo '</div>';
-				echo '<div class="clear"></div>';
-			echo '</a>';
-			echo '<div id="big_hero_button"><a class="button" href="https://lawyerist.com/scorecard/">Get Your Free Score</a></div>';
-		echo '</div>';
+    <!-- Outputs the secondary calls to action: Insider, website assessment, and LPJ. -->
+		<div id="secondary_ctas">
 
-    // Outputs the Insider, website assessment, and LPJ calls to action.
+			<div class="index_post_container one_third">
+			</div>
+
+			<div class="index_post_container one_third">
+			</div>
+
+			<div class="index_post_container one_third">
+			</div>
+
+		</div>
+
+		<?php
 
     // Outputs the most recent podcast episode.
 
@@ -41,7 +53,7 @@
 
     // Outputs the Recent Page Updates widget.
 
-    ?>
+		?>
 
 	</div><!-- end #content_column -->
 

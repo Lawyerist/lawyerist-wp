@@ -1051,7 +1051,7 @@ Menu
 Front Page
 ------------------------------*/
 
-#big_hero_top {
+.big_hero_top {
   background-image: url('https://lawyerist.com/lawyerist/wp-content/uploads/2018/02/scorecard-hero-background-684x385.jpg');
   background-size: cover;
   display: block;
@@ -1059,11 +1059,11 @@ Front Page
   position: relative;
 }
 
-  #big_hero_top:hover {
+  .big_hero_top:hover {
     color: unset;
   }
 
-  #big_hero_top #scorecard_image_wrapper {
+  .big_hero_top .scorecard_image_wrapper {
     box-sizing: border-box;
     float: left;
     margin-top: 3rem;
@@ -1071,14 +1071,14 @@ Front Page
     width: 40%;
   }
 
-    #big_hero_top #scorecard_image_wrapper img {
+    .big_hero_top .scorecard_image_wrapper img {
       box-shadow: .3rem .3rem .9rem rgba(0, 0, 0, 0.3);
       height: auto;
       margin: 0;
       width: 100%;
     }
 
-    #scorecard_image_wrapper::before {
+    .scorecard_image_wrapper::before {
       background-color: #c00;
       border-radius: 50%;
       box-shadow: .3rem .3rem .9rem rgba(0, 0, 0, 0.3);
@@ -1095,7 +1095,7 @@ Front Page
       width: 6.5rem;
     }
 
-  #scorecard_prompt_wrapper {
+  .scorecard_prompt_wrapper {
     box-sizing: border-box;
     float: right;
     margin-top: 3rem;
@@ -1107,7 +1107,7 @@ Front Page
     z-index: 2;
   }
 
-    #scorecard_prompt_wrapper::after {
+    .scorecard_prompt_wrapper::after {
       background-color: #fff;
       content: '';
       height: 100%;
@@ -1119,23 +1119,23 @@ Front Page
       z-index: -1;
     }
 
-    #big_hero_top h2 {
+    .big_hero_top h2 {
       font-size: 4.2rem;
     }
 
-      #big_hero_top h2 sup {
+      .big_hero_top h2 sup {
         font-size: 1.4rem;
       }
 
-    #big_hero_top p {
+    .big_hero_top p {
       font-size: 3.2rem;
     }
 
-#big_hero_button {
+.big_hero_button {
   padding: 2rem;
 }
 
-  #big_hero_button .button {
+  .big_hero_button .button {
     display: block;
     font-size: 3.2rem !important;
     height: auto;
