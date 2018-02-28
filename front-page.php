@@ -40,38 +40,11 @@
 
 		<?php
 
-		$categories = get_categories();
-
-		foreach ( $categories as $category ) {
-
-
-
-		}
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+		// Grabs the category label.
 		if ( has_category() && !has_category( 'sponsored-posts' ) ) {
 			$post_classes[] = 'has-post-label';
 
@@ -91,6 +64,9 @@
 			$post_label 		   	= $cat_info->name;
 			$post_label_url			=	get_term_link( $cat_IDs[0], 'category' );
 		}
+
+
+
 
     // Outputs the most recent podcast episode.
 
