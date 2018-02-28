@@ -17,6 +17,7 @@ ADMIN
 CONTENT
 - Query Mods
 - Archive Headers
+- Post Labels
 - Postmeta
 - Author Bios
 - Custom Default Gravatar
@@ -316,6 +317,13 @@ function lawyerist_get_archive_header() {
 }
 
 
+/*------------------------------
+Post Labels
+------------------------------*/
+
+function lawyerist_get_post_labels() {
+
+}
 
 /*------------------------------
 Postmeta

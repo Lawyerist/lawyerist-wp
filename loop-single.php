@@ -30,17 +30,12 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
         );
 
         $series_info				= get_term( $series_ID[0] );
-        $series_title				= $series_info->name;
+        $post_label				= $series_info->name;
         $series_slug				= $series_info->slug;
         $series_url					=	get_term_link( $series_ID[0], 'series' );
 
-        echo '<p class="series_title"><a href="' . $series_url . '" title="' . $series_title . '">' . $series_title . '</a></p>';
+        echo '<p class="post_label"><a href="' . $series_url . '" title="' . $post_label . '">' . $post_label . '</a></p>';
 
-      }
-
-      // TBD Law Community Flag
-      if ( has_tag( 'tbd-law-community' ) ) {
-        echo '<p class="series_title"><a href="https://lawyerist.com/tag/tbd-law-community/" title="Read more posts from the TBD Law community.">TBD Law community</a></p>';
       }
 
       // Headline
@@ -84,7 +79,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
           $first_post_url = get_the_permalink();
 
           echo '<div class="series_icon"></div><p class="remove_bottom">';
-          echo 'This post is part of "' . $series_title . '," a series of ' . $series_query->post_count . ' posts.';
+          echo 'This post is part of "' . $post_label . '," a series of ' . $series_query->post_count . ' posts.';
           echo ' You can ';
           if ( $this_post[0] != $post->ID ) {
             echo '<a href="' . $first_post_url . '">start at the beginning</a> or ';

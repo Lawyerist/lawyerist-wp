@@ -143,7 +143,7 @@ body {
           box-sizing: border-box;
       		float: none;
           margin: 0 auto;
-          padding:0 10px;
+          padding:0 1rem;
           width: 100%;
       	}
 
@@ -264,7 +264,7 @@ p.pullout,
 p.pullquote,
 #series_note,
 .series_next_post,
-.series_title,
+.post_label,
 .tag_list,
 .theiaPostSlider_nav ._text,
 .toc_list,
@@ -1241,11 +1241,7 @@ Content
 
   /*
   Selectors
-
-  .format-standard
-  .format-aside
   .category-lawyerist-podcast
-  .tag-tbd-law-community
   .series
   .sponsored
   .type-product
@@ -1265,7 +1261,6 @@ Content
     display: block;
     margin-bottom: 1rem;
     padding: 0;
-    position: relative;
 		text-decoration: none;
 	}
 
@@ -1282,6 +1277,7 @@ Content
 
   .index_post_container .headline_excerpt {
     color: #111;
+    position: relative;
   }
 
     .index_post_container .headline {
@@ -1326,13 +1322,12 @@ Content
 
   /* Post container styles. */
 
-  .index .category-lawyerist-podcast {
-    min-height: 15rem;
+  .index .has-post-label {
+    padding: 2rem;
   }
 
-  .index .tag-tbd-law-community {
-    border-top: .7rem solid #0074ff;
-    padding: 2rem;
+  .index .category-lawyerist-podcast {
+    min-height: 15rem;
   }
 
   .index .series {
@@ -1354,7 +1349,7 @@ Content
     padding: 6rem;
   }
 
-    @media only screen and ( max-width:689px ) {
+    @media only screen and ( max-width:683px ) {
 
       .index .type-product {
         padding: 3rem;
@@ -1369,18 +1364,18 @@ Content
 
   /* Series title. */
 
-  .series_title {
+  .post_label {
     font-size: 1.4rem;
     font-weight: bold;
     margin-bottom: .5em;
     text-transform: uppercase;
   }
 
-    .series_title a {
+    .post_label a {
       color: #666;
     }
 
-    .series_title > a:before {
+    .post_label > a:before {
       content: '\f505';
       display: inline-block;
       -moz-osx-font-smoothing: grayscale;
@@ -1391,90 +1386,10 @@ Content
       vertical-align: top;
     }
 
-    .series_title a:hover,
-    .series_title a:focus {
+    .post_label a:hover,
+    .post_label a:focus {
       color: #a00;
       text-decoration: none;
-    }
-
-
-  /* Post image styles. */
-
-  .index .default_thumbnail {
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    border-radius: .2rem 0 0 .2rem;
-    float: left;
-    height: 100%;
-    margin-bottom: 0;
-    margin-right: 1.5rem;
-    position: absolute;
-      top: 0;
-      left: 0;
-    width: 40%;
-  }
-
-  .index .format-standard .wp-post-image {
-    border-radius: .2rem .2rem 0 0;
-    display: block;
-    margin: 0;
-    width: 100%;
-  }
-
-  .index .category-lawyerist-podcast .default_thumbnail::before {
-    background-color: #e9e9e9;
-    border: .5rem solid #fff;
-    border-radius: 50%;
-    box-shadow: .1rem .1rem 1rem rgba( 0, 0, 0, 0.2 );
-    color: #fff;
-    content: "\f452";
-    display: block;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
-    font: normal 10rem/1 Genericons;
-    margin-left: -5.5rem;
-    margin-top: -5.5rem;
-    opacity: .9;
-    position: absolute;
-      left: 50%;
-      top: 50%;
-    speak: none;
-    transition: box-shadow .2s;
-    vertical-align: top;
-    width: 10rem;
-  }
-
-    .index .category-lawyerist-podcast .default_thumbnail:hover::before {
-      box-shadow: .1rem .1rem 2rem rgba( 0, 0, 0, 0.4 );
-    }
-
-    .index .category-lawyerist-podcast .default_thumbnail:active::before {
-      box-shadow: .1rem .1rem .1rem rgba( 0, 0, 0, 0.2 );
-    }
-
-  .index .tag-tbd-law-community .avatar {
-    float: left;
-    margin-bottom: 0;
-    margin-right: 1.5rem;
-    width: 10rem;
-  }
-
-  .index .type-product .wp-post-image {
-    float: right;
-    margin: 0 0 3rem 0;
-    transform: rotate( .015turn );
-    width: 25rem;
-  }
-
-    @media only screen and ( max-width: 689px ) {
-
-      .index .type-product .wp-post-image {
-        display: block;
-        float: none;
-        margin: 0 auto 3rem auto;
-      }
-
     }
 
 
@@ -1484,37 +1399,16 @@ Content
     padding: 2rem;
   }
 
-  .index .format-aside.has-post-thumbnail .headline_excerpt,
-  .index .category-lawyerist-podcast .headline_excerpt,
-  .index .series.has-post-thumbnail .headline_excerpt,
-  .index .sponsored.has-post-thumbnail .headline_excerpt,
-  .index .page.has-post-thumbnail .headline_excerpt {
-    margin: 0 0 0 1.5rem;
+  .index .has-post-thumbnail .headline_excerpt {
+    margin: 0;
     padding: 2rem 2rem 2rem 40%;
   }
 
-  .index .tag-tbd-law-community .headline_excerpt {
-    margin: 0 0 0 1.5rem;
-    padding: 0 0 0 10rem;
-  }
-
-  .index .series.has-post-thumbnail .headline_excerpt {
-    margin: 0;
-    padding: 0;
-    position: relative;
-  }
-
-    .index .series.has-post-thumbnail .headline_excerpt .headline,
-    .index .series.has-post-thumbnail .headline_excerpt .excerpt,
-    .index .series.has-post-thumbnail .headline_excerpt .postmeta {
-      margin-left: 40%;
-      padding-left: 1.5rem;
+    .index .has-post-thumbnail .headline,
+    .index .has-post-thumbnail .excerpt,
+    .index .has-post-thumbnail .postmeta {
+      margin-left: 1.5rem;
     }
-
-  .archive.tax-series .series .headline_excerpt,
-  .archive.tax-series .series.has-post-thumbnail .headline_excerpt {
-    padding: 2rem;
-  }
 
   .index .type-product .headline_excerpt {
     padding: 0;
@@ -1529,7 +1423,7 @@ Content
   }
 
     /* See .index .type-product .wp-post-image, above. */
-    @media only screen and ( max-width: 689px ) {
+    @media only screen and ( max-width: 683px ) {
 
       .index .type-product.has-post-thumbnail .headline_excerpt {
         padding: 0;
@@ -1537,15 +1431,81 @@ Content
 
     }
 
+    /* Post image styles. */
+
+    .index .default_thumbnail {
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      border-radius: .2rem 0 0 .2rem;
+      float: left;
+      height: 100%;
+      margin-bottom: 0;
+      margin-right: 1.5rem;
+      position: absolute;
+        top: 0;
+        left: 0;
+      width: 40%;
+    }
+
+    .index .has-post-label .default_thumbnail {
+      border-radius: 0;
+    }
+
+    .index .category-lawyerist-podcast .default_thumbnail::before {
+      background-color: #e9e9e9;
+      border: .5rem solid #fff;
+      border-radius: 50%;
+      box-shadow: .1rem .1rem 1rem rgba( 0, 0, 0, 0.2 );
+      color: #fff;
+      content: "\f452";
+      display: block;
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-font-smoothing: antialiased;
+      font: normal 10rem/1 Genericons;
+      margin-left: -5.5rem;
+      margin-top: -5.5rem;
+      opacity: .9;
+      position: absolute;
+        left: 50%;
+        top: 50%;
+      speak: none;
+      transition: box-shadow .2s;
+      vertical-align: top;
+      width: 10rem;
+    }
+
+      .index .category-lawyerist-podcast .default_thumbnail:hover::before {
+        box-shadow: .1rem .1rem 2rem rgba( 0, 0, 0, 0.4 );
+      }
+
+      .index .category-lawyerist-podcast .default_thumbnail:active::before {
+        box-shadow: .1rem .1rem .1rem rgba( 0, 0, 0, 0.2 );
+      }
+
+    .index .type-product .wp-post-image {
+      float: right;
+      margin: 0 0 3rem 0;
+      transform: rotate( .015turn );
+      width: 25rem;
+    }
+
+      @media only screen and ( max-width: 683px ) {
+
+        .index .type-product .wp-post-image {
+          display: block;
+          float: none;
+          margin: 0 auto 3rem auto;
+        }
+
+      }
+
 
     /* Headline styles. */
 
     .index .headline {
+      font-size: 2.4rem;
       margin-bottom: .5rem;
-    }
-
-    .index .format-standard .headline {
-      font-size: 3.6rem;
     }
 
     .index .category-lawyerist-podcast .headline,
@@ -1554,25 +1514,14 @@ Content
       margin-bottom: 0;
     }
 
-    .index .format-aside .headline,
-    .index .series .headline,
-    .index .sponsored .headline,
-    .index .page .headline {
-      font-size: 2.4rem;
-    }
-
-    @media only screen and ( max-width: 689px ) {
-
-      .index .type-product .headline {
-        margin-bottom: .75em;
-      }
-
-    }
-
-    @media only screen and ( max-width: 639px ) {
+    @media only screen and ( max-width: 683px ) {
 
       .index .headline_excerpt .headline {
         font-size: 2.4rem !important;
+      }
+
+      .index .type-product .headline {
+        margin-bottom: .75em;
       }
 
     }
@@ -1584,7 +1533,6 @@ Content
       font-size: 1.8rem;
     }
 
-    .index .format-aside .excerpt,
     .index .series .excerpt {
       font-size: 1.6rem;
     }
@@ -1598,7 +1546,7 @@ Content
       color: #111;
     }
 
-    @media only screen and ( max-width: 639px ) {
+    @media only screen and ( max-width: 683px ) {
 
       .index .excerpt {
         display: none;
@@ -2681,7 +2629,7 @@ min-height: 10rem;
     padding-left: 32rem;
   }
 
-@media only screen and (max-width: 639px) {
+@media only screen and (max-width: 683px) {
 
   #author_header img {
     float: none;

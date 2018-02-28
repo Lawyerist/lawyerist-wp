@@ -40,6 +40,58 @@
 
 		<?php
 
+		$categories = get_categories();
+
+		foreach ( $categories as $category ) {
+
+
+
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		if ( has_category() && !has_category( 'sponsored-posts' ) ) {
+			$post_classes[] = 'has-post-label';
+
+			$cat_IDs = wp_get_post_terms(
+				$post->ID,
+				'category',
+				array(
+					'fields' 	=> 'ids',
+					'orderby' => 'count',
+					'order' 	=> 'DESC'
+				)
+			);
+
+			$cat_info				= get_term( $cat_IDs[0] );
+			$cat_slug				= $cat_info->slug;
+
+			$post_label 		   	= $cat_info->name;
+			$post_label_url			=	get_term_link( $cat_IDs[0], 'category' );
+		}
+
     // Outputs the most recent podcast episode.
 
     // Outputs strategic resource pages.
