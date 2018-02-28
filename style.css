@@ -1244,7 +1244,7 @@ Content
 
   .format-standard
   .format-aside
-  .tag-lawyerist-podcast
+  .category-lawyerist-podcast
   .tag-tbd-law-community
   .series
   .sponsored
@@ -1326,7 +1326,7 @@ Content
 
   /* Post container styles. */
 
-  .index .tag-lawyerist-podcast {
+  .index .category-lawyerist-podcast {
     min-height: 15rem;
   }
 
@@ -1422,7 +1422,7 @@ Content
     width: 100%;
   }
 
-  .index .tag-lawyerist-podcast .default_thumbnail::before {
+  .index .category-lawyerist-podcast .default_thumbnail::before {
     background-color: #e9e9e9;
     border: .5rem solid #fff;
     border-radius: 50%;
@@ -1445,11 +1445,11 @@ Content
     width: 10rem;
   }
 
-    .index .tag-lawyerist-podcast .default_thumbnail:hover::before {
+    .index .category-lawyerist-podcast .default_thumbnail:hover::before {
       box-shadow: .1rem .1rem 2rem rgba( 0, 0, 0, 0.4 );
     }
 
-    .index .tag-lawyerist-podcast .default_thumbnail:active::before {
+    .index .category-lawyerist-podcast .default_thumbnail:active::before {
       box-shadow: .1rem .1rem .1rem rgba( 0, 0, 0, 0.2 );
     }
 
@@ -1485,7 +1485,7 @@ Content
   }
 
   .index .format-aside.has-post-thumbnail .headline_excerpt,
-  .index .tag-lawyerist-podcast .headline_excerpt,
+  .index .category-lawyerist-podcast .headline_excerpt,
   .index .series.has-post-thumbnail .headline_excerpt,
   .index .sponsored.has-post-thumbnail .headline_excerpt,
   .index .page.has-post-thumbnail .headline_excerpt {
@@ -1548,7 +1548,7 @@ Content
       font-size: 3.6rem;
     }
 
-    .index .tag-lawyerist-podcast .headline,
+    .index .category-lawyerist-podcast .headline,
     .index .page .headline {
       font-size: 3.2rem;
       margin-bottom: 0;
