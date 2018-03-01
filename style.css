@@ -1209,21 +1209,29 @@ Front Page
   margin-bottom: 6rem;
 }
 
-.home .has-post-thumbnail.category-how-lawyers-work .headline_excerpt {
+.home .type-product.has-post-label .headline_excerpt {
+  padding: 4rem;
+}
+
+.home .category-how-lawyers-work.has-post-thumbnail .headline_excerpt,
+.home .category-how-lawyers-work.has-post-thumbnail.has-post-label .headline_excerpt {
   min-height: 15rem;
   padding-left: 15rem;
 }
 
-  .home .has-post-thumbnail.category-how-lawyers-work .default_thumbnail {
+  .home .category-how-lawyers-work.has-post-thumbnail .default_thumbnail {
     border-radius: 50%;
     height: 15rem;
     width: 15rem;
   }
 
-  .home .has-post-thumbnail.category-how-lawyers-work .headline {
+  .home .category-how-lawyers-work.has-post-thumbnail .headline {
     font-size: 3.2rem;
   }
 
+.home .excerpt {
+  font-size: 1.6rem;
+}
 
 /*------------------------------
 Content
@@ -1427,16 +1435,7 @@ Content
 
   .index .type-product {
     border-top: .7rem solid #ed9c28;
-    padding: 6rem;
   }
-
-    @media only screen and ( max-width:683px ) {
-
-      .index .type-product {
-        padding: 3rem;
-      }
-
-    }
 
   .index .page {
     min-height: 15rem;
@@ -1495,22 +1494,37 @@ Content
       margin-left: 1.5rem;
     }
 
-  .index .type-product .headline_excerpt {
-    padding: 0;
+  .index .type-product .headline_excerpt,
+  .index .type-product.has-post-thumbnail .headline_excerpt {
+    padding: 6rem;
+  }
+
+  .index .type-product.has-post-label .headline_excerpt {
+    padding: 4rem;
   }
 
     .index .type-product a.button {
       margin-bottom: 0;
     }
 
-  .index .type-product.has-post-thumbnail .headline_excerpt {
-    padding: 0 28rem 0 0;
+  .index .type-product.has-post-thumbnail .headline,
+  .index .type-product.has-post-thumbnail .excerpt,
+  .index .type-product.has-post-thumbnail .postmeta {
+    margin-left: 0;
+    padding-right: 28rem;
   }
 
     /* See .index .type-product .wp-post-image, above. */
     @media only screen and ( max-width: 683px ) {
 
+      .index .type-product .headline_excerpt,
       .index .type-product.has-post-thumbnail .headline_excerpt {
+        padding: 3rem;
+      }
+
+      .index .type-product.has-post-thumbnail .headline,
+      .index .type-product.has-post-thumbnail .excerpt,
+      .index .type-product.has-post-thumbnail .postmeta {
         padding: 0;
       }
 
