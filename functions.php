@@ -454,7 +454,7 @@ function lawyerist_sponsored_product_updates() {
 
 			echo '<ul>';
 
-				// Start the current posts sub-Loop.
+				// Start the product updates sub-Loop.
 				while ( $product_updates_query->have_posts() ) : $product_updates_query->the_post();
 
 					$product_update_title = the_title( '', '', FALSE );
@@ -789,7 +789,7 @@ Get Number of Reviews
 function lawyerist_get_review_count() {
 
 	global $post;
-	
+
 	$review_count  = get_post_meta( $post->ID, 'wp_review_comments_rating_count', true );
 
 	if ( empty( $review_count ) || $review_count == 0 ) {

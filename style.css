@@ -27,6 +27,7 @@ Content
 	Posts
   Tables
 	Sharing Buttons
+  Front Page
   Resource Pages
   Product Pages
   Full Width Template
@@ -1472,9 +1473,9 @@ Content
       display: block;
       -moz-osx-font-smoothing: grayscale;
       -webkit-font-smoothing: antialiased;
-      font: normal 10rem/1 Genericons;
-      margin-left: -5.5rem;
-      margin-top: -5.5rem;
+      font: normal 7.5rem/1 Genericons;
+      margin-left: -3.75rem;
+      margin-top: -3.75rem;
       opacity: .9;
       position: absolute;
         left: 50%;
@@ -1482,7 +1483,7 @@ Content
       speak: none;
       transition: box-shadow .2s;
       vertical-align: top;
-      width: 10rem;
+      width: 7.5rem;
     }
 
       .index .category-lawyerist-podcast .default_thumbnail:hover::before {
@@ -2009,6 +2010,53 @@ Content
     .lpms-features-table tr th {
       min-width: 16rem;
     }
+
+
+    /*------------------------------
+  	Front Page
+  	------------------------------*/
+
+    #secondary_ctas {
+      margin-right: -1rem;
+    }
+
+    .one_third {
+      box-sizing: border-box;
+      float: left;
+      width: 33.33333%;
+    }
+
+    .one_third .index_post_container {
+      padding-bottom: 2rem;
+      margin-right: 1rem;
+    }
+
+      .one_third .index_post_container img {
+        height: auto;
+        margin-bottom: 1rem;
+        width: 100%;
+      }
+
+      .one_third .index_post_container h3 {
+        margin-left: 2rem;
+        margin-right: 2rem;
+      }
+
+      .one_third .index_post_container .button {
+        display: block;
+        margin: 0 2rem;
+        text-align: center;
+      }
+
+    .home .index_post_container .headline_excerpt {
+      margin-bottom: 2rem;
+    }
+
+    .home .index_post_container .post_label {
+      margin-bottom: 0;
+    }
+
+
 
 
   /*------------------------------
