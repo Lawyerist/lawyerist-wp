@@ -1229,9 +1229,6 @@ Front Page
     font-size: 3.2rem;
   }
 
-.home .excerpt {
-  font-size: 1.6rem;
-}
 
 /*------------------------------
 Content
@@ -1629,10 +1626,6 @@ Content
     /* Excerpt styles. */
 
     .index .excerpt {
-      font-size: 1.8rem;
-    }
-
-    .index .series .excerpt {
       font-size: 1.6rem;
     }
 

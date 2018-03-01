@@ -30,9 +30,9 @@
 
 			<div class="one_third">
 				<div class="index_post_container">
-					<img src="http://via.placeholder.com/320x180" />
+					<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2017/10/lawyerist-insider-logo.png?w=320&h=180" />
 					<h3>Join Your Tribe. Grow Your Firm.</h3>
-					<a class="button" href="#">Learn More</a>
+					<a class="button" href="https://lawyerist.com/insider/">Learn More</a>
 				</div>
 			</div>
 

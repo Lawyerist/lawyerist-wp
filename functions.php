@@ -699,8 +699,8 @@ Add Image Sizes
 ------------------------------*/
 
 if ( function_exists( 'add_image_size' ) ) {
-	add_image_size( 'default_thumbnail', 300, 250, true ); // For non-featured posts. Used in loop-index.php.
-	add_image_size( 'standard_thumbnail', 684, 385, true ); // For featured posts and for the full-sized featured post image. Used throughout.
+	add_image_size( 'default_thumbnail', 300, 250, true ); // The default thumbnail in index lists.
+	add_image_size( 'standard_thumbnail', 684, 385, true ); // For the full-sized featured image on single posts and pages.
 	add_image_size( 'current_posts_thumbnail', 160, 90, true ); // For the current-posts footer on single post pages.
 }
 
