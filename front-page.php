@@ -11,7 +11,6 @@
 
 	<div id="content_column">
 
-
     <!-- Outputs the Scorecard call to action. -->
 		<div id="big_hero_cta" class="index_post_container">
 			<a class="big_hero_top" href="https://lawyerist.com/scorecard/">
@@ -32,7 +31,7 @@
 			<div class="one_third">
 				<div class="index_post_container">
 					<img src="http://via.placeholder.com/320x180" />
-					<h3>Call to Action</h3>
+					<h3>Join Your Tribe. Grow Your Firm.</h3>
 					<a class="button" href="#">Learn More</a>
 				</div>
 			</div>
@@ -40,7 +39,7 @@
 			<div class="one_third">
 				<div class="index_post_container">
 					<img src="http://via.placeholder.com/320x180" />
-					<h3>Call to Action</h3>
+					<h3>Find a Web Designer</h3>
 					<a class="button" href="#">Learn More</a>
 				</div>
 			</div>
@@ -48,8 +47,36 @@
 			<div class="one_third">
 				<div class="index_post_container">
 					<img src="http://via.placeholder.com/320x180" />
-					<h3>Call to Action</h3>
+					<h3>The Lawyerist Productivity Journal</h3>
 					<a class="button" href="#">Learn More</a>
+				</div>
+			</div>
+
+			<div class="clear"></div>
+
+		</div>
+
+		<!-- Outputs strategic pages. -->
+		<div id="resource_pages">
+
+			<div class="one_third">
+				<div class="index_post_container">
+					<img src="http://via.placeholder.com/320x180" />
+					<h3>The Best Law Firm Websites</h3>
+				</div>
+			</div>
+
+			<div class="one_third">
+				<div class="index_post_container">
+					<img src="http://via.placeholder.com/320x180" />
+					<h3>Law Practice Management Software</h3>
+				</div>
+			</div>
+
+			<div class="one_third">
+				<div class="index_post_container">
+					<img src="http://via.placeholder.com/320x180" />
+					<h3>The Lawyerist Podcast</h3>
 				</div>
 			</div>
 
@@ -123,9 +150,6 @@
 
 		endwhile; endif;
 
-
-    // Outputs strategic resource pages.
-
 		// Outputs the most recent How Lawyers Work post.
 		$hlw_query_args = array(
 			'category_name'				=> 'how-lawyers-work',
@@ -140,6 +164,17 @@
 			$podcast_title	= the_title( '', '', FALSE );
 			$podcast_url		= get_permalink();
 
+			// Gets the first image, or a default.
+			$first_img = '';
+			ob_start();
+			ob_end_clean();
+			$output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
+			$first_img = $matches[1][0];
+
+			if ( empty( $first_img ) ) {
+				$first_img = 'https://lawyerist.com/lawyerist/wp-content/uploads/2018/01/typewriter.jpg';
+			}
+
 			// Starts the post container.
 			echo '<div ' ;
 			post_class( 'index_post_container has-post-label' );
@@ -153,7 +188,7 @@
 
 						// Outputs a featured image.
 						echo '<div class="default_thumbnail" style="background-image: url( ';
-						echo the_post_thumbnail_url( 'default_thumbnail' );
+						echo $first_img;
 						echo ' );"></div>';
 
 						// Headline
@@ -216,9 +251,7 @@
 					echo '<div class="headline_excerpt">';
 
 						// Outputs a featured image.
-						echo '<div class="default_thumbnail" style="background-image: url( ';
-						echo the_post_thumbnail_url( 'default_thumbnail' );
-						echo ' );"></div>';
+						the_post_thumbnail( 'shop_single' );
 
 						// Headline
 						echo '<h2 class="headline">' . $podcast_title . '</h2>';
