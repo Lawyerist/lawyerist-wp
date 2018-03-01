@@ -33,6 +33,7 @@ CONTENT
 
 COMMENTS & REVIEWS
 - Show Commenter's First Name & Initial
+- Get Number of Reviews
 
 WOOCOMMERCE
 - Insider Plus Shopping Cart Upsell
@@ -771,6 +772,27 @@ function lawyerist_comment_author_name( $author = '' ) {
 }
 
 add_filter( 'get_comment_author', 'lawyerist_comment_author_name', 10, 1 );
+
+
+/*------------------------------
+Get Number of Reviews
+------------------------------*/
+
+function lawyerist_get_review_count() {
+
+	global $post;
+	
+	$review_count  = get_post_meta( $post->ID, 'wp_review_comments_rating_count', true );
+
+	if ( empty( $review_count ) || $review_count == 0 ) {
+		return;
+	} elseif ( $review_count == 1 ) {
+		return $review_count . ' review';
+	} else {
+		return $review_count . ' reviews';
+	}
+
+}
 
 
 /* WOOCOMMERCE ****************/
