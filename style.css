@@ -2959,6 +2959,10 @@ a.greybutton:active,
     text-decoration: none;
   }
 
+  .gform_wrapper .gf_progressbar_wrapper {
+    margin-top: 2rem;
+  }
+
   .gform_confirmation_message {
     padding-top: 2rem;
   }
