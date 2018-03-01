@@ -798,14 +798,20 @@ img.inline {
       width: 50%;
     }
 
+    .gallery-columns-3 .gallery-item {
+      padding-right: 2rem;
+      width: 33.33333%;
+    }
+
     .gallery-columns-4 .gallery-item {
       padding-right: 1rem;
       width: 25%;
     }
 
-    /* The actual image inside a container for 3, 2 and 4 column galleries */
+    /* The actual image inside a container for 2, 3, and 4 column galleries */
     .gallery img,
     .gallery-columns-2 .attachment-medium,
+    .gallery-columns-3 .attachment-medium,
     .gallery-columns-4 .attachment-thumbnail {
       height: auto;
       margin-bottom: 0;
@@ -3001,7 +3007,8 @@ a.greybutton:active,
     ;
     display: block;
     margin: 0 .3rem 1.5em .1rem !important;
-    padding: .1rem 2rem 2rem 2rem;
+    padding: 2rem;
+    text-align: left;
     text-decoration: none;
   }
 
@@ -3016,6 +3023,14 @@ a.greybutton:active,
 
   .gform_footer {
     padding-top: 0 !important;
+  }
+
+  .gform_ajax_spinner {
+    display: inline;
+    line-height: 3.6rem;
+    margin: 0;
+    vertical-align: middle;
+    width: auto;
   }
 
   #sidebar_column .gform_wrapper {
