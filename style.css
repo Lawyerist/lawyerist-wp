@@ -2946,21 +2946,18 @@ a.greybutton:active,
   ------------------------------*/
 
   .gform_wrapper,
-  .gform_confirmation_message {
+  .gform_confirmation_message,
+  .gform_wrapper .validation_error {
     background-color: #fbfbfb;
-    border: .1rem solid #ddd;
+    border: .1rem solid #ddd !important;
     border-radius: .2rem;
     box-shadow:
       .1rem .1rem .3rem rgba(0, 0, 0, 0.2)
     ;
     display: block;
     margin: 0 .3rem 1.5em .1rem !important;
-    padding: .1rem 2rem 2rem 2rem;
+    padding: 2rem;
     text-decoration: none;
-  }
-
-  .gform_wrapper .gf_progressbar_wrapper {
-    margin-top: 2rem;
   }
 
   .gform_confirmation_message {
@@ -2974,6 +2971,14 @@ a.greybutton:active,
 
   .gform_footer {
     padding-top: 0 !important;
+  }
+
+  .gform_ajax_spinner {
+    display: inline;
+    line-height: 3.6rem;
+    margin: 0;
+    vertical-align: middle;
+    width: auto;
   }
 
   #sidebar_column .gform_wrapper {
