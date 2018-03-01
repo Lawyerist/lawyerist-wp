@@ -33,24 +33,23 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
       // Show ratings for child posts.
       if ( $post->post_parent > 0 ) {
 
+        // Rating
         if ( comments_open() && function_exists( 'wp_review_show_total' ) ) {
 
           $rating       = get_post_meta( $post_ID, 'wp_review_comments_rating_value', true );
-          $num_reviews  = get_post_meta( $post_ID, 'wp_review_comments_rating_count', true );
-          if ( $num_reviews == 1 ) {
-            $review_s = 'review';
-          } else {
-            $review_s = 'reviews';
-          }
+          $review_count = lawyerist_get_review_count();
 
           echo '<div class="user-rating">';
 
-          if ( !empty( $rating ) ) {
-            wp_review_show_total();
-            echo '<br />';
-          }
+            if ( !empty( $rating ) ) {
+              echo '<a href="#comments">';
+                wp_review_show_total();
+              echo ' (' . $review_count . ')</a>';
+            } else {
+              echo '<a href="#respond">Leave a review below.</a>';
+            }
 
-          echo '<a href="#respond">Leave a review below.</a> (' . $num_reviews . ' ' . $review_s . ')</div>';
+           echo '</div>';
 
         }
 

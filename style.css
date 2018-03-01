@@ -555,6 +555,10 @@ p.pullout {
   margin-bottom: 1em;
 }
 
+  .user-rating a:hover {
+    text-decoration: none;
+  }
+
   .user-rating .review-star {
     color: #bbb;
   }
