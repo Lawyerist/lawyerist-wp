@@ -238,6 +238,7 @@ th,
 }
 
 aside blockquote,
+.big_hero_top,
 .breadcrumbs,
 button,
 .button,
@@ -1073,6 +1074,7 @@ Front Page
     background-image: url('https://lawyerist.com/lawyerist/wp-content/uploads/2018/02/scorecard-hero-background-684x385.jpg');
     background-size: cover;
     display: block;
+    margin-bottom: 2rem;
     padding: 2rem;
     position: relative;
   }
@@ -1148,6 +1150,17 @@ Front Page
       .big_hero_top p {
         font-size: 3.2rem;
       }
+
+        .big_hero_top:active p,
+        .big_hero_top:focus p,
+        .big_hero_top:hover p {
+          color: #111;
+        }
+
+  #big_hero_cta .big_hero_p {
+    margin: 0;
+    padding: 0 2rem;
+  }
 
   .big_hero_button {
     padding: 2rem;

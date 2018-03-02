@@ -21,6 +21,7 @@
 				</div>
 				<div class="clear"></div>
 			</a>
+			<p class="big_hero_p">The practice of law is changing. You need to understand whether your firm is positioned for success in the coming years. Our free Small Firm Scorecard will identify your firm’s strengths and weaknesses in just a few minutes.</p>
 			<div class="big_hero_button"><a class="button" href="https://lawyerist.com/scorecard/">Get Your Free Score</a></div>
 		</div>
 
