@@ -1066,7 +1066,7 @@ Front Page
 ------------------------------*/
 
 #big_hero_cta {
-  margin-bottom: 6rem;
+  margin: 0 .3rem 6rem .1rem;
 }
 
   .big_hero_top {
@@ -1162,35 +1162,35 @@ Front Page
       text-align: center;
     }
 
-#secondary_ctas,
-#resource_pages {
-  margin-right: -1rem;
+.front_page_block {
+  margin: 0 -.7rem 6rem .1rem;
 }
 
-.one_third {
+.one_half {
   box-sizing: border-box;
   float: left;
-  width: 33.33333%;
+  width: 50%;
 }
 
-.one_third .index_post_container {
+.one_half .index_post_container {
   padding-bottom: 2rem;
   margin-right: 1rem;
 }
 
-  .one_third .index_post_container img {
+  .one_half .index_post_container img {
+    border-radius: .2rem .2rem 0 0;
     height: auto;
     margin-bottom: 1rem;
     width: 100%;
   }
 
-  .one_third .index_post_container h3 {
+  .one_half .index_post_container h3 {
     font-size: 2.4rem;
     margin-left: 2rem;
     margin-right: 2rem;
   }
 
-  .one_third .index_post_container .button {
+  .one_half .index_post_container .button {
     display: block;
     margin: 0 2rem;
     text-align: center;
@@ -1202,15 +1202,6 @@ Front Page
 
 .home .index_post_container .post_label {
   margin-bottom: 0;
-}
-
-
-#secondary_ctas {
-  margin-bottom: 6rem;
-}
-
-#resource_pages {
-  margin-bottom: 6rem;
 }
 
 .home .type-product.has-post-label .headline_excerpt {
@@ -1349,7 +1340,7 @@ Content
       .1rem .1rem .3rem rgba(0, 0, 0, 0.2)
     ;
     display: block;
-    margin-bottom: 1rem;
+    margin: 0 .3rem 1rem .1rem;
     padding: 0;
 		text-decoration: none;
 	}
