@@ -25,6 +25,7 @@ Front Page
 Content
 	Index Lists
 	Posts
+  Scorecard Results
   Tables
 	Sharing Buttons
   Resource Pages
@@ -198,6 +199,8 @@ Useful Stuff
   border: .1rem solid #ddd;
   border-radius: .2rem;
   box-shadow: .1rem .1rem .3rem rgba(0, 0, 0, 0.2);
+  margin-left: .1rem;
+  margin-right: .3rem;
 }
 
 .text_right {
@@ -262,6 +265,7 @@ label,
 .sponsored_testimonial_label,
 p.pullout,
 p.pullquote,
+#scorecard_results #grade_box,
 #series_note,
 .series_next_post,
 .post_label,
@@ -1904,9 +1908,7 @@ Content
     background-color: #fafafa;
     border: .1rem solid #ddd;
     border-radius: .2rem;
-    box-shadow:
-      .1rem .1rem .3rem rgba(0, 0, 0, 0.2)
-    ;
+    box-shadow: .1rem .1rem .3rem rgba(0, 0, 0, 0.2);
     margin-left: .1rem;
     margin-right: .3rem;
   	padding: 2rem;
@@ -2031,6 +2033,79 @@ Content
       line-height: 1.2;
       margin-bottom: .2rem;
     }
+
+
+  /*------------------------------
+  Scorecard Results
+  ------------------------------*/
+
+  #scorecard_results {
+    background-color: #fafafa;
+    border: .1rem solid #ddd;
+    border-radius: .2rem;
+    box-shadow: .1rem .1rem .3rem rgba(0, 0, 0, 0.2);
+    margin: 0 .3rem 3rem .1rem;
+    padding: 2rem 4rem;
+    position: relative;
+  }
+
+  #scorecard_results #grade_box {
+    box-sizing: border-box;
+    float: left;
+    padding-right: 2rem;
+    width: 15rem;
+  }
+
+
+    #scorecard_results .grade_label {
+      color: #666;
+      font-size: 1.4rem;
+      font-weight: bold;
+      line-height: 1.5;
+      margin-bottom: .75rem;
+      text-transform: uppercase;
+    }
+
+    #scorecard_results .grade {
+      font-size: 14.4rem;
+      font-weight: bold;
+      line-height: 1;
+      text-align: center;
+    }
+
+    #scorecard_results .score {
+      text-align: center;
+    }
+
+  #scorecard_results #get_results {
+
+  }
+
+    #scorecard_results #get_results .button {
+      height: 3.6rem;
+      position: absolute;
+        right: 4rem;
+        top: 50%;
+      margin-top: -1.8rem;
+    }
+
+    #scorecard_results #get_results p {
+      display: block;
+      font-size: 1.6rem;
+      padding-left: 17rem;
+    }
+
+  @media only screen and ( max-width:449px ) {
+
+    #scorecard_results {
+      padding: 2rem;
+    }
+
+    #scorecard_results #get_results .button {
+      right: 2rem;
+    }
+
+  }
 
 
   /*------------------------------
