@@ -786,7 +786,7 @@ img.inline {
     margin-bottom: 3rem;
   }
 
-    /* A Gallery item container for 3, 2 and 4 column galleries */
+    /* A Gallery item container for 2, 3, and 4 column galleries */
     .gallery .gallery-item {
       border: none !important;
       box-sizing: border-box;
@@ -818,8 +818,11 @@ img.inline {
     .gallery-columns-2 .attachment-medium,
     .gallery-columns-3 .attachment-medium,
     .gallery-columns-4 .attachment-thumbnail {
+      border: .1rem solid #ddd;
+      border-radius: .2rem;
+      box-shadow: .1rem .1rem .3rem rgba(0, 0, 0, 0.2);
       height: auto;
-      margin-bottom: 0;
+      margin: 0 .3rem 0 .1rem;
       max-width: unset;
       width: 100%;
     }
