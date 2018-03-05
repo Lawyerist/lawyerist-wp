@@ -93,9 +93,9 @@
 
 		</div>
 
-		<div class="front_page_block">
-
 	<?php
+
+		echo '<div class="front_page_block">';
 
 		// Outputs the most recent podcast episode.
 		$current_podcast_query_args = array(
@@ -293,16 +293,16 @@
 		endwhile; endif;
 		// End of blog post.
 
-	?>
+		echo '</div>'; // End of .front_page_block with the current podcast, download, and blog post.
 
-	</div> <!-- End of .front_page_block with the current podcast, download, and blog post. -->
+	?>
 
 		<!-- Outputs strategic pages. -->
 		<div class="front_page_block">
 
 			<div class="one_half">
 				<div class="index_post_container">
-					<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2016/02/best-law-firm-websites.jpg?w=320&h=180" alt="A law firm website as viewed on a laptop." />
+					<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/03/best-law-firm-websites-2018.jpg?w=1600&ssl=1?w=320&h=180" alt="A law firm website as viewed on a laptop." />
 					<h3>The Best Law Firm Websites, 2018 Edition</h3>
 					<a class="button" href="https://lawyerist.com/best-law-firm-websites/">See the Top 10</a>
 				</div>
@@ -338,7 +338,7 @@
 
 		</div>
 
-		<?php
+	<?php
 
 		// Outputs the most recent How Lawyers Work post.
 		$hlw_query_args = array(
@@ -420,7 +420,7 @@
     // Outputs the Sponsored Product Updates widget.
     lawyerist_sponsored_product_updates();
 
-		?>
+	?>
 
 	</div><!-- end #content_column -->
 
