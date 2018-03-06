@@ -1451,10 +1451,6 @@ Content
     padding: 2rem;
   }
 
-  .index .category-lawyerist-podcast {
-    min-height: 15rem;
-  }
-
   .index .series {
     border-top: .7rem solid #ddd;
     padding: 2rem;
@@ -1526,25 +1522,36 @@ Content
       margin-left: 1.5rem;
     }
 
+  .index .category-lawyerist-podcast.has-post-thumbnail .headline_excerpt,
+  .index .category-lawyerist-podcast.has-post-thumbnail.has-post-label .headline_excerpt {
+    min-height: 15rem;
+  }
+
+  .index .category-how-lawyers-work.has-post-thumbnail .headline_excerpt,
+  .index .category-how-lawyers-work.has-post-thumbnail.has-post-label .headline_excerpt {
+    min-height: 15rem;
+    padding: 0 0 0 15rem;
+  }
+
   .index .type-product .headline_excerpt,
   .index .type-product.has-post-thumbnail .headline_excerpt {
     padding: 6rem;
   }
 
-  .index .type-product.has-post-label .headline_excerpt {
-    padding: 4rem;
-  }
+    .index .type-product.has-post-label .headline_excerpt {
+      padding: 4rem;
+    }
 
     .index .type-product a.button {
       margin-bottom: 0;
     }
 
-  .index .type-product.has-post-thumbnail .headline,
-  .index .type-product.has-post-thumbnail .excerpt,
-  .index .type-product.has-post-thumbnail .postmeta {
-    margin-left: 0;
-    padding-right: 28rem;
-  }
+    .index .type-product.has-post-thumbnail .headline,
+    .index .type-product.has-post-thumbnail .excerpt,
+    .index .type-product.has-post-thumbnail .postmeta {
+      margin-left: 0;
+      padding-right: 28rem;
+    }
 
     /* See .index .type-product .wp-post-image, above. */
     @media only screen and ( max-width: 683px ) {
@@ -1614,13 +1621,6 @@ Content
         box-shadow: .1rem .1rem .1rem rgba( 0, 0, 0, 0.2 );
       }
 
-
-    .index .category-how-lawyers-work.has-post-thumbnail .headline_excerpt,
-    .index .category-how-lawyers-work.has-post-thumbnail.has-post-label .headline_excerpt {
-      min-height: 15rem;
-      padding: 0 0 0 15rem;
-    }
-
       .index .category-how-lawyers-work.has-post-thumbnail .default_thumbnail {
         border-radius: 50%;
         height: 15rem;
@@ -1633,7 +1633,7 @@ Content
 
     .index .type-product .wp-post-image {
       float: right;
-      margin: 0 0 3rem 0;
+      margin: 0;
       transform: rotate( .015turn );
       width: 25rem;
     }
