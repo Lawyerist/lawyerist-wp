@@ -96,7 +96,7 @@
 					<div class="index_post_container">
 						<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/03/lawyerist-productivity-journal.jpg?w=320&h=180" alt="The Lawyerist Productivity Journal cover." />
 						<h3>The Lawyerist Productivity Journal</h3>
-						<a class="button" href="https://lawyerist.com/journal/">Learn More</a>
+						<a class="button" href="http://lawyeristjournal.com/">Learn More</a>
 					</div>
 				</div>
 
