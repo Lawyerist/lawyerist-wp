@@ -16,7 +16,7 @@
 
 // Authors, series, products, categories with empty descriptions
 
-	if ( is_home() || is_front_page() ) {
+	if ( is_front_page() ) {
 
 		$title				= get_the_title();
 		$seo_title		= get_post_meta( $post->ID, '_yoast_wpseo_title', true );
@@ -52,14 +52,6 @@
 			$title = single_term_title( '', FALSE );
 			$description = 'All our ' . $title . ' products.';
 		}
-
-	} elseif ( is_singular() ) {
-
-		global $post;
-
-		/* if ( defined( 'WPSEO_VERSION' ) ) {
-			$description = get_post_meta( $post->ID, '_yoast_wpseo_metadesc', true );
-		} */
 
 	}
 
