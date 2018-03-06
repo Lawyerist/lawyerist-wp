@@ -17,6 +17,7 @@ ADMIN
 CONTENT
 - Query Mods
 - Archive Headers
+- Post Labels
 - Postmeta
 - Author Bios
 - Custom Default Gravatar
@@ -317,6 +318,13 @@ function lawyerist_get_archive_header() {
 }
 
 
+/*------------------------------
+Post Labels
+------------------------------*/
+
+function lawyerist_get_post_labels() {
+
+}
 
 /*------------------------------
 Postmeta
@@ -446,7 +454,7 @@ function lawyerist_sponsored_product_updates() {
 
 			echo '<ul>';
 
-				// Start the current posts sub-Loop.
+				// Start the product updates sub-Loop.
 				while ( $product_updates_query->have_posts() ) : $product_updates_query->the_post();
 
 					$product_update_title = the_title( '', '', FALSE );
@@ -691,8 +699,8 @@ Add Image Sizes
 ------------------------------*/
 
 if ( function_exists( 'add_image_size' ) ) {
-	add_image_size( 'default_thumbnail', 300, 250, true ); // For non-featured posts. Used in loop-index.php.
-	add_image_size( 'standard_thumbnail', 684, 385, true ); // For featured posts and for the full-sized featured post image. Used throughout.
+	add_image_size( 'default_thumbnail', 300, 250, true ); // The default thumbnail in index lists.
+	add_image_size( 'standard_thumbnail', 684, 385, true ); // For the full-sized featured image on single posts and pages.
 	add_image_size( 'current_posts_thumbnail', 160, 90, true ); // For the current-posts footer on single post pages.
 }
 
@@ -781,7 +789,7 @@ Get Number of Reviews
 function lawyerist_get_review_count() {
 
 	global $post;
-	
+
 	$review_count  = get_post_meta( $post->ID, 'wp_review_comments_rating_count', true );
 
 	if ( empty( $review_count ) || $review_count == 0 ) {

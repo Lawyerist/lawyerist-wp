@@ -21,6 +21,7 @@ Images
 Header
   Title
 Menu
+Front Page
 Content
 	Index Lists
 	Posts
@@ -143,7 +144,7 @@ body {
           box-sizing: border-box;
       		float: none;
           margin: 0 auto;
-          padding:0 10px;
+          padding:0 1rem;
           width: 100%;
       	}
 
@@ -237,6 +238,7 @@ th,
 }
 
 aside blockquote,
+.big_hero_top,
 .breadcrumbs,
 button,
 .button,
@@ -267,7 +269,7 @@ p.pullquote,
 #scorecard_results #grade_box,
 #series_note,
 .series_next_post,
-.series_title,
+.post_label,
 .tag_list,
 .theiaPostSlider_nav ._text,
 .toc_list,
@@ -612,6 +614,7 @@ bold {
 sup {
 	font-size: 75%;
   font-style: normal;
+  vertical-align: super;
 }
 
 .syntaxhighlighter {
@@ -1062,6 +1065,216 @@ Menu
 
 }
 
+/*------------------------------
+Front Page
+------------------------------*/
+
+#front_page_sticky_posts {
+  margin-bottom: 6rem;
+}
+
+  .front_page_sticky_post {
+    margin-bottom: 1rem;
+    padding: 1rem 2rem;
+  }
+
+    .front_page_sticky_post a:hover,
+    .front_page_sticky_post a:focus,
+    .front_page_sticky_post a:hover .headline,
+    .front_page_sticky_post a:focus .headline {
+      color: #a00;
+      text-decoration: none;
+    }
+
+    #front_page_sticky_posts .front_page_sticky_post .headline {
+      margin-left: 2.4rem;
+      text-indent: -2.9rem;
+    }
+
+    .front_page_sticky_post .headline::before {
+      color: #c00;
+      content: "\f456";
+      display: inline;
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-font-smoothing: antialiased;
+      font: normal 2.4rem/1.2 Genericons;
+      margin-right: .5rem;
+      speak: none;
+      vertical-align: top;
+      width: 2.4rem;
+    }
+
+#big_hero_cta {
+  margin: 0 .3rem 6rem .1rem;
+}
+
+  .big_hero_top {
+    background-image: url('https://lawyerist.com/lawyerist/wp-content/uploads/2018/02/scorecard-hero-background-684x385.jpg');
+    background-size: cover;
+    display: block;
+    margin-bottom: 2rem;
+    padding: 2rem;
+    position: relative;
+  }
+
+    .big_hero_top:hover {
+      color: unset;
+    }
+
+    .big_hero_top .scorecard_image_wrapper {
+      box-sizing: border-box;
+      float: left;
+      margin-top: 3rem;
+      position: relative;
+      width: 40%;
+    }
+
+      .big_hero_top .scorecard_image_wrapper img {
+        box-shadow: .3rem .3rem .9rem rgba(0, 0, 0, 0.3);
+        height: auto;
+        margin: 0;
+        width: 100%;
+      }
+
+      .scorecard_image_wrapper::before {
+        background-color: #c00;
+        border-radius: 50%;
+        box-shadow: .3rem .3rem .9rem rgba(0, 0, 0, 0.3);
+        color: #fff;
+        content: 'Free!';
+        font-family: concourse-headings;
+        font-size: 2.4rem;
+        height: 6.5rem;
+        line-height: 6.5rem;
+        position: absolute;
+          top: -3rem;
+          right: -3rem;
+        text-align: center;
+        width: 6.5rem;
+      }
+
+    .scorecard_prompt_wrapper {
+      box-sizing: border-box;
+      float: right;
+      margin-top: 3rem;
+      padding: 2rem;
+      position: relative;
+      text-align: center;
+      text-shadow: .1rem .1rem .9rem #ddd;
+      width: 50%;
+      z-index: 2;
+    }
+
+      .scorecard_prompt_wrapper::after {
+        background-color: #fff;
+        content: '';
+        height: 100%;
+        opacity: .35;
+        position: absolute;
+          left: 0;
+          top: 0;
+        width: 100%;
+        z-index: -1;
+      }
+
+      .big_hero_top h2 {
+        font-size: 4.2rem;
+      }
+
+        .big_hero_top h2 sup {
+          font-size: 1.4rem;
+        }
+
+      .big_hero_top p {
+        font-size: 3.2rem;
+      }
+
+        .big_hero_top:active p,
+        .big_hero_top:focus p,
+        .big_hero_top:hover p {
+          color: #111;
+        }
+
+  #big_hero_cta .big_hero_p {
+    margin: 0;
+    padding: 0 2rem;
+  }
+
+  .big_hero_button {
+    padding: 2rem;
+  }
+
+    .big_hero_button .button {
+      display: block;
+      font-size: 3.2rem !important;
+      height: auto;
+      margin-bottom: 0;
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+.front_page_block {
+  margin: 0 -.7rem 6rem .1rem;
+}
+
+.one_half {
+  box-sizing: border-box;
+  float: left;
+  width: 50%;
+}
+
+.one_half .index_post_container {
+  padding-bottom: 2rem;
+  margin-right: 1rem;
+}
+
+  .one_half .index_post_container img {
+    border-radius: .2rem .2rem 0 0;
+    height: auto;
+    margin-bottom: 1rem;
+    width: 100%;
+  }
+
+  .one_half .index_post_container h3 {
+    font-size: 2.4rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
+
+  .one_half .index_post_container .button {
+    display: block;
+    margin: 0 2rem;
+    text-align: center;
+  }
+
+.home .has-post-thumbnail.has-post-label .headline_excerpt {
+  margin-bottom: 2rem;
+}
+
+.home .index_post_container .post_label {
+  margin-bottom: 0;
+}
+
+.home .type-product.has-post-label .headline_excerpt {
+  padding: 4rem;
+}
+
+.home .category-how-lawyers-work.has-post-thumbnail .headline_excerpt,
+.home .category-how-lawyers-work.has-post-thumbnail.has-post-label .headline_excerpt {
+  min-height: 15rem;
+  padding-left: 15rem;
+}
+
+  .home .category-how-lawyers-work.has-post-thumbnail .default_thumbnail {
+    border-radius: 50%;
+    height: 15rem;
+    width: 15rem;
+  }
+
+  .home .category-how-lawyers-work.has-post-thumbnail .headline {
+    font-size: 3.2rem;
+  }
+
 
 /*------------------------------
 Content
@@ -1160,11 +1373,7 @@ Content
 
   /*
   Selectors
-
-  .format-standard
-  .format-aside
-  .tag-lawyerist-podcast
-  .tag-tbd-law-community
+  .category-lawyerist-podcast
   .series
   .sponsored
   .type-product
@@ -1182,9 +1391,8 @@ Content
       .1rem .1rem .3rem rgba(0, 0, 0, 0.2)
     ;
     display: block;
-    margin-bottom: 1rem;
+    margin: 0 .3rem 1rem .1rem;
     padding: 0;
-    position: relative;
 		text-decoration: none;
 	}
 
@@ -1201,6 +1409,7 @@ Content
 
   .index_post_container .headline_excerpt {
     color: #111;
+    position: relative;
   }
 
     .index_post_container .headline {
@@ -1245,13 +1454,12 @@ Content
 
   /* Post container styles. */
 
-  .index .tag-lawyerist-podcast {
-    min-height: 15rem;
+  .index .has-post-label {
+    padding: 2rem;
   }
 
-  .index .tag-tbd-law-community {
-    border-top: .7rem solid #0074ff;
-    padding: 2rem;
+  .index .category-lawyerist-podcast {
+    min-height: 15rem;
   }
 
   .index .series {
@@ -1270,16 +1478,7 @@ Content
 
   .index .type-product {
     border-top: .7rem solid #ed9c28;
-    padding: 6rem;
   }
-
-    @media only screen and ( max-width:689px ) {
-
-      .index .type-product {
-        padding: 3rem;
-      }
-
-    }
 
   .index .page {
     min-height: 15rem;
@@ -1288,18 +1487,18 @@ Content
 
   /* Series title. */
 
-  .series_title {
+  .post_label {
     font-size: 1.4rem;
     font-weight: bold;
     margin-bottom: .5em;
     text-transform: uppercase;
   }
 
-    .series_title a {
+    .post_label a {
       color: #666;
     }
 
-    .series_title > a:before {
+    .post_label > a:before {
       content: '\f505';
       display: inline-block;
       -moz-osx-font-smoothing: grayscale;
@@ -1310,90 +1509,10 @@ Content
       vertical-align: top;
     }
 
-    .series_title a:hover,
-    .series_title a:focus {
+    .post_label a:hover,
+    .post_label a:focus {
       color: #a00;
       text-decoration: none;
-    }
-
-
-  /* Post image styles. */
-
-  .index .default_thumbnail {
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    border-radius: .2rem 0 0 .2rem;
-    float: left;
-    height: 100%;
-    margin-bottom: 0;
-    margin-right: 1.5rem;
-    position: absolute;
-      top: 0;
-      left: 0;
-    width: 40%;
-  }
-
-  .index .format-standard .wp-post-image {
-    border-radius: .2rem .2rem 0 0;
-    display: block;
-    margin: 0;
-    width: 100%;
-  }
-
-  .index .tag-lawyerist-podcast .default_thumbnail::before {
-    background-color: #e9e9e9;
-    border: .5rem solid #fff;
-    border-radius: 50%;
-    box-shadow: .1rem .1rem 1rem rgba( 0, 0, 0, 0.2 );
-    color: #fff;
-    content: "\f452";
-    display: block;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
-    font: normal 10rem/1 Genericons;
-    margin-left: -5.5rem;
-    margin-top: -5.5rem;
-    opacity: .9;
-    position: absolute;
-      left: 50%;
-      top: 50%;
-    speak: none;
-    transition: box-shadow .2s;
-    vertical-align: top;
-    width: 10rem;
-  }
-
-    .index .tag-lawyerist-podcast .default_thumbnail:hover::before {
-      box-shadow: .1rem .1rem 2rem rgba( 0, 0, 0, 0.4 );
-    }
-
-    .index .tag-lawyerist-podcast .default_thumbnail:active::before {
-      box-shadow: .1rem .1rem .1rem rgba( 0, 0, 0, 0.2 );
-    }
-
-  .index .tag-tbd-law-community .avatar {
-    float: left;
-    margin-bottom: 0;
-    margin-right: 1.5rem;
-    width: 10rem;
-  }
-
-  .index .type-product .wp-post-image {
-    float: right;
-    margin: 0 0 3rem 0;
-    transform: rotate( .015turn );
-    width: 25rem;
-  }
-
-    @media only screen and ( max-width: 689px ) {
-
-      .index .type-product .wp-post-image {
-        display: block;
-        float: none;
-        margin: 0 auto 3rem auto;
-      }
-
     }
 
 
@@ -1403,95 +1522,148 @@ Content
     padding: 2rem;
   }
 
-  .index .format-aside.has-post-thumbnail .headline_excerpt,
-  .index .tag-lawyerist-podcast .headline_excerpt,
-  .index .series.has-post-thumbnail .headline_excerpt,
-  .index .sponsored.has-post-thumbnail .headline_excerpt,
-  .index .page.has-post-thumbnail .headline_excerpt {
-    margin: 0 0 0 1.5rem;
+  .index .has-post-thumbnail .headline_excerpt {
+    margin: 0;
     padding: 2rem 2rem 2rem 40%;
   }
 
-  .index .tag-tbd-law-community .headline_excerpt {
-    margin: 0 0 0 1.5rem;
-    padding: 0 0 0 10rem;
+  .index .has-post-thumbnail.has-post-label .headline_excerpt {
+    padding: 0 0 0 40%;
   }
 
-  .index .series.has-post-thumbnail .headline_excerpt {
-    margin: 0;
-    padding: 0;
-    position: relative;
-  }
-
-    .index .series.has-post-thumbnail .headline_excerpt .headline,
-    .index .series.has-post-thumbnail .headline_excerpt .excerpt,
-    .index .series.has-post-thumbnail .headline_excerpt .postmeta {
-      margin-left: 40%;
-      padding-left: 1.5rem;
+    .index .has-post-thumbnail .headline,
+    .index .has-post-thumbnail .excerpt,
+    .index .has-post-thumbnail .postmeta {
+      margin-left: 1.5rem;
     }
 
-  .archive.tax-series .series .headline_excerpt,
-  .archive.tax-series .series.has-post-thumbnail .headline_excerpt {
-    padding: 2rem;
+  .index .type-product .headline_excerpt,
+  .index .type-product.has-post-thumbnail .headline_excerpt {
+    padding: 6rem;
   }
 
-  .index .type-product .headline_excerpt {
-    padding: 0;
+  .index .type-product.has-post-label .headline_excerpt {
+    padding: 4rem;
   }
 
     .index .type-product a.button {
       margin-bottom: 0;
     }
 
-  .index .type-product.has-post-thumbnail .headline_excerpt {
-    padding: 0 28rem 0 0;
+  .index .type-product.has-post-thumbnail .headline,
+  .index .type-product.has-post-thumbnail .excerpt,
+  .index .type-product.has-post-thumbnail .postmeta {
+    margin-left: 0;
+    padding-right: 28rem;
   }
 
     /* See .index .type-product .wp-post-image, above. */
-    @media only screen and ( max-width: 689px ) {
+    @media only screen and ( max-width: 683px ) {
 
+      .index .type-product .headline_excerpt,
       .index .type-product.has-post-thumbnail .headline_excerpt {
+        padding: 3rem;
+      }
+
+      .index .type-product.has-post-thumbnail .headline,
+      .index .type-product.has-post-thumbnail .excerpt,
+      .index .type-product.has-post-thumbnail .postmeta {
         padding: 0;
       }
 
     }
 
+    /* Post image styles. */
+
+    .index .default_thumbnail {
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      border-radius: .2rem 0 0 .2rem;
+      float: left;
+      height: 100%;
+      margin-bottom: 0;
+      margin-right: 1.5rem;
+      position: absolute;
+        top: 0;
+        left: 0;
+      width: 40%;
+    }
+
+    .index .has-post-label .default_thumbnail {
+      border-radius: 0;
+    }
+
+    .index .category-lawyerist-podcast .default_thumbnail::before {
+      background-color: #e9e9e9;
+      border: .5rem solid #fff;
+      border-radius: 50%;
+      box-shadow: .1rem .1rem 1rem rgba( 0, 0, 0, 0.2 );
+      color: #fff;
+      content: "\f452";
+      display: block;
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-font-smoothing: antialiased;
+      font: normal 7.5rem/1 Genericons;
+      margin-left: -3.75rem;
+      margin-top: -3.75rem;
+      opacity: .9;
+      position: absolute;
+        left: 50%;
+        top: 50%;
+      speak: none;
+      transition: box-shadow .2s;
+      vertical-align: top;
+      width: 7.5rem;
+    }
+
+      .index .category-lawyerist-podcast .default_thumbnail:hover::before {
+        box-shadow: .1rem .1rem 2rem rgba( 0, 0, 0, 0.4 );
+      }
+
+      .index .category-lawyerist-podcast .default_thumbnail:active::before {
+        box-shadow: .1rem .1rem .1rem rgba( 0, 0, 0, 0.2 );
+      }
+
+    .index .type-product .wp-post-image {
+      float: right;
+      margin: 0 0 3rem 0;
+      transform: rotate( .015turn );
+      width: 25rem;
+    }
+
+      @media only screen and ( max-width: 683px ) {
+
+        .index .type-product .wp-post-image {
+          display: block;
+          float: none;
+          margin: 0 auto 3rem auto;
+        }
+
+      }
+
 
     /* Headline styles. */
 
     .index .headline {
+      font-size: 2.4rem;
       margin-bottom: .5rem;
     }
 
-    .index .format-standard .headline {
-      font-size: 3.6rem;
-    }
-
-    .index .tag-lawyerist-podcast .headline,
+    .index .category-lawyerist-podcast .headline,
     .index .page .headline {
       font-size: 3.2rem;
       margin-bottom: 0;
     }
 
-    .index .format-aside .headline,
-    .index .series .headline,
-    .index .sponsored .headline,
-    .index .page .headline {
-      font-size: 2.4rem;
-    }
-
-    @media only screen and ( max-width: 689px ) {
-
-      .index .type-product .headline {
-        margin-bottom: .75em;
-      }
-
-    }
-
-    @media only screen and ( max-width: 639px ) {
+    @media only screen and ( max-width: 683px ) {
 
       .index .headline_excerpt .headline {
         font-size: 2.4rem !important;
+      }
+
+      .index .type-product .headline {
+        margin-bottom: .75em;
       }
 
     }
@@ -1500,11 +1672,6 @@ Content
     /* Excerpt styles. */
 
     .index .excerpt {
-      font-size: 1.8rem;
-    }
-
-    .index .format-aside .excerpt,
-    .index .series .excerpt {
       font-size: 1.6rem;
     }
 
@@ -1517,7 +1684,7 @@ Content
       color: #111;
     }
 
-    @media only screen and ( max-width: 639px ) {
+    @media only screen and ( max-width: 683px ) {
 
       .index .excerpt {
         display: none;
@@ -2671,7 +2838,7 @@ min-height: 10rem;
     padding-left: 32rem;
   }
 
-@media only screen and (max-width: 639px) {
+@media only screen and (max-width: 683px) {
 
   #author_header img {
     float: none;

@@ -3,10 +3,7 @@
 /*------------------------------
 Selectors
 
-$post_type == 'post' && $post_format == 'standard'
-$post_format == 'aside'
-has_tag( 'lawyerist-podcast' )
-has_tag( 'tbd-law-community' )
+has_category( 'lawyerist-podcast' )
 has_term( true, 'series' )
 has_term( true, 'sponsor' )
 $post_type == 'product'
@@ -35,14 +32,41 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
   // Sets the post excerpt to the Yoast Meta Description.
   if ( !empty( $seo_descr ) ) { $post_excerpt = $seo_descr; }
 
-  // Sets the post type to 'standard' if it isn't already set.
-  if ( $post_type == 'post' ) { $post_format = get_post_format() ? : 'standard'; }
-
   $post_classes[] = 'index_post_container'; // .post, .page, and .product are added automatically, as are tags and formats.
 
-  // Assign classes.
-  if ( has_term( true, 'series' ) ) { $post_classes[] = 'series'; }
-  if ( has_term( true, 'sponsor' ) ) { $post_classes[] = 'sponsored'; }
+  // Assigns series class and label.
+  if ( has_term( true, 'series' ) ) {
+
+    $post_classes[] = 'series';
+
+    if ( !is_tax( 'series' ) ) {
+
+      $post_classes[] = 'has-post-label';
+
+      $series_IDs = wp_get_post_terms(
+        $post->ID,
+        'series',
+        array(
+          'fields' 	=> 'ids',
+          'orderby' => 'count',
+          'order' 	=> 'DESC'
+        )
+      );
+
+      $series_info				= get_term( $series_IDs[0] );
+      $series_slug				= $series_info->slug;
+
+      $post_label 		   	= $series_info->name;
+      $post_label_url			=	get_term_link( $series_IDs[0], 'series' );
+
+    }
+
+  }
+
+  // Assigns sponsor class.
+  if ( has_term( true, 'sponsor' ) ) {
+    $post_classes[] = 'sponsored';
+  }
 
   // Skips pages if they don't have the 'Show in Feed' page type.
   if ( $post_type == 'page' && !has_term( 'show-in-feed', 'page_type' ) ) {
@@ -56,81 +80,36 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
     post_class( $post_classes );
     echo '>';
 
-      // Checks for labels to show above the title.
-
-        // Outputs the series label.
-        if ( has_term( true, 'series' ) && !is_tax( 'series' ) ) {
-
-          $series_IDs = wp_get_post_terms(
-        		$post->ID,
-        		'series',
-        		array(
-        			'fields' 	=> 'ids',
-        			'orderby' => 'count',
-        			'order' 	=> 'DESC'
-        		)
-        	);
-
-        	$series_info				= get_term( $series_IDs[0] );
-        	$series_title				= $series_info->name;
-        	$series_description = $series_info->description;
-        	$series_slug				= $series_info->slug;
-        	$series_url					=	get_term_link( $series_IDs[0], 'series' );
-
-        	echo '<p class="series_title"><a href="' . $series_url . '" title="Read more posts in ' . $series_title . '">' . $series_title . '</a></p>';
-
-        }
-
-        // Outputs the TBD Law Community label.
-        if ( has_tag( 'tbd-law-community' ) ) {
-          echo '<p class="series_title"><a href="https://lawyerist.com/tag/tbd-law-community/" title="Read more posts from the TBD Law community.">TBD Law community</a></p>';
-        }
-
+      // Outputs the post label if there is one.
+      if ( !empty( $post_label ) ) {
+        echo '<p class="post_label"><a href="' . $post_label_url . '" title="Read all posts in ' . $post_label . '.">' . $post_label . '</a></p>';
+      }
 
       // Starts the link container. Makes for big click targets!
       echo '<a href="' . $post_url . '" title="' . $post_title . '">';
 
-        // Outputs an image for podcast episodes.
-        if ( has_tag( 'lawyerist-podcast' ) ) {
-          echo '<div class="default_thumbnail" alt="The Lawyerist Podcast logo" style="background-image: url( https://lawyerist.com/lawyerist-dev/wp-content/uploads/2018/02/lawyerist-ltn-podcast-logo-16x9-684x385.png );"></div>';
-        }
-
-        // Outputs an avatar for community posts.
-        if ( has_tag( 'tbd-law-community' ) ) {
-          echo get_avatar( get_the_author_meta( 'user_email' ), 100, '', get_the_author_meta( 'display_name' ) );
-        }
-
-        // Outputs the post image based on the type of post.
-        if ( has_post_thumbnail() && !has_tag( 'lawyerist-podcast' ) && !has_term( true, 'series' ) ) {
-
-          if ( $post_type == 'post' && $post_format == 'standard' && !has_term( true, 'series' ) && !has_term( true, 'sponsor' ) ) {
-
-            the_post_thumbnail( 'standard_thumbnail' );
-
-          } elseif ( $post_type == 'product' ) {
-
-            the_post_thumbnail( 'shop_single' );
-
-          } else {
-
-            echo '<div class="default_thumbnail" style="background-image: url( ';
-            echo the_post_thumbnail_url( 'default_thumbnail' );
-            echo ' );"></div>';
-
-          }
-
-        }
-
         // Now we get the headline and excerpt (except for certain kinds of posts).
         echo '<div class="headline_excerpt">';
 
-          // Outputs the post image for series posts because otherwise the image
-          // would break the series container.
-          if ( has_term( true, 'series' ) ) {
+          // Outputs an image for podcast episodes.
+          if ( has_category( 'lawyerist-podcast' ) ) {
+            echo '<div class="default_thumbnail" alt="The Lawyerist Podcast logo" style="background-image: url( https://lawyerist.com/lawyerist-dev/wp-content/uploads/2018/02/lawyerist-ltn-podcast-logo-16x9-684x385.png );"></div>';
+          }
 
-            echo '<div class="default_thumbnail" style="background-image: url( ';
-            echo the_post_thumbnail_url( 'default_thumbnail' );
-            echo ' );"></div>';
+          // Outputs the featured image for other posts.
+          if ( has_post_thumbnail() && !has_category( 'lawyerist-podcast' ) ) {
+
+            if ( $post_type == 'product' ) {
+
+              the_post_thumbnail( 'shop_single' );
+
+            } else {
+
+              echo '<div class="default_thumbnail" style="background-image: url( ';
+              echo the_post_thumbnail_url( 'default_thumbnail' );
+              echo ' );"></div>';
+
+            }
 
           }
 
@@ -139,12 +118,12 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
           // Output the excerpt unless we're showing a podcast episode, a post from the
           // TBD Law community, or a page.
-          if ( !has_tag( 'lawyerist-podcast' ) && !has_tag( 'tbd-law-community' ) && $post_type != 'page' ) {
+          if ( !has_category( 'lawyerist-podcast' ) && !has_tag( 'tbd-law-community' ) && $post_type != 'page' ) {
             echo '<p class="excerpt">' . $post_excerpt . '</p>';
           }
 
           // Output the post meta unless we're showing a podcast episode.
-          if ( $post_type == 'post' && !has_tag( 'lawyerist-podcast' ) ) {
+          if ( $post_type == 'post' && !has_category( 'lawyerist-podcast' ) ) {
             lawyerist_postmeta();
           }
 
@@ -219,7 +198,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
     $post_num++; // Increment counter.
 
-    unset ( $post_classes ); // Clear the post classes for the next trip through the Loop.
+    unset ( $post_classes, $post_label, $post_label_url ); // Clear variables for the next trip through the Loop.
 
   } // End loop for excluding pages without the "Show in Feed" page type.
 
