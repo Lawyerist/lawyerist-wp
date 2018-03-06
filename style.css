@@ -294,6 +294,8 @@ pre {
 #description,
 .gfield_checkbox label,
 .gfield_radio label,
+#gform_wrapper_45 .gfield_label,
+#gform_wrapper_47 .gfield_label,
 input,
 select,
 textarea {
@@ -3244,6 +3246,32 @@ a.greybutton:active,
   #gform_wrapper_38 .gform_body {
     font-size: 1.8rem;
   }
+
+  /* Small Firm Scorecard styles. */
+  #gform_wrapper_45,
+  #gform_wrapper_47,
+  #gform_confirmation_message_45,
+  #gform_confirmation_message_47 {
+    background-color: unset;
+    border: none;
+    box-shadow: none;
+    padding: 0 0 3rem 0;
+  }
+
+    #gform_wrapper_45 .gsurvey-survey-field,
+    #gform_wrapper_47 .gsurvey-survey-field {
+      margin: 0 0 6rem 0;
+    }
+
+    #gform_wrapper_45 .gsurvey-survey-field:last-child,
+    #gform_wrapper_47 .gsurvey-survey-field:last-child {
+      margin-bottom: 0;
+    }
+
+    #gform_wrapper_45 .gfield_label,
+    #gform_wrapper_47 .gfield_label {
+      font-weight: normal;
+    }
 
   /*------------------------------
   HubSpot Forms Customizations
