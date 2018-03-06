@@ -1259,22 +1259,6 @@ Front Page
   padding: 4rem;
 }
 
-.home .category-how-lawyers-work.has-post-thumbnail .headline_excerpt,
-.home .category-how-lawyers-work.has-post-thumbnail.has-post-label .headline_excerpt {
-  min-height: 15rem;
-  padding-left: 15rem;
-}
-
-  .home .category-how-lawyers-work.has-post-thumbnail .default_thumbnail {
-    border-radius: 50%;
-    height: 15rem;
-    width: 15rem;
-  }
-
-  .home .category-how-lawyers-work.has-post-thumbnail .headline {
-    font-size: 3.2rem;
-  }
-
 
 /*------------------------------
 Content
@@ -1374,6 +1358,7 @@ Content
   /*
   Selectors
   .category-lawyerist-podcast
+  .category-how-lawyers-work
   .series
   .sponsored
   .type-product
@@ -1454,7 +1439,8 @@ Content
 
   /* Post container styles. */
 
-  .index .has-post-label {
+  .index .has-post-label,
+  .index .category-how-lawyers-work {
     padding: 2rem;
   }
 
@@ -1478,10 +1464,6 @@ Content
 
   .index .type-product {
     border-top: .7rem solid #ed9c28;
-  }
-
-  .index .page {
-    min-height: 15rem;
   }
 
 
@@ -1623,6 +1605,23 @@ Content
 
       .index .category-lawyerist-podcast .default_thumbnail:active::before {
         box-shadow: .1rem .1rem .1rem rgba( 0, 0, 0, 0.2 );
+      }
+
+
+    .index .category-how-lawyers-work.has-post-thumbnail .headline_excerpt,
+    .index .category-how-lawyers-work.has-post-thumbnail.has-post-label .headline_excerpt {
+      min-height: 15rem;
+      padding: 0 0 0 15rem;
+    }
+
+      .index .category-how-lawyers-work.has-post-thumbnail .default_thumbnail {
+        border-radius: 50%;
+        height: 15rem;
+        width: 15rem;
+      }
+
+      .index .category-how-lawyers-work.has-post-thumbnail .headline {
+        font-size: 3.2rem;
       }
 
     .index .type-product .wp-post-image {

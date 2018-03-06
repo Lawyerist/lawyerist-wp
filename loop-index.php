@@ -4,6 +4,7 @@
 Selectors
 
 has_category( 'lawyerist-podcast' )
+has_category( 'how-lawyers-work' )
 has_term( true, 'series' )
 has_term( true, 'sponsor' )
 $post_type == 'product'
@@ -96,8 +97,26 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
             echo '<div class="default_thumbnail" alt="The Lawyerist Podcast logo" style="background-image: url( https://lawyerist.com/lawyerist-dev/wp-content/uploads/2018/02/lawyerist-ltn-podcast-logo-16x9-684x385.png );"></div>';
           }
 
+          // Outputs the first image (headshot) for How Lawyers Work posts.
+          if ( has_category( 'how-lawyers-work' ) ) {
+            $first_img = '';
+    				ob_start();
+    				ob_end_clean();
+    				$output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
+    				$first_img = $matches[1][0];
+
+    				if ( empty( $first_img ) ) {
+    					$first_img = 'https://lawyerist.com/lawyerist/wp-content/uploads/2018/01/typewriter.jpg';
+    				}
+
+            echo '<div class="default_thumbnail" style="background-image: url( ';
+            echo $first_img;
+            echo ' );"></div>';
+
+          }
+
           // Outputs the featured image for other posts.
-          if ( has_post_thumbnail() && !has_category( 'lawyerist-podcast' ) ) {
+          if ( has_post_thumbnail() && !has_category( 'lawyerist-podcast' ) && !has_category( 'how-lawyers-work' ) ) {
 
             if ( $post_type == 'product' ) {
 
@@ -116,14 +135,13 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
           // Headline
           echo '<h2 class="headline">' . $post_title . '</h2>';
 
-          // Output the excerpt unless we're showing a podcast episode, a post from the
-          // TBD Law community, or a page.
-          if ( !has_category( 'lawyerist-podcast' ) && !has_tag( 'tbd-law-community' ) && $post_type != 'page' ) {
+          // Output the excerpt, with exceptions.
+          if ( !has_category( 'lawyerist-podcast' ) && !has_category( 'how-lawyers-work' ) && !has_tag( 'tbd-law-community' ) && $post_type != 'page' ) {
             echo '<p class="excerpt">' . $post_excerpt . '</p>';
           }
 
-          // Output the post meta unless we're showing a podcast episode.
-          if ( $post_type == 'post' && !has_category( 'lawyerist-podcast' ) ) {
+          // Output the post meta, with exceptions.
+          if ( $post_type == 'post' && !has_category( 'lawyerist-podcast' ) && !has_category( 'how-lawyers-work' ) ) {
             lawyerist_postmeta();
           }
 
