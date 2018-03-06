@@ -195,7 +195,12 @@ Useful Stuff
 	margin-bottom: 0 !important;
 }
 
-.separator {
+.separator_3rem {
+  margin-bottom: 3rem;
+  width: 100%;
+}
+
+.separator_6rem {
   margin-bottom: 6rem;
   width: 100%;
 }
@@ -1084,8 +1089,9 @@ Front Page
   }
 
   .front_page_sticky_post .headline {
-    margin-left: 2.4rem;
-    text-indent: -2.9rem;
+    margin-bottom: 0 !important;
+    margin-left: 2.4rem !important;
+    text-indent: -2.9rem !important;
   }
 
   .front_page_sticky_post .headline::before {
@@ -1213,6 +1219,21 @@ Front Page
       padding: 1.5rem;
       text-align: center;
     }
+
+  @media only screen and ( max-width: 683px ) {
+
+    .big_hero_top .scorecard_image_wrapper {
+      float: none;
+      margin: 3rem auto;
+      width: 50%;
+    }
+
+    .big_hero_top .scorecard_prompt_wrapper {
+      float: none;
+      width: 100%;
+    }
+
+  }
 
 .front_page_block {
   margin: 0 -.7rem 6rem .1rem;

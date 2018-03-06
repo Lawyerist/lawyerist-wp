@@ -62,7 +62,7 @@
 			endwhile; endif;
 
 			if ( $num_sticky_posts > 0 ) {
-				echo '<div class="separator"></div>';
+				echo '<div class="separator_3rem"></div>';
 			}
 
 		?>
