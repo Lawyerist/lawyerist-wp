@@ -195,6 +195,11 @@ Useful Stuff
 	margin-bottom: 0 !important;
 }
 
+.separator {
+  margin-bottom: 6rem;
+  width: 100%;
+}
+
 .shadow {
   border: .1rem solid #ddd;
   border-radius: .2rem;
@@ -1071,40 +1076,40 @@ Menu
 Front Page
 ------------------------------*/
 
-#front_page_sticky_posts {
-  margin-bottom: 6rem;
+.front_page_sticky_post {
+  margin-bottom: 1rem;
+  padding: 1rem 2rem;
 }
 
-  .front_page_sticky_post {
-    margin-bottom: 1rem;
-    padding: 1rem 2rem;
+  .front_page_sticky_post a:hover,
+  .front_page_sticky_post a:focus,
+  .front_page_sticky_post a:hover .headline,
+  .front_page_sticky_post a:focus .headline {
+    color: #a00;
+    text-decoration: none;
   }
 
-    .front_page_sticky_post a:hover,
-    .front_page_sticky_post a:focus,
-    .front_page_sticky_post a:hover .headline,
-    .front_page_sticky_post a:focus .headline {
-      color: #a00;
-      text-decoration: none;
-    }
+  .front_page_sticky_post .headline {
+    margin-left: 2.4rem;
+    text-indent: -2.9rem;
+  }
 
-    #front_page_sticky_posts .front_page_sticky_post .headline {
-      margin-left: 2.4rem;
-      text-indent: -2.9rem;
-    }
+  .front_page_sticky_post .headline::before {
+    color: #c00;
+    content: "\f456";
+    display: inline;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font: normal 2.4rem/1.2 Genericons;
+    margin-right: .5rem;
+    speak: none;
+    vertical-align: top;
+    width: 2.4rem;
+  }
 
-    .front_page_sticky_post .headline::before {
-      color: #c00;
-      content: "\f456";
-      display: inline;
-      -moz-osx-font-smoothing: grayscale;
-      -webkit-font-smoothing: antialiased;
-      font: normal 2.4rem/1.2 Genericons;
-      margin-right: .5rem;
-      speak: none;
-      vertical-align: top;
-      width: 2.4rem;
-    }
+  .front_page_sticky_post:last-child {
+    margin-bottom: 6rem;
+  }
 
 #big_hero_cta {
   margin: 0 .3rem 6rem .1rem;

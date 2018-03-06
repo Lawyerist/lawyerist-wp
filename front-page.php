@@ -24,45 +24,46 @@
 
 		else :
 
-			// Outputs up to 3 sticky posts.
+			// Outputs the most recent sticky post.
 			$sticky_posts = get_option( 'sticky_posts' );
 
 			$sticky_post_query_args = array(
 				'post__in'						=> $sticky_posts,
-				'posts_per_page'			=> 3,
+				'posts_per_page'			=> 1,
 			);
 
 			$sticky_post_query = new WP_Query( $sticky_post_query_args );
 
-			if ( $sticky_post_query->have_posts() ) :
+			if ( $sticky_post_query->have_posts() ) : while ( $sticky_post_query->have_posts() ) : $sticky_post_query->the_post();
 
-				echo '<div id="front_page_sticky_posts">';
+				if ( is_sticky() ) {
 
-				while ( $sticky_post_query->have_posts() ) : $sticky_post_query->the_post();
+						$num_sticky_posts++;
 
-					$sticky_post_title	= the_title( '', '', FALSE );
-					$sticky_post_url		= get_permalink();
+						$sticky_post_title	= the_title( '', '', FALSE );
+						$sticky_post_url		= get_permalink();
 
-					// Starts the post container.
-					echo '<div ' ;
-					post_class( 'front_page_sticky_post shadow' );
-					echo '>';
+						// Starts the post container.
+						echo '<div ' ;
+						post_class( 'front_page_sticky_post shadow' );
+						echo '>';
 
-						// Starts the link container. Makes for big click targets!
-						echo '<a href="' . $sticky_post_url . '" title="' . $sticky_post_title . '">';
+							// Starts the link container. Makes for big click targets!
+							echo '<a href="' . $sticky_post_url . '" title="' . $sticky_post_title . '">';
 
-							echo '<h2 class="headline">' . $sticky_post_title . '</h2>';
+								echo '<h2 class="headline">' . $sticky_post_title . '</h2>';
 
-						echo '</a>';
+							echo '</a>';
 
-					echo '</div>';
+						echo '</div>';
 
-				endwhile;
+				}
 
-				echo '</div>';
+			endwhile; endif;
 
-			endif;
-
+			if ( $num_sticky_posts > 0 ) {
+				echo '<div class="separator"></div>';
+			}
 
 		?>
 
@@ -95,8 +96,7 @@
 				<div class="one_half">
 					<div class="index_post_container">
 						<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/03/lawyerist-productivity-journal.jpg?w=320&h=180" alt="The Lawyerist Productivity Journal cover." />
-						<h3>The Lawyerist Productivity Journal</h3>
-						<a class="button" href="http://lawyeristjournal.com/">Learn More</a>
+						<h3>The Lawyerist Productivity Journal</h3">Learn More</a>
 					</div>
 				</div>
 

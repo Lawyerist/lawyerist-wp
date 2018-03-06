@@ -16,9 +16,13 @@
 
 // Authors, series, products, categories with empty descriptions
 
-	if ( is_front_page() ) {
+	if ( is_home() || is_front_page() ) {
 
-		$description = wp_strip_all_tags( get_bloginfo( 'description' ), true );
+		$title				= get_the_title();
+		$seo_title		= get_post_meta( $post->ID, '_yoast_wpseo_title', true );
+		$description	= wp_strip_all_tags( get_bloginfo( 'description' ), true );
+
+		if ( !empty( $seo_title ) ) { $title = $seo_title; }
 
 	} elseif ( is_archive() && !is_author() && !is_post_type_archive( 'product' ) ) {
 
@@ -53,9 +57,9 @@
 
 		global $post;
 
-		if ( defined( 'WPSEO_VERSION' ) ) {
+		/* if ( defined( 'WPSEO_VERSION' ) ) {
 			$description = get_post_meta( $post->ID, '_yoast_wpseo_metadesc', true );
-		}
+		} */
 
 	}
 
