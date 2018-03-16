@@ -4,8 +4,16 @@
 if ( have_posts() ) : while ( have_posts() ) : the_post();
 
   // Assign post variables.
-  $post_title   = the_title( '', '', FALSE );
-  $post_ID      = $post->ID;
+  $page_title   = the_title( '', '', FALSE );
+  $page_ID      = $post->ID;
+
+  // Check for a rating.
+  if ( comments_open() && function_exists( 'wp_review_show_total' ) ) {
+
+    $rating       = get_post_meta( $page_ID, 'wp_review_comments_rating_value', true );
+    $review_count = lawyerist_get_review_count();
+
+  }
 
   // This is the post container.
   echo '<div ';
@@ -28,29 +36,39 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
       }
 
       // Headline
-      echo '<h1 class="headline entry-title">' . $post_title . '</h1>';
+      if ( !empty( $rating ) ) {
+
+        echo '<div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">';
+        echo '<h1 class="headline entry-title" itemprop="itemReviewed">' . $page_title . '</h1>';
+
+      } else {
+
+        echo '<h1 class="headline entry-title">' . $page_title . '</h1>';
+
+      }
 
       // Show ratings for child posts.
       if ( $post->post_parent > 0 ) {
 
-        // Rating
-        if ( comments_open() && function_exists( 'wp_review_show_total' ) ) {
+        echo '<div class="user-rating">';
 
-          $rating       = get_post_meta( $post_ID, 'wp_review_comments_rating_value', true );
-          $review_count = lawyerist_get_review_count();
+          // Rating
+          if ( !empty( $rating ) ) {
 
-          echo '<div class="user-rating">';
+            echo '<a href="#comments">';
+              wp_review_show_total();
+            echo ' <span class="review_count">(' . $review_count . ')</span></a>';
 
-            if ( !empty( $rating ) ) {
-              echo '<a href="#comments">';
-                wp_review_show_total();
-              echo ' <span class="review_count">(' . $review_count . ')</span></a>';
-            } else {
-              echo '<a href="#respond">Leave a review below.</a>';
-            }
+          } else {
 
-           echo '</div>';
+            echo '<a href="#respond">Leave a review below.</a>';
 
+          }
+
+        echo '</div>'; // End .user_rating.
+
+        if ( !empty( $rating ) ) {
+          echo '</div>'; // End aggregateRating schema.
         }
 
       } else {

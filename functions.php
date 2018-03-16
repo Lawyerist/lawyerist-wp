@@ -790,15 +790,16 @@ function lawyerist_get_review_count() {
 
 	global $post;
 
+	$page_title		= the_title( '', '', FALSE );
 	$rating				= get_post_meta( $post->ID, 'wp_review_comments_rating_value', true );
 	$review_count	= get_post_meta( $post->ID, 'wp_review_comments_rating_count', true );
 
 	if ( empty( $review_count ) || $review_count == 0 ) {
 		return;
 	} elseif ( $review_count == 1 ) {
-		return '<span itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating"><span itemprop="ratingValue">' . $rating . '</span>/5 based on <span itemprop="reviewCount">' . $review_count . '</span> review</span>';
+		return '<span itemprop="ratingValue">' . $rating . '</span>/5 based on <span itemprop="reviewCount">' . $review_count . '</span> review';
 	} else {
-		return '<span itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating"><span itemprop="ratingValue">' . $rating . '</span>/5 based on <span itemprop="reviewCount">' . $review_count . '</span> reviews</span>';
+		return '<span itemprop="ratingValue">' . $rating . '</span>/5 based on <span itemprop="reviewCount">' . $review_count . '</span> reviews';
 	}
 
 }
