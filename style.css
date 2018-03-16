@@ -2496,6 +2496,10 @@ Content
       /* When the width reaches 700px. */
       @media only screen and (max-width:699px) {
 
+        .review_count {
+          display: block;
+        }
+
         .product-pages-list .image {
           width: 12.5rem;
         }

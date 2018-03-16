@@ -44,7 +44,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
             if ( !empty( $rating ) ) {
               echo '<a href="#comments">';
                 wp_review_show_total();
-              echo ' (' . $review_count . ')</a>';
+              echo ' <span class="review_count">(' . $review_count . ')</span></a>';
             } else {
               echo '<a href="#respond">Leave a review below.</a>';
             }
