@@ -3290,6 +3290,11 @@ a.greybutton:active,
       font-weight: normal;
     }
 
+    #gform_wrapper_45 .gfield_required,
+    #gform_wrapper_47 .gfield_required {
+      display: none;
+    }
+
   /*------------------------------
   HubSpot Forms Customizations
   ------------------------------*/
