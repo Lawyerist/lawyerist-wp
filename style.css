@@ -308,6 +308,7 @@ pre {
 #gform_wrapper_47 .gfield_label,
 input,
 select,
+select option,
 textarea {
   font-family: equity, serif;
 }
@@ -3300,7 +3301,7 @@ a.greybutton:active,
   ------------------------------*/
 
   .hbspt-form fieldset {
-    margin-bottom: .75em;
+    margin-bottom: .75em !important;
   }
 
     .hbspt-form fieldset:last-of-type {
@@ -3310,6 +3311,12 @@ a.greybutton:active,
     .hbspt-form .form-columns-2 .hs-form-field input {
       width: 90%;
     }
+
+  .hbspt-form label {
+    display: block;
+    line-height: inherit;
+    margin-bottom: .5em;
+  }
 
   .hbspt-form ul.hs-error-msgs {
     list-style: none;
