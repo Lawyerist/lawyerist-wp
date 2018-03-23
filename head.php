@@ -18,11 +18,7 @@
 
 	if ( is_front_page() ) {
 
-		$title				= get_the_title();
-		$seo_title		= get_post_meta( $post->ID, '_yoast_wpseo_title', true );
 		$description	= wp_strip_all_tags( get_bloginfo( 'description' ), true );
-
-		if ( !empty( $seo_title ) ) { $title = $seo_title; }
 
 	} elseif ( is_archive() && !is_author() && !is_post_type_archive( 'product' ) ) {
 
@@ -38,7 +34,6 @@
 		$description = wp_strip_all_tags( get_the_author_meta( 'description' ), true );
 
 		if ( empty( $description ) ) {
-
 			$name = get_the_author_meta( 'display_name' );
 			$description = 'Posts by ' . $name . ' on Lawyerist.com.';
 		}
@@ -48,7 +43,6 @@
 		$description = wp_strip_all_tags( term_description(), true );
 
 		if ( empty( $description ) ) {
-
 			$title = single_term_title( '', FALSE );
 			$description = 'All our ' . $title . ' products.';
 		}
@@ -56,7 +50,9 @@
 	}
 
 if ( $decription ) {
+
 	echo '<meta name="description" content="' . $description . '">';
+
 }
 
 if ( is_single() && has_category( 'sponsored-posts', $post->ID ) ) { echo '<meta name="robots" content="noindex, nofollow">'; } ?>

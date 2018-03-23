@@ -14,8 +14,8 @@ jQuery(
 // Sticky Sidebar Ad
 function stickySidebarAd( $ ) {
 
-  // Checks to see if the sidebar is present.
-  if ( jQuery('#sidebar_column').length > 0 ) {
+  // Checks to see if the sidebar ad is present.
+  if ( jQuery('#lawyerist_display_ad').length > 0 ) {
 
     var windowTop      = jQuery( window ).scrollTop();
     var sidebarAdTop   = jQuery( '#lawyerist_display_ad' ).offset().top;
