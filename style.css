@@ -950,28 +950,28 @@ Menu
     vertical-align: middle;
   }
 
-    /* Home */
-    .menu-item-home > a:before {
-      content: '\f409';
-    }
-
-    /* Topics */
-    .menu-item-208330 > a:before {
+    /* Default menu item. */
+    #menu-main-menu .menu-item > a:before {
       content: '\f505';
     }
 
+    /* Home */
+    #menu-main-menu .menu-item-home > a:before {
+      content: '\f409';
+    }
+
     /* Library */
-    .menu-item-211724 > a:before {
+    #menu-main-menu .menu-item-211724 > a:before {
       content: '\f444';
     }
 
     /* About */
-    .menu-item-208331 > a:before {
+    #menu-main-menu .menu-item-208331 > a:before {
       content: '\f455';
     }
 
     /* Log In */
-    .menu-item-loginout > a:before {
+    #menu-main-menu .menu-item-loginout > a:before {
       content: '\f304';
     }
 
