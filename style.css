@@ -951,7 +951,7 @@ Menu
   }
 
     /* Default menu item. */
-    #menu-main-menu .menu-item > a:before {
+    #menu-main-menu > .menu-item > a:before {
       content: '\f505';
     }
 
