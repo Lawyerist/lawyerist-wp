@@ -19,7 +19,7 @@
 
 	<ol class="commentlist">
 	<?php wp_list_comments( array(
-		'avatar_size'	=> 48,
+		'avatar_size'	=> 48, 'max_depth' => 1,
 	) ); ?>
 	</ol>
 
