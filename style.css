@@ -27,7 +27,6 @@ Content
 	Posts
   Scorecard Results
   Tables
-	Sharing Buttons
   Resource Pages
   Product Pages
   Full Width Template
@@ -547,8 +546,7 @@ p.pullout {
 		margin: 0 1.5rem 1.5rem 0;
 	}
 
-  /* 500px */
-  @media only screen and (max-width:499px) {
+  @media only screen and ( max-width: 499px ) {
 
     p.pullout {
       margin: 0 0 3rem 0;
@@ -1911,20 +1909,13 @@ Content
 
   .post_body {
     margin-bottom: 4rem;
-    padding-left: 6.2rem;
+    padding: 0 2rem;
   }
 
-    .survival-guides .post_body {
-      padding-left: 0;
-      max-width: 100%;
-    }
-
-    /* When the width reaches 600px (.post_body) plus 62px on either side
-    (the width of the Jetpack sharing buttons) plus 20px (.content_column padding). */
-    @media only screen and (max-width:743px) {
+    @media only screen and ( max-width: 499px ) {
 
       .post_body {
-        padding-left: 0;
+        padding: 0;
         margin: 0 auto;
       }
 
@@ -2223,80 +2214,6 @@ Content
     .lpms-features-table tr th {
       min-width: 16rem;
     }
-
-
-  /*------------------------------
-	Sharing Buttons
-	------------------------------*/
-
-  .post_body {
-    position: relative;
-  }
-
-	.sharedaddy {
-		position: absolute;
-			top: 0;
-			left: 0;
-	}
-
-  .sd-block {
-		border: none;
-		padding: 0;
-		margin-bottom: 0;
-	}
-
-  .sd-content ul li {
-    display: block !important;
-  }
-
-  .sharedaddy .share-count {
-    display: none !important;
-  }
-
-
-  /* Sticky Sharing Icons */
-  .sd-block.stick {
-    padding-top: 2rem;
-    position: fixed;
-      top: 0;
-  }
-
-  .admin-bar .sd-block.stick {
-    top: 3.2rem;
-  }
-
-  /* Move Sharedaddy to bottom of post when finished reading. */
-  .sd-block.stop {
-    bottom: -.7em; /* Jetpack adds a bottom margin that can't be overridden. This just cancels it out. */
-    top: auto;
-  }
-
-    .sd-block.stop {
-      position: static;
-    }
-
-  /* When the width reaches 600px (.post_body) plus 62px on either side
-  (the width of the Jetpack sharing buttons) plus 20px (.content_column padding). */
-  @media only screen and (max-width:743px) {
-
-  	.sharedaddy,
-    .sd-block.stop {
-  			margin-bottom: 4rem;
-  			position: static;
-  	}
-
-      .sd-block,
-      .sd-block.stick,
-      .sd-block.stop {
-        margin-bottom: 3rem;
-        position: static;
-      }
-
-  		.sd-content ul li {
-  				display: inline !important;
-  		}
-
-  }
 
 
   /*------------------------------
