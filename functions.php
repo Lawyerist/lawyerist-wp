@@ -17,7 +17,7 @@ ADMIN
 CONTENT
 - Query Mods
 - Archive Headers
-- Post Labels
+- Yoast SEO Breadcrumbs
 - Postmeta
 - Author Bios
 - Custom Default Gravatar
@@ -319,12 +319,21 @@ function lawyerist_get_archive_header() {
 
 
 /*------------------------------
-Post Labels
+Yoast SEO Breadcrumbs
 ------------------------------*/
 
-function lawyerist_get_post_labels() {
+function lawyerist_remove_products_breadcrumb($link_output, $link ){
+
+	if( is_really_a_woocommerce_page() && $link['text'] == 'Products' ) {
+		$link_output = '';
+	}
+
+	return $link_output;
 
 }
+
+add_filter( 'wpseo_breadcrumb_single_link' ,'lawyerist_remove_products_breadcrumb', 10 ,2 );
+
 
 /*------------------------------
 Postmeta
