@@ -556,8 +556,9 @@ p.pullout {
   }
 
 .wp-caption-text {
-     color: #666;
-     font-size: 1.4rem;
+  color: #666;
+  font-size: 1.4rem;
+  padding: 0 1rem 1rem 1rem;
 }
 
 .postmeta,
@@ -700,7 +701,7 @@ img.size-large {
 
 img.size-medium,
 img.wp-post-image.attachment-medium {
-  max-width: 50%;
+  max-width: 39rem;
   width: 30rem;
 }
 
@@ -761,6 +762,7 @@ img.inline {
 }
 
 .wp-caption {
+  background-color: #e9e9e9;
   margin-bottom: 3rem;
   max-width: 100%;
 }
