@@ -87,7 +87,7 @@
 
 				<div class="one_half">
 					<div class="index_post_container">
-						<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2017/10/lawyerist-insider-logo.png?w=320&h=180" alt="Lawyerist Insider logo." />
+						<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2017/10/lawyerist-insider-logo-684x385.png?w=320&h=180" alt="Lawyerist Insider logo." />
 						<h3>Join Your Tribe. Grow Your Firm.</h3>
 						<a class="button" href="https://lawyerist.com/insider/">Join Now</a>
 					</div>
@@ -95,7 +95,7 @@
 
 				<div class="one_half">
 					<div class="index_post_container">
-						<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/03/lawyerist-productivity-journal.jpg?w=320&h=180" alt="The Lawyerist Productivity Journal cover." />
+						<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/03/lawyerist-productivity-journal-684x385.jpg?w=320&h=180" alt="The Lawyerist Productivity Journal cover." />
 						<h3>The Lawyerist Productivity Journal</h3>
 						<a class="button" href="https://lawyerist.com/journal/">Learn More</a>
 					</div>
@@ -322,7 +322,7 @@
 
 				<div class="one_half">
 					<div class="index_post_container">
-						<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/03/best-law-firm-websites-2018.jpg?w=1600&ssl=1?w=320&h=180" alt="A law firm website as viewed on a laptop." />
+						<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/03/best-law-firm-websites-2018-684x385.jpg?w=320&h=180" alt="A law firm website as viewed on a laptop." />
 						<h3>The Best Law Firm Websites, 2018 Edition</h3>
 						<a class="button" href="https://lawyerist.com/best-law-firm-websites/">See the Top 10</a>
 					</div>
@@ -330,7 +330,7 @@
 
 				<div class="one_half">
 					<div class="index_post_container">
-						<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/03/web-designer-recommendation.jpg?w=320&h=180" alt="Law firm website designer at work." />
+						<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/03/web-designer-recommendation-684x385.jpg?w=320&h=180" alt="Law firm website designer at work." />
 						<h3>Get a Personalized Web Designer Referral</h3>
 						<a class="button" href="https://lawyerist.com/website-designer-assessment/">Get a Referral</a>
 					</div>
@@ -340,7 +340,7 @@
 
 				<div class="one_half">
 					<div class="index_post_container">
-						<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/03/law-practice-management-software.jpg?w=320&h=180" alt="Law practice management software graphic." />
+						<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/03/law-practice-management-software-684x385.jpg?w=320&h=180" alt="Law practice management software graphic." />
 						<h3>Law Practice Management Software</h3>
 						<a class="button" href="https://lawyerist.com/law-practice-management-software/">See All</a>
 					</div>
@@ -348,7 +348,7 @@
 
 				<div class="one_half">
 					<div class="index_post_container">
-						<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2017/08/receptionist.jpg?w=320&h=180" alt="Virtual receptionist image." />
+						<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2017/08/receptionist-684x385.jpg?w=320&h=180" alt="Virtual receptionist image." />
 						<h3>Virtual Receptionists for Law Firms</h3>
 						<a class="button" href="https://lawyerist.com/virtual-receptionists/">See All</a>
 					</div>
