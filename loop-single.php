@@ -100,8 +100,6 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
       the_content();
 
-      scorecard_cta();
-
       // Show date modified if it's different than the date published.
       get_template_part( 'postmeta', 'single_bottom' );
 
@@ -131,6 +129,8 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
     echo '</div>'; // Close .post_body.
 
   	lawyerist_get_author_bio();
+
+    scorecard_cta();
 
     lawyerist_current_posts( $this_post );
 
