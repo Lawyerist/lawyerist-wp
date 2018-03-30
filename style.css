@@ -3356,6 +3356,11 @@ WooCommerce
   }
 
   .woocommerce-checkout .headline,
+  .woocommerce-checkout h2,
+  .woocommerce-checkout h3,
+  .woocommerce-checkout h4,
+  .woocommerce-checkout h5,
+  .woocommerce-checkout h6,
   .woocommerce section h2,
   .woocommerce-Tabs-panel h2:first-child,
   .woocommerce-table thead,
@@ -3533,6 +3538,10 @@ a.cart-in-header {
 
 .woocommerce-cart img {
   margin-bottom: unset;
+}
+
+.woocommerce-checkout #customer_details {
+  margin-bottom: 6rem;
 }
 
 .woocommerce-checkout .product-file a.button {

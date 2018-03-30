@@ -38,8 +38,10 @@ COMMENTS & REVIEWS
 - Get Number of Reviews
 
 WOOCOMMERCE
+- Function for Checking to See if a Product ID is in the Cart
 - Insider Plus Shopping Cart Upsell
-- Custom Checkout Fields for Insider & Lab
+- Disable Checkout Fields
+- Checkout Survey
 - Check to See if Page is Really a WooCommerce Page
 
 TAXONOMY
@@ -842,14 +844,36 @@ function lawyerist_get_review_count() {
 /* WOOCOMMERCE ****************/
 
 /*------------------------------
-Custom Checkout Fields for Insider & Lab
+Function for Checking to See if a Product ID is in the Cart
 ------------------------------*/
 
-// Disables all checkout fields except the name and email address.
+// To check, call the function as woo_in_cart( $product_id ). Returns true or false.
+function woo_in_cart( $product_id ) {
+
+	global $woocommerce;
+
+	foreach( $woocommerce->cart->get_cart() as $key => $val ) {
+
+		$products_in_cart = $val['data'];
+
+		if( $product_id == $products_in_cart->id ) {
+			return true;
+		}
+
+	}
+
+	return false;
+
+}
+
+/*------------------------------
+Disable Checkout Fields
+------------------------------*/
+
+// Disables all checkout fields except the name, email address, and country.
 function woo_disable_checkout_fields( $fields ) {
 
 	unset( $fields['billing']['billing_company'] );
-	unset( $fields['billing']['billing_country'] );
 	unset( $fields['billing']['billing_address_1'] );
 	unset( $fields['billing']['billing_address_2'] );
 	unset( $fields['billing']['billing_city'] );
@@ -858,6 +882,83 @@ function woo_disable_checkout_fields( $fields ) {
 	unset( $fields['billing']['billing_phone'] );
 	unset( $fields['order']['order_comments'] );
 
+	// Creates an array of Insider and Lab product IDs.
+	$product_ids = array(
+		208237,
+		208247,
+		224266,
+		224435,
+	);
+
+	foreach ( $product_ids as $val ) {
+
+		if ( woo_in_cart( $val ) ) {
+
+			$fields['order']['biggest_challenge'] = array(
+				'label'				=> __( 'What is the biggest challenge you face?', 'woocommerce' ),
+				'type'				=> 'select',
+				'options'			=> array(
+					'placeholder'	=> __( 'Select one.' ),
+					'option_1'		=> __( 'Strategy. I need help deciding on the future direction of my firm.' ),
+					'option_2'		=> __( 'Legal tech. I need help figuring out which hardware, software, or other systems to use.' ),
+					'option_3'		=> __( 'Marketing. I need help getting clients.' ),
+					'option_4'		=> __( 'Productivity. I need help managing my time and being efficient.' ),
+					'option_5'		=> __( 'Systems. I need to create policies and procedures for my law firm.' ),
+					'option_6'		=> __( 'Finances. I need help managing cash flow and budgeting.' ),
+					'option_7'		=> __( 'Human resources. I need help with hiring and firing, delegation, managing staff, or culture.' ),
+					'option_8'		=> __( 'Work-life balance. I need to figure out how to find my healthy work-life balance.' ),
+					'option_9'		=> __( 'Lawyering skills. I want help improving skills like trial advocacy, negotiation, contract drafting, or legal writing.' ),
+					'option_10'		=> __( 'The future. I want to understand the trends shaping the future of law practice.' ),
+					'option_11'		=> __( 'Starting a law firm. I\'m just getting started and need guidance.' ),
+				),
+				'required'		=> true,
+				'class'				=> array( 'form-row-wide' ),
+				'clear'				=> true,
+			);
+
+			$fields['order']['firm_size'] = array(
+				'label'				=> __( 'Describe your practice.', 'woocommerce' ),
+				'type'				=> 'select',
+				'options'			=> array(
+					'placeholder'	=> __( 'Select one.' ),
+					'option_1'		=> __( 'Solo practice' ),
+					'option_2'		=> __( 'Small firm lawyer (2–15 lawyers)' ),
+					'option_3'		=> __( 'Small firm staff (2–15 lawyers)' ),
+					'option_4'		=> __( 'Medium or large firm lawyer (16+ lawyers)' ),
+					'option_5'		=> __( 'Medium or large firm staff (16+ lawyers)' ),
+					'option_6'		=> __( 'Lawyer not in private practice' ),
+					'option_7'		=> __( 'Non-lawyer not in private practice' ),
+				),
+				'required'		=> true,
+				'class'				=> array('form-row-wide'),
+				'clear'				=> true,
+			);
+
+			$fields['order']['practice_area'] = array(
+				'label'				=> __( 'What type of law do you practice?', 'woocommerce' ),
+				'type'				=> 'select',
+				'options'			=> array(
+					'placeholder'	=> __( 'Select your primary practice area' ),
+					'option_1'		=> __( 'Civil litigation (non-PI)' ),
+					'option_2'		=> __( 'Corporate' ),
+					'option_3'		=> __( 'Criminal' ),
+					'option_4'		=> __( 'Estate planning, probate, or elder' ),
+					'option_5'		=> __( 'Family' ),
+					'option_6'		=> __( 'General practice' ),
+					'option_7'		=> __( 'Personal injury' ),
+					'option_8'		=> __( 'Real estate' ),
+					'option_9'		=> __( 'Other' ),
+					'option_10'		=> __( 'I don\'t work in law' ),
+				),
+				'required'		=> true,
+				'class'				=> array('form-row-wide'),
+				'clear'				=> true,
+			);
+
+		}
+
+	}
+
 	return $fields;
 
 }
@@ -865,30 +966,9 @@ function woo_disable_checkout_fields( $fields ) {
 add_filter( 'woocommerce_checkout_fields' , 'woo_disable_checkout_fields' );
 
 
-// Adds additional fields when Insider or Lab products are in the cart.
-function woo_checkout_fields() {
-
-}
-
 /*------------------------------
 Insider Plus Shopping Cart Upsell
 ------------------------------*/
-
-function woo_in_cart( $product_id ) {
-
-	global $woocommerce;
-
-	foreach( $woocommerce->cart->get_cart() as $key => $val ) {
-		$_product = $val['data'];
-
-		if( $product_id == $_product->id ) {
-			return true;
-		}
-	}
-
-	return false;
-
-}
 
 function insider_plus_shopping_cart_upsell() {
 
