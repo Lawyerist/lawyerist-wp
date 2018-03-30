@@ -870,7 +870,7 @@ function woo_in_cart( $product_id ) {
 Disable Checkout Fields
 ------------------------------*/
 
-// Disables all checkout fields except the name, email address, and country.
+// Disables all billing fields except the name, email address, and country.
 function woo_disable_checkout_fields( $fields ) {
 
 	unset( $fields['billing']['billing_company'] );
@@ -880,7 +880,6 @@ function woo_disable_checkout_fields( $fields ) {
 	unset( $fields['billing']['billing_state'] );
 	unset( $fields['billing']['billing_postcode'] );
 	unset( $fields['billing']['billing_phone'] );
-	unset( $fields['order']['order_comments'] );
 
 	// Creates an array of Insider and Lab product IDs.
 	$product_ids = array(
@@ -898,21 +897,22 @@ function woo_disable_checkout_fields( $fields ) {
 				'label'				=> __( 'What is the biggest challenge you face?', 'woocommerce' ),
 				'type'				=> 'select',
 				'options'			=> array(
-					'placeholder'	=> __( 'Select one.' ),
-					'option_1'		=> __( 'Strategy. I need help deciding on the future direction of my firm.' ),
-					'option_2'		=> __( 'Legal tech. I need help figuring out which hardware, software, or other systems to use.' ),
-					'option_3'		=> __( 'Marketing. I need help getting clients.' ),
-					'option_4'		=> __( 'Productivity. I need help managing my time and being efficient.' ),
-					'option_5'		=> __( 'Systems. I need to create policies and procedures for my law firm.' ),
-					'option_6'		=> __( 'Finances. I need help managing cash flow and budgeting.' ),
-					'option_7'		=> __( 'Human resources. I need help with hiring and firing, delegation, managing staff, or culture.' ),
-					'option_8'		=> __( 'Work-life balance. I need to figure out how to find my healthy work-life balance.' ),
-					'option_9'		=> __( 'Lawyering skills. I want help improving skills like trial advocacy, negotiation, contract drafting, or legal writing.' ),
-					'option_10'		=> __( 'The future. I want to understand the trends shaping the future of law practice.' ),
-					'option_11'		=> __( 'Starting a law firm. I\'m just getting started and need guidance.' ),
+					''									=> 'Select your biggest challenge.',
+					'strategy'					=> 'Strategy. I need help deciding on the future direction of my firm.',
+					'legal_tech'				=> 'Legal tech. I need help figuring out which hardware, software, or other systems to use.',
+					'marketing'					=> 'Marketing. I need help getting clients.',
+					'productivity'			=> 'Productivity. I need help managing my time and being efficient.',
+					'systems'						=> 'Systems. I need to create policies and procedures for my law firm.',
+					'finances'					=> 'Finances. I need help managing cash flow and budgeting.',
+					'human_resources'		=> 'Human resources. I need help with hiring and firing, delegation, managing staff, or culture.',
+					'work_life_balance'	=> 'Work-life balance. I need to figure out how to find my healthy work-life balance.',
+					'lawyering_skills'	=> 'Lawyering skills. I want help improving skills like trial advocacy, negotiation, contract drafting, or legal writing.',
+					'the_future'				=> 'The future. I want to understand the trends shaping the future of law practice.',
+					'starting_a_firm'		=> 'Starting a law firm. I\'m just getting started and need guidance.',
 				),
+				'placeholder'	=> _x( 'Select your biggest challenge.', 'placeholder', 'woocommerce' ),
 				'required'		=> true,
-				'class'				=> array( 'form-row-wide' ),
+				'class'				=> array( 'form-row', 'form-row-wide', 'survey_question' ),
 				'clear'				=> true,
 			);
 
@@ -920,17 +920,18 @@ function woo_disable_checkout_fields( $fields ) {
 				'label'				=> __( 'Describe your practice.', 'woocommerce' ),
 				'type'				=> 'select',
 				'options'			=> array(
-					'placeholder'	=> __( 'Select one.' ),
-					'option_1'		=> __( 'Solo practice' ),
-					'option_2'		=> __( 'Small firm lawyer (2–15 lawyers)' ),
-					'option_3'		=> __( 'Small firm staff (2–15 lawyers)' ),
-					'option_4'		=> __( 'Medium or large firm lawyer (16+ lawyers)' ),
-					'option_5'		=> __( 'Medium or large firm staff (16+ lawyers)' ),
-					'option_6'		=> __( 'Lawyer not in private practice' ),
-					'option_7'		=> __( 'Non-lawyer not in private practice' ),
+					''												=> 'Select one.',
+					'solo'										=> 'Solo practice',
+					'small_lawyer'						=> 'Small firm lawyer (2–15 lawyers)',
+					'small_staff'							=> 'Small firm staff (2–15 lawyers)',
+					'medium_lawyer'						=> 'Medium or large firm lawyer (16+ lawyers)',
+					'medium_staff'						=> 'Medium or large firm staff (16+ lawyers)',
+					'not_in_private_practice'	=> 'Lawyer not in private practice',
+					'non_lawyer'							=> 'Non-lawyer not in private practice',
 				),
+				'placeholder'	=> _x( 'Select one.', 'placeholder', 'woocommerce' ),
 				'required'		=> true,
-				'class'				=> array('form-row-wide'),
+				'class'				=> array( 'form-row', 'form-row-wide', 'survey_question' ),
 				'clear'				=> true,
 			);
 
@@ -938,20 +939,21 @@ function woo_disable_checkout_fields( $fields ) {
 				'label'				=> __( 'What type of law do you practice?', 'woocommerce' ),
 				'type'				=> 'select',
 				'options'			=> array(
-					'placeholder'	=> __( 'Select your primary practice area' ),
-					'option_1'		=> __( 'Civil litigation (non-PI)' ),
-					'option_2'		=> __( 'Corporate' ),
-					'option_3'		=> __( 'Criminal' ),
-					'option_4'		=> __( 'Estate planning, probate, or elder' ),
-					'option_5'		=> __( 'Family' ),
-					'option_6'		=> __( 'General practice' ),
-					'option_7'		=> __( 'Personal injury' ),
-					'option_8'		=> __( 'Real estate' ),
-					'option_9'		=> __( 'Other' ),
-					'option_10'		=> __( 'I don\'t work in law' ),
+					''									=> 'Select your primary practice area.',
+					'civil_litigation'	=> 'Civil litigation (non-PI)',
+					'corporate'					=> 'Corporate',
+					'criminal'					=> 'Criminal',
+					'estate_planning'		=> 'Estate planning, probate, or elder',
+					'family'						=> 'Family',
+					'general_practice'	=> 'General practice',
+					'personal_injury'		=> 'Personal injury',
+					'real_estate'				=> 'Real estate',
+					'other'							=> 'Other',
+					'not_in_law'				=> 'I don\'t work in law',
 				),
+				'placeholder'	=> _x( 'Select your primary practice area.', 'placeholder', 'woocommerce' ),
 				'required'		=> true,
-				'class'				=> array('form-row-wide'),
+				'class'				=> array( 'form-row', 'form-row-wide', 'survey_question' ),
 				'clear'				=> true,
 			);
 
