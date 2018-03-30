@@ -39,6 +39,7 @@ COMMENTS & REVIEWS
 
 WOOCOMMERCE
 - Insider Plus Shopping Cart Upsell
+- Custom Checkout Fields for Insider & Lab
 - Check to See if Page is Really a WooCommerce Page
 
 TAXONOMY
@@ -587,7 +588,7 @@ function scorecard_cta() {
 		<div class="big_hero_button"><a class="button" href="https://lawyerist.com/scorecard/">Get Your Free Score</a></div>
 	</div>
 
-<?php 	
+<?php
 }
 
 /*------------------------------
@@ -839,6 +840,34 @@ function lawyerist_get_review_count() {
 
 
 /* WOOCOMMERCE ****************/
+
+/*------------------------------
+Custom Checkout Fields for Insider & Lab
+------------------------------*/
+
+// Disables all billing fields except the name and email address fields.
+function woo_disable_checkout_fields( $fields ) {
+
+	unset( $fields['billing']['billing_company'] );
+	unset( $fields['billing']['billing_country'] );
+	unset( $fields['billing']['billing_address_1'] );
+	unset( $fields['billing']['billing_address_2'] );
+	unset( $fields['billing']['billing_city'] );
+	unset( $fields['billing']['billing_state'] );
+	unset( $fields['billing']['billing_postcode'] );
+	unset( $fields['billing']['billing_phone'] );
+
+	return $fields;
+
+}
+
+add_filter( 'woocommerce_checkout_fields' , 'woo_disable_checkout_fields' );
+
+
+// Adds additional fields when Insider or Lab products are in the cart.
+function woo_checkout_fields() {
+
+}
 
 /*------------------------------
 Insider Plus Shopping Cart Upsell
