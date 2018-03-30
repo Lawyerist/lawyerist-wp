@@ -845,7 +845,7 @@ function lawyerist_get_review_count() {
 Custom Checkout Fields for Insider & Lab
 ------------------------------*/
 
-// Disables all billing fields except the name and email address fields.
+// Disables all checkout fields except the name and email address.
 function woo_disable_checkout_fields( $fields ) {
 
 	unset( $fields['billing']['billing_company'] );
@@ -856,6 +856,7 @@ function woo_disable_checkout_fields( $fields ) {
 	unset( $fields['billing']['billing_state'] );
 	unset( $fields['billing']['billing_postcode'] );
 	unset( $fields['billing']['billing_phone'] );
+	unset( $fields['order']['order_comments'] );
 
 	return $fields;
 
