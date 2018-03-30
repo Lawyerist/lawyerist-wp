@@ -1116,6 +1116,10 @@ Front Page
   margin: 0 .3rem 6rem .1rem;
 }
 
+  .single #big_hero_cta {
+    margin-top: 6rem;
+  }
+
   .big_hero_top {
     background-image: url('https://lawyerist.com/lawyerist/wp-content/uploads/2018/02/scorecard-hero-background-684x385.jpg');
     background-size: cover;
