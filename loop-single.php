@@ -100,6 +100,8 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
       the_content();
 
+      scorecard_cta();
+
       // Show date modified if it's different than the date published.
       get_template_part( 'postmeta', 'single_bottom' );
 

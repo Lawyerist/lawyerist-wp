@@ -68,18 +68,7 @@
 		?>
 
 	    <!-- Outputs the Scorecard call to action. -->
-			<div id="big_hero_cta" class="index_post_container">
-				<a class="big_hero_top" href="https://lawyerist.com/scorecard/">
-					<div class="scorecard_image_wrapper"><img src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/02/scorecard-page.png" alt="The Small Firm Scorecard example graphic." /></div>
-					<div class="scorecard_prompt_wrapper">
-						<h2>The Small Firm Scorecard<sup>TM</sup></h2>
-						<p>Is your law firm structured to succeed in the future?</p>
-					</div>
-					<div class="clear"></div>
-				</a>
-				<p class="big_hero_p">The practice of law is changing. You need to understand whether your firm is positioned for success in the coming years. Our free Small Firm Scorecard will identify your firm’s strengths and weaknesses in just a few minutes.</p>
-				<div class="big_hero_button"><a class="button" href="https://lawyerist.com/scorecard/">Get Your Free Score</a></div>
-			</div>
+			<?php scorecard_cta(); ?>
 
 
 	    <!-- Outputs a block of secondary calls to action. -->
