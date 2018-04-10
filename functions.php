@@ -31,6 +31,7 @@ CONTENT
 - Add Image Sizes
 - Remove Inline Width from Image Captions
 - Featured Images in RSS Feeds
+- Remove Hidden Products from RSS Feed
 - Remove Default Gallery Styles
 
 COMMENTS & REVIEWS
@@ -772,6 +773,33 @@ function featuredtoRSS( $content ) {
 
 add_filter('the_excerpt_rss', 'featuredtoRSS');
 add_filter('the_content_feed', 'featuredtoRSS');
+
+
+/*------------------------------
+Remove Hidden Products from RSS Feed
+------------------------------*/
+
+function lawyerist_remove_hidden_products_from_feed( $query ) {
+
+	if ( $query->is_feed() ) {
+
+		$query->set( 'post_type', array( 'product' ) );
+		$query->set( 'tax_query', array(
+			array(
+				'taxonomy' => 'product_visibility',
+				'field'    => 'name',
+				'terms'    => 'exclude-from-catalog',
+				'operator' => 'NOT IN',
+			),
+		) );
+
+	}
+
+	return $query;
+
+}
+
+add_filter( 'pre_get_posts', 'lawyerist_remove_hidden_products_from_feed' );
 
 
 /*------------------------------
