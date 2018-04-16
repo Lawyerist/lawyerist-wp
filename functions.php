@@ -21,7 +21,6 @@ CONTENT
 - Postmeta
 - Author Bios
 - Custom Default Gravatar
-- Loops for Infinite Scrolling
 - Sponsored Product Updates Widget
 - Current Posts Widget
 - Scorecard Call to Action
@@ -105,13 +104,6 @@ Theme Setup
 function lawyerist_theme_setup() {
 
 	add_theme_support( 'title-tag' );
-	add_theme_support( 'infinite-scroll', array(
-    'container'				=> 'content_column',
-    'footer'					=> false,
-		'posts_per_page'	=> 10,
-		'render'					=> 'lawyerist_loops', // Found below.
-		)
-	);
 	add_theme_support( 'post-thumbnails' );
 	add_theme_support( 'post-formats', array( 'aside' ) );
 	add_theme_support( 'html5', array( 'search-form' ) );
@@ -420,17 +412,6 @@ function lawyerist_custom_gravatar ( $avatar_defaults ) {
 }
 
 add_filter( 'avatar_defaults', 'lawyerist_custom_gravatar' );
-
-
-/*------------------------------
-Loops for Infinite Scrolling
-------------------------------*/
-
-function lawyerist_loops() {
-	if ( is_home() || is_archive() || is_search() ) {
-		get_template_part( 'loop', 'index' );
-	}
-}
 
 
 /*------------------------------
