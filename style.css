@@ -1449,16 +1449,6 @@ Content
       margin-bottom: 1rem;
     }
 
-    .infinite-wrap #lawyerist_display_ad {
-      display: none;
-    }
-
-  span.infinite-loader {
-    display: block;
-    margin: 2rem auto;
-    width: 2.8rem;
-  }
-
 
   /* Post container styles. */
 
@@ -3295,12 +3285,6 @@ WooCommerce
 
 .woocommerce-page {
   background-color: #f9f9f9;
-}
-
-/* This is a hack to keep Jetpack from loading a mess of products under the product categories. */
-.woocommerce-page .infinite-loader,
-.woocommerce-page .infinite-wrap {
-  display: none;
 }
 
 .woocommerce #content_column {
