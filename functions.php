@@ -64,10 +64,6 @@ Stylesheets & Scripts
 
 function lawyerist_stylesheets_scripts() {
 
-	// Load the Lawyerist fonts.
-	wp_register_style( 'lawyerist-fonts', 'https://lawyerist.com/lawyerist-fonts/lawyerist-fonts.css' );
-	wp_enqueue_style( 'lawyerist-fonts' );
-
 	// Normalize the default styles. From https://github.com/necolas/normalize.css/
 	wp_register_style( 'normalize-css', get_template_directory_uri() . '/normalize.min.css' );
 	wp_enqueue_style( 'normalize-css' );
