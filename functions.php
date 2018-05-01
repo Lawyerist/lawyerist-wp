@@ -557,7 +557,7 @@ function scorecard_cta() {
 
 	<div id="big_hero_cta" class="index_post_container">
 		<a class="big_hero_top" href="https://lawyerist.com/scorecard/">
-			<div class="scorecard_image_wrapper"><img src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/02/scorecard-page.png" alt="The Small Firm Scorecard example graphic." /></div>
+			<div class="scorecard_image_wrapper"><img src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/05/scorecard-thumbnail.png" alt="The Small Firm Scorecard example graphic." /></div>
 			<div class="scorecard_prompt_wrapper">
 				<h2>The Small Firm Scorecard<sup>TM</sup></h2>
 				<p>Is your law firm structured to succeed in the future?</p>
