@@ -167,14 +167,6 @@
 				'post_type'						=> 'product',
 				'ignore_sticky_posts' => TRUE,
 				'posts_per_page'			=> 1,
-				'tax_query' => array(
-					array(
-						'taxonomy' => 'product_visibility',
-						'field'    => 'name',
-						'terms'    => 'exclude-from-catalog',
-						'operator' => 'NOT IN',
-					),
-				),
 			);
 
 			$download_query = new WP_Query( $download_query_args );
