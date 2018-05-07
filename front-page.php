@@ -218,83 +218,6 @@
 			// End of download.
 
 
-			// Outputs the most recent How Lawyers Work post.
-			$hlw_query_args = array(
-				'category_name'				=> 'how-lawyers-work',
-				'ignore_sticky_posts' => TRUE,
-				'posts_per_page'			=> 1,
-			);
-
-			$hlw_query = new WP_Query( $hlw_query_args );
-
-			if ( $hlw_query->have_posts() ) : while ( $hlw_query->have_posts() ) : $hlw_query->the_post();
-
-				$podcast_title	= the_title( '', '', FALSE );
-				$podcast_url		= get_permalink();
-
-				// Gets the first image, or a default.
-				$first_img = '';
-				ob_start();
-				ob_end_clean();
-				$output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
-				$first_img = $matches[1][0];
-
-				if ( empty( $first_img ) ) {
-					$first_img = 'https://lawyerist.com/lawyerist/wp-content/uploads/2018/01/typewriter.jpg';
-				}
-
-				// Starts the post container.
-				echo '<div ' ;
-				post_class( 'index_post_container has-post-label' );
-				echo '>';
-
-					// Starts the link container. Makes for big click targets!
-					echo '<a href="' . $podcast_url . '" title="' . $podcast_title . '">';
-
-						// Now we get the headline and excerpt (except for certain kinds of posts).
-						echo '<div class="headline_excerpt">';
-
-							// Outputs a featured image.
-							echo '<div class="default_thumbnail" style="background-image: url( ';
-							echo $first_img;
-							echo ' );"></div>';
-
-							// Headline
-							echo '<h2 class="headline">' . $podcast_title . '</h2>';
-
-							// Clearfix
-							echo '<div class="clear"></div>';
-
-						echo '</div>'; // Close .headline_excerpt.
-
-					echo '</a>'; // This closes the post link container (.post).
-
-					// Outputs the label.
-					$cat_IDs = wp_get_post_terms(
-						$post->ID,
-						'category',
-						array(
-							'fields' 	=> 'ids',
-							'orderby' => 'count',
-							'order' 	=> 'DESC'
-						)
-					);
-
-					$cat_info				= get_term( $cat_IDs[0] );
-
-					$post_label 		   	= $cat_info->name;
-					$post_label_url			=	get_term_link( $cat_IDs[0], 'category' );
-
-					if ( !empty( $post_label ) ) {
-						echo '<p class="post_label"><a href="' . $post_label_url . '" title="All ' . $post_label . ' profiles.">All ' . $post_label . ' profiles</a></p>';
-					}
-
-				echo '</div>';
-
-			endwhile; endif;
-			// End of How Lawyers Work.
-
-
 			// Outputs the most recent blog post.
 			$current_post_query_args = array(
 				'category_name'				=> 'blog-posts',
@@ -417,6 +340,82 @@
 			</div>
 
 		<?php
+
+		// Outputs the most recent How Lawyers Work post.
+		$hlw_query_args = array(
+			'category_name'				=> 'how-lawyers-work',
+			'ignore_sticky_posts' => TRUE,
+			'posts_per_page'			=> 1,
+		);
+
+		$hlw_query = new WP_Query( $hlw_query_args );
+
+		if ( $hlw_query->have_posts() ) : while ( $hlw_query->have_posts() ) : $hlw_query->the_post();
+
+			$podcast_title	= the_title( '', '', FALSE );
+			$podcast_url		= get_permalink();
+
+			// Gets the first image, or a default.
+			$first_img = '';
+			ob_start();
+			ob_end_clean();
+			$output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
+			$first_img = $matches[1][0];
+
+			if ( empty( $first_img ) ) {
+				$first_img = 'https://lawyerist.com/lawyerist/wp-content/uploads/2018/01/typewriter.jpg';
+			}
+
+			// Starts the post container.
+			echo '<div ' ;
+			post_class( 'index_post_container has-post-label' );
+			echo '>';
+
+				// Starts the link container. Makes for big click targets!
+				echo '<a href="' . $podcast_url . '" title="' . $podcast_title . '">';
+
+					// Now we get the headline and excerpt (except for certain kinds of posts).
+					echo '<div class="headline_excerpt">';
+
+						// Outputs a featured image.
+						echo '<div class="default_thumbnail" style="background-image: url( ';
+						echo $first_img;
+						echo ' );"></div>';
+
+						// Headline
+						echo '<h2 class="headline">' . $podcast_title . '</h2>';
+
+						// Clearfix
+						echo '<div class="clear"></div>';
+
+					echo '</div>'; // Close .headline_excerpt.
+
+				echo '</a>'; // This closes the post link container (.post).
+
+				// Outputs the label.
+				$cat_IDs = wp_get_post_terms(
+					$post->ID,
+					'category',
+					array(
+						'fields' 	=> 'ids',
+						'orderby' => 'count',
+						'order' 	=> 'DESC'
+					)
+				);
+
+				$cat_info				= get_term( $cat_IDs[0] );
+
+				$post_label 		   	= $cat_info->name;
+				$post_label_url			=	get_term_link( $cat_IDs[0], 'category' );
+
+				if ( !empty( $post_label ) ) {
+					echo '<p class="post_label"><a href="' . $post_label_url . '" title="All ' . $post_label . ' profiles.">All ' . $post_label . ' profiles</a></p>';
+				}
+
+			echo '</div>';
+
+		endwhile; endif;
+		// End of How Lawyers Work.
 
 	    // Outputs the Sponsored Product Updates widget.
 	    lawyerist_sponsored_product_updates();
