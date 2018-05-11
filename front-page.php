@@ -352,8 +352,8 @@
 
 		if ( $hlw_query->have_posts() ) : while ( $hlw_query->have_posts() ) : $hlw_query->the_post();
 
-			$podcast_title	= the_title( '', '', FALSE );
-			$podcast_url		= get_permalink();
+			$hlw_title	= the_title( '', '', FALSE );
+			$hlw_url		= get_permalink();
 
 			// Gets the first image, or a default.
 			$first_img = '';
@@ -372,7 +372,7 @@
 			echo '>';
 
 				// Starts the link container. Makes for big click targets!
-				echo '<a href="' . $podcast_url . '" title="' . $podcast_title . '">';
+				echo '<a href="' . $hlw_url . '" title="' . $hlw_title . '">';
 
 					// Now we get the headline and excerpt (except for certain kinds of posts).
 					echo '<div class="headline_excerpt">';
@@ -383,7 +383,7 @@
 						echo ' );"></div>';
 
 						// Headline
-						echo '<h2 class="headline">' . $podcast_title . '</h2>';
+						echo '<h2 class="headline">' . $hlw_title . '</h2>';
 
 						// Clearfix
 						echo '<div class="clear"></div>';

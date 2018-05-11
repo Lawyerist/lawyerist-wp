@@ -244,7 +244,7 @@ Query Mods
 function lawyerist_query_mods( $wp_query ) {
 
 	if ( !is_admin() ) {
-		
+
 		$exclude_hidden_products = array(
 			array(
 				'taxonomy' => 'product_visibility',
@@ -511,49 +511,125 @@ Current Posts Widget
 
 function lawyerist_current_posts( $this_post ) {
 
-	// Current Posts
-	$current_posts_query_args = array(
-		'category__not_in'		=> 1320, // Excludes sponsor-submitted posts.
-		'ignore_sticky_posts' => TRUE,
-		'post__not_in'				=> $this_post,
-		'posts_per_page'			=> 4, // Determines how many posts are displayed in the list.
-	);
+	echo '<div id="current_posts">';
 
-	$current_posts_query = new WP_Query( $current_posts_query_args );
+		echo '<div class="current_posts_heading"><a href="' . home_url() . '">Current Posts</a></div>';
 
-	if ( $current_posts_query->post_count > 1 ) :
+			// Outputs the most recent podcast episode.
+			$current_podcast_query_args = array(
+				'category_name'				=> 'lawyerist-podcast',
+				'ignore_sticky_posts' => TRUE,
+				'posts_per_page'			=> 1,
+			);
 
-		echo '<div id="current_posts">';
+			$current_podcast_query = new WP_Query( $current_podcast_query_args );
 
-			echo '<div class="current_posts_heading"><a href="' . home_url() . '">Current Posts</a></div>';
+			if ( $current_podcast_query->have_posts() ) : while ( $current_podcast_query->have_posts() ) : $current_podcast_query->the_post();
 
-			// Start the current posts sub-Loop.
-			while ( $current_posts_query->have_posts() ) : $current_posts_query->the_post();
+				$podcast_title	= the_title( '', '', FALSE );
+				$podcast_url		= get_permalink();
 
-				$current_post_title = the_title( '', '', FALSE );
-				$current_post_url   = get_permalink();
+				echo '<a href="' . $podcast_url . '" title="' . $podcast_title . '" class="current_post">';
 
-				echo '<a href="' . $current_post_url . '" title="' . $current_post_title . '" class="current_post">';
+					echo '<img class="attachment-thumbnail wp-post-image" src="https://lawyerist.com/lawyerist-dev/wp-content/uploads/2018/02/lawyerist-ltn-podcast-logo-16x9-160x90.png" />';
+
+					echo '<p class="current_post_title">' . $podcast_title . '</p>';
+
+				echo '</a>';
+
+			endwhile; endif;
+			// End of podcast episode.
+
+			// Outputs the most recent download.
+			$download_query_args = array(
+				'post_type'						=> 'product',
+				'ignore_sticky_posts' => TRUE,
+				'posts_per_page'			=> 1,
+			);
+
+			$download_query = new WP_Query( $download_query_args );
+
+			if ( $download_query->have_posts() ) : while ( $download_query->have_posts() ) : $download_query->the_post();
+
+				$download_title	= the_title( '', '', FALSE );
+				$download_url		= get_permalink();
+
+				echo '<a href="' . $download_url . '" title="' . $download_title . '" class="current_post">';
 
 					if ( has_post_thumbnail() ) {
 						the_post_thumbnail( 'current_posts_thumbnail' );
 					} else {
-						echo '<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/02/current-posts-placeholder-160x90.png" class="attachment-thumbnail wp-post-image" />';
+						echo '<img class="attachment-thumbnail wp-post-image" src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/02/current-posts-placeholder-160x90.png" />';
 					}
 
-					echo '<p class="current_post_title">' . $current_post_title . '</p>';
+					echo '<p class="current_post_title">' . $download_title . '</p>';
 
 				echo '</a>';
 
-			endwhile;
+			endwhile; endif;
+			// End of download.
 
-			wp_reset_postdata();
+			// Outputs the most recent blog post.
+			$current_post_query_args = array(
+				'category_name'				=> 'blog-posts',
+				'ignore_sticky_posts' => TRUE,
+				'posts_per_page'			=> 1,
+			);
 
-			echo '<div class="clear"></div>';
+			$current_post_query = new WP_Query( $current_post_query_args );
 
-		echo '</div>'; // Close #current_posts.
+			if ( $current_post_query->have_posts() ) : while ( $current_post_query->have_posts() ) : $current_post_query->the_post();
 
-	endif; // End current posts.
+				$post_title	= the_title( '', '', FALSE );
+				$post_url		= get_permalink();
+
+				echo '<a href="' . $post_url . '" title="' . $post_title . '" class="current_post">';
+
+					if ( has_post_thumbnail() ) {
+						the_post_thumbnail( 'current_posts_thumbnail' );
+					} else {
+						echo '<img class="attachment-thumbnail wp-post-image" src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/02/current-posts-placeholder-160x90.png" />';
+					}
+
+					echo '<p class="current_post_title">' . $post_title . '</p>';
+
+				echo '</a>';
+
+			endwhile; endif;
+			// End of blog post.
+
+			// Outputs the most recent How Lawyers Work post.
+			$hlw_query_args = array(
+				'category_name'				=> 'how-lawyers-work',
+				'ignore_sticky_posts' => TRUE,
+				'posts_per_page'			=> 1,
+			);
+
+			$hlw_query = new WP_Query( $hlw_query_args );
+
+			if ( $hlw_query->have_posts() ) : while ( $hlw_query->have_posts() ) : $hlw_query->the_post();
+
+				$hlw_title	= the_title( '', '', FALSE );
+				$hlw_url		= get_permalink();
+
+				echo '<a href="' . $hlw_url . '" title="' . $hlw_title . '" class="current_post">';
+
+					if ( has_post_thumbnail() ) {
+						the_post_thumbnail( 'current_posts_thumbnail' );
+					} else {
+						echo '<img class="attachment-thumbnail wp-post-image" src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/01/typewriter-160x90.jpg" />';
+					}
+
+					echo '<p class="current_post_title">' . $hlw_title . '</p>';
+
+				echo '</a>';
+
+			endwhile; endif;
+			// End of How Lawyers Work.
+
+		echo '<div class="clear"></div>';
+
+	echo '</div>'; // Close #current_posts.
 
 }
 
@@ -565,17 +641,19 @@ Scorecard Call to Action
 function scorecard_cta() {
 ?>
 
-	<div id="big_hero_cta" class="index_post_container">
-		<a class="big_hero_top" href="https://lawyerist.com/scorecard/">
-			<div class="scorecard_image_wrapper"><img src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/05/scorecard-thumbnail.png" alt="The Small Firm Scorecard example graphic." /></div>
-			<div class="scorecard_prompt_wrapper">
-				<h2>The Small Firm Scorecard<sup>TM</sup></h2>
-				<p>Is your law firm structured to succeed in the future?</p>
-			</div>
-			<div class="clear"></div>
-		</a>
-		<p class="big_hero_p">The practice of law is changing. You need to understand whether your firm is positioned for success in the coming years. Our free Small Firm Scorecard will identify your firm’s strengths and weaknesses in just a few minutes.</p>
-		<div class="big_hero_button"><a class="button" href="https://lawyerist.com/scorecard/">Get Your Free Score</a></div>
+	<div id="big_hero_cta">
+		<div class="index_post_container">
+			<a class="big_hero_top" href="https://lawyerist.com/scorecard/">
+				<div class="scorecard_image_wrapper"><img src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/05/scorecard-thumbnail.png" alt="The Small Firm Scorecard example graphic." /></div>
+				<div class="scorecard_prompt_wrapper">
+					<h2>The Small Firm Scorecard<sup>TM</sup></h2>
+					<p>Is your law firm structured to succeed in the future?</p>
+				</div>
+				<div class="clear"></div>
+			</a>
+			<p class="big_hero_p">The practice of law is changing. You need to understand whether your firm is positioned for success in the coming years. Our free Small Firm Scorecard will identify your firm’s strengths and weaknesses in just a few minutes.</p>
+			<div class="big_hero_button"><a class="button" href="https://lawyerist.com/scorecard/">Get Your Free Score</a></div>
+		</div>
 	</div>
 
 <?php

@@ -1206,7 +1206,8 @@ Front Page
   }
 
 #big_hero_cta {
-  margin: 0 .3rem 6rem .1rem;
+  margin: 0 auto 6rem auto;
+  max-width: 68rem;
 }
 
   .big_hero_top {
