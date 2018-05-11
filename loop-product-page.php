@@ -126,6 +126,8 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
     echo '</div>'; // Close .post_body.
 
+    scorecard_cta();
+
     if ( comments_open() ) {
 
       echo '<div id="comments_container">';
