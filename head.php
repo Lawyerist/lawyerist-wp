@@ -66,10 +66,22 @@ if ( is_single() && has_category( 'sponsored-posts', $post->ID ) ) { echo '<meta
 </script>
 <!-- End DoubleClick Script -->
 
-<!-- DoubleClick Tags -->
+<!-- DoubleClick Tag for Sidebar Ad-->
 <script>
   googletag.cmd.push(function() {
 		googletag.defineSlot('/12659965/lawyerist_300x250_ad_position', [300, 250], 'div-gpt-ad-1516051566911-0').addService(googletag.pubads());
+		googletag.pubads().enableSingleRequest();
+		googletag.pubads().collapseEmptyDivs();
+		googletag.pubads().setTargeting('pageID', '<?php if ( is_singular() ) { echo $post->ID; } ?>');
+		googletag.pubads().setTargeting('test', 'refresh');
+		googletag.enableServices();
+  });
+</script>
+<!-- End DoubleClick Tag for Sidebar Ad -->
+
+<!-- DoubleClick Tags for Trial Buttons-->
+<script>
+  googletag.cmd.push(function() {
 		googletag.defineSlot('/12659965/lawyerist_product_page_trial_button', [170, 50], 'div-gpt-ad-1517464941516-0').addService(googletag.pubads());
 		googletag.defineSlot('/12659965/lawyerist_product_page_trial_button_bottom', [170, 50], 'div-gpt-ad-1517464941516-1').addService(googletag.pubads());
 		googletag.defineSlot('/12659965/product_portal_trial_button_01', [170, 50], 'div-gpt-ad-1517464941516-2').addService(googletag.pubads());
@@ -83,7 +95,7 @@ if ( is_single() && has_category( 'sponsored-posts', $post->ID ) ) { echo '<meta
 		googletag.enableServices();
   });
 </script>
-<!-- End DoubleClick Tags -->
+<!-- End DoubleClick Tags for Trial Buttons-->
 
 <!-- Google Webmaster Tools site verification tag for Sam -->
 <meta name="google-site-verification" content="GwbQ-BLG3G-tXV4-uG-_kZIaxXxm_Wqmzg5wFSBa9hI" />

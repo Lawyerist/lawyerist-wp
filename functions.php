@@ -669,6 +669,8 @@ function lawyerist_get_display_ad() { ?>
 		<div id='div-gpt-ad-1516051566911-0' style='height:250px; width:300px;'>
 			<script>
 				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1516051566911-0'); });
+				// Set timer to refresh the display ad slot every 30 seconds
+				setInterval(function(){googletag.pubads().refresh();}, 30000);
 			</script>
 		</div>
 	</div>
