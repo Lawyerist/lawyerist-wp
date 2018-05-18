@@ -1995,13 +1995,11 @@ Content
 
   .post_body {
     margin-bottom: 4rem;
-    padding: 0 2rem;
   }
 
     @media only screen and ( max-width: 499px ) {
 
       .post_body {
-        padding: 0;
         margin: 0 auto;
       }
 
@@ -2641,10 +2639,6 @@ Content
     max-width: none;
     width: 100%;
   }
-
-    .full-width .post_body {
-      padding-left: 0;
-    }
 
   .full-width .sharedaddy,
   .full-width .sd-block.stop {
@@ -3669,10 +3663,6 @@ a.cart-in-header {
 
 body.woocommerce-account {
   background-color: #fff;
-}
-
-.woocommerce-account .post_body {
-  padding-left: 0;
 }
 
 .woocommerce-account form.login {
