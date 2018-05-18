@@ -3379,6 +3379,18 @@ WooCommerce
   font-size: 2rem; /* WooCommerce uses em sizing, so this sets the base size to 20px. */
 }
 
+@media only screen and (max-width: 683px) {
+
+  .woocommerce ul.products[class*=columns-] li.product,
+  .woocommerce-page ul.products[class*=columns-] li.product {
+    width: unset;
+    float: none;
+    clear: both;
+    margin: 0 .3rem 1rem .1rem;
+  }
+
+}
+
 .woocommerce-page ul.products li.product-category {
   background-color: #fff;
   border-radius: .2rem;
