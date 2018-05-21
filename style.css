@@ -44,24 +44,10 @@ Print
 
 ------------------------------*/
 
-
-/*------------------------------
-Load Genericons
-
-If they aren't loading, add the following code to .htacess in /fonts:
-
-<IfModule mod_headers.c>
-  <FilesMatch ".(eot|otf|svg|ttf|woff|woff2)$">
-    Header set Access-Control-Allow-Origin "*"
-  </FilesMatch>
-</IfModule>
-
-------------------------------*/
-
 /* Adler */
 @font-face {
     font-family: 'adler';
-    src: url('./fonts/adler/adler-webfont.woff') format('woff');
+    src: url('fonts/adler/adler-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
@@ -69,14 +55,14 @@ If they aren't loading, add the following code to .htacess in /fonts:
 /* Concourse (headings) */
 @font-face {
     font-family: 'concourse-headings';
-    src: url('./fonts/concourse/concourse_t6_regular-webfont.woff') format('woff');
+    src: url('fonts/concourse/concourse_t6_regular-webfont.woff') format('woff');
     font-weight: bold;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'concourse-headings';
-    src: url('./fonts/concourse/concourse_t6_italic-webfont.woff') format('woff');
+    src: url('fonts/concourse/concourse_t6_italic-webfont.woff') format('woff');
     font-weight: bold;
     font-style: italic;
 }
@@ -85,28 +71,28 @@ If they aren't loading, add the following code to .htacess in /fonts:
 /* Concourse (meta) */
 @font-face {
     font-family: 'concourse';
-    src: url('./fonts/concourse/concourse_t4_regular-webfont.woff') format('woff');
+    src: url('fonts/concourse/concourse_t4_regular-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'concourse';
-    src: url('./fonts/concourse/concourse_t4_italic-webfont.woff') format('woff');
+    src: url('fonts/concourse/concourse_t4_italic-webfont.woff') format('woff');
     font-weight: normal;
     font-style: italic;
 }
 
 @font-face {
     font-family: 'concourse';
-    src: url('./fonts/concourse/concourse_t4_bold-webfont.woff') format('woff');
+    src: url('fonts/concourse/concourse_t4_bold-webfont.woff') format('woff');
     font-weight: bold;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'concourse';
-    src: url('./fonts/concourse/concourse_t4_bold_italic-webfont.woff') format('woff');
+    src: url('fonts/concourse/concourse_t4_bold_italic-webfont.woff') format('woff');
     font-weight: bold;
     font-style: italic;
 }
@@ -122,21 +108,21 @@ If they aren't loading, add the following code to .htacess in /fonts:
 
 @font-face {
     font-family: 'equity';
-    src: url('./fonts/equity/equity_text_b_italic-webfont.woff') format('woff');
+    src: url('fonts/equity/equity_text_b_italic-webfont.woff') format('woff');
     font-weight: normal;
     font-style: italic;
 }
 
 @font-face {
     font-family: 'equity';
-    src: url('./fonts/equity/equity_text_b_bold-webfont.woff') format('woff');
+    src: url('fonts/equity/equity_text_b_bold-webfont.woff') format('woff');
     font-weight: bold;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'equity';
-    src: url('./fonts/equity/equity_text_b_bold_italic-webfont.woff') format('woff');
+    src: url('fonts/equity/equity_text_b_bold_italic-webfont.woff') format('woff');
     font-weight: bold;
     font-style: italic;
 }
@@ -145,7 +131,7 @@ If they aren't loading, add the following code to .htacess in /fonts:
 /* Triplicate (code) */
 @font-face {
     font-family: 'triplicate';
-    src: url('./fonts/triplicate/triplicate_t4_code_regular-webfont.woff') format('woff');
+    src: url('fonts/triplicate/triplicate_t4_code_regular-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
@@ -153,7 +139,7 @@ If they aren't loading, add the following code to .htacess in /fonts:
 /* Genericons */
 @font-face {
   font-family: 'Genericons';
-  src: url('./fonts/genericons/Genericons.woff') format('woff');
+  src: url('fonts/genericons/Genericons.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
