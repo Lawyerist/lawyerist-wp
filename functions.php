@@ -254,8 +254,11 @@ function lawyerist_query_mods( $wp_query ) {
 			),
 		);
 
-		set_query_var( 'tax_query', $exclude_hidden_products );
-
+		$wp_query->set( 'tax_query', $exclude_hidden_products );
+		/* I don't know why it works this way but not using set_query_var(). And it
+		seems like I should have to call global $wp_query, but if I do it doesn't
+		work again. So this is what it is. */
+		
 	}
 
 	// Exclude sponsored posts from the front page.
