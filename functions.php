@@ -243,29 +243,9 @@ Query Mods
 
 function lawyerist_query_mods( $wp_query ) {
 
-	if ( !is_admin() ) {
-
-		$exclude_hidden_products = array(
-			array(
-				'taxonomy' => 'product_visibility',
-				'field'    => 'name',
-				'terms'    => 'exclude-from-catalog',
-				'operator' => 'NOT IN',
-			),
-		);
-
-		set_query_var( 'tax_query', $exclude_hidden_products );
-
-	}
-
 	// Exclude sponsored posts from the front page.
 	if ( is_front_page() ) {
 		set_query_var( 'category__not_in', array( 1320 ) );
-	}
-
-	// Add products to the feed.
-	if ( is_feed() ) {
-		set_query_var( 'post_type', array( 'post', 'product' ) );
 	}
 
 	// Add pages and products to author feeds in the admin dashboard.
