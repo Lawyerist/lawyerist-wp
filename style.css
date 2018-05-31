@@ -1354,6 +1354,15 @@ Front Page
   margin-bottom: 2rem;
 }
 
+.home .index_post_container.lens_playlist {
+  max-height: 36.3rem;
+  padding: 2rem;
+}
+
+  .home .index_post_container.lens_playlist iframe {
+    margin-bottom: 0 !important;
+  }
+
 .home .index_post_container .post_label {
   margin-bottom: 0;
 }

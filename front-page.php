@@ -226,6 +226,15 @@
 			// End of download.
 
 
+			// Embedded Lawyerist Lens playlist.
+			echo '<div class="index_post_container lens_playlist">';
+
+			echo '<iframe width="646" height="363" src="https://www.youtube.com/embed/videoseries?list=PLtFJu5URBISmTDaVOF3l-cQl08f2qUMr_" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+
+			echo '</div>';
+			// End of embedded Lawyerist Lens playlist.
+
+
 			// Outputs the most recent blog post.
 			$current_post_query_args = array(
 				'category_name'				=> 'blog-posts',
