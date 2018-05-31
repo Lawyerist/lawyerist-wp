@@ -103,4 +103,7 @@ if ( is_single() && has_category( 'sponsored-posts', $post->ID ) ) { echo '<meta
 <!-- Google Webmaster Tools site verification tag for Aaron -->
 <meta name="google-site-verification" content="d_OrAi2nt_o3Y3uQ-dicRpRYaxZSynFLUhHY15cnJUY" />
 
+<!-- Pinterest site verification. -->
+<meta name="p:domain_verify" content="53c0a3083959448fb93c9672226a472e"/>
+
 </head>
