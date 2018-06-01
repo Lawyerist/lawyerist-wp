@@ -1318,6 +1318,11 @@ Front Page
 
 .front_page_block {
   margin: 0 -.7rem 6rem .1rem;
+  max-width: 68rem;
+}
+
+.front_page_block.fp_contains_boxes {
+  max-width: unset;
 }
 
 .one_half {
@@ -1354,6 +1359,14 @@ Front Page
   margin-bottom: 2rem;
 }
 
+.home .type-product.has-post-label .headline_excerpt {
+  padding: 4rem;
+}
+
+.home .index_post_container .post_label {
+  margin-bottom: 0;
+}
+
 .home .index_post_container.lens_playlist {
   max-height: 36.3rem;
   padding: 2rem;
@@ -1362,14 +1375,6 @@ Front Page
   .home .index_post_container.lens_playlist iframe {
     margin-bottom: 0 !important;
   }
-
-.home .index_post_container .post_label {
-  margin-bottom: 0;
-}
-
-.home .type-product.has-post-label .headline_excerpt {
-  padding: 4rem;
-}
 
 
 /*------------------------------

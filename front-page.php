@@ -72,7 +72,7 @@
 
 
 	    <!-- Outputs a block of secondary calls to action. -->
-			<div class="front_page_block">
+			<div class="front_page_block fp_contains_boxes">
 
 				<div class="one_half">
 					<div class="index_post_container">
@@ -316,7 +316,7 @@
 		?>
 
 			<!-- Outputs strategic pages. -->
-			<div class="front_page_block">
+			<div class="front_page_block fp_contains_boxes">
 
 				<div class="one_half">
 					<div class="index_post_container">
