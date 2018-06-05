@@ -162,6 +162,15 @@
 			// End of podcast episode.
 
 
+			// Embedded Lawyerist Lens playlist.
+			echo '<div class="index_post_container lens_playlist">';
+
+			echo '<iframe width="646" height="363" src="https://www.youtube.com/embed/videoseries?list=PLtFJu5URBISmTDaVOF3l-cQl08f2qUMr_" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+
+			echo '</div>';
+			// End of embedded Lawyerist Lens playlist.
+
+
 	    // Outputs the most recent download.
 			$download_query_args = array(
 				'post_type'						=> 'product',
@@ -224,15 +233,6 @@
 
 			endwhile; endif;
 			// End of download.
-
-
-			// Embedded Lawyerist Lens playlist.
-			echo '<div class="index_post_container lens_playlist">';
-
-			echo '<iframe width="646" height="363" src="https://www.youtube.com/embed/videoseries?list=PLtFJu5URBISmTDaVOF3l-cQl08f2qUMr_" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
-
-			echo '</div>';
-			// End of embedded Lawyerist Lens playlist.
 
 
 			// Outputs the most recent blog post.
