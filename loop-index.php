@@ -64,13 +64,13 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
   }
 
-  // Assigns sponsor class.
+  // Skips sponsored posts.
   if ( has_term( true, 'sponsor' ) ) {
-    $post_classes[] = 'sponsored';
-  }
+
+    continue;
 
   // Skips pages if they don't have the 'Show in Feed' page type.
-  if ( $post_type == 'page' && !has_term( 'show-in-feed', 'page_type' ) ) {
+  } elseif ( $post_type == 'page' && !has_term( 'show-in-feed', 'page_type' ) ) {
 
     continue;
 
