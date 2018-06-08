@@ -49,5 +49,3 @@ comment_form( array(
 	'comment_notes_after'	=> '<p class="comment-notes">' . __( 'By leaving a review you agree to abide by our <a href="https://lawyerist.com/community-standards/">community standards</a>.' ) . '</p>',
 	)
 );
-
-?>

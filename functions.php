@@ -611,6 +611,8 @@ function lawyerist_current_posts( $this_post ) {
 
 	echo '</div>'; // Close #current_posts.
 
+	wp_reset_postdata(); // Necessary because otherwise comments will not display.
+
 }
 
 

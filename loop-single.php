@@ -135,7 +135,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
     lawyerist_current_posts( $this_post );
 
     echo '<div id="comments_container">';
-    comments_template();
+    comments_template( '/comments.php' );
     echo '</div>';
 
   echo '</div>'; // Close .post.

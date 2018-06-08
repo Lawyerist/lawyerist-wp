@@ -126,8 +126,6 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
     echo '</div>'; // Close .post_body.
 
-    scorecard_cta();
-
     if ( comments_open() ) {
 
       echo '<div id="comments_container">';
@@ -135,12 +133,14 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
       if ( function_exists( 'wp_review_show_total' ) ) {
         comments_template( '/reviews.php' );
       } else {
-        comments_template();
+        comments_template( '/comments.php' );
       }
 
       echo '</div>';
 
     }
+
+    scorecard_cta();
 
   echo '</div>'; // Close .post.
 

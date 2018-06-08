@@ -17,7 +17,6 @@
 		<div class="alignright"><?php next_comments_link() ?></div>
 	</div>
 
-
 	<ol class="commentlist">
 	<?php wp_list_comments( array(
 		'avatar_size'	=> 48,
@@ -50,5 +49,3 @@ comment_form( array(
 	'comment_notes_after'		=> '<p class="comment-notes">' . __( 'By commenting you agree to abide by our <a href="https://lawyerist.com/community-standards/">community standards</a>.' ) . '</p>',
 	)
 );
-
-?>
