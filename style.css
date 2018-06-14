@@ -2519,7 +2519,7 @@ Content
           padding: 0;
         }
 
-        .featured-products-list .trial-button {
+        .featured-products-list .list-products-trial-button {
           position: absolute;
             right: 2rem;
             top: 2rem;
@@ -2579,12 +2579,11 @@ Content
             padding-left: 0;
           }
 
-          .featured-products-list .trial-button {
+          .featured-products-list .list-products-trial-button {
             margin: 0 auto 2rem auto;
             position: relative;
               right: auto;
               top: auto;
-            width: 17rem;
           }
 
         .featured-products-list .excerpt {
@@ -2625,9 +2624,10 @@ Content
     margin-bottom: 1rem;
   }
 
-  .trial-button {
+  a.button.trial-button {
+    border-radius: .3rem;
+    font-size: 1.8rem !important;
     margin: 0 auto 3rem auto;
-    width: 17rem;
   }
 
   /*------------------------------
