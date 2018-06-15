@@ -2447,14 +2447,16 @@ Content
       margin: 0 .3rem 1rem .1rem;
       min-height: 15rem;
       overflow: hidden;
+      padding: 2rem;
       position: relative;
     }
 
       .product-pages-list .image {
+        height: 11rem;
         position: absolute;
-          top: 0;
+          top: 2rem;
           bottom: 0;
-        width: 15rem;
+        width: 11rem;
       }
 
         .product-pages-list img {
@@ -2462,32 +2464,39 @@ Content
           border: .2rem;
           box-sizing: content-box;
           height: auto;
-          margin: auto 2rem;
+          margin: auto 0;
           max-width: none;
           padding: .5rem;
-          position: absolute;
-            bottom: 0;
-            top: 0;
+          position: relative;
+            bottom: auto;
+            top: auto;
           width: 10rem;
         }
 
-      .product-pages-list .title {
-        display: inline-block;
-        font-size: 2.4rem;
-        line-height: 1.2;
-        margin-bottom: .33em;
-        padding: 2rem 2rem 0 15rem;
+      .product-pages-list .title_container {
+        margin: 0 0 2rem 12.5rem;
       }
 
-      .product-pages-list .user-rating {
-        padding-left: 15rem;
-      }
+        .product-pages-list .title {
+          display: inline-block;
+          font-size: 2.4rem;
+          line-height: 1.2;
+          margin-bottom: .33em;
+          padding: 0 2rem 0 0;
+        }
 
-      .product-pages-list .excerpt {
-        display: block;
-        font-size: 1.6rem;
-        padding: 0 2rem 2rem 15rem;
-      }
+        .list-products-trial-button {
+          position: absolute;
+            right: 2rem;
+            top: 2rem;
+        }
+
+    .product-pages-list .excerpt {
+      display: block;
+      font-size: 1.6rem;
+      margin-left: 12.5rem;
+      padding: 0;
+    }
 
     .featured_products_heading {
       color: #666;
@@ -2501,59 +2510,36 @@ Content
 
     .featured-products-list li {
       min-height: 16rem;
-      padding: 2rem;
     }
 
       .featured-products-list .image {
         height: 16rem;
-        top: 2rem;
         width: 16rem;
       }
 
         .featured-products-list .image img {
-          margin: auto 0;
-          position: relative;
-            bottom: auto;
-            top: auto;
           width: 15rem;
         }
 
-      .title_container {
-        margin: 0 0 2rem 18rem;
-        min-height: 7.5rem;
+      .featured-products-list .title_container {
+        margin: 0 0 2rem 17.5rem;
       }
 
-        .featured-products-list .title,
-        .featured-products-list .user-rating {
-          padding: 0;
-        }
-
-        .list-products-trial-button {
-          position: absolute;
-            right: 2rem;
-            top: 2rem;
-        }
-
       .featured-products-list .excerpt {
-        margin-left: 18rem;
-        padding: 0;
+        margin-left: 17.5rem;
       }
 
       /* When the width reaches 700px. */
       @media only screen and (max-width:699px) {
 
-        .review_count {
-          display: block;
-        }
-
-        .featured-products-list .image {
-          height: 8.5rem;
-          width: 8.5rem;
-          top: 1rem;
+        .product-pages-list li {
+          padding: 1rem;
         }
 
         .product-pages-list .image {
-          width: 12.5rem;
+          height: 8.5rem;
+          width: 8.5rem;
+          top: 1rem;
         }
 
           .product-pages-list .image img {
@@ -2561,48 +2547,28 @@ Content
             width: 7.5rem;
           }
 
-        .featured-products-list li,
-        .product-pages-list li {
-          padding: 1rem;
-        }
-
-          .featured-products-list .image img {
-            height: 7.5rem;
-            width: 7.5rem;
-          }
-
-        .title_container {
+        .product-pages-list .title_container {
           margin: 0;
           min-height: 8.5rem;
+          padding-left: 9.5rem;
         }
 
-          .featured-products-list .title,
-          .featured-products-list .user-rating,
-          .featured-products-list .excerpt {
-            margin-left: 9.5rem;
-            padding-left: 0;
-          }
-
-          .product-pages-list .title,
-          .product-pages-list .user-rating,
-          .product-pages-list .excerpt {
-            margin-left: 13.5rem;
-            padding-left: 0rem;
-          }
-
-        .list-products-trial-button {
-          margin: 0 auto 2rem auto;
-          position: relative;
-            right: auto;
-            top: auto;
-          text-align: center;
-        }
-
-          .list-products-trial-button a.button.trial-button {
+          .review_count {
             display: block;
           }
 
-        .featured-products-list .excerpt,
+          .list-products-trial-button {
+            margin: 0 auto 2rem auto;
+            position: relative;
+              right: auto;
+              top: auto;
+            text-align: center;
+          }
+
+            .list-products-trial-button .trial-button {
+              display: block;
+            }
+
         .product-pages-list .excerpt {
           margin-left: 0;
         }
