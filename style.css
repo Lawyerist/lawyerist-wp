@@ -2426,7 +2426,7 @@ Content
     font-size: 1.8rem !important;
     height: 4.2rem;
     line-height: 4.2rem;
-    margin: 0 auto 3rem auto;
+    margin: 0 auto;
     padding: 0 1.8rem;
   }
 
@@ -2532,10 +2532,6 @@ Content
           position: absolute;
             right: 2rem;
             top: 2rem;
-        }
-
-        .list-products-trial-button a.button.trial-button {
-          margin-bottom: 0;
         }
 
       .featured-products-list .excerpt {
@@ -2868,15 +2864,15 @@ p.author_website:before {
 }
 
 #author_bio_footer {
-clear: both;
-margin: 6rem 0;
-min-height: 10rem;
+  clear: both;
+  margin: 6rem 0;
+  min-height: 10rem;
 }
 
   #author_bio_footer img {
-  float: left;
-  margin-bottom: 3rem;
-  margin-right: 2rem;
+    float: left;
+    margin-bottom: 3rem;
+    margin-right: 2rem;
   }
 
   #author_bio_footer #author_bio,
