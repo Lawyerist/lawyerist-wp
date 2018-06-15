@@ -659,30 +659,6 @@ function lawyerist_get_display_ad() { ?>
 
 <?php }
 
-function lawyerist_get_sponsored_trial_button_top() { ?>
-
-	<div class="sponsored_product_trial_button">
-		<div id='div-gpt-ad-1517464941516-0' style='height:50px; width:170px;'>
-			<script>
-				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1517464941516-0'); });
-			</script>
-		</div>
-	</div>
-
-<?php }
-
-function lawyerist_get_sponsored_trial_button_bottom() { ?>
-
-	<div class="sponsored_product_trial_button">
-		<div id='div-gpt-ad-1517464941516-1' style='height:50px; width:170px;'>
-			<script>
-				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1517464941516-1'); });
-			</script>
-		</div>
-	</div>
-
-<?php }
-
 
 /*------------------------------
 Trial Buttons
@@ -692,18 +668,11 @@ function lawyerist_sponsored_trial_button( $content ) {
 
 	global $post;
 
-	if ( ( get_page_template_slug( $post->ID ) == 'product-page.php' ) && ( $post->post_parent > 0 ) && is_main_query() ) {
+	if ( ( get_page_template_slug( $post->ID ) == 'product-page.php' ) && ( $post->post_parent > 0 ) && has_trial_button() && is_main_query() ) {
 
-		$p_close		= '</p>';
-		$paragraphs = explode( $p_close, $content );
-
-		ob_start();
-			echo lawyerist_get_sponsored_trial_button_top();
-		$trial_button_top = ob_get_clean();
-
-		ob_start();
-			echo lawyerist_get_sponsored_trial_button_bottom();
-		$trial_button_bottom = ob_get_clean();
+		$p_close			= '</p>';
+		$paragraphs 	= explode( $p_close, $content );
+		$trial_button	= trial_button();
 
 		foreach ( $paragraphs as $p_num => $paragraph ) {
 
@@ -716,13 +685,13 @@ function lawyerist_sponsored_trial_button( $content ) {
 
 			// Insert DFP code after 1st paragraph (0 is paragraph #1).
 			if ( $p_num == 0 ) {
-				$paragraphs[$p_num] .= $trial_button_top;
+				$paragraphs[$p_num] .= '<p align="center">' . $trial_button . '</p>';
 			}
 
 		}
 
 		$content = implode( '', $paragraphs );
-		$content .= $trial_button_bottom;
+		$content .= '<p align="center">' . $trial_button . '</p>';
 
 	}
 
