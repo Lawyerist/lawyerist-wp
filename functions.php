@@ -245,7 +245,7 @@ Get Country
 
 function get_country() {
 
-	if ( has_trial_button() ) {
+	if ( has_trial_button() || ( ( get_page_template_slug( $post->ID ) == 'product-page.php' ) && ( $post->post_parent == 0 ) ) ) {
 
 		// Get user's geographic location by IP address.
 		// Set IP address and API access key.
@@ -265,7 +265,7 @@ function get_country() {
 
 		// Return the country code (i.e., "US" or "CA").
 		return $api_result['country_code'];
-		
+
 	}
 
 }
