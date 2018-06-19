@@ -2430,6 +2430,16 @@ Content
     padding: 0 1.8rem;
   }
 
+    a.button.trial-button:after {
+      content: "\f442";
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-font-smoothing: antialiased;
+      font: normal 1.8rem/1 Genericons;
+      margin-left: .1em;
+      speak: none;
+      vertical-align: text-top;
+    }
+
   .product-pages-list {
     list-style: none;
     margin-top: 0;
