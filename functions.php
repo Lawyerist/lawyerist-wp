@@ -14,6 +14,9 @@ STRUCTURE
 ADMIN
 - Login Form
 
+UTILITY FUNCTIONS
+- Get Country
+
 CONTENT
 - Query Mods
 - Archive Headers
@@ -233,6 +236,40 @@ add_filter( 'login_headerurl', 'lawyerist_login_logo_url' );
 add_filter( 'login_headertitle', 'lawyerist_login_logo_url_title' );
 add_filter( 'login_message', 'lawyerist_login_message' );
 
+
+/* UTILITY FUNCTIONS ********************/
+
+/*------------------------------
+Get Country
+------------------------------*/
+
+function get_country() {
+
+	// Use global post if it wasn't provided.
+	if ( ! is_a( $post, 'WP_Post' ) ) {
+		global $post;
+	}
+
+	// Get user's geographic location by IP address.
+	// Set IP address and API access key.
+	$ip = $_SERVER['REMOTE_ADDR'];
+	$access_key = '55e08636154002dca5b45f0920143108';
+
+	// Initialize CURL.
+	$ch = curl_init( 'http://api.ipstack.com/' . $ip . '?access_key=' . $access_key . '' );
+	curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
+
+	// Store the data.
+	$json = curl_exec( $ch );
+	curl_close( $ch );
+
+	// Decode JSON response.
+	$api_result = json_decode( $json, true );
+
+	// Return the country code (i.e., "US" or "CA").
+	return $api_result['country_code'];
+
+}
 
 
 /* CONTENT ********************/
@@ -666,9 +703,14 @@ Trial Buttons
 
 function lawyerist_sponsored_trial_button( $content ) {
 
-	global $post;
+	// Use global post if it wasn't provided.
+	if ( ! is_a( $post, 'WP_Post' ) ) {
+		global $post;
+	}
 
-	if ( ( get_page_template_slug( $post->ID ) == 'product-page.php' ) && ( $post->post_parent > 0 ) && has_trial_button() && is_main_query() ) {
+	$country = get_country();
+
+	if ( ( $country == ( US || CA ) ) && ( get_page_template_slug( $post->ID ) == 'product-page.php' ) && ( $post->post_parent > 0 ) && has_trial_button() && is_main_query() ) {
 
 		$p_close			= '</p>';
 		$paragraphs 	= explode( $p_close, $content );
