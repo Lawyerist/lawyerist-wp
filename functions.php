@@ -245,29 +245,28 @@ Get Country
 
 function get_country() {
 
-	// Use global post if it wasn't provided.
-	if ( ! is_a( $post, 'WP_Post' ) ) {
-		global $post;
+	if ( has_trial_button() ) {
+
+		// Get user's geographic location by IP address.
+		// Set IP address and API access key.
+		$ip = $_SERVER['REMOTE_ADDR'];
+		$access_key = '55e08636154002dca5b45f0920143108';
+
+		// Initialize CURL.
+		$ch = curl_init( 'http://api.ipstack.com/' . $ip . '?access_key=' . $access_key . '' );
+		curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
+
+		// Store the data.
+		$json = curl_exec( $ch );
+		curl_close( $ch );
+
+		// Decode JSON response.
+		$api_result = json_decode( $json, true );
+
+		// Return the country code (i.e., "US" or "CA").
+		return $api_result['country_code'];
+		
 	}
-
-	// Get user's geographic location by IP address.
-	// Set IP address and API access key.
-	$ip = $_SERVER['REMOTE_ADDR'];
-	$access_key = '55e08636154002dca5b45f0920143108';
-
-	// Initialize CURL.
-	$ch = curl_init( 'http://api.ipstack.com/' . $ip . '?access_key=' . $access_key . '' );
-	curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
-
-	// Store the data.
-	$json = curl_exec( $ch );
-	curl_close( $ch );
-
-	// Decode JSON response.
-	$api_result = json_decode( $json, true );
-
-	// Return the country code (i.e., "US" or "CA").
-	return $api_result['country_code'];
 
 }
 
