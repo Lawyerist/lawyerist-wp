@@ -284,9 +284,11 @@ function lawyerist_query_mods( $wp_query ) {
 		set_query_var( 'category__not_in', array( 1320 ) );
 	}
 
-	// Add pages and products to author feeds in the admin dashboard.
-	if ( !is_admin() && is_author() ) {
+	// Add pages and products to the main feed, and pages to author feeds.
+	if ( !is_admin() && !is_author() ) {
 		set_query_var( 'post_type', array( 'post', 'page', 'product' ) );
+	} elseif ( is_author() ) {
+		set_query_var( 'post_type', array( 'post', 'page' ) );
 	}
 
 	// If displaying a series archive page, show the oldest post first.
