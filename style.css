@@ -29,6 +29,7 @@ Content
   Tables
   Resource Pages
   Product Pages
+  Team Profiles
   Full Width Template
   No Sidebar Template
 	Comments
@@ -338,6 +339,7 @@ button,
 .comment .reply,
 #current_posts,
 .product-page .headline_container .excerpt,
+.profile-page .headline_container .excerpt,
 #footer,
 #header,
 input[type="button"],
@@ -643,7 +645,8 @@ p.pullout {
 .postmeta,
 .product_meta,
 .user-rating,
-.product-page .headline_container .excerpt {
+.product-page .headline_container .excerpt,
+.profile-page .headline_container .excerpt {
 	color: #777;
   display: block;
   font-size: 1.6rem;
@@ -2616,6 +2619,47 @@ Content
     display: block;
     margin-bottom: 1rem;
   }
+
+
+  /*------------------------------
+  Team Profiles
+  ------------------------------*/
+
+  .profile-page .headline_container {
+    margin-bottom: 3rem;
+    position: relative;
+  }
+
+    .profile-page .has-post-thumbnail .headline_container {
+      min-height: 17.5rem;
+    }
+
+    .profile-page .has-post-thumbnail .headline_container .headline,
+    .profile-page .has-post-thumbnail .headline_container .excerpt {
+      padding-left: 17.5rem;
+    }
+
+    .profile-page .headline_container div[itemprop="image"] {
+      background-color: #ddd;
+      border-radius: .2rem;
+      height: 15rem;
+      padding: .5rem;
+      position: absolute;
+        top: 0;
+        bottom: 0;
+      width: 15rem;
+    }
+
+    .profile-page .headline_container img.wp-post-image {
+      height: auto;
+      margin: auto 0;
+      max-width: none;
+      position: absolute;
+        top: 0;
+        bottom: 0;
+      width: 15rem;
+    }
+
 
   /*------------------------------
   Full Width Template

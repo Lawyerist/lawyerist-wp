@@ -22,6 +22,8 @@
 
 	</div><!-- end #content_column -->
 
+	<?php if ( !is_mobile() ) { include( 'sidebar.php' ); } ?>
+
 	<div class="clear"></div>
 
 </div><!--end #column_container-->
