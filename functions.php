@@ -937,9 +937,7 @@ Function for Checking to See if a Product ID is in the Cart
 // To check, call the function as woo_in_cart( $product_id ). Returns true or false.
 function woo_in_cart( $product_id ) {
 
-	global $woocommerce;
-
-	foreach( $woocommerce->cart->get_cart() as $key => $val ) {
+	foreach( WC()->cart->get_cart() as $key => $val ) {
 
 		$products_in_cart = $val['data'];
 

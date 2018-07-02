@@ -117,7 +117,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
     }
 
-    scorecard_cta();
+    if ( !is_page( 'scorecard' ) ) { scorecard_cta(); }
 
   echo '</div>'; // Close .post.
 
