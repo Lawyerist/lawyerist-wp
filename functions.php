@@ -43,7 +43,7 @@ COMMENTS & REVIEWS
 WOOCOMMERCE
 - Function for Checking to See if a Product ID is in the Cart
 - Insider Plus Shopping Cart Upsell
-- Disable Checkout Fields
+- Checkout Fields
 - Checkout Survey
 - Check to See if Page is Really a WooCommerce Page
 
@@ -952,7 +952,7 @@ function woo_in_cart( $product_id ) {
 }
 
 /*------------------------------
-Disable Checkout Fields
+Checkout Fields
 ------------------------------*/
 
 // Disables all billing fields except the name, email address, and country.
@@ -967,14 +967,14 @@ function woo_disable_checkout_fields( $fields ) {
 	unset( $fields['billing']['billing_phone'] );
 
 	// Creates an array of Insider and Lab product IDs.
-	$product_ids = array(
+	$lab_insider_product_ids = array(
 		208237,
 		208247,
 		224266,
 		224435,
 	);
 
-	foreach ( $product_ids as $val ) {
+	foreach ( $lab_insider_product_ids as $val ) {
 
 		if ( woo_in_cart( $val ) ) {
 
