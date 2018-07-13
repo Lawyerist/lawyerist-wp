@@ -356,90 +356,117 @@
 
 			</div>
 
-		<?php
+		<div class="front_page_block fp_contains_boxes">
 
-		// Outputs the most recent How Lawyers Work post.
-		$hlw_query_args = array(
-			'category_name'				=> 'how-lawyers-work',
-			'ignore_sticky_posts' => TRUE,
-			'posts_per_page'			=> 1,
-		);
+			<?php
 
-		$hlw_query = new WP_Query( $hlw_query_args );
+			// Outputs the most recent How Lawyers Work post.
+			$hlw_query_args = array(
+				'category_name'				=> 'how-lawyers-work',
+				'ignore_sticky_posts' => TRUE,
+				'posts_per_page'			=> 1,
+			);
 
-		if ( $hlw_query->have_posts() ) : while ( $hlw_query->have_posts() ) : $hlw_query->the_post();
+			$hlw_query = new WP_Query( $hlw_query_args );
 
-			$hlw_title	= the_title( '', '', FALSE );
-			$hlw_url		= get_permalink();
+			if ( $hlw_query->have_posts() ) : while ( $hlw_query->have_posts() ) : $hlw_query->the_post();
 
-			// Gets the first image, or a default.
-			$first_img = '';
-			ob_start();
-			ob_end_clean();
-			$output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
-			$first_img = $matches[1][0];
+				$hlw_title	= the_title( '', '', FALSE );
+				$hlw_url		= get_permalink();
 
-			if ( empty( $first_img ) ) {
-				$first_img = 'https://lawyerist.com/lawyerist/wp-content/uploads/2018/01/typewriter.jpg';
-			}
+				// Gets the first image, or a default.
+				$first_img = '';
+				ob_start();
+				ob_end_clean();
+				$output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
+				$first_img = $matches[1][0];
 
-			// Starts the post container.
-			echo '<div ' ;
-			post_class( 'index_post_container has-post-label' );
-			echo '>';
-
-				// Starts the link container. Makes for big click targets!
-				echo '<a href="' . $hlw_url . '" title="' . $hlw_title . '">';
-
-					// Now we get the headline and excerpt (except for certain kinds of posts).
-					echo '<div class="headline_excerpt">';
-
-						// Outputs a featured image.
-						echo '<div class="default_thumbnail" style="background-image: url( ';
-						echo $first_img;
-						echo ' );"></div>';
-
-						// Headline
-						echo '<h2 class="headline">' . $hlw_title . '</h2>';
-
-						// Clearfix
-						echo '<div class="clear"></div>';
-
-					echo '</div>'; // Close .headline_excerpt.
-
-				echo '</a>'; // This closes the post link container (.post).
-
-				// Outputs the label.
-				$cat_IDs = wp_get_post_terms(
-					$post->ID,
-					'category',
-					array(
-						'fields' 	=> 'ids',
-						'orderby' => 'count',
-						'order' 	=> 'DESC'
-					)
-				);
-
-				$cat_info				= get_term( $cat_IDs[0] );
-
-				$post_label 		   	= $cat_info->name;
-				$post_label_url			=	get_term_link( $cat_IDs[0], 'category' );
-
-				if ( !empty( $post_label ) ) {
-					echo '<p class="post_label"><a href="' . $post_label_url . '" title="All ' . $post_label . ' profiles.">All ' . $post_label . ' profiles</a></p>';
+				if ( empty( $first_img ) ) {
+					$first_img = 'https://lawyerist.com/lawyerist/wp-content/uploads/2018/01/typewriter.jpg';
 				}
 
-			echo '</div>';
+				// Starts the post container.
+				echo '<div ' ;
+				post_class( 'index_post_container has-post-label' );
+				echo '>';
 
-		endwhile; endif;
-		// End of How Lawyers Work.
+					// Starts the link container. Makes for big click targets!
+					echo '<a href="' . $hlw_url . '" title="' . $hlw_title . '">';
 
-	    // Outputs the Sponsored Product Updates widget.
-	    lawyerist_sponsored_product_updates();
+						// Now we get the headline and excerpt (except for certain kinds of posts).
+						echo '<div class="headline_excerpt">';
 
-		endif;
+							// Outputs a featured image.
+							echo '<div class="default_thumbnail" style="background-image: url( ';
+							echo $first_img;
+							echo ' );"></div>';
 
-	?>
+							// Headline
+							echo '<h2 class="headline">' . $hlw_title . '</h2>';
+
+							// Clearfix
+							echo '<div class="clear"></div>';
+
+						echo '</div>'; // Close .headline_excerpt.
+
+					echo '</a>'; // This closes the post link container (.post).
+
+					// Outputs the label.
+					$cat_IDs = wp_get_post_terms(
+						$post->ID,
+						'category',
+						array(
+							'fields' 	=> 'ids',
+							'orderby' => 'count',
+							'order' 	=> 'DESC'
+						)
+					);
+
+					$cat_info				= get_term( $cat_IDs[0] );
+
+					$post_label 		   	= $cat_info->name;
+					$post_label_url			=	get_term_link( $cat_IDs[0], 'category' );
+
+					if ( !empty( $post_label ) ) {
+						echo '<p class="post_label"><a href="' . $post_label_url . '" title="All ' . $post_label . ' profiles.">All ' . $post_label . ' profiles</a></p>';
+					}
+
+				echo '</div>';
+
+			endwhile; endif;
+			// End of How Lawyers Work.
+
+		    // Outputs the Sponsored Product Updates widget.
+		    lawyerist_sponsored_product_updates();
+
+			endif;
+
+			?>
+
+		</div>
+
+		<!-- Outputs additional product portals. -->
+		<div class="front_page_block fp_contains_boxes">
+
+			<div class="one_half">
+				<div class="index_post_container">
+					<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/07/website-designers-seo-consultants-front-page.jpg" alt="SEO Scrabble tiles." />
+					<h3>Website Designers & SEO Consultants</h3>
+					<a class="button" href="https://lawyerist.com/best-law-firm-websites/designers-seo/">See All</a>
+				</div>
+			</div>
+
+			<div class="one_half">
+				<div class="index_post_container">
+					<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/07/time-billing-software-front-page.jpg" alt="An accountant working on a laptop." />
+					<h3>Timekeeping & Billing Software for Law Firms</h3>
+					<a class="button" href="https://lawyerist.com/legal-billing-software/">See All</a>
+				</div>
+			</div>
+
+			<div class="clear"></div>
+
+		</div>
 
 	</div><!-- end #content_column -->
 
