@@ -587,6 +587,35 @@ function lawyerist_current_posts( $this_post ) {
 			endwhile; endif;
 			// End of download.
 
+			// Outputs the most recent community post.
+			$current_post_query_args = array(
+				'category_name'				=> 'community-posts',
+				'ignore_sticky_posts' => TRUE,
+				'posts_per_page'			=> 1,
+			);
+
+			$current_post_query = new WP_Query( $current_post_query_args );
+
+			if ( $current_post_query->have_posts() ) : while ( $current_post_query->have_posts() ) : $current_post_query->the_post();
+
+				$post_title	= the_title( '', '', FALSE );
+				$post_url		= get_permalink();
+
+				echo '<a href="' . $post_url . '" title="' . $post_title . '" class="current_post">';
+
+					if ( has_post_thumbnail() ) {
+						the_post_thumbnail( 'current_posts_thumbnail' );
+					} else {
+						echo '<img class="attachment-thumbnail wp-post-image" src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/02/current-posts-placeholder-160x90.png" />';
+					}
+
+					echo '<p class="current_post_title">' . $post_title . '</p>';
+
+				echo '</a>';
+
+			endwhile; endif;
+			// End of community post.
+
 			// Outputs the most recent blog post.
 			$current_post_query_args = array(
 				'category_name'				=> 'blog-posts',
@@ -615,35 +644,6 @@ function lawyerist_current_posts( $this_post ) {
 
 			endwhile; endif;
 			// End of blog post.
-
-			// Outputs the most recent How Lawyers Work post.
-			$hlw_query_args = array(
-				'category_name'				=> 'how-lawyers-work',
-				'ignore_sticky_posts' => TRUE,
-				'posts_per_page'			=> 1,
-			);
-
-			$hlw_query = new WP_Query( $hlw_query_args );
-
-			if ( $hlw_query->have_posts() ) : while ( $hlw_query->have_posts() ) : $hlw_query->the_post();
-
-				$hlw_title	= the_title( '', '', FALSE );
-				$hlw_url		= get_permalink();
-
-				echo '<a href="' . $hlw_url . '" title="' . $hlw_title . '" class="current_post">';
-
-					if ( has_post_thumbnail() ) {
-						the_post_thumbnail( 'current_posts_thumbnail' );
-					} else {
-						echo '<img class="attachment-thumbnail wp-post-image" src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/01/typewriter-160x90.jpg" />';
-					}
-
-					echo '<p class="current_post_title">' . $hlw_title . '</p>';
-
-				echo '</a>';
-
-			endwhile; endif;
-			// End of How Lawyers Work.
 
 		echo '<div class="clear"></div>';
 

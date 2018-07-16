@@ -97,24 +97,6 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
             echo '<div class="default_thumbnail" alt="The Lawyerist Podcast logo" style="background-image: url( https://lawyerist.com/lawyerist-dev/wp-content/uploads/2018/02/lawyerist-ltn-podcast-logo-16x9-684x385.png );"></div>';
           }
 
-          // Outputs the first image (headshot) for How Lawyers Work posts.
-          if ( has_category( 'how-lawyers-work' ) ) {
-            $first_img = '';
-    				ob_start();
-    				ob_end_clean();
-    				$output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
-    				$first_img = $matches[1][0];
-
-    				if ( empty( $first_img ) ) {
-    					$first_img = 'https://lawyerist.com/lawyerist/wp-content/uploads/2018/01/typewriter.jpg';
-    				}
-
-            echo '<div class="default_thumbnail" style="background-image: url( ';
-            echo $first_img;
-            echo ' );"></div>';
-
-          }
-
           // Outputs the featured image for other posts.
           if ( has_post_thumbnail() && !has_category( 'lawyerist-podcast' ) && !has_category( 'how-lawyers-work' ) ) {
 
