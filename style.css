@@ -2013,6 +2013,19 @@ Content
 
     }
 
+  .single .category-community-posts .headline_postmeta {
+    min-height: 10rem;
+  }
+
+    .single .category-community-posts .author_avatar {
+      float: left;
+    }
+
+    .single .category-community-posts .headline,
+    .single .category-community-posts .postmeta {
+      padding-left: 11.5rem;
+    }
+
   #toc_container {
     margin-bottom: 3rem;
   }
