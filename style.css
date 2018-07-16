@@ -1370,6 +1370,11 @@ Front Page
   margin-bottom: 0;
 }
 
+.home .index_post_container.category-community-posts.has-post-thumbnail .headline_excerpt {
+  padding-left: 15rem;
+  min-height: 15rem;
+}
+
 .home .index_post_container.lens_playlist {
   max-height: 36.3rem;
   padding: 2rem;

@@ -30,7 +30,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
         );
 
         $series_info				= get_term( $series_ID[0] );
-        $post_label				= $series_info->name;
+        $post_label		   		= $series_info->name;
         $series_slug				= $series_info->slug;
         $series_url					=	get_term_link( $series_ID[0], 'series' );
 

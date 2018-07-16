@@ -237,7 +237,7 @@
 
 			// Outputs the most recent blog post.
 			$current_post_query_args = array(
-				'category_name'				=> 'blog-posts',
+				'category_name'				=> 'community-posts',
 				'ignore_sticky_posts' => TRUE,
 				'posts_per_page'			=> 1,
 			);
@@ -250,6 +250,9 @@
 				$post_url				= get_permalink();
 				$post_excerpt   = get_the_excerpt();
 			  $seo_descr      = get_post_meta( $post->ID, '_yoast_wpseo_metadesc', true );
+
+				$author_name		= get_the_author_meta( 'display_name' );
+				$author_avatar	= get_avatar( get_the_author_meta( 'user_email' ), 150, '', $author_name );
 
 			  // Sets the post excerpt to the Yoast Meta Description.
 			  if ( !empty( $seo_descr ) ) { $post_excerpt = $seo_descr; }
@@ -265,12 +268,10 @@
 						// Now we get the headline and excerpt (except for certain kinds of posts).
 						echo '<div class="headline_excerpt">';
 
-							// Outputs the featured image.
-							if ( has_post_thumbnail() ) {
-								echo '<div class="default_thumbnail" style="background-image: url( ';
-								echo the_post_thumbnail_url( 'default_thumbnail' );
-								echo ' );"></div>';
-							}
+							// Outputs the author's avatar.
+							echo '<div class="default_thumbnail">';
+							echo $author_avatar;
+							echo '</div>';
 
 							// Headline
 							echo '<h2 class="headline">' . $post_title . '</h2>';
