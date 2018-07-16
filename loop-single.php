@@ -13,6 +13,11 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
   post_class( 'hentry' );
   echo '>';
 
+    // Show breadcrumbs on community posts.
+    if ( has_category( 'community-posts' ) && function_exists( 'yoast_breadcrumb' ) ) {
+      yoast_breadcrumb( '<div class="breadcrumbs">', '</div>' );
+    }
+
     echo '<div class="headline_postmeta">';
 
       // Series Title
