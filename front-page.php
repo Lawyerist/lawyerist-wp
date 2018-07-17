@@ -13,7 +13,7 @@
 
 	<?php
 
-		// Checks to see if the front page is set to show blog posts, and if so uses
+		// Checks to see if the front page is set to show community posts, and if so uses
 		// the same code as index.php.
 		if ( 'posts' == get_option( 'show_on_front' ) ) :
 
@@ -235,7 +235,7 @@
 			// End of download.
 
 
-			// Outputs the most recent blog post.
+			// Outputs the most recent community post.
 			$current_post_query_args = array(
 				'category_name'				=> 'community-posts',
 				'ignore_sticky_posts' => TRUE,
@@ -269,9 +269,7 @@
 						echo '<div class="headline_excerpt">';
 
 							// Outputs the author's avatar.
-							echo '<div class="default_thumbnail">';
-							echo $author_avatar;
-							echo '</div>';
+							echo '<div class="author_avatar">' . $author_avatar . '</div>';
 
 							// Headline
 							echo '<h2 class="headline">' . $post_title . '</h2>';
@@ -310,9 +308,9 @@
 				echo '</div>';
 
 			endwhile; endif;
-			// End of blog post.
+			// End of community post.
 
-			echo '</div>'; // End of .front_page_block with the current podcast, download, and blog post.
+			echo '</div>'; // End of .front_page_block with the current podcast, download, and community post.
 
 		?>
 

@@ -4,7 +4,6 @@
 Selectors
 
 has_category( 'lawyerist-podcast' )
-has_category( 'how-lawyers-work' )
 has_term( true, 'series' )
 has_term( true, 'sponsor' )
 $post_type == 'product'
@@ -97,8 +96,19 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
             echo '<div class="default_thumbnail" alt="The Lawyerist Podcast logo" style="background-image: url( https://lawyerist.com/lawyerist-dev/wp-content/uploads/2018/02/lawyerist-ltn-podcast-logo-16x9-684x385.png );"></div>';
           }
 
+          // Outputs an image for community posts.
+          if ( has_category( 'community-posts' ) ) {
+
+            $author_name		= get_the_author_meta( 'display_name' );
+            $author_avatar	= get_avatar( get_the_author_meta( 'user_email' ), 150, '', $author_name );
+
+            echo '<div class="author_avatar">' . $author_avatar . '</div>';
+
+          }
+
+
           // Outputs the featured image for other posts.
-          if ( has_post_thumbnail() && !has_category( 'lawyerist-podcast' ) && !has_category( 'how-lawyers-work' ) ) {
+          if ( has_post_thumbnail() && !has_category( 'lawyerist-podcast' ) && !has_category( 'community-posts' ) ) {
 
             if ( $post_type == 'product' ) {
 
@@ -118,12 +128,12 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
           echo '<h2 class="headline">' . $post_title . '</h2>';
 
           // Output the excerpt, with exceptions.
-          if ( !has_category( 'lawyerist-podcast' ) && !has_category( 'how-lawyers-work' ) && !has_tag( 'tbd-law-community' ) && $post_type != 'page' ) {
+          if ( !has_category( 'lawyerist-podcast' ) && !has_tag( 'tbd-law-community' ) && $post_type != 'page' ) {
             echo '<p class="excerpt">' . $post_excerpt . '</p>';
           }
 
           // Output the post meta, with exceptions.
-          if ( $post_type == 'post' && !has_category( 'lawyerist-podcast' ) && !has_category( 'how-lawyers-work' ) ) {
+          if ( $post_type == 'post' && !has_category( 'lawyerist-podcast' ) ) {
             lawyerist_postmeta();
           }
 

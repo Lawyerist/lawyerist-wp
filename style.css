@@ -1370,20 +1370,6 @@ Front Page
   margin-bottom: 0;
 }
 
-.home .index_post_container.category-community-posts.has-post-thumbnail .headline_excerpt {
-  padding-left: 15rem;
-  min-height: 15rem;
-}
-
-.home .index_post_container.lens_playlist {
-  max-height: 36.3rem;
-  padding: 2rem;
-}
-
-  .home .index_post_container.lens_playlist iframe {
-    margin-bottom: 0 !important;
-  }
-
 
 /*------------------------------
 Content
@@ -1482,7 +1468,9 @@ Content
 
   /*
   Selectors
+  .has-post-label
   .category-lawyerist-podcast
+  .category-community-posts
   .series
   .sponsored
   .type-product
@@ -1557,6 +1545,10 @@ Content
     padding: 2rem;
   }
 
+  .index .category-community-posts {
+    padding: 2rem;
+  }
+
   .index .series {
     border-top: .7rem solid #ddd;
     padding: 2rem;
@@ -1618,7 +1610,7 @@ Content
     padding: 2rem 2rem 2rem 40%;
   }
 
-  .index .has-post-thumbnail.has-post-label .headline_excerpt {
+  .index .has-post-label.has-post-thumbnail .headline_excerpt {
     padding: 0 0 0 40%;
   }
 
@@ -1626,6 +1618,30 @@ Content
     .index .has-post-thumbnail .excerpt,
     .index .has-post-thumbnail .postmeta {
       margin-left: 1.5rem;
+    }
+
+  .index .category-community-posts .headline_excerpt,
+  .index .category-community-posts.has-post-label .headline_excerpt {
+    padding: 0;
+  }
+
+    .index .category-community-posts .author_avatar {
+      float: left;
+      font-size: 1rem;
+      line-height: 1;
+      width: 24.19354839%;
+    }
+
+      .index .category-community-posts .author_avatar img {
+        height: auto;
+        margin: 0;
+        width: 100%;
+      }
+
+    .index .category-community-posts .headline,
+    .index .category-community-posts .excerpt,
+    .index .category-community-posts .postmeta {
+    	padding-left: 24.19354839%; /* Sets left padding at 150px max. */
     }
 
   .index .category-lawyerist-podcast.has-post-thumbnail .headline_excerpt,
