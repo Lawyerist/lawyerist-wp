@@ -757,7 +757,7 @@ img.alignone {
 
 img.aligncenter {
 	clear: both;
-	display: block;
+	display: block !important;
 	margin-left: auto;
   margin-right: auto;
 }
