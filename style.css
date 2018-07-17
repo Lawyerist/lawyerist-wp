@@ -2020,7 +2020,7 @@ Content
     }
 
     .single .category-community-posts .headline,
-    .single .category-community-posts .postmeta {
+    .single .category-community-posts .headline_postmeta .postmeta {
       padding-left: 11.5rem;
     }
 
