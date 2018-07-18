@@ -1625,22 +1625,10 @@ Content
     padding: 0;
   }
 
-    .index .category-community-posts .author_avatar {
-      float: left;
-      font-size: 1rem;
-      line-height: 1;
-      width: 24.19354839%;
-    }
-
-      .index .category-community-posts .author_avatar img {
-        height: auto;
-        margin: 0;
-        width: 100%;
-      }
-
     .index .category-community-posts .headline,
     .index .category-community-posts .excerpt,
     .index .category-community-posts .postmeta {
+      margin-left: 1.5rem;
     	padding-left: 24.19354839%; /* Sets left padding at 150px max. */
     }
 
@@ -1735,6 +1723,19 @@ Content
 
       .index .category-lawyerist-podcast .default_thumbnail:active::before {
         box-shadow: .1rem .1rem .1rem rgba( 0, 0, 0, 0.2 );
+      }
+
+    .index .category-community-posts .author_avatar {
+      float: left;
+      font-size: 1rem;
+      line-height: 1;
+      width: 24.19354839%;
+    }
+
+      .index .category-community-posts .author_avatar img {
+        height: auto;
+        margin: 0;
+        width: 100%;
       }
 
     .index .type-product .wp-post-image {
