@@ -42,9 +42,8 @@ COMMENTS & REVIEWS
 
 WOOCOMMERCE
 - Function for Checking to See if a Product ID is in the Cart
-- Insider Plus Shopping Cart Upsell
 - Checkout Fields
-- Checkout Survey
+- Insider Plus Shopping Cart Upsell
 - Check to See if Page is Really a WooCommerce Page
 
 TAXONOMY
