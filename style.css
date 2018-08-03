@@ -1567,6 +1567,15 @@ Content
     border-top: .7rem solid #ed9c28;
   }
 
+  .index .lens_playlist {
+    line-height: 1;
+    padding: 2rem;
+  }
+
+    .index .lens_playlist iframe {
+      margin-bottom: 0 !important;
+    }
+
 
   /* Series title. */
 
@@ -1623,6 +1632,10 @@ Content
   .index .category-community-posts .headline_excerpt,
   .index .category-community-posts.has-post-label .headline_excerpt {
     padding: 0;
+  }
+
+  .index .category-community-posts.has-post-label .headline_excerpt {
+    margin-bottom: 2rem;
   }
 
     .index .category-community-posts .headline,
