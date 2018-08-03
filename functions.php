@@ -977,29 +977,6 @@ function woo_disable_checkout_fields( $fields ) {
 
 		if ( woo_in_cart( $val ) ) {
 
-			$fields['order']['biggest_challenge'] = array(
-				'label'				=> __( 'What is the biggest challenge you face?', 'woocommerce' ),
-				'type'				=> 'select',
-				'options'			=> array(
-					''									=> 'Select your biggest challenge.',
-					'strategy'					=> 'Strategy. I need help deciding on the future direction of my firm.',
-					'legal_tech'				=> 'Legal tech. I need help figuring out which hardware, software, or other systems to use.',
-					'marketing'					=> 'Marketing. I need help getting clients.',
-					'productivity'			=> 'Productivity. I need help managing my time and being efficient.',
-					'systems'						=> 'Systems. I need to create policies and procedures for my law firm.',
-					'finances'					=> 'Finances. I need help managing cash flow and budgeting.',
-					'human_resources'		=> 'Human resources. I need help with hiring and firing, delegation, managing staff, or culture.',
-					'work_life_balance'	=> 'Work-life balance. I need to figure out how to find my healthy work-life balance.',
-					'lawyering_skills'	=> 'Lawyering skills. I want help improving skills like trial advocacy, negotiation, contract drafting, or legal writing.',
-					'the_future'				=> 'The future. I want to understand the trends shaping the future of law practice.',
-					'starting_a_firm'		=> 'Starting a law firm. I\'m just getting started and need guidance.',
-				),
-				'placeholder'	=> _x( 'Select your biggest challenge.', 'placeholder', 'woocommerce' ),
-				'required'		=> true,
-				'class'				=> array( 'form-row', 'form-row-wide', 'survey_question' ),
-				'clear'				=> true,
-			);
-
 			$fields['order']['firm_size'] = array(
 				'label'				=> __( 'Describe your practice.', 'woocommerce' ),
 				'type'				=> 'select',
