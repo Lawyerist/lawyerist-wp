@@ -978,17 +978,30 @@ function woo_disable_checkout_fields( $fields ) {
 		if ( woo_in_cart( $val ) ) {
 
 			$fields['order']['firm_size'] = array(
-				'label'				=> __( 'Describe your practice.', 'woocommerce' ),
+				'label'				=> __( 'What is the size of your firm?', 'woocommerce' ),
 				'type'				=> 'select',
 				'options'			=> array(
-					''												=> 'Select one.',
-					'solo'										=> 'Solo practice',
-					'small_lawyer'						=> 'Small firm lawyer (2–15 lawyers)',
-					'small_staff'							=> 'Small firm staff (2–15 lawyers)',
-					'medium_lawyer'						=> 'Medium or large firm lawyer (16+ lawyers)',
-					'medium_staff'						=> 'Medium or large firm staff (16+ lawyers)',
-					'not_in_private_practice'	=> 'Lawyer not in private practice',
-					'non_lawyer'							=> 'Non-lawyer not in private practice',
+					''						=> 'Select one.',
+					'solo'				=> 'Solo practice',
+					'small'				=> 'Small firm (2–15 lawyers)',
+					'large'				=> 'Medium or large firm (16+ lawyers)',
+					'nope'				=> 'I don\'t work at a law firm',
+				),
+				'placeholder'	=> _x( 'Select one.', 'placeholder', 'woocommerce' ),
+				'required'		=> true,
+				'class'				=> array( 'form-row', 'form-row-wide', 'survey_question' ),
+				'clear'				=> true,
+			);
+
+			$fields['order']['firm_role'] = array(
+				'label'				=> __( 'What is your role at your firm?', 'woocommerce' ),
+				'type'				=> 'select',
+				'options'				=> array(
+					''						=> 'Select one.',
+					'owner'				=> 'Owner/partner',
+					'lawyer'			=> 'Lawyer',
+					'staff'				=> 'Staff',
+					'nope'				=> 'I don\'t work at a law firm',
 				),
 				'placeholder'	=> _x( 'Select one.', 'placeholder', 'woocommerce' ),
 				'required'		=> true,
