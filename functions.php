@@ -127,10 +127,22 @@ add_action( 'after_setup_theme', 'lawyerist_woocommerce_support' );
 /* Display price of free products as "Free!" not "$0.00". */
 function lawyerist_wc_free_products( $price, $product ) {
 
-	if ( $price == wc_price( 0.00 ) ) {
+	global $woocommerce;
+
+	if ( wc_memberships_user_has_member_discount() && $product->get_price() == 0 ) {
+
+		$reg_price = $product->get_regular_price();
+
+		return '<del>$' . $reg_price . '</del> Free!';
+
+	} elseif ( $product->get_price() == 0 ) {
+
 		return 'Free!';
+
 	} else {
+
 		return $price;
+
 	}
 
 }
