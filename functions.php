@@ -541,6 +541,9 @@ Current Posts Widget
 
 function lawyerist_current_posts( $this_post ) {
 
+	global $post;
+	$this_post[] = $post->ID;
+
 	echo '<div id="current_posts">';
 
 		echo '<div class="current_posts_heading"><a href="' . home_url() . '">What\'s New</a></div>';
@@ -550,6 +553,7 @@ function lawyerist_current_posts( $this_post ) {
 				'category_name'				=> 'lawyerist-podcast',
 				'ignore_sticky_posts' => TRUE,
 				'posts_per_page'			=> 1,
+				'post__not_in'				=> $this_post,
 			);
 
 			$current_podcast_query = new WP_Query( $current_podcast_query_args );
@@ -575,6 +579,7 @@ function lawyerist_current_posts( $this_post ) {
 				'post_type'						=> 'product',
 				'ignore_sticky_posts' => TRUE,
 				'posts_per_page'			=> 1,
+				'post__not_in'				=> $this_post,
 				'tax_query'						=> array(
 					array(
 						'taxonomy' => 'product_visibility',
@@ -612,6 +617,7 @@ function lawyerist_current_posts( $this_post ) {
 				'category_name'				=> 'community-posts',
 				'ignore_sticky_posts' => TRUE,
 				'posts_per_page'			=> 1,
+				'post__not_in'				=> $this_post,
 			);
 
 			$current_post_query = new WP_Query( $current_post_query_args );
@@ -641,6 +647,7 @@ function lawyerist_current_posts( $this_post ) {
 				'post_parent'					=> 0,
 				'post_type'						=> 'page',
 				'posts_per_page'			=> 1,
+				'post__not_in'				=> $this_post,
 			);
 
 			$current_post_query = new WP_Query( $current_post_query_args );
