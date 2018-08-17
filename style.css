@@ -474,7 +474,8 @@ italics {
 }
 
 embed,
-iframe {
+iframe,
+.wistia_responsive_padding {
   margin-bottom: 3rem !important;
   max-width: 100%;
 }
