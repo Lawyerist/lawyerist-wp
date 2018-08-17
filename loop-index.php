@@ -99,10 +99,31 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
           // Outputs an image for community posts.
           if ( has_category( 'community-posts' ) ) {
 
-            $author_name		= get_the_author_meta( 'display_name' );
-            $author_avatar	= get_avatar( get_the_author_meta( 'user_email' ), 150, '', $author_name );
+            if ( has_category( 'how-lawyers-work' ) ) {
 
-            echo '<div class="author_avatar">' . $author_avatar . '</div>';
+              global $post;
+
+              // Gets the first image, or a default.
+              $first_img = '';
+                ob_start();
+                ob_end_clean();
+                $output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
+                $avatar_url = $matches[1][0];
+
+              if ( empty( $avatar_url ) ) {
+                $avatar_url = 'https://lawyerist.com/lawyerist/wp-content/uploads/2018/01/typewriter-150x150.jpg';
+              }
+
+              echo '<div class="author_avatar"><img class="avatar" src="' . $avatar_url . '" /></div>';
+
+            } else {
+
+              $author_name		= get_the_author_meta( 'display_name' );
+              $author_avatar	= get_avatar( get_the_author_meta( 'user_email' ), 150, '', $author_name );
+
+              echo '<div class="author_avatar">' . $author_avatar . '</div>';
+
+            }
 
           }
 
