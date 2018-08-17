@@ -543,7 +543,7 @@ function lawyerist_current_posts( $this_post ) {
 
 	echo '<div id="current_posts">';
 
-		echo '<div class="current_posts_heading"><a href="' . home_url() . '">Current Posts</a></div>';
+		echo '<div class="current_posts_heading"><a href="' . home_url() . '">What\'s New</a></div>';
 
 			// Outputs the most recent podcast episode.
 			$current_podcast_query_args = array(
@@ -636,10 +636,10 @@ function lawyerist_current_posts( $this_post ) {
 			endwhile; endif;
 			// End of community post.
 
-			// Outputs the most recent blog post.
+			// Outputs the most recent portal.
 			$current_post_query_args = array(
-				'category_name'				=> 'blog-posts',
-				'ignore_sticky_posts' => TRUE,
+				'post_parent'					=> 0,
+				'post_type'						=> 'page',
 				'posts_per_page'			=> 1,
 			);
 
@@ -663,7 +663,7 @@ function lawyerist_current_posts( $this_post ) {
 				echo '</a>';
 
 			endwhile; endif;
-			// End of blog post.
+			// End of portal.
 
 		echo '<div class="clear"></div>';
 
