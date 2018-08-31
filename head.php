@@ -12,9 +12,9 @@
 <link rel="alternate" type="application/rss+xml" title="<?php bloginfo( 'name' ); ?> RSS feed" href="http://feeds.feedburner.com/solosmalltech">
 
 
-<?php /* Meta descriptions */
+<?php
 
-// Authors, series, products, categories with empty descriptions
+	// Outputs the meta description.
 
 	if ( is_front_page() ) {
 
@@ -49,13 +49,26 @@
 
 	}
 
-if ( $decription ) {
+	if ( $decription ) {
 
-	echo '<meta name="description" content="' . $description . '">';
+		echo '<meta name="description" content="' . $description . '">';
 
-}
+	}
 
-if ( is_single() && has_category( 'sponsored-posts', $post->ID ) ) { echo '<meta name="robots" content="noindex, nofollow">'; } ?>
+
+	// Noindexes and nofollows sponsored posts.
+	if ( is_single() && has_category( 'sponsored-posts', $post->ID ) ) {
+
+		echo '<meta name="robots" content="noindex, nofollow">';
+
+	// Noindexes but dofollows hidden products.
+	} elseif ( is_single() && has_term( 'exclude-from-catalog', 'product_visibility', $post->ID ) ) {
+
+		echo '<meta name="robots" content="noindex, follow">';
+
+	}
+
+?>
 
 
 <!-- DoubleClick Script -->
