@@ -869,7 +869,7 @@ function lawyerist_remove_hidden_products_from_feed( $query ) {
 
 	if ( $query->is_feed() ) {
 
-		$query->set( 'post_type', array( 'product' ) );
+		$query->set( 'post_type', array( 'post', 'page', 'product' ) );
 		$query->set( 'tax_query', array(
 			array(
 				'taxonomy' => 'product_visibility',
