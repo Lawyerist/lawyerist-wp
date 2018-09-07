@@ -163,9 +163,11 @@
 
 
 			// Embedded Lawyerist Lens playlist.
-			echo '<div class="index_post_container lens_playlist">';
+			echo '<div class="index_post_container lens_playlist has-post-label">';
 
 			echo '<iframe width="636" height="358" src="https://www.youtube.com/embed/videoseries?list=PLtFJu5URBISmTDaVOF3l-cQl08f2qUMr_" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+
+			echo '<p class="post_label"><a href="https://www.youtube.com/playlist?list=PLtFJu5URBISmTDaVOF3l-cQl08f2qUMr_" title="Watch all episodes of Lawyerist Lens on YouTube">Watch all episodes of Lawyerist Lens on YouTube</a></p>';
 
 			echo '</div>';
 			// End of embedded Lawyerist Lens playlist.
