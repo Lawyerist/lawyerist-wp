@@ -257,7 +257,7 @@ Get Country
 
 function get_country() {
 
-	if ( has_trial_button() || ( ( get_page_template_slug( $post->ID ) == 'product-page.php' ) && ( $post->post_parent == 0 ) ) ) {
+	if ( has_trial_button() || ( get_page_template_slug( $post->ID ) == 'product-page.php' && $post->post_parent == 0 ) ) {
 
 		// Get user's geographic location by IP address.
 		// Set IP address and API access key.
@@ -727,18 +727,19 @@ function lawyerist_get_display_ad() { ?>
 
 /*------------------------------
 Trial Buttons
+Adds trial buttons to product pages.
 ------------------------------*/
 
 function lawyerist_sponsored_trial_button( $content ) {
 
 	// Use global post if it wasn't provided.
-	if ( ! is_a( $post, 'WP_Post' ) ) {
+	if ( !is_a( $post, 'WP_Post' ) ) {
 		global $post;
 	}
 
 	$country = get_country();
 
-	if ( ( $country == ( US || CA ) ) && ( get_page_template_slug( $post->ID ) == 'product-page.php' ) && ( $post->post_parent > 0 ) && has_trial_button() && is_main_query() ) {
+	if ( has_trial_button() && $country == ( 'US' || 'CA' ) && is_main_query() ) {
 
 		$p_close			= '</p>';
 		$paragraphs 	= explode( $p_close, $content );
@@ -755,7 +756,7 @@ function lawyerist_sponsored_trial_button( $content ) {
 
 			// Insert DFP code after 1st paragraph (0 is paragraph #1).
 			if ( $p_num == 0 ) {
-				$paragraphs[$p_num] .= '<p align="center">' . $trial_button . '</p>';
+				$paragraphs[$p_num] .= '<p align="center">' . $trial_button . '</p>' . "\n" . '<!-- Country is ' . $country .  '-->';
 			}
 
 		}
