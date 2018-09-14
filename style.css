@@ -370,6 +370,7 @@ p.woocommerce-result-count,
 .woocommerce a.added_to_cart,
 .woocommerce-account .woocommerce-LostPassword,
 .woocommerce-account .woocommerce-MyAccount-navigation,
+.woocommerce nav.woocommerce-pagination,
 .wp-review-feedback {
   font-family: concourse, sans-serif;
 }
@@ -2114,7 +2115,8 @@ Content
       padding-left: 6.9rem; /* Icon width + 15px. */
     }
 
-  .page_links {
+  .page_links,
+  .woocommerce nav.woocommerce-pagination {
     color: #777;
     font-size: 1.6rem;
     line-height: 1.4;
@@ -2122,23 +2124,43 @@ Content
     text-align: center;
   }
 
-    .page_links .page-numbers {
+    .woocommerce nav.woocommerce-pagination ul.page-numbers {
+      background: none;
+      border: 0;
+      margin: 0;
+      padding: 0;
+    }
+
+    .woocommerce nav.woocommerce-pagination ul li {
+      border: 0;
+      margin: 0;
+      padding: 0;
+      float: none;
+      display: inline-block;
+    }
+
+    .page_links .page-numbers,
+    .woocommerce nav.woocommerce-pagination .page-numbers {
       background-color: #ddd;
       border-radius: 2.1rem;
       box-sizing: border-box;
       display: inline-block;
       height: 4.2rem;
+      line-height: 1.5;
       min-width: 4.2rem;
       padding: 1rem;
     }
 
       .page_links a.page-numbers:hover,
-      .page_links a.page-numbers:focus {
+      .page_links a.page-numbers:focus,
+      .woocommerce nav.woocommerce-pagination a.page-numbers:hover,
+      .woocommerce nav.woocommerce-pagination a.page-numbers:focus {
         background-color: #bbb;
         text-decoration: none;
       }
 
-    .page_links .current {
+    .page_links .current,
+    .woocommerce nav.woocommerce-pagination ul li span.current {
       background: none;
       border: .1rem solid #ddd;
       border-radius: 2.1rem;
