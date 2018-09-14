@@ -1546,7 +1546,8 @@ Content
     padding: 2rem;
   }
 
-  .index .category-community-posts {
+  .index .category-community-posts,
+  #related_posts .index_post_container {
     padding: 2rem;
   }
 
@@ -1630,7 +1631,8 @@ Content
     }
 
   .index .category-community-posts .headline_excerpt,
-  .index .category-community-posts.has-post-label .headline_excerpt {
+  .index .category-community-posts.has-post-label .headline_excerpt,
+  #related_posts .headline_excerpt {
     padding: 0;
   }
 
@@ -1640,7 +1642,10 @@ Content
 
     .index .category-community-posts .headline,
     .index .category-community-posts .excerpt,
-    .index .category-community-posts .postmeta {
+    .index .category-community-posts .postmeta,
+    #related_posts .headline,
+    #related_posts .excerpt,
+    #related_posts .postmeta {
       margin-left: 1.5rem;
     	padding-left: 24.19354839%; /* Sets left padding at 150px max. */
     }
@@ -1738,14 +1743,16 @@ Content
         box-shadow: .1rem .1rem .1rem rgba( 0, 0, 0, 0.2 );
       }
 
-    .index .category-community-posts .author_avatar {
+    .index .category-community-posts .author_avatar,
+    #related_posts .author_avatar {
       float: left;
       font-size: 1rem;
       line-height: 1;
       width: 24.19354839%;
     }
 
-      .index .category-community-posts .author_avatar img {
+      .index .category-community-posts .author_avatar img,
+      #related_posts .author_avatar img {
         height: auto;
         margin: 0;
         width: 100%;
@@ -1771,7 +1778,8 @@ Content
 
     /* Headline styles. */
 
-    .index .headline {
+    .index .headline,
+    #related_posts .headline {
       font-size: 2.4rem;
       margin-bottom: .5rem;
     }
@@ -1797,7 +1805,8 @@ Content
 
     /* Excerpt styles. */
 
-    .index .excerpt {
+    .index .excerpt,
+    #related_posts .excerpt {
       font-size: 1.6rem;
     }
 
@@ -1812,7 +1821,8 @@ Content
 
     @media only screen and ( max-width: 683px ) {
 
-      .index .excerpt {
+      .index .excerpt,
+      #related_posts .excerpt {
         display: none;
       }
 
@@ -2151,6 +2161,11 @@ Content
       min-width: unset;
       padding: 1rem 0;
     }
+
+  #related_podcasts,
+  #related_posts {
+    margin-bottom: 4rem;
+  }
 
   #current_posts {
     background-color: #fbfbfb;
