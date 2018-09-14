@@ -103,8 +103,6 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
     echo '</div>'; // Close .post_body.
 
-    if ( is_page( '177151' ) ) { lawyerist_get_related_posts(); }
-
     if ( comments_open() ) {
 
       echo '<div id="comments_container">';
@@ -118,6 +116,9 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
       echo '</div>';
 
     }
+
+    lawyerist_get_related_podcasts();
+    lawyerist_get_related_posts();
 
   echo '</div>'; // Close .post.
 

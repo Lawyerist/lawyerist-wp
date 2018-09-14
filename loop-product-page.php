@@ -140,7 +140,8 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
     }
 
-    scorecard_cta();
+    lawyerist_get_related_podcasts();
+    lawyerist_get_related_posts();
 
   echo '</div>'; // Close .post.
 

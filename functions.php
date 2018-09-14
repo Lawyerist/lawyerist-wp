@@ -541,6 +541,95 @@ Get Related Podcasts
 
 function lawyerist_get_related_podcasts() {
 
+	// Use global post if it wasn't provided.
+	if ( !is_a( $post, 'WP_Post' ) ) {
+		global $post;
+	}
+
+	$current_id[]		= $post->ID;
+	$current_slug		= $post->post_name;
+	$current_title	= $post->post_title;
+
+	$lawyerist_related_podcasts_query_args = array(
+		'category_name'			=> 'lawyerist-podcast',
+		'category__not_in'	=> array(
+			1320, // Excludes sponsored posts.
+		),
+		'post__not_in'		=> $current_id,
+		'posts_per_page'	=> -1,
+		'tag' 						=> $current_slug,
+		'tag__not_in'			=> array(
+			4077, // Excludes product spotlights.
+		),
+	);
+
+	$lawyerist_related_podcasts_query = new WP_Query( $lawyerist_related_podcasts_query_args );
+
+	if ( $lawyerist_related_podcasts_query->have_posts() ) :
+
+		echo '<div id="related_podcasts">';
+		echo '<h2>Podcasts About ' . $current_title . '</h2>';
+
+			while ( $lawyerist_related_podcasts_query->have_posts() ) : $lawyerist_related_podcasts_query->the_post();
+
+				$post_title			= the_title( '', '', FALSE );
+				$post_url				= get_permalink();
+				$post_excerpt   = get_the_excerpt();
+				$seo_descr      = get_post_meta( $post->ID, '_yoast_wpseo_metadesc', true );
+
+				$author_name		= get_the_author_meta( 'display_name' );
+				$author_avatar	= get_avatar( get_the_author_meta( 'user_email' ), 150, '', $author_name );
+
+				// Sets the post excerpt to the Yoast Meta Description.
+				if ( !empty( $seo_descr ) ) { $post_excerpt = $seo_descr; }
+
+				echo '<div ' ;
+				post_class( 'index_post_container' );
+				echo '>';
+
+					// Starts the link container. Makes for big click targets!
+					echo '<a href="' . $post_url . '" title="' . $post_title . '">';
+
+						echo '<div class="headline_excerpt">';
+
+							// Gets the first image, or a default.
+							$first_img = '';
+								ob_start();
+								ob_end_clean();
+								$output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
+								$avatar_url = $matches[1][0];
+
+							if ( empty( $avatar_url ) ) {
+								$avatar_url = 'https://lawyerist.com/lawyerist/wp-content/uploads/2018/09/podcast-mic-square-150x150.png';
+							}
+
+							echo '<div class="author_avatar"><img class="avatar" src="' . $avatar_url . '" /></div>';
+
+							echo '<h2 class="headline" href="' . $post_url . '" title="' . $post_title . '">' . $post_title . '</h2>';
+
+							echo '<p class="excerpt">' . $post_excerpt . '</p>';
+
+							get_template_part( 'postmeta', 'index' );
+
+							// Clearfix
+							echo '<div class="clear"></div>';
+
+						echo '</div>'; // Close .headline_excerpt.
+
+					echo '</a>'; // This closes the post link container (.post).
+
+				echo '</div>';
+
+			endwhile;
+
+			echo '<div class="clear"></div>';
+
+		echo '</div>';
+
+	endif;
+
+	wp_reset_postdata();
+
 }
 
 
@@ -565,6 +654,7 @@ function lawyerist_get_related_posts() {
 			4183, // Excludes podcast episodes.
 		),
 		'post__not_in'		=> $current_id,
+		'posts_per_page'	=> -1,
 		'tag' 						=> $current_slug,
 		'tag__not_in'			=> array(
 			4077, // Excludes product spotlights.
@@ -574,13 +664,6 @@ function lawyerist_get_related_posts() {
 	$lawyerist_related_posts_query = new WP_Query( $lawyerist_related_posts_query_args );
 
 	if ( $lawyerist_related_posts_query->have_posts() ) :
-
-		echo '<ul>';
-			echo '<li>Current ID: ' . $current_id[0] . '</li>';
-			echo '<li>Current slug: ' . $current_slug . '</li>';
-			echo '<li>Current title: ' . $current_title . '</li>';
-			echo '<li>Number of posts found: ' . $lawyerist_related_posts_query->found_posts . '</li>';
-		echo '</ul>';
 
 		echo '<div id="related_posts">';
 		echo '<h2>Posts About ' . $current_title . '</h2>';
@@ -606,7 +689,6 @@ function lawyerist_get_related_posts() {
 					// Starts the link container. Makes for big click targets!
 					echo '<a href="' . $post_url . '" title="' . $post_title . '">';
 
-						// Now we get the headline and excerpt (except for certain kinds of posts).
 						echo '<div class="headline_excerpt">';
 
 							// Outputs the author's avatar.
@@ -629,6 +711,8 @@ function lawyerist_get_related_posts() {
 				echo '</div>';
 
 			endwhile;
+
+			echo '<div class="clear"></div>';
 
 		echo '</div>';
 

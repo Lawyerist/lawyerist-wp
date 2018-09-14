@@ -317,6 +317,7 @@ h3,
 h4,
 h5,
 h6,
+.headline,
 #menu-main-menu .sub-menu .menu-item-has-children > a,
 th,
 .current_posts_heading,
@@ -1546,8 +1547,7 @@ Content
     padding: 2rem;
   }
 
-  .index .category-community-posts,
-  #related_posts .index_post_container {
+  .index .category-community-posts {
     padding: 2rem;
   }
 
@@ -1631,8 +1631,7 @@ Content
     }
 
   .index .category-community-posts .headline_excerpt,
-  .index .category-community-posts.has-post-label .headline_excerpt,
-  #related_posts .headline_excerpt {
+  .index .category-community-posts.has-post-label .headline_excerpt {
     padding: 0;
   }
 
@@ -1642,10 +1641,7 @@ Content
 
     .index .category-community-posts .headline,
     .index .category-community-posts .excerpt,
-    .index .category-community-posts .postmeta,
-    #related_posts .headline,
-    #related_posts .excerpt,
-    #related_posts .postmeta {
+    .index .category-community-posts .postmeta {
       margin-left: 1.5rem;
     	padding-left: 24.19354839%; /* Sets left padding at 150px max. */
     }
@@ -1743,16 +1739,14 @@ Content
         box-shadow: .1rem .1rem .1rem rgba( 0, 0, 0, 0.2 );
       }
 
-    .index .category-community-posts .author_avatar,
-    #related_posts .author_avatar {
+    .index .category-community-posts .author_avatar {
       float: left;
       font-size: 1rem;
       line-height: 1;
       width: 24.19354839%;
     }
 
-      .index .category-community-posts .author_avatar img,
-      #related_posts .author_avatar img {
+      .index .category-community-posts .author_avatar img {
         height: auto;
         margin: 0;
         width: 100%;
@@ -1778,8 +1772,7 @@ Content
 
     /* Headline styles. */
 
-    .index .headline,
-    #related_posts .headline {
+    .index .headline {
       font-size: 2.4rem;
       margin-bottom: .5rem;
     }
@@ -1805,8 +1798,7 @@ Content
 
     /* Excerpt styles. */
 
-    .index .excerpt,
-    #related_posts .excerpt {
+    .index .excerpt {
       font-size: 1.6rem;
     }
 
@@ -1821,8 +1813,7 @@ Content
 
     @media only screen and ( max-width: 683px ) {
 
-      .index .excerpt,
-      #related_posts .excerpt {
+      .index .excerpt {
         display: none;
       }
 
@@ -2167,21 +2158,110 @@ Content
     margin-bottom: 4rem;
   }
 
+    .page-template-product-page #related_podcasts,
+    .page-template-full-width #related_podcasts,
+    .page-template-product-page #related_posts,
+    .page-template-full-width #related_posts {
+      box-sizing: border-box;
+      float: left;
+      padding-right: 1rem;
+      max-width: 50%;
+    }
+
+      @media only screen and ( max-width: 683px ) {
+
+        .page-template-product-page #related_podcasts,
+        .page-template-full-width #related_podcasts,
+        .page-template-product-page #related_posts,
+        .page-template-full-width #related_posts {
+          float: none;
+          padding-right: 0;
+          max-width: unset;
+        }
+
+      }
+
+    #related_podcasts .index_post_container,
+    #related_posts .index_post_container {
+      background-color: #f5f5f5;
+      padding: 2rem;
+    }
+
+    #related_posts .author_avatar,
+    #related_podcasts .author_avatar {
+      float: left;
+      font-size: 1rem;
+      line-height: 1;
+      width: 24.19354839%;
+    }
+
+      #related_posts .author_avatar img,
+      #related_podcasts .author_avatar img {
+        height: auto;
+        margin: 0;
+        width: 100%;
+      }
+
+    #related_posts .headline,
+    #related_podcasts .headline {
+      font-size: 2.4rem;
+      margin-bottom: .5rem;
+    }
+
+    #related_podcasts .headline_excerpt,
+    #related_posts .headline_excerpt {
+      padding: 0;
+    }
+
+    #related_podcasts .headline,
+    #related_podcasts .excerpt,
+    #related_podcasts .postmeta,
+    #related_posts .headline,
+    #related_posts .excerpt,
+    #related_posts .postmeta {
+      margin-left: 1.5rem;
+    	padding-left: 24.19354839%; /* Sets left padding at 150px max. */
+    }
+
+      #related_podcasts .headline,
+      #related_posts .headline {
+        font-size: 2.4rem;
+        margin-bottom: .5rem;
+      }
+
+      #related_podcasts .excerpt,
+      #related_posts .excerpt {
+        font-size: 1.6rem;
+      }
+
+        .page-template-product-page #related_podcasts .excerpt,
+        .page-template-full-width #related_podcasts .excerpt,
+        .page-template-product-page #related_posts .excerpt,
+        .page-template-full-width #related_posts .excerpt {
+          display: none;
+        }
+
+        @media only screen and ( max-width: 683px ) {
+
+          #related_podcasts .excerpt,
+          #related_posts .excerpt {
+            display: none;
+          }
+
+        }
+
   #current_posts {
     background-color: #fbfbfb;
     border-radius: .2rem;
+    border-top: .7rem solid #c00;
     box-shadow:
       0 0 0 .1rem #ddd,
       .1rem .1rem .3rem rgba(0, 0, 0, 0.2)
     ;
     display: block;
-    text-decoration: none;
-  }
-
-  #current_posts {
-    border-top: .7rem solid #c00;
     margin-bottom: 6rem;
     padding: 2rem 0 0 2rem; /* Right padding and bottom margin are provided by #current_posts a. */
+    text-decoration: none;
   }
 
     .current_posts_heading > a {
