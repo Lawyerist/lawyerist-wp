@@ -27,7 +27,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
   $post_type      = get_post_type( $post->ID );
 
   // Sets the post title to the Yoast SEO Title for pages.
-  if ( $post_type == 'page' && !empty( $seo_title ) ) { $post_title = $seo_title; }
+  // if ( $post_type == 'page' && !empty( $seo_title ) ) { $post_title = $seo_title; }
 
   // Sets the post excerpt to the Yoast Meta Description.
   if ( !empty( $seo_descr ) ) { $post_excerpt = $seo_descr; }
