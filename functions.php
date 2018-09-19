@@ -570,6 +570,7 @@ function lawyerist_get_related_podcasts() {
 		echo '<div id="related_podcasts">';
 		echo '<h2>Podcasts About ' . $current_title . '</h2>';
 
+			// Start the Loop.
 			while ( $lawyerist_related_podcasts_query->have_posts() ) : $lawyerist_related_podcasts_query->the_post();
 
 				$post_title			= the_title( '', '', FALSE );
@@ -580,7 +581,7 @@ function lawyerist_get_related_podcasts() {
 				$author_name		= get_the_author_meta( 'display_name' );
 				$author_avatar	= get_avatar( get_the_author_meta( 'user_email' ), 150, '', $author_name );
 
-				// Sets the post excerpt to the Yoast Meta Description.
+				// Sets the post excerpt to the Yoast Meta Description if there is one.
 				if ( !empty( $seo_descr ) ) { $post_excerpt = $seo_descr; }
 
 				echo '<div ' ;
@@ -600,12 +601,12 @@ function lawyerist_get_related_podcasts() {
 								$avatar_url = $matches[1][0];
 
 							if ( empty( $avatar_url ) ) {
-								$avatar_url = 'https://lawyerist.com/lawyerist/wp-content/uploads/2018/09/podcast-mic-square-150x150.png';
+								$avatar_url = '	https://lawyerist.com/lawyerist/wp-content/uploads/2018/09/podcast-mic-square-150x150.png';
 							}
 
 							echo '<div class="author_avatar"><img class="avatar" src="' . $avatar_url . '" /></div>';
 
-							echo '<h2 class="headline" href="' . $post_url . '" title="' . $post_title . '">' . $post_title . '</h2>';
+							echo '<h2 class="headline" title="' . $post_title . '">' . $post_title . '</h2>';
 
 							echo '<p class="excerpt">' . $post_excerpt . '</p>';
 
@@ -616,9 +617,9 @@ function lawyerist_get_related_podcasts() {
 
 						echo '</div>'; // Close .headline_excerpt.
 
-					echo '</a>'; // This closes the post link container (.post).
+					echo '</a>'; // This closes the link container.
 
-				echo '</div>';
+				echo '</div>'; // This closes .index_post_container.
 
 			endwhile;
 
