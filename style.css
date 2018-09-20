@@ -1001,6 +1001,10 @@ Header
 Menu
 ------------------------------*/
 
+#menu-main-menu {
+  position: relative;
+}
+
 #menu-main-menu > .menu-item {
 	display: inline-block;
 	margin: 0;
@@ -1122,6 +1126,21 @@ Menu
     }
 
 
+/* Topics menu */
+#menu-main-menu .menu-item-208330 {
+  position: static;
+}
+
+#menu-main-menu .menu-item-208330 > .sub-menu {
+  left: 0;
+}
+
+  #menu-main-menu .menu-item-208330 > .sub-menu > li {
+    float: left;
+    width: 20%;
+  }
+
+
 /* Mobile menu. */
 @media only screen and ( max-width: 659px ) {
 
@@ -1147,6 +1166,11 @@ Menu
   #menu-main-menu > .menu-item > .sub-menu {
     left: 0;
     width: 100%;
+  }
+
+  #menu-main-menu .menu-item-208330 > .sub-menu > li {
+    float: none;
+    width: unset;
   }
 
   #menu-main-menu > .menu-item > .sub-menu a {
