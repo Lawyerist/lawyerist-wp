@@ -149,13 +149,13 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
       lawyerist_get_author_bio();
     }
 
-    scorecard_cta();
-
     lawyerist_current_posts( $this_post );
 
     echo '<div id="comments_container">';
     comments_template( '/comments.php' );
     echo '</div>';
+
+    // lawyerist_get_related_pages();
 
   echo '</div>'; // Close .post.
 

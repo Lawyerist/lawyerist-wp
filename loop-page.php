@@ -62,8 +62,6 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
     echo '</div>'; // Close .post_body.
 
-    if ( !is_really_a_woocommerce_page() ) { scorecard_cta(); }
-
   echo '</div>'; // Close .post.
 
 endwhile; endif; // Close the Loop.
