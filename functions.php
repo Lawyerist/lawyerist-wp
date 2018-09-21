@@ -44,7 +44,6 @@ COMMENTS & REVIEWS
 - Get Number of Reviews
 
 WOOCOMMERCE
-- Skip Checkout for Logged-In Members
 - Function for Checking to See if a Product ID is in the Cart
 - Checkout Fields
 - Insider Plus Shopping Cart Upsell
@@ -1243,27 +1242,6 @@ function lawyerist_get_review_count() {
 /* WOOCOMMERCE ****************/
 
 /*------------------------------
-Skip Checkout for Logged-In Members
-------------------------------*/
-
-function woo_skip_checkout_button_text( $text ) {
-
-	global $woocommerce;
-	global $post;
-
-	if ( $post->ID == 208134 && wc_memberships_user_has_member_discount() ) {
-		$text = __( 'Hello world!', 'woocommerce' );
-	}
-
-	return $text;
-
-}
-
-// add_filter( 'woocommerce_product_add_to_cart_text' , 'woo_skip_checkout_button_text' );
-// add_filter( 'woocommerce_product_single_add_to_cart_text' , 'woo_skip_checkout_button_text' );
-
-
-/*------------------------------
 Function for Checking to See if a Product ID is in the Cart
 ------------------------------*/
 
@@ -1298,12 +1276,19 @@ function woo_disable_checkout_fields( $fields ) {
 	unset( $fields['billing']['billing_postcode'] );
 	unset( $fields['billing']['billing_phone'] );
 
-	// Creates an array of Insider and Lab product IDs.
+	// Creates an array of Insider, Lab, and LabCon product IDs.
 	$lab_insider_product_ids = array(
-		208237,
-		208247,
-		224266,
-		224435,
+		208237, // Lawyerist Insider
+		208247, // Lawyerist Insider Plus
+		224266, // Lawyerist Lab
+		224435, // Lawyerist Lab Pro
+		227674, // Lawyerist LabCon
+		235522, // Lawyerist LabCon 2019 Pre-Registration
+		237327, // Lawyerist Lab (Full)
+		237421, // Lawyerist Lab (Monthly Payments)
+		238051, // Lawyerist Lab + LabCon (Monthly Payments)
+		238052, // Lawyerist Lab + LabCon (Full Payment)
+
 	);
 
 	foreach ( $lab_insider_product_ids as $val ) {
