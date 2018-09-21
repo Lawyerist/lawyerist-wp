@@ -1267,7 +1267,7 @@ Checkout Fields
 ------------------------------*/
 
 // Disables all billing fields except the name, email address, and country.
-function woo_disable_checkout_fields( $fields ) {
+function lawyerist_checkout_fields( $fields ) {
 
 	unset( $fields['billing']['billing_company'] );
 	unset( $fields['billing']['billing_address_1'] );
@@ -1275,6 +1275,7 @@ function woo_disable_checkout_fields( $fields ) {
 	unset( $fields['billing']['billing_city'] );
 	unset( $fields['billing']['billing_postcode'] );
 	unset( $fields['billing']['billing_phone'] );
+	unset( $fields['order']['order_comments'] );
 
 	// Creates an array of Insider, Lab, and LabCon product IDs.
 	$lab_insider_product_ids = array(
@@ -1357,7 +1358,7 @@ function woo_disable_checkout_fields( $fields ) {
 
 }
 
-add_filter( 'woocommerce_checkout_fields' , 'woo_disable_checkout_fields' );
+add_filter( 'woocommerce_checkout_fields' , 'lawyerist_checkout_fields' );
 
 
 /*------------------------------
