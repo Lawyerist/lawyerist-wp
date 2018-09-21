@@ -5,7 +5,6 @@
 SETUP
 - Stylesheets & Scripts
 - Theme Setup
-- WooCommerce Setup
 
 STRUCTURE
 - Nav Menu
@@ -44,6 +43,7 @@ COMMENTS & REVIEWS
 - Get Number of Reviews
 
 WOOCOMMERCE
+- WooCommerce Setup
 - Function for Checking to See if a Product ID is in the Cart
 - Checkout Fields
 - Insider Plus Shopping Cart Upsell
@@ -110,44 +110,6 @@ function lawyerist_theme_setup() {
 }
 
 add_action( 'after_setup_theme', 'lawyerist_theme_setup' );
-
-
-/*------------------------------
-WooCommerce Setup
-------------------------------*/
-
-/* Declare WooCommerce support. */
-function lawyerist_woocommerce_support() {
-	add_theme_support( 'woocommerce' );
-}
-
-add_action( 'after_setup_theme', 'lawyerist_woocommerce_support' );
-
-
-/* Display price of free products as "Free!" not "$0.00". */
-function lawyerist_wc_free_products( $price, $product ) {
-
-	global $woocommerce;
-
-	if ( wc_memberships_user_has_member_discount() && $product->get_price() == 0 ) {
-
-		$reg_price = $product->get_regular_price();
-
-		return '<del>$' . $reg_price . '</del> Free!';
-
-	} elseif ( $product->get_price() == 0 ) {
-
-		return 'Free!';
-
-	} else {
-
-		return $price;
-
-	}
-
-}
-
-add_filter( 'woocommerce_get_price_html', 'lawyerist_wc_free_products', 10, 2 );
 
 
 /* STRUCTURE ******************/
@@ -257,6 +219,7 @@ Get Country
 
 function get_country() {
 
+	// Limits API calls to product pages, not portals (i.e., child pages only).
 	if ( has_trial_button() || ( get_page_template_slug( $post->ID ) == 'product-page.php' && $post->post_parent == 0 ) ) {
 
 		// Get user's geographic location by IP address.
@@ -1238,6 +1201,44 @@ function lawyerist_get_review_count() {
 
 
 /* WOOCOMMERCE ****************/
+
+/*------------------------------
+WooCommerce Setup
+------------------------------*/
+
+/* Declare WooCommerce support. */
+function lawyerist_woocommerce_support() {
+	add_theme_support( 'woocommerce' );
+}
+
+add_action( 'after_setup_theme', 'lawyerist_woocommerce_support' );
+
+
+/* Display price of free products as "Free!" not "$0.00". */
+function lawyerist_wc_free_products( $price, $product ) {
+
+	global $woocommerce;
+
+	if ( wc_memberships_user_has_member_discount() && $product->get_price() == 0 ) {
+
+		$reg_price = $product->get_regular_price();
+
+		return '<del>$' . $reg_price . '</del> Free!';
+
+	} elseif ( $product->get_price() == 0 ) {
+
+		return 'Free!';
+
+	} else {
+
+		return $price;
+
+	}
+
+}
+
+add_filter( 'woocommerce_get_price_html', 'lawyerist_wc_free_products', 10, 2 );
+
 
 /*------------------------------
 Function for Checking to See if a Product ID is in the Cart
