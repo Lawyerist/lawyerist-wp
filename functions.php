@@ -1266,15 +1266,17 @@ function woo_in_cart( $product_id ) {
 Checkout Fields
 ------------------------------*/
 
-// Disables all billing fields except the name, email address, and country.
 function lawyerist_checkout_fields( $fields ) {
 
+	// Disables all billing fields except the name, email address, and country.
 	unset( $fields['billing']['billing_company'] );
 	unset( $fields['billing']['billing_address_1'] );
 	unset( $fields['billing']['billing_address_2'] );
 	unset( $fields['billing']['billing_city'] );
 	unset( $fields['billing']['billing_postcode'] );
 	unset( $fields['billing']['billing_phone'] );
+
+	// Disables the order comments/notes field.
 	unset( $fields['order']['order_comments'] );
 
 	// Creates an array of Insider, Lab, and LabCon product IDs.
