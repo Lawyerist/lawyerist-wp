@@ -1008,8 +1008,6 @@ Menu
 #menu-main-menu > .menu-item {
 	display: inline-block;
 	margin: 0;
-  padding: 0;
-  position: relative;
   width: 20%;
 }
 
@@ -1017,22 +1015,18 @@ Menu
 	color: #fff;
 	display: block;
 	font-size: 1.6rem;
-	line-height: 1;
+  line-height: 1;
 	padding: .5rem;
 	text-decoration: none;
 }
 
-  #menu-main-menu .menu-item a.open {
-    background: #a00;
-  }
-
+  #menu-main-menu .menu-item a.open,
   #menu-main-menu > .menu-item:hover a {
     background: #a00;
     color: #fff;
   }
 
-  #menu-main-menu .menu-item > a:before,
-  #menu-main-menu > .menu-item-has-children > a:after {
+  #menu-main-menu > .menu-item > a:before {
     display: inline-block;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
@@ -1041,7 +1035,7 @@ Menu
     vertical-align: middle;
   }
 
-    /* Default menu item. */
+    /* Default/Topics menu item. */
     #menu-main-menu > .menu-item > a:before {
       content: '\f505';
     }
@@ -1051,9 +1045,9 @@ Menu
       content: '\f409';
     }
 
-    /* Library */
+    /* Community */
     #menu-main-menu .menu-item-211724 > a:before {
-      content: '\f444';
+      content: '\f417';
     }
 
     /* About */
@@ -1061,88 +1055,94 @@ Menu
       content: '\f455';
     }
 
-    /* Log In */
+    /* Log In/Account */
     #menu-main-menu .menu-item-loginout > a:before {
       content: '\f304';
     }
 
-    #menu-main-menu > .menu-item-has-children > a:after {
-      content: '\f431';
-      font: normal 1.6rem/2 Genericons;
-      text-align: center;
-      width: 3.2rem;
-    }
 
-#menu-main-menu > .menu-item > .sub-menu {
-  background: #a00;
-  box-shadow: 0 .2rem .3rem rgba(0, 0, 0, 0.2);
-  display: none;
-  margin: 0;
-  overflow: hidden;
-  position: absolute;
-  width: 100%;
-  z-index: 10;
-}
-
-  #menu-main-menu .sub-menu {
-    margin: 0;
-    padding: 0;
-  }
-
-  #menu-main-menu .sub-menu .menu-item {
-    display: block;
-    margin: 0;
-    padding: 0;
-  }
-
-  #menu-main-menu .sub-menu a {
-    line-height: 1.2;
-    padding: .75rem 1rem;
-  }
-
-    #menu-main-menu .sub-menu .menu-item a:hover,
-    #menu-main-menu .sub-menu .menu-item a:focus {
-      color: #ddd;
-    }
-
-    #menu-main-menu .sub-menu .menu-item:last-child a {
-      padding-bottom: 1rem;
-    }
-
-    #menu-main-menu ul.sub-menu .sub-menu .menu-item a {
-      margin-left: 1rem;
-    }
-
-    #menu-main-menu ul.sub-menu .sub-menu .menu-item a:before {
-      color: #c00;
-      content: "\f428";
-      display: inline-block;
-      -moz-osx-font-smoothing: grayscale;
-      -webkit-font-smoothing: antialiased;
-      font: normal 1.6rem/1.2 'Genericons';
-      speak: none;
-      text-indent: -1em;
-      vertical-align: top;
-    }
-
-
-/* Topics menu */
-#menu-main-menu .menu-item-208330 {
+#menu-main-menu > .menu-item-has-children {
   position: static;
 }
 
-#menu-main-menu .menu-item-208330 > .sub-menu {
-  left: 0;
-}
-
-  #menu-main-menu .menu-item-208330 > .sub-menu > li {
-    float: left;
-    width: 20%;
+  #menu-main-menu > .menu-item-has-children > a:after {
+    content: '\f431';
+    display: inline-block;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font: normal 1.6rem/2 Genericons;
+    speak: none;
+    text-align: center;
+    vertical-align: middle;
+    width: 3.2rem;
   }
+
+  #menu-main-menu .sub-menu {
+    margin: 0;
+  }
+
+    #menu-main-menu > .menu-item-has-children > .sub-menu {
+      background: #a00;
+      box-shadow: 0 .2rem .3rem rgba(0, 0, 0, 0.2);
+      display: none;
+      padding: 1rem 0 1.5rem 0;
+      position: absolute;
+        left: 0;
+      width: 100%;
+      z-index: 10;
+    }
+
+    #menu-main-menu .sub-menu .menu-item {
+      display: block;
+      margin: 0;
+      padding: 0;
+    }
+
+      #menu-main-menu > .menu-item-has-children > .sub-menu > .menu-item {
+        float: left;
+        width: 20%;
+      }
+
+      #menu-main-menu .sub-menu a {
+        line-height: 1.2;
+        padding: .75rem 1rem;
+      }
+
+        /* Makes headings within sub-menus unclickable. */
+        #menu-main-menu .sub-menu a[href="#"] {
+          pointer-events: none;
+          cursor: default;
+        }
+
+        #menu-main-menu .sub-menu .menu-item a:hover,
+        #menu-main-menu .sub-menu .menu-item a:focus {
+          color: #ddd;
+        }
+
+        #menu-main-menu ul.sub-menu .sub-menu .menu-item a {
+          margin-left: 1rem;
+        }
+
+          #menu-main-menu ul.sub-menu .sub-menu .menu-item a:before {
+            color: #c00;
+            content: "\f428";
+            display: inline-block;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            font: normal 1.6rem/1.2 'Genericons';
+            speak: none;
+            text-indent: -1em;
+            vertical-align: top;
+          }
+
+      /* Centers the Community menu, which only has 3 columns. */
+      #menu-item-211724 > .sub-menu > .menu-item:first-child {
+        margin-left: 20%;
+      }
 
 
 /* Mobile menu. */
-@media only screen and ( max-width: 659px ) {
+@media only screen and ( max-width: 749px ) {
 
   #menu-main-menu > .menu-item {
     position: static;
@@ -1154,30 +1154,35 @@ Menu
     text-align: center;
   }
 
-  #menu-main-menu .menu-item > a:before {
-    display: block;
-    margin: 0;
-  }
+    #menu-main-menu .menu-item > a:before {
+      display: block;
+      margin: 0;
+    }
 
-  #menu-main-menu > .menu-item-has-children > a:after {
-    display: none;
-  }
+    #menu-main-menu > .menu-item-has-children > a:after {
+      display: none;
+    }
 
   #menu-main-menu > .menu-item > .sub-menu {
     left: 0;
     width: 100%;
   }
 
-  #menu-main-menu .menu-item-208330 > .sub-menu > li {
-    float: none;
-    width: unset;
-  }
+    #menu-main-menu .menu-item-has-children > .sub-menu > .menu-item {
+      float: none;
+      width: unset;
+    }
 
-  #menu-main-menu > .menu-item > .sub-menu a {
-    font-size: 1.8rem;
-    padding: 1rem;
-    text-align: left;
-  }
+    #menu-main-menu > .menu-item > .sub-menu a {
+      font-size: 1.8rem;
+      padding: 1rem;
+      text-align: left;
+    }
+
+    /* Un-centers the Community menu. */
+    #menu-item-211724 > .sub-menu > .menu-item:first-child {
+      margin-left: 0;
+    }
 
 }
 
