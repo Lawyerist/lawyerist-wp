@@ -328,7 +328,6 @@ th,
 }
 
 aside blockquote,
-.big_hero_top,
 .breadcrumbs,
 button,
 .button,
@@ -1232,122 +1231,42 @@ Front Page
   max-width: 68rem;
 }
 
-  .big_hero_top {
-    background-image: url('https://lawyerist.com/lawyerist/wp-content/uploads/2018/02/scorecard-hero-background-684x385.jpg');
-    background-size: cover;
+  #big_hero_cta .index_post_container {
+    padding: 2rem;
+  }
+
+    #big_hero_cta .index_post_container a:hover p,
+    #big_hero_cta .index_post_container a:focus p,
+    #big_hero_cta .index_post_container a:hover ul,
+    #big_hero_cta .index_post_container a:focus ul {
+      color: #111;
+    }
+
+  #big_hero_cta img {
+    height: 10rem;
+    margin: 0 1.5rem 1.5rem 0;
+    padding: 0;
+    width: 10rem;
+  }
+
+  #big_hero_cta .headline {
+    font-size: 4.2rem;
+    margin-bottom: .25em;
+  }
+
+  #big_hero_cta .button {
     display: block;
-    margin-bottom: 2rem;
-    padding: 2rem;
-    position: relative;
+    font-size: 3.2rem !important;
+    height: auto;
+    margin-bottom: 0;
+    padding: 1.5rem;
+    text-align: center;
   }
 
-    .big_hero_top:hover {
-      color: unset;
-    }
+  @media only screen and ( max-width: 499px ) {
 
-    .big_hero_top .scorecard_image_wrapper {
-      box-sizing: border-box;
-      float: left;
-      margin-top: 3rem;
-      position: relative;
-      width: 40%;
-    }
-
-      .big_hero_top .scorecard_image_wrapper img {
-        box-shadow: .3rem .3rem .9rem rgba(0, 0, 0, 0.3);
-        height: auto;
-        margin: 0;
-        width: 100%;
-      }
-
-      .scorecard_image_wrapper::before {
-        background-color: #c00;
-        border-radius: 50%;
-        box-shadow: .3rem .3rem .9rem rgba(0, 0, 0, 0.3);
-        color: #fff;
-        content: 'Free!';
-        font-family: concourse-headings;
-        font-size: 2.4rem;
-        height: 6.5rem;
-        line-height: 6.5rem;
-        position: absolute;
-          top: -3rem;
-          right: -3rem;
-        text-align: center;
-        width: 6.5rem;
-      }
-
-    .scorecard_prompt_wrapper {
-      box-sizing: border-box;
-      float: right;
-      margin-top: 3rem;
-      padding: 2rem;
-      position: relative;
-      text-align: center;
-      text-shadow: .1rem .1rem .9rem #ddd;
-      width: 50%;
-      z-index: 2;
-    }
-
-      .scorecard_prompt_wrapper::after {
-        background-color: #fff;
-        content: '';
-        height: 100%;
-        opacity: .35;
-        position: absolute;
-          left: 0;
-          top: 0;
-        width: 100%;
-        z-index: -1;
-      }
-
-      .big_hero_top h2 {
-        font-size: 4.2rem;
-      }
-
-        .big_hero_top h2 sup {
-          font-size: 1.4rem;
-        }
-
-      .big_hero_top p {
-        font-size: 3.2rem;
-      }
-
-        .big_hero_top:active p,
-        .big_hero_top:focus p,
-        .big_hero_top:hover p {
-          color: #111;
-        }
-
-  #big_hero_cta .big_hero_p {
-    margin: 0;
-    padding: 0 2rem;
-  }
-
-  .big_hero_button {
-    padding: 2rem;
-  }
-
-    .big_hero_button .button {
-      display: block;
-      font-size: 3.2rem !important;
-      height: auto;
-      margin-bottom: 0;
-      padding: 1.5rem;
-      text-align: center;
-    }
-
-  @media only screen and ( max-width: 683px ) {
-
-    .big_hero_top .scorecard_image_wrapper {
-      float: none;
-      margin: 3rem auto;
-      width: 50%;
-    }
-
-    .big_hero_top .scorecard_prompt_wrapper {
-      float: none;
-      width: 100%;
+    #big_hero_cta img {
+      display: none;
     }
 
   }
@@ -1381,8 +1300,7 @@ Front Page
 
   .one_half .index_post_container h3 {
     font-size: 2.4rem;
-    margin-left: 2rem;
-    margin-right: 2rem;
+    margin: 0 2rem;
   }
 
   .one_half .index_post_container .button {

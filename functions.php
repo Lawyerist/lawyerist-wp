@@ -28,7 +28,6 @@ CONTENT
 - Get Related Posts
 - Get Related Pages
 - Current Posts Widget
-- Scorecard Call to Action
 - Ads
 - Trial Buttons
 - Mobile Ads
@@ -924,31 +923,6 @@ function lawyerist_current_posts( $this_post ) {
 
 }
 
-
-/*------------------------------
-Scorecard Call to Action
-------------------------------*/
-
-function scorecard_cta() {
-?>
-
-	<div id="big_hero_cta">
-		<div class="index_post_container">
-			<a class="big_hero_top" href="https://lawyerist.com/scorecard/">
-				<div class="scorecard_image_wrapper"><img src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/05/scorecard-thumbnail.png" alt="The Small Firm Scorecard example graphic." /></div>
-				<div class="scorecard_prompt_wrapper">
-					<h2>The Small Firm Scorecard<sup>TM</sup></h2>
-					<p>Is your law firm structured to succeed in the future?</p>
-				</div>
-				<div class="clear"></div>
-			</a>
-			<p class="big_hero_p">The practice of law is changing. You need to understand whether your firm is positioned for success in the coming years. Our free Small Firm Scorecard will identify your firm’s strengths and weaknesses in just a few minutes.</p>
-			<div class="big_hero_button"><a class="button" href="https://lawyerist.com/scorecard/">Get Your Free Score</a></div>
-		</div>
-	</div>
-
-<?php
-}
 
 /*------------------------------
 Ads
