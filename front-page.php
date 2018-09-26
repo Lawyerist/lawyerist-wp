@@ -80,7 +80,7 @@
 							<a href="https://lawyerist.com/insider/">
 								<div id="big_hero_top">
 									<p class="headline">Join Your Tribe.</p>
-									<p>Lawyerist Insiders are solo and small firm lawyers building modern, future-oriented law practices.</p>
+									<p>Lawyerist Insider is the community of solo and small firm lawyers building modern, future-oriented law practices.</p>
 									<p class="headline">Grow Your Firm.</p>
 									<p>Our Insider Library is full of checklists, templates, and other resources to help you grow.</p>
 								</div>
