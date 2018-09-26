@@ -1324,6 +1324,10 @@ Front Page
       color: #a00;
     }
 
+    #big_hero_cta .button:focus:after {
+      box-shadow: none;
+    }
+
   @media only screen and ( max-width: 499px ) {
 
     #big_hero_cta .headline {
@@ -3446,6 +3450,7 @@ a.review-btn:focus,
 .woocommerce a.button.alt:focus,
 .woocommerce button.button.alt:focus,
 .woocommerce input.button.alt:focus {
+  box-shadow: none;
   color: #fff;
   outline: none !important;
 }
