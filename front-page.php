@@ -72,21 +72,21 @@
 
 				<div id="big_hero_cta">
 					<div class="index_post_container">
-						<a href="https://lawyerist.com/insider/">
-							<div id="big_hero_top">
-								<img class="alignleft" src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/02/L-dot-150x150.png" />
-								<h2 class="headline">Join Your Tribe.<br />Grow Your Firm.</h2>
-								<div class="clear"></div>
-							</div>
-							<p>Join the community of solo and small firm lawyers building modern, future-oriented law practices. When you join (it's free!) you'll get:</p>
-							<ul>
-								<li>Access to the checklists, templates, and resources in the Insider Library.</li>
-								<li>Our weekly Insiders-only email newsletter.</li>
-								<li>Small-firm lawyers in the U.S. and Canada can join our private Facebook group for Insiders.</li>
-							</ul>
-							<div class="clear"></div>
-						</a>
-						<a class="button" href="https://lawyerist.com/insider/">Join Now!</a>
+						<div id="big_hero_left">
+							<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/02/L-dot-150x150.png" />
+							<span class="big_hero_label">Insider</span>
+						</div>
+						<div id="big_hero_right">
+							<a href="https://lawyerist.com/insider/">
+								<div id="big_hero_top">
+									<p class="headline">Join Your Tribe.</p>
+									<p>Lawyerist Insiders article the community of solo and small firm lawyers building modern, future-oriented law practices.</p>
+									<p class="headline">Grow Your Firm.</p>
+									<p>Our Insider Library is full of checklists, templates, and other resources to help you grow.</p>
+								</div>
+							</a>
+							<a class="button" href="https://lawyerist.com/insider/">Join Now</a>
+						</div>
 					</div>
 				</div>
 
