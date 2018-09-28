@@ -101,20 +101,13 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
             if ( has_category( 'how-lawyers-work' ) ) {
 
-              global $post;
+              $first_image_url = get_first_image_url();
 
-              // Gets the first image, or a default.
-              $first_img = '';
-                ob_start();
-                ob_end_clean();
-                $output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
-                $avatar_url = $matches[1][0];
-
-              if ( empty( $avatar_url ) ) {
-                $avatar_url = 'https://lawyerist.com/lawyerist/wp-content/uploads/2018/01/typewriter-150x150.jpg';
+              if ( empty( $first_image_url ) ) {
+                $first_image_url = 'https://lawyerist.com/lawyerist/wp-content/uploads/2018/01/typewriter-150x150.jpg';
               }
 
-              echo '<div class="author_avatar"><img class="avatar" src="' . $avatar_url . '" /></div>';
+              echo '<div class="author_avatar"><img class="avatar" src="' . $first_image_url . '" /></div>';
 
             } else {
 

@@ -15,6 +15,7 @@ ADMIN
 
 UTILITY FUNCTIONS
 - Get Country
+- Get First Image URL
 
 CONTENT
 - Query Mods
@@ -241,6 +242,27 @@ function get_country() {
 		return $api_result['country_code'];
 
 	}
+
+}
+
+/*------------------------------
+Get First Image URL
+------------------------------*/
+
+function get_first_image_url() {
+
+	global $post;
+
+	$first_image_url = '';
+
+	ob_start();
+	ob_end_clean();
+
+	$output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
+
+	$first_image_url = $matches[1][0];
+
+	return $first_image_url;
 
 }
 
@@ -553,15 +575,10 @@ function lawyerist_get_related_podcasts() {
 
 						echo '<div class="headline_excerpt">';
 
-							// Gets the first image, or a default.
-							$first_img = '';
-								ob_start();
-								ob_end_clean();
-								$output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
-								$avatar_url = $matches[1][0];
+							$first_image_url = get_first_image_url();
 
-							if ( empty( $avatar_url ) ) {
-								$avatar_url = '	https://lawyerist.com/lawyerist/wp-content/uploads/2018/09/podcast-mic-square-150x150.png';
+							if ( empty( $first_image_url ) ) {
+								$first_image_url = 'https://lawyerist.com/lawyerist/wp-content/uploads/2018/09/podcast-mic-square-150x150.png';
 							}
 
 							echo '<div class="author_avatar"><img class="avatar" src="' . $avatar_url . '" /></div>';
