@@ -71,7 +71,7 @@
 			?>
 
 				<div id="big_hero_cta">
-					<div class="index_post_container">
+					<div class="post_container">
 						<div id="big_hero_left">
 							<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/02/L-dot-150x150.png" />
 							<span class="big_hero_label">Insider</span>
@@ -113,7 +113,7 @@
 
 					// Starts the post container.
 					echo '<div ' ;
-					post_class( 'index_post_container has-post-label' );
+					post_class( 'post_container has-post-label' );
 					echo '>';
 
 						// Starts the link container. Makes for big click targets!
@@ -170,7 +170,7 @@
 
 
 				// Embedded Lawyerist Lens playlist.
-				echo '<div class="index_post_container lens_playlist has-post-label">';
+				echo '<div class="post_container lens_playlist has-post-label">';
 
 				echo '<iframe width="636" height="358" src="https://www.youtube.com/embed/videoseries?list=PLtFJu5URBISmTDaVOF3l-cQl08f2qUMr_" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
 
@@ -209,7 +209,7 @@
 
 					// Starts the post container.
 					echo '<div ' ;
-					post_class( 'index_post_container has-post-label' );
+					post_class( 'post_container has-post-label' );
 					echo '>';
 
 						// Starts the link container. Makes for big click targets!
@@ -268,7 +268,7 @@
 
 					// Starts the post container.
 					echo '<div ' ;
-					post_class( 'index_post_container has-post-label' );
+					post_class( 'post_container has-post-label' );
 					echo '>';
 
 						// Starts the link container. Makes for big click targets!
@@ -327,7 +327,7 @@
 			<div class="front_page_block fp_contains_boxes">
 
 				<div class="one_half">
-					<div class="index_post_container">
+					<div class="post_container">
 						<a href="https://lawyerist.com/scorecard/">
 							<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/09/scorecard-front-page.png" alt="Lawyerist Insider logo." />
 							<h3 class="headline">Use the Small Firm Scorecard to Evaluate Your Law Firm</h3>
@@ -336,7 +336,7 @@
 				</div>
 
 				<div class="one_half">
-					<div class="index_post_container">
+					<div class="post_container">
 						<a href="https://lawyerist.com/journal/">
 							<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/05/lawyerist-productivity-journal-front-page.jpg" alt="The Lawyerist Productivity Journal cover." />
 							<h3 class="headline">Get Organized with the Lawyerist Productivity Journal</h3>
@@ -347,7 +347,7 @@
 				<div class="clear"></div>
 
 				<div class="one_half">
-					<div class="index_post_container">
+					<div class="post_container">
 						<a href="https://lawyerist.com/best-law-firm-websites/">
 							<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/05/best-law-firm-websites-2018-front-page.jpg" alt="A law firm website as viewed on a laptop." />
 							<h3 class="headline">The Best Law Firm Websites, 2018 Edition</h3>
@@ -356,7 +356,7 @@
 				</div>
 
 				<div class="one_half">
-					<div class="index_post_container">
+					<div class="post_container">
 						<a href="https://lawyerist.com/website-designer-assessment/">
 							<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/05/web-designer-recommendation-front-page.jpg" alt="Law firm website designer at work." />
 							<h3 class="headline">Get a Personalized Web Designer Referral</h3>
@@ -377,7 +377,7 @@
 			<div class="front_page_block fp_contains_boxes">
 
 				<div class="one_half">
-					<div class="index_post_container">
+					<div class="post_container">
 						<a href="https://lawyerist.com/law-practice-management-software/">
 							<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/05/law-practice-management-software-front-page.jpg" alt="Law practice management software graphic." />
 							<h3 class="headline">Law Practice Management Software</h3>
@@ -386,7 +386,7 @@
 				</div>
 
 				<div class="one_half">
-					<div class="index_post_container">
+					<div class="post_container">
 						<a href="https://lawyerist.com/virtual-receptionists/">
 							<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/05/receptionist-front-page.jpg" alt="Virtual receptionist image." />
 							<h3 class="headline">Virtual Receptionists for Law Firms</h3>
@@ -397,7 +397,7 @@
 				<div class="clear"></div>
 
 				<div class="one_half">
-					<div class="index_post_container">
+					<div class="post_container">
 						<a href="https://lawyerist.com/best-law-firm-websites/designers-seo/">
 							<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/07/website-designers-seo-consultants-front-page.jpg" alt="SEO Scrabble tiles." />
 							<h3 class="headline">Website Designers & SEO Consultants</h3>
@@ -406,7 +406,7 @@
 				</div>
 
 				<div class="one_half">
-					<div class="index_post_container">
+					<div class="post_container">
 						<a href="https://lawyerist.com/legal-billing-software/">
 							<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/07/time-billing-software-front-page.jpg" alt="An accountant working on a laptop." />
 							<h3 class="headline">Timekeeping & Billing Software for Law Firms</h3>

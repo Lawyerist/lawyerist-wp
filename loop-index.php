@@ -32,7 +32,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
   // Sets the post excerpt to the Yoast Meta Description.
   if ( !empty( $seo_descr ) ) { $post_excerpt = $seo_descr; }
 
-  $post_classes[] = 'index_post_container'; // .post, .page, and .product are added automatically, as are tags and formats.
+  $post_classes[] = 'post_container'; // .post, .page, and .product are added automatically, as are tags and formats.
 
   // Assigns series class and label.
   if ( has_term( true, 'series' ) ) {

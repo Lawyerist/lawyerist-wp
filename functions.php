@@ -564,7 +564,7 @@ function lawyerist_get_related_podcasts() {
 				if ( !empty( $seo_descr ) ) { $post_excerpt = $seo_descr; }
 
 				echo '<div ' ;
-				post_class( 'index_post_container' );
+				post_class( 'post_container' );
 				echo '>';
 
 					// Starts the link container. Makes for big click targets!
@@ -592,7 +592,7 @@ function lawyerist_get_related_podcasts() {
 
 					echo '</a>'; // This closes the link container.
 
-				echo '</div>'; // This closes .index_post_container.
+				echo '</div>'; // This closes .post_container.
 
 			endwhile;
 
@@ -657,7 +657,7 @@ function lawyerist_get_related_posts() {
 
 				// Starts the post container.
 				echo '<div ' ;
-				post_class( 'index_post_container' );
+				post_class( 'post_container' );
 				echo '>';
 
 					// Starts the link container. Makes for big click targets!
@@ -743,7 +743,7 @@ function lawyerist_get_related_pages() {
 
 				// Starts the post container.
 				echo '<div ' ;
-				post_class( 'index_post_container' );
+				post_class( 'post_container' );
 				echo '>';
 
 					// Starts the link container. Makes for big click targets!
