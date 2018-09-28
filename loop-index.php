@@ -93,7 +93,18 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
           // Outputs an image for podcast episodes.
           if ( has_category( 'lawyerist-podcast' ) ) {
-            echo '<div class="default_thumbnail" alt="The Lawyerist Podcast logo" style="background-image: url( https://lawyerist.com/lawyerist-dev/wp-content/uploads/2018/02/lawyerist-ltn-podcast-logo-16x9-684x385.png );"></div>';
+
+            $first_image_url = get_first_image_url();
+
+            if ( empty( $first_image_url ) ) {
+              $first_image_url = 'https://lawyerist.com/lawyerist-dev/wp-content/uploads/2018/02/lawyerist-ltn-podcast-logo-16x9-684x385.png';
+            }
+
+            echo '<div class="author_avatar"><img class="avatar" src="' . $first_image_url . '" /></div>';
+
+
+
+            // echo '<div class="default_thumbnail" alt="The Lawyerist Podcast logo" style="background-image: url( https://lawyerist.com/lawyerist-dev/wp-content/uploads/2018/02/lawyerist-ltn-podcast-logo-16x9-684x385.png );"></div>';
           }
 
           // Outputs an image for community posts.
@@ -119,7 +130,6 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
             }
 
           }
-
 
           // Outputs the featured image for other posts.
           if ( has_post_thumbnail() && !has_category( 'lawyerist-podcast' ) && !has_category( 'community-posts' ) ) {
@@ -147,7 +157,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
           }
 
           // Output the post meta, with exceptions.
-          if ( $post_type == 'post' && !has_category( 'lawyerist-podcast' ) ) {
+          if ( $post_type == 'post' ) {
             lawyerist_postmeta();
           }
 

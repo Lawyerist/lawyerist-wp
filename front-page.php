@@ -123,10 +123,18 @@
 							echo '<div class="headline_excerpt">';
 
 								// Outputs the podcast cover image.
-								echo '<div class="default_thumbnail" alt="The Lawyerist Podcast logo" style="background-image: url( https://lawyerist.com/lawyerist-dev/wp-content/uploads/2018/02/lawyerist-ltn-podcast-logo-16x9-684x385.png );"></div>';
+								$first_image_url = get_first_image_url();
+
+		            if ( empty( $first_image_url ) ) {
+		              $first_image_url = 'https://lawyerist.com/lawyerist-dev/wp-content/uploads/2018/02/lawyerist-ltn-podcast-logo-16x9-684x385.png';
+		            }
+
+		            echo '<div class="author_avatar"><img class="avatar" src="' . $first_image_url . '" /></div>';
 
 								// Headline
 								echo '<h2 class="headline">' . $podcast_title . '</h2>';
+
+								get_template_part( 'postmeta', 'index' );
 
 								// Clearfix
 								echo '<div class="clear"></div>';

@@ -8,6 +8,7 @@ echo '<div class="postmeta">';
   $author = get_the_author_meta( 'display_name' );
   $date   = get_the_time( 'F jS, Y' );
 
+  // Gets the byline for sponsored posts.
   if ( has_term( true, 'sponsor' ) || has_category( 'sponsored-posts' ) ) {
 
     $sponsor_IDs = wp_get_post_terms(
@@ -23,15 +24,22 @@ echo '<div class="postmeta">';
     $sponsor_info = get_term( $sponsor_IDs[0] );
     $sponsor      = $sponsor_info->name;
 
-    if ( has_category( 'sponsored-posts' ) ) { // Product updates and old sponsored posts.
+    // Replaces the author with the sponsor on sponsored product updates and old sponsored posts.
+    if ( has_category( 'sponsored-posts' ) ) {
+
       echo '<span class="sponsor">Sponsored by ' . $sponsor . '</span> ';
-    } else { // Product spotlights.
+
+    // Adds "sponsored by" after the authoer on product spotlights.
+    } else {
+
       echo 'By <span class="vcard author"><cite class="fn">' . $author . '</cite></span>,&nbsp;<span class="sponsor">sponsored by ' . $sponsor . '</span>, ';
+
     }
 
     echo 'on <span class="date updated published">' . $date . '</span>';
 
-  } elseif ( $author == 'Lawyerist' ) {
+  // Gets the byline without the author when Lawyerist is the author, and for podcasts.
+  } elseif ( $author == 'Lawyerist' || has_category( 'lawyerist-podcast' ) ) {
 
     echo '<span class="date updated published">' . $date . '</span>';
 

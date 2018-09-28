@@ -581,7 +581,7 @@ function lawyerist_get_related_podcasts() {
 								$first_image_url = 'https://lawyerist.com/lawyerist/wp-content/uploads/2018/09/podcast-mic-square-150x150.png';
 							}
 
-							echo '<div class="author_avatar"><img class="avatar" src="' . $avatar_url . '" /></div>';
+							echo '<div class="author_avatar"><img class="avatar" src="' . $first_image_url . '" /></div>';
 
 							echo '<h2 class="headline" title="' . $post_title . '">' . $post_title . '</h2>';
 
