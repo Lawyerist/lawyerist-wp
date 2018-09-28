@@ -560,9 +560,6 @@ function lawyerist_get_related_podcasts() {
 				$post_excerpt   = get_the_excerpt();
 				$seo_descr      = get_post_meta( $post->ID, '_yoast_wpseo_metadesc', true );
 
-				$author_name		= get_the_author_meta( 'display_name' );
-				$author_avatar	= get_avatar( get_the_author_meta( 'user_email' ), 150, '', $author_name );
-
 				// Sets the post excerpt to the Yoast Meta Description if there is one.
 				if ( !empty( $seo_descr ) ) { $post_excerpt = $seo_descr; }
 
@@ -573,15 +570,14 @@ function lawyerist_get_related_podcasts() {
 					// Starts the link container. Makes for big click targets!
 					echo '<a href="' . $post_url . '" title="' . $post_title . '">';
 
+						$first_image_url = get_first_image_url();
+
+						if ( empty( $first_image_url ) ) {
+							$first_image_url = 'https://lawyerist.com/lawyerist/wp-content/uploads/2018/09/podcast-mic-square-150x150.png';
+						}
+						echo '<div class="podcast_guest_thumbnail"><img class="avatar" src="' . $first_image_url . '" /></div>';
+
 						echo '<div class="headline_excerpt">';
-
-							$first_image_url = get_first_image_url();
-
-							if ( empty( $first_image_url ) ) {
-								$first_image_url = 'https://lawyerist.com/lawyerist/wp-content/uploads/2018/09/podcast-mic-square-150x150.png';
-							}
-
-							echo '<div class="author_avatar"><img class="avatar" src="' . $first_image_url . '" /></div>';
 
 							echo '<h2 class="headline" title="' . $post_title . '">' . $post_title . '</h2>';
 
@@ -667,10 +663,10 @@ function lawyerist_get_related_posts() {
 					// Starts the link container. Makes for big click targets!
 					echo '<a href="' . $post_url . '" title="' . $post_title . '">';
 
-						echo '<div class="headline_excerpt">';
+						// Outputs the author's avatar.
+						echo '<div class="author_avatar">' . $author_avatar . '</div>';
 
-							// Outputs the author's avatar.
-							echo '<div class="author_avatar">' . $author_avatar . '</div>';
+						echo '<div class="headline_excerpt">';
 
 							// Headline
 							echo '<h2 class="headline">' . $post_title . '</h2>';
@@ -723,20 +719,11 @@ function lawyerist_get_related_pages() {
 		}
 	}
 
-	var_dump( $current_tags );
-
-	echo '<p>…</p>';
-
-	var_dump( $current_tags_slugs );
-
 	$lawyerist_related_pages_query_args = array(
 		'post__not_in'		=> $current_id,
 		'posts_per_page'	=> -1,
 		'post_type'				=> 'page',
-		'tag_slug__in' 		=> $current_tags_slugs,
-		'tag__not_in'			=> array(
-			4077, // Excludes product spotlights.
-		),
+		'post_name__in' 	=> $current_tags_slugs,
 	);
 
 	$lawyerist_related_pages_query = new WP_Query( $lawyerist_related_pages_query_args );
@@ -763,13 +750,17 @@ function lawyerist_get_related_pages() {
 					echo '<a href="' . $post_url . '" title="' . $post_title . '">';
 
 						if ( has_post_thumbnail() ) {
-              the_post_thumbnail( 'thumbnail' );
+							echo '<div class="related_page_thumbnail">';
+	              the_post_thumbnail( 'thumbnail' );
+							echo '</div>';
             } else {
-              echo '<img class="attachment-thumbnail wp-post-image" src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/02/L-dot.png" />';
+              echo '<div class="related_page_thumbnail"><img class="attachment-thumbnail wp-post-image" src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/02/L-dot.png" /></div>';
             }
 
 						echo '<div class="headline_excerpt">';
+
 							echo '<h2 class="headline" title="' . $post_title . '">' . $post_title . '</h2>';
+
 						echo '</div>'; // Close .headline_excerpt.
 
 						echo '<div class="clear"></div>';

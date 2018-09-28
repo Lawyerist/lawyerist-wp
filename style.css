@@ -2231,7 +2231,7 @@ Content
     #child_pages_list .headline_excerpt {
       padding: 0 0 0 9rem;
       position: absolute;
-      top: 50%;
+        top: 50%;
       transform: translateY(-50%);
      }
 
@@ -2251,7 +2251,8 @@ Content
         }
 
   #related_podcasts,
-  #related_posts {
+  #related_posts,
+  #related_pages {
     margin-bottom: 4rem;
   }
 
@@ -2279,73 +2280,82 @@ Content
       }
 
     #related_podcasts .index_post_container,
-    #related_posts .index_post_container {
+    #related_posts .index_post_container,
+    #related_pages .index_post_container {
       background-color: #f5f5f5;
-      padding: 0;
-    }
-
-    #related_posts .author_avatar,
-    #related_podcasts .author_avatar {
-      float: left;
-      font-size: 1rem;
-      line-height: 1;
-      width: 24.19354839%;
-    }
-
-      #related_posts .author_avatar img,
-      #related_podcasts .author_avatar img {
-        height: auto;
-        margin: 0;
-        width: 100%;
-      }
-
-    #related_posts .headline,
-    #related_podcasts .headline {
-      font-size: 2.4rem;
-      margin-bottom: .5rem;
-    }
-
-    #related_podcasts .headline_excerpt,
-    #related_posts .headline_excerpt {
       padding: 2rem;
+      position: relative;
     }
 
-    #related_podcasts .headline,
-    #related_podcasts .excerpt,
-    #related_podcasts .postmeta,
-    #related_posts .headline,
-    #related_posts .excerpt,
-    #related_posts .postmeta {
-      margin-left: 1.5rem;
-    	padding-left: 24.19354839%; /* Sets left padding at 150px max. */
-    }
-
-      #related_podcasts .headline,
-      #related_posts .headline {
-        font-size: 2.4rem;
-        margin-bottom: .5rem;
+      #related_podcasts .podcast_guest_thumbnail,
+      #related_posts .author_avatar,
+      #related_pages .related_page_thumbnail {
+        float: left;
+        font-size: 1rem;
+        line-height: 1;
+        width: 23.4375%;
       }
 
-      #related_podcasts .excerpt,
-      #related_posts .excerpt {
-        font-size: 1.6rem;
-      }
-
-        .page-template-product-page #related_podcasts .excerpt,
-        .page-template-full-width #related_podcasts .excerpt,
-        .page-template-product-page #related_posts .excerpt,
-        .page-template-full-width #related_posts .excerpt {
-          display: none;
+        #related_pages .related_page_thumbnail {
+          width: 15.625%;
         }
 
-        @media only screen and ( max-width: 683px ) {
+        #related_podcasts .podcast_guest_thumbnail img,
+        #related_posts .author_avatar img,
+        #related_pages .related_page_thumbnail img {
+          border-radius: 50%;
+          height: auto;
+          margin: 0;
+          max-width: unset;
+          width: 100%;
+        }
 
-          #related_podcasts .excerpt,
-          #related_posts .excerpt {
+      #related_podcasts .headline_excerpt,
+      #related_posts .headline_excerpt {
+        margin-left: 1.5rem;
+        padding: 0 0 0 23.4375%;
+      }
+
+      #related_pages .headline_excerpt {
+        margin: 0 0 0 1.5rem;
+        padding: 0 0 0 15.625%;
+        position: absolute;
+          left: 1.5rem;
+          top: 50%;
+        transform: translateY(-50%);
+      }
+
+        #related_podcasts .headline,
+        #related_posts .headline {
+          font-size: 2.4rem;
+          margin-bottom: .5rem;
+        }
+
+        #related_pages .headline {
+          padding: 0;
+          margin-bottom: 0;
+        }
+
+        #related_podcasts .excerpt,
+        #related_posts .excerpt {
+          font-size: 1.6rem;
+        }
+
+          .page-template-product-page #related_podcasts .excerpt,
+          .page-template-full-width #related_podcasts .excerpt,
+          .page-template-product-page #related_posts .excerpt,
+          .page-template-full-width #related_posts .excerpt {
             display: none;
           }
 
-        }
+          @media only screen and ( max-width: 574px ) {
+
+            #related_podcasts .excerpt,
+            #related_posts .excerpt {
+              display: none;
+            }
+
+          }
 
   #current_posts {
     background-color: #fbfbfb;
