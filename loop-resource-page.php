@@ -4,8 +4,8 @@
 if ( have_posts() ) : while ( have_posts() ) : the_post();
 
   // Assign post variables.
-  $post_title   = the_title( '', '', FALSE );
-  $post_ID      = $post->ID;
+  $page_title   = the_title( '', '', FALSE );
+  $page_ID      = $post->ID;
 
   // This is the post container.
   echo '<div ';
@@ -17,59 +17,37 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
       yoast_breadcrumb( '<div class="breadcrumbs">', '</div>' );
     }
 
-    // Show a small image and ratings for child posts.
-    if ( $post->post_parent > 0 ) {
+    // Headline Container
+    echo '<div class="headline_container">';
 
-      echo '<div class="headline_container">';
+      // Show featured image if there is one.
+      if ( has_post_thumbnail() ) {
+        echo '<div itemprop="image">';
+        the_post_thumbnail( 'thumbnail' );
+        echo '</div>';
+      }
 
-        // Show featured image if there is one.
-        if ( has_post_thumbnail() ) {
-          echo '<div itemprop="image">';
-          the_post_thumbnail( 'thumbnail' );
-          echo '</div>';
-        }
+      // Headline
+      echo '<h1 class="headline entry-title">' . $page_title . '</h1>';
 
-        // Headline
-        echo '<h1 class="headline entry-title">' . $post_title . '</h1>';
+      // Output the excerpt.
+      $seo_descr = get_post_meta( $page_ID, '_yoast_wpseo_metadesc', true );
 
-        // Rating
-        if ( comments_open() && function_exists( 'wp_review_show_total' ) ) {
+      if ( !empty( $seo_descr ) ) {
 
-          $rating       = get_post_meta( $post_ID, 'wp_review_comments_rating_value', true );
-          $review_count = lawyerist_get_review_count();
+        $page_excerpt = $seo_descr;
 
-          echo '<div class="user-rating">';
+      } else {
 
-            if ( !empty( $rating ) ) {
-              echo '<a href="#comments">';
-                wp_review_show_total();
-              echo ' (' . $review_count . ')</a>';
-            } else {
-              echo '<a href="#respond">Leave a review below.</a>';
-            }
+        $page_excerpt = get_the_excerpt();
 
-           echo '</div>';
+      }
 
-        }
+      echo '<p class="excerpt">' . $page_excerpt . '</p>';
 
-        echo '<div class="clear"></div>';
+      echo '<div class="clear"></div>';
 
-      echo '</div>'; // Close .headline_container.
-
-    // Show a big image for parent posts.
-    } else {
-
-      echo '<div class="headline_postmeta">';
-
-        // Headline
-        echo '<h1 class="headline entry-title">' . $post_title . '</h1>';
-
-        // Featured image
-        if ( has_post_thumbnail() ) { the_post_thumbnail( 'standard_thumbnail' ); }
-
-      echo '</div>'; // Close .headline_postmeta.
-
-    }
+    echo '</div>'; // Close .headline_container.
 
 
     // Output the post.

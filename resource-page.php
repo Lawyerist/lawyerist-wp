@@ -5,7 +5,7 @@
 
 <?php get_template_part( 'head' ); ?>
 
-<body <?php body_class( $class ); ?>>
+<body <?php body_class( 'resource-page' ); ?>>
 
 <?php get_header(); ?>
 

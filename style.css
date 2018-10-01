@@ -352,6 +352,7 @@ label,
 .postmeta,
 .price_tag,
 .product_meta,
+.resource-page .headline_container .excerpt,
 #sponsored_product_updates,
 .sponsored_testimonial_label,
 p.pullout,
@@ -648,6 +649,7 @@ p.pullout {
 .product_meta,
 .user-rating,
 .product-page .headline_container .excerpt,
+.resource-page .headline_container .excerpt,
 .profile-page .headline_container .excerpt {
 	color: #777;
   display: block;
@@ -2574,40 +2576,32 @@ Content
   Resource Pages
   ------------------------------*/
 
-  .page-template-resource-page .headline_container {
+  .resource-page .headline_container {
     margin-bottom: 3rem;
-    position: relative;
   }
 
-    .page-template-resource-page .has-post-thumbnail .headline_container {
-      min-height: 11.45rem;
-    }
-
-    .page-template-resource-page .has-post-thumbnail .headline_container .headline,
-    .page-template-resource-page .has-post-thumbnail .headline_container .user-rating {
-      padding-left: 12.95rem;
-    }
-
-  .page-template-resource-page div[itemprop="image"] {
+  .resource-page div[itemprop="image"] {
     background-color: #ddd;
     border-radius: .2rem;
-    height: 10.45rem;
+    box-sizing: border-box;
+    float: left;
+    height: 10rem;
+    margin: 0 1.5rem 0 0;
     padding: .5rem;
-    position: absolute;
-      top: 0;
-      bottom: 0;
-    width: 10.45rem;
+    width: 10rem;
   }
 
-    .page-template-resource-page .headline_container img.wp-post-image.size-thumbnail {
-      height: auto;
+    .resource-page .headline_container img.wp-post-image.size-thumbnail {
+      height: 100%;
       margin: auto 0;
       max-width: none;
-      position: absolute;
-        top: 0;
-        bottom: 0;
-      width: 10.45rem;
+      width: auto;
     }
+
+  .resource-page .has-post-thumbnail .headline_container .headline,
+  .resource-page .has-post-thumbnail .headline_container .excerpt {
+    padding-left: 11.5rem;
+  }
 
 
   /*------------------------------
@@ -2622,38 +2616,30 @@ Content
 
   .product-page .headline_container {
     margin-bottom: 3rem;
-    position: relative;
   }
-
-    .product-page .has-post-thumbnail .headline_container {
-      min-height: 11.45rem;
-    }
-
-    .product-page .has-post-thumbnail .headline_container .headline,
-    .product-page .has-post-thumbnail .headline_container .user-rating,
-    .product-page .has-post-thumbnail .headline_container .excerpt {
-      padding-left: 12.95rem;
-    }
 
     .product-page .headline_container div[itemprop="image"] {
       background-color: #ddd;
       border-radius: .2rem;
-      height: 10.45rem;
+      box-sizing: border-box;
+      float: left;
+      height: 10rem;
+      margin: 0 1.5rem 0 0;
       padding: .5rem;
-      position: absolute;
-        top: 0;
-        bottom: 0;
-      width: 10.45rem;
+      width: 10rem;
     }
 
-    .product-page .headline_container img.wp-post-image.size-thumbnail {
-      height: auto;
-      margin: auto 0;
-      max-width: none;
-      position: absolute;
-        top: 0;
-        bottom: 0;
-      width: 10.45rem;
+      .product-page .headline_container img.wp-post-image.size-thumbnail {
+        height: 100%;
+        margin: auto 0;
+        max-width: none;
+        width: auto;
+      }
+
+    .product-page .has-post-thumbnail .headline_container .headline,
+    .product-page .has-post-thumbnail .headline_container .user-rating,
+    .product-page .has-post-thumbnail .headline_container .excerpt {
+      padding-left: 11.5rem;
     }
 
   a.button.trial-button {

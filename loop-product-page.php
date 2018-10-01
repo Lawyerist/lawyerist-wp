@@ -74,19 +74,19 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
       } else {
 
         // Output the excerpt.
-        $seo_descr      = get_post_meta( $post->ID, '_yoast_wpseo_metadesc', true );
+        $seo_descr = get_post_meta( $page_ID, '_yoast_wpseo_metadesc', true );
 
         if ( !empty( $seo_descr ) ) {
 
-          $post_excerpt = $seo_descr;
+          $page_excerpt = $seo_descr;
 
         } else {
 
-          $post_excerpt = get_the_excerpt();
+          $page_excerpt = get_the_excerpt();
 
         }
 
-        echo '<p class="excerpt">' . $post_excerpt . '</p>';
+        echo '<p class="excerpt">' . $page_excerpt . '</p>';
 
       }
 
