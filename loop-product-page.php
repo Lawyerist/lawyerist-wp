@@ -140,6 +140,10 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
     }
 
+    /* if ( is_page( '226480' ) ) {
+      lawyerist_affinity_partner_button();
+    } */
+
     lawyerist_get_related_podcasts();
     lawyerist_get_related_posts();
 

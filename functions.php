@@ -30,6 +30,7 @@ CONTENT
 - Get Related Pages
 - Current Posts Widget
 - Ads
+- Affinity Partner Buttons
 - Trial Buttons
 - Mobile Ads
 - Add Image Sizes
@@ -949,6 +950,56 @@ function lawyerist_get_display_ad() { ?>
 	</div>
 
 <?php }
+
+
+/*------------------------------
+Affinity Partner Buttons
+------------------------------*/
+/*
+function lawyerist_affinity_partner_button() {
+
+	// Use global post if it wasn't provided.
+	if ( !is_a( $post, 'WP_Post' ) ) {
+		global $post;
+	}
+
+	if ( is_user_logged_in() ) {
+
+    $user_id = get_current_user_id();
+
+    if ( wc_memberships_is_user_active_member( $user_id, 'insider-plus' ) || wc_memberships_is_user_active_member( $user_id, 'lab' ) || wc_memberships_is_user_active_member( $user_id, 'lab-pro' ) ) {
+
+			$current_id[]		= $post->ID;
+			$current_slug[] = $post->post_name;
+
+			$lawyerist_affinity_partner_button_query_args = array(
+				'post__not_in'		=> $current_id,
+				'posts_per_page'	=> 1,
+				'post_type'				=> 'page',
+				'post_name__in' 	=> $current_slug,
+			);
+
+			$lawyerist_affinity_partner_button_query = new WP_Query( $lawyerist_affinity_partner_button_query_args );
+
+			if ( $lawyerist_affinity_partner_button_query->have_posts() ) : while ( $lawyerist_affinity_partner_button_query->have_posts() ) : $lawyerist_affinity_partner_button_query->the_post();
+
+				$partner_page_url	= get_permalink();
+
+				echo '<div class="affinity-partner-button">';
+
+					echo '<a href="' . $partner_page_url . '" target="_blank" class="button affinity-partner-button" rel="nofollow">Claim Your Discount</a>';
+
+				echo '</div>';
+
+			endwhile; endif:
+
+			wp_reset_postdata();
+
+    }
+
+  }
+
+} */
 
 
 /*------------------------------
