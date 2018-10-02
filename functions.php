@@ -987,7 +987,7 @@ function lawyerist_affinity_partner_button() {
 
 				echo '<div class="affinity-partner-button">';
 
-					echo '<a href="' . $partner_page_url . '" target="_blank" class="button affinity-partner-button" rel="nofollow">Claim Your Discount</a>';
+					echo '<a href="' . $partner_page_url . '" class="button affinity-partner-button" rel="nofollow">Claim Your Discount</a>';
 
 				echo '</div>';
 

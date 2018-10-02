@@ -15,7 +15,7 @@ Index
 
 Load Genericons
 Layout
-Useful Stuff
+Layout & Design Elements
 Typography
 Images
 Header
@@ -250,7 +250,7 @@ body {
 
 
 /*------------------------------
-Useful Stuff
+Layout & Design Elements
 ------------------------------*/
 
 .aligncenter {
@@ -289,8 +289,7 @@ Useful Stuff
   border: .1rem solid #ddd;
   border-radius: .2rem;
   box-shadow: .1rem .1rem .3rem rgba(0, 0, 0, 0.2);
-  margin-left: .1rem;
-  margin-right: .3rem;
+  margin: 0 .1rem 1rem .3rem;
 }
 
 .text_right {
@@ -3226,6 +3225,10 @@ Sidebar
 #custom_html-2 p {
   display: block;
   margin: 0;
+}
+
+#custom_html-2 a {
+  margin-bottom: .1rem;
 }
 
 ul.blogroll {
