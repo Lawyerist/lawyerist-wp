@@ -3651,7 +3651,8 @@ a.greybutton:active,
       margin-bottom: 1em;
     }
 
-    .hbspt-form .form-columns-2 .hs-form-field input {
+    .hbspt-form .form-columns-2 .hs-form-field input,
+    .hbspt-form .form-columns-2 .hs-form-field select {
       width: 90%;
     }
 
