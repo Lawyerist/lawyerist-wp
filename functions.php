@@ -1408,7 +1408,7 @@ function insider_plus_shopping_cart_upsell() {
 		}
 
 		if ( !wc_memberships_is_user_active_member( $user_id, 'insider-plus' ) && !woo_in_cart( 208247 ) ) {
-			echo '<div id="insider_plus_upsell" class="woocommerce-info">Want to be able to get everything in our library? Upgrade to Insider Plus for just $29.99/year! <a class="button" href="https://lawyerist.com/cart/?add-to-cart=208247">Upgrade Now!</a></div>';
+			echo '<div id="insider_plus_upsell" class="woocommerce-info">Want to be able to get everything in our library? Upgrade to Insider Plus for just $29.99/year! <a class="button" href="https://lawyerist.com/cart/?add-to-cart=242723">Upgrade Now!</a></div>';
 		}
 
 	}
