@@ -327,6 +327,7 @@ th,
   font-family: concourse-headings, sans-serif;
 }
 
+.affinity-partner-link,
 aside blockquote,
 .breadcrumbs,
 button,
@@ -658,18 +659,6 @@ p.pullout {
   margin-bottom: 1em;
 }
 
-  .user-rating a:hover {
-    text-decoration: none;
-  }
-
-  .user-rating .review-star {
-    color: #bbb;
-  }
-
-  .user-rating .review-total-only {
-    background: transparent;
-  }
-
   .postmeta cite {
     font-style: normal;
   }
@@ -688,6 +677,22 @@ p.pullout {
   	transform: scale(-1, 1);
     vertical-align: top;
   }
+
+  .user-rating {
+    margin-bottom: .5em;
+  }
+
+    .user-rating a:hover {
+      text-decoration: none;
+    }
+
+    .user-rating .review-star {
+      color: #bbb;
+    }
+
+    .user-rating .review-total-only {
+      background: transparent;
+    }
 
 pre {
 	color: #555;
@@ -2054,6 +2059,10 @@ Content
       float: left;
     }
 
+      .single .category-community-posts .author_avatar img {
+        margin: 0;
+      }
+
     .single .category-community-posts .headline,
     .single .category-community-posts .headline_postmeta .postmeta {
       padding-left: 11.5rem;
@@ -2638,7 +2647,8 @@ Content
 
     .product-page .has-post-thumbnail .headline_container .headline,
     .product-page .has-post-thumbnail .headline_container .user-rating,
-    .product-page .has-post-thumbnail .headline_container .excerpt {
+    .product-page .has-post-thumbnail .headline_container .excerpt,
+    .product-page .has-post-thumbnail .headline_container .affinity-partner-link {
       padding-left: 11.5rem;
     }
 
@@ -2666,6 +2676,16 @@ Content
         margin-left: .1em;
         speak: none;
         vertical-align: text-top;
+      }
+
+    .affinity-partner-link {
+      display: block;
+      font-size: 1.6rem;
+      text-align: center;
+    }
+
+      .product-page .has-post-thumbnail .headline_container .affinity-partner-link {
+        text-align: unset;
       }
 
   .product-pages-list {

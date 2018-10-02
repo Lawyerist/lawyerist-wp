@@ -60,6 +60,8 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
       // and comment count.
       get_template_part( 'postmeta', 'single_top' );
 
+      echo '<div class="clear"></div>';
+
     echo '</div>'; // Close .headline_postmeta.
 
     // Shows featured image if (1) this isn't a community post AND (2) this post

@@ -90,6 +90,10 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
       }
 
+      if ( function_exists( 'lawyerist_affinity_partner_button' ) ) {
+          lawyerist_affinity_partner_button();
+      }
+
       echo '<div class="clear"></div>';
 
     echo '</div>'; // Close .headline_container.
