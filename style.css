@@ -29,6 +29,7 @@ Content
   Tables
   Resource Pages
   Product Pages
+  Affinity Pages
   Team Profiles
   Full Width Template
   No Sidebar Template
@@ -2642,24 +2643,31 @@ Content
       padding-left: 11.5rem;
     }
 
-  a.button.trial-button {
-    border-radius: .3rem;
-    font-size: 1.8rem !important;
-    height: 4.2rem;
-    line-height: 4.2rem;
-    margin: 0 auto;
-    padding: 0 1.8rem;
+
+  .list-products-trial-button {
+    position: absolute;
+      right: 2rem;
+      top: 2rem;
   }
 
-    a.button.trial-button:after {
-      content: "\f442";
-      -moz-osx-font-smoothing: grayscale;
-      -webkit-font-smoothing: antialiased;
-      font: normal 1.8rem/1 Genericons;
-      margin-left: .1em;
-      speak: none;
-      vertical-align: text-top;
+    a.button.trial-button {
+      border-radius: .3rem;
+      font-size: 1.8rem !important;
+      height: 4.2rem;
+      line-height: 4.2rem;
+      margin: 0 auto;
+      padding: 0 1.8rem;
     }
+
+      a.button.trial-button:after {
+        content: "\f442";
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        font: normal 1.8rem/1 Genericons;
+        margin-left: .1em;
+        speak: none;
+        vertical-align: text-top;
+      }
 
   .product-pages-list {
     list-style: none;
@@ -2713,12 +2721,6 @@ Content
           line-height: 1.2;
           margin-bottom: .33em;
           padding: 0 2rem 0 0;
-        }
-
-        .list-products-trial-button {
-          position: absolute;
-            right: 2rem;
-            top: 2rem;
         }
 
     .product-pages-list .excerpt {
@@ -2835,6 +2837,42 @@ Content
   blockquote.testimonial .sponsored_testimonial_quotation {
     display: block;
     margin-bottom: 1rem;
+  }
+
+
+  /*------------------------------
+  Affinity Pages
+  ------------------------------*/
+
+  .list-affinity-partners-claim-button {
+    position: absolute;
+      right: 2rem;
+      top: 2rem;
+  }
+
+    a.button.claim-button {
+      margin: 0 auto;
+    }
+
+  /* When the width reaches 700px. */
+  @media only screen and (max-width:699px) {
+
+    .affinity-partners-list .title_container {
+      margin-bottom: 1.5rem;
+    }
+
+    .list-affinity-partners-claim-button {
+      margin: 0 auto 2rem auto;
+      position: relative;
+        right: auto;
+        top: auto;
+      text-align: center;
+    }
+
+      .list-affinity-partners-claim-button .claim-button {
+        display: block;
+      }
+
   }
 
 
