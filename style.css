@@ -285,7 +285,7 @@ Layout & Design Elements
   width: 100%;
 }
 
-.shadow {
+.card {
   border: .1rem solid #ddd;
   border-radius: .2rem;
   box-shadow: .1rem .1rem .3rem rgba(0, 0, 0, 0.2);
@@ -449,6 +449,11 @@ blockquote {
     font-style: italic;
     margin: 0 3rem 3rem 3rem;
     padding: 0;
+  }
+
+  aside blockquote em,
+  p.pullquote em {
+    font-style: normal;
   }
 
 code {
@@ -717,6 +722,7 @@ bold {
 sup {
 	font-size: 75%;
   font-style: normal;
+  top: 0;
   vertical-align: super;
 }
 
@@ -2578,6 +2584,113 @@ Content
 
     .lpms-features-table tr th {
       min-width: 16rem;
+    }
+
+    /* Memberships Pricing Chart */
+
+    .memberships-pricing-chart {
+      margin-bottom: 4rem;
+    }
+
+    .memberships-pricing-chart td {
+      line-height: 1.2;
+    }
+
+    /* Borders & Background Colors */
+
+    .memberships-pricing-chart tbody tr td,
+    .tablepress.memberships-pricing-chart tbody tr:first-child td {
+      border-left: .1rem solid #ddd;
+      border-top: .1rem solid #ddd;
+    }
+
+    .memberships-pricing-chart tbody tr td:last-child {
+      border-right: .1rem solid #ddd;
+    }
+
+    .memberships-pricing-chart tbody tr:last-child td {
+      border-left: 0;
+      border-right: 0;
+    }
+
+    .memberships-pricing-chart .column-1 {
+      background-color: #efefef;
+    }
+
+    .memberships-pricing-chart .row-1 .column-1,
+    .tablepress.memberships-pricing-chart tbody tr:first-child .column-1,
+    .memberships-pricing-chart .row-2 .column-1 {
+      background-color: unset;
+      border-top: 0;
+      border-left: 0;
+    }
+
+    .memberships-pricing-chart .row-14 .column-1 {
+      background-color: unset;
+    }
+
+    .memberships-pricing-chart .row-1 .column-2,
+    .memberships-pricing-chart .row-1 .column-3,
+    .memberships-pricing-chart .row-1 .column-4,
+    .memberships-pricing-chart .row-1 .column-5 {
+      background-color: #efefef;
+    }
+
+    .memberships-pricing-chart .row-2 .column-2,
+    .memberships-pricing-chart .row-2 .column-3,
+    .memberships-pricing-chart .row-2 .column-4,
+    .memberships-pricing-chart .row-2 .column-5 {
+      background-color: #efefef;
+      border-top: 0;
+    }
+
+    .memberships-pricing-chart .row-14 .column-1 {
+      border-left: 0;
+      border-bottom: 0;
+    }
+
+
+    /* Rows */
+
+    .memberships-pricing-chart .row-1 {
+      color: #333;
+      font-family: concourse-headings, sans-serif;
+      font-size: 2.8rem;
+      font-weight: bold;
+      line-height: 1.2;
+    	margin-bottom: .5em;
+      text-transform: uppercase;
+    }
+
+    .memberships-pricing-chart .row-13 {
+      font-family: concourse, sans-serif;
+    }
+
+    /* Columns */
+
+    .memberships-pricing-chart .column-1 {
+      font-family: concourse, sans-serif;
+      width: 15%;
+    }
+
+    .memberships-pricing-chart .column-2,
+    .memberships-pricing-chart .column-3,
+    .memberships-pricing-chart .column-4,
+    .memberships-pricing-chart .column-5 {
+      text-align: center;
+      width: 21.25%;
+    }
+
+    /* Cells */
+
+    .memberships-pricing-chart .row-1 td,
+    .memberships-pricing-chart .row-2 td {
+      text-align: left;
+    }
+
+    .memberships-pricing-chart .row-14 td .button {
+      margin-bottom: 0;
+      width: 100%;
     }
 
 

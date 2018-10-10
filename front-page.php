@@ -45,7 +45,7 @@
 
 						// Starts the post container.
 						echo '<div ' ;
-						post_class( 'front_page_sticky_post shadow' );
+						post_class( 'front_page_sticky_post card' );
 						echo '>';
 
 							// Starts the link container. Makes for big click targets!
