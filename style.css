@@ -318,12 +318,13 @@ h4,
 h5,
 h6,
 .headline,
-#menu-main-menu .sub-menu .menu-item-has-children > a,
 th,
+.affinity-partners-heading,
 .current_posts_heading,
 .featured_products_heading,
-.toc_title,
-.product-pages-list .title {
+#menu-main-menu .sub-menu .menu-item-has-children > a,
+.product-pages-list .title,
+.toc_title {
   font-family: concourse-headings, sans-serif;
 }
 
@@ -2975,6 +2976,16 @@ Content
   /*------------------------------
   Affinity Pages
   ------------------------------*/
+
+  .affinity-partners-heading {
+    color: #666;
+    display: block;
+    font-size: 1.4rem;
+    font-weight: bold;
+    line-height: 1.5;
+    margin-bottom: .75em;
+    text-transform: uppercase;
+  }
 
   .list-affinity-partners-claim-button {
     position: absolute;
