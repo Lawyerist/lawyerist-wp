@@ -1,9 +1,14 @@
 // Responsive Menu
 jQuery(
   function( $ ){
-    $( ".menu-item-has-children > a" ).click( function() {
+    $( "#menu-main-menu .sub-menu" ).hide();
+    $( "#menu-main-menu > .menu-item-has-children > a" ).click( function() {
         $( this ).toggleClass( "open" ).next( ".sub-menu" ).slideToggle( 145 );
         $( ".open" ).not( this ).toggleClass( "open" ).next( ".sub-menu" ).slideToggle( 95 );
+      }
+    );
+    $( "#menu-main-menu > .menu-item-has-children .menu-item-has-children > a" ).click( function() {
+        $( this ).toggleClass( "open" ).next( ".sub-menu" ).slideToggle( 145 );
       }
     );
   }
