@@ -2822,6 +2822,10 @@ Content
       position: relative;
     }
 
+      .product-pages-list li.page_type-silver-product {
+        background-color: #ffffa0;
+      }
+
       .product-pages-list .image {
         height: 11rem;
         position: absolute;

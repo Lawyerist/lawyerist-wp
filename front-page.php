@@ -44,7 +44,7 @@
 						$sticky_post_url		= get_permalink();
 
 						// Starts the post container.
-						echo '<div ' ;
+						echo '<div ';
 						post_class( 'front_page_sticky_post card' );
 						echo '>';
 
