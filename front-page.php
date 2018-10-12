@@ -70,23 +70,19 @@
 
 			?>
 
-				<div id="big_hero_cta">
-					<div class="post_container">
-						<div id="big_hero_left">
-							<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/02/L-dot-150x150.png" />
-							<span class="big_hero_label">Insider</span>
+				<div id="big_hero_cta" class="card">
+					<div id="big_hero_left">
+						<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/02/L-dot-150x150.png" />
+						<span class="big_hero_label">Insider</span>
+					</div>
+					<div id="big_hero_right">
+						<div id="big_hero_top">
+							<p class="headline">Join Your Tribe.</p>
+							<p>Lawyerist Insider is the community of solo and small firm lawyers building modern, future-oriented law practices.</p>
+							<p class="headline">Grow Your Firm.</p>
+							<p>Our Insider Library is full of checklists, templates, and other resources to help you grow.</p>
 						</div>
-						<div id="big_hero_right">
-							<a href="https://lawyerist.com/insider/">
-								<div id="big_hero_top">
-									<p class="headline">Join Your Tribe.</p>
-									<p>Lawyerist Insider is the community of solo and small firm lawyers building modern, future-oriented law practices.</p>
-									<p class="headline">Grow Your Firm.</p>
-									<p>Our Insider Library is full of checklists, templates, and other resources to help you grow.</p>
-								</div>
-							</a>
-							<a class="button" href="https://lawyerist.com/insider/">Join Now</a>
-						</div>
+						<a class="button" href="https://lawyerist.com/insider/">Join Now</a>
 					</div>
 				</div>
 
