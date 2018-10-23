@@ -1,16 +1,24 @@
 <?php if ( have_comments() ) : ?>
-	<h3 id="comments">
+	<h2 id="comments">
 		<?php
+
+			$community_rating = lawyerist_get_community_rating();
+
 			if ( 1 == get_comments_number() ) {
 				/* translators: %s: post title */
-				printf( __( 'One Review of %s' ),  get_the_title() );
+				printf( __( 'Community Rating: %s/5 (based on 1 review)' ),
+					$community_rating
+				);
 			} else {
 				/* translators: 1: number of comments, 2: post title */
-				printf( _n( '%1$s Review of %2$s', '%1$s Reviews of %2$s', get_comments_number() ),
-				number_format_i18n( get_comments_number() ),  get_the_title() );
+				printf( _n( 'Community Rating: %1$s/5 (based on %2$s review)', 'Community Rating: %1$s/5 (based on %2$s reviews)', get_comments_number() ),
+					$community_rating,
+					number_format_i18n( get_comments_number() )
+				);
 			}
+
 		?>
-	</h3>
+	</h2>
 
 	<div class="navigation">
 		<div class="alignleft"><?php previous_comments_link() ?></div>

@@ -41,7 +41,7 @@ CONTENT
 
 COMMENTS & REVIEWS
 - Show Commenter's First Name & Initial
-- Get Number of Reviews
+- Reviews
 
 WOOCOMMERCE
 - WooCommerce Setup
@@ -992,7 +992,7 @@ Trial Buttons
 Adds trial buttons to product pages.
 ------------------------------*/
 
-function lawyerist_sponsored_trial_button( $content ) {
+function lawyerist_sponsored_trial_button_top( $content ) {
 
 	// Use global post if it wasn't provided.
 	if ( !is_a( $post, 'WP_Post' ) ) {
@@ -1024,7 +1024,7 @@ function lawyerist_sponsored_trial_button( $content ) {
 		}
 
 		$content = implode( '', $paragraphs );
-		$content .= '<p align="center">' . $trial_button . '</p>';
+		// $content .= '<p align="center">' . $trial_button . '</p>';
 
 	}
 
@@ -1032,7 +1032,7 @@ function lawyerist_sponsored_trial_button( $content ) {
 
 }
 
-add_filter( 'the_content', 'lawyerist_sponsored_trial_button' );
+add_filter( 'the_content', 'lawyerist_sponsored_trial_button_top' );
 
 
 /*------------------------------
@@ -1196,24 +1196,67 @@ add_filter( 'get_comment_author', 'lawyerist_comment_author_name', 10, 1 );
 
 
 /*------------------------------
-Get Number of Reviews
+Reviews
 ------------------------------*/
 
-function lawyerist_get_review_count() {
+function lawyerist_get_our_rating() {
 
 	global $post;
 
-	$page_title		= the_title( '', '', FALSE );
-	$rating				= get_post_meta( $post->ID, 'wp_review_comments_rating_value', true );
-	$review_count	= get_post_meta( $post->ID, 'wp_review_comments_rating_count', true );
+	$our_rating_raw	= get_post_meta( $post->ID, 'wp_review_total', true );
+	$our_rating			= round ( $our_rating_raw / 2, 1 );
 
-	if ( empty( $review_count ) || $review_count == 0 ) {
-		return;
-	} elseif ( $review_count == 1 ) {
-		return '<span itemprop="ratingValue">' . $rating . '</span>/5 based on <span itemprop="reviewCount">' . $review_count . '</span> review';
-	} else {
-		return '<span itemprop="ratingValue">' . $rating . '</span>/5 based on <span itemprop="reviewCount">' . $review_count . '</span> reviews';
-	}
+	// The above divides the raw rating by two before rounding so that both our
+	// rating and the community rating are x/5 rather than showing our rating as
+	// x/10 but the community rating as x/5.
+
+	return $our_rating;
+
+}
+
+
+function lawyerist_get_community_rating() {
+
+	global $post;
+
+	$community_rating = round( get_post_meta( $post->ID, 'wp_review_comments_rating_value', true ), 1 );
+
+	return $community_rating;
+
+}
+
+
+function lawyerist_get_community_review_count() {
+
+	global $post;
+
+	$community_review_count	= get_post_meta( $post->ID, 'wp_review_comments_rating_count', true );
+
+	return $community_review_count;
+
+}
+
+
+function lawyerist_community_rating() {
+
+	global $post;
+
+	$our_rating							= lawyerist_get_our_rating();
+	$community_rating				= lawyerist_get_community_rating();
+	$community_review_count	= lawyerist_get_community_review_count();
+
+	$total_rating				= round( ( ( $community_rating * 2 ) + $our_rating ) / 3, 1 );
+	$total_rating_count	=	$community_review_count + 1;
+
+	ob_start();
+
+		wp_review_show_total( $total = $total_rating );
+
+		echo '<span class="review_count"><span itemprop="ratingValue">' . $total_rating . '</span>/5 (based on <span itemprop="reviewCount">' . $total_rating_count . '</span> ' . _n( 'ratings', 'ratings', $total_rating_count ) . ')</span>';
+
+	$community_rating_output = ob_get_clean();
+
+	return $community_rating_output;
 
 }
 

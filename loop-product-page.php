@@ -10,8 +10,9 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
   // Check for a rating.
   if ( comments_open() && function_exists( 'wp_review_show_total' ) ) {
 
-    $rating       = get_post_meta( $page_ID, 'wp_review_comments_rating_value', true );
-    $review_count = lawyerist_get_review_count();
+    $our_rating             = lawyerist_get_our_rating();
+    $community_rating       = lawyerist_get_community_rating();
+    $community_review_count = lawyerist_get_community_review_count();
 
   }
 
@@ -36,7 +37,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
       }
 
       // Headline
-      if ( !empty( $rating ) ) {
+      if ( !empty( $our_rating ) || !empty( $community_rating ) ) {
 
         echo '<div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">';
         echo '<h1 class="headline entry-title" itemprop="itemReviewed">' . $page_title . '</h1>';
@@ -47,17 +48,19 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
       }
 
-      // Show ratings for child posts.
-      if ( $post->post_parent > 0 ) {
+      // Shows ratings if comments are open.
+      if ( comments_open() ) {
 
         echo '<div class="user-rating">';
 
           // Rating
-          if ( !empty( $rating ) ) {
+          if ( !empty( $our_rating ) || !empty( $community_rating ) ) {
 
             echo '<a href="#comments">';
-              wp_review_show_total();
-            echo ' <span class="review_count">(' . $review_count . ')</span></a>';
+
+              echo lawyerist_community_rating();
+
+            echo '</a>';
 
           } else {
 
@@ -67,7 +70,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
         echo '</div>'; // End .user_rating.
 
-        if ( !empty( $rating ) ) {
+        if ( !empty( $our_rating ) || !empty( $community_rating ) ) {
           echo '</div>'; // End aggregateRating schema.
         }
 
@@ -103,6 +106,21 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
     echo '<div class="post_body" itemprop="articleBody">';
 
       the_content();
+
+      echo '<div class="clear"></div>';
+
+      echo '<div class="our_rating">';
+
+        if ( function_exists( 'wp_review_show_total' ) && !empty( $our_rating ) ) {
+          echo '<h2>Our Rating for ' . $page_title . ': ' . $our_rating . '/5</h2>';
+          echo '<p><small>This editorial rating is a product of our subjective judgment. However, we do not mean to suggest that there is one best product or service for every law firm. Use our resources—including our rating and community ratings and comments—to find the best fit for your firm.</small></p>';
+          echo wp_review_get_review_box();
+        }
+
+      echo '</div>';
+
+      $trial_button	= trial_button();
+      echo '<p align="center">' . $trial_button . '</p>';
 
       // Byline
       get_template_part( 'postmeta', 'page' );
