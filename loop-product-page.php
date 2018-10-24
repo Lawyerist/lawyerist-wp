@@ -13,6 +13,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
     $our_rating             = lawyerist_get_our_rating();
     $community_rating       = lawyerist_get_community_rating();
     $community_review_count = lawyerist_get_community_review_count();
+    $composite_rating       = lawyerist_get_composite_rating();
 
   }
 
@@ -58,7 +59,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
             echo '<a href="#comments">';
 
-              echo lawyerist_community_rating();
+              echo lawyerist_product_rating();
 
             echo '</a>';
 
@@ -112,9 +113,48 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
       echo '<div class="our_rating">';
 
         if ( function_exists( 'wp_review_show_total' ) && !empty( $our_rating ) ) {
-          echo '<h2>Our Rating for ' . $page_title . ': ' . $our_rating . '/5</h2>';
-          echo '<p><small>This editorial rating is a product of our subjective judgment. However, we do not mean to suggest that there is one best product or service for every law firm. Use our resources—including our rating and community ratings and comments—to find the best fit for your firm.</small></p>';
-          echo wp_review_get_review_box();
+
+          echo '<h2>' . $page_title . ' Rating: ' . $composite_rating . '/5</h2>';
+
+          echo '<div class="card rating-box">';
+
+            echo '<h3>Features</h3>';
+
+            echo wp_review_get_review_box();
+
+              echo '<div class="rating-breakdown">';
+
+              if ( !empty( $our_rating ) && !empty( $community_rating ) ) {
+
+                echo '<h3>Rating Breakdown</h3>';
+
+              }
+
+              if ( !empty( $our_rating ) ) {
+
+                echo '<p class="rating">Our Rating: <strong>' . $our_rating . '</strong>/5</p>';
+                echo '<p><small>Our rating is based on our subjective judgment. However, we do not mean to suggest that there is one best product or service for every law firm. Use our resources—including our rating and community ratings and reviews—to find the best fit for your firm.</small></p>';
+
+              }
+
+              if ( !empty( $our_rating ) && !empty( $community_rating ) ) {
+
+                echo '<p class="rating">Community Rating: <strong>' . $community_rating . '</strong>/5 (based on ' . $community_review_count . _n( ' ratings', ' ratings', $community_review_count ) . ')</p>';
+                echo '<p><small>The community rating is based on the average of the community reviews below.</small></p>';
+
+              }
+
+              if ( !empty( $our_rating ) && !empty( $community_rating ) ) {
+
+                echo '<p class="rating composite-rating">Composite Rating: <strong>' . $composite_rating . '</strong></p>';
+                echo '<p><small>The composite rating is a weighted average of our rating and the community ratings below.</small></p>';
+
+              }
+
+            echo '</div>';
+
+          echo '</div>';
+
         }
 
       echo '</div>';

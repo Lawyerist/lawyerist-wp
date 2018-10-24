@@ -1237,7 +1237,7 @@ function lawyerist_get_community_review_count() {
 }
 
 
-function lawyerist_community_rating() {
+function lawyerist_get_composite_rating() {
 
 	global $post;
 
@@ -1245,18 +1245,57 @@ function lawyerist_community_rating() {
 	$community_rating				= lawyerist_get_community_rating();
 	$community_review_count	= lawyerist_get_community_review_count();
 
-	$total_rating				= round( ( ( $community_rating * 2 ) + $our_rating ) / 3, 1 );
+	if ( !empty( $our_rating ) && !empty( $community_rating ) ) {
+
+		if ( $community_review_count == 1 ) {
+
+			$composite_rating	= round( ( $community_rating + $our_rating ) / 2, 1 );
+
+		} else {
+
+			$composite_rating	= round( ( ( $community_rating * 2 ) + $our_rating ) / 3, 1 );
+
+		}
+
+	} elseif ( !empty( $our_rating ) && empty( $community_rating ) ) {
+
+		$composite_rating	= round( $our_rating, 1 );
+
+	} elseif ( empty( $our_rating ) && !empty( $community_rating ) ) {
+
+		$composite_rating	= round( $community_rating, 1 );
+
+	} else {
+
+		return;
+
+	}
+
+	return $composite_rating;
+
+}
+
+
+function lawyerist_product_rating() {
+
+	global $post;
+
+	$our_rating							= lawyerist_get_our_rating();
+	$community_rating				= lawyerist_get_community_rating();
+	$community_review_count	= lawyerist_get_community_review_count();
+	$composite_rating				= lawyerist_get_composite_rating();
+
 	$total_rating_count	=	$community_review_count + 1;
 
 	ob_start();
 
-		wp_review_show_total( $total = $total_rating );
+		wp_review_show_total( $total = $composite_rating );
 
-		echo '<span class="review_count"><span itemprop="ratingValue">' . $total_rating . '</span>/5 (based on <span itemprop="reviewCount">' . $total_rating_count . '</span> ' . _n( 'ratings', 'ratings', $total_rating_count ) . ')</span>';
+		echo '<span class="review_count"><span itemprop="ratingValue">' . $composite_rating . '</span>/5 (based on <span itemprop="reviewCount">' . $total_rating_count . '</span> ' . _n( 'rating', 'ratings', $total_rating_count ) . ')</span>';
 
-	$community_rating_output = ob_get_clean();
+	$lawyerist_product_rating = ob_get_clean();
 
-	return $community_rating_output;
+	return $lawyerist_product_rating;
 
 }
 

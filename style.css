@@ -285,8 +285,7 @@ Layout & Design Elements
   width: 100%;
 }
 
-.card,
-.review-wrapper {
+.card {
   border: .1rem solid #ddd;
   border-radius: .2rem;
   box-shadow: .1rem .1rem .3rem rgba(0, 0, 0, 0.2);
@@ -356,7 +355,8 @@ label,
 .price_tag,
 .product_meta,
 .resource-page .headline_container .excerpt,
-.review-wrapper,
+#review,
+  .rating-breakdown,
 #sponsored_product_updates,
 .sponsored_testimonial_label,
 p.pullout,
@@ -1850,9 +1850,15 @@ Content
 
     /* WP Review Pro styles */
 
-    #review {
+    .rating-box {
+      margin-bottom: 4rem;
       padding: 2rem;
     }
+
+      #review {
+        border: 0;
+        padding: 0;
+      }
 
       #review .review-list li {
         border-bottom: 0;
@@ -1864,10 +1870,6 @@ Content
         background: unset;
       }
 
-      #review .review-list li:last-child {
-        margin-bottom: 0;
-      }
-
         #review .review-list li span {
           font-size: 1.6rem;
         }
@@ -1875,6 +1877,24 @@ Content
       #review .comments-review-area {
         display: none;
       }
+
+      .rating-breakdown {
+        margin-bottom: 1em;
+      }
+
+        .rating {
+          margin-bottom: 0;
+        }
+
+        .composite-rating {
+          border-top: .1rem dotted #bbb;
+          padding-top: 1rem;
+        }
+
+        .rating-breakdown small {
+          color: #777;
+          font-family: equity, serif;
+        }
 
     .review-total-only,
     .review-star {
