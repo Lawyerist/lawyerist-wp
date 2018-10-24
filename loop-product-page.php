@@ -146,7 +146,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
               if ( !empty( $our_rating ) && !empty( $community_rating ) ) {
 
-                echo '<p class="rating composite-rating">Composite Rating: <strong>' . $composite_rating . '</strong></p>';
+                echo '<p class="rating composite-rating">Composite Rating: <strong>' . $composite_rating . '</strong>/5</p>';
                 echo '<p><small>The composite rating is a weighted average of our rating and the community ratings below.</small></p>';
 
               }
