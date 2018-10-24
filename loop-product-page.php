@@ -133,7 +133,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
               if ( !empty( $our_rating ) ) {
 
                 echo '<p class="rating">Our Rating: <strong>' . $our_rating . '</strong>/5</p>';
-                echo '<p><small>Our rating is based on our subjective judgment. However, we do not mean to suggest that there is one best product or service for every law firm. Use our resources—including our rating and community ratings and reviews—to find the best fit for your firm.</small></p>';
+                echo '<p><small>Our rating is based on our subjective judgment.</small></p>';
 
               }
 
