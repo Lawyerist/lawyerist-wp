@@ -2,12 +2,10 @@
 	<h3 id="comments">
 		<?php
 			if ( 1 == get_comments_number() ) {
-				/* translators: %s: post title */
-				printf( __( 'One Comment' ),  get_the_title() );
+				printf( __( '1 Comment' ) );
 			} else {
-				/* translators: 1: number of comments, 2: post title */
-				printf( _n( '%1$s Comments', '%1$s Comments', get_comments_number() ),
-				number_format_i18n( get_comments_number() ),  get_the_title() );
+				/* Translator: %s: number of comments */
+				printf( _n( '%s Comment', '%s Comments', get_comments_number() ), number_format_i18n( get_comments_number() ) );
 			}
 		?>
 	</h3>
