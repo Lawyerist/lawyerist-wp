@@ -686,22 +686,6 @@ p.pullout {
     vertical-align: top;
   }
 
-  .user-rating {
-    margin-bottom: .5em;
-  }
-
-    .user-rating a:hover {
-      text-decoration: none;
-    }
-
-    .user-rating .review-star {
-      color: #bbb;
-    }
-
-    .user-rating .review-total-only {
-      background: transparent;
-    }
-
 pre {
 	color: #555;
 	margin-left: 3rem;
@@ -1850,6 +1834,69 @@ Content
 
     /* WP Review Pro styles */
 
+    /* The header user rating. */
+    .user-rating {
+      margin-bottom: .5em;
+    }
+
+      .user-rating a:hover {
+        text-decoration: none;
+      }
+
+      .user-rating .review-star {
+        color: #bbb;
+      }
+
+      .user-rating .review-total-only {
+        background: transparent;
+      }
+
+    /* Our star rating (as opposed to WP Review Pro's) */
+    .lawyerist-star-rating {
+      display: inline-block;
+      margin-right: .5rem;
+      position: relative;
+    }
+
+      .lawyerist-star-rating-wrapper {
+        display: inline-block;
+        white-space: nowrap;
+      }
+
+        .lawyerist-star-rating .rating-star {
+          display: inline-block;
+          padding-right: .4rem;
+        }
+
+          .lawyerist-star-rating .rating-star:last-child {
+            padding: 0;
+          }
+
+        .lawyerist-star-rating .rating-star:before {
+          color: #bbb;
+          content: '\f005';
+      		display: inline-block;
+      		-webkit-font-smoothing: antialiased;
+          font-family: FontAwesome;
+          font-size: inherit;
+          line-height: inherit;
+          speak: none;
+          vertical-align: top;
+        }
+
+        .lawyerist-star-rating-result {
+          overflow: hidden;
+          position: absolute;
+            left: 0;
+            top: 0;
+          white-space: nowrap;
+        }
+
+          .lawyerist-star-rating-result .rating-star:before {
+            color: #c00;
+          }
+
+    /* Displays the author review. */
     .rating-box {
       margin-bottom: 4rem;
       padding: 2rem;
@@ -1895,6 +1942,10 @@ Content
           color: #777;
           font-family: equity, serif;
         }
+
+      .review-total-wrapper {
+        display: none;
+      }
 
     .review-total-only,
     .review-star {

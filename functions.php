@@ -1199,6 +1199,8 @@ add_filter( 'get_comment_author', 'lawyerist_comment_author_name', 10, 1 );
 Reviews
 ------------------------------*/
 
+// Gets the author rating ("our" rating) from WP Review Pro, and converts it
+// from a 10-point scale to a 5-point scale. Rounds to one decimal point.
 function lawyerist_get_our_rating() {
 
 	global $post;
@@ -1206,15 +1208,12 @@ function lawyerist_get_our_rating() {
 	$our_rating_raw	= get_post_meta( $post->ID, 'wp_review_total', true );
 	$our_rating			= round ( $our_rating_raw / 2, 1 );
 
-	// The above divides the raw rating by two before rounding so that both our
-	// rating and the community rating are x/5 rather than showing our rating as
-	// x/10 but the community rating as x/5.
-
 	return $our_rating;
 
 }
 
-
+// Gets the comments rating ("community" rating) from WP Review Pro. Rounds to
+// one decimal point.
 function lawyerist_get_community_rating() {
 
 	global $post;
@@ -1225,7 +1224,7 @@ function lawyerist_get_community_rating() {
 
 }
 
-
+// Gets the numnber of comment reviews ("community" reviews) from WP Review Pro.
 function lawyerist_get_community_review_count() {
 
 	global $post;
@@ -1236,7 +1235,9 @@ function lawyerist_get_community_review_count() {
 
 }
 
-
+// Calculates the composite rating. If only one rating exists, that rating is
+// returned. If both ratings exist, it combines them. The output is rounded to
+// one decimal point.
 function lawyerist_get_composite_rating() {
 
 	global $post;
@@ -1249,10 +1250,14 @@ function lawyerist_get_composite_rating() {
 
 		if ( $community_review_count == 1 ) {
 
+			// If our rating and only one community rating exists, they are averaged
+			// together equally.
 			$composite_rating	= round( ( $community_rating + $our_rating ) / 2, 1 );
 
 		} else {
 
+			// If our rating and two or more community ratings exist, our rating is
+			// calculated at one third of the average.
 			$composite_rating	= round( ( ( $community_rating * 2 ) + $our_rating ) / 3, 1 );
 
 		}
@@ -1276,6 +1281,58 @@ function lawyerist_get_composite_rating() {
 }
 
 
+// Outputs the star rating.
+function lawyerist_star_rating() {
+
+	global $post;
+
+	$composite_rating				= lawyerist_get_composite_rating();
+	$star_rating_width			= ( $composite_rating / 5 ) * 100;
+
+	ob_start();
+
+		echo '<div class="lawyerist-star-rating">';
+
+			echo '<div class="lawyerist-star-rating-wrapper">';
+
+				$star_count = 0;
+
+				while ( $star_count < 5 ) {
+
+					echo '<div class="icon rating-star"></div>';
+
+					$star_count++;
+
+				}
+
+				echo '<div class="lawyerist-star-rating-result" style="width: ' . $star_rating_width . '%">';
+
+					$star_result_count = 0;
+
+					while ( $star_result_count < 5 ) {
+
+						echo '<div class="icon rating-star"></div>';
+
+						$star_result_count++;
+
+					}
+
+				echo '</div>';
+
+			echo '</div>';
+
+		echo '</div>';
+
+	$lawyerist_star_rating = ob_get_clean();
+
+	return $lawyerist_star_rating;
+
+}
+
+// Displays the star rating, composite rating, and number of reviews. Includes
+// aggregateRating schema on the assumption that the necessary opening and
+// closing schema tags will be included in the page template. Also used in our
+// Lawyerist Shortcodes plugin.
 function lawyerist_product_rating() {
 
 	global $post;
@@ -1285,11 +1342,12 @@ function lawyerist_product_rating() {
 	$community_review_count	= lawyerist_get_community_review_count();
 	$composite_rating				= lawyerist_get_composite_rating();
 
-	$total_rating_count	=	$community_review_count + 1;
+	$star_rating_width			= ( $composite_rating / 5 ) * 100;
+	$total_rating_count			=	$community_review_count + 1;
 
 	ob_start();
 
-		wp_review_show_total( $total = $composite_rating );
+		echo lawyerist_star_rating();
 
 		echo '<span class="review_count"><span itemprop="ratingValue">' . $composite_rating . '</span>/5 (based on <span itemprop="reviewCount">' . $total_rating_count . '</span> ' . _n( 'rating', 'ratings', $total_rating_count ) . ')</span>';
 

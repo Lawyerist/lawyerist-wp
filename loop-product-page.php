@@ -7,7 +7,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
   $page_title   = the_title( '', '', FALSE );
   $page_ID      = $post->ID;
 
-  // Check for a rating.
+  // Checks for a rating, then assigns variables if they will be needed.
   if ( comments_open() && function_exists( 'wp_review_show_total' ) ) {
 
     $our_rating             = lawyerist_get_our_rating();
@@ -38,7 +38,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
       }
 
       // Headline
-      if ( !empty( $our_rating ) || !empty( $community_rating ) ) {
+      if ( !empty( $composite_rating ) ) {
 
         echo '<div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">';
         echo '<h1 class="headline entry-title" itemprop="itemReviewed">' . $page_title . '</h1>';
@@ -55,9 +55,9 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
         echo '<div class="user-rating">';
 
           // Rating
-          if ( !empty( $our_rating ) || !empty( $community_rating ) ) {
+          if ( !empty( $composite_rating ) ) {
 
-            echo '<a href="#comments">';
+            echo '<a href="#rating">';
 
               echo lawyerist_product_rating();
 
@@ -71,7 +71,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
         echo '</div>'; // End .user_rating.
 
-        if ( !empty( $our_rating ) || !empty( $community_rating ) ) {
+        if ( !empty( $composite_rating ) ) {
           echo '</div>'; // End aggregateRating schema.
         }
 
@@ -110,11 +110,13 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
       echo '<div class="clear"></div>';
 
-      echo '<div class="our_rating">';
+      echo '<div id="rating" class="our_rating">';
 
         if ( function_exists( 'wp_review_show_total' ) && !empty( $our_rating ) ) {
 
-          echo '<h2>' . $page_title . ' Rating: ' . $composite_rating . '/5</h2>';
+          echo '<h2>' . $page_title . ' Rating: ';
+          echo lawyerist_star_rating();
+          echo $composite_rating . '/5</h2>';
 
           echo '<div class="card rating-box">';
 
@@ -133,7 +135,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
               if ( !empty( $our_rating ) ) {
 
                 echo '<p class="rating">Our Rating: <strong>' . $our_rating . '</strong>/5</p>';
-                echo '<p><small>Our rating is based on our subjective judgment.</small></p>';
+                echo '<p><small>Our rating is based on our subjective judgment. Use our resources—including our rating and community ratings and reviews—to find the best fit for your firm.</small></p>';
 
               }
 
