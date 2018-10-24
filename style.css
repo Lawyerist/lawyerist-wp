@@ -1086,6 +1086,7 @@ Menu
   }
 
   #menu-main-menu .sub-menu {
+    display: none;
     margin: 0;
   }
 
