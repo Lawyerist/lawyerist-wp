@@ -1280,7 +1280,7 @@ Front Page
     text-align: center;
   }
 
-    #big_hero_cta .button:after {
+    #big_hero_cta .button.free-flag:after {
       background-color: #fff;
       border: .3rem solid #b00;
       border-radius: 50%;
