@@ -38,7 +38,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
       }
 
       // Headline
-      if ( !empty( $composite_rating ) ) {
+      if ( !empty( $community_rating ) ) {
 
         echo '<div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">';
         echo '<h1 class="headline entry-title" itemprop="itemReviewed">' . $page_title . '</h1>';
@@ -55,11 +55,11 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
         echo '<div class="user-rating">';
 
           // Rating
-          if ( !empty( $composite_rating ) ) {
+          if ( !empty( $community_rating ) ) {
 
             echo '<a href="#rating">';
 
-              echo lawyerist_product_rating();
+              echo lawyerist_product_rating( 'community_rating' );
 
             echo '</a>';
 
@@ -71,7 +71,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
         echo '</div>'; // End .user_rating.
 
-        if ( !empty( $composite_rating ) ) {
+        if ( !empty( $community_rating ) ) {
           echo '</div>'; // End aggregateRating schema.
         }
 
@@ -110,56 +110,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
       echo '<div class="clear"></div>';
 
-      echo '<div id="rating" class="our_rating">';
-
-        if ( function_exists( 'wp_review_show_total' ) && !empty( $our_rating ) ) {
-
-          echo '<h2>' . $page_title . ' Rating: ';
-          echo lawyerist_star_rating();
-          echo $composite_rating . '/5</h2>';
-
-          echo '<div class="card rating-box">';
-
-            echo '<h3>Features</h3>';
-
-            echo wp_review_get_review_box();
-
-              echo '<div class="rating-breakdown">';
-
-              if ( !empty( $our_rating ) && !empty( $community_rating ) ) {
-
-                echo '<h3>Rating Breakdown</h3>';
-
-              }
-
-              if ( !empty( $our_rating ) ) {
-
-                echo '<p class="rating">Our Rating: <strong>' . $our_rating . '</strong>/5</p>';
-                echo '<p><small>Our rating is based on our subjective judgment. Use our resources—including our rating and community ratings and reviews—to find the best fit for your firm.</small></p>';
-
-              }
-
-              if ( !empty( $our_rating ) && !empty( $community_rating ) ) {
-
-                echo '<p class="rating">Community Rating: <strong>' . $community_rating . '</strong>/5 (based on ' . $community_review_count . _n( ' ratings', ' ratings', $community_review_count ) . ')</p>';
-                echo '<p><small>The community rating is based on the average of the community reviews below.</small></p>';
-
-              }
-
-              if ( !empty( $our_rating ) && !empty( $community_rating ) ) {
-
-                echo '<p class="rating composite-rating">Composite Rating: <strong>' . $composite_rating . '</strong>/5</p>';
-                echo '<p><small>The composite rating is a weighted average of our rating and the community ratings below.</small></p>';
-
-              }
-
-            echo '</div>';
-
-          echo '</div>';
-
-        }
-
-      echo '</div>';
+      echo '<div id="rating" class="our_rating"></div>';
 
       $trial_button	= trial_button();
       echo '<p align="center">' . $trial_button . '</p>';
