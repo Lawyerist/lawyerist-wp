@@ -59,14 +59,10 @@
 
 				}
 
-			endwhile;
-
-			echo '<div class="separator_3rem"></div>';
-
-			endif;
+			endwhile;	endif;
 
 			if ( $num_sticky_posts > 0 ) {
-
+				echo '<div class="separator_3rem"></div>';
 			}
 
 	    // Outputs the Scorecard call to action.
