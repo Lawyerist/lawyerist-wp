@@ -1240,8 +1240,6 @@ function lawyerist_get_community_review_count() {
 // one decimal point.
 function lawyerist_get_composite_rating() {
 
-	global $post;
-
 	$our_rating							= lawyerist_get_our_rating();
 	$community_rating				= lawyerist_get_community_rating();
 	$community_review_count	= lawyerist_get_community_review_count();
@@ -1281,13 +1279,59 @@ function lawyerist_get_composite_rating() {
 }
 
 
-// Outputs the star rating.
-function lawyerist_star_rating() {
+/**
+* Displays the star rating, rating, and number of reviews. Includes
+* aggregateRating schema on the assumption that the necessary opening and
+* closing schema tags will be included in the page template. Also used in our
+* Lawyerist Shortcodes plugin.
+*
+* @param string $rating_type Optional. Accepts 'our_rating' and
+* 'community_rating'.
+*/
+function lawyerist_product_rating( $rating_type = '' ) {
 
-	global $post;
+	if ( $rating_type == 'our_rating' ) {
 
-	$composite_rating				= lawyerist_get_composite_rating();
-	$star_rating_width			= ( $composite_rating / 5 ) * 100;
+		$rating				= lawyerist_get_our_rating();
+		$rating_count	=	1;
+
+	} elseif ( $rating_type == 'community_rating' ) {
+
+		$rating				= lawyerist_get_community_rating();
+		$rating_count	=	lawyerist_get_community_review_count();
+
+	} else {
+
+		$rating				= lawyerist_get_composite_rating();
+		$rating_count	=	lawyerist_get_community_review_count() + 1;
+
+	}
+
+	ob_start();
+
+		echo lawyerist_star_rating( $rating );
+
+		echo '<span class="review_count"><span itemprop="ratingValue">' . $rating . '</span>/5 (based on <span itemprop="reviewCount">' . $rating_count . '</span> ' . _n( 'rating', 'ratings', $rating_count ) . ')</span>';
+
+	$lawyerist_product_rating = ob_get_clean();
+
+	return $lawyerist_product_rating;
+
+}
+
+
+/**
+* Outputs the star rating.
+*
+* @param int $rating Optional. Defaults to composite rating.
+*/
+function lawyerist_star_rating( $rating = '' ) {
+
+	if ( empty( $rating ) ) {
+		$rating	= lawyerist_get_composite_rating();
+	}
+
+	$star_rating_width = ( $rating / 5 ) * 100;
 
 	ob_start();
 
@@ -1326,34 +1370,6 @@ function lawyerist_star_rating() {
 	$lawyerist_star_rating = ob_get_clean();
 
 	return $lawyerist_star_rating;
-
-}
-
-// Displays the star rating, composite rating, and number of reviews. Includes
-// aggregateRating schema on the assumption that the necessary opening and
-// closing schema tags will be included in the page template. Also used in our
-// Lawyerist Shortcodes plugin.
-function lawyerist_product_rating() {
-
-	global $post;
-
-	$our_rating							= lawyerist_get_our_rating();
-	$community_rating				= lawyerist_get_community_rating();
-	$community_review_count	= lawyerist_get_community_review_count();
-	$composite_rating				= lawyerist_get_composite_rating();
-
-	$star_rating_width			= ( $composite_rating / 5 ) * 100;
-	$total_rating_count			=	$community_review_count + 1;
-
-	ob_start();
-
-		echo lawyerist_star_rating();
-
-		echo '<span class="review_count"><span itemprop="ratingValue">' . $composite_rating . '</span>/5 (based on <span itemprop="reviewCount">' . $total_rating_count . '</span> ' . _n( 'rating', 'ratings', $total_rating_count ) . ')</span>';
-
-	$lawyerist_product_rating = ob_get_clean();
-
-	return $lawyerist_product_rating;
 
 }
 
