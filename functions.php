@@ -55,9 +55,6 @@ TAXONOMY
 - Series Custom Taxonomy
 - Sponsors Custom Taxonomy
 
-PATCHES
-- RSS Feed Caching
-
 */
 
 
@@ -219,6 +216,8 @@ Get Country
 ------------------------------*/
 
 function get_country() {
+
+	global $post;
 
 	// Limits API calls to product pages, not portals (i.e., child pages only).
 	if ( has_trial_button() || ( get_page_template_slug( $post->ID ) == 'product-page.php' && $post->post_parent == 0 ) ) {
@@ -994,10 +993,7 @@ Adds trial buttons to product pages.
 
 function lawyerist_sponsored_trial_button_top( $content ) {
 
-	// Use global post if it wasn't provided.
-	if ( !is_a( $post, 'WP_Post' ) ) {
-		global $post;
-	}
+	global $post;
 
 	$country = get_country();
 
@@ -1745,19 +1741,3 @@ function sponsor_tax() {
 
 // Hook into the 'init' action
 add_action( 'init', 'sponsor_tax', 0 );
-
-
-/* PATCHES ********************/
-
-/*------------------------------
-RSS Feed Caching
-------------------------------*/
-
-function return_3600( $seconds ) {
-  /* Change the default feed cache re-creation period to 1 hour */
-  return 3600;
-}
-
-add_filter( 'wp_feed_cache_transient_lifetime' , 'return_3600' );
-$feed = fetch_feed( $feed_url );
-remove_filter( 'wp_feed_cache_transient_lifetime' , 'return_3600' );

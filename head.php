@@ -49,7 +49,7 @@
 
 	}
 
-	if ( $decription ) {
+	if ( $description ) {
 
 		echo '<meta name="description" content="' . $description . '">';
 

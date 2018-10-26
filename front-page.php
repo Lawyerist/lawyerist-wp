@@ -34,32 +34,37 @@
 
 			$sticky_post_query = new WP_Query( $sticky_post_query_args );
 
-			if ( $sticky_post_query->have_posts() ) : while ( $sticky_post_query->have_posts() ) : $sticky_post_query->the_post();
+			if ( $sticky_post_query->have_posts() ) :
 
-				if ( is_sticky() ) {
+				while ( $sticky_post_query->have_posts() ) : $sticky_post_query->the_post();
 
-						$num_sticky_posts++;
+					$num_sticky_posts = 0;
 
-						$sticky_post_title	= the_title( '', '', FALSE );
-						$sticky_post_url		= get_permalink();
+					if ( is_sticky() ) {
 
-						// Starts the post container.
-						echo '<div ';
-						post_class( 'front_page_sticky_post card' );
-						echo '>';
+							$num_sticky_posts++;
 
-							// Starts the link container. Makes for big click targets!
-							echo '<a href="' . $sticky_post_url . '" title="' . $sticky_post_title . '">';
+							$sticky_post_title	= the_title( '', '', FALSE );
+							$sticky_post_url		= get_permalink();
 
-								echo '<h2 class="headline">' . $sticky_post_title . '</h2>';
+							// Starts the post container.
+							echo '<div ';
+							post_class( 'front_page_sticky_post card' );
+							echo '>';
 
-							echo '</a>';
+								// Starts the link container. Makes for big click targets!
+								echo '<a href="' . $sticky_post_url . '" title="' . $sticky_post_title . '">';
 
-						echo '</div>';
+									echo '<h2 class="headline">' . $sticky_post_title . '</h2>';
 
-				}
+								echo '</a>';
 
-			endwhile;	endif;
+							echo '</div>';
+
+					}
+
+				endwhile;
+			endif;
 
 			if ( $num_sticky_posts > 0 ) {
 				echo '<div class="separator_3rem"></div>';
