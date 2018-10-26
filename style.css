@@ -2916,6 +2916,7 @@ Content
       ;
       display: block;
       margin: 0 .3rem 1rem .1rem;
+      min-height: 11rem;
       overflow: hidden;
       padding: 2rem;
       position: relative;
