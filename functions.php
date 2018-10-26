@@ -284,7 +284,7 @@ function lawyerist_query_mods( $wp_query ) {
 	// Add pages and products to the main feed, and pages to author feeds.
 	if ( !is_admin() && !is_author() ) {
 		set_query_var( 'post_type', array( 'post', 'page', 'product' ) );
-	} elseif ( is_author() ) {
+	} elseif ( !is_admin() && is_author() ) {
 		set_query_var( 'post_type', array( 'post', 'page' ) );
 	}
 
