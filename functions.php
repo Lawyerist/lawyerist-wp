@@ -45,6 +45,7 @@ COMMENTS & REVIEWS
 
 WOOCOMMERCE
 - WooCommerce Setup
+- Display Price of Free Products As "Free!" Not "$0.00".
 - Function for Checking to See if a Product ID is in the Cart
 - Checkout Fields
 - Insider Plus Shopping Cart Upsell
@@ -1384,7 +1385,10 @@ function lawyerist_woocommerce_support() {
 add_action( 'after_setup_theme', 'lawyerist_woocommerce_support' );
 
 
-/* Display price of free products as "Free!" not "$0.00". */
+/*------------------------------
+Display Price of Free Products As "Free!" Not "$0.00".
+------------------------------*/
+
 function lawyerist_wc_free_products( $price, $product ) {
 
 	global $woocommerce;
