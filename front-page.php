@@ -100,7 +100,7 @@
 				if ( wc_memberships_is_user_active_member( $user_id, 'insider' ) && !wc_memberships_is_user_active_member( $user_id, 'insider-plus-affinity' ) ) {
 
 					$cta_label				= 'Insider Plus';
-					$cta_button_url	 	= 'https://lawyerist.com/insider-plus/';
+					$cta_button_url	 	= 'https://lawyerist.com/cart/?add-to-cart=242723';
 					$cta_button_text	=	'Upgrade Now';
 
 					ob_start();
