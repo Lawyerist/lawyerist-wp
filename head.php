@@ -70,6 +70,16 @@
 
 ?>
 
+<!-- Google global site tag (gtag.js) - Google Ads: 928946623 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-928946623"></script>
+<script>
+ window.dataLayer = window.dataLayer || [];
+ function gtag(){dataLayer.push(arguments);}
+ gtag('js', new Date());
+
+ gtag('config', 'AW-928946623');
+</script>
+<!-- End Google global site tag. -->
 
 <!-- DoubleClick Script -->
 <script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
