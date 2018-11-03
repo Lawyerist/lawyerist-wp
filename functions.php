@@ -220,8 +220,8 @@ function get_country() {
 
 	global $post;
 
-	// Limits API calls to product pages, not portals (i.e., child pages only).
-	if ( has_trial_button() || ( get_page_template_slug( $post->ID ) == 'product-page.php' && $post->post_parent == 0 ) ) {
+	// Limits API calls to product pages and portals.
+	if ( has_trial_button() || ( get_page_template_slug( $post->ID ) == 'product-page.php' ) ) {
 
 		// Get user's geographic location by IP address.
 		// Set IP address and API access key.
@@ -240,7 +240,7 @@ function get_country() {
 		$api_result = json_decode( $json, true );
 
 		// Return the country code (i.e., "US" or "CA").
-		return $api_result['country_code'];
+		return $api_result[ 'country_code' ];
 
 	}
 
@@ -524,10 +524,7 @@ Get Related Podcasts
 
 function lawyerist_get_related_podcasts() {
 
-	// Use global post if it wasn't provided.
-	if ( !is_a( $post, 'WP_Post' ) ) {
-		global $post;
-	}
+	global $post;
 
 	$current_id[]		= $post->ID;
 	$current_slug		= $post->post_name;
@@ -614,10 +611,7 @@ Get Related Posts
 
 function lawyerist_get_related_posts() {
 
-	// Use global post if it wasn't provided.
-	if ( !is_a( $post, 'WP_Post' ) ) {
-		global $post;
-	}
+	global $post;
 
 	$current_id[]		= $post->ID;
 	$current_slug		= $post->post_name;
@@ -958,10 +952,7 @@ Affinity Partner Buttons
 
 function lawyerist_affinity_partner_button() {
 
-	// Use global post if it wasn't provided.
-	if ( !is_a( $post, 'WP_Post' ) ) {
-		global $post;
-	}
+	global $post;
 
 	if ( is_user_logged_in() ) {
 

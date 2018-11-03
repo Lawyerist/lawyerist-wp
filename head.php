@@ -49,7 +49,7 @@
 
 	}
 
-	if ( $description ) {
+	if ( !empty( $description ) ) {
 
 		echo '<meta name="description" content="' . $description . '">';
 
