@@ -276,11 +276,6 @@ Query Mods
 
 function lawyerist_query_mods( $wp_query ) {
 
-	// Exclude sponsored posts from the front page.
-	if ( is_front_page() ) {
-		set_query_var( 'category__not_in', array( 1320 ) );
-	}
-
 	// Add pages and products to the main feed, and pages to author feeds.
 	if ( !is_admin() && !is_author() ) {
 		set_query_var( 'post_type', array( 'post', 'page', 'product' ) );

@@ -350,6 +350,7 @@ label,
 .logged-in-as, /* Logged-in message on comment form. */
 #menu-main-menu,
 .onsale,
+#opc-product-selection,
 .page_links,
 .postmeta,
 .price_tag,
@@ -4045,8 +4046,27 @@ WooCommerce
       margin-left: 1em;
     }
 
+.woocommerce .product-remove a.remove {
+  background-color: #ddd;
+  color: #fff !important;
+  font-size: 2rem;
+  line-height: 86.5%;
+  margin: .5rem 1rem .5rem 0;
+  transition: background-color .2s, color .2s, box-shadow .2s;
+}
 
-/* Product Category Pages */
+  .woocommerce .product-remove a.remove:hover {
+    background-color: #c00;
+    box-shadow: .1rem .1rem .3rem rgba(0, 0, 0, 0.4);
+  }
+
+  .woocommerce .product-remove a.remove:active {
+    background-color: #a00;
+    box-shadow: none;
+  }
+
+
+/* WooCommerce Product Category Pages */
 
 .tax-product_cat ul.products li.product {
   background-color: #fff;
@@ -4158,7 +4178,7 @@ WooCommerce
   }
 
 
-/* WooCommerce single product pages. */
+/* WooCommerce Single Product Pages */
 
 .single-product {
   background-color: #fff;
@@ -4168,7 +4188,7 @@ WooCommerce
   margin-bottom: 1em;
 }
 
-/* WooCommerce shopping cart. */
+/* WooCommerce Shopping Cart */
 
 a.cart-in-header {
     background-color: #333;
@@ -4211,7 +4231,37 @@ a.cart-in-header {
   padding: unset;
 }
 
-/* WooCommerce account pages. */
+
+/* WooCommerce One-Page Checkout. */
+
+#opc-product-selection .product-thumbnail img {
+  display: block;
+  margin: 0;
+  width: 100%;
+}
+
+#opc-product-selection .product-quantity button {
+  margin-bottom: .5rem;
+}
+
+#opc-product-selection .product-quantity .opc-complete-order {
+  font-size: 1.6rem;
+  line-height: 1.2;
+  margin: 0;
+}
+
+  #opc-product-selection .product-quantity .opc-complete-order:hover,
+  #opc-product-selection .product-quantity .opc-complete-order:focus {
+    color: #a00;
+    text-decoration: none;
+  }
+
+  #opc-product-selection .selected .wc-south {
+    display: block;
+  }
+
+
+/* WooCommerce Account Pages */
 
 body.woocommerce-account {
   background-color: #fff;
