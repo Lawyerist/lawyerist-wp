@@ -70,7 +70,7 @@
 				echo '<div class="separator_3rem"></div>';
 			}
 
-	    // Outputs the Scorecard call to action.
+	    // Outputs the front page call to action.
 			if ( !is_user_logged_in() ) {
 
 				// Outputs the Insider (free) call to action.
@@ -121,6 +121,8 @@
 
 			// Outputs the call to action.
 
+			if ( !empty( $cta_label ) ) {
+
 			?>
 
 				<div id="big_hero_cta" class="card">
@@ -137,6 +139,8 @@
 				</div>
 
 			<?php
+
+			}
 
 
 			// Outputs a block of new stuff (podcast, Lens, download, and community posts).
