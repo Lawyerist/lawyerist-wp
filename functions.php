@@ -1432,11 +1432,13 @@ function lawyerist_checkout_fields( $fields ) {
 	unset( $fields['billing']['billing_address_1'] );
 	unset( $fields['billing']['billing_address_2'] );
 	unset( $fields['billing']['billing_city'] );
-	unset( $fields['billing']['billing_postcode'] );
 	unset( $fields['billing']['billing_phone'] );
 
 	// Disables the order comments/notes field.
 	unset( $fields['order']['order_comments'] );
+
+	// Changes field labels.
+	$fields['billing']['billing_postcode']['label'] = 'Zip code';
 
 	// Creates an array of Insider, Lab, and LabCon product IDs.
 	$lab_insider_product_ids = array(
