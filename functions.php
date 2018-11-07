@@ -373,6 +373,8 @@ Author Bios
 
 function lawyerist_get_author_bio() {
 
+	global $wp_query;
+
 	$author               = $wp_query->query_vars['author'];
 	$author_name          = get_the_author_meta( 'display_name' );
 	$author_bio           = get_the_author_meta( 'description' );
@@ -778,10 +780,7 @@ Current Posts Widget
 
 function lawyerist_current_posts( $this_post ) {
 
-	// Use global post if it wasn't provided.
-	if ( !is_a( $post, 'WP_Post' ) ) {
-		global $post;
-	}
+	global $post;
 
 	$this_post[] = $post->ID;
 
