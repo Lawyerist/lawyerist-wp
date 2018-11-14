@@ -805,7 +805,7 @@ function lawyerist_current_posts( $this_post ) {
 
 				echo '<a href="' . $podcast_url . '" title="' . $podcast_title . '" class="current_post">';
 
-					echo '<img class="attachment-thumbnail wp-post-image" src="https://lawyerist.com/lawyerist-dev/wp-content/uploads/2018/02/lawyerist-ltn-podcast-logo-16x9-160x90.png" />';
+					echo '<img class="attachment-thumbnail wp-post-image" src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/02/lawyerist-ltn-podcast-logo-16x9-160x90.png" />';
 
 					echo '<p class="current_post_title">' . $podcast_title . '</p>';
 
