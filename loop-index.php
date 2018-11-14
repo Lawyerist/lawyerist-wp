@@ -239,7 +239,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 endwhile;
 
 echo '<div class="page_links">';
-  echo paginate_links( $args );
+  echo paginate_links();
 echo '</div>';
 
 else :
