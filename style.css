@@ -2705,6 +2705,11 @@ Content
       border-top: .1rem solid #ddd;
     }
 
+    .memberships-pricing-chart .column-4,
+    .tablepress.memberships-pricing-chart tbody tr:first-child td.column-4 {
+      border-left: .3rem double #ddd;
+    }
+
     .memberships-pricing-chart tbody tr td:last-child {
       border-right: .1rem solid #ddd;
     }
