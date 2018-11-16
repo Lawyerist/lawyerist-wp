@@ -2122,7 +2122,7 @@ Content
       }
 
         #sponsored_product_updates a {
-          color: #333;
+          color: #c00;
           text-decoration: none;
         }
 
@@ -3002,6 +3002,16 @@ Content
           line-height: 1.2;
           margin-bottom: .33em;
           padding: 0 2rem 0 0;
+        }
+
+        .product-pages-list a.title {
+          color: #333;
+        }
+
+        .product-pages-list a.title:hover,
+        .product-pages-list a.title:focus {
+          color: #a00;
+          text-decoration: none;
         }
 
     .product-pages-list .excerpt {
