@@ -276,11 +276,9 @@ Query Mods
 
 function lawyerist_query_mods( $wp_query ) {
 
-	// Add pages and products to the main feed, and pages to author feeds.
+	// Add pages and products to the main feed.
 	if ( !is_admin() && !is_author() ) {
 		set_query_var( 'post_type', array( 'post', 'page', 'product' ) );
-	} elseif ( !is_admin() && is_author() ) {
-		set_query_var( 'post_type', array( 'post', 'page' ) );
 	}
 
 	// If displaying a series archive page, show the oldest post first.
@@ -559,7 +557,7 @@ function lawyerist_get_related_podcasts() {
 				if ( !empty( $seo_descr ) ) { $post_excerpt = $seo_descr; }
 
 				echo '<div ' ;
-				post_class( 'post_container' );
+				post_class( 'card' );
 				echo '>';
 
 					// Starts the link container. Makes for big click targets!
@@ -572,7 +570,7 @@ function lawyerist_get_related_podcasts() {
 						}
 						echo '<div class="podcast_guest_thumbnail"><img class="avatar" src="' . $first_image_url . '" /></div>';
 
-						echo '<div class="headline_excerpt">';
+						echo '<div class="headline-excerpt">';
 
 							echo '<h2 class="headline" title="' . $post_title . '">' . $post_title . '</h2>';
 
@@ -583,11 +581,11 @@ function lawyerist_get_related_podcasts() {
 							// Clearfix
 							echo '<div class="clear"></div>';
 
-						echo '</div>'; // Close .headline_excerpt.
+						echo '</div>'; // Close .headline-excerpt.
 
 					echo '</a>'; // This closes the link container.
 
-				echo '</div>'; // This closes .post_container.
+				echo '</div>'; // This closes .card.
 
 			endwhile;
 
@@ -649,7 +647,7 @@ function lawyerist_get_related_posts() {
 
 				// Starts the post container.
 				echo '<div ' ;
-				post_class( 'post_container' );
+				post_class( 'card' );
 				echo '>';
 
 					// Starts the link container. Makes for big click targets!
@@ -658,7 +656,7 @@ function lawyerist_get_related_posts() {
 						// Outputs the author's avatar.
 						echo '<div class="author_avatar">' . $author_avatar . '</div>';
 
-						echo '<div class="headline_excerpt">';
+						echo '<div class="headline-excerpt">';
 
 							// Headline
 							echo '<h2 class="headline">' . $post_title . '</h2>';
@@ -670,7 +668,7 @@ function lawyerist_get_related_posts() {
 							// Clearfix
 							echo '<div class="clear"></div>';
 
-						echo '</div>'; // Close .headline_excerpt.
+						echo '</div>'; // Close .headline-excerpt.
 
 					echo '</a>'; // This closes the post link container (.post).
 
@@ -735,7 +733,7 @@ function lawyerist_get_related_pages() {
 
 				// Starts the post container.
 				echo '<div ' ;
-				post_class( 'post_container' );
+				post_class( 'card' );
 				echo '>';
 
 					// Starts the link container. Makes for big click targets!
@@ -749,11 +747,11 @@ function lawyerist_get_related_pages() {
               echo '<div class="related_page_thumbnail"><img class="attachment-thumbnail wp-post-image" src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/02/L-dot.png" /></div>';
             }
 
-						echo '<div class="headline_excerpt">';
+						echo '<div class="headline-excerpt">';
 
 							echo '<h2 class="headline" title="' . $post_title . '">' . $post_title . '</h2>';
 
-						echo '</div>'; // Close .headline_excerpt.
+						echo '</div>'; // Close .headline-excerpt.
 
 						echo '<div class="clear"></div>';
 

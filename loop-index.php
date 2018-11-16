@@ -32,34 +32,26 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
   // Sets the post excerpt to the Yoast Meta Description.
   if ( !empty( $seo_descr ) ) { $post_excerpt = $seo_descr; }
 
-  $post_classes[] = 'post_container'; // .post, .page, and .product are added automatically, as are tags and formats.
+  $post_classes[] = 'card'; // .post, .page, and .product are added automatically, as are tags and formats.
 
   // Assigns series class and label.
-  if ( has_term( true, 'series' ) ) {
+  if ( has_term( true, 'series' ) && !is_tax( 'series' ) ) {
 
-    $post_classes[] = 'series';
+    $post_classes[] = 'series has-post-label';
 
-    if ( !is_tax( 'series' ) ) {
+    $series_IDs = wp_get_post_terms(
+      $post->ID,
+      'series',
+      array(
+        'fields' 	=> 'ids',
+        'orderby' => 'count',
+        'order' 	=> 'DESC'
+      )
+    );
 
-      $post_classes[] = 'has-post-label';
-
-      $series_IDs = wp_get_post_terms(
-        $post->ID,
-        'series',
-        array(
-          'fields' 	=> 'ids',
-          'orderby' => 'count',
-          'order' 	=> 'DESC'
-        )
-      );
-
-      $series_info				= get_term( $series_IDs[0] );
-      $series_slug				= $series_info->slug;
-
-      $post_label 		   	= $series_info->name;
-      $post_label_url			=	get_term_link( $series_IDs[0], 'series' );
-
-    }
+    $series_info				= get_term( $series_IDs[0] );
+    $post_label 		   	= $series_info->name;
+    $post_label_url			=	get_term_link( $series_IDs[0], 'series' );
 
   }
 
@@ -75,6 +67,48 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
   } else {
 
+    // Figures out the post thumbnail.
+    if ( has_category( 'lawyerist-podcast' ) || has_category( 'how-lawyers-work' ) ) {
+
+      $first_image_url = get_first_image_url();
+
+      if ( empty( $first_image_url ) ) {
+
+        if ( has_category( 'lawyerist-podcast' ) ) {
+
+          $first_image_url = 'https://lawyerist.com/lawyerist/wp-content/uploads/2018/09/podcast-mic-square-150x150.png';
+
+        } elseif ( has_category( 'how-lawyers-work' ) ) {
+
+          $first_image_url = 'https://lawyerist.com/lawyerist/wp-content/uploads/2018/01/typewriter-150x150.jpg';
+
+        }
+
+      }
+
+      $thumbnail      = '<div class="author_avatar"><img class="avatar" src="' . $first_image_url . '" /></div>';
+      $post_classes[] = 'has-avatar-thumbnail';
+
+    } elseif ( ( is_page() || is_author() || is_tax( 'series' ) ) && has_post_thumbnail() ) {
+
+      $thumbnail_url  = get_the_post_thumbnail_url( $post->ID, 'default_thumbnail' );
+      $thumbnail      = '<div class="default_thumbnail" style="background-image: url( ' . $thumbnail_url . ' );"></div>';
+
+    } elseif ( $post_type == 'product' ) {
+
+      $thumbnail_url  = get_the_post_thumbnail_url( $post->ID, 'shop_single' );
+      $thumbnail      = '<img class="product-thumbnail" src="' . $thumbnail_url . '" />';
+
+    } elseif ( !is_page() && !is_author() ) {
+
+      $author_name		= get_the_author_meta( 'display_name' );
+      $author_avatar	= get_avatar( get_the_author_meta( 'user_email' ), 150, '', $author_name );
+
+      $thumbnail      = '<div class="author_avatar">' . $author_avatar . '</div>';
+      $post_classes[] = 'has-avatar-thumbnail';
+
+    }
+
     // Starts the post container.
     echo '<div ' ;
     post_class( $post_classes );
@@ -88,64 +122,13 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
       // Starts the link container. Makes for big click targets!
       echo '<a href="' . $post_url . '" title="' . $post_title . '">';
 
-        // Now we get the headline and excerpt (except for certain kinds of posts).
-        echo '<div class="headline_excerpt">';
+        // Now we get the headline and, for some posts, the excerpt.
+        echo '<div class="headline-excerpt">';
 
-          // Outputs an image for podcast episodes.
-          if ( has_category( 'lawyerist-podcast' ) ) {
+          // Thumbnail
 
-            $first_image_url = get_first_image_url();
-
-            if ( empty( $first_image_url ) ) {
-              $first_image_url = 'https://lawyerist.com/lawyerist-dev/wp-content/uploads/2018/02/lawyerist-ltn-podcast-logo-16x9-684x385.png';
-            }
-
-            echo '<div class="author_avatar"><img class="avatar" src="' . $first_image_url . '" /></div>';
-
-
-
-            // echo '<div class="default_thumbnail" alt="The Lawyerist Podcast logo" style="background-image: url( https://lawyerist.com/lawyerist-dev/wp-content/uploads/2018/02/lawyerist-ltn-podcast-logo-16x9-684x385.png );"></div>';
-          }
-
-          // Outputs an image for community posts.
-          if ( has_category( 'community-posts' ) && !is_author() ) {
-
-            if ( has_category( 'how-lawyers-work' ) ) {
-
-              $first_image_url = get_first_image_url();
-
-              if ( empty( $first_image_url ) ) {
-                $first_image_url = 'https://lawyerist.com/lawyerist/wp-content/uploads/2018/01/typewriter-150x150.jpg';
-              }
-
-              echo '<div class="author_avatar"><img class="avatar" src="' . $first_image_url . '" /></div>';
-
-            } else {
-
-              $author_name		= get_the_author_meta( 'display_name' );
-              $author_avatar	= get_avatar( get_the_author_meta( 'user_email' ), 150, '', $author_name );
-
-              echo '<div class="author_avatar">' . $author_avatar . '</div>';
-
-            }
-
-          }
-
-          // Outputs the featured image for other posts.
-          if ( has_post_thumbnail() && !has_category( 'lawyerist-podcast' ) && ( !has_category( 'community-posts' ) || ( has_category( 'community-posts' ) && !is_author() ) ) ) {
-
-            if ( $post_type == 'product' ) {
-
-              the_post_thumbnail( 'shop_single' );
-
-            } else {
-
-              echo '<div class="default_thumbnail" style="background-image: url( ';
-              echo the_post_thumbnail_url( 'default_thumbnail' );
-              echo ' );"></div>';
-
-            }
-
+          if ( !empty ( $thumbnail ) ) {
+            echo $thumbnail;
           }
 
           // Headline
@@ -169,57 +152,9 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
           // Clearfix
           echo '<div class="clear"></div>';
 
-        echo '</div>'; // Close .headline_excerpt.
+        echo '</div>'; // Close .headline-excerpt.
 
       echo '</a>'; // This closes the post link container (.post).
-
-
-      // If the post is in a series, show up to 4 additional posts in that series.
-      if ( has_term( true, 'series' ) && !is_tax( 'series' ) ) {
-
-        $series_query_args = array(
-          'orderby'					=> 'date',
-          'order'						=> 'DESC',
-          'post__not_in'		=> $this_post,
-          'posts_per_page'	=> 4,
-          'tax_query'     	=> array(
-            array(
-              'taxonomy'  => 'series',
-              'field'			=> 'slug',
-              'terms'			=> $series_slug,
-            )
-          )
-        );
-
-        $series_query = new WP_Query( $series_query_args );
-
-        // Start the series sub-Loop.
-
-        if ( $series_query->post_count > 1 ) :
-
-          $posts_in_series = 'additional-posts-in-series series-of-' . $series_query->post_count;
-
-          echo '<ul class="' . $posts_in_series . '">';
-
-            while ( $series_query->have_posts() ) : $series_query->the_post();
-
-              $series_post_title = the_title( '', '', FALSE );
-              $series_post_url   = get_permalink();
-
-              echo '<li><a href="' . $post_url . '" title="' . $series_post_title . '"><h3 class="headline">' . $series_post_title . '</h3></a></li>';
-
-            endwhile;
-
-          echo '</ul>';
-
-          // Clearfix
-          echo '<div class="clear"></div>';
-
-        endif; // End series sub-Loop.
-
-        wp_reset_postdata(); // Necessary because the series loop is nested in the main loop.
-
-      } // End the additional series posts.
 
     echo '</div>'; // Close .post.
     echo "\n\n";
@@ -232,9 +167,9 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
     $post_num++; // Increment counter.
 
-    unset ( $post_classes, $post_label, $post_label_url ); // Clear variables for the next trip through the Loop.
+    unset ( $post_classes, $post_label, $post_label_url, $thumbnail, $thumbnail_url ); // Clear variables for the next trip through the Loop.
 
-  } // End loop for excluding pages without the "Show in Feed" page type.
+  } // End loop for excluding sponsored posts and pages without the "Show in Feed" page type.
 
 endwhile;
 
