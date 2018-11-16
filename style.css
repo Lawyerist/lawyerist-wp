@@ -1688,7 +1688,11 @@ Content
 
     .index .category-lawyerist-podcast .headline,
     .index .category-lawyerist-podcast .excerpt,
-    .index .category-lawyerist-podcast .postmeta,
+    .index .category-lawyerist-podcast .postmeta {
+      margin-left: 1.5rem;
+    	padding-left: 24.19354839%;
+    }
+
     .index .category-community-posts .headline,
     .index .category-community-posts .postmeta {
       margin-left: 1.5rem;
