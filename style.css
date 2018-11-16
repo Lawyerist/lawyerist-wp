@@ -289,8 +289,12 @@ Layout & Design Elements
   border: .1rem solid #ddd;
   border-radius: .2rem;
   box-shadow: .1rem .1rem .3rem rgba(0, 0, 0, 0.2);
-  margin: 0 .1rem 1rem .3rem;
+  margin: 0 .3rem 1rem .1rem;
 }
+
+  .index .card {
+    background-color: #fff;
+  }
 
 .text_right {
     text-align: right;
@@ -1525,38 +1529,47 @@ Content
 		text-decoration: none;
 	}
 
+  .card a,
   .post_container a {
     color: inherit;
     text-decoration: none;
   }
 
+    .card a:hover,
+    .card a:focus,
     .post_container a:hover,
     .post_container a:focus {
       color: #a00;
       text-decoration: none;
     }
 
+  .card .headline_excerpt,
   .post_container .headline_excerpt {
     color: #111;
     position: relative;
   }
 
+    .card .headline,
     .post_container .headline {
   		color: #333;
     	margin-bottom: .2em;
   	}
 
+    .card .headline:hover,
+    .card .headline:focus,
     .post_container .headline:hover,
     .post_container .headline:focus {
   		color: #a00;
       text-decoration: none;
   	}
 
+    .card .postmeta,
     .post_container .postmeta {
       font-size: 1.4rem;
       margin-bottom: .5rem;
     }
 
+    .card p,
     .post_container p {
       margin-bottom: .75em;
   	}
@@ -1578,7 +1591,7 @@ Content
   }
 
   .index .category-lawyerist-podcast,
-  .index .category-community-posts {
+  .index #community-posts {
     padding: 2rem;
   }
 
@@ -1663,13 +1676,12 @@ Content
 
   .index .category-lawyerist-podcast .headline_excerpt,
   .index .category-lawyerist-podcast.has-post-label .headline_excerpt,
-  .index .category-community-posts .headline_excerpt,
-  .index .category-community-posts.has-post-label .headline_excerpt {
+  .index #community-posts .headline_excerpt {
     padding: 0;
   }
 
   .index .category-lawyerist-podcast.has-post-label .headline_excerpt,
-  .index .category-community-posts.has-post-label .headline_excerpt {
+  .index #community-posts .headline_excerpt {
     margin-bottom: 2rem;
   }
 
@@ -1677,10 +1689,9 @@ Content
     .index .category-lawyerist-podcast .excerpt,
     .index .category-lawyerist-podcast .postmeta,
     .index .category-community-posts .headline,
-    .index .category-community-posts .excerpt,
     .index .category-community-posts .postmeta {
       margin-left: 1.5rem;
-    	padding-left: 24.19354839%; /* Sets left padding at 150px max. */
+    	padding-left: 7.5rem;
     }
 
   .index .type-product .headline_excerpt,
@@ -1740,15 +1751,26 @@ Content
       border-radius: 0;
     }
 
-    .index .category-lawyerist-podcast .author_avatar,
-    .index .category-community-posts .author_avatar {
+    .index .category-lawyerist-podcast .author_avatar {
       float: left;
       font-size: 1rem;
       line-height: 1;
       width: 24.19354839%;
     }
 
-      .index .category-lawyerist-podcast .author_avatar img,
+      .index .category-lawyerist-podcast .author_avatar img {
+        height: auto;
+        margin: 0;
+        width: 100%;
+      }
+
+    .index .category-community-posts .author_avatar {
+      float: left;
+      font-size: 1rem;
+      line-height: 1;
+      width: 7.5rem;
+    }
+
       .index .category-community-posts .author_avatar img {
         height: auto;
         margin: 0;

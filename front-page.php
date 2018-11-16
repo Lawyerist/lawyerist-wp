@@ -293,55 +293,52 @@
 				// End of download.
 
 
-				// Outputs the most recent community post.
+				// Outputs the 3 most recent community posts.
 				$current_post_query_args = array(
 					'category_name'				=> 'community-posts',
 					'ignore_sticky_posts' => TRUE,
-					'posts_per_page'			=> 1,
+					'posts_per_page'			=> 3,
 				);
 
 				$current_post_query = new WP_Query( $current_post_query_args );
 
-				if ( $current_post_query->have_posts() ) : while ( $current_post_query->have_posts() ) : $current_post_query->the_post();
-
-					$post_title			= the_title( '', '', FALSE );
-					$post_url				= get_permalink();
-					$post_excerpt   = get_the_excerpt();
-				  $seo_descr      = get_post_meta( $post->ID, '_yoast_wpseo_metadesc', true );
-
-					$author_name		= get_the_author_meta( 'display_name' );
-					$author_avatar	= get_avatar( get_the_author_meta( 'user_email' ), 150, '', $author_name );
-
-				  // Sets the post excerpt to the Yoast Meta Description.
-				  if ( !empty( $seo_descr ) ) { $post_excerpt = $seo_descr; }
+				if ( $current_post_query->have_posts() ) :
 
 					// Starts the post container.
-					echo '<div ' ;
-					post_class( 'post_container has-post-label' );
-					echo '>';
+					echo '<div id="community-posts" class="card">';
 
-						// Starts the link container. Makes for big click targets!
-						echo '<a href="' . $post_url . '" title="' . $post_title . '">';
+						while ( $current_post_query->have_posts() ) : $current_post_query->the_post();
 
-							// Now we get the headline and excerpt (except for certain kinds of posts).
-							echo '<div class="headline_excerpt">';
+						$post_title			= the_title( '', '', FALSE );
+						$post_url				= get_permalink();
 
-								// Outputs the author's avatar.
-								echo '<div class="author_avatar">' . $author_avatar . '</div>';
+						$author_name		= get_the_author_meta( 'display_name' );
+						$author_avatar	= get_avatar( get_the_author_meta( 'user_email' ), 75, '', $author_name );
 
-								// Headline
-								echo '<h2 class="headline">' . $post_title . '</h2>';
+							// Starts the link container. Makes for big click targets!
+							echo '<a href="' . $post_url . '" title="' . $post_title . '"';
+							post_class();
+							echo '>';
 
-								echo '<p class="excerpt">' . $post_excerpt . '</p>';
+								// Now we get the headline and excerpt (except for certain kinds of posts).
+								echo '<div class="headline_excerpt">';
 
-								get_template_part( 'postmeta', 'index' );
+									// Outputs the author's avatar.
+									echo '<div class="author_avatar">' . $author_avatar . '</div>';
 
-								// Clearfix
-								echo '<div class="clear"></div>';
+									// Headline
+									echo '<h2 class="headline">' . $post_title . '</h2>';
 
-							echo '</div>'; // Close .headline_excerpt.
+									get_template_part( 'postmeta', 'index' );
 
-						echo '</a>'; // This closes the post link container (.post).
+									// Clearfix
+									echo '<div class="clear"></div>';
+
+								echo '</div>'; // Close .headline_excerpt.
+
+							echo '</a>'; // This closes the post link container (.post).
+
+						endwhile;
 
 						// Outputs the label.
 						$cat_IDs = wp_get_post_terms(
@@ -365,7 +362,7 @@
 
 					echo '</div>';
 
-				endwhile; endif;
+				endif;
 				// End of community post.
 
 			echo '</div>'; // End of new stuff.
