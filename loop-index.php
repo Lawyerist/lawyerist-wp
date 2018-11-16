@@ -108,7 +108,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
           }
 
           // Outputs an image for community posts.
-          if ( has_category( 'community-posts' ) ) {
+          if ( has_category( 'community-posts' ) && !is_author() ) {
 
             if ( has_category( 'how-lawyers-work' ) ) {
 
@@ -132,7 +132,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
           }
 
           // Outputs the featured image for other posts.
-          if ( has_post_thumbnail() && !has_category( 'lawyerist-podcast' ) && !has_category( 'community-posts' ) ) {
+          if ( has_post_thumbnail() && !has_category( 'lawyerist-podcast' ) && ( !has_category( 'community-posts' ) || ( has_category( 'community-posts' ) && !is_author() ) ) ) {
 
             if ( $post_type == 'product' ) {
 

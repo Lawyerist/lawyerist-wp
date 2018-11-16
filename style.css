@@ -1531,6 +1531,7 @@ Content
 
   /* Default layout, typography, and colors. */
 
+  .card,
   .post_container {
     background-color: #fff;
     border-radius: .2rem;
@@ -1700,18 +1701,25 @@ Content
     padding: 0;
   }
 
-    .index .category-lawyerist-podcast .headline,
-    .index .category-lawyerist-podcast .excerpt,
-    .index .category-lawyerist-podcast .postmeta {
-      margin-left: 1.5rem;
-    	padding-left: 24.19354839%;
-    }
-
     .index .category-community-posts .headline,
     .index .category-community-posts .excerpt,
     .index .category-community-posts .postmeta {
       margin-left: 1.5rem;
     	padding-left: 7.5rem;
+    }
+
+    .author .category-community-posts .headline,
+    .author .category-community-posts .excerpt,
+    .author .category-community-posts .postmeta {
+      margin: 0;
+    	padding: 0;
+    }
+
+    .index .category-lawyerist-podcast .headline,
+    .index .category-lawyerist-podcast .excerpt,
+    .index .category-lawyerist-podcast .postmeta {
+      margin-left: 1.5rem;
+    	padding-left: 24.19354839%;
     }
 
   .index .type-product .headline_excerpt,
