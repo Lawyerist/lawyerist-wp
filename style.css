@@ -3679,6 +3679,24 @@ a.review-btn,
   width: auto;
 }
 
+  a.button.big-button {
+    border-radius: .3rem;
+    font-size: 1.8rem !important;
+    height: 4.2rem;
+    line-height: 4.2rem;
+    margin: 0 auto;
+    padding: 0 1.8rem;
+  }
+
+  a.button.really-big-button {
+    border-radius: .6rem;
+    font-size: 3.2rem !important;
+    height: 6rem;
+    line-height: 6rem;
+    margin: 0 auto;
+    padding: 0 3.2rem;
+  }
+
   .woocommerce button.button:disabled,
   .woocommerce button.button:disabled:hover,
   .woocommerce button.button:disabled[disabled],
