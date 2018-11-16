@@ -1399,10 +1399,24 @@ Front Page
   margin-bottom: 2rem;
 }
 
+.home #community-posts {
+  padding: 2rem;
+}
+
+  .home #community-posts .category-community-posts {
+    padding: 0;
+  }
+
+  .home #community-posts .headline_excerpt {
+    margin-bottom: 2rem;
+    padding: 0;
+  }
+
 .home .type-product.has-post-label .headline_excerpt {
   padding: 4rem;
 }
 
+.home .card .post_label,
 .home .post_container .post_label {
   margin-bottom: 0;
 }
@@ -1592,7 +1606,7 @@ Content
   }
 
   .index .category-lawyerist-podcast,
-  .index #community-posts {
+  .index .category-community-posts {
     padding: 2rem;
   }
 
@@ -1669,6 +1683,10 @@ Content
     padding: 0 0 0 40%;
   }
 
+  .index .series.has-post-label.has-post-thumbnail .headline_excerpt {
+    padding: 0;
+  }
+
     .index .has-post-thumbnail .headline,
     .index .has-post-thumbnail .excerpt,
     .index .has-post-thumbnail .postmeta {
@@ -1677,13 +1695,9 @@ Content
 
   .index .category-lawyerist-podcast .headline_excerpt,
   .index .category-lawyerist-podcast.has-post-label .headline_excerpt,
-  .index #community-posts .headline_excerpt {
+  .index .category-community-posts .headline_excerpt,
+  .index .category-community-posts.has-post-label .headline_excerpt {
     padding: 0;
-  }
-
-  .index .category-lawyerist-podcast.has-post-label .headline_excerpt,
-  .index #community-posts .headline_excerpt {
-    margin-bottom: 2rem;
   }
 
     .index .category-lawyerist-podcast .headline,
@@ -1694,6 +1708,7 @@ Content
     }
 
     .index .category-community-posts .headline,
+    .index .category-community-posts .excerpt,
     .index .category-community-posts .postmeta {
       margin-left: 1.5rem;
     	padding-left: 7.5rem;
@@ -2063,19 +2078,19 @@ Content
       padding-right: 2rem;
     }
 
-      .index .series_of_1 li {
+      .index .series-of-1 li {
         width: 100%;
       }
 
-      .index .series_of_2 li {
+      .index .series-of-2 li {
         width: 50%;
       }
 
-      .index .series_of_3 li {
+      .index .series-of-3 li {
         width: 33.333%;
       }
 
-      .index .series_of_4 li {
+      .index .series-of-4 li {
         width: 25%;
       }
 
@@ -2093,6 +2108,8 @@ Content
       font-family: concourse, 'Helvetica Neue', Helvetica, Arial, sans-serif;
       font-size: 1.8rem;
       font-weight: normal;
+      margin: 0;
+      padding: 0;
     }
 
   #sponsored_product_updates {

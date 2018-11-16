@@ -152,7 +152,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
           echo '<h2 class="headline">' . $post_title . '</h2>';
 
           // Output the excerpt, with exceptions.
-          if ( !has_category( 'lawyerist-podcast' ) && !has_tag( 'tbd-law-community' ) && $post_type != 'page' ) {
+          if ( !has_category( 'lawyerist-podcast' ) && !has_category( 'community-posts' ) && $post_type != 'page' ) {
             echo '<p class="excerpt">' . $post_excerpt . '</p>';
           }
 
@@ -197,7 +197,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
         if ( $series_query->post_count > 1 ) :
 
-          $posts_in_series = 'series_of_' . $series_query->post_count;
+          $posts_in_series = 'additional-posts-in-series series-of-' . $series_query->post_count;
 
           echo '<ul class="' . $posts_in_series . '">';
 
