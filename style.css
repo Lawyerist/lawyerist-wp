@@ -42,6 +42,7 @@ Forms
   Gravity Forms Customizations
   HubSpot Forms Customizations
 WooCommerce
+LawDroid
 Print
 
 ------------------------------*/
@@ -4405,6 +4406,36 @@ body.woocommerce-account {
 
 body.woocommerce-cart .actions button  {
   margin-bottom: 0;
+}
+
+
+/*------------------------------
+LawDroid
+------------------------------*/
+
+.chatprompt .chatprompt-img {
+  box-shadow: -2px 2px 45px -3px;
+  background-position: center center !important;
+  border-radius: 50%;
+  height: 50px !important;
+  width: 50px !important;
+  display: inline-block;
+  cursor: pointer;
+  background-size: cover !important;
+  position: relative;
+  z-index: 10;
+}
+.chatprompt .chatprompt-img:after, .chatprompt .chatprompt-img:before {
+  content: '';
+  margin: 0 auto;
+  width: 50px !important;
+  height: 50px !important ;
+  border: 2px solid #cc0000;
+  border-radius: 50%;
+  position: absolute;
+  top: 0px !important;
+  left: 0px !important;
+  z-index: 0;
 }
 
 
