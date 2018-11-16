@@ -2687,6 +2687,22 @@ Content
       min-width: 16rem;
     }
 
+    /* Lab Curriculum Table */
+
+    .lab-curriculum .column-1 {
+      font-family: concourse;
+      font-weight: bold;
+      padding-left: 0;
+    }
+
+    .lab-curriculum ul br {
+      display: none;
+    }
+
+    .lab-curriculum li:first-child {
+      margin-top: 0;
+    }
+
     /* Memberships Pricing Chart */
 
     .memberships-pricing-chart {
