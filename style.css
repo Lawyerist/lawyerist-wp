@@ -13,7 +13,7 @@ License:      Copyright 2016 Lawyerist Media, LLC
 /*------------------------------
 Index
 
-Load Genericons
+Load Fonts
 Layout
 Layout & Design Elements
 Typography
@@ -47,6 +47,11 @@ Print
 
 ------------------------------*/
 
+
+/*------------------------------
+Load Fonts
+------------------------------*/
+
 /* Adler */
 @font-face {
     font-family: 'adler';
@@ -54,6 +59,7 @@ Print
     font-weight: normal;
     font-style: normal;
 }
+
 
 /* Concourse (headings) */
 @font-face {
@@ -138,6 +144,7 @@ Print
     font-weight: normal;
     font-style: normal;
 }
+
 
 /* Genericons */
 @font-face {
@@ -235,7 +242,6 @@ body {
 
     }
 
-
 #footer_container {
   background-color: #ddd;
 	margin: 0;
@@ -285,17 +291,6 @@ Layout & Design Elements
   margin-bottom: 6rem;
   width: 100%;
 }
-
-.card {
-  border: .1rem solid #ddd;
-  border-radius: .2rem;
-  box-shadow: .1rem .1rem .3rem rgba(0, 0, 0, 0.2);
-  margin: 0 .3rem 1rem .1rem;
-}
-
-  .index .card {
-    background-color: #fff;
-  }
 
 .text_right {
     text-align: right;
@@ -1416,11 +1411,6 @@ Front Page
   padding: 4rem;
 }
 
-.home .card .post_label,
-.home .post_container .post_label {
-  margin-bottom: 0;
-}
-
 
 /*------------------------------
 Content
@@ -1533,7 +1523,6 @@ Content
 
   .card,
   .post_container {
-    background-color: #fff;
     border-radius: .2rem;
     box-shadow:
       0 0 0 .1rem #ddd,
@@ -1544,6 +1533,11 @@ Content
     padding: 0;
 		text-decoration: none;
 	}
+
+    .index .card,
+    .index .post_container {
+      background-color: #fff;
+    }
 
   .card a,
   .post_container a {
@@ -1638,7 +1632,7 @@ Content
     }
 
 
-  /* Series title. */
+  /* Post label styles. */
 
   .post_label {
     font-size: 1.4rem;
@@ -1646,6 +1640,11 @@ Content
     margin-bottom: .5em;
     text-transform: uppercase;
   }
+
+    .home .card .post_label,
+    .home .post_container .post_label {
+      margin-bottom: 0;
+    }
 
     .post_label a {
       color: #666;
