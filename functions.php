@@ -1441,11 +1441,10 @@ function lawyerist_checkout_fields( $fields ) {
 	$lab_insider_product_ids = array(
 		208237, // Lawyerist Insider
 		242723, // Lawyerist Insider Plus
-		224266, // Lawyerist Lab
+		259298, // Lawyerist Lab
 		224435, // Lawyerist Lab Pro
 		227674, // Lawyerist LabCon
 		235522, // Lawyerist LabCon Pre-Registration
-		237327, // Lawyerist Lab (Full)
 		237421, // Lawyerist Lab (Monthly Payments)
 		238051, // Lawyerist Lab + LabCon (Monthly Payments)
 		238052, // Lawyerist Lab + LabCon (Full Payment)
