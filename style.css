@@ -4026,6 +4026,10 @@ WooCommerce
     line-height: unset;
   }
 
+  .woocommerce-variation-price {
+    margin-bottom: 1em;
+  }
+
   .woocommerce-checkout .headline,
   .woocommerce-checkout h2,
   .woocommerce-checkout h3,
