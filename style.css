@@ -1524,6 +1524,7 @@ Front Page
 #big_hero_cta {
   margin: 0 auto 6rem auto;
   max-width: 68rem;
+  padding: 0;
   position: relative;
 }
 
