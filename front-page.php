@@ -160,7 +160,7 @@
 						<div id="big_hero_top">
 							<?php echo $cta_copy; ?>
 						</div>
-						<a class="button <?php if ( !is_user_logged_in() ) { echo 'free-flag'; } ?>" href="<?php echo $cta_button_url; ?>"><?php echo $cta_button_text; ?></a>
+						<a class="button <?php if ( !is_user_logged_in() && $today != '2018-11-26' ) { echo 'free-flag'; } ?>" href="<?php echo $cta_button_url; ?>"><?php echo $cta_button_text; ?></a>
 					</div>
 				</div>
 
