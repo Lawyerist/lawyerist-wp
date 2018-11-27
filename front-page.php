@@ -71,33 +71,7 @@
 			}
 
 	    // Outputs the front page call to action.
-
-			$today = date( 'Y-m-d' );
-
-			if ( $today == '2018-11-26' && !wc_memberships_is_user_active_member( $user_id, 'insider-plus-affinity' ) ) {
-
-				// Outputs the Insider Plus Cyber Monday call to action.
-				$cta_label				= 'Insider Plus';
-				$cta_button_url	 	= 'https://lawyerist.com/cart/?add-to-cart=242723';
-				$cta_button_text	=	'Join Now';
-
-				ob_start();
-
-				?>
-
-					<p class="headline">Cyber Monday Deal: 50% Off.</p>
-					<p>Join Insider Plus today for <strong>50% OFF</strong> the regular price of $89. You’ll get access to incredible tools designed to equip your law firm for success, including:</p>
-					<ul>
-						<li>Our Affinity Partner program, with sdiscounts on dozens of carefully selected products and services—including some you already use.</li>
-						<li>Lawyerist Survival Guides.</li>
-						<li>Join the community of lawyers building client-centered, future-oriented law practices!</li>
-					</ul>
-
-				<?php
-
-				$cta_copy = ob_get_clean();
-
-			} elseif ( !is_user_logged_in() ) {
+			if ( !is_user_logged_in() ) {
 
 				// Outputs the Insider (free) call to action.
 				$cta_label				= 'Insider';
@@ -160,7 +134,7 @@
 						<div id="big_hero_top">
 							<?php echo $cta_copy; ?>
 						</div>
-						<a class="button <?php if ( !is_user_logged_in() && $today != '2018-11-26' ) { echo 'free-flag'; } ?>" href="<?php echo $cta_button_url; ?>"><?php echo $cta_button_text; ?></a>
+						<a class="button <?php if ( !is_user_logged_in() ) { echo 'free-flag'; } ?>" href="<?php echo $cta_button_url; ?>"><?php echo $cta_button_text; ?></a>
 					</div>
 				</div>
 
