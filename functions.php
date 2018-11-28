@@ -451,7 +451,7 @@ function lawyerist_sponsored_product_updates() {
 				'terms'    => array( 4077 ),
 			),
 		),
-		'ignore_sticky_posts' => TRUE,
+		'post__not_in'				=> get_option( 'sticky_posts' ),
 		'posts_per_page'			=> 4, // Determines how many posts are displayed in the list.
 	);
 
@@ -789,7 +789,7 @@ function lawyerist_current_posts( $this_post ) {
 			// Outputs the most recent podcast episode.
 			$current_podcast_query_args = array(
 				'category_name'				=> 'lawyerist-podcast',
-				'ignore_sticky_posts' => TRUE,
+				'post__not_in'				=> get_option( 'sticky_posts' ),
 				'posts_per_page'			=> 1,
 				'post__not_in'				=> $this_post,
 			);
@@ -815,7 +815,7 @@ function lawyerist_current_posts( $this_post ) {
 			// Outputs the most recent download.
 			$download_query_args = array(
 				'post_type'						=> 'product',
-				'ignore_sticky_posts' => TRUE,
+				'post__not_in'				=> get_option( 'sticky_posts' ),
 				'posts_per_page'			=> 1,
 				'post__not_in'				=> $this_post,
 				'tax_query'						=> array(
@@ -853,7 +853,7 @@ function lawyerist_current_posts( $this_post ) {
 			// Outputs the most recent community post.
 			$current_post_query_args = array(
 				'category_name'				=> 'community-posts',
-				'ignore_sticky_posts' => TRUE,
+				'post__not_in'				=> get_option( 'sticky_posts' ),
 				'posts_per_page'			=> 1,
 				'post__not_in'				=> $this_post,
 			);

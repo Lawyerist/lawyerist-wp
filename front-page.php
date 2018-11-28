@@ -149,7 +149,7 @@
 				// Outputs the most recent podcast episode.
 				$current_podcast_query_args = array(
 					'category_name'				=> 'lawyerist-podcast',
-					'ignore_sticky_posts' => TRUE,
+					'post__not_in'				=> get_option( 'sticky_posts' ),
 					'posts_per_page'			=> 1,
 				);
 
@@ -232,7 +232,7 @@
 		    // Outputs the most recent download.
 				$download_query_args = array(
 					'post_type'						=> 'product',
-					'ignore_sticky_posts' => TRUE,
+					'post__not_in'				=> get_option( 'sticky_posts' ),
 					'posts_per_page'			=> 1,
 					'tax_query'						=> array(
 						array(
@@ -301,7 +301,7 @@
 				// Outputs the 3 most recent community posts.
 				$current_post_query_args = array(
 					'category_name'				=> 'community-posts',
-					'ignore_sticky_posts' => TRUE,
+					'post__not_in'				=> get_option( 'sticky_posts' ),
 					'posts_per_page'			=> 3,
 				);
 

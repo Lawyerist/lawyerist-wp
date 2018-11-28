@@ -1498,7 +1498,8 @@ Front Page
     text-decoration: none;
   }
 
-  .front_page_sticky_post .headline {
+  .front_page_sticky_post.card .headline {
+    font-size: 2.4rem;
     margin-bottom: 0 !important;
     margin-left: 2.4rem !important;
     text-indent: -2.9rem !important;
