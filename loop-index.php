@@ -68,7 +68,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
   } else {
 
     // Figures out the post thumbnail.
-    if ( has_category( 'lawyerist-podcast' ) || has_category( 'how-lawyers-work' ) ) {
+    if ( has_category( 'lawyerist-podcast' ) || has_tag( 'how-lawyers-work' ) ) {
 
       $first_image_url = get_first_image_url();
 
@@ -78,7 +78,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
           $first_image_url = 'https://lawyerist.com/lawyerist/wp-content/uploads/2018/09/podcast-mic-square-150x150.png';
 
-        } elseif ( has_category( 'how-lawyers-work' ) ) {
+        } elseif ( has_tag( 'how-lawyers-work' ) ) {
 
           $first_image_url = 'https://lawyerist.com/lawyerist/wp-content/uploads/2018/01/typewriter-150x150.jpg';
 
