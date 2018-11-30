@@ -13,7 +13,7 @@
 
 	<?php
 
-		// Checks to see if the front page is set to show community posts, and if so uses
+		// Checks to see if the front page is set to show blog posts, and if so uses
 		// the same code as index.php.
 		if ( 'posts' == get_option( 'show_on_front' ) ) :
 
@@ -143,7 +143,7 @@
 			}
 
 
-			// Outputs a block of new stuff (podcast, Lens, download, and community posts).
+			// Outputs a block of new stuff (podcast, Lens, download, and blog posts).
 			echo '<div class="front_page_block">';
 
 				// Outputs the most recent podcast episode.
@@ -298,9 +298,9 @@
 				// End of download.
 
 
-				// Outputs the 3 most recent community posts.
+				// Outputs the 3 most recent blog posts.
 				$current_post_query_args = array(
-					'category_name'				=> 'community-posts',
+					'category_name'				=> 'blog-posts',
 					'post__not_in'				=> get_option( 'sticky_posts' ),
 					'posts_per_page'			=> 3,
 				);
@@ -310,7 +310,7 @@
 				if ( $current_post_query->have_posts() ) :
 
 					// Starts the post container.
-					echo '<div id="community-posts" class="card">';
+					echo '<div id="blog-posts" class="card">';
 
 						while ( $current_post_query->have_posts() ) : $current_post_query->the_post();
 
@@ -368,7 +368,7 @@
 					echo '</div>';
 
 				endif;
-				// End of community post.
+				// End of blog posts.
 
 			echo '</div>'; // End of new stuff.
 

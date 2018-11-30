@@ -13,15 +13,10 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
   post_class( 'hentry' );
   echo '>';
 
-    // Show breadcrumbs on community posts.
-    if ( has_category( 'community-posts' ) && function_exists( 'yoast_breadcrumb' ) ) {
-      yoast_breadcrumb( '<div class="breadcrumbs">', '</div>' );
-    }
-
     echo '<div class="headline_postmeta">';
 
-      // Shows author avatar on community posts.
-      if ( has_category( 'community-posts' ) ) {
+      // Shows author avatar on blog posts.
+      if ( has_category( 'blog-posts' ) ) {
         $author_name   = get_the_author_meta( 'display_name' );
         $author_avatar = get_avatar( get_the_author_meta( 'user_email' ), 100, '', $author_name );
 
@@ -41,10 +36,10 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
     echo '</div>'; // Close .headline_postmeta.
 
-    // Shows featured image if (1) this isn't a community post AND (2) this post
+    // Shows featured image if (1) this isn't a blog post AND (2) this post
     // has a featured image AND (3) it is the first page of the post AND (4) the
     // post DOES NOT have the no-image tag.
-    if ( !has_category( 'community-posts' ) && has_post_thumbnail() && !has_tag('no-image') ) { the_post_thumbnail('standard_thumbnail'); }
+    if ( !has_category( 'blog-posts' ) && has_post_thumbnail() && !has_tag('no-image') ) { the_post_thumbnail('standard_thumbnail'); }
 
     // Output the post.
     echo '<div class="post_body" itemprop="articleBody">';
@@ -77,8 +72,8 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
     echo '</div>'; // Close .post_body.
 
-    // Outputs the author bio except on community posts.
-  	if ( !has_category( 'community-posts' ) ) {
+    // Outputs the author bio except on blog posts.
+  	if ( !has_category( 'blog-posts' ) ) {
       lawyerist_get_author_bio();
     }
 

@@ -1181,7 +1181,7 @@ Selectors
 .has-avatar-thumbnail
 .has-post-label
 .category-lawyerist-podcast
-.category-community-posts
+.category-blog-posts
 .sponsored
 .type-product
 .page
@@ -1420,7 +1420,7 @@ padding: 6rem;
 }
 
 .card.category-lawyerist-podcast .headline,
-.card.category-community-posts .headline {
+.card.category-blog-posts .headline {
   font-size: 3.2rem;
   margin-bottom: .25em;
 }
@@ -1695,33 +1695,29 @@ Front Page
   margin-bottom: 0 !important;
 }
 
-.home #community-posts {
+.home #blog-posts {
   padding: 2rem;
 }
 
-  .home #community-posts .category-community-posts {
-    padding: 0;
-  }
-
-  .home #community-posts .headline-excerpt {
+  .home #blog-posts .headline-excerpt {
     margin-bottom: 2rem;
     padding: 0;
   }
 
-    .home #community-posts .headline,
-    .home #community-posts .postmeta {
+    .home #blog-posts .headline,
+    .home #blog-posts .postmeta {
       margin-left: 1.5rem;
       padding-left: 7.5rem;
     }
 
-    .home #community-posts .author_avatar {
+    .home #blog-posts .author_avatar {
       float: left;
       font-size: 1rem;
       line-height: 1;
       width: 7.5rem;
     }
 
-      .home #community-posts .author_avatar img {
+      .home #blog-posts .author_avatar img {
         height: auto;
         margin: 0;
         width: 100%;
@@ -2106,20 +2102,20 @@ Content
 
     }
 
-  .single .category-community-posts .headline_postmeta {
+  .single .category-blog-posts .headline_postmeta {
     min-height: 10rem;
   }
 
-    .single .category-community-posts .author_avatar {
+    .single .category-blog-posts .author_avatar {
       float: left;
     }
 
-      .single .category-community-posts .author_avatar img {
+      .single .category-blog-posts .author_avatar img {
         margin: 0;
       }
 
-    .single .category-community-posts .headline,
-    .single .category-community-posts .headline_postmeta .postmeta {
+    .single .category-blog-posts .headline,
+    .single .category-blog-posts .headline_postmeta .postmeta {
       padding-left: 11.5rem;
     }
 

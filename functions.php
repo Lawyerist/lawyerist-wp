@@ -847,9 +847,9 @@ function lawyerist_current_posts( $this_post ) {
 			endwhile; endif;
 			// End of download.
 
-			// Outputs the most recent community post.
+			// Outputs the most recent blog post.
 			$current_post_query_args = array(
-				'category_name'				=> 'community-posts',
+				'category_name'				=> 'blog-posts',
 				'post__not_in'				=> get_option( 'sticky_posts' ),
 				'posts_per_page'			=> 1,
 				'post__not_in'				=> $this_post,
@@ -875,7 +875,7 @@ function lawyerist_current_posts( $this_post ) {
 				echo '</a>';
 
 			endwhile; endif;
-			// End of community post.
+			// End of blog post.
 
 			// Outputs the most recent portal.
 			$current_post_query_args = array(

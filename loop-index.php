@@ -25,13 +25,10 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
   $post_url       = get_permalink();
   $post_type      = get_post_type( $post->ID );
 
-  // Sets the post title to the Yoast SEO Title for pages.
-  // if ( $post_type == 'page' && !empty( $seo_title ) ) { $post_title = $seo_title; }
-
   // Sets the post excerpt to the Yoast Meta Description.
   if ( !empty( $seo_descr ) ) { $post_excerpt = $seo_descr; }
 
-  $post_classes[] = 'card'; // .post, .page, and .product are added automatically, as are tags and formats.
+  $post_classes[] = 'card'; // .post, .page, and .product are added automatically, as are categories, tags, and formats.
 
   // Skips sponsored posts.
   if ( has_term( true, 'sponsor' ) ) {
@@ -113,7 +110,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
           echo '<h2 class="headline">' . $post_title . '</h2>';
 
           // Output the excerpt, with exceptions.
-          if ( !has_category( 'lawyerist-podcast' ) && !has_category( 'community-posts' ) && $post_type != 'page' ) {
+          if ( !has_category( 'lawyerist-podcast' ) && !has_category( 'blog-posts' ) && $post_type != 'page' ) {
             echo '<p class="excerpt">' . $post_excerpt . '</p>';
           }
 
