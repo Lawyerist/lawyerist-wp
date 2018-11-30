@@ -43,6 +43,9 @@ COMMENTS & REVIEWS
 - Show Commenter's First Name & Initial
 - Reviews
 
+GRAVITY FORMS
+- Auto-Populate Form Fields
+
 WOOCOMMERCE
 - WooCommerce Setup
 - Display Price of Free Products As "Free!" Not "$0.00".
@@ -1346,6 +1349,59 @@ function lawyerist_star_rating( $rating = '' ) {
 	return $lawyerist_star_rating;
 
 }
+
+
+/* GRAVITY FORMS **************/
+
+/*------------------------------
+Auto-Populate Form Fields
+------------------------------*/
+
+function populate_first_name_field( $value ){
+
+	if ( is_user_logged_in() ) {
+
+		$user_info = get_userdata( get_current_user_id() );
+
+		$first_name = $user_info->first_name;
+
+		return $first_name;
+
+	}
+
+}
+
+function populate_last_name_field( $value ){
+
+	if ( is_user_logged_in() ) {
+
+		$user_info = get_userdata( get_current_user_id() );
+
+		$last_name = $user_info->last_name;
+
+		return $last_name;
+
+	}
+
+}
+
+function populate_email_field( $value ){
+
+	if ( is_user_logged_in() ) {
+
+		$user_info = get_userdata( get_current_user_id() );
+
+		$email = $user_info->user_email;
+
+		return $email;
+
+	}
+
+}
+
+add_filter( 'gform_field_value_first-name', 'populate_first_name_field' );
+add_filter( 'gform_field_value_last-name', 'populate_last_name_field' );
+add_filter( 'gform_field_value_email', 'populate_email_field' );
 
 
 /* WOOCOMMERCE ****************/
