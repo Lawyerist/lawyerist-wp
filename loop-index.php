@@ -4,7 +4,6 @@
 Selectors
 
 has_category( 'lawyerist-podcast' )
-has_term( true, 'series' )
 has_term( true, 'sponsor' )
 $post_type == 'product'
 $post_type == 'page'
@@ -33,27 +32,6 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
   if ( !empty( $seo_descr ) ) { $post_excerpt = $seo_descr; }
 
   $post_classes[] = 'card'; // .post, .page, and .product are added automatically, as are tags and formats.
-
-  // Assigns series class and label.
-  if ( has_term( true, 'series' ) && !is_tax( 'series' ) ) {
-
-    $post_classes[] = 'series has-post-label';
-
-    $series_IDs = wp_get_post_terms(
-      $post->ID,
-      'series',
-      array(
-        'fields' 	=> 'ids',
-        'orderby' => 'count',
-        'order' 	=> 'DESC'
-      )
-    );
-
-    $series_info				= get_term( $series_IDs[0] );
-    $post_label 		   	= $series_info->name;
-    $post_label_url			=	get_term_link( $series_IDs[0], 'series' );
-
-  }
 
   // Skips sponsored posts.
   if ( has_term( true, 'sponsor' ) ) {
@@ -89,7 +67,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
       $thumbnail      = '<div class="author_avatar"><img class="avatar" src="' . $first_image_url . '" /></div>';
       $post_classes[] = 'has-avatar-thumbnail';
 
-    } elseif ( ( is_page() || is_author() || is_tax( 'series' ) ) && has_post_thumbnail() ) {
+    } elseif ( ( is_page() || is_author() ) && has_post_thumbnail() ) {
 
       $thumbnail_url  = get_the_post_thumbnail_url( $post->ID, 'default_thumbnail' );
       $thumbnail      = '<div class="default_thumbnail" style="background-image: url( ' . $thumbnail_url . ' );"></div>';

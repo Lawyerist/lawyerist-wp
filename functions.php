@@ -53,7 +53,6 @@ WOOCOMMERCE
 
 TAXONOMY
 - Page Type Custom Taxonomy
-- Series Custom Taxonomy
 - Sponsors Custom Taxonomy
 
 */
@@ -279,11 +278,6 @@ function lawyerist_query_mods( $wp_query ) {
 	// Add pages and products to the main feed.
 	if ( !is_admin() && !is_author() ) {
 		set_query_var( 'post_type', array( 'post', 'page', 'product' ) );
-	}
-
-	// If displaying a series archive page, show the oldest post first.
-	if ( !is_admin() && is_tax( 'series' ) ) {
-		set_query_var( 'order', 'ASC' );
 	}
 
 }
@@ -1630,56 +1624,6 @@ function page_type_tax() {
 }
 
 add_action( 'init', 'page_type_tax', 0 );
-
-
-/*------------------------------
-Series Custom Taxonomy
-------------------------------*/
-
-// Register Custom Taxonomy
-function series_tax() {
-
-	$labels = array(
-		'name'                       => 'Series',
-		'singular_name'              => 'Series',
-		'menu_name'                  => 'Series',
-		'all_items'                  => 'All Series',
-		'parent_item'                => 'Parent Series',
-		'parent_item_colon'          => 'Parent Series:',
-		'new_item_name'              => 'New Series',
-		'add_new_item'               => 'Add New Series',
-		'edit_item'                  => 'Edit Series',
-		'update_item'                => 'Update Series',
-		'separate_items_with_commas' => 'Separate series with commas',
-		'search_items'               => 'Search Series',
-		'add_or_remove_items'        => 'Add or remove series',
-		'choose_from_most_used'      => 'Choose from existing series',
-		'not_found'                  => 'Series Not Found',
-	);
-
-	$rewrite = array(
-		'slug'                       => 'series',
-		'with_front'                 => true,
-		'hierarchical'               => false,
-	);
-
-	$args = array(
-		'labels'                     => $labels,
-		'hierarchical'               => false,
-		'public'                     => true,
-		'show_ui'                    => true,
-		'show_admin_column'          => true,
-		'show_in_nav_menus'          => true,
-		'show_tagcloud'              => false,
-		'rewrite'                    => $rewrite,
-	);
-
-	register_taxonomy( 'series', array( 'post' ), $args );
-
-}
-
-// Hook into the 'init' action
-add_action( 'init', 'series_tax', 0 );
 
 
 /*------------------------------
