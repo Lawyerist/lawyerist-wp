@@ -739,6 +739,10 @@ li:first-child {
   margin-top: 1.4rem;
 }
 
+  .woocommerce ul.order_details li:first-child {
+    margin-top: unset;
+  }
+
 
 /*------------------------------
 Images
