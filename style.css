@@ -3651,6 +3651,21 @@ a.review-btn,
     top: unset;
   }
 
+  .woocommerce .download-file a.button {
+    line-height: 0;
+    margin-bottom: 0;
+    overflow: hidden;
+    text-indent: -9999px;
+    white-space: nowrap;
+  }
+
+    .woocommerce .download-file a.button:after {
+      content: "Download";
+      display: block;
+      line-height: 3.6rem;
+      text-indent: 0;
+    }
+
 button:focus,
 .button:focus,
 a.button:focus,
