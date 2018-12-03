@@ -1582,7 +1582,7 @@ function insider_plus_shopping_cart_upsell() {
 			$user_id = get_current_user_id();
 		}
 
-		if ( !wc_memberships_is_user_active_member( $user_id, 'insider-plus' ) && !woo_in_cart( 208247 ) ) {
+		if ( !wc_memberships_is_user_active_member( $user_id, 'insider-plus-affinity' ) && !woo_in_cart( 242723 ) ) {
 			echo '<div id="insider_plus_upsell" class="woocommerce-info">Want to be able to get everything in our library, plus discounts on some of the best law practice products and services? Upgrade to Insider Plus for just $89/year! <a class="button" href="https://lawyerist.com/cart/?add-to-cart=242723">Upgrade Now!</a></div>';
 		}
 
