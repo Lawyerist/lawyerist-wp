@@ -442,11 +442,6 @@ function lawyerist_sponsored_product_updates() {
 				'taxonomy' => 'category',
 				'terms'    => array( 1320 ),
 			),
-			// Posts with the "product spotlight" tag.
-			array(
-				'taxonomy' => 'post_tag',
-				'terms'    => array( 4077 ),
-			),
 		),
 		'post__not_in'				=> get_option( 'sticky_posts' ),
 		'posts_per_page'			=> 4, // Determines how many posts are displayed in the list.
@@ -526,13 +521,11 @@ function lawyerist_get_related_podcasts() {
 		'category_name'			=> 'lawyerist-podcast',
 		'category__not_in'	=> array(
 			1320, // Excludes sponsored posts.
+			4077, // Excludes product spotlights.
 		),
 		'post__not_in'		=> $current_id,
 		'posts_per_page'	=> -1,
 		'tag' 						=> $current_slug,
-		'tag__not_in'			=> array(
-			4077, // Excludes product spotlights.
-		),
 	);
 
 	$lawyerist_related_podcasts_query = new WP_Query( $lawyerist_related_podcasts_query_args );
@@ -612,14 +605,12 @@ function lawyerist_get_related_posts() {
 	$lawyerist_related_posts_query_args = array(
 		'category__not_in'	=> array(
 			1320, // Excludes sponsored posts.
+			4077, // Excludes product spotlights.
 			4183, // Excludes podcast episodes.
 		),
 		'post__not_in'		=> $current_id,
 		'posts_per_page'	=> -1,
 		'tag' 						=> $current_slug,
-		'tag__not_in'			=> array(
-			4077, // Excludes product spotlights.
-		),
 	);
 
 	$lawyerist_related_posts_query = new WP_Query( $lawyerist_related_posts_query_args );

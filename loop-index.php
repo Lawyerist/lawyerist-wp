@@ -31,7 +31,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
   $post_classes[] = 'card'; // .post, .page, and .product are added automatically, as are categories, tags, and formats.
 
   // Skips sponsored posts.
-  if ( has_term( true, 'sponsor' ) ) {
+  if ( has_term( true, 'sponsor' ) &&  !is_category( array( 1320, 4077 ) ) ) {
 
     continue;
 
