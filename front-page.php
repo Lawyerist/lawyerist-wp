@@ -419,7 +419,7 @@
 
 			</div>
 
-			<div class="front_page_block fp_contains_boxes">
+			<div class="front_page_block">
 
 				<?php lawyerist_sponsored_product_updates(); ?>
 

@@ -2017,18 +2017,7 @@ Content
     }
 
   #sponsored_product_updates {
-    background-color: #fff;
-    border-radius: .2rem;
     border-top: .7rem solid #ffffa0;
-    box-shadow:
-      0 0 0 .1rem #ddd,
-      .1rem .1rem .3rem rgba(0, 0, 0, 0.2)
-    ;
-    display: block;
-    margin-bottom: 1rem;
-    padding: 2rem;
-    position: relative;
-		text-decoration: none;
 	}
 
     .page #sponsored_product_updates {

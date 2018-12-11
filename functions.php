@@ -451,7 +451,7 @@ function lawyerist_sponsored_product_updates() {
 
 	if ( $product_updates_query->post_count > 1 ) :
 
-		echo '<div id="sponsored_product_updates">';
+		echo '<div id="sponsored_product_updates" class="card">';
 
 			echo '<div class="product_updates_heading">Product Updates</div>';
 
