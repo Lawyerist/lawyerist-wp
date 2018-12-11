@@ -12,6 +12,7 @@ STRUCTURE
 
 ADMIN
 - Login Form
+- Scorecard Reports
 
 UTILITY FUNCTIONS
 - Get Country
@@ -210,6 +211,186 @@ add_action( 'login_enqueue_scripts', 'lawyerist_login_logo' );
 add_filter( 'login_headerurl', 'lawyerist_login_logo_url' );
 add_filter( 'login_headertitle', 'lawyerist_login_logo_url_title' );
 add_filter( 'login_message', 'lawyerist_login_message' );
+
+
+/*------------------------------
+Scorecard Reports
+------------------------------*/
+
+// This should probably be turned into a separate plugin.
+
+/**
+* Returns an array of scorecard data for a given email address.
+*
+* @param string $user_email Optional. Accepts a valid email address.
+*/
+function get_scorecard_results( $user_email = '' ) {
+
+	if ( is_plugin_active( 'gravityforms/gravityforms.php' ) ) :
+
+		if ( empty( $user_email ) ) {
+
+			// Gets the current user's email address.
+			$user_info	= get_userdata( get_current_user_id() );
+			$user_email	= $user_info->user_email;
+
+		}
+
+		// Defines the Gravity Forms form ids.
+		// 45 = Small Firm Scorecard; 47 = Solo Practice Scorecard
+		$form_ids		= array( 45, 47 );
+
+		// Searches for all scorecards that have the current user's email address.
+		$search_criteria['field_filters'][] = array(
+			'key'		=> '18', // Luckily, 18 is the email field ID in both forms.
+			'value' => $user_email,
+		);
+
+		// Sorts scorecard results by the date created, with the most recent first.
+		$sorting = array(
+			'key'					=> 'date_created',
+			'direction'		=> 'DESC',
+		);
+
+		// Gets all the scorecards for the given $user_email.
+		$entries = GFAPI::get_entries( $form_ids, $search_criteria, $sorting );
+
+		if ( !empty( $entries ) ) {
+
+			foreach ( $entries as $entry ) {
+
+				$entry_id		= $entry['id'];
+				$form_id		= $entry['form_id'];
+				$raw_score	= $entry['gsurvey_score'];
+
+				// Checks to see which form was submitted.
+			  switch ( $form_id ) {
+
+			    case $form_id == '45': // Small Firm Scorecard
+			      $total = 500;
+						$scorecard_result['version'] = 'Small Firm Scorecard';
+			      break;
+
+			    case $form_id == 47: // Solo Practice Scorecard
+			      $total = 400;
+						$scorecard_result['version'] = 'Solo Practice Scorecard';
+			      break;
+
+			  }
+
+			  // Calculates the % score.
+			  $score = ( $raw_score / $total ) * 100;
+
+			  switch ( $score ) {
+
+			    case ( $score < 60 ):
+			      $grade = 'F';
+			      break;
+
+			    case ( $score >= 60 && $score < 70 ):
+			      $grade = 'D';
+			      break;
+
+			    case ( $score >= 70 && $score < 80 ):
+			      $grade = 'C';
+			      break;
+
+			    case ( $score >= 80 && $score < 90 ):
+			      $grade = 'B';
+			      break;
+
+			    case ( $score >= 90 ):
+			      $grade = 'A';
+			      break;
+
+			  }
+
+				$scorecard_result['percentage'] = $score;
+				$scorecard_result['grade'] = $grade;
+
+				// Creates a new sub-array for the scorecard.
+				$scorecard_results[ $entry_id ][ 'entry_id' ]		= $entry_id;
+				$scorecard_results[ $entry_id ][ 'grade' ]			= $scorecard_result[ 'grade' ];
+				$scorecard_results[ $entry_id ][ 'percentage' ]	= $scorecard_result[ 'percentage' ];
+				$scorecard_results[ $entry_id ][ 'version' ]		= $scorecard_result[ 'version' ];
+				$scorecard_results[ $entry_id ][ 'date' ]				= date_format( date_create( $entry[ 'date_created' ] ), 'F j, Y \a\t g:i a' );
+
+			}
+
+		}
+
+		return $scorecard_results;
+
+	endif;
+
+}
+
+
+function scorecard_report_page_html() {
+
+	if ( is_plugin_active( 'gravityforms/gravityforms.php' ) ) :
+
+		echo '<div class="wrap">';
+
+			echo '<h1>' . esc_html( get_admin_page_title() ) . '</h1>';
+
+			$scorecard_results = get_scorecard_results();
+
+			if ( !empty( $scorecard_results ) ) {
+
+				// Outputs a table of scorecard results.
+				echo '<table class="wp-list-table widefat fixed striped scorecard-reports">';
+					echo '<thead><tr>';
+						echo '<th scope="col" id="grade" class="manage-column column-title column-primary">Grade</th>';
+						echo '<th scope="col" id="percentage" class="manage-column column-title column-primary">%</th>';
+						echo '<th scope="col" id="version" class="manage-column column-title column-primary">Scorecard Version</th>';
+						echo '<th scope="col" id="date" class="manage-column column-title column-primary">Date</th>';
+					echo '</tr></thead>';
+
+					echo '<tbody>';
+
+						foreach ( $scorecard_results as $scorecard_result ) {
+
+							echo '<tr>';
+								echo '<td><strong>' . $scorecard_result[ 'grade' ] . '<strong></td>';
+								echo '<td>' . $scorecard_result[ 'percentage' ] . '%</td>';
+								echo '<td>' . $scorecard_result[ 'version' ] . '</td>';
+								echo '<td>' . $scorecard_result[ 'date' ] . '</td>';
+							echo '</tr>';
+
+						}
+
+					echo '</tbody>';
+
+				echo '</table>';
+
+			}
+
+    echo '</div>'; // Close .wrap
+
+	endif;
+
+}
+
+
+function scorecard_reports_page() {
+
+	if ( is_plugin_active( 'gravityforms/gravityforms.php' ) ) :
+
+		add_submenu_page(
+		    'tools.php',
+		    'Scorecard Report Card',
+		    'Scorecard Report Card',
+		    'manage_options',
+		    'scorecard',
+		    'scorecard_report_page_html'
+		);
+
+	endif;
+
+}
+
+add_action('admin_menu', 'scorecard_reports_page');
 
 
 /* UTILITY FUNCTIONS ********************/
