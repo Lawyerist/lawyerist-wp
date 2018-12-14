@@ -367,7 +367,7 @@ function scorecard_results_graph( $scorecard_results = '' ) {
 
 	echo '<div id="scorecard-results-graph" class="card">';
 
-	echo '<p class="post_label">Scorecard Report Card</p>';
+	echo '<p class="post_label">Small Firm Scorecard Report Card</p>';
 
 	echo '<div class="scorecard-results-wrapper">';
 
