@@ -267,13 +267,38 @@ function get_scorecard_results( $user_email = '' ) {
 			  switch ( $form_id ) {
 
 			    case $form_id == '45': // Small Firm Scorecard
+
 			      $total = 500;
 						$scorecard_result['version'] = 'Small Firm Scorecard';
+
+						/* $scorecard_sections = array(
+							'Goals'											=> array( 2, 4, 5 ),
+							'Strategy'									=> array( 22, 23, 24, 25, 26, 27, 28, 29 ),
+							'Technology'								=> array( 32, 33, 34, 35, 36, 37 ),
+							'Client Acquisition'				=> array( 40, 41, 42, 43, 44, 45 ),
+							'Systems & Procedures'			=> array( 48, 49, 50, 51 ),
+							'Client-Centered Services'	=> array( 54, 55, 56, 57, 58, 59, 60 ),
+							'Finances'									=> array( 63, 64, 65, 66, 67 ),
+							'People & Staffing'					=> array( 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80 ),
+						); */
+
 			      break;
 
 			    case $form_id == 47: // Solo Practice Scorecard
 			      $total = 400;
 						$scorecard_result['version'] = 'Solo Practice Scorecard';
+
+						/* $scorecard_sections = array(
+							'Goals'											=> array( 2, 4, 5 ),
+							'Strategy'									=> array( 22, 24, 25, 26, 27, 29 ),
+							'Technology'								=> array( 32, 33, 34, 35, 36, 37 ),
+							'Client Acquisition'				=> array( 40, 41, 42, 43, 44, 45 ),
+							'Systems & Procedures'			=> array( 48, 49, 51 ),
+							'Client-Centered Services'	=> array( 54, 55, 56, 57, 58, 59, 60 ),
+							'Finances'									=> array( 63, 64, 65, 66, 67 ),
+							'People & Staffing'					=> array( 78, 79, 80, 81 ),
+						); */
+
 			      break;
 
 			  }
@@ -283,23 +308,23 @@ function get_scorecard_results( $user_email = '' ) {
 
 			  switch ( $score ) {
 
-			    case ( $score < 60 ):
+			    case ( $score < 60 ) :
 			      $grade = 'F';
 			      break;
 
-			    case ( $score >= 60 && $score < 70 ):
+			    case ( $score >= 60 && $score < 70 ) :
 			      $grade = 'D';
 			      break;
 
-			    case ( $score >= 70 && $score < 80 ):
+			    case ( $score >= 70 && $score < 80 ) :
 			      $grade = 'C';
 			      break;
 
-			    case ( $score >= 80 && $score < 90 ):
+			    case ( $score >= 80 && $score < 90 ) :
 			      $grade = 'B';
 			      break;
 
-			    case ( $score >= 90 ):
+			    case ( $score >= 90 ) :
 			      $grade = 'A';
 			      break;
 
@@ -313,7 +338,7 @@ function get_scorecard_results( $user_email = '' ) {
 				$scorecard_results[ $entry_id ][ 'grade' ]			= $scorecard_result[ 'grade' ];
 				$scorecard_results[ $entry_id ][ 'percentage' ]	= $scorecard_result[ 'percentage' ];
 				$scorecard_results[ $entry_id ][ 'version' ]		= $scorecard_result[ 'version' ];
-				$scorecard_results[ $entry_id ][ 'date' ]				= date_format( date_create( $entry[ 'date_created' ] ), 'F j, Y \a\t g:i a' );
+				$scorecard_results[ $entry_id ][ 'date' ]				= $entry[ 'date_created' ];
 
 			}
 
@@ -322,6 +347,101 @@ function get_scorecard_results( $user_email = '' ) {
 		return $scorecard_results;
 
 	endif;
+
+}
+
+
+function scorecard_frontpage_widget() {
+
+	if ( is_user_logged_in() && is_plugin_active( 'gravityforms/gravityforms.php' ) ) :
+
+			$scorecard_results = get_scorecard_results();
+
+			if ( !empty( $scorecard_results ) ) {
+
+				echo scorecard_results_graph( $scorecard_results );
+
+			}
+
+	endif;
+
+}
+
+
+function scorecard_results_graph( $scorecard_results = '' ) {
+
+	if ( empty( $scorecard_results ) ) {
+
+		return;
+
+	}
+
+	// Reverses the order of the array so that the results display oldest to
+	// newest from left to right.
+	$scorecard_results = array_reverse( $scorecard_results );
+
+	$col_width = 100 / count( $scorecard_results );
+
+	echo '<div id="scorecard-results-graph" class="card">';
+
+	echo '<p class="post_label">Scorecard Report Card</p>';
+
+	echo '<div class="scorecard-results-wrapper">';
+
+		foreach ( $scorecard_results as $scorecard_result ) {
+
+			$this_col_year = date_format( date_create( $scorecard_result[ 'date' ] ), 'Y' );
+			$col_height	= $scorecard_result[ 'percentage' ];
+
+			if ( empty( $prev_col_year ) || $this_col_year != $prev_col_year ) {
+
+				$year						= $this_col_year;
+				$prev_col_year	= date_format( date_create( $scorecard_result[ 'date' ] ), 'Y' );
+
+				$add_border			= ' style="border-left: 1px solid #ddd;"';
+
+			} else {
+
+				$year				= '&nbsp;';
+				$add_border	= '';
+
+			}
+
+			echo '<div class="scorecard-result-wrapper" style="width: ' . $col_width . '%;">';
+
+				echo '<div class="scorecard-year"' . $add_border . '>' . $year . '</div>';
+				echo '<div class="scorecard-month-day">' . date_format( date_create( $scorecard_result[ 'date' ] ), 'n/d' ) . '</div>';
+
+				echo '<div class="scorecard-bar-wrapper">';
+					echo '<div class="scorecard-bar" style="height: ' . $col_height/10 . 'rem;" title="On ' . date_format( date_create( $scorecard_result[ 'date' ] ), 'F j, Y' ) . ', you gave yourself ' . $scorecard_result[ 'percentage' ] . '% on the ' . $scorecard_result[ 'version' ] . '."></div>';
+				echo '</div>';
+
+				echo '<div class="scorecard-grade"><strong>' . $scorecard_result[ 'grade' ] . '</strong></div>';
+				echo '<div class="scorecard-percentage">' . round( $scorecard_result[ 'percentage' ] ) . '%</div>';
+
+			echo '</div>';
+
+		}
+
+	echo '</div>'; // Close #scorecard-results-graph-frame
+
+	switch ( $scorecard_result[ 'version' ] ) {
+
+		case ( $scorecard_result[ 'version' ] == 'Small Firm Scorecard' ) :
+
+			$scorecard_url = 'https://lawyerist.com/scorecard/small-firm-scorecard/';
+			break;
+
+		case ( $scorecard_result[ 'version' ] == 'Solo Practice Scorecard' ) :
+
+			$scorecard_url = 'https://lawyerist.com/scorecard/solo-practice-scorecard/';
+			break;
+
+	}
+
+	echo '<p align="center" class="remove_bottom"><a class="button remove_bottom" href="' . $scorecard_url . '">Update your score</a></p>';
+
+	echo '</div>'; // Close #scorecard-results-graph
 
 }
 
@@ -355,7 +475,7 @@ function scorecard_report_page_html() {
 								echo '<td><strong>' . $scorecard_result[ 'grade' ] . '<strong></td>';
 								echo '<td>' . $scorecard_result[ 'percentage' ] . '%</td>';
 								echo '<td>' . $scorecard_result[ 'version' ] . '</td>';
-								echo '<td>' . $scorecard_result[ 'date' ] . '</td>';
+								echo '<td>' . date_format( date_create( $scorecard_result[ 'date' ] ), 'F j, Y \a\t g:i a' ) . '</td>';
 							echo '</tr>';
 
 						}
@@ -1355,7 +1475,7 @@ function lawyerist_get_our_rating() {
 	global $post;
 
 	$our_rating_raw	= get_post_meta( $post->ID, 'wp_review_total', true );
-	$our_rating			= round ( $our_rating_raw / 2, 1 );
+	$our_rating			= round( $our_rating_raw / 2, 1 );
 
 	return $our_rating;
 

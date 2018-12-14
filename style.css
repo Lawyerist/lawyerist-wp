@@ -26,6 +26,7 @@ Front Page
 Content
 	Posts
   Scorecard Results
+  Scorecard Results Graph
   Tables
   Resource Pages
   Product Pages
@@ -363,6 +364,7 @@ label,
 p.pullout,
 p.pullquote,
 #scorecard_results #grade_box,
+#scorecard-results-graph,
 .post_label,
 .tag_list,
 .theiaPostSlider_nav ._text,
@@ -2533,6 +2535,62 @@ Content
     }
 
   }
+
+
+  /*------------------------------
+  Scorecard Results Graph
+  ------------------------------*/
+
+  #scorecard-results-graph .post_label {
+    margin-bottom: 1em;
+  }
+
+  #scorecard-results-graph .scorecard-results-wrapper {
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+  }
+
+    #scorecard-results-graph .scorecard-result-wrapper {
+      display: inline-block;
+      text-align: center;
+    }
+
+      #scorecard-results-graph .scorecard-year {
+        border-bottom: .1rem solid #ddd;
+        color: #888;
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+        padding-left: 1rem;
+        text-align: left;
+      }
+
+      #scorecard-results-graph .scorecard-month-day {
+        color: #888;
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+      }
+
+      #scorecard-results-graph .scorecard-bar-wrapper {
+        height: 10rem;
+        margin: 0 auto 1rem auto;
+        max-width: 3rem;
+        min-width: 1rem;
+        width: 20%;
+        position: relative;
+      }
+
+        #scorecard-results-graph .scorecard-bar {
+          background-color: #c00;
+          border-radius: .5rem;
+          box-shadow: .1rem .1rem .3rem rgba(0, 0, 0, 0.2);
+          position: absolute;
+            bottom: 0;
+          width: 100%;
+        }
+
+      #scorecard-results-graph .scorecard-percentage {
+        font-size: 1.2rem;
+      }
 
 
   /*------------------------------

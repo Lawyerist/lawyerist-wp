@@ -70,6 +70,13 @@
 				echo '<div class="separator_3rem"></div>';
 			}
 
+
+			// Outputes the Scorecard Report Card widget.
+			echo '<div class="front_page_block">';
+				echo scorecard_frontpage_widget();
+			echo '</div>';
+
+
 	    // Outputs the front page call to action.
 			if ( !is_user_logged_in() ) {
 
@@ -97,7 +104,10 @@
 
 				$user_id = get_current_user_id();
 
-				if ( wc_memberships_is_user_active_member( $user_id, 'insider' ) && !wc_memberships_is_user_active_member( $user_id, 'insider-plus-affinity' ) ) {
+				if (	!wc_memberships_is_user_active_member( $user_id, 'insider-plus-affinity' )
+							&& !wc_memberships_is_user_active_member( $user_id, 'lab' )
+							&& !wc_memberships_is_user_active_member( $user_id, 'lab-pro' )
+				) {
 
 					$cta_label				= 'Insider Plus';
 					$cta_button_url	 	= 'https://lawyerist.com/cart/?add-to-cart=242723';
