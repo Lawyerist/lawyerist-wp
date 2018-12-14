@@ -351,23 +351,6 @@ function get_scorecard_results( $user_email = '' ) {
 }
 
 
-function scorecard_frontpage_widget() {
-
-	if ( is_user_logged_in() && is_plugin_active( 'gravityforms/gravityforms.php' ) ) :
-
-			$scorecard_results = get_scorecard_results();
-
-			if ( !empty( $scorecard_results ) ) {
-
-				echo scorecard_results_graph( $scorecard_results );
-
-			}
-
-	endif;
-
-}
-
-
 function scorecard_results_graph( $scorecard_results = '' ) {
 
 	if ( empty( $scorecard_results ) ) {
@@ -446,7 +429,7 @@ function scorecard_results_graph( $scorecard_results = '' ) {
 }
 
 
-function scorecard_report_page_html() {
+function scorecard_results_report() {
 
 	if ( is_plugin_active( 'gravityforms/gravityforms.php' ) ) :
 
@@ -493,7 +476,7 @@ function scorecard_report_page_html() {
 }
 
 
-function scorecard_reports_page() {
+function scorecard_report_card_admin_page() {
 
 	if ( is_plugin_active( 'gravityforms/gravityforms.php' ) ) :
 
@@ -503,14 +486,14 @@ function scorecard_reports_page() {
 		    'Scorecard Report Card',
 		    'manage_options',
 		    'scorecard',
-		    'scorecard_report_page_html'
+		    'scorecard_results_report'
 		);
 
 	endif;
 
 }
 
-add_action('admin_menu', 'scorecard_reports_page');
+add_action('admin_menu', 'scorecard_report_card_admin_page');
 
 
 /* UTILITY FUNCTIONS ********************/

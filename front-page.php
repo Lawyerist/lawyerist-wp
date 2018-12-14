@@ -72,9 +72,21 @@
 
 
 			// Outputes the Scorecard Report Card widget.
-			echo '<div class="front_page_block">';
-				echo scorecard_frontpage_widget();
-			echo '</div>';
+			if ( is_user_logged_in() && is_plugin_active( 'gravityforms/gravityforms.php' ) ) {
+
+				echo '<div class="front_page_block">';
+
+					$scorecard_results = get_scorecard_results();
+
+					if ( !empty( $scorecard_results ) ) {
+
+						echo scorecard_results_graph( $scorecard_results );
+
+					}
+
+				echo '</div>';
+
+			}
 
 
 	    // Outputs the front page call to action.
