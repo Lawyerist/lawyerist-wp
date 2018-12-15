@@ -359,6 +359,8 @@ function scorecard_results_graph( $scorecard_results = '' ) {
 
 	}
 
+	$last_version = $scorecard_results[0][ 'version' ];
+
 	// Reverses the order of the array so that the results display oldest to
 	// newest from left to right.
 	$scorecard_results = array_reverse( $scorecard_results );
@@ -367,7 +369,11 @@ function scorecard_results_graph( $scorecard_results = '' ) {
 
 	echo '<div id="scorecard-results-graph" class="card">';
 
-	echo '<p class="post_label">Small Firm Scorecard Report Card</p>';
+	echo '<p class="post_label">Your Small Firm Scorecard Report Card</p>';
+
+	$current_user = wp_get_current_user();
+
+	echo '<p><small>Hi ' . $current_user->user_firstname . ', here is now your Scorecard has changed over time. (We recommend updating your score every quarter to track your firm\'s progress.)</small></p>';
 
 	echo '<div class="scorecard-results-wrapper">';
 
@@ -408,14 +414,14 @@ function scorecard_results_graph( $scorecard_results = '' ) {
 
 	echo '</div>'; // Close #scorecard-results-graph-frame
 
-	switch ( $scorecard_result[ 'version' ] ) {
+	switch ( $last_version ) {
 
-		case ( $scorecard_result[ 'version' ] == 'Small Firm Scorecard' ) :
+		case ( $last_version == 'Small Firm Scorecard' ) :
 
 			$scorecard_url = 'https://lawyerist.com/scorecard/small-firm-scorecard/';
 			break;
 
-		case ( $scorecard_result[ 'version' ] == 'Solo Practice Scorecard' ) :
+		case ( $last_version == 'Solo Practice Scorecard' ) :
 
 			$scorecard_url = 'https://lawyerist.com/scorecard/solo-practice-scorecard/';
 			break;

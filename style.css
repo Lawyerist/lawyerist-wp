@@ -364,7 +364,7 @@ label,
 p.pullout,
 p.pullquote,
 #scorecard_results #grade_box,
-#scorecard-results-graph,
+.scorecard-results-wrapper,
 .post_label,
 .tag_list,
 .theiaPostSlider_nav ._text,
@@ -2542,7 +2542,7 @@ Content
   ------------------------------*/
 
   #scorecard-results-graph .post_label {
-    margin-bottom: 1em;
+    margin-bottom: .5em;
   }
 
   #scorecard-results-graph .scorecard-results-wrapper {
