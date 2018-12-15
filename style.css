@@ -2542,7 +2542,7 @@ Content
   ------------------------------*/
 
   #scorecard-results-graph .post_label {
-    margin-bottom: .5em;
+    margin-bottom: 1em;
   }
 
   #scorecard-results-graph .scorecard-results-wrapper {
@@ -2560,8 +2560,6 @@ Content
         color: #888;
         font-size: 1.6rem;
         margin-bottom: 1rem;
-        padding-left: 1rem;
-        text-align: left;
       }
 
       #scorecard-results-graph .scorecard-month-day {

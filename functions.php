@@ -369,11 +369,9 @@ function scorecard_results_graph( $scorecard_results = '' ) {
 
 	echo '<div id="scorecard-results-graph" class="card">';
 
-	echo '<p class="post_label">Your Small Firm Scorecard Report Card</p>';
-
 	$current_user = wp_get_current_user();
 
-	echo '<p><small>Hi ' . $current_user->user_firstname . ', here is now your Scorecard has changed over time. (We recommend updating your score every quarter to track your firm\'s progress.)</small></p>';
+	echo '<p class="post_label">' . $current_user->user_firstname . ' ' . $current_user->user_lastname . '\'s Small Firm Scorecard</p>';
 
 	echo '<div class="scorecard-results-wrapper">';
 
@@ -413,6 +411,8 @@ function scorecard_results_graph( $scorecard_results = '' ) {
 		}
 
 	echo '</div>'; // Close #scorecard-results-graph-frame
+
+	echo '<p><small><em>We recommend updating your score every three months, and no less than once a year.</em></small></p>';
 
 	switch ( $last_version ) {
 
