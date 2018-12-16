@@ -91,7 +91,7 @@ function lawyerist_stylesheets_scripts() {
 
 	// Load consolidated scripts in the footer.
 	$cacheBusterMC = filemtime( get_stylesheet_directory() . '/js/footer-scripts.js' );
-	wp_register_script( 'footer-scripts', get_template_directory_uri() . '/js/footer-scripts.js', '', $cacheBusterMC, true );
+	wp_register_script( 'footer-scripts', get_template_directory_uri() . '/js/footer-scripts.js',  array( 'jquery' ), $cacheBusterMC, true );
 	wp_enqueue_script( 'footer-scripts' );
 
 }
@@ -346,160 +346,101 @@ function get_scorecard_results( $user_email = '' ) {
 
 		return $scorecard_results;
 
-	endif;
-
-}
-
-
-function scorecard_results_graph( $scorecard_results = '' ) {
-
-	if ( empty( $scorecard_results ) ) {
+	else :
 
 		return;
 
+	endif;
+
+}
+
+
+function scorecard_results_graph() {
+
+	$scorecard_results = get_scorecard_results();
+
+	if ( empty( $scorecard_results ) ) {
+		return;
 	}
 
-	$last_version = $scorecard_results[0][ 'version' ];
+	ob_start();
 
-	// Reverses the order of the array so that the results display oldest to
-	// newest from left to right.
-	$scorecard_results = array_reverse( $scorecard_results );
+		$last_version = $scorecard_results[0][ 'version' ];
 
-	$col_width = 100 / count( $scorecard_results );
+		// Reverses the order of the array so that the results display oldest to
+		// newest from left to right.
+		$scorecard_results = array_reverse( $scorecard_results );
 
-	echo '<div id="scorecard-results-graph" class="card">';
+		$col_width = 100 / count( $scorecard_results );
 
-	$current_user = wp_get_current_user();
+		echo '<div id="dashboard-scorecard-widget" class="card">';
 
-	echo '<p class="post_label">' . $current_user->user_firstname . ' ' . $current_user->user_lastname . '\'s Small Firm Scorecard</p>';
+		echo '<p class="dashboard-widget-label">Small Firm Scorecard</p>';
 
-	echo '<div class="scorecard-results-wrapper">';
+		echo '<div class="scorecard-results-wrapper">';
 
-		foreach ( $scorecard_results as $scorecard_result ) {
+			foreach ( $scorecard_results as $scorecard_result ) {
 
-			$this_col_year = date_format( date_create( $scorecard_result[ 'date' ] ), 'Y' );
-			$col_height	= $scorecard_result[ 'percentage' ];
+				$this_col_year = date_format( date_create( $scorecard_result[ 'date' ] ), 'Y' );
+				$col_height	= $scorecard_result[ 'percentage' ];
 
-			if ( empty( $prev_col_year ) || $this_col_year != $prev_col_year ) {
+				if ( empty( $prev_col_year ) || $this_col_year != $prev_col_year ) {
 
-				$year						= $this_col_year;
-				$prev_col_year	= date_format( date_create( $scorecard_result[ 'date' ] ), 'Y' );
+					$year						= $this_col_year;
+					$prev_col_year	= date_format( date_create( $scorecard_result[ 'date' ] ), 'Y' );
 
-				$add_border			= ' style="border-left: 1px solid #ddd;"';
+					$add_border			= ' style="border-left: 1px solid #ddd;"';
 
-			} else {
+				} else {
 
-				$year				= '&nbsp;';
-				$add_border	= '';
+					$year				= '&nbsp;';
+					$add_border	= '';
+
+				}
+
+				echo '<div class="scorecard-result-wrapper" style="width: ' . $col_width . '%;">';
+
+					echo '<div class="scorecard-year"' . $add_border . '>' . $year . '</div>';
+					echo '<div class="scorecard-month-day">' . date_format( date_create( $scorecard_result[ 'date' ] ), 'n/d' ) . '</div>';
+
+					echo '<div class="scorecard-bar-wrapper">';
+						echo '<div class="scorecard-bar" style="height: ' . $col_height/10 . 'rem;" title="On ' . date_format( date_create( $scorecard_result[ 'date' ] ), 'F j, Y' ) . ', you gave yourself ' . $scorecard_result[ 'percentage' ] . '% on the ' . $scorecard_result[ 'version' ] . '."></div>';
+					echo '</div>';
+
+					echo '<div class="scorecard-grade"><strong>' . $scorecard_result[ 'grade' ] . '</strong></div>';
+					echo '<div class="scorecard-percentage">' . round( $scorecard_result[ 'percentage' ] ) . '%</div>';
+
+				echo '</div>';
 
 			}
 
-			echo '<div class="scorecard-result-wrapper" style="width: ' . $col_width . '%;">';
+		echo '</div>'; // Close #dashboard-scorecard-widget-frame
 
-				echo '<div class="scorecard-year"' . $add_border . '>' . $year . '</div>';
-				echo '<div class="scorecard-month-day">' . date_format( date_create( $scorecard_result[ 'date' ] ), 'n/d' ) . '</div>';
+		echo '<p class="dashboard-widget-note">We recommend updating your score every three months, and no less than once a year.</p>';
 
-				echo '<div class="scorecard-bar-wrapper">';
-					echo '<div class="scorecard-bar" style="height: ' . $col_height/10 . 'rem;" title="On ' . date_format( date_create( $scorecard_result[ 'date' ] ), 'F j, Y' ) . ', you gave yourself ' . $scorecard_result[ 'percentage' ] . '% on the ' . $scorecard_result[ 'version' ] . '."></div>';
-				echo '</div>';
+		switch ( $last_version ) {
 
-				echo '<div class="scorecard-grade"><strong>' . $scorecard_result[ 'grade' ] . '</strong></div>';
-				echo '<div class="scorecard-percentage">' . round( $scorecard_result[ 'percentage' ] ) . '%</div>';
+			case ( $last_version == 'Small Firm Scorecard' ) :
 
-			echo '</div>';
+				$scorecard_url = 'https://lawyerist.com/scorecard/small-firm-scorecard/';
+				break;
+
+			case ( $last_version == 'Solo Practice Scorecard' ) :
+
+				$scorecard_url = 'https://lawyerist.com/scorecard/solo-practice-scorecard/';
+				break;
 
 		}
 
-	echo '</div>'; // Close #scorecard-results-graph-frame
+		echo '<p align="center" class="remove_bottom"><a class="button remove_bottom" href="' . $scorecard_url . '">Update your score</a></p>';
 
-	echo '<p><small><em>We recommend updating your score every three months, and no less than once a year.</em></small></p>';
+		echo '</div>'; // Close #dashboard-scorecard-widget
 
-	switch ( $last_version ) {
+	$scorecard_graph = ob_get_clean();
 
-		case ( $last_version == 'Small Firm Scorecard' ) :
-
-			$scorecard_url = 'https://lawyerist.com/scorecard/small-firm-scorecard/';
-			break;
-
-		case ( $last_version == 'Solo Practice Scorecard' ) :
-
-			$scorecard_url = 'https://lawyerist.com/scorecard/solo-practice-scorecard/';
-			break;
-
-	}
-
-	echo '<p align="center" class="remove_bottom"><a class="button remove_bottom" href="' . $scorecard_url . '">Update your score</a></p>';
-
-	echo '</div>'; // Close #scorecard-results-graph
+	return $scorecard_graph;
 
 }
-
-
-function scorecard_results_report() {
-
-	if ( is_plugin_active( 'gravityforms/gravityforms.php' ) ) :
-
-		echo '<div class="wrap">';
-
-			echo '<h1>' . esc_html( get_admin_page_title() ) . '</h1>';
-
-			$scorecard_results = get_scorecard_results();
-
-			if ( !empty( $scorecard_results ) ) {
-
-				// Outputs a table of scorecard results.
-				echo '<table class="wp-list-table widefat fixed striped scorecard-reports">';
-					echo '<thead><tr>';
-						echo '<th scope="col" id="grade" class="manage-column column-title column-primary">Grade</th>';
-						echo '<th scope="col" id="percentage" class="manage-column column-title column-primary">%</th>';
-						echo '<th scope="col" id="version" class="manage-column column-title column-primary">Scorecard Version</th>';
-						echo '<th scope="col" id="date" class="manage-column column-title column-primary">Date</th>';
-					echo '</tr></thead>';
-
-					echo '<tbody>';
-
-						foreach ( $scorecard_results as $scorecard_result ) {
-
-							echo '<tr>';
-								echo '<td><strong>' . $scorecard_result[ 'grade' ] . '<strong></td>';
-								echo '<td>' . $scorecard_result[ 'percentage' ] . '%</td>';
-								echo '<td>' . $scorecard_result[ 'version' ] . '</td>';
-								echo '<td>' . date_format( date_create( $scorecard_result[ 'date' ] ), 'F j, Y \a\t g:i a' ) . '</td>';
-							echo '</tr>';
-
-						}
-
-					echo '</tbody>';
-
-				echo '</table>';
-
-			}
-
-    echo '</div>'; // Close .wrap
-
-	endif;
-
-}
-
-
-function scorecard_report_card_admin_page() {
-
-	if ( is_plugin_active( 'gravityforms/gravityforms.php' ) ) :
-
-		add_submenu_page(
-		    'tools.php',
-		    'Scorecard Report Card',
-		    'Scorecard Report Card',
-		    'manage_options',
-		    'scorecard',
-		    'scorecard_results_report'
-		);
-
-	endif;
-
-}
-
-add_action('admin_menu', 'scorecard_report_card_admin_page');
 
 
 /* UTILITY FUNCTIONS ********************/

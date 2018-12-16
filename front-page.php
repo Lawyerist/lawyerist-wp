@@ -72,17 +72,14 @@
 
 
 			// Outputes the Scorecard Report Card widget.
-			if ( is_user_logged_in() && is_plugin_active( 'gravityforms/gravityforms.php' ) ) {
+			if ( is_user_logged_in() ) {
 
-				echo '<div class="front_page_block">';
+				echo '<div id="insider-dashboard" class="front_page_block">';
 
-					$scorecard_results = get_scorecard_results();
+					$current_user = wp_get_current_user();
+					echo '<p id="dashboard-title">' . $current_user->user_firstname . ' ' . $current_user->user_lastname . '\'s Insider Dashboard</p>';
 
-					if ( !empty( $scorecard_results ) ) {
-
-						echo scorecard_results_graph( $scorecard_results );
-
-					}
+					echo scorecard_results_graph( $scorecard_results );
 
 				echo '</div>';
 
@@ -116,10 +113,10 @@
 
 				$user_id = get_current_user_id();
 
-				if (	!wc_memberships_is_user_active_member( $user_id, 'insider-plus-affinity' )
+				/* if (	!wc_memberships_is_user_active_member( $user_id, 'insider-plus-affinity' )
 							&& !wc_memberships_is_user_active_member( $user_id, 'lab' )
 							&& !wc_memberships_is_user_active_member( $user_id, 'lab-pro' )
-				) {
+				) { */
 
 					$cta_label				= 'Insider Plus';
 					$cta_button_url	 	= 'https://lawyerist.com/cart/?add-to-cart=242723';
@@ -139,7 +136,7 @@
 
 				}
 
-			}
+			/* } */
 
 			// Outputs the call to action.
 
@@ -147,12 +144,13 @@
 
 			?>
 
-				<div id="big_hero_cta" class="card">
+				<div id="big_hero_cta" class="card dismissible-notice" data-id="<?php echo esc_attr( md5( $cta_label ) ); ?>">
 					<div id="big_hero_left">
 						<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/02/L-dot-150x150.png" />
 						<span class="big_hero_label"><?php echo $cta_label; ?></span>
 					</div>
 					<div id="big_hero_right">
+						<button class="greybutton dismiss-button"></button>
 						<div id="big_hero_top">
 							<?php echo $cta_copy; ?>
 						</div>

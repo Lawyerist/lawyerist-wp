@@ -1,24 +1,23 @@
 // Responsive Menu
-jQuery(
-  function( $ ){
-    $( "#menu-main-menu .sub-menu" ).hide();
-    $( "#menu-main-menu > .menu-item-has-children > a" ).click( function() {
-        $( this ).toggleClass( "open" ).next( ".sub-menu" ).slideToggle( 145 );
-        $( ".open" ).not( this ).toggleClass( "open" ).next( ".sub-menu" ).slideToggle( 95 );
-      }
-    );
-    $( "#menu-main-menu > .menu-item-has-children .menu-item-has-children > a" ).click( function() {
-        $( this ).toggleClass( "open" ).next( ".sub-menu" ).slideToggle( 145 );
-      }
-    );
-  }
-);
+jQuery( function( $ ) {
+
+  $( "#menu-main-menu .sub-menu" ).hide();
+
+  $( "#menu-main-menu > .menu-item-has-children > a" ).click( function() {
+    $( this ).toggleClass( "open" ).next( ".sub-menu" ).slideToggle( 145 );
+    $( ".open" ).not( this ).toggleClass( "open" ).next( ".sub-menu" ).slideToggle( 95 );
+  });
+
+  $( "#menu-main-menu > .menu-item-has-children .menu-item-has-children > a" ).click( function() {
+    $( this ).toggleClass( "open" ).next( ".sub-menu" ).slideToggle( 145 );
+  });
+
+});
 // End Responsive Menu
 
 
-
-// WooCommerce select drop-downs.
-jQuery( document ).ready( function( $ ) {
+// WooCommerce Select Drop-Downs
+jQuery( function( $ ) {
 
 	// Frontend Chosen selects
 	if ( $().select2 ) {
@@ -32,13 +31,14 @@ jQuery( document ).ready( function( $ ) {
 	}
 
 });
+// End WooCommerce Select Drop-Downs
 
 
 // Sticky Sidebar Ad
 function stickySidebarAd( $ ) {
 
   // Checks to see if the sidebar ad is present.
-  if ( jQuery('#lawyerist_display_ad').length > 0 ) {
+  if ( jQuery( '#lawyerist_display_ad' ).length > 0 ) {
 
     var windowTop      = jQuery( window ).scrollTop();
     var sidebarAdTop   = jQuery( '#lawyerist_display_ad' ).offset().top;
@@ -58,10 +58,36 @@ function stickySidebarAd( $ ) {
 
 }
 
-jQuery(
-  function( $ ) {
-    jQuery( window ).scroll( stickySidebarAd );
-    stickySidebarAd();
-  }
-);
+jQuery( function( $ ) {
+  $( window ).scroll( stickySidebarAd );
+  stickySidebarAd();
+});
 // End Sticky Sidebar Ad
+
+
+// Dismissible Calls to Action
+jQuery( function ( $ ) {
+
+    var notice, noticeId, storedNoticeId, dismissButton;
+
+    notice = document.querySelector( '.dismissible-notice' );
+
+    if ( !notice ) {
+      return;
+    }
+
+    dismissButton   = document.querySelector( '.dismiss-notice' );
+    noticeId        = notice.getAttribute( 'data-id' );
+    storedNoticeId  = localStorage.getItem( 'lawyeristNotices' );
+
+    if ( noticeId !== storedNoticeId ) {
+  		notice.style.display = 'block';
+  	}
+
+    dismissButton.addEventListener( 'click', function () {
+  		notice.style.display = 'none';
+      localStorage.setItem( 'lawyeristNotices', noticeId );
+    });
+
+});
+// End Dismissible Calls to Action
