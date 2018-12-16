@@ -63,31 +63,3 @@ jQuery( function( $ ) {
   stickySidebarAd();
 });
 // End Sticky Sidebar Ad
-
-
-// Dismissible Calls to Action
-jQuery( function ( $ ) {
-
-    var notice, noticeId, storedNoticeId, dismissButton;
-
-    notice = document.querySelector( '.dismissible-notice' );
-
-    if ( !notice ) {
-      return;
-    }
-
-    dismissButton   = document.querySelector( '.dismiss-notice' );
-    noticeId        = notice.getAttribute( 'data-id' );
-    storedNoticeId  = localStorage.getItem( 'lawyeristNotices' );
-
-    if ( noticeId !== storedNoticeId ) {
-  		notice.style.display = 'block';
-  	}
-
-    dismissButton.addEventListener( 'click', function () {
-  		notice.style.display = 'none';
-      localStorage.setItem( 'lawyeristNotices', noticeId );
-    });
-
-});
-// End Dismissible Calls to Action
