@@ -12,6 +12,7 @@ STRUCTURE
 
 ADMIN
 - Login Form
+- Scorecard Reports
 
 UTILITY FUNCTIONS
 - Get Country
@@ -90,7 +91,7 @@ function lawyerist_stylesheets_scripts() {
 
 	// Load consolidated scripts in the footer.
 	$cacheBusterMC = filemtime( get_stylesheet_directory() . '/js/footer-scripts.js' );
-	wp_register_script( 'footer-scripts', get_template_directory_uri() . '/js/footer-scripts.js', '', $cacheBusterMC, true );
+	wp_register_script( 'footer-scripts', get_template_directory_uri() . '/js/footer-scripts.js',  array( 'jquery' ), $cacheBusterMC, true );
 	wp_enqueue_script( 'footer-scripts' );
 
 }
@@ -210,6 +211,236 @@ add_action( 'login_enqueue_scripts', 'lawyerist_login_logo' );
 add_filter( 'login_headerurl', 'lawyerist_login_logo_url' );
 add_filter( 'login_headertitle', 'lawyerist_login_logo_url_title' );
 add_filter( 'login_message', 'lawyerist_login_message' );
+
+
+/*------------------------------
+Scorecard Reports
+------------------------------*/
+
+// This should probably be turned into a separate plugin.
+
+/**
+* Returns an array of scorecard data for a given email address.
+*
+* @param string $user_email Optional. Accepts a valid email address.
+*/
+function get_scorecard_results( $user_email = '' ) {
+
+	if ( is_plugin_active( 'gravityforms/gravityforms.php' ) ) :
+
+		if ( empty( $user_email ) ) {
+
+			// Gets the current user's email address.
+			$user_info	= get_userdata( get_current_user_id() );
+			$user_email	= $user_info->user_email;
+
+		}
+
+		// Defines the Gravity Forms form ids.
+		// 45 = Small Firm Scorecard; 47 = Solo Practice Scorecard
+		$form_ids		= array( 45, 47 );
+
+		// Searches for all scorecards that have the current user's email address.
+		$search_criteria['field_filters'][] = array(
+			'key'		=> '18', // Luckily, 18 is the email field ID in both forms.
+			'value' => $user_email,
+		);
+
+		// Sorts scorecard results by the date created, with the most recent first.
+		$sorting = array(
+			'key'					=> 'date_created',
+			'direction'		=> 'DESC',
+		);
+
+		// Gets all the scorecards for the given $user_email.
+		$entries = GFAPI::get_entries( $form_ids, $search_criteria, $sorting );
+
+		if ( !empty( $entries ) ) {
+
+			foreach ( $entries as $entry ) {
+
+				$entry_id		= $entry['id'];
+				$form_id		= $entry['form_id'];
+				$raw_score	= $entry['gsurvey_score'];
+
+				// Checks to see which form was submitted.
+			  switch ( $form_id ) {
+
+			    case $form_id == '45': // Small Firm Scorecard
+
+			      $total = 500;
+						$scorecard_result['version'] = 'Small Firm Scorecard';
+
+						/* $scorecard_sections = array(
+							'Goals'											=> array( 2, 4, 5 ),
+							'Strategy'									=> array( 22, 23, 24, 25, 26, 27, 28, 29 ),
+							'Technology'								=> array( 32, 33, 34, 35, 36, 37 ),
+							'Client Acquisition'				=> array( 40, 41, 42, 43, 44, 45 ),
+							'Systems & Procedures'			=> array( 48, 49, 50, 51 ),
+							'Client-Centered Services'	=> array( 54, 55, 56, 57, 58, 59, 60 ),
+							'Finances'									=> array( 63, 64, 65, 66, 67 ),
+							'People & Staffing'					=> array( 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80 ),
+						); */
+
+			      break;
+
+			    case $form_id == 47: // Solo Practice Scorecard
+			      $total = 400;
+						$scorecard_result['version'] = 'Solo Practice Scorecard';
+
+						/* $scorecard_sections = array(
+							'Goals'											=> array( 2, 4, 5 ),
+							'Strategy'									=> array( 22, 24, 25, 26, 27, 29 ),
+							'Technology'								=> array( 32, 33, 34, 35, 36, 37 ),
+							'Client Acquisition'				=> array( 40, 41, 42, 43, 44, 45 ),
+							'Systems & Procedures'			=> array( 48, 49, 51 ),
+							'Client-Centered Services'	=> array( 54, 55, 56, 57, 58, 59, 60 ),
+							'Finances'									=> array( 63, 64, 65, 66, 67 ),
+							'People & Staffing'					=> array( 78, 79, 80, 81 ),
+						); */
+
+			      break;
+
+			  }
+
+			  // Calculates the % score.
+			  $score = ( $raw_score / $total ) * 100;
+
+			  switch ( $score ) {
+
+			    case ( $score < 60 ) :
+			      $grade = 'F';
+			      break;
+
+			    case ( $score >= 60 && $score < 70 ) :
+			      $grade = 'D';
+			      break;
+
+			    case ( $score >= 70 && $score < 80 ) :
+			      $grade = 'C';
+			      break;
+
+			    case ( $score >= 80 && $score < 90 ) :
+			      $grade = 'B';
+			      break;
+
+			    case ( $score >= 90 ) :
+			      $grade = 'A';
+			      break;
+
+			  }
+
+				$scorecard_result['percentage'] = $score;
+				$scorecard_result['grade'] = $grade;
+
+				// Creates a new sub-array for the scorecard.
+				$scorecard_results[ $entry_id ][ 'entry_id' ]		= $entry_id;
+				$scorecard_results[ $entry_id ][ 'grade' ]			= $scorecard_result[ 'grade' ];
+				$scorecard_results[ $entry_id ][ 'percentage' ]	= $scorecard_result[ 'percentage' ];
+				$scorecard_results[ $entry_id ][ 'version' ]		= $scorecard_result[ 'version' ];
+				$scorecard_results[ $entry_id ][ 'date' ]				= $entry[ 'date_created' ];
+
+			}
+
+		}
+
+		return $scorecard_results;
+
+	else :
+
+		return;
+
+	endif;
+
+}
+
+
+function scorecard_results_graph() {
+
+	$scorecard_results = get_scorecard_results();
+
+	if ( empty( $scorecard_results ) ) {
+		return;
+	}
+
+	ob_start();
+
+		$last_version = $scorecard_results[0][ 'version' ];
+
+		// Reverses the order of the array so that the results display oldest to
+		// newest from left to right.
+		$scorecard_results = array_reverse( $scorecard_results );
+
+		$col_width = 100 / count( $scorecard_results );
+
+		echo '<div id="dashboard-scorecard-widget" class="card">';
+
+		echo '<p class="dashboard-widget-label">Small Firm Scorecard</p>';
+
+		echo '<div class="scorecard-results-wrapper">';
+
+			foreach ( $scorecard_results as $scorecard_result ) {
+
+				$this_col_year = date_format( date_create( $scorecard_result[ 'date' ] ), 'Y' );
+				$col_height	= $scorecard_result[ 'percentage' ];
+
+				if ( empty( $prev_col_year ) || $this_col_year != $prev_col_year ) {
+
+					$year						= $this_col_year;
+					$prev_col_year	= date_format( date_create( $scorecard_result[ 'date' ] ), 'Y' );
+
+					$add_border			= ' style="border-left: 1px solid #ddd;"';
+
+				} else {
+
+					$year				= '&nbsp;';
+					$add_border	= '';
+
+				}
+
+				echo '<div class="scorecard-result-wrapper" style="width: ' . $col_width . '%;">';
+
+					echo '<div class="scorecard-year"' . $add_border . '>' . $year . '</div>';
+					echo '<div class="scorecard-month-day">' . date_format( date_create( $scorecard_result[ 'date' ] ), 'n/d' ) . '</div>';
+
+					echo '<div class="scorecard-bar-wrapper">';
+						echo '<div class="scorecard-bar" style="height: ' . $col_height/10 . 'rem;" title="On ' . date_format( date_create( $scorecard_result[ 'date' ] ), 'F j, Y' ) . ', you gave yourself ' . $scorecard_result[ 'percentage' ] . '% on the ' . $scorecard_result[ 'version' ] . '."></div>';
+					echo '</div>';
+
+					echo '<div class="scorecard-grade"><strong>' . $scorecard_result[ 'grade' ] . '</strong></div>';
+					echo '<div class="scorecard-percentage">' . round( $scorecard_result[ 'percentage' ] ) . '%</div>';
+
+				echo '</div>';
+
+			}
+
+		echo '</div>'; // Close #dashboard-scorecard-widget-frame
+
+		echo '<p class="dashboard-widget-note">We recommend updating your score every three months, and no less than once a year.</p>';
+
+		switch ( $last_version ) {
+
+			case ( $last_version == 'Small Firm Scorecard' ) :
+
+				$scorecard_url = 'https://lawyerist.com/scorecard/small-firm-scorecard/';
+				break;
+
+			case ( $last_version == 'Solo Practice Scorecard' ) :
+
+				$scorecard_url = 'https://lawyerist.com/scorecard/solo-practice-scorecard/';
+				break;
+
+		}
+
+		echo '<p align="center" class="remove_bottom"><a class="button remove_bottom" href="' . $scorecard_url . '">Update your score</a></p>';
+
+		echo '</div>'; // Close #dashboard-scorecard-widget
+
+	$scorecard_graph = ob_get_clean();
+
+	return $scorecard_graph;
+
+}
 
 
 /* UTILITY FUNCTIONS ********************/
@@ -1174,7 +1405,7 @@ function lawyerist_get_our_rating() {
 	global $post;
 
 	$our_rating_raw	= get_post_meta( $post->ID, 'wp_review_total', true );
-	$our_rating			= round ( $our_rating_raw / 2, 1 );
+	$our_rating			= round( $our_rating_raw / 2, 1 );
 
 	return $our_rating;
 
