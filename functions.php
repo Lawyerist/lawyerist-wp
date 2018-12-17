@@ -365,7 +365,23 @@ function scorecard_results_graph() {
 
 	ob_start();
 
-		$last_version = $scorecard_results[0][ 'version' ];
+		// This can be removed once we upgrade to PHP 7.3.
+		if ( !function_exists( 'array_key_first' ) ) {
+
+	    function array_key_first( array $array ) {
+
+	        if ( count( $array ) ) {
+	            reset( $array );
+	            return key( $array );
+	        }
+
+	        return null;
+	    }
+
+		}
+
+		$first_key		= array_key_first( $scorecard_results );
+		$last_version = $scorecard_results[ $first_key ][ 'version' ];
 
 		// Reverses the order of the array so that the results display oldest to
 		// newest from left to right.
