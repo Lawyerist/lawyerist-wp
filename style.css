@@ -283,6 +283,11 @@ Layout & Design Elements
 	clear: both;
 }
 
+.dismissible-notice,
+.card.dismissible-notice {
+  display: none;
+}
+
 .remove_bottom {
 	margin-bottom: 0 !important;
 }
@@ -1648,7 +1653,6 @@ p.dashboard-widget-note {
 /* Call to Action */
 
 #big_hero_cta {
-  display: none;
   margin: 0 auto 6rem auto;
   max-width: 68rem;
   padding: 0;
