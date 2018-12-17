@@ -1571,8 +1571,9 @@ Front Page
 /* Insider Dashboard */
 
 #insider-dashboard {
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 2rem;
+  background-color: #eee;
+  border-radius: .2rem;
+  padding: 2rem;
 }
 
 #dashboard-title {
@@ -1647,6 +1648,7 @@ p.dashboard-widget-note {
 /* Call to Action */
 
 #big_hero_cta {
+  display: none;
   margin: 0 auto 6rem auto;
   max-width: 68rem;
   padding: 0;

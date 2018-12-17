@@ -1,5 +1,5 @@
 // Responsive Menu
-jQuery( function( $ ) {
+jQuery( document ).ready( function( $ ) {
 
   $( "#menu-main-menu .sub-menu" ).hide();
 
@@ -17,7 +17,7 @@ jQuery( function( $ ) {
 
 
 // WooCommerce Select Drop-Downs
-jQuery( function( $ ) {
+jQuery( document ).ready( function( $ ) {
 
 	// Frontend Chosen selects
 	if ( $().select2 ) {
@@ -58,8 +58,36 @@ function stickySidebarAd( $ ) {
 
 }
 
-jQuery( function( $ ) {
+jQuery( document ).ready( function( $ ) {
   $( window ).scroll( stickySidebarAd );
   stickySidebarAd();
 });
 // End Sticky Sidebar Ad
+
+
+// Dismissible Call to Action
+jQuery( document ).ready( function() {
+
+    var notice, noticeId, storedNoticeId, dismissButton;
+
+    notice = document.querySelector( '.dismissible-notice' );
+
+    if ( !notice ) {
+      return;
+    }
+
+    dismissButton   = document.querySelector( '.dismiss-button' );
+    noticeId        = notice.getAttribute( 'data-id' );
+    storedNoticeId  = localStorage.getItem( 'lawyeristNotices' );
+
+    if ( noticeId !== storedNoticeId ) {
+  		notice.style.display = 'block';
+  	}
+
+    dismissButton.addEventListener( 'click', function () {
+  		notice.style.display = 'none';
+      localStorage.setItem( 'lawyeristNotices', noticeId );
+    });
+
+});
+// End Dismissible Call to Action
