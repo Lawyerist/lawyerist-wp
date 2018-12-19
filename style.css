@@ -3746,6 +3746,8 @@ a.review-btn,
     margin-bottom: 0;
   }
 
+  .woocommerce-notices-wrapper button,
+  .woocommerce-notices-wrapper a.button,
   .woocommerce input.button {
     margin: 0;
   }
