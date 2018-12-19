@@ -1578,6 +1578,7 @@ Front Page
 #insider-dashboard {
   background-color: #eee;
   border-radius: .2rem;
+  margin-bottom: 3rem;
   padding: 2rem;
 }
 
@@ -1603,6 +1604,11 @@ p.dashboard-widget-note {
 }
 
   /* Scorecard Widget */
+
+  #dashboard-scorecard-widget.card {
+    background-color: #fff;
+    padding: 2rem;
+  }
 
   #dashboard-scorecard-widget .scorecard-results-wrapper {
     line-height: 1.2;
