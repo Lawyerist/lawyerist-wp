@@ -362,7 +362,7 @@ function scorecard_results_graph() {
 	$user_info	= get_userdata( get_current_user_id() );
 	$user_email	= $user_info->user_email;
 
-	if ( empty( $scorecard_results ) || $user_email == 'sam@lawyerist.com' ) {
+	if ( empty( $scorecard_results ) ) {
 
 		ob_start();
 
