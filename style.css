@@ -1597,6 +1597,10 @@ p.dashboard-widget-label {
   text-transform: uppercase;
 }
 
+#insider-dashboard .logout-link {
+  float: right;
+  font-size: 80%;
+}
 
 p.dashboard-widget-note {
   font-size: 1.6rem;

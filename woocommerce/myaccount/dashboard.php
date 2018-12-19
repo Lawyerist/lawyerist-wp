@@ -23,29 +23,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 
-<p><?php
-	/* translators: 1: user display name 2: logout url */
-	printf(
-		__( 'Hello %1$s (not %1$s? <a href="%2$s">Log out</a>)', 'woocommerce' ),
-		'<strong>' . esc_html( $current_user->display_name ) . '</strong>',
-		esc_url( wc_logout_url( wc_get_page_permalink( 'myaccount' ) ) )
-	);
-?></p>
+<!-- Default greeting and logout link removed. -->
 
 <?php
 // Outputes the Scorecard Report Card widget.
-if ( is_user_logged_in() ) {
+echo '<div id="insider-dashboard">';
 
-  echo '<div id="insider-dashboard">';
+  $logout_link = '<a href="'. esc_url( wc_logout_url( wc_get_page_permalink( 'myaccount' ) ) ) . '">Log Out</a>';
 
-    $current_user = wp_get_current_user();
-    echo '<p id="dashboard-title">' . $current_user->user_firstname . ' ' . $current_user->user_lastname . '\'s Insider Dashboard</p>';
+  $current_user = wp_get_current_user();
+  echo '<p id="dashboard-title">' . $current_user->user_firstname . ' ' . $current_user->user_lastname . '\'s Insider Dashboard <span class="logout-link">' . $logout_link . '</span?></p>';
 
-    echo scorecard_results_graph();
+  echo scorecard_results_graph();
 
-  echo '</div>';
-
-}
+echo '</div>';
 ?>
 
 <p><?php
