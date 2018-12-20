@@ -8,7 +8,8 @@ jQuery( document ).ready( function( $ ) {
     $( ".open" ).not( this ).toggleClass( "open" ).next( ".sub-menu" ).slideToggle( 95 );
   });
 
-  $( "#menu-main-menu > .menu-item-has-children .menu-item-has-children > a" ).click( function() {
+  // The .not in this function excludes the Join the Lawyerist Community sub menu.
+  $( "#menu-main-menu > .menu-item-has-children .menu-item-has-children > a" ).not( '#menu-item-270912 > a' ).click( function() {
     $( this ).toggleClass( "open" ).next( ".sub-menu" ).slideToggle( 145 );
   });
 

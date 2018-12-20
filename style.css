@@ -1106,6 +1106,15 @@ Menu
     margin: 0;
   }
 
+    /* The next two expand the Join the Lawyerist Community sub menu. */
+    #menu-main-menu #menu-item-270912.menu-item-has-children > a:after {
+      content: '';
+    }
+
+    #menu-main-menu #menu-item-270912.menu-item-has-children > .sub-menu {
+      display: block !important;
+    }
+
     #menu-main-menu > .menu-item-has-children > .sub-menu {
       background: #a00;
       box-shadow: 0 .2rem .3rem rgba(0, 0, 0, 0.2);
