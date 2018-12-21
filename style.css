@@ -1532,6 +1532,11 @@ Front Page
     margin: 0 2rem;
   }
 
+  .one_half .card p {
+    font-size: 1.6rem;
+    margin: 0 2rem 2rem 2rem;
+  }
+
   .one_half .card .button {
     display: block;
     margin: 0 2rem;
@@ -4344,34 +4349,28 @@ a.cart-in-header {
 }
 
 
-/* WooCommerce One-Page Checkout. */
+/* WooCommerce Product Lists */
 
-#opc-product-selection .product-thumbnail img {
-  display: block;
-  margin: 0;
-  width: 100%;
+.woocommerce ul.products li.product span.onsale {
+  box-shadow: none;
+  left: 0 !important;
 }
 
-#opc-product-selection .product-quantity button {
-  margin-bottom: .5rem;
+.woocommerce ul.products li.product a img {
+  margin-bottom: 1.5rem;
 }
 
-#opc-product-selection .product-quantity .opc-complete-order {
-  font-size: 1.6rem;
-  line-height: 1.2;
-  margin: 0;
+.woocommerce ul.products li.product .woocommerce-loop-product__title {
+  padding-top: 0;
 }
 
-  #opc-product-selection .product-quantity .opc-complete-order:hover,
-  #opc-product-selection .product-quantity .opc-complete-order:focus {
-    color: #a00;
-    text-decoration: none;
-  }
+.woocommerce ul.products li.product .price {
+  margin-bottom: 1em;
+}
 
-  #opc-product-selection .selected .wc-south {
-    display: block;
-  }
-
+.woocommerce ul.products li.product .button {
+  margin-top: 0;
+}
 
 /* WooCommerce Account Pages */
 
