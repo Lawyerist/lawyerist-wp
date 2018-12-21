@@ -3227,28 +3227,11 @@ Content
   Full Width Template
   ------------------------------*/
 
-  .full-width #content_column {
+  .page-template-full-width #content_column {
     box-sizing: border-box;
     max-width: none;
     width: 100%;
   }
-
-  .full-width .sharedaddy,
-  .full-width .sd-block.stop {
-      margin-bottom: 4rem;
-      position: static;
-  }
-
-    .full-width .sd-block,
-    .full-width .sd-block.stick,
-    .full-width .sd-block.stop {
-      margin-bottom: 3rem;
-      position: static;
-    }
-
-    .full-width .sd-content ul li {
-        display: inline !important;
-    }
 
 
   /*------------------------------

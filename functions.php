@@ -1266,7 +1266,7 @@ function lawyerist_sponsored_trial_button_top( $content ) {
 
 }
 
-add_filter( 'the_content', 'lawyerist_sponsored_trial_button_top' );
+// add_filter( 'the_content', 'lawyerist_sponsored_trial_button_top' );
 
 
 /*------------------------------
