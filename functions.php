@@ -19,7 +19,6 @@ UTILITY FUNCTIONS
 - Get First Image URL
 
 CONTENT
-- Query Mods
 - Archive Headers
 - Yoast SEO Breadcrumbs
 - Postmeta
@@ -537,22 +536,6 @@ function get_first_image_url() {
 
 
 /* CONTENT ********************/
-
-/*------------------------------
-Query Mods
-------------------------------*/
-
-function lawyerist_query_mods( $wp_query ) {
-
-	// Add pages and products to the main feed.
-	if ( !is_admin() && !is_author() ) {
-		set_query_var( 'post_type', array( 'post', 'page', 'product' ) );
-	}
-
-}
-
-add_action( 'pre_get_posts', 'lawyerist_query_mods' );
-
 
 /*------------------------------
 Archive Headers
@@ -1266,7 +1249,7 @@ function lawyerist_sponsored_trial_button_top( $content ) {
 
 }
 
-// add_filter( 'the_content', 'lawyerist_sponsored_trial_button_top' );
+add_filter( 'the_content', 'lawyerist_sponsored_trial_button_top' );
 
 
 /*------------------------------
@@ -1829,7 +1812,7 @@ Check to See if Page is Really a WooCommerce Page
 
 function is_really_a_woocommerce_page() {
 
-	if ( function_exists ( "is_woocommerce" ) && is_woocommerce() ) {
+	if ( function_exists( 'is_woocommerce' ) && is_woocommerce() ) {
 
 		return true;
 
@@ -1852,7 +1835,7 @@ function is_really_a_woocommerce_page() {
 
 	foreach ( $woocommerce_keys as $wc_page_id ) {
 
-		if ( get_the_ID () == get_option ( $wc_page_id , 0 ) ) {
+		if ( get_the_ID() == get_option ( $wc_page_id , 0 ) ) {
 			return true ;
 		}
 
