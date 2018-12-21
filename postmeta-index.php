@@ -58,5 +58,3 @@ echo '<div class="postmeta">';
   }
 
 echo '</div>'; // Close .postmeta.
-
-?>

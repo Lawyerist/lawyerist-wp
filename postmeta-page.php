@@ -18,5 +18,3 @@
     echo 'Last updated <span class="date updated published">' . $updated_date . '</span>.';
 
   echo '</div>'; // Close .postmeta.
-
-?>

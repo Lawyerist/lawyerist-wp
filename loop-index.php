@@ -157,5 +157,3 @@ else :
   echo '<p class="post">No posts match your query.</p>';
 
 endif; // Close the Loop.
-
-?>

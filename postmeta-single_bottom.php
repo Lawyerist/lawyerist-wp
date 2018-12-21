@@ -11,5 +11,3 @@ if ( $date != $updated_date ) {
   echo 'Last updated <span class="date updated">' . $updated_date . '</span>.';
   echo '</div>'; // Close .postmeta.
 }
-
-?>
