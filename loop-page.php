@@ -35,7 +35,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
       the_content();
 
       // Byline
-      if ( !is_cart() && !is_checkout() && !is_account_page() ) {
+      if ( !is_really_a_woocommerce_page() ) {
         get_template_part( 'postmeta', 'page' );
       }
 
