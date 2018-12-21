@@ -52,7 +52,6 @@ WOOCOMMERCE
 - Display Price of Free Products As "Free!" Not "$0.00".
 - Function for Checking to See if a Product ID is in the Cart
 - Checkout Fields
-- Insider Plus Shopping Cart Upsell
 - Check to See if Page is Really a WooCommerce Page
 
 TAXONOMY
@@ -490,7 +489,7 @@ function get_country() {
 	global $post;
 
 	// Limits API calls to product pages and portals.
-	if ( has_trial_button() || ( get_page_template_slug( $post->ID ) == 'product-page.php' ) ) {
+	if ( is_plugin_active( 'lawyerist-trial-buttons/lawyerist-trial-buttons.php' ) && ( has_trial_button() || get_page_template_slug( $post->ID ) == 'product-page.php' ) ) {
 
 		// Get user's geographic location by IP address.
 		// Set IP address and API access key.
@@ -1236,7 +1235,7 @@ function lawyerist_sponsored_trial_button_top( $content ) {
 
 	$country = get_country();
 
-	if ( has_trial_button() && $country == ( 'US' || 'CA' ) && is_main_query() ) {
+	if ( is_plugin_active( 'lawyerist-trial-buttons/lawyerist-trial-buttons.php' ) && has_trial_button() && $country == ( 'US' || 'CA' ) && is_main_query() ) {
 
 		$p_close			= '</p>';
 		$paragraphs 	= explode( $p_close, $content );
@@ -1822,29 +1821,6 @@ function lawyerist_checkout_fields( $fields ) {
 }
 
 add_filter( 'woocommerce_checkout_fields' , 'lawyerist_checkout_fields' );
-
-
-/*------------------------------
-Insider Plus Shopping Cart Upsell
-------------------------------*/
-
-function insider_plus_shopping_cart_upsell() {
-
-	if ( is_page( 'cart' ) ) {
-
-		if ( is_user_logged_in() ) {
-			$user_id = get_current_user_id();
-		}
-
-		if ( !wc_memberships_is_user_active_member( $user_id, 'insider-plus-affinity' ) && !woo_in_cart( 242723 ) ) {
-			echo '<div id="insider_plus_upsell" class="woocommerce-info">Want to be able to get everything in our library, plus discounts on some of the best law practice products and services? Upgrade to Insider Plus for just $89/year! <a class="button" href="https://lawyerist.com/cart/?add-to-cart=242723">Upgrade Now!</a></div>';
-		}
-
-	}
-
-}
-
-add_action( 'woocommerce_before_cart', 'insider_plus_shopping_cart_upsell' );
 
 
 /*------------------------------
