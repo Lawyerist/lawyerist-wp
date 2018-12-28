@@ -113,10 +113,10 @@
 
 				$user_id = get_current_user_id();
 
-				/* if (	!wc_memberships_is_user_active_member( $user_id, 'insider-plus-affinity' )
+				if (	!wc_memberships_is_user_active_member( $user_id, 'insider-plus-affinity' )
 							&& !wc_memberships_is_user_active_member( $user_id, 'lab' )
 							&& !wc_memberships_is_user_active_member( $user_id, 'lab-pro' )
-				) { */
+				) {
 
 					$cta_label				= 'Insider Plus';
 					$cta_button_url	 	= 'https://lawyerist.com/cart/?add-to-cart=242723';
@@ -136,7 +136,7 @@
 
 				}
 
-			/* } */
+			}
 
 			// Outputs the call to action.
 
