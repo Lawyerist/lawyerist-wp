@@ -791,11 +791,6 @@ function lawyerist_get_related_podcasts() {
 
 					$post_title			= the_title( '', '', FALSE );
 					$post_url				= get_permalink();
-					$post_excerpt   = get_the_excerpt();
-					$seo_descr      = get_post_meta( $post->ID, '_yoast_wpseo_metadesc', true );
-
-					// Sets the post excerpt to the Yoast Meta Description if there is one.
-					if ( !empty( $seo_descr ) ) { $post_excerpt = $seo_descr; }
 
 					echo '<div ' ;
 					post_class( 'card' );
@@ -804,18 +799,17 @@ function lawyerist_get_related_podcasts() {
 						// Starts the link container. Makes for big click targets!
 						echo '<a href="' . $post_url . '" title="' . $post_title . '">';
 
-							$first_image_url = get_first_image_url();
-
-							if ( empty( $first_image_url ) ) {
-								$first_image_url = 'https://lawyerist.com/lawyerist/wp-content/uploads/2018/09/podcast-mic-square-150x150.png';
-							}
-							echo '<div class="podcast_guest_thumbnail"><img class="avatar" src="' . $first_image_url . '" /></div>';
-
 							echo '<div class="headline-excerpt">';
 
-								echo '<h2 class="headline" title="' . $post_title . '">' . $post_title . '</h2>';
+								$first_image_url = get_first_image_url();
 
-								echo '<p class="excerpt">' . $post_excerpt . '</p>';
+								if ( empty( $first_image_url ) ) {
+									$first_image_url = 'https://lawyerist.com/lawyerist/wp-content/uploads/2018/09/podcast-mic-square-150x150.png';
+								}
+
+								echo '<div class="author_avatar"><img class="avatar" src="' . $first_image_url . '" /></div>';
+
+								echo '<h2 class="headline" title="' . $post_title . '">' . $post_title . '</h2>';
 
 								get_template_part( 'postmeta', 'index' );
 
@@ -879,14 +873,9 @@ function lawyerist_get_related_posts() {
 
 					$post_title			= the_title( '', '', FALSE );
 					$post_url				= get_permalink();
-					$post_excerpt   = get_the_excerpt();
-					$seo_descr      = get_post_meta( $post->ID, '_yoast_wpseo_metadesc', true );
 
 					$author_name		= get_the_author_meta( 'display_name' );
 					$author_avatar	= get_avatar( get_the_author_meta( 'user_email' ), 150, '', $author_name );
-
-					// Sets the post excerpt to the Yoast Meta Description.
-					if ( !empty( $seo_descr ) ) { $post_excerpt = $seo_descr; }
 
 					// Starts the post container.
 					echo '<div ' ;
@@ -896,15 +885,13 @@ function lawyerist_get_related_posts() {
 						// Starts the link container. Makes for big click targets!
 						echo '<a href="' . $post_url . '" title="' . $post_title . '">';
 
-							// Outputs the author's avatar.
-							echo '<div class="author_avatar">' . $author_avatar . '</div>';
-
 							echo '<div class="headline-excerpt">';
 
-								// Headline
-								echo '<h2 class="headline">' . $post_title . '</h2>';
+								// Outputs the author's avatar.
+								echo '<div class="author_avatar">' . $author_avatar . '</div>';
 
-								echo '<p class="excerpt">' . $post_excerpt . '</p>';
+								// Headline
+								echo '<h2 class="headline" title="' . $post_title . '">' . $post_title . '</h2>';
 
 								get_template_part( 'postmeta', 'index' );
 
@@ -980,15 +967,15 @@ function lawyerist_get_related_pages() {
 						// Starts the link container. Makes for big click targets!
 						echo '<a href="' . $post_url . '" title="' . $post_title . '">';
 
-							if ( has_post_thumbnail() ) {
-								echo '<div class="related_page_thumbnail">';
-		              the_post_thumbnail( 'thumbnail' );
-								echo '</div>';
-	            } else {
-	              echo '<div class="related_page_thumbnail"><img class="attachment-thumbnail wp-post-image" src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/02/L-dot.png" /></div>';
-	            }
-
 							echo '<div class="headline-excerpt">';
+
+								if ( has_post_thumbnail() ) {
+									echo '<div class="author_avatar">';
+			              the_post_thumbnail( 'thumbnail' );
+									echo '</div>';
+		            } else {
+		              echo '<div class="author_avatar"><img class="attachment-thumbnail wp-post-image" src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/02/L-dot.png" /></div>';
+		            }
 
 								echo '<h2 class="headline" title="' . $post_title . '">' . $post_title . '</h2>';
 

@@ -1411,13 +1411,30 @@ padding: 6rem;
   float: left;
   font-size: 1rem;
   line-height: 1;
+  position: relative;
   width: 20%;
 }
 
+  .card .author_avatar:before {
+    content: '';
+    display: block;
+    padding-top: 100%;
+  }
+
   .card .author_avatar img {
+    border-radius: 50%;
     height: auto;
     margin: 0;
+    position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
     width: 100%;
+  }
+
+  .card .author_avatar img.size-thumbnail {
+    max-width: unset;
   }
 
 
@@ -2440,75 +2457,27 @@ Content
       position: relative;
     }
 
-      #related_podcasts .podcast_guest_thumbnail,
-      #related_posts .author_avatar,
-      #related_pages .related_page_thumbnail {
-        float: left;
-        font-size: 1rem;
-        line-height: 1;
-        width: 23.4375%;
-      }
-
-        #related_pages .related_page_thumbnail {
-          width: 15.625%;
-        }
-
-        #related_podcasts .podcast_guest_thumbnail img,
-        #related_posts .author_avatar img,
-        #related_pages .related_page_thumbnail img {
-          border-radius: 50%;
-          height: auto;
-          margin: 0;
-          max-width: unset;
-          width: 100%;
-        }
-
       #related_podcasts .headline-excerpt,
-      #related_posts .headline-excerpt {
-        margin-left: 1.5rem;
-        padding: 0 0 0 23.4375%;
+      #related_posts .headline-excerpt,
+      #related_pages .headline-excerpt {
+        padding: 0;
       }
 
-      #related_pages .headline-excerpt {
-        margin: 0 0 0 1.5rem;
-        padding: 0 0 0 15.625%;
-        position: absolute;
-          left: 1.5rem;
-          top: 50%;
-        transform: translateY(-50%);
-      }
+        #related_podcasts .headline,
+        #related_posts .headline,
+        #related_pages .headline,
+        #related_podcasts .postmeta,
+        #related_posts .postmeta,
+        #related_pages .postmeta {
+          margin-left: 2rem;
+          padding-left: 20%;
+        }
 
         #related_podcasts .headline,
         #related_posts .headline {
           font-size: 2.4rem;
           margin-bottom: .5rem;
         }
-
-        #related_pages .headline {
-          padding: 0;
-          margin-bottom: 0;
-        }
-
-        #related_podcasts .excerpt,
-        #related_posts .excerpt {
-          font-size: 1.6rem;
-        }
-
-          .page-template-product-page #related_podcasts .excerpt,
-          .page-template-full-width #related_podcasts .excerpt,
-          .page-template-product-page #related_posts .excerpt,
-          .page-template-full-width #related_posts .excerpt {
-            display: none;
-          }
-
-          @media only screen and ( max-width: 574px ) {
-
-            #related_podcasts .excerpt,
-            #related_posts .excerpt {
-              display: none;
-            }
-
-          }
 
   #current_posts {
     background-color: #fbfbfb;

@@ -201,7 +201,7 @@
 		            echo '<div class="author_avatar"><img class="avatar" src="' . $first_image_url . '" /></div>';
 
 								// Headline
-								echo '<h2 class="headline">' . $podcast_title . '</h2>';
+								echo '<h2 class="headline" title="' . $podcast_title . '">' . $podcast_title . '</h2>';
 
 								get_template_part( 'postmeta', 'index' );
 
