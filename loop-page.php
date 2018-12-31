@@ -62,6 +62,9 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
     echo '</div>'; // Close .post_body.
 
+    lawyerist_get_related_podcasts();
+    lawyerist_get_related_posts();
+
   echo '</div>'; // Close .post.
 
 endwhile; endif; // Close the Loop.
