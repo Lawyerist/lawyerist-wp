@@ -83,7 +83,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
     comments_template( '/comments.php' );
     echo '</div>';
 
-    if ( is_single( 238315 ) ) { lawyerist_get_related_pages(); }
+    lawyerist_get_related_pages();
 
   echo '</div>'; // Close .post.
 
