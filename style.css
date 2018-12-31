@@ -3930,6 +3930,15 @@ a.greybutton:active,
     width: auto;
   }
 
+  @media only screen and ( max-width: 761px ), ( max-device-width: 1024px ) and ( min-device-width: 768px ) {
+
+    #gform_wrapper_45 ul.gform_fields table.gsurvey-likert td:after,
+    #gform_wrapper_47 ul.gform_fields table.gsurvey-likert td:after {
+      margin-left: 2.5rem;
+    }
+
+  }
+
   #sidebar_column .gform_wrapper {
     font-size: 1.8rem;
   }
