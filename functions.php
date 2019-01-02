@@ -1186,11 +1186,15 @@ function lawyerist_affinity_partner_button() {
 			$parent_data	= get_post( $post->post_parent );
 			$parent_slug	= $parent_data->post_name;
 
-			// Assembles the path.
-			$partner_path = 'affinity-benefits/claim/' . $parent_slug . '/' . $current_slug;
+			if ( !empty( $current_slug ) ) {
 
-			if ( get_page_by_path( $partner_path ) ) {
-					echo '<a href="https://lawyerist.com/' . $partner_path . '/" class="affinity-partner-link" rel="nofollow">Claim Your Discount</a>';
+				// Assembles the path.
+				$partner_path = 'affinity-benefits/claim/' . $parent_slug . '/' . $current_slug;
+
+				if ( get_page_by_path( $partner_path ) ) {
+						echo '<a href="https://lawyerist.com/' . $partner_path . '/" class="affinity-partner-link" rel="nofollow">Claim Your Discount</a>';
+				}
+
 			}
 
     }
