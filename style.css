@@ -335,7 +335,8 @@ th,
 .featured_products_heading,
 #menu-main-menu .sub-menu .menu-item-has-children > a,
 .product-pages-list .title,
-.toc_title {
+.toc_title,
+.woocommerce-tabs .tabs {
   font-family: concourse-headings, sans-serif;
 }
 
@@ -4158,6 +4159,10 @@ WooCommerce
   .woocommerce .product-remove a.remove:active {
     background-color: #a00;
     box-shadow: none;
+  }
+
+  .woocommerce table.shop_attributes td {
+    padding: 0 .75rem;
   }
 
 
