@@ -4355,6 +4355,15 @@ a.cart-in-header {
   margin-top: 0;
 }
 
+@media only screen and ( max-width: 768px ) {
+
+  .page-template-full-width ul.products.columns-2 li.product {
+    float: left;
+    width: 48%;
+  }
+
+}
+
 /* WooCommerce Account Pages */
 
 body.woocommerce-account {
