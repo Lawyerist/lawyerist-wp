@@ -1726,7 +1726,7 @@ function lawyerist_checkout_fields( $fields ) {
 	unset( $fields['billing']['billing_company'] );
 	unset( $fields['billing']['billing_address_1'] );
 	unset( $fields['billing']['billing_address_2'] );
-	unset( $fields['billing	']['billing_city'] );
+	unset( $fields['billing']['billing_city'] );
 	unset( $fields['billing']['billing_phone'] );
 
 	// Disables the order comments/notes field.
@@ -1753,11 +1753,11 @@ function lawyerist_checkout_fields( $fields ) {
 				'label'				=> __( 'What is the size of your firm?', 'woocommerce' ),
 				'type'				=> 'select',
 				'options'			=> array(
-					''						=> 'Select one.',
-					'solo'				=> 'Solo practice',
-					'small'				=> 'Small firm (2–15 lawyers)',
-					'large'				=> 'Medium or large firm (16+ lawyers)',
-					'nope'				=> 'I don\'t work at a law firm',
+					''																		=> 'Select one.',
+					'Solo practice'												=> 'Solo practice',
+					'Small firm (2–15 lawyers)'						=> 'Small firm (2–15 lawyers)',
+					'Medium or large firm (16+ lawyers)'	=> 'Medium or large firm (16+ lawyers)',
+					'I don\'t work at a law firm'					=> 'I don\'t work at a law firm',
 				),
 				'placeholder'	=> _x( 'Select one.', 'placeholder', 'woocommerce' ),
 				'required'		=> true,
@@ -1769,11 +1769,11 @@ function lawyerist_checkout_fields( $fields ) {
 				'label'				=> __( 'What is your role at your firm?', 'woocommerce' ),
 				'type'				=> 'select',
 				'options'				=> array(
-					''						=> 'Select one.',
-					'owner'				=> 'Owner/partner',
-					'lawyer'			=> 'Lawyer',
-					'staff'				=> 'Staff',
-					'nope'				=> 'I don\'t work at a law firm',
+					''														=> 'Select one.',
+					'Owner/partner'								=> 'Owner/partner',
+					'Lawyer'											=> 'Lawyer',
+					'Staff'												=> 'Staff',
+					'I don\'t work at a law firm'	=> 'I don\'t work at a law firm',
 				),
 				'placeholder'	=> _x( 'Select one.', 'placeholder', 'woocommerce' ),
 				'required'		=> true,
@@ -1785,17 +1785,17 @@ function lawyerist_checkout_fields( $fields ) {
 				'label'				=> __( 'What type of law do you practice?', 'woocommerce' ),
 				'type'				=> 'select',
 				'options'			=> array(
-					''									=> 'Select your primary practice area.',
-					'civil_litigation'	=> 'Civil litigation (non-PI)',
-					'corporate'					=> 'Corporate',
-					'criminal'					=> 'Criminal',
-					'estate_planning'		=> 'Estate planning, probate, or elder',
-					'family'						=> 'Family',
-					'general_practice'	=> 'General practice',
-					'personal_injury'		=> 'Personal injury',
-					'real_estate'				=> 'Real estate',
-					'other'							=> 'Other',
-					'not_in_law'				=> 'I don\'t work in law',
+					''																		=> 'Select your primary practice area.',
+					'Civil litigation (non-PI)'						=> 'Civil litigation (non-PI)',
+					'Corporate'														=> 'Corporate',
+					'Criminal'														=> 'Criminal',
+					'Estate planning, probate, or elder'	=> 'Estate planning, probate, or elder',
+					'Family'															=> 'Family',
+					'General practice'										=> 'General practice',
+					'Personal injury'											=> 'Personal injury',
+					'Real estate'													=> 'Real estate',
+					'Other'																=> 'Other',
+					'I don\'t work in law'								=> 'I don\'t work in law',
 				),
 				'placeholder'	=> _x( 'Select your primary practice area.', 'placeholder', 'woocommerce' ),
 				'required'		=> true,
@@ -1812,6 +1812,27 @@ function lawyerist_checkout_fields( $fields ) {
 }
 
 add_filter( 'woocommerce_checkout_fields' , 'lawyerist_checkout_fields' );
+
+
+/* Update the Order Meta */
+
+function lawyerist_checkout_fields_update_order_meta( $order_id ) {
+
+	if ( !empty( $_POST['firm_size'] ) ) {
+		update_post_meta( $order_id, 'firm_size', sanitize_text_field( $_POST['firm_size'] ) );
+	}
+
+	if ( !empty( $_POST['firm_role'] ) ) {
+		update_post_meta( $order_id, 'firm_role', sanitize_text_field( $_POST['firm_role'] ) );
+	}
+
+	if ( !empty( $_POST['practice_area'] ) ) {
+		update_post_meta( $order_id, 'practice_area', sanitize_text_field( $_POST['practice_area'] ) );
+	}
+
+}
+
+add_action( 'woocommerce_checkout_update_order_meta', 'lawyerist_checkout_fields_update_order_meta' );
 
 
 /*------------------------------
