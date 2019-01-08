@@ -1770,9 +1770,10 @@ function lawyerist_checkout_fields( $fields ) {
 				'type'				=> 'select',
 				'options'				=> array(
 					''														=> 'Select one.',
-					'Owner/partner'								=> 'Owner/partner',
+					'Owner'												=> 'Owner/partner',
 					'Lawyer'											=> 'Lawyer',
 					'Staff'												=> 'Staff',
+					'Vendor'											=> 'Vendor (web designer, consultant, etc.)',
 					'I don\'t work at a law firm'	=> 'I don\'t work at a law firm',
 				),
 				'placeholder'	=> _x( 'Select one.', 'placeholder', 'woocommerce' ),
