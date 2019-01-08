@@ -48,10 +48,10 @@ GRAVITY FORMS
 
 WOOCOMMERCE
 - WooCommerce Setup
-- Display Price of Free Products As "Free!" Not "$0.00".
-- Function for Checking to See if a Product ID is in the Cart
-- Checkout Fields
 - Check to See if Page is Really a WooCommerce Page
+- Check to See if a Product ID is in the Cart
+- Checkout Fields
+- Display Price of Free Products As "Free!" Not "$0.00".
 
 TAXONOMY
 - Page Type Custom Taxonomy
@@ -1656,36 +1656,47 @@ add_action( 'after_setup_theme', 'lawyerist_woocommerce_support' );
 
 
 /*------------------------------
-Display Price of Free Products As "Free!" Not "$0.00".
+Check to See if Page is Really a WooCommerce Page
 ------------------------------*/
 
-function lawyerist_wc_free_products( $price, $product ) {
+function is_really_a_woocommerce_page() {
 
-	global $woocommerce;
+	if ( function_exists( 'is_woocommerce' ) && is_woocommerce() ) {
 
-	if ( wc_memberships_user_has_member_discount() && $product->get_price() == 0 ) {
-
-		$reg_price = $product->get_regular_price();
-
-		return '<del>$' . $reg_price . '</del> Free!';
-
-	} elseif ( $product->get_price() == 0 ) {
-
-		return 'Free!';
-
-	} else {
-
-		return $price;
+		return true;
 
 	}
 
-}
+	$woocommerce_keys = array (
+		'woocommerce_shop_page_id',
+		'woocommerce_terms_page_id',
+		'woocommerce_cart_page_id',
+		'woocommerce_checkout_page_id',
+		'woocommerce_pay_page_id',
+		'woocommerce_thanks_page_id',
+		'woocommerce_myaccount_page_id',
+		'woocommerce_edit_address_page_id',
+		'woocommerce_view_order_page_id',
+		'woocommerce_change_password_page_id',
+		'woocommerce_logout_page_id',
+		'woocommerce_lost_password_page_id'
+	);
 
-add_filter( 'woocommerce_get_price_html', 'lawyerist_wc_free_products', 10, 2 );
+	foreach ( $woocommerce_keys as $wc_page_id ) {
+
+		if ( get_the_ID() == get_option ( $wc_page_id , 0 ) ) {
+			return true ;
+		}
+
+	}
+
+	return false;
+
+}
 
 
 /*------------------------------
-Function for Checking to See if a Product ID is in the Cart
+Check to See if a Product ID is in the Cart
 ------------------------------*/
 
 // To check, call the function as woo_in_cart( $product_id ). Returns true or false.
@@ -1715,7 +1726,7 @@ function lawyerist_checkout_fields( $fields ) {
 	unset( $fields['billing']['billing_company'] );
 	unset( $fields['billing']['billing_address_1'] );
 	unset( $fields['billing']['billing_address_2'] );
-	unset( $fields['billing']['billing_city'] );
+	unset( $fields['billing	']['billing_city'] );
 	unset( $fields['billing']['billing_phone'] );
 
 	// Disables the order comments/notes field.
@@ -1804,43 +1815,32 @@ add_filter( 'woocommerce_checkout_fields' , 'lawyerist_checkout_fields' );
 
 
 /*------------------------------
-Check to See if Page is Really a WooCommerce Page
+Display Price of Free Products As "Free!" Not "$0.00".
 ------------------------------*/
 
-function is_really_a_woocommerce_page() {
+function lawyerist_wc_free_products( $price, $product ) {
 
-	if ( function_exists( 'is_woocommerce' ) && is_woocommerce() ) {
+	global $woocommerce;
 
-		return true;
+	if ( wc_memberships_user_has_member_discount() && $product->get_price() == 0 ) {
 
-	}
+		$reg_price = $product->get_regular_price();
 
-	$woocommerce_keys = array (
-		'woocommerce_shop_page_id',
-		'woocommerce_terms_page_id',
-		'woocommerce_cart_page_id',
-		'woocommerce_checkout_page_id',
-		'woocommerce_pay_page_id',
-		'woocommerce_thanks_page_id',
-		'woocommerce_myaccount_page_id',
-		'woocommerce_edit_address_page_id',
-		'woocommerce_view_order_page_id',
-		'woocommerce_change_password_page_id',
-		'woocommerce_logout_page_id',
-		'woocommerce_lost_password_page_id'
-	);
+		return '<del>$' . $reg_price . '</del> Free!';
 
-	foreach ( $woocommerce_keys as $wc_page_id ) {
+	} elseif ( $product->get_price() == 0 ) {
 
-		if ( get_the_ID() == get_option ( $wc_page_id , 0 ) ) {
-			return true ;
-		}
+		return 'Free!';
+
+	} else {
+
+		return $price;
 
 	}
-
-	return false;
 
 }
+
+add_filter( 'woocommerce_get_price_html', 'lawyerist_wc_free_products', 10, 2 );
 
 
 /* TAXONOMY *******************/
