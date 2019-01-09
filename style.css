@@ -1235,6 +1235,7 @@ Selectors
     padding: 0;
   }
 
+  .card.front_page_sticky_post,
   .card.has-post-label,
   .card.has-avatar-thumbnail {
     padding: 2rem;
