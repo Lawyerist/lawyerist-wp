@@ -136,9 +136,6 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
     // Insert product updates, and ads on mobile.
     if ( $post_num == 1 && is_mobile() ) { lawyerist_get_display_ad(); }
-    if ( $post_num == 3 ) {
-      if ( is_front_page() && !is_paged() ) { lawyerist_sponsored_product_updates(); }
-    }
 
     $post_num++; // Increment counter.
 

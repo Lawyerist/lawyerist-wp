@@ -1215,7 +1215,8 @@ Selectors
 
 ------------------------------*/
 
-.card {
+.card,
+#sponsored_product_updates {
   border-radius: .2rem;
   box-shadow:
     0 0 0 .1rem #ddd,
@@ -1237,8 +1238,13 @@ Selectors
 
   .card.front_page_sticky_post,
   .card.has-post-label,
-  .card.has-avatar-thumbnail {
+  .card.has-avatar-thumbnail,
+  #sponsored_product_updates {
     padding: 2rem;
+  }
+
+  #sponsored_product_updates li:last-child {
+    margin-bottom: 0;
   }
 
   /* Highlight colors. */

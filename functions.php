@@ -24,7 +24,6 @@ CONTENT
 - Postmeta
 - Author Bios
 - Custom Default Gravatar
-- Sponsored Product Updates Widget
 - Get Related Podcasts
 - Get Related Posts
 - Get Related Pages
@@ -677,84 +676,6 @@ add_filter( 'avatar_defaults', 'lawyerist_custom_gravatar' );
 
 
 /*------------------------------
-Sponsored Product Updates Widget
-------------------------------*/
-
-function lawyerist_sponsored_product_updates() {
-
-	// Product Updates
-	$product_updates_query_args = array(
-		'tax_query' => array(
-			'relation' => 'OR',
-			// Posts with the "Sponsored Posts" category.
-			array(
-				'taxonomy' => 'category',
-				'terms'    => array( 1320 ),
-			),
-		),
-		'post__not_in'				=> get_option( 'sticky_posts' ),
-		'posts_per_page'			=> 4, // Determines how many posts are displayed in the list.
-	);
-
-	$product_updates_query = new WP_Query( $product_updates_query_args );
-
-	if ( $product_updates_query->post_count > 1 ) :
-
-		echo '<div id="sponsored_product_updates" class="card">';
-
-			echo '<div class="product_updates_heading">Product Updates</div>';
-
-			echo '<ul>';
-
-				// Start the product updates sub-Loop.
-				while ( $product_updates_query->have_posts() ) : $product_updates_query->the_post();
-
-					$product_update_title = the_title( '', '', FALSE );
-					$product_update_ID = get_the_ID();
-
-					if ( has_term( true, 'sponsor' ) ) {
-
-				    $sponsor_IDs = wp_get_post_terms(
-				      $product_update_ID,
-				      'sponsor',
-				      array(
-				        'fields' 	=> 'ids',
-				        'orderby' => 'count',
-				        'order' 	=> 'DESC',
-				      )
-				    );
-
-				    $sponsor_info = get_term( $sponsor_IDs[0] );
-				    $sponsor      = $sponsor_info->name;
-				    $sponsor_url  = $sponsor_info->description;
-
-						if ( !empty( $sponsor_url ) ) {
-
-							echo '<li><a href="' . $sponsor_url . '" title="' . $product_update_title . '" class="product_update">' . $product_update_title . '</a></li>';
-
-						} else {
-
-							echo '<li>' . $product_update_title . '</li>';
-
-						}
-
-					}
-
-				endwhile;
-
-				wp_reset_postdata();
-
-			echo '</ul>';
-
-			echo '<div class="clear"></div>';
-
-		echo '</div>'; // Close #sponsored_product_updates.
-
-	endif; // End product updates.
-
-}
-
-/*------------------------------
 Get Related Podcasts
 ------------------------------*/
 
@@ -854,7 +775,6 @@ function lawyerist_get_related_posts() {
 		$lawyerist_related_posts_query_args = array(
 			'category__not_in'	=> array(
 				1320, // Excludes sponsored posts.
-				4077, // Excludes product spotlights.
 				4183, // Excludes podcast episodes.
 			),
 			'post__not_in'		=> $current_id,

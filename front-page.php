@@ -249,75 +249,6 @@
 				// End of embedded Lawyerist Lens playlist.
 
 
-		    // Outputs the most recent download.
-				$download_query_args = array(
-					'post_type'						=> 'product',
-					'post__not_in'				=> get_option( 'sticky_posts' ),
-					'posts_per_page'			=> 1,
-					'tax_query'						=> array(
-						array(
-							'taxonomy' => 'product_visibility',
-							'field'    => 'name',
-							'terms'    => 'exclude-from-catalog',
-							'operator' => 'NOT IN',
-						),
-					),
-				);
-
-				$download_query = new WP_Query( $download_query_args );
-
-				if ( $download_query->have_posts() ) : while ( $download_query->have_posts() ) : $download_query->the_post();
-
-					$download_title			= the_title( '', '', FALSE );
-					$download_url				= get_permalink();
-					$download_excerpt   = get_the_excerpt();
-				  $seo_descr    		  = get_post_meta( $post->ID, '_yoast_wpseo_metadesc', true );
-
-				  // Sets the post excerpt to the Yoast Meta Description.
-				  if ( !empty( $seo_descr ) ) { $download_excerpt = $seo_descr; }
-
-					// Starts the post container.
-					echo '<div ' ;
-					post_class( 'card has-post-label' );
-					echo '>';
-
-						// Starts the link container. Makes for big click targets!
-						echo '<a href="' . $download_url . '" title="' . $download_title . '">';
-
-							// Now we get the headline and excerpt (except for certain kinds of posts).
-							echo '<div class="headline-excerpt">';
-
-								// Outputs a featured image.
-								if ( has_post_thumbnail() ) {
-
-									$thumbnail_url  = get_the_post_thumbnail_url( $post->ID, 'shop_single' );
-						      echo '<img class="product-thumbnail" src="' . $thumbnail_url . '" />';
-
-								}
-
-								// Headline
-								echo '<h2 class="headline">' . $download_title . '</h2>';
-
-								echo '<p class="excerpt">' . $download_excerpt . '</p>';
-
-								echo '<a href="' . $download_url . '" class="button">Get it Now</a>';
-
-								// Clearfix
-								echo '<div class="clear"></div>';
-
-							echo '</div>'; // Close .headline-excerpt.
-
-						echo '</a>'; // This closes the post link container (.post).
-
-						// Outputs the label.
-						echo '<p class="post_label"><a href="https://lawyerist.com/library/" title="Explore the Lawyerist Insider Library.">Explore the Lawyerist Insider Library</a></p>';
-
-					echo '</div>';
-
-				endwhile; endif;
-				// End of download.
-
-
 				// Outputs the 3 most recent blog posts.
 				$current_post_query_args = array(
 					'category_name'				=> 'blog-posts',
@@ -390,7 +321,77 @@
 				endif;
 				// End of blog posts.
 
-			echo '</div>'; // End of new stuff.
+				// Outputs the most recent download.
+				$download_query_args = array(
+					'orderby'							=> 'rand',
+					'post_type'						=> 'product',
+					'post__not_in'				=> get_option( 'sticky_posts' ),
+					'posts_per_page'			=> 1,
+					'tax_query'						=> array(
+						array(
+							'taxonomy' => 'product_visibility',
+							'field'    => 'name',
+							'terms'    => 'exclude-from-catalog',
+							'operator' => 'NOT IN',
+						),
+					),
+				);
+
+				$download_query = new WP_Query( $download_query_args );
+
+				if ( $download_query->have_posts() ) : while ( $download_query->have_posts() ) : $download_query->the_post();
+
+					$download_title			= the_title( '', '', FALSE );
+					$download_url				= get_permalink();
+					$download_excerpt   = get_the_excerpt();
+					$seo_descr    		  = get_post_meta( $post->ID, '_yoast_wpseo_metadesc', true );
+
+					// Sets the post excerpt to the Yoast Meta Description.
+					if ( !empty( $seo_descr ) ) { $download_excerpt = $seo_descr; }
+
+					// Starts the post container.
+					echo '<div ' ;
+					post_class( 'card has-post-label' );
+					echo '>';
+
+						// Starts the link container. Makes for big click targets!
+						echo '<a href="' . $download_url . '" title="' . $download_title . '">';
+
+							// Now we get the headline and excerpt (except for certain kinds of posts).
+							echo '<div class="headline-excerpt">';
+
+								// Outputs a featured image.
+								if ( has_post_thumbnail() ) {
+
+									$thumbnail_url  = get_the_post_thumbnail_url( $post->ID, 'shop_single' );
+									echo '<img class="product-thumbnail" src="' . $thumbnail_url . '" />';
+
+								}
+
+								// Headline
+								echo '<h2 class="headline">' . $download_title . '</h2>';
+
+								echo '<p class="excerpt">' . $download_excerpt . '</p>';
+
+								echo '<a href="' . $download_url . '" class="button">Get it Now</a>';
+
+								// Clearfix
+								echo '<div class="clear"></div>';
+
+							echo '</div>'; // Close .headline-excerpt.
+
+						echo '</a>'; // This closes the post link container (.post).
+
+						// Outputs the label.
+						echo '<p class="post_label"><a href="https://lawyerist.com/library/" title="Explore the Lawyerist Insider Library.">Explore the Lawyerist Insider Library</a></p>';
+
+					echo '</div>';
+
+				endwhile; endif;
+				// End of download.
+
+			echo '</div>';
+			// End of new stuff.
 
 		?>
 
@@ -436,16 +437,6 @@
 				</div>
 
 				<div class="clear"></div>
-
-			</div>
-
-			<div class="front_page_block">
-
-				<?php lawyerist_sponsored_product_updates(); ?>
-
-			</div>
-
-			<div class="front_page_block fp_contains_boxes">
 
 				<div class="one_half">
 					<div class="card">
