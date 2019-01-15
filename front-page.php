@@ -363,7 +363,7 @@
 								// Outputs a featured image.
 								if ( has_post_thumbnail() ) {
 
-									$thumbnail_url  = get_the_post_thumbnail_url( $post->ID, 'shop_single' );
+									$thumbnail_url  = get_the_post_thumbnail_url( $post->ID, 'shop_catalog' );
 									echo '<img class="product-thumbnail" src="' . $thumbnail_url . '" />';
 
 								}
