@@ -251,7 +251,10 @@
 
 				// Outputs the 3 most recent blog posts.
 				$current_post_query_args = array(
-					'category_name'				=> 'blog-posts',
+					'category__in'				=> array(
+						'555', // Blog Posts
+						'4077', // Product Spotlights
+					),
 					'post__not_in'				=> get_option( 'sticky_posts' ),
 					'posts_per_page'			=> 3,
 				);
