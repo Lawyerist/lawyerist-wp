@@ -2845,7 +2845,7 @@ Content
     width: 10rem;
   }
 
-    .resource-page .headline_container img.wp-post-image.size-thumbnail {
+    .resource-page .headline_container img.wp-post-image {
       height: 100%;
       margin: auto 0;
       max-width: none;
@@ -2883,7 +2883,7 @@ Content
       width: 10rem;
     }
 
-      .product-page .headline_container img.wp-post-image.size-thumbnail {
+      .product-page .headline_container img.wp-post-image {
         height: 100%;
         margin: auto 0;
         max-width: none;

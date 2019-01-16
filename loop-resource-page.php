@@ -23,7 +23,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
       // Show featured image if there is one.
       if ( has_post_thumbnail() ) {
         echo '<div itemprop="image">';
-        the_post_thumbnail( 'thumbnail' );
+        the_post_thumbnail( 'shop_thumbnail' );
         echo '</div>';
       }
 
