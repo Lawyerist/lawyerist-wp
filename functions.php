@@ -527,9 +527,17 @@ function get_first_image_url() {
 
 	$output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
 
-	$first_image_url = $matches[1][0];
+	if ( !empty( $matches[1][0] ) ) {
 
-	return $first_image_url;
+		$first_image_url = $matches[1][0];
+
+		return $first_image_url;
+
+	} else {
+
+		return;
+
+	}
 
 }
 
