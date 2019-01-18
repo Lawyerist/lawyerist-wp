@@ -91,6 +91,45 @@ function lawyerist_stylesheets_scripts() {
 	wp_register_script( 'footer-scripts', get_template_directory_uri() . '/js/footer-scripts.js',  array( 'jquery' ), $cacheBusterMC, true );
 	wp_enqueue_script( 'footer-scripts' );
 
+	// Prevent stylesheets and scripts from loading on the front page.
+	if ( is_front_page() ) {
+
+		// WooCommerce
+		wp_dequeue_style( 'woocommerce-layout' );
+		wp_dequeue_style( 'woocommerce-general' );
+		wp_dequeue_style( 'woocommerce-smallscreen' );
+		wp_dequeue_style( 'wc-memberships-frontend' );
+
+		wp_dequeue_script( 'wc-cart-fragments' );
+		wp_dequeue_script( 'woocommerce' );
+		wp_dequeue_script( 'wc-add-to-cart' );
+
+		// Table of Contents Plus
+		wp_dequeue_script( 'toc-front' );
+
+		// TablePress
+		wp_dequeue_style( 'tablepress-default' );
+		wp_dequeue_style( 'tablepress-responsive-tables' );
+		wp_dequeue_style( 'tablepress-responsive-tables-flip' );
+
+	}
+
+	// Prevent WP Review Pro scripts from appearing on non-product pages.
+	if ( !is_page_template( 'product-page.php' ) ) {
+
+		wp_dequeue_style( 'fontawesome' );
+		wp_dequeue_style( 'magnificPopup' );
+		wp_dequeue_style( 'wp_review-style' );
+
+		wp_dequeue_script( 'jquery-knob' );
+		wp_dequeue_script( 'magnificPopup' );
+		wp_dequeue_script( 'stacktable' );
+		wp_dequeue_script( 'wp-review-exit-intent' );
+		wp_dequeue_script( 'wp_review-js' );
+		wp_dequeue_script( 'wp_review-jquery-appear' );
+
+	}
+
 }
 
 add_action( 'wp_enqueue_scripts', 'lawyerist_stylesheets_scripts' );
