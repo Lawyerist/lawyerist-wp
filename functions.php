@@ -114,7 +114,7 @@ function lawyerist_stylesheets_scripts() {
 
 	}
 
-	// Prevent WP Review Pro scripts from appearing on non-product pages.
+	// Prevent WP Review Pro stylesheets and scripts from appearing on non-product pages.
 	if ( !is_page_template( 'product-page.php' ) ) {
 
 		wp_dequeue_style( 'fontawesome' );
