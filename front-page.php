@@ -300,24 +300,7 @@
 						endwhile;
 
 						// Outputs the label.
-						$cat_IDs = wp_get_post_terms(
-							$post->ID,
-							'category',
-							array(
-								'fields' 	=> 'ids',
-								'orderby' => 'count',
-								'order' 	=> 'DESC'
-							)
-						);
-
-						$cat_info				= get_term( $cat_IDs[0] );
-
-						$post_label 		   	= $cat_info->name;
-						$post_label_url			=	get_term_link( $cat_IDs[0], 'category' );
-
-						if ( !empty( $post_label ) ) {
-							echo '<p class="post_label"><a href="' . $post_label_url . '" title="All ' . $post_label . '.">All ' . $post_label . '</a></p>';
-						}
+						echo '<p class="post_label"><a href="https://lawyerist.com/topic/blog-posts/" title="All Blog Posts">All Blog Posts</a></p>';
 
 					echo '</div>';
 
