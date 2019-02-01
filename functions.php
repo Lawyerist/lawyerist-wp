@@ -583,7 +583,55 @@ function scorecard_results_graph() {
 Scorecard Admin Reporting
 ------------------------------*/
 
+function scorecard_admin_reporting_menu() {
+	add_submenu_page( 'users.php', 'Small Firm Scorecard Reports', 'Scorecard Reports', 'manage_options', 'scorecard', 'scorecard_admin_reporting' );
+}
 
+add_action( 'admin_menu', 'scorecard_admin_reporting_menu' );
+
+function scorecard_admin_reporting() {
+
+	// Set permissions!!!
+
+	echo '<div class="wrap">';
+
+		echo '<h1 class="wp-heading-inline">Small Firm Scorecard Report: Labsters</h1>';
+
+		$labster_query_args = array(
+			'post_type'				=> 'wc_user_membership',
+			'post_status'			=> 'wcm-active',
+			'post_parent__in'	=> array(
+				223686, // Lab Pro
+				223685, // Lab
+			),
+			'posts_per_page'	=> -1,
+		);
+
+		$labster_query = new WP_Query( $labster_query_args );
+
+		if ( $labster_query->have_posts() ) :
+
+			$labsters = array();
+
+			while ( $labster_query->have_posts() ) : $labster_query->the_post();
+
+				$membership_id = get_the_ID();
+
+				$labsters[ $membership_id ][ 'email' ]					= get_the_author_meta( 'user_email' );
+				$labsters[ $membership_id ][ 'first_name' ]			= get_the_author_meta( 'user_firstname' );
+				$labsters[ $membership_id ][ 'last_name' ]			= get_the_author_meta( 'user_lastname' );
+
+			endwhile; wp_reset_postdata();
+
+			echo '<pre>';
+			var_dump( $labsters );
+			echo '</pre>';
+
+		endif;
+
+	echo '</div>'; // Close .wrap
+
+}
 
 
 
