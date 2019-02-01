@@ -12,7 +12,9 @@ STRUCTURE
 
 ADMIN
 - Login Form
-- Scorecard Reports
+- Scorecard Reporting Functions
+- Insider Dashboard: Small Firm Scorecard
+- Scorecard Admin Reports
 
 UTILITY FUNCTIONS
 - Get Country
@@ -309,7 +311,7 @@ add_filter( 'login_message', 'lawyerist_login_message' );
 
 
 /*------------------------------
-Scorecard Reports
+Scorecard Reporting Functions
 ------------------------------*/
 
 // This should probably be turned into a separate plugin.
@@ -449,6 +451,9 @@ function get_scorecard_results( $user_email = '' ) {
 
 }
 
+/*------------------------------
+Insider Dashboard: Small Firm Scorecard
+------------------------------*/
 
 function scorecard_results_graph() {
 
@@ -572,6 +577,14 @@ function scorecard_results_graph() {
 	return $scorecard_graph;
 
 }
+
+
+/*------------------------------
+Scorecard Admin Reporting
+------------------------------*/
+
+
+
 
 
 /* UTILITY FUNCTIONS ********************/
