@@ -2461,14 +2461,27 @@ Content
     #related_posts .card,
     #related_pages .card {
       background-color: #f5f5f5;
+      min-height:7.5rem;
       padding: 2rem;
       position: relative;
     }
 
+      #related_podcasts .author_avatar,
+      #related_posts .author_avatar,
+      #related_pages .author_avatar {
+        width: 7.5rem;
+      }
+
       #related_podcasts .headline-excerpt,
-      #related_posts .headline-excerpt,
+      #related_posts .headline-excerpt {
+        padding: 0 0 0 9rem;
+      }
+
       #related_pages .headline-excerpt {
-        padding: 0;
+        padding: 0 2rem 0 9rem;
+        position: absolute;
+          top: 50%;
+        transform: translateY(-50%);
       }
 
         #related_podcasts .headline,
@@ -2477,8 +2490,8 @@ Content
         #related_podcasts .postmeta,
         #related_posts .postmeta,
         #related_pages .postmeta {
-          margin-left: 2rem;
-          padding-left: 20%;
+          margin-left: 0;
+          padding-left: 0;
         }
 
         #related_podcasts .headline,
