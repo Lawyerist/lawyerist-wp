@@ -799,7 +799,6 @@ function lawyerist_get_related_podcasts() {
 			'category_name'			=> 'lawyerist-podcast',
 			'category__not_in'	=> array(
 				1320, // Excludes sponsored posts.
-				4077, // Excludes product spotlights.
 			),
 			'post__not_in'		=> $current_id,
 			'posts_per_page'	=> -1,

@@ -8,6 +8,8 @@ echo '<div class="postmeta">';
   $author         = get_the_author_meta( 'display_name' );
   $date           = get_the_time( 'F jS, Y' );
 
+  // Selects product spotlights and sponsored posts (including product updates),
+  // because they should all have a sponsor tag.
   if ( has_term( true, 'sponsor' ) ) {
 
     $sponsor_IDs = wp_get_post_terms(
@@ -26,12 +28,16 @@ echo '<div class="postmeta">';
 
     if ( empty( $sponsor_url ) ) {
 
+      // Does not output the sponsor name as a link if the sponsor URL isn't in
+      // the sponsor tag description.
       if ( has_category( 'sponsored-posts' ) ) { // Product updates and old sponsored posts.
         echo '<span class="sponsor">Sponsored by ' . $sponsor . '</span> ';
       } else { // Product spotlights.
         echo 'By <span class="vcard author"><cite class="fn">' . $author . '</cite></span>,&nbsp;<span class="sponsor">sponsored by ' . $sponsor . '</span>, ';
       }
 
+    // Outputs the sponsor name with a link if the sponsor URL is in the sponsor
+    // tag description.
     } else {
 
       if ( has_category( 'sponsored-posts' ) ) { // Product updates and old sponsored posts.
