@@ -129,8 +129,8 @@ function lawyerist_dequeue_styles() {
 
 	}
 
-	// Prevent WP Review Pro stylesheets and scripts from appearing on non-product pages.
-	if ( !is_page_template( 'product-page.php' ) ) {
+	// Prevent WP Review Pro stylesheets from appearing on non-product pages.
+	if ( !is_page_template( 'product-page.php' ) && !is_admin() ) {
 
 		wp_deregister_style( 'fontawesome' );
 		wp_deregister_style( 'magnificPopup' );
@@ -172,7 +172,8 @@ function lawyerist_dequeue_scripts() {
 	}
 
 	// Prevent WP Review Pro stylesheets and scripts from appearing on non-product pages.
-	if ( !is_page_template( 'product-page.php' ) ) {
+	// IF the scripts don't load on the admin end of things, it breaks reviews.
+	if ( !is_page_template( 'product-page.php' ) && !is_admin() ) {
 
 		wp_deregister_script( 'jquery-knob' );
 		wp_deregister_script( 'magnificPopup' );
@@ -860,7 +861,6 @@ function lawyerist_get_related_podcasts() {
 			'category_name'			=> 'lawyerist-podcast',
 			'category__not_in'	=> array(
 				1320, // Excludes sponsored posts.
-				4077, // Excludes product spotlights.
 			),
 			'post__not_in'		=> $current_id,
 			'posts_per_page'	=> -1,
@@ -887,15 +887,16 @@ function lawyerist_get_related_podcasts() {
 						// Starts the link container. Makes for big click targets!
 						echo '<a href="' . $post_url . '" title="' . $post_title . '">';
 
+							// Outputs the podcast guest thumbnail.
+							$first_image_url = get_first_image_url();
+
+							if ( empty( $first_image_url ) ) {
+								$first_image_url = 'https://lawyerist.com/lawyerist/wp-content/uploads/2018/09/podcast-mic-square-150x150.png';
+							}
+
+							echo '<div class="author_avatar"><img class="avatar" src="' . $first_image_url . '" /></div>';
+
 							echo '<div class="headline-excerpt">';
-
-								$first_image_url = get_first_image_url();
-
-								if ( empty( $first_image_url ) ) {
-									$first_image_url = 'https://lawyerist.com/lawyerist/wp-content/uploads/2018/09/podcast-mic-square-150x150.png';
-								}
-
-								echo '<div class="author_avatar"><img class="avatar" src="' . $first_image_url . '" /></div>';
 
 								echo '<h2 class="headline" title="' . $post_title . '">' . $post_title . '</h2>';
 
@@ -972,10 +973,10 @@ function lawyerist_get_related_posts() {
 						// Starts the link container. Makes for big click targets!
 						echo '<a href="' . $post_url . '" title="' . $post_title . '">';
 
-							echo '<div class="headline-excerpt">';
+							// Outputs the author's avatar.
+							echo '<div class="author_avatar">' . $author_avatar . '</div>';
 
-								// Outputs the author's avatar.
-								echo '<div class="author_avatar">' . $author_avatar . '</div>';
+							echo '<div class="headline-excerpt">';
 
 								// Headline
 								echo '<h2 class="headline" title="' . $post_title . '">' . $post_title . '</h2>';
@@ -1025,10 +1026,24 @@ function lawyerist_get_related_pages() {
 		}
 
 		$lawyerist_related_pages_query_args = array(
-			'post__not_in'		=> $current_id,
-			'posts_per_page'	=> -1,
-			'post_type'				=> 'page',
-			'post_name__in' 	=> $current_tags_slugs,
+			'post__not_in'				=> $current_id,
+			'post_parent__not_in'	=> array( // Excludes Affinity partner pages.
+				239204, // Affinity Benefits
+				242095, // Claim Your Affinity benefits
+				242252, // Accounting Software
+				242234, // Credit Card Processing
+				242243, // Intake CRM Software
+				242244, // Law Practice Management Software
+				269706, // Lawyer Ratings & Directories
+				242251, // Legal Timekeeping & Billing Software
+				242249, // Online Legal Research Tools
+				243267, // Other Legal Marketing Tools
+				242253, // Virtual Receptionists
+				242254, // Website Designers & SEO Consultants
+			),
+			'posts_per_page'			=> -1,
+			'post_type'						=> 'page',
+			'post_name__in' 			=> $current_tags_slugs,
 		);
 
 		$lawyerist_related_pages_query = new WP_Query( $lawyerist_related_pages_query_args );
@@ -1054,15 +1069,16 @@ function lawyerist_get_related_pages() {
 						// Starts the link container. Makes for big click targets!
 						echo '<a href="' . $post_url . '" title="' . $post_title . '">';
 
-							echo '<div class="headline-excerpt">';
+							// Outputs the post thumbnail or a default image.
+							if ( has_post_thumbnail() ) {
+								echo '<div class="author_avatar">';
+									the_post_thumbnail( 'thumbnail' );
+								echo '</div>';
+							} else {
+								echo '<div class="author_avatar"><img class="attachment-thumbnail wp-post-image" src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/02/L-dot.png" /></div>';
+							}
 
-								if ( has_post_thumbnail() ) {
-									echo '<div class="author_avatar">';
-			              the_post_thumbnail( 'thumbnail' );
-									echo '</div>';
-		            } else {
-		              echo '<div class="author_avatar"><img class="attachment-thumbnail wp-post-image" src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/02/L-dot.png" /></div>';
-		            }
+							echo '<div class="headline-excerpt">';
 
 								echo '<h2 class="headline" title="' . $post_title . '">' . $post_title . '</h2>';
 
@@ -1604,7 +1620,13 @@ function lawyerist_product_rating( $rating_type = '' ) {
 	} else {
 
 		$rating				= lawyerist_get_composite_rating();
-		$rating_count	=	lawyerist_get_community_review_count() + 1;
+		$our_rating		= lawyerist_get_our_rating();
+
+		if ( !empty( $our_rating ) ) {
+			$rating_count	=	lawyerist_get_community_review_count() + 1;
+		} else {
+			$rating_count	=	lawyerist_get_community_review_count();
+		}
 
 	}
 

@@ -110,9 +110,9 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
       echo '<div class="clear"></div>';
 
-      echo '<div id="rating" class="our_rating">';
+      if ( !empty( $composite_rating ) ) {
 
-        if ( function_exists( 'wp_review_show_total' ) && !empty( $our_rating ) ) {
+        echo '<div id="rating">';
 
           echo '<h2>' . $page_title . ' Rating: ';
           echo lawyerist_star_rating();
@@ -120,17 +120,17 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
           echo '<div class="card rating-box">';
 
-            echo '<h3>Features</h3>';
+            if ( !empty( $our_rating ) ) {
 
-            echo wp_review_get_review_box();
+              echo '<h3>Features</h3>';
 
-              echo '<div class="rating-breakdown">';
+              echo wp_review_get_review_box();
 
-              if ( !empty( $our_rating ) && !empty( $community_rating ) ) {
+            }
 
-                echo '<h3>Rating Breakdown</h3>';
+            echo '<div class="rating-breakdown">';
 
-              }
+              echo '<h3>Rating Breakdown</h3>';
 
               if ( !empty( $our_rating ) ) {
 
@@ -139,7 +139,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
               }
 
-              if ( !empty( $our_rating ) && !empty( $community_rating ) ) {
+              if ( !empty( $community_rating ) ) {
 
                 echo '<p class="rating">Community Rating: <strong>' . $community_rating . '</strong>/5 (based on ' . $community_review_count . _n( ' ratings', ' ratings', $community_review_count ) . ')</p>';
                 echo '<p><small>The community rating is based on the average of the community reviews below.</small></p>';
@@ -157,9 +157,9 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
           echo '</div>';
 
-        }
+        echo '</div>';
 
-      echo '</div>';
+      }
 
       $trial_button	= trial_button();
       echo '<p align="center">' . $trial_button . '</p>';
