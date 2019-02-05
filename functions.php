@@ -127,8 +127,8 @@ function lawyerist_dequeue_styles() {
 
 	}
 
-	// Prevent WP Review Pro stylesheets and scripts from appearing on non-product pages.
-	if ( !is_page_template( 'product-page.php' ) ) {
+	// Prevent WP Review Pro stylesheets from appearing on non-product pages.
+	if ( !is_page_template( 'product-page.php' ) && !is_admin() ) {
 
 		wp_deregister_style( 'fontawesome' );
 		wp_deregister_style( 'magnificPopup' );
@@ -170,7 +170,7 @@ function lawyerist_dequeue_scripts() {
 	}
 
 	// Prevent WP Review Pro stylesheets and scripts from appearing on non-product pages.
-	if ( !is_page_template( 'product-page.php' ) ) {
+	if ( !is_page_template( 'product-page.php' ) && !is_admin() ) {
 
 		wp_deregister_script( 'jquery-knob' );
 		wp_deregister_script( 'magnificPopup' );
@@ -1558,7 +1558,13 @@ function lawyerist_product_rating( $rating_type = '' ) {
 	} else {
 
 		$rating				= lawyerist_get_composite_rating();
-		$rating_count	=	lawyerist_get_community_review_count() + 1;
+		$our_rating		= lawyerist_get_our_rating();
+
+		if ( !empty( $our_rating ) ) {
+			$rating_count	=	lawyerist_get_community_review_count() + 1;
+		} else {
+			$rating_count	=	lawyerist_get_community_review_count();
+		}
 
 	}
 

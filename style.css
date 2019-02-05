@@ -2118,6 +2118,10 @@ Content
       background-color: #bbb !important;
     }
 
+    .review-point .review-result-wrapper .review-result {
+      background-color: #c00 !important;
+    }
+
     .wp-review-feedback {
       color: #777;
       font-size: 1.4rem;
