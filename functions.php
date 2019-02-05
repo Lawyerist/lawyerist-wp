@@ -452,6 +452,7 @@ function get_scorecard_results( $user_email = '' ) {
 
 }
 
+
 /*------------------------------
 Insider Dashboard: Small Firm Scorecard
 ------------------------------*/
@@ -612,7 +613,8 @@ function scorecard_admin_reporting() {
 
 		if ( $labster_query->have_posts() ) :
 
-			$labsters = array();
+			$labsters						= array();
+			$scorecard_results	= array();
 
 			while ( $labster_query->have_posts() ) : $labster_query->the_post();
 
@@ -624,9 +626,53 @@ function scorecard_admin_reporting() {
 
 			endwhile; wp_reset_postdata();
 
-			echo '<pre>';
-			var_dump( $labsters );
-			echo '</pre>';
+			echo '<table class="widefat">';
+				echo '<thead>';
+					echo '<tr>';
+						echo '<th>Name</th>';
+						echo '<th>Last Grade</th>';
+						echo '<th>Last Scorecard Version</th>';
+						echo '<th>Last Updated</th>';
+					echo '</tr>';
+				echo '</thead>';
+				echo '<tbody>';
+
+					foreach ( $labsters as $labster ) {
+
+						$scorecard_results = get_scorecard_results( $labster[ 'email' ] );
+
+						if ( !empty( $scorecard_results ) ) {
+
+							// This can be removed once we upgrade to PHP 7.3.
+							if ( !function_exists( 'array_key_first' ) ) {
+
+						    function array_key_first( array $array ) {
+
+						        if ( count( $array ) ) {
+						            reset( $array );
+						            return key( $array );
+						        }
+
+						        return null;
+						    }
+
+							}
+
+							$first_key		= array_key_first( $scorecard_results );
+
+							echo '<tr>';
+								echo '<td>' . $labster[ 'last_name' ] . ', ' . $labster[ 'first_name' ] . '</td>';
+								echo '<td>' . $scorecard_results[ $first_key ][ 'grade' ] . '</td>';
+								echo '<td>' . $scorecard_results[ $first_key ][ 'version' ] . '</td>';
+								echo '<td>' . date_format( date_create( $scorecard_results[ $first_key ][ 'date' ] ), 'F j, Y' ) . '</td>';
+							echo '</tr>';
+
+						}
+
+					}
+
+				echo '<tbody>';
+			echo '</table>';
 
 		endif;
 
