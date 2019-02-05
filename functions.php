@@ -170,6 +170,7 @@ function lawyerist_dequeue_scripts() {
 	}
 
 	// Prevent WP Review Pro stylesheets and scripts from appearing on non-product pages.
+	// IF the scripts don't load on the admin end of things, it breaks reviews.
 	if ( !is_page_template( 'product-page.php' ) && !is_admin() ) {
 
 		wp_deregister_script( 'jquery-knob' );
