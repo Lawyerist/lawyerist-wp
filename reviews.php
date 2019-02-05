@@ -2,7 +2,7 @@
 	<h2 id="comments">
 		<?php
 			if ( 1 == get_comments_number() ) {
-				printf( __( '1 Community Review)' )	);
+				printf( __( '1 Community Review' )	);
 			} else {
 				/* Translator: %s: number of reviews */
 				printf( _n( '%s Community Review', '%s Community Reviews', get_comments_number() ), number_format_i18n( get_comments_number() ) );
