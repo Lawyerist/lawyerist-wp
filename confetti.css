@@ -1,0 +1,14 @@
+[class|="confetti"] {
+  background-color: #111;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  color: #fff;
+  display: block;
+  font-family: adler;
+  line-height: 1;
+  margin: 0;
+  padding: .5em .25em 0 .25em;
+  position: absolute;
+  text-align: center;
+  vertical-align: -1em;
+}

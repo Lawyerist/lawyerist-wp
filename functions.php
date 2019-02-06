@@ -91,6 +91,13 @@ function lawyerist_stylesheets_scripts() {
 	wp_register_script( 'footer-scripts', get_template_directory_uri() . '/js/footer-scripts.js',  array( 'jquery' ), $cacheBusterMC, true );
 	wp_enqueue_script( 'footer-scripts' );
 
+	// Load the confetti stylesheet and script.
+	wp_register_style( 'confetti', get_template_directory_uri() . '/confetti.css' );
+	wp_enqueue_style( 'confetti' );
+
+	wp_register_script( 'confetti', get_template_directory_uri() . '/js/confetti.js',  array( 'jquery' ), '.1', true );
+	wp_enqueue_script( 'confetti' );
+
 }
 
 add_action( 'wp_enqueue_scripts', 'lawyerist_stylesheets_scripts' );
