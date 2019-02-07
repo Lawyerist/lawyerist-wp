@@ -1952,6 +1952,7 @@ function page_type_tax() {
 		'show_ui'                    => true,
 		'show_admin_column'          => true,
 		'show_in_nav_menus'          => true,
+		'show_in_rest'							 => true,
 		'show_tagcloud'              => false,
 	);
 
@@ -2000,6 +2001,7 @@ function sponsor_tax() {
 		'show_ui'                    => true,
 		'show_admin_column'          => true,
 		'show_in_nav_menus'          => true,
+		'show_in_rest'							 => true,
 		'show_tagcloud'              => false,
 		'rewrite'                    => $rewrite,
 	);
