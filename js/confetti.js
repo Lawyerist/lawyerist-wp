@@ -6,15 +6,14 @@ for (var i = 0; i < 100; i++) {
 }
 
 function create(i) {
-  var size = Math.random() * 10;
-  $('<div class="confetti-'+i+'">L</div>').css({
+  var size = Math.random() * 30;
+  $('<div class="confetti-'+i+'"></div>').css({
     "width" : size+"px",
     "height" : size+"px",
-    "font-size" : size+"px",
     "top" : -Math.random()*20+"%",
     "left" : Math.random()*100+"%",
     "opacity" : Math.random()+0.5,
-    "transform" : "rotate("+Math.random()*360+"deg)"
+    "transform" : "rotate("+((Math.random()*90)-45)+"deg)"
   }).appendTo('.home');
 
   drop(i);
