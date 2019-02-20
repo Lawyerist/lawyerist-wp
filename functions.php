@@ -93,6 +93,13 @@ function lawyerist_stylesheets_scripts() {
 	wp_register_script( 'footer-scripts', get_template_directory_uri() . '/js/footer-scripts.js',  array( 'jquery' ), $cacheBusterMC, true );
 	wp_enqueue_script( 'footer-scripts' );
 
+	// Load the confetti stylesheet and script.
+	wp_register_style( 'confetti', get_template_directory_uri() . '/confetti.css' );
+	wp_enqueue_style( 'confetti' );
+
+	wp_register_script( 'confetti', get_template_directory_uri() . '/js/confetti.js',  array( 'jquery' ), '.2', true );
+	wp_enqueue_script( 'confetti' );
+
 }
 
 add_action( 'wp_enqueue_scripts', 'lawyerist_stylesheets_scripts' );
@@ -203,9 +210,13 @@ Theme Setup
 
 function lawyerist_theme_setup() {
 
-	add_theme_support( 'title-tag' );
-	add_theme_support( 'post-thumbnails' );
+	// add_theme_support( 'disable-custom-colors' );
+	// add_theme_support( 'editor-styles' );
 	add_theme_support( 'html5', array( 'search-form' ) );
+	add_theme_support( 'post-thumbnails' );
+	add_theme_support( 'responsive-embeds' );
+	add_theme_support( 'title-tag' );
+	add_theme_support( 'wp-block-styles' );
 
 }
 
@@ -2059,6 +2070,7 @@ function page_type_tax() {
 		'show_ui'                    => true,
 		'show_admin_column'          => true,
 		'show_in_nav_menus'          => true,
+		'show_in_rest'							 => true,
 		'show_tagcloud'              => false,
 	);
 
@@ -2107,6 +2119,7 @@ function sponsor_tax() {
 		'show_ui'                    => true,
 		'show_admin_column'          => true,
 		'show_in_nav_menus'          => true,
+		'show_in_rest'							 => true,
 		'show_tagcloud'              => false,
 		'rewrite'                    => $rewrite,
 	);
