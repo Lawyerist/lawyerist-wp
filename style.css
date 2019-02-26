@@ -1617,6 +1617,7 @@ Front Page
 #insider-dashboard {
   background-color: #eee;
   border-radius: .2rem;
+  box-sizing: border-box;
   margin-bottom: 3rem;
   padding: 2rem;
 }
