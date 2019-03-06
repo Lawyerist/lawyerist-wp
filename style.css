@@ -1010,6 +1010,7 @@ img.inline {
     .page-id-3379 .gallery img,
     .page-id-3379 .wp-block-gallery .blocks-gallery-item figure img {
       border-radius: 50%;
+      box-shadow: .1rem .1rem .3rem rgba(0, 0, 0, 0.2);
     }
 
 
