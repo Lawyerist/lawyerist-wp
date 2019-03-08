@@ -2327,6 +2327,24 @@ Content
       padding-left: 11.5rem;
     }
 
+    @media only screen and ( max-width: 499px ) {
+
+      .single .category-blog-posts .author_avatar {
+        float: none;
+      }
+
+        .single .category-blog-posts .author_avatar img {
+          height: 7.5rem;
+          width: 7.5rem;
+        }
+
+      .single .category-blog-posts .headline,
+      .single .category-blog-posts .headline_postmeta .postmeta {
+        padding-left: 0;
+      }
+
+    }
+
   #toc_container {
     margin-bottom: 3rem;
   }
