@@ -1330,7 +1330,7 @@ function lawyerist_mobile_display_ad( $content ) {
 
 			// Insert DFP code after 3rd paragraph
 			// (0 is paragraph #1 in the $paragraphs array)
-			if ( $p_num == 2 ) {
+			if ( ( count( $paragraphs ) > 3 ) && $p_num == 2 ) {
 				$paragraphs[$p_num] .= $display_ad;
 			}
 
