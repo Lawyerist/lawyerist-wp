@@ -494,12 +494,13 @@ function scorecard_results_graph() {
 
 		    function array_key_first( array $array ) {
 
-		        if ( count( $array ) ) {
-		            reset( $array );
-		            return key( $array );
-		        }
+					if ( count( $array ) ) {
+						reset( $array );
+						return key( $array );
+					}
 
-		        return null;
+					return null;
+
 		    }
 
 			}
@@ -604,6 +605,7 @@ function scorecard_admin_reporting() {
 		echo '<h1 class="wp-heading-inline">Small Firm Scorecard Report: Labsters</h1>';
 
 		$labster_query_args = array(
+			'orderby'					=> '',
 			'post_type'				=> 'wc_user_membership',
 			'post_status'			=> 'wcm-active',
 			'post_parent__in'	=> array(
@@ -634,9 +636,14 @@ function scorecard_admin_reporting() {
 				echo '<thead>';
 					echo '<tr>';
 						echo '<th>Name</th>';
-						echo '<th>Last Grade</th>';
+						echo '<th>First Scorecard Grade</th>';
+						echo '<th>First Scorecard Version</th>';
+						echo '<th>First Scorecard Date</th>';
+						echo '<th>Last Scorecard Grade</th>';
 						echo '<th>Last Scorecard Version</th>';
-						echo '<th>Last Updated</th>';
+						echo '<th>Last Scorecard Date</th>';
+						echo '<th>Improvement</th>';
+						echo '<th>Total Scorecards</th>';
 					echo '</tr>';
 				echo '</thead>';
 				echo '<tbody>';
@@ -647,28 +654,77 @@ function scorecard_admin_reporting() {
 
 						if ( !empty( $scorecard_results ) ) {
 
-							// This can be removed once we upgrade to PHP 7.3.
+							// These can be removed once we upgrade to PHP 7.3.
 							if ( !function_exists( 'array_key_first' ) ) {
 
 						    function array_key_first( array $array ) {
 
-						        if ( count( $array ) ) {
-						            reset( $array );
-						            return key( $array );
-						        }
+									if ( count( $array ) ) {
+										reset( $array );
+										return key( $array );
+									}
 
-						        return null;
+									return null;
+
 						    }
 
 							}
 
-							$first_key		= array_key_first( $scorecard_results );
+							if ( !function_exists( 'array_key_last' ) ) {
+
+								function array_key_last($array) {
+
+									if ( !is_array( $array ) || empty( $array ) ) {
+										return NULL;
+									}
+
+									return array_keys( $array )[ count( $array ) - 1 ];
+
+								}
+
+							}
+
+							$first_scorecard_key	= array_key_last( $scorecard_results );
+							$last_scorecard_key		= array_key_first( $scorecard_results );
+							$total_scorecards			= count( $scorecard_results );
+
+							if ( $first_scorecard_key == $last_scorecard_key ) {
+
+								$first_scorecard_grade		= NULL;
+								$first_scorecard_version	= NULL;
+								$first_scorecard_date			= NULL;
+								$improvement							= NULL;
+
+							} else {
+
+								$first_scorecard_grade		= $scorecard_results[ $first_scorecard_key ][ 'grade' ];
+								$first_scorecard_version	= $scorecard_results[ $first_scorecard_key ][ 'version' ];
+								$first_scorecard_date			= date_format( date_create( $scorecard_results[ $first_scorecard_key ][ 'date' ] ), 'F j, Y' );
+								$improvement							= $scorecard_results[ $last_scorecard_key ][ 'percentage' ] - $scorecard_results[ $first_scorecard_key ][ 'percentage' ];
+
+								if ( $improvement == 0 ) {
+
+									$improvement = NULL;
+
+								}
+
+							}
+
+							$last_scorecard_grade		= $scorecard_results[ $last_scorecard_key ][ 'grade' ];
+							$last_scorecard_score		= $scorecard_results[ $last_scorecard_key ][ 'score' ];
+							$last_scorecard_version	= $scorecard_results[ $last_scorecard_key ][ 'version' ];
+							$last_scorecard_date		= date_format( date_create( $scorecard_results[ $last_scorecard_key ][ 'date' ] ), 'F j, Y' );
 
 							echo '<tr>';
 								echo '<td>' . $labster[ 'last_name' ] . ', ' . $labster[ 'first_name' ] . '</td>';
-								echo '<td>' . $scorecard_results[ $first_key ][ 'grade' ] . '</td>';
-								echo '<td>' . $scorecard_results[ $first_key ][ 'version' ] . '</td>';
-								echo '<td>' . date_format( date_create( $scorecard_results[ $first_key ][ 'date' ] ), 'F j, Y' ) . '</td>';
+								echo '<td>' . $first_scorecard_grade . '</td>';
+								echo '<td>' . $first_scorecard_version . '</td>';
+								echo '<td>' . $first_scorecard_date . '</td>';
+								echo '<td>' . $last_scorecard_grade . '</td>';
+								echo '<td>' . $last_scorecard_version . '</td>';
+								echo '<td>' . $last_scorecard_date . '</td>';
+								echo '<td>' . $improvement . '</td>';
+								echo '<td>' . $total_scorecards . '</td>';
 							echo '</tr>';
 
 						}
