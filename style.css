@@ -355,6 +355,7 @@ button,
 .dashboard-widget-label,
 .product-page .headline_container .excerpt,
 .profile-page .headline_container .excerpt,
+figcaption,
 #footer,
 #header,
 input[type="button"],
@@ -388,6 +389,7 @@ p.woocommerce-result-count,
 .woocommerce-account .woocommerce-LostPassword,
 .woocommerce-account .woocommerce-MyAccount-navigation,
 .woocommerce nav.woocommerce-pagination,
+.wp-caption-text,
 .wp-review-feedback {
   font-family: concourse, sans-serif;
 }
@@ -890,39 +892,101 @@ img.inline {
 
 
   /* The Gallery container (div) */
-  .gallery {
+  .gallery,
+  .wp-block-gallery {
     clear: both;
-    margin-bottom: 3rem;
+    display: grid;
+    flex-wrap: unset;
+    grid-gap: 2rem;
+    margin: 0 0 3rem 0;
   }
 
-    /* A Gallery item container for 2, 3, and 4 column galleries */
+  .wp-block-gallery.columns-1 {
+    grid-template-columns: repeat( 1, 1fr );
+  }
+
+  .wp-block-gallery.columns-2,
+  .gallery-columns-2 {
+      grid-template-columns: repeat( 2, 1fr );
+    }
+
+    .wp-block-gallery.columns-3,
+    .gallery-columns-3 {
+      grid-template-columns: repeat( 3, 1fr );
+    }
+
+    .wp-block-gallery.columns-4,
+    .gallery-columns-4 {
+      grid-template-columns: repeat( 4, 1fr );
+    }
+
+    .wp-block-gallery.columns-5 {
+      grid-template-columns: repeat( 5, 1fr );
+    }
+
+    .wp-block-gallery.columns-6 {
+      grid-template-columns: repeat( 6, 1fr );
+    }
+
+    .wp-block-gallery.columns-7 {
+      grid-template-columns: repeat( 7, 1fr );
+    }
+
+    .wp-block-gallery.columns-8 {
+      grid-template-columns: repeat( 9, 1fr );
+    }
+
+    .wp-block-gallery.columns-2 .blocks-gallery-item,
+    .wp-block-gallery.columns-3 .blocks-gallery-item,
+    .wp-block-gallery.columns-4 .blocks-gallery-item {
+      display: unset;
+      flex-grow: unset;
+      flex-direction: unset;
+      margin: unset;
+      width: unset;
+    }
+
+      .wp-block-gallery .blocks-gallery-item figure {
+        display: unset;
+        align-items: unset;
+        justify-content: unset;
+      }
+
+        .wp-block-gallery .blocks-gallery-item figure img {
+          margin-bottom: 1rem;
+          width: 100%;
+        }
+
+      .wp-block-gallery .blocks-gallery-item figcaption {
+        background: none;
+        color: #666;
+        font-size: 1.4rem;
+        margin: 0;
+        padding: 0;
+        position: unset;
+      }
+
+    .wp-block-gallery.is-cropped .blocks-gallery-item {
+      height: 100%;
+    }
+
+      .wp-block-gallery.is-cropped .blocks-gallery-item figure img {
+        flex: unset;
+        height: unset;
+        object-fit: unset;
+        width: unset;
+      }
+
+    /* Styles for legacy gallery items. */
     .gallery .gallery-item {
       border: none !important;
       box-sizing: border-box;
       display: inline-block;
       float: left;
       margin: 0 0 3rem 0;
-      padding-right: 1.5rem;
       text-align: center;
-      width: 40%;
     }
 
-    .gallery-columns-2 .gallery-item {
-      padding-right: 3rem;
-      width: 50%;
-    }
-
-    .gallery-columns-3 .gallery-item {
-      padding-right: 2rem;
-      width: 33.33333%;
-    }
-
-    .gallery-columns-4 .gallery-item {
-      padding-right: 1rem;
-      width: 25%;
-    }
-
-    /* The actual image inside a container for 2, 3, and 4 column galleries */
     .gallery img,
     .gallery-columns-2 .attachment-medium,
     .gallery-columns-3 .attachment-medium,
@@ -936,24 +1000,17 @@ img.inline {
       width: 100%;
     }
 
-    /* A gallery image caption */
     .gallery .gallery-caption {
       text-align: center;
       -webkit-margin-start: 0;
     }
+    /* End legacy gallery styles. */
 
-    /* Definition lists elements */
-    .gallery dl,
-    .gallery dt {
-
-    }
-
-    /* Pick the second line break if two line breaks are adjacent */
-    .gallery br+br {
-    }
-
-    /* About */   .page-id-3379 .gallery img {
+    /* About */
+    .page-id-3379 .gallery img,
+    .page-id-3379 .wp-block-gallery .blocks-gallery-item figure img {
       border-radius: 50%;
+      box-shadow: .1rem .1rem .3rem rgba(0, 0, 0, 0.2);
     }
 
 
@@ -1617,6 +1674,7 @@ Front Page
 #insider-dashboard {
   background-color: #eee;
   border-radius: .2rem;
+  box-sizing: border-box;
   margin-bottom: 3rem;
   padding: 2rem;
 }
@@ -2267,6 +2325,24 @@ Content
     .single .category-blog-posts .headline,
     .single .category-blog-posts .headline_postmeta .postmeta {
       padding-left: 11.5rem;
+    }
+
+    @media only screen and ( max-width: 499px ) {
+
+      .single .category-blog-posts .author_avatar {
+        float: none;
+      }
+
+        .single .category-blog-posts .author_avatar img {
+          height: 7.5rem;
+          width: 7.5rem;
+        }
+
+      .single .category-blog-posts .headline,
+      .single .category-blog-posts .headline_postmeta .postmeta {
+        padding-left: 0;
+      }
+
     }
 
   #toc_container {

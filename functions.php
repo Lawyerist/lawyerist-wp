@@ -93,13 +93,6 @@ function lawyerist_stylesheets_scripts() {
 	wp_register_script( 'footer-scripts', get_template_directory_uri() . '/js/footer-scripts.js',  array( 'jquery' ), $cacheBusterMC, true );
 	wp_enqueue_script( 'footer-scripts' );
 
-	// Load the confetti stylesheet and script.
-	wp_register_style( 'confetti', get_template_directory_uri() . '/confetti.css' );
-	wp_enqueue_style( 'confetti' );
-
-	wp_register_script( 'confetti', get_template_directory_uri() . '/js/confetti.js',  array( 'jquery' ), '.2', true );
-	wp_enqueue_script( 'confetti' );
-
 }
 
 add_action( 'wp_enqueue_scripts', 'lawyerist_stylesheets_scripts' );
@@ -1437,7 +1430,7 @@ function lawyerist_mobile_display_ad( $content ) {
 
 			// Insert DFP code after 3rd paragraph
 			// (0 is paragraph #1 in the $paragraphs array)
-			if ( $p_num == 2 ) {
+			if ( ( count( $paragraphs ) > 3 ) && $p_num == 2 ) {
 				$paragraphs[$p_num] .= $display_ad;
 			}
 
