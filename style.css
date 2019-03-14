@@ -1704,58 +1704,6 @@ p.dashboard-widget-note {
   line-height: 1.2;
 }
 
-  /* Scorecard Widget */
-
-  #dashboard-scorecard-widget.card {
-    background-color: #fff;
-    padding: 2rem;
-  }
-
-  #dashboard-scorecard-widget .scorecard-results-wrapper {
-    line-height: 1.2;
-    margin-bottom: 1.5rem;
-  }
-
-    #dashboard-scorecard-widget .scorecard-result-wrapper {
-      display: inline-block;
-      text-align: center;
-    }
-
-      #dashboard-scorecard-widget .scorecard-year {
-        border-bottom: .1rem solid #ddd;
-        color: #888;
-        font-size: 1.6rem;
-        margin-bottom: 1rem;
-      }
-
-      #dashboard-scorecard-widget .scorecard-month-day {
-        color: #888;
-        font-size: 1.2rem;
-        margin-bottom: 1rem;
-      }
-
-      #dashboard-scorecard-widget .scorecard-bar-wrapper {
-        background-color: #ddd;
-        border-radius: .2rem;
-        height: 10rem;
-        margin: 0 auto 1rem auto;
-        max-width: 3rem;
-        min-width: 1rem;
-        width: 20%;
-        position: relative;
-      }
-
-        #dashboard-scorecard-widget .scorecard-bar {
-          background-color: #c00;
-          border-radius: 0 0 .2rem .2rem;
-          position: absolute;
-            bottom: 0;
-          width: 100%;
-        }
-
-      #dashboard-scorecard-widget .scorecard-percentage {
-        font-size: 1.2rem;
-      }
 
 /* Call to Action */
 
