@@ -1527,6 +1527,7 @@ function lawyerist_checkout_fields( $fields ) {
 		259298, // Lawyerist Lab
 		224435, // Lawyerist Lab Pro
 		227674, // Lawyerist LabCon
+		291111, // Lawyerist LabCon Early Bird Payment Plan
 		235522, // Lawyerist LabCon Pre-Registration
 	);
 
