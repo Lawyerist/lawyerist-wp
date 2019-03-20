@@ -16,6 +16,7 @@ Index
 Load Fonts
 Layout
 Layout & Design Elements
+  Block Styles
 Typography
 Images
 Header
@@ -304,6 +305,15 @@ Layout & Design Elements
 
 .text_right {
     text-align: right;
+}
+
+
+/*------------------------------
+Block Styles
+------------------------------*/
+
+.wp-block-embed {
+  margin: 0 0 3rem 0;
 }
 
 
@@ -764,19 +774,23 @@ li:first-child {
 Images
 ------------------------------*/
 
-img {
+img,
+.wp-block-image img {
   box-sizing: border-box;
   height: auto;
   margin-bottom: 3rem;
   max-width: none;
+  padding: 0;
 }
 
-img.alignone {
+img.alignone,
+.wp-block-image .alignone {
   clear: both;
   display: block;
 }
 
-img.aligncenter {
+img.aligncenter,
+.wp-block-image .aligncenter {
 	clear: both;
 	display: block !important;
 	margin-left: auto;
@@ -784,12 +798,16 @@ img.aligncenter {
 }
 
 img.alignleft,
+.wp-block-image .alignleft,
 .wp-caption.alignleft {
+  margin: 0 0 3rem 0;
 	padding-right: 1.5rem;
 }
 
 img.alignright,
+.wp-block-image .alignright,
 .wp-caption.alignright {
+  margin: 0 0 3rem 0;
 	padding-left: 1.5rem;
 }
 
