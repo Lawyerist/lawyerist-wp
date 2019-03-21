@@ -4168,9 +4168,24 @@ WooCommerce
     width: auto;
   }
 
-  .woocommerce div.product form.cart .variations td,
-  .woocommerce div.product form.cart .variations th {
+  .woocommerce div.product form.cart table.variations {
+    margin-bottom: 0;
+  }
+
+  .woocommerce div.product form.cart table.variations td,
+  .woocommerce div.product form.cart table.variations th {
     line-height: unset;
+  }
+
+  .woocommerce div.product form.cart table.variations td.label,
+  .woocommerce div.product form.cart table.variations td.value {
+    display: block;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .woocommerce div.product form.cart table.variations td.value {
+    padding-bottom: .5em;
   }
 
   .woocommerce-variation-price {
