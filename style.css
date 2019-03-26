@@ -623,7 +623,7 @@ p.note {
 }
 
 p.alert {
-	background-color: #ffffa0;
+	background-color: #ffffc7;
   border: .1rem solid #ddd;
   border-radius: .2rem;
   box-shadow:
@@ -1329,7 +1329,7 @@ Selectors
   }
 
   .card.sponsored {
-    border-top: .7rem solid #ffffa0;
+    border-top: .7rem solid #ffffc7;
   }
 
 .card a {
@@ -1592,7 +1592,7 @@ padding: 6rem;
 /* Postmeta styles */
 
 .sponsor {
-  background-color: #ffffa0;
+  background-color: #ffffc7;
 }
 
 
@@ -2198,7 +2198,7 @@ Content
     }
 
   #sponsored_product_updates {
-    border-top: .7rem solid #ffffa0;
+    border-top: .7rem solid #ffffc7;
 	}
 
     .page #sponsored_product_updates {
@@ -3013,8 +3013,11 @@ Content
       position: relative;
     }
 
+      .product-pages-list li.page_type-featured-product,
+      .product-pages-list li.page_type-platinum-product,
+      .product-pages-list li.page_type-gold-product,
       .product-pages-list li.page_type-silver-product {
-        background-color: #ffffa0;
+        background-color: #ffffc7;
       }
 
       .product-pages-list .image {
@@ -3148,7 +3151,7 @@ Content
   blockquote.testimonial {
     background-color: #fff;
     border-radius: .2rem;
-    border-top: .7rem solid #ffffa0;
+    border-top: .7rem solid #ffffc7;
     box-shadow:
       0 0 0 .1rem #ddd,
       .1rem .1rem .3rem rgba(0, 0, 0, 0.2)
