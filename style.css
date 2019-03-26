@@ -3014,9 +3014,9 @@ Content
     }
 
       .product-pages-list li.page_type-featured-product,
-      .product-pages-list li.page_type-platinum-product,
-      .product-pages-list li.page_type-gold-product,
-      .product-pages-list li.page_type-silver-product {
+      .product-pages-list li.page_type-platinum-sponsor,
+      .product-pages-list li.page_type-gold-sponsor,
+      .product-pages-list li.page_type-silver-sponsor {
         background-color: #ffffc7;
       }
 
