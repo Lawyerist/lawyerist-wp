@@ -35,11 +35,6 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
     continue;
 
-  // Skips pages if they don't have the 'Show in Feed' page type.
-  } elseif ( $post_type == 'page' && !has_term( 'show-in-feed', 'page_type' ) ) {
-
-    continue;
-
   } else {
 
     // Figures out the post thumbnail.
