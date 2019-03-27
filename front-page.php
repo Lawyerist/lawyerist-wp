@@ -386,7 +386,7 @@
 				<div class="one_half">
 					<div class="card">
 						<a href="https://lawyerist.com/scorecard/">
-							<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/09/scorecard-front-page.png" alt="Lawyerist Insider logo." />
+							<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2019/03/scorecard-front-page.png" alt="Lawyerist Insider logo." />
 							<h3 class="headline">Use the Small Firm Scorecard to Evaluate Your Law Firm</h3>
 						</a>
 					</div>
