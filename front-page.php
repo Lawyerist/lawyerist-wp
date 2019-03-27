@@ -407,7 +407,7 @@
 					<div class="card">
 						<a href="https://lawyerist.com/best-law-firm-websites/">
 							<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/05/best-law-firm-websites-2018-front-page.jpg" alt="A law firm website as viewed on a laptop." />
-							<h3 class="headline">The Best Law Firm Websites, 2018 Edition</h3>
+							<h3 class="headline">Check Out the Best Law Firm Websites</h3>
 						</a>
 					</div>
 				</div>
