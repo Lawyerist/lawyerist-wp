@@ -141,7 +141,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
               if ( !empty( $community_rating ) ) {
 
-                echo '<p class="rating">Community Rating: <strong>' . $community_rating . '</strong>/5 (based on ' . $community_review_count . _n( ' ratings', ' ratings', $community_review_count ) . ')</p>';
+                echo '<p class="rating">Community Rating: <strong>' . $community_rating . '</strong>/5 (based on ' . $community_review_count . _n( ' rating', ' ratings', $community_review_count ) . ')</p>';
                 echo '<p><small>The community rating is based on the average of the community reviews below.</small></p>';
 
               }
