@@ -779,7 +779,7 @@ img,
   box-sizing: border-box;
   height: auto;
   margin-bottom: 3rem;
-  max-width: none;
+  max-width: 100%;
   padding: 0;
 }
 
