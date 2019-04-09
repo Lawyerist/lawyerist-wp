@@ -16,6 +16,7 @@ ADMIN
 UTILITY FUNCTIONS
 - Get Country
 - Get First Image URL
+- Is This a Product Portal?
 
 CONTENT
 - Archive Headers
@@ -372,6 +373,28 @@ function get_first_image_url() {
 	} else {
 
 		return;
+
+	}
+
+}
+
+
+/*------------------------------
+Is This a Product Portal?
+------------------------------*/
+
+function is_product_portal() {
+
+	global $post;
+	$children = get_pages( array( 'child_of' => $post->ID ) );
+
+	if ( is_page() && is_page_template( 'product-page.php' ) && ( count( $children ) > 0 ) ) {
+
+		return true;
+
+	} else {
+
+		return false;
 
 	}
 

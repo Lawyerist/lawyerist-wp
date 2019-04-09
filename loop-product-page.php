@@ -106,6 +106,12 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
     // Output the post.
     echo '<div class="post_body" itemprop="articleBody">';
 
+      if ( is_product_portal() == true ) {
+
+        do_shortcode( '[list-featured-products]' );
+
+      }
+
       the_content();
 
       echo '<div class="clear"></div>';
