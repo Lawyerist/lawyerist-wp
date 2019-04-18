@@ -774,8 +774,7 @@ li:first-child {
 Images
 ------------------------------*/
 
-img,
-.wp-block-image img {
+img {
   box-sizing: border-box;
   height: auto;
   margin-bottom: 3rem;
@@ -783,14 +782,29 @@ img,
   padding: 0;
 }
 
+.wp-block-image {
+  margin-bottom: 3rem;
+}
+
+  .wp-block-image figure {
+    margin: 0;
+  }
+
+    .wp-block-image figure img {
+      margin: 0;
+    }
+
+    .wp-block-image figure figcaption {
+      margin: 0 0 3rem 0;
+    }
+
 img.alignone,
 .wp-block-image .alignone {
   clear: both;
   display: block;
 }
 
-img.aligncenter,
-.wp-block-image .aligncenter {
+img.aligncenter {
 	clear: both;
 	display: block !important;
 	margin-left: auto;
