@@ -27,6 +27,7 @@ CONTENT
 - Get Related Podcasts
 - Get Related Posts
 - Get Related Pages
+- List Child Pages Fallback
 - Current Posts Widget
 - Ads
 - Affinity Partner Buttons
@@ -802,6 +803,45 @@ function lawyerist_get_related_pages() {
 	}
 
 }
+
+
+/*------------------------------
+List Child Pages Fallback
+
+
+Outputs child pages if all of the following are true:
+
+1. The page has children.
+2. The page is not a product portal.
+3. The [list-child-pages] shortcode is not used anywhere on the page.
+------------------------------*/
+
+function lawyerist_list_child_pages_fallback( $content ) {
+
+	global $post;
+	$children = get_pages( array( 'child_of' => $post->ID ) );
+
+if ( is_page() && ( count( $children ) > 0 ) && !has_shortcode( $content, 'list-child-pages' ) && !has_shortcode( $content, 'list-products' ) ) {
+
+		ob_start();
+
+			echo do_shortcode( '[list-child-pages]' );
+
+		$child_pages = ob_get_clean();
+
+		$content .= $child_pages;
+
+		return $content;
+
+	} else {
+
+		return $content;
+
+	}
+
+}
+
+// add_action( 'the_content', 'lawyerist_list_child_pages_fallback' );
 
 
 /*------------------------------
