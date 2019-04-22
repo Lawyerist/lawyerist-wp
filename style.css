@@ -1050,6 +1050,11 @@ img.inline {
 Header
 ------------------------------*/
 
+.member-logged-in .leadinModal.leadinModal-theme-top {
+  box-shadow: 0 .2rem .3rem rgba(0, 0, 0, 0.2);
+  top: 3.2rem;
+}
+
 #header a:hover,
 #header a:focus {
 	text-decoration: none;
