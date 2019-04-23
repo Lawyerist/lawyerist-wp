@@ -19,6 +19,7 @@ Layout & Design Elements
   Block Styles
 Typography
 Images
+Expander
 Header
   Title
 Menu
@@ -356,13 +357,13 @@ aside blockquote,
 button,
 .button,
 .drop_cap,
+.card-label,
 .category_list,
 #cancel-comment-reply-link,
 .comment-author,
 .comment-meta,
 .comment .reply,
 #current_posts,
-.dashboard-widget-label,
 .product-page .headline_container .excerpt,
 .profile-page .headline_container .excerpt,
 figcaption,
@@ -388,7 +389,7 @@ p.pullout,
 p.pullquote,
 #scorecard_results #grade_box,
 .scorecard-results-wrapper,
-.post_label,
+.card-label,
 .tag_list,
 .theiaPostSlider_nav ._text,
 .toc_list,
@@ -1048,6 +1049,34 @@ img.inline {
 
 
 /*------------------------------
+Expander
+------------------------------*/
+
+.card .expandthis-click:nth-last-child(2) {
+  margin-bottom: 0 !important;
+}
+
+  .expandthis-click::after {
+    content: '\f431';
+    display: inline-block;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-family: Genericons;
+    speak: none;
+    text-align: center;
+    vertical-align: top;
+    width: 1.2em;
+  }
+
+  .expandthis-click.open::after {
+    content: '\f405';
+  }
+
+.expandthis-hide {
+  margin-top: .5em;
+}
+
+/*------------------------------
 Header
 ------------------------------*/
 
@@ -1301,7 +1330,7 @@ Card Styles
 Selectors
 .has-post-thumbnail
 .has-avatar-thumbnail
-.has-post-label
+.has-card-label
 .category-lawyerist-podcast
 .category-blog-posts
 .sponsored
@@ -1331,16 +1360,12 @@ Selectors
     padding: 0;
   }
 
-  .card-label {
-    color: #666;
-    font-size: 1.4rem;
-    font-weight: bold;
-    margin-bottom: 1em;
-    text-transform: uppercase;
+  .card *:last-child {
+    margin-bottom: 0 !important;
   }
 
   .card.front_page_sticky_post,
-  .card.has-post-label,
+  .card.has-card-label,
   .card.has-avatar-thumbnail,
   #sponsored_product_updates {
     padding: 2rem;
@@ -1402,25 +1427,26 @@ Selectors
   }
 
 
-/* Post label styles. */
+/* Card label styles. */
 
-.post_label {
+.card-label {
+  color: #666;
   font-size: 1.4rem;
   font-weight: bold;
   margin-bottom: .5em;
   text-transform: uppercase;
 }
 
-  .home .card .post_label,
-  .home .card .post_label {
+  .home .card .card-label,
+  .home .card .card-label {
     margin-bottom: 0;
   }
 
-  .post_label a {
+  .card-label a {
     color: #666;
   }
 
-  .post_label > a:before {
+  .card-label > a:before {
     content: '\f505';
     display: inline-block;
     -moz-osx-font-smoothing: grayscale;
@@ -1431,15 +1457,15 @@ Selectors
     vertical-align: top;
   }
 
-  .post_label a:hover,
-  .post_label a:focus {
+  .card-label a:hover,
+  .card-label a:focus {
     color: #a00;
     text-decoration: none;
   }
 
 
 /* .headline-excerpt styles. */
-.card.has-post-label .headline-excerpt {
+.card.has-card-label .headline-excerpt {
   padding: 0;
 }
 
@@ -1468,7 +1494,7 @@ Selectors
 padding: 6rem;
 }
 
-.card.type-product.has-post-label .headline-excerpt {
+.card.type-product.has-card-label .headline-excerpt {
   padding: 4rem;
 }
 
@@ -1514,7 +1540,7 @@ padding: 6rem;
   width: 30%;
 }
 
-  .card .has-post-label .default_thumbnail {
+  .card .has-card-label .default_thumbnail {
     border-radius: 0;
   }
 
@@ -1671,7 +1697,7 @@ Front Page
     text-align: center;
   }
 
-.home .has-post-thumbnail.has-post-label .headline-excerpt {
+.home .has-post-thumbnail.has-card-label .headline-excerpt {
   margin-bottom: 2rem;
 }
 
@@ -1729,14 +1755,6 @@ Front Page
   color: #555;
   line-height: 1;
   margin-bottom: 2rem;
-  text-transform: uppercase;
-}
-
-p.dashboard-widget-label {
-  color: #666;
-  font-size: 1.4rem;
-  font-weight: bold;
-  margin-bottom: 1em;
   text-transform: uppercase;
 }
 
@@ -1932,7 +1950,7 @@ p.dashboard-widget-note {
         width: 100%;
       }
 
-.home .type-product.has-post-label .headline-excerpt {
+.home .type-product.has-card-label .headline-excerpt {
   padding: 4rem;
 }
 
@@ -2109,6 +2127,7 @@ Content
 
       #review {
         border: 0;
+        margin-bottom: 2rem;
         padding: 0;
       }
 

@@ -17,6 +17,23 @@ jQuery( document ).ready( function( $ ) {
 // End Responsive Menu
 
 
+/**
+* Expander
+*
+* Opens and closes things with the .expand-this class.
+*/
+jQuery( document ).ready( function( $ ) {
+
+  $( ".expandthis-hide" ).hide();
+
+  $( ".expandthis-click" ).click( function() {
+    $( this ).toggleClass( "open" ).next( ".expandthis-hide" ).slideToggle( 145 );
+    $( ".open" ).not( this ).toggleClass( "open" ).next( ".expandthis-hide" ).slideToggle( 95 );
+  });
+
+});
+
+
 // WooCommerce Select Drop-Downs
 jQuery( document ).ready( function( $ ) {
 

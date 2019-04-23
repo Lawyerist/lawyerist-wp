@@ -58,9 +58,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
           if ( !empty( $composite_rating ) ) {
 
             echo '<a href="#rating">';
-
               echo lawyerist_product_rating();
-
             echo '</a>';
 
           } else {
@@ -72,7 +70,9 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
         echo '</div>'; // End .user_rating.
 
         if ( !empty( $composite_rating ) ) {
+
           echo '</div>'; // End aggregateRating schema.
+
         }
 
       } else {
@@ -95,7 +95,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
       }
 
       if ( function_exists( 'lawyerist_affinity_partner_button' ) ) {
-          lawyerist_affinity_partner_button();
+        lawyerist_affinity_partner_button();
       }
 
       echo '<div class="clear"></div>';
@@ -106,6 +106,76 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
     // Output the post.
     echo '<div class="post_body" itemprop="articleBody">';
 
+      if ( is_product_portal() ) {
+
+        echo do_shortcode( '[list-featured-products]' );
+
+        echo '<div id="Alphabetical_List"></div>';
+
+        echo do_shortcode( '[list-products]' );
+
+      } else {
+
+        if ( !empty( $composite_rating ) ) {
+
+          echo '<div id="rating">';
+
+            echo '<div class="card rating-box">';
+
+              echo '<h2>' . $page_title . ' Rating: ';
+              echo lawyerist_star_rating();
+              echo $composite_rating . '/5</h2>';
+
+              if ( !empty( $our_rating ) ) {
+
+                echo '<p class="card-label">Features</p>';
+
+                echo wp_review_get_review_box();
+
+              }
+
+              echo '<div class="card-label expandthis-click">Details</div>';
+
+              echo '<div class="expandthis-hide">';
+
+                echo '<div class="rating-breakdown">';
+
+                  echo '<h3>Rating Breakdown</h3>';
+
+                  if ( !empty( $our_rating ) ) {
+
+                    echo '<p class="rating">Our Rating: <strong>' . $our_rating . '</strong>/5</p>';
+                    echo '<p><small>Our rating is based on our subjective judgment. Use our resources—including our rating and community ratings and reviews—to find the best fit for your firm.</small></p>';
+
+                  }
+
+                  if ( !empty( $community_rating ) ) {
+
+                    echo '<p class="rating">Community Rating: <strong>' . $community_rating . '</strong>/5 (based on ' . $community_review_count . _n( ' rating', ' ratings', $community_review_count ) . ')</p>';
+                    echo '<p><small>The community rating is based on the average of the community reviews below.</small></p>';
+
+                  }
+
+                  if ( !empty( $our_rating ) && !empty( $community_rating ) ) {
+
+                    echo '<p class="rating composite-rating">Composite Rating: <strong>' . $composite_rating . '</strong>/5</p>';
+                    echo '<p><small>The composite rating is a weighted average of our rating and the community ratings below.</small></p>';
+
+                  }
+
+                echo '</div>'; // Close .rating-breakdown
+
+              echo '</div>'; // CLose .expandthis-hide
+
+            echo '</div>'; // Close .card .rating-box
+
+          echo '</div>'; // Close #rating
+
+        }
+
+      }
+
+      // Outputs the table of contents.
       $toc = toc_get_index();
 
       if ( $toc == true && !has_shortcode( $post->post_content, 'no-toc' ) ) {
@@ -113,76 +183,23 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
         echo '<div id="toc-page-menu" class="card">';
           echo '<p class="card-label">On This Page</p>';
           echo '<ul class="toc-page-menu-shortcuts">';
-            if ( is_product_portal() ) { echo '<li><a href="#Alphabetical_List">Alphabetical List</a></li>'; }
+
+            if ( is_product_portal() ) {
+              echo '<li><a href="#Alphabetical_List">Alphabetical List</a></li>';
+            } else {
+              echo '<li><a href="#rating">Rating</a></li>';
+            }
+
             echo $toc;
+
           echo '</ul>';
         echo '</div>';
 
-      }
-
-      if ( is_product_portal() ) {
-
-        echo do_shortcode( '[list-featured-products]' );
-
-        echo '<div id="Alphabetical_List"></div>';
-        echo do_shortcode( '[list-products]' );
-
-      }
+      } // End TOC
 
       the_content();
 
       echo '<div class="clear"></div>';
-
-      if ( !empty( $composite_rating ) ) {
-
-        echo '<div id="rating">';
-
-          echo '<h2>' . $page_title . ' Rating: ';
-          echo lawyerist_star_rating();
-          echo $composite_rating . '/5</h2>';
-
-          echo '<div class="card rating-box">';
-
-            if ( !empty( $our_rating ) ) {
-
-              echo '<h3>Features</h3>';
-
-              echo wp_review_get_review_box();
-
-            }
-
-            echo '<div class="rating-breakdown">';
-
-              echo '<h3>Rating Breakdown</h3>';
-
-              if ( !empty( $our_rating ) ) {
-
-                echo '<p class="rating">Our Rating: <strong>' . $our_rating . '</strong>/5</p>';
-                echo '<p><small>Our rating is based on our subjective judgment. Use our resources—including our rating and community ratings and reviews—to find the best fit for your firm.</small></p>';
-
-              }
-
-              if ( !empty( $community_rating ) ) {
-
-                echo '<p class="rating">Community Rating: <strong>' . $community_rating . '</strong>/5 (based on ' . $community_review_count . _n( ' rating', ' ratings', $community_review_count ) . ')</p>';
-                echo '<p><small>The community rating is based on the average of the community reviews below.</small></p>';
-
-              }
-
-              if ( !empty( $our_rating ) && !empty( $community_rating ) ) {
-
-                echo '<p class="rating composite-rating">Composite Rating: <strong>' . $composite_rating . '</strong>/5</p>';
-                echo '<p><small>The composite rating is a weighted average of our rating and the community ratings below.</small></p>';
-
-              }
-
-            echo '</div>';
-
-          echo '</div>';
-
-        echo '</div>';
-
-      }
 
       $trial_button	= trial_button();
       echo '<p align="center">' . $trial_button . '</p>';

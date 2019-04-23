@@ -53,6 +53,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
     // Output the post.
     echo '<div class="post_body" itemprop="articleBody">';
 
+      // Outputs the table of contents.
       $toc = toc_get_index();
 
       if ( $toc == true && !has_shortcode( $post->post_content, 'no-toc' ) ) {
@@ -64,7 +65,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
           echo '</ul>';
         echo '</div>';
 
-      }
+      } // End TOC
 
       the_content();
 
