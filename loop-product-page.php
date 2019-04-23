@@ -106,9 +106,26 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
     // Output the post.
     echo '<div class="post_body" itemprop="articleBody">';
 
+      $toc = toc_get_index();
+
+      if ( $toc == true && !has_shortcode( $post->post_content, 'no-toc' ) ) {
+
+        echo '<div id="toc-page-menu" class="card">';
+          echo '<p class="card-label">On This Page</p>';
+          echo '<ul class="toc-page-menu-shortcuts">';
+            if ( is_product_portal() ) { echo '<li><a href="#Alphabetical_List">Alphabetical List</a></li>'; }
+            echo $toc;
+          echo '</ul>';
+        echo '</div>';
+
+      }
+
       if ( is_product_portal() ) {
 
         echo do_shortcode( '[list-featured-products]' );
+
+        echo '<div id="Alphabetical_List"></div>';
+        echo do_shortcode( '[list-products]' );
 
       }
 

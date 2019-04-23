@@ -392,6 +392,7 @@ p.pullquote,
 .tag_list,
 .theiaPostSlider_nav ._text,
 .toc_list,
+#toc-page-menu,
 ul.blogroll,
 .user-rating,
 p.woocommerce-result-count,
@@ -1328,6 +1329,14 @@ Selectors
 
   .card.has-post-thumbnail {
     padding: 0;
+  }
+
+  .card-label {
+    color: #666;
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-bottom: 1em;
+    text-transform: uppercase;
   }
 
   .card.front_page_sticky_post,
@@ -2330,6 +2339,34 @@ Content
 
     }
 
+  #toc-page-menu {
+    font-size: 1.6rem;
+    margin-bottom: 3rem;
+    padding: 2rem;
+  }
+
+    #toc-page-menu a,
+    #toc-page-menu a:visited {
+      color: #cc0000;
+      text-decoration: none;
+    }
+
+    #toc-page-menu a:hover,
+    #toc-page-menu a:focus {
+      color: #aa0000;
+      text-decoration: underline;
+    }
+
+    ul.toc-page-menu-shortcuts {
+      list-style: none;
+      margin: 0;
+    }
+
+      ul.toc-page-menu-shortcuts li {
+        line-height: 1.2;
+        margin: 0 0 .5em 0;
+      }
+
   #toc_container {
     margin-bottom: 3rem;
   }
@@ -3100,16 +3137,6 @@ Content
       font-size: 1.6rem;
       margin-left: 12.5rem;
       padding: 0;
-    }
-
-    .featured_products_heading {
-      color: #666;
-      display: block;
-      font-size: 1.4rem;
-      font-weight: bold;
-      line-height: 1.5;
-      margin-bottom: .75em;
-      text-transform: uppercase;
     }
 
     .featured-products-list li {
