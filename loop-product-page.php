@@ -52,13 +52,6 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
       }
 
-      // Trial button
-      if ( !empty( $trial_button ) ) {
-        echo $trial_button;
-      } elseif ( function_exists( 'lawyerist_affinity_partner_button' ) ) {
-        lawyerist_affinity_partner_button();
-      }
-
       // Output the excerpt.
       $seo_descr = get_post_meta( $page_ID, '_yoast_wpseo_metadesc', true );
 
@@ -83,6 +76,13 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
     // Output the post.
     echo '<div class="post_body" itemprop="articleBody">';
+
+      // Trial button
+      if ( !empty( $trial_button ) ) {
+        echo '<p align="center">' . $trial_button . '</p>';
+      } elseif ( function_exists( 'lawyerist_affinity_partner_button' ) ) {
+        lawyerist_affinity_partner_button();
+      }
 
       if ( is_product_portal() ) {
 

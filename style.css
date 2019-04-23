@@ -1432,7 +1432,8 @@ Selectors
 
 /* Card label styles. */
 
-.card-label {
+.card-label,
+.review-summary-title {
   color: #666;
   font-size: 1.4rem;
   font-weight: bold;
@@ -2130,8 +2131,12 @@ Content
 
       #review {
         border: 0;
-        margin-bottom: 2rem;
+        margin: 0;
         padding: 0;
+      }
+
+      #review .review-list {
+        margin-bottom: 2rem;
       }
 
       #review .review-list li {
@@ -2147,6 +2152,11 @@ Content
         #review .review-list li span {
           font-size: 1.6rem;
         }
+
+      #review .review-desc {
+        margin-bottom: 2rem;
+        padding: 0;
+      }
 
       #review .comments-review-area {
         display: none;

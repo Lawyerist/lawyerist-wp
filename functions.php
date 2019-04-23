@@ -31,7 +31,6 @@ CONTENT
 - Current Posts Widget
 - Ads
 - Affinity Partner Buttons
-- Trial Buttons
 - Mobile Ads
 - Add Image Sizes
 - Remove Inline Width from Image Captions
@@ -1044,51 +1043,6 @@ function lawyerist_affinity_partner_button() {
   }
 
 }
-
-
-/*------------------------------
-Trial Buttons
-Adds trial buttons to product pages.
-------------------------------*/
-
-function lawyerist_sponsored_trial_button_top( $content ) {
-
-	global $post;
-
-	$country = get_country();
-
-	if ( is_plugin_active( 'lawyerist-trial-buttons/lawyerist-trial-buttons.php' ) && has_trial_button() && $country == ( 'US' || 'CA' ) && is_main_query() ) {
-
-		$p_close			= '</p>';
-		$paragraphs 	= explode( $p_close, $content );
-		$trial_button	= trial_button();
-
-		foreach ( $paragraphs as $p_num => $paragraph ) {
-
-			// Only add closing tag to non-empty paragraphs
-			if ( trim( $paragraph ) ) {
-				// Adding closing markup now, rather than at implode, means insertion
-				// is outside of the paragraph markup, and not just inside of it.
-				$paragraphs[$p_num] .= $p_close;
-			}
-
-			// Insert DFP code after 1st paragraph (0 is paragraph #1).
-			if ( $p_num == 0 ) {
-				$paragraphs[$p_num] .= '<p align="center">' . $trial_button . '</p>' . "\n" . '<!-- Country is ' . $country .  '-->';
-			}
-
-		}
-
-		$content = implode( '', $paragraphs );
-		// $content .= '<p align="center">' . $trial_button . '</p>';
-
-	}
-
-	return $content;
-
-}
-
-add_filter( 'the_content', 'lawyerist_sponsored_trial_button_top' );
 
 
 /*------------------------------
