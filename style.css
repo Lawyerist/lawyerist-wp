@@ -1441,9 +1441,12 @@ Selectors
   text-transform: uppercase;
 }
 
-  .home .card .card-label,
-  .home .card .card-label {
-    margin-bottom: 0;
+  .home .card .card-label:last-child {
+    margin-top: 1rem;
+  }
+
+  .home .lens_playlist.has-card-label .card-label {
+    margin-top: 0;
   }
 
   .card-label a {
@@ -1930,29 +1933,34 @@ p.dashboard-widget-note {
   padding: 2rem;
 }
 
-  .home #blog-posts .headline-excerpt {
-    margin-bottom: 2rem;
-    padding: 0;
+  .home #blog-posts .post {
+    display: block;
+    margin-bottom: 1rem;
   }
 
-    .home #blog-posts .headline,
-    .home #blog-posts .postmeta {
-      margin-left: 1.5rem;
-      padding-left: 7.5rem;
+    .home #blog-posts .headline-excerpt {
+      margin-bottom: 2rem;
+      padding: 0;
     }
 
-    .home #blog-posts .author_avatar {
-      float: left;
-      font-size: 1rem;
-      line-height: 1;
-      width: 7.5rem;
-    }
-
-      .home #blog-posts .author_avatar img {
-        height: auto;
-        margin: 0;
-        width: 100%;
+      .home #blog-posts .headline,
+      .home #blog-posts .postmeta {
+        margin-left: 1.5rem;
+        padding-left: 7.5rem;
       }
+
+      .home #blog-posts .author_avatar {
+        float: left;
+        font-size: 1rem;
+        line-height: 1;
+        width: 7.5rem;
+      }
+
+        .home #blog-posts .author_avatar img {
+          height: auto;
+          margin: 0;
+          width: 100%;
+        }
 
 .home .type-product.has-card-label .headline-excerpt {
   padding: 4rem;
