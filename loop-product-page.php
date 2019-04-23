@@ -108,6 +108,21 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
       if ( is_product_portal() ) {
 
+        // Outputs the table of contents.
+        $toc = toc_get_index();
+
+        if ( $toc == true && !has_shortcode( $post->post_content, 'no-toc' ) ) {
+
+          echo '<div id="toc-page-menu" class="card">';
+            echo '<p class="card-label">On This Page</p>';
+            echo '<ul class="toc-page-menu-shortcuts">';
+              echo '<li><a href="#Alphabetical_List">Alphabetical List</a></li>';
+              echo $toc;
+            echo '</ul>';
+          echo '</div>';
+
+        } // End TOC
+
         echo do_shortcode( '[list-featured-products]' );
 
         echo '<div id="Alphabetical_List"></div>';
@@ -183,15 +198,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
         echo '<div id="toc-page-menu" class="card">';
           echo '<p class="card-label">On This Page</p>';
           echo '<ul class="toc-page-menu-shortcuts">';
-
-            if ( is_product_portal() ) {
-              echo '<li><a href="#Alphabetical_List">Alphabetical List</a></li>';
-            } else {
-              echo '<li><a href="#rating">Rating</a></li>';
-            }
-
             echo $toc;
-
           echo '</ul>';
         echo '</div>';
 
