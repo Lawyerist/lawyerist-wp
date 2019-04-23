@@ -19,15 +19,3 @@
 <!-- Amazon Associates OneTag -->
 <div id="amzn-assoc-ad-01e6e315-1d4b-424c-8d56-fc2b9f9463bb"></div><script async src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US&adInstanceId=01e6e315-1d4b-424c-8d56-fc2b9f9463bb"></script>
 <!-- End Amazon Associates OneTag -->
-
-<!-- LawyeristBot -->
-<script type="text/javascript">
-window.LAWDROID_BOT_ID = window.LAWDROID_BOT_ID || {};
-window.LAWDROID_BOT_ID = "2340";
-(function() {
-var ld = document.createElement('script'); ld.type = 'text/javascript'; ld.async = true;
-ld.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'lawdroid.com/widget/loader.js';
-var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ld, s);
-})();
-</script>
-<!-- End LawyeristBot -->
