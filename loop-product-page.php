@@ -177,6 +177,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
           echo '<p class="card-label">On This Page</p>';
           echo '<ul class="toc-page-menu-shortcuts">';
             echo $toc;
+            echo '<li><a href="#respond">Leave a Review</a></li>';
           echo '</ul>';
         echo '</div>';
 
