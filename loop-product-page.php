@@ -17,6 +17,9 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
   }
 
+  // Gets the $trial_button if there is one.
+  $trial_button	= trial_button();
+
   // This is the post container.
   echo '<div ';
   post_class( 'hentry' );
@@ -49,56 +52,31 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
       }
 
-      // Shows ratings if comments are open.
-      if ( comments_open() ) {
-
-        echo '<div class="user-rating">';
-
-          // Rating
-          if ( !empty( $composite_rating ) ) {
-
-            echo '<a href="#rating">';
-              echo lawyerist_product_rating();
-            echo '</a>';
-
-          } else {
-
-            echo '<a href="#respond">Leave a review below.</a>';
-
-          }
-
-        echo '</div>'; // End .user_rating.
-
-        if ( !empty( $composite_rating ) ) {
-
-          echo '</div>'; // End aggregateRating schema.
-
-        }
-
-      } else {
-
-        // Output the excerpt.
-        $seo_descr = get_post_meta( $page_ID, '_yoast_wpseo_metadesc', true );
-
-        if ( !empty( $seo_descr ) ) {
-
-          $page_excerpt = $seo_descr;
-
-        } else {
-
-          $page_excerpt = get_the_excerpt();
-
-        }
-
-        echo '<p class="excerpt">' . $page_excerpt . '</p>';
-
-      }
-
-      if ( function_exists( 'lawyerist_affinity_partner_button' ) ) {
+      // Trial button
+      if ( !empty( $trial_button ) ) {
+        echo $trial_button;
+      } elseif ( function_exists( 'lawyerist_affinity_partner_button' ) ) {
         lawyerist_affinity_partner_button();
       }
 
+      // Output the excerpt.
+      $seo_descr = get_post_meta( $page_ID, '_yoast_wpseo_metadesc', true );
+
+      if ( !empty( $seo_descr ) ) {
+
+        $page_excerpt = $seo_descr;
+
+      } else {
+
+        $page_excerpt = get_the_excerpt();
+
+      }
+
+      echo '<p class="excerpt">' . $page_excerpt . '</p>';
+
       echo '<div class="clear"></div>';
+
+      echo '</div>'; // Close aggregateRating.
 
     echo '</div>'; // Close .headline_container.
 
@@ -108,7 +86,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
       if ( is_product_portal() ) {
 
-        // Outputs the table of contents.
+        // Outputs the table of contents on product portal pages.
         $toc = toc_get_index();
 
         if ( $toc == true && !has_shortcode( $post->post_content, 'no-toc' ) ) {
@@ -190,7 +168,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
       }
 
-      // Outputs the table of contents.
+      // Outputs the table of contents on product (non-portal) pages.
       $toc = toc_get_index();
 
       if ( $toc == true && !has_shortcode( $post->post_content, 'no-toc' ) ) {
@@ -208,7 +186,6 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
       echo '<div class="clear"></div>';
 
-      $trial_button	= trial_button();
       echo '<p align="center">' . $trial_button . '</p>';
 
       // Byline

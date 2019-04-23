@@ -224,11 +224,11 @@
 						);
 
 						$cat_info				= get_term( $cat_IDs[0] );
-						$card-label 		= $cat_info->name;
-						$card-label_url	=	get_term_link( $cat_IDs[0], 'category' );
+						$card_label 		= $cat_info->name;
+						$card_label_url	=	get_term_link( $cat_IDs[0], 'category' );
 
-						if ( !empty( $card-label ) ) {
-							echo '<p class="card-label"><a href="' . $card-label_url . '" title="All episodes of ' . $card-label . '.">All episodes of ' . $card-label . '</a></p>';
+						if ( !empty( $card_label ) ) {
+							echo '<p class="card-label"><a href="' . $card_label_url . '" title="All episodes of ' . $card_label . '.">All episodes of ' . $card_label . '</a></p>';
 						}
 
 					echo '</div>';
@@ -240,9 +240,9 @@
 				// Embedded Lawyerist Lens playlist.
 				echo '<div class="card lens_playlist has-card-label">';
 
-				echo '<iframe width="636" height="358" src="https://www.youtube.com/embed/videoseries?list=PLtFJu5URBISmTDaVOF3l-cQl08f2qUMr_" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+					echo '<iframe width="636" height="358" src="https://www.youtube.com/embed/videoseries?list=PLtFJu5URBISmTDaVOF3l-cQl08f2qUMr_" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
 
-				echo '<p class="card-label"><a href="https://www.youtube.com/playlist?list=PLtFJu5URBISmTDaVOF3l-cQl08f2qUMr_" title="Watch all episodes of Lawyerist Lens on YouTube">Watch all episodes of Lawyerist Lens on YouTube</a></p>';
+					echo '<p class="card-label"><a href="https://www.youtube.com/playlist?list=PLtFJu5URBISmTDaVOF3l-cQl08f2qUMr_" title="Watch all episodes of Lawyerist Lens on YouTube">Watch all episodes of Lawyerist Lens on YouTube</a></p>';
 
 				echo '</div>';
 				// End of embedded Lawyerist Lens playlist.

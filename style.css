@@ -1051,8 +1051,8 @@ img.inline {
 Expander
 ------------------------------*/
 
-.card .expandthis-click:nth-last-child(2) {
-  margin-bottom: 0 !important;
+.card .expandthis-click {
+  cursor: pointer;
 }
 
   .expandthis-click::after {
@@ -1069,6 +1069,10 @@ Expander
 
   .expandthis-click.open::after {
     content: '\f405';
+  }
+
+  .card .expandthis-click:nth-last-child(2) {
+    margin-bottom: 0 !important;
   }
 
 .expandthis-hide {
