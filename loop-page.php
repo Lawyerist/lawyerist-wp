@@ -33,9 +33,9 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
     echo '<div class="post_body" itemprop="articleBody">';
 
       // Outputs the table of contents.
-      $toc = toc_get_index();
+      $toc = toc_get_index( $apply_eligibility = true );
 
-      if ( $toc == true && !has_shortcode( $post->post_content, 'no-toc' ) ) {
+      if ( $toc == true ) {
 
         echo '<div id="toc-page-menu" class="card">';
           echo '<p class="card-label">On This Page</p>';
