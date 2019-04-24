@@ -86,6 +86,8 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
       if ( is_product_portal() ) {
 
+        echo do_shortcode( '[list-featured-products]' );
+
         // Outputs the table of contents on product portal pages.
         $toc = toc_get_index();
 
@@ -94,14 +96,12 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
           echo '<div id="toc-page-menu" class="card">';
             echo '<p class="card-label">On This Page</p>';
             echo '<ul class="toc-page-menu-shortcuts">';
-              echo '<li><a href="#Alphabetical_List">Alphabetical List</a></li>';
+              echo '<li><a href="#Alphabetical_List">' . $page_title . ' (Alphabetical List)</a></li>';
               echo $toc;
             echo '</ul>';
           echo '</div>';
 
         } // End TOC
-
-        echo do_shortcode( '[list-featured-products]' );
 
         echo '<div id="Alphabetical_List"></div>';
 
@@ -168,18 +168,22 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
       }
 
-      // Outputs the table of contents on product (non-portal) pages.
-      $toc = toc_get_index();
+      if ( !is_product_portal() ) {
 
-      if ( $toc == true && !has_shortcode( $post->post_content, 'no-toc' ) ) {
+        // Outputs the table of contents on product (non-portal) pages.
+        $toc = toc_get_index();
 
-        echo '<div id="toc-page-menu" class="card">';
-          echo '<p class="card-label">On This Page</p>';
-          echo '<ul class="toc-page-menu-shortcuts">';
-            echo $toc;
-            echo '<li><a href="#respond">Leave a Review</a></li>';
-          echo '</ul>';
-        echo '</div>';
+        if ( $toc == true && !has_shortcode( $post->post_content, 'no-toc' ) ) {
+
+          echo '<div id="toc-page-menu" class="card">';
+            echo '<p class="card-label">On This Page</p>';
+            echo '<ul class="toc-page-menu-shortcuts">';
+              echo $toc;
+              echo '<li><a href="#comments_container">' . $page_title . ' Reviews</a></li>';
+            echo '</ul>';
+          echo '</div>';
+
+        }
 
       } // End TOC
 
