@@ -386,7 +386,18 @@ Is This a Product Portal?
 function is_product_portal() {
 
 	global $post;
-	$children = get_pages( array( 'child_of' => $post->ID ) );
+
+	$get_children_args = array(
+		'child_of'	=> $post->ID,
+		'exclude_tree' => array(
+			245258, // Community
+			245317, // Insider
+			220087, // Lab
+			128819, // LabCon
+		),
+	);
+
+	$children = get_pages( $get_children_args );
 
 	if ( is_page() && is_page_template( 'product-page.php' ) && ( count( $children ) > 0 ) ) {
 
