@@ -162,11 +162,6 @@ function lawyerist_dequeue_scripts() {
 		wp_dequeue_script( 'woocommerce' );
 		wp_dequeue_script( 'wc-add-to-cart' );
 
-		// Table of Contents Plus
-		wp_deregister_script( 'toc-front' );
-
-		wp_dequeue_script( 'toc-front' );
-
 	}
 
 	// Prevent WP Review Pro stylesheets and scripts from appearing on non-product pages.
