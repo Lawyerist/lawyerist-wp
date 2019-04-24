@@ -85,8 +85,8 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
     echo '>';
 
       // Outputs the post label if there is one.
-      if ( !empty( $post_label ) ) {
-        echo '<p class="post_label"><a href="' . $post_label_url . '" title="Read all posts in ' . $post_label . '.">' . $post_label . '</a></p>';
+      if ( !empty( $card_label ) ) {
+        echo '<p class="card-label"><a href="' . $card_label_url . '" title="Read all posts in ' . $card_label . '.">' . $card_label . '</a></p>';
       }
 
       // Starts the link container. Makes for big click targets!
@@ -134,7 +134,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
     $post_num++; // Increment counter.
 
-    unset ( $post_classes, $post_label, $post_label_url, $thumbnail, $thumbnail_url ); // Clear variables for the next trip through the Loop.
+    unset ( $post_classes, $card_label, $card_label_url, $thumbnail, $thumbnail_url ); // Clear variables for the next trip through the Loop.
 
   } // End loop for excluding sponsored posts and pages without the "Show in Feed" page type.
 

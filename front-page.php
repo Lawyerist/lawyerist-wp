@@ -182,7 +182,7 @@
 
 					// Starts the post container.
 					echo '<div ' ;
-					post_class( 'card has-avatar-thumbnail has-post-label' );
+					post_class( 'card has-avatar-thumbnail has-card-label' );
 					echo '>';
 
 						// Starts the link container. Makes for big click targets!
@@ -224,12 +224,11 @@
 						);
 
 						$cat_info				= get_term( $cat_IDs[0] );
+						$card_label 		= $cat_info->name;
+						$card_label_url	=	get_term_link( $cat_IDs[0], 'category' );
 
-						$post_label 		   	= $cat_info->name;
-						$post_label_url			=	get_term_link( $cat_IDs[0], 'category' );
-
-						if ( !empty( $post_label ) ) {
-							echo '<p class="post_label"><a href="' . $post_label_url . '" title="All episodes of ' . $post_label . '.">All episodes of ' . $post_label . '</a></p>';
+						if ( !empty( $card_label ) ) {
+							echo '<p class="card-label"><a href="' . $card_label_url . '" title="All episodes of ' . $card_label . '.">All episodes of ' . $card_label . '</a></p>';
 						}
 
 					echo '</div>';
@@ -239,11 +238,11 @@
 
 
 				// Embedded Lawyerist Lens playlist.
-				echo '<div class="card lens_playlist has-post-label">';
+				echo '<div class="card lens_playlist has-card-label">';
 
-				echo '<iframe width="636" height="358" src="https://www.youtube.com/embed/videoseries?list=PLtFJu5URBISmTDaVOF3l-cQl08f2qUMr_" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+					echo '<iframe width="636" height="358" src="https://www.youtube.com/embed/videoseries?list=PLtFJu5URBISmTDaVOF3l-cQl08f2qUMr_" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
 
-				echo '<p class="post_label"><a href="https://www.youtube.com/playlist?list=PLtFJu5URBISmTDaVOF3l-cQl08f2qUMr_" title="Watch all episodes of Lawyerist Lens on YouTube">Watch all episodes of Lawyerist Lens on YouTube</a></p>';
+					echo '<p class="card-label"><a href="https://www.youtube.com/playlist?list=PLtFJu5URBISmTDaVOF3l-cQl08f2qUMr_" title="Watch all episodes of Lawyerist Lens on YouTube">Watch all episodes of Lawyerist Lens on YouTube</a></p>';
 
 				echo '</div>';
 				// End of embedded Lawyerist Lens playlist.
@@ -299,7 +298,7 @@
 						endwhile;
 
 						// Outputs the label.
-						echo '<p class="post_label"><a href="https://lawyerist.com/topic/blog-posts/" title="All Blog Posts">All Blog Posts</a></p>';
+						echo '<p class="card-label"><a href="https://lawyerist.com/topic/blog-posts/" title="All Blog Posts">All Blog Posts</a></p>';
 
 					echo '</div>';
 
@@ -336,7 +335,7 @@
 
 					// Starts the post container.
 					echo '<div ' ;
-					post_class( 'card has-post-label' );
+					post_class( 'card has-card-label' );
 					echo '>';
 
 						// Starts the link container. Makes for big click targets!
@@ -368,7 +367,7 @@
 						echo '</a>'; // This closes the post link container (.post).
 
 						// Outputs the label.
-						echo '<p class="post_label"><a href="https://lawyerist.com/library/" title="Explore the Lawyerist Insider Library.">Explore the Lawyerist Insider Library</a></p>';
+						echo '<p class="card-label"><a href="https://lawyerist.com/library/" title="Explore the Lawyerist Insider Library.">Explore the Lawyerist Insider Library</a></p>';
 
 					echo '</div>';
 

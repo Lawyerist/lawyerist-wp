@@ -19,6 +19,7 @@ Layout & Design Elements
   Block Styles
 Typography
 Images
+Expander
 Header
   Title
 Menu
@@ -355,13 +356,13 @@ aside blockquote,
 button,
 .button,
 .drop_cap,
+.card-label,
 .category_list,
 #cancel-comment-reply-link,
 .comment-author,
 .comment-meta,
 .comment .reply,
 #current_posts,
-.dashboard-widget-label,
 .product-page .headline_container .excerpt,
 .profile-page .headline_container .excerpt,
 figcaption,
@@ -387,10 +388,11 @@ p.pullout,
 p.pullquote,
 #scorecard_results #grade_box,
 .scorecard-results-wrapper,
-.post_label,
+.card-label,
 .tag_list,
 .theiaPostSlider_nav ._text,
 .toc_list,
+#toc-page-menu,
 ul.blogroll,
 .user-rating,
 p.woocommerce-result-count,
@@ -1046,6 +1048,38 @@ img.inline {
 
 
 /*------------------------------
+Expander
+------------------------------*/
+
+.card .expandthis-click {
+  cursor: pointer;
+}
+
+  .expandthis-click::after {
+    content: '\f431';
+    display: inline-block;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-family: Genericons;
+    speak: none;
+    text-align: center;
+    vertical-align: top;
+    width: 1.2em;
+  }
+
+  .expandthis-click.open::after {
+    content: '\f405';
+  }
+
+  .card .expandthis-click:nth-last-child(2) {
+    margin-bottom: 0 !important;
+  }
+
+.expandthis-hide {
+  margin-top: .5em;
+}
+
+/*------------------------------
 Header
 ------------------------------*/
 
@@ -1299,7 +1333,7 @@ Card Styles
 Selectors
 .has-post-thumbnail
 .has-avatar-thumbnail
-.has-post-label
+.has-card-label
 .category-lawyerist-podcast
 .category-blog-posts
 .sponsored
@@ -1329,8 +1363,12 @@ Selectors
     padding: 0;
   }
 
+  .card *:last-child {
+    margin-bottom: 0 !important;
+  }
+
   .card.front_page_sticky_post,
-  .card.has-post-label,
+  .card.has-card-label,
   .card.has-avatar-thumbnail,
   #sponsored_product_updates {
     padding: 2rem;
@@ -1392,25 +1430,30 @@ Selectors
   }
 
 
-/* Post label styles. */
+/* Card label styles. */
 
-.post_label {
+.card-label,
+.review-summary-title {
+  color: #666;
   font-size: 1.4rem;
   font-weight: bold;
   margin-bottom: .5em;
   text-transform: uppercase;
 }
 
-  .home .card .post_label,
-  .home .card .post_label {
-    margin-bottom: 0;
+  .home .card .card-label:last-child {
+    margin-top: 1rem;
   }
 
-  .post_label a {
+  .home .lens_playlist.has-card-label .card-label {
+    margin-top: 0;
+  }
+
+  .card-label a {
     color: #666;
   }
 
-  .post_label > a:before {
+  .card-label > a:before {
     content: '\f505';
     display: inline-block;
     -moz-osx-font-smoothing: grayscale;
@@ -1421,15 +1464,15 @@ Selectors
     vertical-align: top;
   }
 
-  .post_label a:hover,
-  .post_label a:focus {
+  .card-label a:hover,
+  .card-label a:focus {
     color: #a00;
     text-decoration: none;
   }
 
 
 /* .headline-excerpt styles. */
-.card.has-post-label .headline-excerpt {
+.card.has-card-label .headline-excerpt {
   padding: 0;
 }
 
@@ -1458,7 +1501,7 @@ Selectors
 padding: 6rem;
 }
 
-.card.type-product.has-post-label .headline-excerpt {
+.card.type-product.has-card-label .headline-excerpt {
   padding: 4rem;
 }
 
@@ -1504,7 +1547,7 @@ padding: 6rem;
   width: 30%;
 }
 
-  .card .has-post-label .default_thumbnail {
+  .card .has-card-label .default_thumbnail {
     border-radius: 0;
   }
 
@@ -1661,7 +1704,7 @@ Front Page
     text-align: center;
   }
 
-.home .has-post-thumbnail.has-post-label .headline-excerpt {
+.home .has-post-thumbnail.has-card-label .headline-excerpt {
   margin-bottom: 2rem;
 }
 
@@ -1719,14 +1762,6 @@ Front Page
   color: #555;
   line-height: 1;
   margin-bottom: 2rem;
-  text-transform: uppercase;
-}
-
-p.dashboard-widget-label {
-  color: #666;
-  font-size: 1.4rem;
-  font-weight: bold;
-  margin-bottom: 1em;
   text-transform: uppercase;
 }
 
@@ -1898,31 +1933,36 @@ p.dashboard-widget-note {
   padding: 2rem;
 }
 
-  .home #blog-posts .headline-excerpt {
-    margin-bottom: 2rem;
-    padding: 0;
+  .home #blog-posts .post {
+    display: block;
+    margin-bottom: 1rem;
   }
 
-    .home #blog-posts .headline,
-    .home #blog-posts .postmeta {
-      margin-left: 1.5rem;
-      padding-left: 7.5rem;
+    .home #blog-posts .headline-excerpt {
+      margin-bottom: 2rem;
+      padding: 0;
     }
 
-    .home #blog-posts .author_avatar {
-      float: left;
-      font-size: 1rem;
-      line-height: 1;
-      width: 7.5rem;
-    }
-
-      .home #blog-posts .author_avatar img {
-        height: auto;
-        margin: 0;
-        width: 100%;
+      .home #blog-posts .headline,
+      .home #blog-posts .postmeta {
+        margin-left: 1.5rem;
+        padding-left: 7.5rem;
       }
 
-.home .type-product.has-post-label .headline-excerpt {
+      .home #blog-posts .author_avatar {
+        float: left;
+        font-size: 1rem;
+        line-height: 1;
+        width: 7.5rem;
+      }
+
+        .home #blog-posts .author_avatar img {
+          height: auto;
+          margin: 0;
+          width: 100%;
+        }
+
+.home .type-product.has-card-label .headline-excerpt {
   padding: 4rem;
 }
 
@@ -2099,7 +2139,12 @@ Content
 
       #review {
         border: 0;
+        margin: 0;
         padding: 0;
+      }
+
+      #review .review-list {
+        margin-bottom: 2rem;
       }
 
       #review .review-list li {
@@ -2115,6 +2160,11 @@ Content
         #review .review-list li span {
           font-size: 1.6rem;
         }
+
+      #review .review-desc {
+        margin-bottom: 2rem;
+        padding: 0;
+      }
 
       #review .comments-review-area {
         display: none;
@@ -2328,6 +2378,34 @@ Content
       }
 
     }
+
+  #toc-page-menu {
+    font-size: 1.6rem;
+    margin-bottom: 3rem;
+    padding: 2rem;
+  }
+
+    #toc-page-menu a,
+    #toc-page-menu a:visited {
+      color: #cc0000;
+      text-decoration: none;
+    }
+
+    #toc-page-menu a:hover,
+    #toc-page-menu a:focus {
+      color: #aa0000;
+      text-decoration: underline;
+    }
+
+    ul.toc-page-menu-shortcuts {
+      list-style: none;
+      margin: 0;
+    }
+
+      ul.toc-page-menu-shortcuts li {
+        line-height: 1.2;
+        margin: 0 0 .5em 0;
+      }
 
   #toc_container {
     margin-bottom: 3rem;
@@ -3099,16 +3177,6 @@ Content
       font-size: 1.6rem;
       margin-left: 12.5rem;
       padding: 0;
-    }
-
-    .featured_products_heading {
-      color: #666;
-      display: block;
-      font-size: 1.4rem;
-      font-weight: bold;
-      line-height: 1.5;
-      margin-bottom: .75em;
-      text-transform: uppercase;
     }
 
     .featured-products-list li {
