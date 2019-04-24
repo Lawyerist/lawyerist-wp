@@ -2407,6 +2407,12 @@ Content
         margin: 0 0 .5em 0;
       }
 
+      ul.toc-page-menu-shortcuts ul {
+        list-style: none;
+        margin-left: 1rem;
+        margin-top: .5em;
+      }
+
   #toc_container {
     margin-bottom: 3rem;
   }
