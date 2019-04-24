@@ -88,8 +88,8 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
         echo do_shortcode( '[list-featured-products]' );
 
-        // Outputs the table of contents on product portal pages.
-        $toc = toc_get_index( $apply_eligibility = true );
+        // Outputs the table of contents.
+        $toc = toc_get_index( $apply_eligibility=true );
 
         if ( $toc == true ) {
 

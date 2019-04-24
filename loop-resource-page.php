@@ -54,7 +54,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
     echo '<div class="post_body" itemprop="articleBody">';
 
       // Outputs the table of contents.
-      $toc = toc_get_index( $apply_eligibility = true );
+      $toc = toc_get_index( $apply_eligibility=true );
 
       if ( $toc == true ) {
 
