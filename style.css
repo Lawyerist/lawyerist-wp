@@ -400,6 +400,7 @@ p.woocommerce-result-count,
 .woocommerce-account .woocommerce-LostPassword,
 .woocommerce-account .woocommerce-MyAccount-navigation,
 .woocommerce nav.woocommerce-pagination,
+a.wp-block-file__button,
 .wp-caption-text,
 .wp-review-feedback {
   font-family: concourse, sans-serif;
@@ -3798,6 +3799,14 @@ a.review-btn,
     padding: 0 1.6rem;
   }
 
+  .wp-block-file a.wp-block-file__button {
+    background-color: #a00;
+    border-radius: 2em;
+    display: unset;
+    padding: .5em 1em;
+    text-transform: uppercase;
+  }
+
   #sidebar_column button,
   #sidebar_column .button,
   #sidebar_column a.button,
@@ -3850,7 +3859,8 @@ a.review-btn:focus,
 .woocommerce #respond input#submit.alt:focus,
 .woocommerce a.button.alt:focus,
 .woocommerce button.button.alt:focus,
-.woocommerce input.button.alt:focus {
+.woocommerce input.button.alt:focus,
+.wp-block-file a.wp-block-file__button:focus {
   box-shadow: none;
   color: #fff;
   outline: none !important;
@@ -3871,7 +3881,8 @@ a.review-btn:hover,
 .woocommerce #respond input#submit.alt:hover,
 .woocommerce a.button.alt:hover,
 .woocommerce button.button.alt:hover,
-.woocommerce input.button.alt:hover {
+.woocommerce input.button.alt:hover,
+.wp-block-file a.wp-block-file__button:hover {
   background-color: #c00;
   box-shadow: .1rem .1rem .3rem rgba(0, 0, 0, 0.4);
   color: #fff;
@@ -3893,7 +3904,8 @@ a.review-btn:active,
 .woocommerce #respond input#submit.alt:active,
 .woocommerce a.button.alt:active,
 .woocommerce button.button.alt:active,
-.woocommerce input.button.alt:active {
+.woocommerce input.button.alt:active,
+.wp-block-file a.wp-block-file__button:active {
   background-color: #a00;
   box-shadow: none;
   color: #ddd;
@@ -3940,17 +3952,6 @@ a.greybutton:active,
 .woocommerce input.button[name="update_cart"]:active {
   background-color: #bbb;
   color: #efefef;
-}
-
-.mce-toolbar button {
-  text-transform: none;
-}
-
-.mce-toolbar button:hover,
-.mce-toolbar button:focus,
-.mce-toolbar button:active {
-  background-color: unset;
-  box-shadow: unset;
 }
 
 
@@ -4591,6 +4592,10 @@ LearnDash
   color: unset;
   font-family: unset;
   font-size: 2rem;
+}
+
+.learndash-lesson #learndash_upload_assignment td {
+  border: 0;
 }
 
 
