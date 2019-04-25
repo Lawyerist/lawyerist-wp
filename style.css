@@ -344,6 +344,7 @@ th,
 .current_posts_heading,
 #dashboard-title,
 .featured_products_heading,
+.learndash #lesson_heading,
 #menu-main-menu .sub-menu .menu-item-has-children > a,
 .product-pages-list .title,
 .toc_title,
@@ -372,6 +373,7 @@ figcaption,
 input[type="button"],
 input[type="submit"],
 label,
+#learndash_course_status,
 .logged-in-as, /* Logged-in message on comment form. */
 #menu-main-menu,
 .onsale,
@@ -391,9 +393,6 @@ p.pullquote,
 .scorecard-results-wrapper,
 .card-label,
 .tag_list,
-.theiaPostSlider_nav ._text,
-.toc_list,
-#toc-page-menu,
 ul.blogroll,
 .user-rating,
 p.woocommerce-result-count,
@@ -4564,10 +4563,34 @@ body.woocommerce-cart .actions button  {
 LearnDash
 ------------------------------*/
 
-.learndash #content_column {
+.learndash-page #content_column {
   float: none;
   max-width: unset;
   width: 100%;
+}
+
+.learndash-course #learndash_course_status {
+  color: #444;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+}
+
+.learndash-course #learndash_course_content_title {
+  margin-bottom: .5em;
+}
+
+.learndash-course #lesson_heading {
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.learndash-course #learndash_lessons,
+.learndash-course #learndash_lessons h4,
+.learndash-course #learndash_lessons a {
+  color: unset;
+  font-family: unset;
+  font-size: 2rem;
 }
 
 
