@@ -52,6 +52,9 @@ WOOCOMMERCE
 - Checkout Fields
 - Display Price of Free Products As "Free!" Not "$0.00".
 
+LEARNDASH
+- Disable Comments on LearnDash Pages
+
 TAXONOMY
 - Page Type Custom Taxonomy
 - Sponsors Custom Taxonomy
@@ -496,7 +499,7 @@ function lawyerist_get_author_bio() {
 	$author_bio           = get_the_author_meta( 'description' );
 	$author_website       = get_the_author_meta( 'user_url' );
 	$parsed_url           = parse_url( $author_website );
-	$author_nice_website  = $parsed_url['host'];
+	$author_nice_website  = $parsed_url[ 'host' ];
 	$author_twitter       = get_the_author_meta( 'twitter' );
 	$author_avatar_sm     = get_avatar( get_the_author_meta( 'user_email' ), 100, '', $author_name );
 	$author_avatar_lg     = get_avatar( get_the_author_meta( 'user_email' ), 300, '', $author_name );
@@ -1672,6 +1675,25 @@ function lawyerist_wc_free_products( $price, $product ) {
 }
 
 add_filter( 'woocommerce_get_price_html', 'lawyerist_wc_free_products', 10, 2 );
+
+
+/* LEARNDASH ******************/
+
+/*------------------------------
+Disable Comments on LearnDash Pages
+------------------------------*/
+
+function lawyerist_ld_disable_comments() {
+
+	remove_post_type_support( 'sfwd-courses', 'comments' );
+	remove_post_type_support( 'sfwd-lessons', 'comments' );
+	remove_post_type_support( 'sfwd-topic', 'comments' );
+	remove_post_type_support( 'sfwd-quiz', 'comments' );
+	remove_post_type_support( 'sfwd-essays', 'comments' );
+
+}
+
+add_filter( 'init', 'lawyerist_ld_disable_comments' );
 
 
 /* TAXONOMY *******************/

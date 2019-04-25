@@ -49,6 +49,7 @@ Forms
   Gravity Forms Customizations
   HubSpot Forms Customizations
 WooCommerce
+LearnDash
 Print
 
 ------------------------------*/
@@ -4556,6 +4557,17 @@ body.woocommerce-account {
 
 body.woocommerce-cart .actions button  {
   margin-bottom: 0;
+}
+
+
+/*------------------------------
+LearnDash
+------------------------------*/
+
+.learndash #content_column {
+  float: none;
+  max-width: unset;
+  width: 100%;
 }
 
 
