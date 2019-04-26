@@ -317,6 +317,10 @@ Block Styles
   margin: 0 0 3rem 0;
 }
 
+.wp-block-video video {
+  width: 100%;
+}
+
 
 /*------------------------------
 Typography
@@ -344,6 +348,7 @@ th,
 .current_posts_heading,
 #dashboard-title,
 .featured_products_heading,
+.learndash #lesson_heading,
 #menu-main-menu .sub-menu .menu-item-has-children > a,
 .product-pages-list .title,
 .toc_title,
@@ -372,6 +377,9 @@ figcaption,
 input[type="button"],
 input[type="submit"],
 label,
+#learndash_course_status,
+.learndash-topic .learndash_topic_dots,
+#learndash_lesson_topics_list strong:first-of-type,
 .logged-in-as, /* Logged-in message on comment form. */
 #menu-main-menu,
 .onsale,
@@ -391,9 +399,6 @@ p.pullquote,
 .scorecard-results-wrapper,
 .card-label,
 .tag_list,
-.theiaPostSlider_nav ._text,
-.toc_list,
-#toc-page-menu,
 ul.blogroll,
 .user-rating,
 p.woocommerce-result-count,
@@ -401,6 +406,7 @@ p.woocommerce-result-count,
 .woocommerce-account .woocommerce-LostPassword,
 .woocommerce-account .woocommerce-MyAccount-navigation,
 .woocommerce nav.woocommerce-pagination,
+a.wp-block-file__button,
 .wp-caption-text,
 .wp-review-feedback {
   font-family: concourse, sans-serif;
@@ -3000,25 +3006,6 @@ Content
       top: 2rem;
   }
 
-    a.button.trial-button {
-      border-radius: .3rem;
-      font-size: 1.8rem !important;
-      height: 4.2rem;
-      line-height: 4.2rem;
-      margin: 0 auto;
-      padding: 0 1.8rem;
-    }
-
-      a.button.trial-button:after {
-        content: "\f442";
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-font-smoothing: antialiased;
-        font: normal 1.8rem/1 Genericons;
-        margin-left: .1em;
-        speak: none;
-        vertical-align: text-top;
-      }
-
     .affinity-partner-link {
       display: block;
       font-size: 1.6rem;
@@ -3648,6 +3635,15 @@ textarea,
     padding-top: 2px;
   }
 
+input[type="file"],
+input#uploadfiles {
+  border: 0;
+  font-size: 1.2rem !important;
+  line-height: 1;
+  margin-bottom: 2rem;
+  padding: 0;
+}
+
 input[type="search"] {
   width: 100%;
 }
@@ -3752,7 +3748,7 @@ a.review-btn,
 .woocommerce input.button.alt {
   background-color: #b00;
   border: 0;
-  border-radius: .2rem;
+  border-radius: 1.8rem;
   box-shadow: none;
   box-sizing: border-box;
   color: #fff;
@@ -3763,7 +3759,7 @@ a.review-btn,
   line-height: 3.6rem;
   margin-bottom: 3rem;
   outline: none;
-  padding: 0 1.6rem;
+  padding: 0 1em;
   text-decoration: none;
   text-transform: uppercase;
   -webkit-appearance: none;
@@ -3771,22 +3767,31 @@ a.review-btn,
   width: auto;
 }
 
-  a.button.big-button {
-    border-radius: .3rem;
+  a.button.big-button,
+  a.button.trial-button {
+    border-radius: 2.1rem;
     font-size: 1.8rem !important;
     height: 4.2rem;
     line-height: 4.2rem;
     margin: 0 auto;
-    padding: 0 1.8rem;
   }
 
+    a.button.trial-button:after {
+      content: "\f442";
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-font-smoothing: antialiased;
+      font: normal 1.8rem/1 Genericons;
+      margin-left: .1em;
+      speak: none;
+      vertical-align: text-top;
+    }
+
   a.button.really-big-button {
-    border-radius: .6rem;
+    border-radius: 3rem;
     font-size: 3.2rem !important;
     height: 6rem;
     line-height: 6rem;
     margin: 0 auto;
-    padding: 0 3.2rem;
   }
 
   .woocommerce button.button:disabled,
@@ -3796,7 +3801,16 @@ a.review-btn,
     background-color: #ddd;
     box-shadow: none;
     color: #bbb;
-    padding: 0 1.6rem;
+    padding: 0 1em;
+  }
+
+  .wp-block-file a.wp-block-file__button {
+    background-color: #a00;
+    border-radius: 1.4rem;
+    display: unset;
+    font-size: 1.3rem;
+    padding: .5em 1em;
+    text-transform: uppercase;
   }
 
   #sidebar_column button,
@@ -3851,7 +3865,8 @@ a.review-btn:focus,
 .woocommerce #respond input#submit.alt:focus,
 .woocommerce a.button.alt:focus,
 .woocommerce button.button.alt:focus,
-.woocommerce input.button.alt:focus {
+.woocommerce input.button.alt:focus,
+.wp-block-file a.wp-block-file__button:focus {
   box-shadow: none;
   color: #fff;
   outline: none !important;
@@ -3872,7 +3887,8 @@ a.review-btn:hover,
 .woocommerce #respond input#submit.alt:hover,
 .woocommerce a.button.alt:hover,
 .woocommerce button.button.alt:hover,
-.woocommerce input.button.alt:hover {
+.woocommerce input.button.alt:hover,
+.wp-block-file a.wp-block-file__button:hover {
   background-color: #c00;
   box-shadow: .1rem .1rem .3rem rgba(0, 0, 0, 0.4);
   color: #fff;
@@ -3894,7 +3910,8 @@ a.review-btn:active,
 .woocommerce #respond input#submit.alt:active,
 .woocommerce a.button.alt:active,
 .woocommerce button.button.alt:active,
-.woocommerce input.button.alt:active {
+.woocommerce input.button.alt:active,
+.wp-block-file a.wp-block-file__button:active {
   background-color: #a00;
   box-shadow: none;
   color: #ddd;
@@ -3941,17 +3958,6 @@ a.greybutton:active,
 .woocommerce input.button[name="update_cart"]:active {
   background-color: #bbb;
   color: #efefef;
-}
-
-.mce-toolbar button {
-  text-transform: none;
-}
-
-.mce-toolbar button:hover,
-.mce-toolbar button:focus,
-.mce-toolbar button:active {
-  background-color: unset;
-  box-shadow: unset;
 }
 
 
@@ -4564,11 +4570,70 @@ body.woocommerce-cart .actions button  {
 LearnDash
 ------------------------------*/
 
-.learndash #content_column {
+.learndash-page #content_column {
   float: none;
   max-width: unset;
   width: 100%;
 }
+
+.learndash-course #learndash_course_status,
+.learndash-topic .learndash_topic_dots {
+  color: #444;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+}
+
+.learndash-course #learndash_course_content_title {
+  margin-bottom: .5em;
+}
+
+.learndash-course #lesson_heading,
+.learndash-lesson #learndash_lesson_topics_list strong:first-of-type {
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.learndash-course #learndash_lessons,
+.learndash-course #learndash_lessons h4,
+.learndash-course #learndash_lessons a,
+.learndash-lesson #learndash_lesson_topics_list .topic_item a,
+.learndash-lesson #learndash_lesson_topics_list .topic_item a > span {
+  color: unset;
+  font-family: unset;
+  font-size: 2rem;
+}
+
+#learndash_upload_assignment {
+  margin-bottom: 4rem;
+}
+
+  #learndash_upload_assignment td {
+    border: 0;
+  }
+
+#learndash_next_prev_link {
+  display: grid;
+  grid-gap: 2rem;
+  grid-template-columns: repeat( 2, 1fr );
+}
+
+  #learndash_next_prev_link a {
+    float: unset;
+  }
+
+    #learndash_next_prev_link a:hover .meta-nav {
+      text-decoration: none;
+    }
+
+  #learndash_next_prev_link .prev-link {
+    grid-column: 1/1;
+  }
+
+  #learndash_next_prev_link .next-link {
+    grid-column: 2/2;
+    text-align: right;
+  }
 
 
 /*------------------------------

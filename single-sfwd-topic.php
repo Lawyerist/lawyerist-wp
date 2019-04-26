@@ -5,7 +5,7 @@
 
 <?php get_template_part( 'head' ); ?>
 
-<body <?php body_class( 'learndash learndash-topic' ); ?>>
+<body <?php body_class( 'learndash-page learndash-topic' ); ?>>
 
 <?php get_header(); ?>
 
