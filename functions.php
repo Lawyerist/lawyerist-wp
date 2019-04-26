@@ -234,7 +234,22 @@ add_action( 'init','lawyerist_register_menus' );
 function lawyerist_loginout( $items, $args ) {
 
   	if ( is_user_logged_in() && $args->theme_location == 'header-nav-menu' ) {
-        $items .= '<li class="menu-item menu-item-loginout"><a href="https://lawyerist.com/account/">Account</a></li>';
+
+			ob_start();
+
+				echo '<li class="menu-item menu-item-loginout menu-item-has-children"><a href="#">Dashboard</a>';
+					echo '<ul class="sub-menu">';
+						echo '<li class="menu-item"><a href="https://lawyerist.com/account/">My Account</a>';
+						/* echo '<li class="menu-item"><a href="https://lawyerist.com/courses/">My Courses</a></li>';
+						echo '<li class="menu-item"><a href="https://lawyerist.com/forums/">Member Forums</a></li>'; */
+						echo '<li class="menu-item"><a href="https://lawyerist.com/scorecard/">Update My Scorecard</a></li>';
+					echo '</ul>';
+				echo '</li>';
+
+			$new_items = ob_get_clean();
+
+      $items .= $new_items;
+
     } elseif ( !is_user_logged_in() && $args->theme_location == 'header-nav-menu' ) {
         $items .= '<li class="menu-item menu-item-loginout"><a href="https://lawyerist.com/account/">Log In</a></li>';
     }

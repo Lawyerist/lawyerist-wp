@@ -1217,6 +1217,12 @@ Menu
         content: '\f304';
       }
 
+        #menu-main-menu .menu-item-loginout.menu-item-has-children > .sub-menu {
+          left: unset;
+          right: 0;
+          width: 100%;
+        }
+
 
 #menu-main-menu > .menu-item-has-children {
   position: relative;
