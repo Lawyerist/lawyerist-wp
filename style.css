@@ -365,8 +365,6 @@ button,
 .button,
 .drop_cap,
 .card-label,
-  .bbp-form legend,
-  .forum-titles,
   .review-summary-title,
 .category_list,
 #cancel-comment-reply-link,
@@ -1066,7 +1064,7 @@ Expander
   cursor: pointer;
 }
 
-  .expandthis-click::after {
+  .card .expandthis-click::after {
     content: '\f431';
     display: inline-block;
     -moz-osx-font-smoothing: grayscale;
@@ -1078,7 +1076,7 @@ Expander
     width: 1.2em;
   }
 
-  .expandthis-click.open::after {
+  .card  .expandthis-click.open::after {
     content: '\f405';
   }
 
@@ -1444,8 +1442,6 @@ Selectors
 /* Card label styles. */
 
 .card-label,
-.bbp-form legend,
-.forum-titles,
 .review-summary-title {
   color: #666;
   font-size: 1.4rem;
@@ -4640,22 +4636,6 @@ LearnDash
     grid-column: 2/2;
     text-align: right;
   }
-
-
-/*------------------------------
-bbPress
-------------------------------*/
-
-.bbpress #content_column {
-  float: none;
-  max-width: unset;
-  width: 100%;
-}
-
-#bbpress-forums {
-  font-size: inherit;
-  line-height: inherit;
-}
 
 
 /*------------------------------
