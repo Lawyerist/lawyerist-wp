@@ -1,4 +1,4 @@
-<?php /* Template Name: Full Width */ ?>
+<?php /* Template Name: LearnDash Topic Pages */ ?>
 
 <!DOCTYPE html>
 <html lang="en">

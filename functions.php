@@ -71,12 +71,12 @@ Stylesheets & Scripts
 function lawyerist_stylesheets_scripts() {
 
 	// Normalize the default styles. From https://github.com/necolas/normalize.css/
-	wp_register_style( 'normalize-css', get_template_directory_uri() . '/normalize.min.css' );
+	wp_register_style( 'normalize-css', get_template_directory_uri() . '/css/normalize.min.css' );
 	wp_enqueue_style( 'normalize-css' );
 
 	// Load the stylesheet, with a cachebuster.
-	$cacheBusterCSS = filemtime( get_stylesheet_directory() . '/style.css' );
-	wp_register_style( 'stylesheet', get_template_directory_uri() . '/style.css', array(), $cacheBusterCSS, 'all' );
+	$cacheBusterCSS = filemtime( get_stylesheet_directory() . '/css/style.css' );
+	wp_register_style( 'stylesheet', get_template_directory_uri() . '/css/style.css', array(), $cacheBusterCSS, 'all' );
 	wp_enqueue_style( 'stylesheet' );
 
 	// Load the comment-reply script, but only if we're on a single page and comments are open and threaded.
