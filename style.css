@@ -6,7 +6,7 @@ Author:       Sam Glover
 Author URI:   http://samglover.net
 Version:      [see https://github.com/Lawyerist/lawyerist-wp for version history]
 
-License:      Copyright 2018 Lawyerist Media, LLC
+License:      Copyright Lawyerist Media, LLC
 ------------------------------*/
 
 
@@ -50,6 +50,7 @@ Forms
   HubSpot Forms Customizations
 WooCommerce
 LearnDash
+bbPress
 Print
 
 ------------------------------*/
@@ -167,7 +168,7 @@ Layout
 ------------------------------*/
 
 html {
-	font-size: 62.5%;
+	font-size: 62.5%; /* 10px */
 }
 
 body {
@@ -345,6 +346,7 @@ h6,
 .headline,
 th,
 .affinity-partners-heading,
+.bbp-forum-title,
 .current_posts_heading,
 #dashboard-title,
 .featured_products_heading,
@@ -363,6 +365,7 @@ button,
 .button,
 .drop_cap,
 .card-label,
+  .review-summary-title,
 .category_list,
 #cancel-comment-reply-link,
 .comment-author,
@@ -397,7 +400,6 @@ p.pullout,
 p.pullquote,
 #scorecard_results #grade_box,
 .scorecard-results-wrapper,
-.card-label,
 .tag_list,
 ul.blogroll,
 .user-rating,
@@ -1062,7 +1064,7 @@ Expander
   cursor: pointer;
 }
 
-  .expandthis-click::after {
+  .card .expandthis-click::after {
     content: '\f431';
     display: inline-block;
     -moz-osx-font-smoothing: grayscale;
@@ -1074,7 +1076,7 @@ Expander
     width: 1.2em;
   }
 
-  .expandthis-click.open::after {
+  .card  .expandthis-click.open::after {
     content: '\f405';
   }
 
