@@ -74,7 +74,7 @@ function lawyerist_stylesheets_scripts() {
 	wp_register_style( 'normalize-css', get_template_directory_uri() . '/css/normalize.min.css' );
 	wp_enqueue_style( 'normalize-css' );
 
-	// Load the stylesheet, with a cachebuster.
+	// Load the main stylesheet, with a cachebuster.
 	$cacheBusterCSS = filemtime( get_stylesheet_directory() . '/style.css' );
 	wp_register_style( 'stylesheet', get_template_directory_uri() . '/style.css', array(), $cacheBusterCSS, 'all' );
 	wp_enqueue_style( 'stylesheet' );
