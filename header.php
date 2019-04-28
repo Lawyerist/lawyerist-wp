@@ -1,6 +1,6 @@
 <div id="header_shadow"></div>
-<div id="lbuffer_header"></div>
-<div id="rbuffer_header"></div>
+<div id="black-stripe"></div>
+<div id="red-stripe"></div>
 
 <div id="header">
 
