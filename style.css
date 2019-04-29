@@ -14,15 +14,12 @@ License:      Copyright Lawyerist Media, LLC
 Index
 
 Load Fonts
-Layout
+Layout Elements & Grid Structure
 Layout & Design Elements
   Block Styles
 Typography
 Images
 Expander
-Header
-  Title
-  Menu
 Card Styles
 Front Page
   Insider Dasboard
@@ -164,7 +161,7 @@ Load Fonts
 
 
 /*------------------------------
-Layout
+Layout Elements & Grid Structure
 ------------------------------*/
 
 html {
@@ -226,6 +223,16 @@ body {
       padding: 0 2rem 0 1rem;
     }
 
+      #title a {
+        color: #fff;
+      }
+
+      #title a:hover,
+      #title a:focus {
+        color: #ddd;
+        text-decoration: none;
+      }
+
     .menu-main-menu-container {
       background: #c00;
       grid-area: header-menu;
@@ -235,8 +242,147 @@ body {
     	#menu-main-menu {
         display: grid;
         grid-template-columns: repeat( 5, 1fr );
+        list-style: none;
     		margin: 0;
+        position: relative;
     	}
+
+        #menu-main-menu .menu-item {
+          margin: 0;
+          padding: 0;
+        }
+
+          #menu-main-menu .menu-item a {
+          	color: #fff;
+          	display: block;
+          	text-decoration: none;
+          }
+
+          #menu-main-menu .menu-item a.open,
+          #menu-main-menu > .menu-item:hover a {
+            background: #a00;
+            color: #fff;
+            text-decoration: none;
+          }
+
+        /* Top-Level Menu Items */
+
+        #menu-main-menu > .menu-item > a {
+          font-size: 1.4rem;
+          padding: .5rem 0;
+          text-align: center;
+        }
+
+        #menu-main-menu > .menu-item > a:before {
+          display: block;
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          font: normal 3.2rem/1 Genericons;
+          speak: none;
+          vertical-align: top;
+        }
+
+          /* Default/Topics menu item. */
+          #menu-main-menu > .menu-item > a:before {
+            content: '\f505';
+          }
+
+          /* Reviews */
+          #menu-main-menu .menu-item-298186 > a:before {
+            content: '\f408';
+          }
+
+          /* Community */
+          #menu-main-menu .menu-item-211724 > a:before {
+            content: '\f417';
+          }
+
+          /* About */
+          #menu-main-menu .menu-item-208331 > a:before {
+            content: '\f455';
+          }
+
+          /* Log In/Account */
+          #menu-main-menu .menu-item-loginout > a:before {
+            content: '\f304';
+          }
+
+        /* Sub-Menu Items */
+
+        #menu-main-menu .sub-menu {
+          display: none;
+          font-size: 1.6rem;
+          line-height: 1.5;
+          list-style: none;
+          margin: 0;
+        }
+
+          #menu-main-menu > .menu-item-has-children > .sub-menu {
+            background: #a00;
+            box-shadow: 0 .2rem .3rem rgba(0, 0, 0, 0.2);
+            padding: .25rem 0 .75rem 0;
+            position: absolute;
+              left: 0;
+            width: 100%;
+            z-index: 10;
+          }
+
+          #menu-main-menu > .menu-item-has-children:last-child > .sub-menu {
+            left: unset;
+            right: 0;
+          }
+
+        #menu-main-menu .sub-menu a {
+          box-sizing: border-box;
+          padding: 1rem 2rem;
+          width: 100%;
+        }
+
+          #menu-main-menu .sub-menu a:hover,
+          #menu-main-menu .sub-menu a:focus {
+            color: #ddd;
+          }
+
+          #menu-main-menu .sub-menu .menu-item-has-children > a::after {
+            content: '\f431';
+            display: inline-block;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            font: normal 1.6rem/1.5 Genericons;
+            speak: none;
+            text-align: center;
+            vertical-align: top;
+            width: 3.2rem;
+          }
+
+          #menu-main-menu .sub-menu .menu-item-has-children > a.open::after {
+            content: '\f405';
+          }
+
+          /* The next two expand the Join the Lawyerist Community sub menu. */
+          #menu-main-menu #menu-item-270912.menu-item-has-children > a:after {
+            content: '';
+          }
+
+          #menu-main-menu #menu-item-270912.menu-item-has-children > .sub-menu {
+            display: block !important;
+          }
+
+          #menu-main-menu .sub-menu .sub-menu a {
+            padding-left: 3rem;
+          }
+
+          #menu-main-menu .sub-menu .sub-menu a:before {
+            color: #c00;
+            content: "\f428";
+            display: inline-block;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            font: normal 1.6rem/1.5 'Genericons';
+            speak: none;
+            text-indent: -1em;
+            vertical-align: top;
+          }
 
   @media only screen and ( max-width: 683px ) {
 
@@ -252,42 +398,35 @@ body {
   }
 
 #column_container {
+  display: grid;
+  grid-column-gap: 2rem;
+  grid-template-areas:
+    'content sidebar'
+  ;
+  grid-template-columns:
+    minmax( 32rem, 1fr% )
+    minmax( 30rem, 30rem )
+  ;
   grid-area: main;
-	margin: 0 auto 2rem auto;
-	width: 100.4rem;
 }
 
 	#content_column {
-		float: left;
-    max-width: 68.4rem;
-    width: 68.4rem;
+		grid-area: content;
 	}
 
 	#sidebar_column {
-		float: right;
-		margin: 0;
-    padding: 0;
-		max-width: 30rem;
+		grid-area: sidebar;
 	}
 
     @media only screen and ( max-width: 1023px ) {
     /* Includes 20px for padding (10px on each side). */
 
-      .headline_postmeta {
-        padding: 0;
-      }
-
       #column_container {
-      	width: 100%;
+        grid-template-areas:
+          'content'
+        ;
+        padding: 0 1rem;
       }
-
-        #content_column {
-          box-sizing: border-box;
-      		float: none;
-          margin: 0 auto;
-          padding:0 1rem;
-          width: 100%;
-      	}
 
         #sidebar_column {
           display: none;
@@ -295,17 +434,13 @@ body {
 
     }
 
-#footer_container {
-  background-color: #ddd;
-  grid-area: footer;
-	margin: 0;
-	padding: 0;
-	width: 100%;
-}
+  #gray-stripe {
+    background-color: #ddd;
+    grid-area: 3 / 1 / -1 / -1;
+  }
 
 	#footer {
-		margin: 0 auto;
-    max-width: 100.4rem;
+    grid-area: footer;
 		padding: 6rem 1rem;
 	}
 
@@ -978,7 +1113,6 @@ img.inline {
 
   }
 
-
   /* The Gallery container (div) */
   .gallery,
   .wp-block-gallery {
@@ -1134,188 +1268,6 @@ Expander
   margin-top: .5em;
 }
 
-/*------------------------------
-Header
-------------------------------*/
-
-.member-logged-in .leadinModal.leadinModal-theme-top {
-  box-shadow: 0 .2rem .3rem rgba(0, 0, 0, 0.2);
-  top: 3.2rem;
-}
-
-#header a:hover,
-#header a:focus {
-	text-decoration: none;
-}
-
-
-  /*------------------------------
-  Title
-  ------------------------------*/
-
-	#title a {
-    color: #fff;
-	}
-
-  #title a:hover,
-  #title a:focus {
-    color: #ddd;
-  }
-
-
-  /*------------------------------
-  Menu
-  ------------------------------*/
-
-  #menu-main-menu {
-    list-style: none;
-    position: relative;
-  }
-
-  #menu-main-menu .menu-item {
-    margin: 0;
-    padding: 0;
-  }
-
-    #menu-main-menu .menu-item a {
-    	color: #fff;
-    	display: block;
-    	font-size: 1.6rem;
-      line-height: 1.5;
-    	padding: .5rem;
-    	text-decoration: none;
-    }
-
-      #menu-main-menu .menu-item a.open,
-      #menu-main-menu > .menu-item:hover a {
-        background: #a00;
-        color: #fff;
-      }
-
-      #menu-main-menu > .menu-item > a {
-        font-size: 1.4rem;
-        padding: .5rem 0;
-        text-align: center;
-      }
-
-      #menu-main-menu > .menu-item > a:before {
-        display: block;
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-font-smoothing: antialiased;
-        font: normal 3.2rem/1 Genericons;
-        speak: none;
-        vertical-align: top;
-      }
-
-        /* Default/Topics menu item. */
-        #menu-main-menu > .menu-item > a:before {
-          content: '\f505';
-        }
-
-        /* Reviews */
-        #menu-main-menu .menu-item-298186 > a:before {
-          content: '\f408';
-        }
-
-        /* Community */
-        #menu-main-menu .menu-item-211724 > a:before {
-          content: '\f417';
-        }
-
-        /* About */
-        #menu-main-menu .menu-item-208331 > a:before {
-          content: '\f455';
-        }
-
-        /* Log In/Account */
-        #menu-main-menu .menu-item-loginout > a:before {
-          content: '\f304';
-        }
-
-          #menu-main-menu .menu-item-loginout.menu-item-has-children > .sub-menu {
-            left: unset;
-            right: 0;
-            width: 100%;
-          }
-
-
-  #menu-main-menu > .menu-item-has-children {
-    position: relative;
-  }
-
-    #menu-main-menu .sub-menu {
-      display: none;
-      list-style: none;
-      margin: 0;
-    }
-
-      /* The next two expand the Join the Lawyerist Community sub menu. */
-      #menu-main-menu #menu-item-270912.menu-item-has-children > a:after {
-        content: '';
-      }
-
-      #menu-main-menu #menu-item-270912.menu-item-has-children > .sub-menu {
-        display: block !important;
-      }
-
-      #menu-main-menu > .menu-item-has-children > .sub-menu {
-        background: #a00;
-        box-shadow: 0 .2rem .3rem rgba(0, 0, 0, 0.2);
-        padding: .25rem 0 .75rem 0;
-        position: absolute;
-          left: 0;
-        width: 200%;
-        z-index: 10;
-      }
-
-        #menu-main-menu > .menu-item-has-children > .sub-menu:last-child {
-          right: 0;
-        }
-
-      #menu-main-menu .sub-menu a {
-        padding: .5rem 1rem;
-      }
-
-        #menu-main-menu .sub-menu .menu-item a:hover,
-        #menu-main-menu .sub-menu .menu-item a:focus {
-          color: #ddd;
-        }
-
-        #menu-main-menu ul.sub-menu .sub-menu .menu-item a {
-          margin-left: 1rem;
-        }
-
-          #menu-main-menu ul.sub-menu .sub-menu .menu-item a:before {
-            color: #c00;
-            content: "\f428";
-            display: inline-block;
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            font: normal 1.6rem/3.2rem 'Genericons';
-            speak: none;
-            text-indent: -1em;
-            vertical-align: top;
-          }
-
-
-  /* Mobile menu. */
-  @media only screen and ( max-width: 683px ) {
-
-    #menu-main-menu > .menu-item {
-      position: static;
-    }
-
-    #menu-main-menu > .menu-item > .sub-menu {
-      left: 0;
-      width: 100%;
-    }
-
-      #menu-main-menu > .menu-item > .sub-menu a {
-        font-size: 1.8rem;
-        padding: 1rem;
-      }
-
-  }
 
 /*------------------------------
 Card Styles
@@ -4045,6 +3997,11 @@ a.greybutton:active,
   /*------------------------------
   HubSpot Forms Customizations
   ------------------------------*/
+
+  .member-logged-in .leadinModal.leadinModal-theme-top {
+    box-shadow: 0 .2rem .3rem rgba(0, 0, 0, 0.2);
+    top: 3.2rem;
+  }
 
   .hbspt-form fieldset {
     margin-bottom: .75em !important;
