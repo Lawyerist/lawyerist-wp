@@ -468,7 +468,7 @@ function lawyerist_get_archive_header() {
 Yoast SEO Breadcrumbs
 ------------------------------*/
 
-function lawyerist_remove_products_breadcrumb( $link_output, $link ){
+function lawyerist_remove_products_breadcrumb( $link_output, $link ) {
 
 	if ( is_really_a_woocommerce_page() && $link['text'] == 'Products' ) {
 		$link_output = '';
@@ -481,24 +481,39 @@ function lawyerist_remove_products_breadcrumb( $link_output, $link ){
 add_filter( 'wpseo_breadcrumb_single_link', 'lawyerist_remove_products_breadcrumb', 10, 2 );
 
 
-function lawyerist_add_learndash_breadcrumbs( $links ){
+function lawyerist_add_learndash_breadcrumbs( $links ) {
 
 	global $post;
-	global $course;
 
 	$post_type = get_post_type( $post->ID );
 
-	if ( is_page( 298117 ) /* $post_type == 'sfwd-lessons' || $post_type == 'sfwd-topic' */ ) {
+	if ( $post_type == 'sfwd-lessons' || $post_type == 'sfwd-topic' ) {
 
-		$course_title	= $course->post_title;
-		$course_url		= get_permalink( $course->ID );
+		$course_id 		= learndash_get_course_id( $post->ID );
+		$course_title	= get_the_title( $course_id );
+		$course_url		= get_permalink( $course_id );
 
 		$course_breadcrumb[] = array(
         'url' => $course_url,
         'text' => $course_title,
         );
 
-    array_splice( $links, 1, -2, $course_breadcrumb );
+		array_splice( $links, 1, -2, $course_breadcrumb );
+
+		if ( $post_type == 'sfwd-topic' ) {
+
+			$lesson_id		= learndash_get_lesson_id( $post->ID );
+			$lesson_title	= get_the_title( $lesson_id );
+			$lesson_url		= get_permalink( $lesson_id );
+
+			$lesson_breadcrumb[] = array(
+	        'url' => $lesson_url,
+	        'text' => $lesson_title,
+	        );
+
+			array_splice( $links, 1, -2, $lesson_breadcrumb );
+
+		}
 
 	}
 

@@ -1780,6 +1780,7 @@ p.dashboard-widget-note {
   }
 
   #big_hero_cta .button {
+    border-radius: 3.3rem;
     display: block;
     font-size: 3.2rem !important;
     height: auto;
