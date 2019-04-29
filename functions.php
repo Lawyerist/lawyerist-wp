@@ -240,8 +240,7 @@ function lawyerist_loginout( $items, $args ) {
 				echo '<li class="menu-item menu-item-loginout menu-item-has-children"><a href="#">Dashboard</a>';
 					echo '<ul class="sub-menu">';
 						echo '<li class="menu-item"><a href="https://lawyerist.com/account/">My Account</a>';
-						/* echo '<li class="menu-item"><a href="https://lawyerist.com/courses/">My Courses</a></li>';
-						echo '<li class="menu-item"><a href="https://lawyerist.com/forums/">Member Forums</a></li>'; */
+						echo '<li class="menu-item"><a href="https://lawyerist.com/courses/">My Courses</a></li>';
 						echo '<li class="menu-item"><a href="https://lawyerist.com/scorecard/">Update My Scorecard</a></li>';
 					echo '</ul>';
 				echo '</li>';
@@ -469,9 +468,9 @@ function lawyerist_get_archive_header() {
 Yoast SEO Breadcrumbs
 ------------------------------*/
 
-function lawyerist_remove_products_breadcrumb($link_output, $link ){
+function lawyerist_remove_products_breadcrumb( $link_output, $link ){
 
-	if( is_really_a_woocommerce_page() && $link['text'] == 'Products' ) {
+	if ( is_really_a_woocommerce_page() && $link['text'] == 'Products' ) {
 		$link_output = '';
 	}
 
@@ -479,7 +478,36 @@ function lawyerist_remove_products_breadcrumb($link_output, $link ){
 
 }
 
-add_filter( 'wpseo_breadcrumb_single_link' ,'lawyerist_remove_products_breadcrumb', 10 ,2 );
+add_filter( 'wpseo_breadcrumb_single_link', 'lawyerist_remove_products_breadcrumb', 10, 2 );
+
+
+function lawyerist_add_learndash_breadcrumbs( $links ){
+
+	global $post;
+	global $course;
+
+	$post_type = get_post_type( $post->ID );
+
+	if ( is_page( 298117 ) /* $post_type == 'sfwd-lessons' || $post_type == 'sfwd-topic' */ ) {
+
+		$course_title	= $course->post_title;
+		$course_url		= get_permalink( $course->ID );
+
+		$course_breadcrumb[] = array(
+        'url' => $course_url,
+        'text' => $course_title,
+        );
+
+    array_splice( $links, 1, -2, $course_breadcrumb );
+
+	}
+
+	return $links;
+
+}
+
+add_filter( 'wpseo_breadcrumb_links', 'lawyerist_add_learndash_breadcrumbs' );
+
 
 
 /*------------------------------

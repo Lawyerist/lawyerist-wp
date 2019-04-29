@@ -3,32 +3,32 @@
  * Displays a lesson.
  *
  * Available Variables:
- * 
- * $course_id 		: (int) ID of the course
- * $course 		: (object) Post object of the course
+ *
+ * $course_id		 		: (int) ID of the course
+ * $course 					: (object) Post object of the course
  * $course_settings : (array) Settings specific to current course
  * $course_status 	: Course Status
- * $has_access 	: User has access to course or is enrolled.
- * 
+ * $has_access 			: User has access to course or is enrolled.
+ *
  * $courses_options : Options/Settings as configured on Course Options page
  * $lessons_options : Options/Settings as configured on Lessons Options page
  * $quizzes_options : Options/Settings as configured on Quiz Options page
- * 
- * $user_id 		: (object) Current User ID
+ *
+ * $user_id 			: (object) Current User ID
  * $logged_in 		: (true/false) User is logged in
  * $current_user 	: (object) Currently logged in user object
- * 
- * $quizzes 		: (array) Quizzes Array
- * $post 			: (object) The lesson post object
- * $topics 		: (array) Array of Topics in the current lesson
- * $all_quizzes_completed : (true/false) User has completed all quizzes on the lesson Or, there are no quizzes.
+ *
+ * $quizzes 										: (array) Quizzes Array
+ * $post 												: (object) The lesson post object
+ * $topics 											: (array) Array of Topics in the current lesson
+ * $all_quizzes_completed 			: (true/false) User has completed all quizzes on the lesson Or, there are no quizzes.
  * $lesson_progression_enabled 	: (true/false)
- * $show_content	: (true/false) true if lesson progression is disabled or if previous lesson is completed. 
+ * $show_content								: (true/false) true if lesson progression is disabled or if previous lesson is completed.
  * $previous_lesson_completed 	: (true/false) true if previous lesson is completed
- * $lesson_settings : Settings specific to the current lesson.
- * 
+ * $lesson_settings 						: Settings specific to the current lesson.
+ *
  * @since 2.1.0
- * 
+ *
  * @package LearnDash\Lesson
  */
 ?>
@@ -38,17 +38,17 @@
 		$previous_item = learndash_get_previous( $post );
 		if ( ( !empty( $previous_item ) ) && ( $previous_item instanceof WP_Post ) ) {
 			if ( $previous_item->post_type == 'sfwd-quiz') {
-				echo sprintf( esc_html_x( 'Please go back and complete the previous %s.', 'placeholders: quiz URL', 'learndash' ), 
+				echo sprintf( esc_html_x( 'Please go back and complete the previous %s.', 'placeholders: quiz URL', 'learndash' ),
 				'<a class="learndash-link-previous-incomplete" href="'. learndash_get_step_permalink( $previous_item->ID, $course_id ) .'">'. LearnDash_Custom_Label::label_to_lower('quiz') .'</a>' );
-				
+
 			} else if ( $previous_item->post_type == 'sfwd-topic') {
-				echo sprintf( esc_html_x( 'Please go back and complete the previous %s.', 'placeholders: topic URL, topic label', 'learndash' ), 
+				echo sprintf( esc_html_x( 'Please go back and complete the previous %s.', 'placeholders: topic URL, topic label', 'learndash' ),
 				'<a class="learndash-link-previous-incomplete" href="'. learndash_get_step_permalink( $previous_item->ID, $course_id ) .'">'. LearnDash_Custom_Label::label_to_lower('topic') .'</a>' );
 			} else {
-				echo sprintf( esc_html_x( 'Please go back and complete the previous %s.', 'placeholders: lesson URL, lesson label', 'learndash' ), 
+				echo sprintf( esc_html_x( 'Please go back and complete the previous %s.', 'placeholders: lesson URL, lesson label', 'learndash' ),
 				'<a class="learndash-link-previous-incomplete" href="'. learndash_get_step_permalink( $previous_item->ID, $course_id ) .'">'. LearnDash_Custom_Label::label_to_lower('lesson') .'</a>' );
 			}
-			
+
 		} else {
 			echo sprintf( esc_html_x( 'Please go back and complete the previous %s.', 'placeholder lesson', 'learndash' ), LearnDash_Custom_Label::label_to_lower('lesson') );
 		}
@@ -131,16 +131,16 @@
     ?>
 	<?php if ( ( lesson_hasassignments( $post ) ) && ( !empty( $user_id ) ) ) : ?>
 		<?php
-			$ret = SFWD_LMS::get_template( 
-					'learndash_lesson_assignment_uploads_list.php', 
+			$ret = SFWD_LMS::get_template(
+					'learndash_lesson_assignment_uploads_list.php',
 					array(
 						'course_step_post' => $post,
 						'user_id' => $user_id
 					)
 				);
-			echo $ret;	
+			echo $ret;
 		?>
-		
+
 	<?php endif; ?>
 
 
@@ -153,14 +153,14 @@
 		<br />
         <?php echo learndash_mark_complete( $post ); ?>
 	<?php endif; ?>
-	
+
 <?php endif; ?>
 
 <br />
 
 <?php
-$ret = SFWD_LMS::get_template( 
-		'learndash_course_steps_navigation.php', 
+$ret = SFWD_LMS::get_template(
+		'learndash_course_steps_navigation.php',
 		array(
 			'course_id' => $course_id,
 			'course_step_post' => $post,
@@ -168,4 +168,4 @@ $ret = SFWD_LMS::get_template(
 			'course_settings' => isset( $course_settings ) ? $course_settings : array()
 		)
 	);
-echo $ret;	
+echo $ret;
