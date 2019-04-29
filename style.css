@@ -1305,7 +1305,7 @@ Selectors
     padding: 0;
   }
 
-  .card *:last-child {
+  .card > *:last-child {
     margin-bottom: 0 !important;
   }
 
@@ -1604,12 +1604,12 @@ Front Page
 ------------------------------*/
 
 .front_page_block {
-  margin: 0 -.7rem 6rem .1rem;
-  max-width: 68rem;
+  margin-bottom: 6rem;
 }
 
-.front_page_block.fp_contains_boxes {
-  max-width: unset;
+.fp_contains_boxes {
+  display: grid;
+  grid-auto-columns; 1fr 1fr;
 }
 
 .one_half {
@@ -1907,7 +1907,6 @@ p.dashboard-widget-note {
 .home .type-product.has-card-label .headline-excerpt {
   padding: 4rem;
 }
-
 
 /*------------------------------
 Content
