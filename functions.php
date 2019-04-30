@@ -242,10 +242,10 @@ function lawyerist_loginout( $items, $args ) {
 				echo '<li class="menu-item menu-item-loginout menu-item-has-children"><a>Account</a>';
 					echo '<ul class="sub-menu">';
 						echo '<li class="menu-item"><a href="https://lawyerist.com/account/">My Account</a>';
-						/* echo '<li class="menu-item"><a href="https://lawyerist.com/courses/">My Courses</a></li>'; */
+						/* echo '<li class="menu-item"><a href="https://lawyerist.com/labster-portal/">Member Portal</a></li>'; */
 						echo '<li class="menu-item"><a href="https://lawyerist.com/scorecard/">Update My Scorecard</a></li>';
 					echo '</ul>';
-				echo '</li>';
+				echo '</li>';https://lawyerist.com/labster-portal/
 
 			$new_items = ob_get_clean();
 

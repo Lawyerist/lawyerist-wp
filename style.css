@@ -564,6 +564,7 @@ th,
 .affinity-partner-link,
 aside blockquote,
 .breadcrumbs,
+.btn,
 button,
 .button,
 .drop_cap,
@@ -583,6 +584,7 @@ figcaption,
 input[type="button"],
 input[type="submit"],
 label,
+.ld_course_grid_price,
 #learndash_course_status,
 .learndash-topic .learndash_topic_dots,
 #learndash_lesson_topics_list strong:first-of-type,
@@ -1307,6 +1309,7 @@ Selectors
 ------------------------------*/
 
 .card,
+.ld-course-list-items .ld_course_grid .thumbnail.course,
 #sponsored_product_updates {
   border-radius: .2rem;
   box-shadow:
@@ -3692,6 +3695,7 @@ input[type="button"],
 input[type="submit"],
 a.review-btn,
 #commentform.wp-review-comment-form input[type="submit"],
+.ld-course-list-items .ld_course_grid .thumbnail.course a.btn-primary,
 .learndash_join_button input#btn-join,
 .woocommerce #respond input#submit,
 .woocommerce a.button,
@@ -3759,6 +3763,11 @@ a.review-btn,
     padding: 0 1em;
   }
 
+  .ld-course-list-items .ld_course_grid .thumbnail.course a.btn-primary {
+    margin-bottom: 0;
+    width: 100%;
+  }
+
   .wp-block-file a.wp-block-file__button {
     background-color: #a00;
     border-radius: 1.4rem;
@@ -3813,6 +3822,7 @@ input[type="button"]:focus,
 input[type="submit"]:focus,
 a.review-btn:focus,
 #commentform.wp-review-comment-form input[type="submit"]:focus,
+.ld-course-list-items .ld_course_grid .thumbnail.course a.btn-primary:focus,
 .learndash_join_button input#btn-join:focus,
 .woocommerce #respond input#submit:focus,
 .woocommerce a.button:focus,
@@ -3836,6 +3846,7 @@ input[type="button"]:hover,
 input[type="submit"]:hover,
 a.review-btn:hover,
 #commentform.wp-review-comment-form input[type="submit"]:hover,
+.ld-course-list-items .ld_course_grid .thumbnail.course a.btn-primary:hover,
 .learndash_join_button input#btn-join:hover,
 .woocommerce #respond input#submit:hover,
 .woocommerce a.button:hover,
@@ -3860,6 +3871,7 @@ input[type="button"]:active,
 input[type="submit"]:active,
 a.review-btn:active,
 #commentform.wp-review-comment-form input[type="submit"]:active,
+.ld-course-list-items .ld_course_grid .thumbnail.course a.btn-primary:active,
 .learndash_join_button input#btn-join:active,
 .woocommerce #respond input#submit:active,
 .woocommerce a.button:active,
@@ -4545,6 +4557,33 @@ LearnDash
 
   .post-type-archive-sfwd-courses #courses-list .card h2 {
     margin-bottom: 0;
+  }
+
+.ld-course-list-items .ld_course_grid .thumbnail.course {
+  border: 0;
+}
+
+  .ld-course-list-items .ld_course_grid .thumbnail .ld_course_grid_price.free {
+    display: none;
+  }
+
+  .ld-course-list-items .ld_course_grid .thumbnail .ld_course_grid_price.ribbon-enrolled {
+    background-color: #888 !important;
+    font-weight: normal !important;
+    text-transform: uppercase;
+  }
+
+  .ld-course-list-items .ld_course_grid .thumbnail .ld_course_grid_price.ribbon-enrolled::before {
+    border-top-color: #666 !important;
+    border-right-color: #666 !important;
+  }
+
+  .ld-course-list-items .ld_course_grid .thumbnail img {
+    margin: 0;
+  }
+
+  .ld-course-list-items .ld_course_grid .thumbnail .caption {
+    padding: 2rem !important;
   }
 
 .learndash-course #learndash_course_status,
