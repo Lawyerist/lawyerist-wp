@@ -245,7 +245,7 @@ function lawyerist_loginout( $items, $args ) {
 						/* echo '<li class="menu-item"><a href="https://lawyerist.com/labster-portal/">Member Portal</a></li>'; */
 						echo '<li class="menu-item"><a href="https://lawyerist.com/scorecard/">Update My Scorecard</a></li>';
 					echo '</ul>';
-				echo '</li>';https://lawyerist.com/labster-portal/
+				echo '</li>';
 
 			$new_items = ob_get_clean();
 
