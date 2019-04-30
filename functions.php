@@ -17,6 +17,7 @@ UTILITY FUNCTIONS
 - Get Country
 - Get First Image URL
 - Is This a Product Portal?
+- Get Active Labsters
 
 CONTENT
 - Archive Headers
@@ -54,6 +55,7 @@ WOOCOMMERCE
 
 LEARNDASH
 - Disable Comments on LearnDash Pages
+- Use Menu Order on LearnDash Course Archives
 
 TAXONOMY
 - Page Type Custom Taxonomy
@@ -237,11 +239,10 @@ function lawyerist_loginout( $items, $args ) {
 
 			ob_start();
 
-				echo '<li class="menu-item menu-item-loginout menu-item-has-children"><a href="#">Dashboard</a>';
+				echo '<li class="menu-item menu-item-loginout menu-item-has-children"><a>Dashboard</a>';
 					echo '<ul class="sub-menu">';
 						echo '<li class="menu-item"><a href="https://lawyerist.com/account/">My Account</a>';
-						/* echo '<li class="menu-item"><a href="https://lawyerist.com/courses/">My Courses</a></li>';
-						echo '<li class="menu-item"><a href="https://lawyerist.com/forums/">Member Forums</a></li>'; */
+						/* echo '<li class="menu-item"><a href="https://lawyerist.com/courses/">My Courses</a></li>'; */
 						echo '<li class="menu-item"><a href="https://lawyerist.com/scorecard/">Update My Scorecard</a></li>';
 					echo '</ul>';
 				echo '</li>';
@@ -425,6 +426,54 @@ function is_product_portal() {
 }
 
 
+/*------------------------------
+Get Active Labsters
+------------------------------*/
+
+function get_active_labsters() {
+
+	$labster_query_args = array(
+		'post_type'				=> 'wc_user_membership',
+		'post_status'			=> 'wcm-active',
+		'post_parent__in'	=> array(
+			223686, // Lab Pro
+			223685, // Lab
+		),
+		'posts_per_page'	=> -1,
+	);
+
+	$labster_query = new WP_Query( $labster_query_args );
+
+	if ( $labster_query->have_posts() ) :
+
+		$labsters	= array();
+
+		while ( $labster_query->have_posts() ) : $labster_query->the_post();
+
+			array_push( $labsters, array(
+				'labster_id'	=> get_the_ID(),
+				'email'				=> get_the_author_meta( 'user_email' ),
+				'first_name'	=> get_the_author_meta( 'user_firstname' ),
+				'last_name'		=> get_the_author_meta( 'user_lastname' ),
+			) );
+
+		endwhile; wp_reset_postdata();
+
+		// Sorts $labsters[] by last name.
+		usort( $labsters, function( $a, $b ) {
+			return $a[ 'last_name' ] <=> $b[ 'last_name' ];
+		});
+
+		return $labsters;
+
+	else :
+
+		return;
+
+	endif;
+
+}
+
 /* CONTENT ********************/
 
 /*------------------------------
@@ -469,9 +518,9 @@ function lawyerist_get_archive_header() {
 Yoast SEO Breadcrumbs
 ------------------------------*/
 
-function lawyerist_remove_products_breadcrumb($link_output, $link ){
+function lawyerist_remove_products_breadcrumb( $link_output, $link ) {
 
-	if( is_really_a_woocommerce_page() && $link['text'] == 'Products' ) {
+	if ( is_really_a_woocommerce_page() && $link['text'] == 'Products' ) {
 		$link_output = '';
 	}
 
@@ -479,7 +528,51 @@ function lawyerist_remove_products_breadcrumb($link_output, $link ){
 
 }
 
-add_filter( 'wpseo_breadcrumb_single_link' ,'lawyerist_remove_products_breadcrumb', 10 ,2 );
+add_filter( 'wpseo_breadcrumb_single_link', 'lawyerist_remove_products_breadcrumb', 10, 2 );
+
+
+function lawyerist_add_learndash_breadcrumbs( $links ) {
+
+	global $post;
+
+	$post_type = get_post_type( $post->ID );
+
+	if ( $post_type == 'sfwd-lessons' || $post_type == 'sfwd-topic' ) {
+
+		$course_id 		= learndash_get_course_id( $post->ID );
+		$course_title	= get_the_title( $course_id );
+		$course_url		= get_permalink( $course_id );
+
+		$course_breadcrumb[] = array(
+        'url' => $course_url,
+        'text' => $course_title,
+        );
+
+		array_splice( $links, 1, -2, $course_breadcrumb );
+
+		if ( $post_type == 'sfwd-topic' ) {
+
+			$lesson_id		= learndash_get_lesson_id( $post->ID );
+			$lesson_title	= get_the_title( $lesson_id );
+			$lesson_url		= get_permalink( $lesson_id );
+
+			$lesson_breadcrumb[] = array(
+	        'url' => $lesson_url,
+	        'text' => $lesson_title,
+	        );
+
+			array_splice( $links, 1, -2, $lesson_breadcrumb );
+
+		}
+
+	}
+
+	return $links;
+
+}
+
+add_filter( 'wpseo_breadcrumb_links', 'lawyerist_add_learndash_breadcrumbs' );
+
 
 
 /*------------------------------

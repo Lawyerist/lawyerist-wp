@@ -14,21 +14,18 @@ License:      Copyright Lawyerist Media, LLC
 Index
 
 Load Fonts
-Layout
+Layout Elements & Grid Structure
 Layout & Design Elements
   Block Styles
 Typography
 Images
 Expander
-Header
-  Title
-Menu
 Card Styles
 Front Page
   Insider Dasboard
     Scorecard Widget
   Sticky Post
-  Call to action
+  Call to Action
   New Content Blocks
 Content
 	Posts
@@ -38,6 +35,7 @@ Content
   Product Pages
   Affinity Pages
   Team Profiles
+  Labster Directory
   Full Width Template
   No Sidebar Template
 	Comments
@@ -50,7 +48,6 @@ Forms
   HubSpot Forms Customizations
 WooCommerce
 LearnDash
-bbPress
 Print
 
 ------------------------------*/
@@ -164,7 +161,7 @@ Load Fonts
 
 
 /*------------------------------
-Layout
+Layout Elements & Grid Structure
 ------------------------------*/
 
 html {
@@ -173,76 +170,273 @@ html {
 
 body {
   background-color: #fff;
+  display: grid;
+  grid-row-gap: 3rem;
+  grid-template-areas:
+    'lbuffer-header header  rbuffer-header'
+    'lbuffer        main    rbuffer'
+    'lbuffer-footer footer  rbuffer-footer'
+  ;
+  grid-template-columns:
+    minmax( 0, 1fr )
+    minmax( 32rem, 102.4rem )
+    minmax( 0, 1fr )
+  ;
 	line-height: 1em;
 	margin: 0;
 	padding: 0;
   width: 100%;
 }
 
-#header_container {
-  background-color: #111;
-  width: 100%;
-}
-
-  #header {
-    margin: 0 auto;
-    max-width: 100.4rem;
-    padding: 1.2rem 1rem;
+  #header_shadow {
+    box-shadow: 0 .2rem .3rem rgba(0, 0, 0, 0.2);
+    grid-area: 1 / 1 / 2 / -1;
   }
 
-#main_menu_container {
-  background: #c00;
-  box-shadow: 0 .2rem .3rem rgba(0, 0, 0, 0.2);
-	margin-bottom: 2rem;
-	width: 100%;
-}
+  #black-stripe {
+    background-color: #111;
+    grid-area: 1 / 1 / 2 / 2;
+  }
 
-	#menu-main-menu {
-		display: block;
-    font-size: 0; /* Removes space between li elements. */
-		line-height: 1em;
-		list-style: none;
-		margin: 0 auto;
-		padding: 0;
-    max-width: 101.4rem; /* Same width #header and #column_container, minus padding. */
-	}
+  #red-stripe {
+    background-color: #c00;
+    grid-area: 1 / 3 / 2 / -1;
+  }
+
+  #header {
+    grid-area: header;
+    display: grid;
+    grid-template-areas:
+      'header-title header-menu'
+    ;
+    grid-template-columns: auto 1fr;
+  }
+
+    #title {
+      background: #111;
+      font-size: 3.2rem;
+      font-family: 'adler', serif;
+      font-weight: normal;
+      grid-area: header-title;
+      line-height: 6.3rem;
+      margin: 0;
+      padding: 0 2rem 0 1rem;
+    }
+
+      #title a {
+        color: #fff;
+      }
+
+      #title a:hover,
+      #title a:focus {
+        color: #ddd;
+        text-decoration: none;
+      }
+
+    .menu-main-menu-container {
+      background: #c00;
+      grid-area: header-menu;
+      padding: 0;
+    }
+
+    	#menu-main-menu {
+        display: grid;
+        grid-template-columns: repeat( 5, 1fr );
+        list-style: none;
+    		margin: 0;
+        position: relative;
+    	}
+
+        #menu-main-menu .menu-item {
+          margin: 0;
+          padding: 0;
+        }
+
+          #menu-main-menu .menu-item a {
+          	color: #fff;
+          	display: block;
+            cursor: pointer;
+          	text-decoration: none;
+          }
+
+          #menu-main-menu .menu-item a.open,
+          #menu-main-menu > .menu-item:hover a {
+            background: #a00;
+            color: #fff;
+            text-decoration: none;
+          }
+
+        /* Top-Level Menu Items */
+
+        #menu-main-menu > .menu-item > a {
+          font-size: 1.4rem;
+          line-height: 1.5;
+          padding: .5rem 0;
+          text-align: center;
+        }
+
+        #menu-main-menu > .menu-item > a:before {
+          display: block;
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          font: normal 3.2rem/1 Genericons;
+          speak: none;
+          vertical-align: top;
+        }
+
+          /* Default/Topics menu item. */
+          #menu-main-menu > .menu-item > a:before {
+            content: '\f505';
+          }
+
+          /* Reviews */
+          #menu-main-menu .menu-item-298186 > a:before {
+            content: '\f408';
+          }
+
+          /* Community */
+          #menu-main-menu .menu-item-211724 > a:before {
+            content: '\f417';
+          }
+
+          /* About */
+          #menu-main-menu .menu-item-208331 > a:before {
+            content: '\f455';
+          }
+
+          /* Log In/Account */
+          #menu-main-menu .menu-item-loginout > a:before {
+            content: '\f304';
+          }
+
+        /* Sub-Menu Items */
+
+        #menu-main-menu .sub-menu {
+          display: none;
+          font-size: 1.6rem;
+          line-height: 1.5;
+          list-style: none;
+          margin: 0;
+        }
+
+          #menu-main-menu > .menu-item-has-children > .sub-menu {
+            background: #a00;
+            box-shadow: 0 .2rem .3rem rgba(0, 0, 0, 0.2);
+            padding: 0 0 .75rem 0;
+            position: absolute;
+              left: 0;
+            width: 100%;
+            z-index: 10;
+          }
+
+          #menu-main-menu > .menu-item-has-children:last-child > .sub-menu {
+            left: unset;
+            right: 0;
+          }
+
+        #menu-main-menu .sub-menu a {
+          box-sizing: border-box;
+          padding: 1rem 2rem;
+          width: 100%;
+        }
+
+          #menu-main-menu .sub-menu a:hover,
+          #menu-main-menu .sub-menu a:focus {
+            color: #ddd;
+          }
+
+          #menu-main-menu .sub-menu .menu-item-has-children > a::after {
+            content: '\f431';
+            display: inline-block;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            font: normal 1.6rem/1.5 Genericons;
+            speak: none;
+            text-align: center;
+            vertical-align: top;
+            width: 3.2rem;
+          }
+
+          #menu-main-menu .sub-menu .menu-item-has-children > a.open::after {
+            content: '\f405';
+          }
+
+          /* The next two expand the Join the Lawyerist Community sub menu. */
+          #menu-main-menu #menu-item-270912.menu-item-has-children > a:after {
+            content: '';
+          }
+
+          #menu-main-menu #menu-item-270912.menu-item-has-children > .sub-menu {
+            display: block !important;
+          }
+
+          #menu-main-menu .sub-menu .sub-menu a {
+            padding-left: 3rem;
+          }
+
+          #menu-main-menu .sub-menu .sub-menu a:before {
+            color: #c00;
+            content: "\f428";
+            display: inline-block;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            font: normal 1.6rem/1.5 'Genericons';
+            speak: none;
+            text-indent: -1em;
+            vertical-align: top;
+          }
+
+  @media only screen and ( max-width: 683px ) {
+
+    #header {
+      grid-template-areas:
+        'header-title'
+        'header-menu'
+      ;
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto;
+    }
+
+  }
 
 #column_container {
-	margin: 0 auto 2rem auto;
-	width: 100.4rem;
+  display: grid;
+  grid-column-gap: 2rem;
+  grid-template-areas:
+    'content sidebar'
+  ;
+  grid-template-columns:
+    minmax( 32rem, 100% )
+    minmax( 30rem, 30rem )
+  ;
+  grid-area: main;
+}
+
+body.full-width #column_container {
+  grid-template-areas:
+    'content'
+  ;
+  grid-template-columns: minmax( 32rem, 100% );
+  padding: 0 1rem;
 }
 
 	#content_column {
-		float: left;
-    max-width: 68.4rem;
-    width: 68.4rem;
+		grid-area: content;
 	}
 
 	#sidebar_column {
-		float: right;
-		margin: 0;
-    padding: 0;
-		max-width: 30rem;
+		grid-area: sidebar;
 	}
 
     @media only screen and ( max-width: 1023px ) {
     /* Includes 20px for padding (10px on each side). */
 
-      .headline_postmeta {
-        padding: 0;
-      }
-
       #column_container {
-      	width: 100%;
+        grid-template-areas:
+          'content'
+        ;
+        padding: 0 1rem;
       }
-
-        #content_column {
-          box-sizing: border-box;
-      		float: none;
-          margin: 0 auto;
-          padding:0 1rem;
-          width: 100%;
-      	}
 
         #sidebar_column {
           display: none;
@@ -250,16 +444,13 @@ body {
 
     }
 
-#footer_container {
-  background-color: #ddd;
-	margin: 0;
-	padding: 0;
-	width: 100%;
-}
+  #gray-stripe {
+    background-color: #ddd;
+    grid-area: 3 / 1 / -1 / -1;
+  }
 
 	#footer {
-		margin: 0 auto;
-    max-width: 100.4rem;
+    grid-area: footer;
 		padding: 6rem 1rem;
 	}
 
@@ -346,7 +537,6 @@ h6,
 .headline,
 th,
 .affinity-partners-heading,
-.bbp-forum-title,
 .current_posts_heading,
 #dashboard-title,
 .featured_products_heading,
@@ -932,7 +1122,6 @@ img.inline {
 
   }
 
-
   /* The Gallery container (div) */
   .gallery,
   .wp-block-gallery {
@@ -1088,259 +1277,6 @@ Expander
   margin-top: .5em;
 }
 
-/*------------------------------
-Header
-------------------------------*/
-
-.member-logged-in .leadinModal.leadinModal-theme-top {
-  box-shadow: 0 .2rem .3rem rgba(0, 0, 0, 0.2);
-  top: 3.2rem;
-}
-
-#header a:hover,
-#header a:focus {
-	text-decoration: none;
-}
-
-
-  /*------------------------------
-  Title
-  ------------------------------*/
-
-  #title {
-  	display: block;
-  	float: left;
-    font-size: 3.2rem;
-    font-family: 'adler', serif;
-    font-weight: normal;
-    height: 3.2rem;
-    line-height: 1.2;
-    margin: 0;
-    padding: 0;
-  	width: auto;
-  }
-
-  	#title a {
-      color: #fff;
-  		display: block;
-  	}
-
-    #title a:hover,
-    #title a:focus {
-      color: #ddd;
-    }
-
-  #description {
-    color: #ccc;
-    float: right;
-    font-size: 1.8rem;
-    line-height: 3.2rem;
-    margin: 0;
-  }
-
-
-    /* 780px */
-    @media only screen and (max-width:779px) {
-
-      #description {
-        display: none;
-      }
-
-    }
-
-
-/*------------------------------
-Menu
-------------------------------*/
-
-#menu-main-menu {
-  position: relative;
-}
-
-#menu-main-menu > .menu-item {
-	display: inline-block;
-	margin: 0;
-  width: 20%;
-}
-
-#menu-main-menu .menu-item {
-  margin: 0;
-  padding: 0;
-}
-
-  #menu-main-menu .menu-item a {
-  	color: #fff;
-  	display: block;
-  	font-size: 1.6rem;
-    line-height: 3.2rem;
-  	padding: .5rem;
-  	text-decoration: none;
-  }
-
-    #menu-main-menu .menu-item a.open,
-    #menu-main-menu > .menu-item:hover a {
-      background: #a00;
-      color: #fff;
-    }
-
-    #menu-main-menu > .menu-item > a:before {
-      display: inline-block;
-      -moz-osx-font-smoothing: grayscale;
-      -webkit-font-smoothing: antialiased;
-      font: normal 3.2rem/1 Genericons;
-      speak: none;
-      vertical-align: top;
-    }
-
-      /* Default/Topics menu item. */
-      #menu-main-menu > .menu-item > a:before {
-        content: '\f505';
-      }
-
-      /* Home */
-      #menu-main-menu .menu-item-home > a:before {
-        content: '\f409';
-      }
-
-      /* Community */
-      #menu-main-menu .menu-item-211724 > a:before {
-        content: '\f417';
-      }
-
-      /* About */
-      #menu-main-menu .menu-item-208331 > a:before {
-        content: '\f455';
-      }
-
-      /* Log In/Account */
-      #menu-main-menu .menu-item-loginout > a:before {
-        content: '\f304';
-      }
-
-        #menu-main-menu .menu-item-loginout.menu-item-has-children > .sub-menu {
-          left: unset;
-          right: 0;
-          width: 100%;
-        }
-
-
-#menu-main-menu > .menu-item-has-children {
-  position: relative;
-}
-
-  #menu-main-menu .menu-item-has-children > a:after {
-    content: '\f431';
-    display: inline-block;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
-    font: normal 1.6rem/3.2rem Genericons;
-    speak: none;
-    text-align: center;
-    vertical-align: top;
-    width: 3.2rem;
-  }
-
-  #menu-main-menu .menu-item-has-children > a.open:after {
-    content: '\f405';
-  }
-
-  #menu-main-menu .sub-menu {
-    display: none;
-    margin: 0;
-  }
-
-    /* The next two expand the Join the Lawyerist Community sub menu. */
-    #menu-main-menu #menu-item-270912.menu-item-has-children > a:after {
-      content: '';
-    }
-
-    #menu-main-menu #menu-item-270912.menu-item-has-children > .sub-menu {
-      display: block !important;
-    }
-
-    #menu-main-menu > .menu-item-has-children > .sub-menu {
-      background: #a00;
-      box-shadow: 0 .2rem .3rem rgba(0, 0, 0, 0.2);
-      padding: .25rem 0 .75rem 0;
-      position: absolute;
-        left: 0;
-      width: 150%;
-      z-index: 10;
-    }
-
-      #menu-main-menu > .menu-item-has-children > .sub-menu:last-child {
-        right: 0;
-      }
-
-    #menu-main-menu .sub-menu a {
-      padding: .5rem 1rem;
-    }
-
-      #menu-main-menu .sub-menu .menu-item a:hover,
-      #menu-main-menu .sub-menu .menu-item a:focus {
-        color: #ddd;
-      }
-
-      #menu-main-menu ul.sub-menu .sub-menu .menu-item a {
-        margin-left: 1rem;
-      }
-
-        #menu-main-menu ul.sub-menu .sub-menu .menu-item a:before {
-          color: #c00;
-          content: "\f428";
-          display: inline-block;
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          font: normal 1.6rem/3.2rem 'Genericons';
-          speak: none;
-          text-indent: -1em;
-          vertical-align: top;
-        }
-
-
-/* Mobile menu. */
-@media only screen and ( max-width: 749px ) {
-
-  #menu-main-menu > .menu-item {
-    position: static;
-  }
-
-  #menu-main-menu > .menu-item a {
-    font-size: 1.2rem;
-    padding: .5rem .5rem .7rem .5rem;
-    text-align: center;
-  }
-
-    #menu-main-menu > .menu-item > a {
-      line-height: 1;
-    }
-
-    #menu-main-menu .menu-item > a:before {
-      display: block;
-      margin: 0;
-    }
-
-    #menu-main-menu > .menu-item-has-children > a:after {
-      display: none;
-    }
-
-  #menu-main-menu > .menu-item > .sub-menu {
-    left: 0;
-    width: 100%;
-  }
-
-    #menu-main-menu .menu-item-has-children > .sub-menu > .menu-item {
-      float: none;
-      width: unset;
-    }
-
-    #menu-main-menu > .menu-item > .sub-menu a {
-      font-size: 1.8rem;
-      padding: 1rem;
-      text-align: left;
-    }
-
-}
 
 /*------------------------------
 Card Styles
@@ -1365,7 +1301,7 @@ Selectors
     .1rem .1rem .3rem rgba(0, 0, 0, 0.2)
   ;
   display: block;
-  margin: 0 .3rem 1rem .1rem;
+  margin-bottom: 1rem;
   text-decoration: none;
 }
 
@@ -1378,7 +1314,7 @@ Selectors
     padding: 0;
   }
 
-  .card *:last-child {
+  .card > *:last-child {
     margin-bottom: 0 !important;
   }
 
@@ -1460,9 +1396,20 @@ Selectors
     margin-top: 1rem;
   }
 
-  .home .lens_playlist.has-card-label .card-label {
-    margin-top: 0;
+  #lens-wrapper {
+    position: relative;
+  	padding-bottom: 56.25%; /* 16:9 */
+  	padding-top: 25px;
+  	height: 0;
   }
+
+    #lens-wrapper iframe {
+      position: absolute;
+    	top: 0;
+    	left: 0;
+    	width: 100%;
+    	height: 100%;
+    }
 
   .card-label a {
     color: #666;
@@ -1677,51 +1624,37 @@ Front Page
 ------------------------------*/
 
 .front_page_block {
-  margin: 0 -.7rem 6rem .1rem;
-  max-width: 68rem;
+  margin-bottom: 6rem;
 }
 
-.front_page_block.fp_contains_boxes {
-  max-width: unset;
+.fp_contains_boxes {
+  display: grid;
+  grid-template-columns: repeat( 2, 1fr );
+  grid-gap: 1rem;
 }
 
-.one_half {
-  box-sizing: border-box;
-  float: left;
-  width: 50%;
-}
+  .fp_contains_boxes .card {
+    margin: 0;
+    padding: 0 0 2rem 0;
+  }
 
-.one_half .card {
-  padding: 0 0 2rem 0;
-  margin-right: 1rem;
-}
-
-  .one_half .card img {
+  .fp_contains_boxes .card img {
     border-radius: .2rem .2rem 0 0;
     height: auto;
     margin-bottom: 1rem;
     width: 100%;
   }
 
-  .one_half .card h3 {
+  .fp_contains_boxes .card h3 {
     font-size: 2.4rem;
     margin: 0 2rem;
   }
 
-  .one_half .card p {
+  .fp_contains_boxes .card p {
     font-size: 1.6rem;
     margin: 0 2rem 2rem 2rem;
   }
 
-  .one_half .card .button {
-    display: block;
-    margin: 0 2rem;
-    text-align: center;
-  }
-
-.home .has-post-thumbnail.has-card-label .headline-excerpt {
-  margin-bottom: 2rem;
-}
 
 /* Sticky Post */
 
@@ -1858,6 +1791,7 @@ p.dashboard-widget-note {
   }
 
   #big_hero_cta .button {
+    border-radius: 3.3rem;
     display: block;
     font-size: 3.2rem !important;
     height: auto;
@@ -1980,7 +1914,6 @@ p.dashboard-widget-note {
 .home .type-product.has-card-label .headline-excerpt {
   padding: 4rem;
 }
-
 
 /*------------------------------
 Content
@@ -4071,6 +4004,11 @@ a.greybutton:active,
   HubSpot Forms Customizations
   ------------------------------*/
 
+  .member-logged-in .leadinModal.leadinModal-theme-top {
+    box-shadow: 0 .2rem .3rem rgba(0, 0, 0, 0.2);
+    top: 3.2rem;
+  }
+
   .hbspt-form fieldset {
     margin-bottom: .75em !important;
   }
@@ -4582,11 +4520,19 @@ body.woocommerce-cart .actions button  {
 LearnDash
 ------------------------------*/
 
-.learndash-page #content_column {
-  float: none;
-  max-width: unset;
-  width: 100%;
+.post-type-archive-sfwd-courses #courses-list {
+  display: grid;
+  grid-template-columns: repeat( 2, 1fr );
+  grid-gap: 1rem;
 }
+
+  .post-type-archive-sfwd-courses #courses-list .card {
+    margin: 0;
+  }
+
+  .post-type-archive-sfwd-courses #courses-list .card h2 {
+    margin-bottom: 0;
+  }
 
 .learndash-course #learndash_course_status,
 .learndash-topic .learndash_topic_dots {

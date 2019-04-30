@@ -3,7 +3,7 @@
 
 <?php get_template_part( 'head' ); ?>
 
-<body <?php body_class( 'index' ); ?>>
+<body <?php body_class( 'index full-width' ); ?>>
 
 <?php get_header(); ?>
 

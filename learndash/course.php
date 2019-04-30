@@ -15,15 +15,15 @@
  * $logged_in       : User is logged in
  * $current_user    : (object) Currently logged in user object
  *
- * $course_status   : Course Status
- * $has_access  		: User has access to course or is enrolled.
- * $materials       : Course Materials
- * $has_course_content      : Course has course content
- * $lessons         : Lessons Array
- * $quizzes         : Quizzes Array
+ * $course_status								: Course Status
+ * $has_access									: User has access to course or is enrolled.
+ * $materials										: Course Materials
+ * $has_course_content					: Course has course content
+ * $lessons											: Lessons Array
+ * $quizzes											: Quizzes Array
  * $lesson_progression_enabled  : (true/false)
- * $has_topics      : (true/false)
- * $lesson_topics   : (array) lessons topics
+ * $has_topics									: (true/false)
+ * $lesson_topics								: (array) lessons topics
  *
  * @since 2.1.0
  *
