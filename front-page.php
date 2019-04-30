@@ -77,7 +77,7 @@
 				echo '<div id="insider-dashboard" class="front_page_block">';
 
 					$current_user = wp_get_current_user();
-					echo '<p id="dashboard-title">' . $current_user->user_firstname . ' ' . $current_user->user_lastname . '\'s Insider Dashboard</p>';
+					echo '<p id="dashboard-title">' . $current_user->user_firstname . ' ' . $current_user->user_lastname . '\'s Dashboard</p>';
 
 					echo scorecard_results_graph();
 
