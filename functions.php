@@ -429,6 +429,7 @@ function is_product_portal() {
 /*------------------------------
 Get Active Labsters
 ------------------------------*/
+
 function get_active_labsters() {
 
 	$labster_query_args = array(
