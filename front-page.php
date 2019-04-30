@@ -298,7 +298,7 @@
 						endwhile;
 
 						// Outputs the label.
-						echo '<p class="card-label"><a href="https://lawyerist.com/topic/blog-posts/" title="All Blog Posts">All Blog Posts</a></p>';
+						echo '<p class="card-label"><a href="https://lawyerist.com/category/blog-posts/" title="All Blog Posts">All Blog Posts</a></p>';
 
 					echo '</div>';
 

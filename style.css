@@ -178,9 +178,9 @@ body {
     'lbuffer-footer footer  rbuffer-footer'
   ;
   grid-template-columns:
-    minmax( 0, 1fr )
+    minmax( 1rem, 1fr )
     minmax( 32rem, 102.4rem )
-    minmax( 0, 1fr )
+    minmax( 1rem, 1fr )
   ;
 	line-height: 1em;
 	margin: 0;
@@ -220,7 +220,7 @@ body {
       grid-area: header-title;
       line-height: 6.3rem;
       margin: 0;
-      padding: 0 2rem 0 1rem;
+      padding: 0 2rem 0 0;
     }
 
       #title a {
@@ -290,7 +290,7 @@ body {
           }
 
           /* Reviews */
-          #menu-main-menu .menu-item-298186 > a:before {
+          #menu-main-menu .menu-item-298881 > a:before {
             content: '\f408';
           }
 
@@ -388,6 +388,14 @@ body {
 
   @media only screen and ( max-width: 683px ) {
 
+    body {
+      grid-template-columns:
+        minmax( 0, 1fr )
+        minmax( 32rem, 102.4rem )
+        minmax( 0, 1fr )
+      ;
+    }
+
     #header {
       grid-template-areas:
         'header-title'
@@ -396,6 +404,10 @@ body {
       grid-template-columns: 1fr;
       grid-template-rows: auto auto;
     }
+
+      #title {
+        padding: 0 1rem;
+      }
 
   }
 
@@ -435,6 +447,7 @@ body.full-width #column_container {
         grid-template-areas:
           'content'
         ;
+        grid-template-columns: minmax( 32rem, 100% );
         padding: 0 1rem;
       }
 
@@ -451,7 +464,7 @@ body.full-width #column_container {
 
 	#footer {
     grid-area: footer;
-		padding: 6rem 1rem;
+		padding: 6rem 0;
 	}
 
 

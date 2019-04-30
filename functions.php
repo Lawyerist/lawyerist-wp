@@ -239,7 +239,7 @@ function lawyerist_loginout( $items, $args ) {
 
 			ob_start();
 
-				echo '<li class="menu-item menu-item-loginout menu-item-has-children"><a>Dashboard</a>';
+				echo '<li class="menu-item menu-item-loginout menu-item-has-children"><a>Account</a>';
 					echo '<ul class="sub-menu">';
 						echo '<li class="menu-item"><a href="https://lawyerist.com/account/">My Account</a>';
 						/* echo '<li class="menu-item"><a href="https://lawyerist.com/courses/">My Courses</a></li>'; */
