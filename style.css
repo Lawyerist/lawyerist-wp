@@ -268,6 +268,7 @@ body {
 
         #menu-main-menu > .menu-item > a {
           font-size: 1.4rem;
+          line-height: 1.5;
           padding: .5rem 0;
           text-align: center;
         }
@@ -403,10 +404,18 @@ body {
     'content sidebar'
   ;
   grid-template-columns:
-    minmax( 32rem, 1fr% )
+    minmax( 32rem, 100% )
     minmax( 30rem, 30rem )
   ;
   grid-area: main;
+}
+
+body.full-width #column_container {
+  grid-template-areas:
+    'content'
+  ;
+  grid-template-columns: minmax( 32rem, 100% );
+  padding: 0 1rem;
 }
 
 	#content_column {
@@ -4509,11 +4518,19 @@ body.woocommerce-cart .actions button  {
 LearnDash
 ------------------------------*/
 
-.learndash-page #content_column {
-  float: none;
-  max-width: unset;
-  width: 100%;
+.post-type-archive-sfwd-courses #courses-list {
+  display: grid;
+  grid-template-columns: repeat( 2, 1fr );
+  grid-gap: 1rem;
 }
+
+  .post-type-archive-sfwd-courses #courses-list .card {
+    margin: 0;
+  }
+
+  .post-type-archive-sfwd-courses #courses-list .card h2 {
+    margin-bottom: 0;
+  }
 
 .learndash-course #learndash_course_status,
 .learndash-topic .learndash_topic_dots {

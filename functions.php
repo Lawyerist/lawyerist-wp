@@ -54,6 +54,7 @@ WOOCOMMERCE
 
 LEARNDASH
 - Disable Comments on LearnDash Pages
+- Use Menu Order on LearnDash Course Archives
 
 TAXONOMY
 - Page Type Custom Taxonomy

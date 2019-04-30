@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php get_template_part( 'head' ); ?>
+<?php get_template_part( 'head full-width' ); ?>
 
 <body <?php body_class(); ?>>
 
