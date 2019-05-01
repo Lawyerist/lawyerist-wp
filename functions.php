@@ -100,100 +100,6 @@ function lawyerist_stylesheets_scripts() {
 
 add_action( 'wp_enqueue_scripts', 'lawyerist_stylesheets_scripts' );
 
-// Dequeue stylesheet
-function lawyerist_dequeue_styles() {
-
-	// Prevent stylesheets and scripts from loading on the front page.
-	if ( is_front_page() ) {
-
-		// WooCommerce
-		wp_deregister_style( 'woocommerce-inline' );
-		wp_deregister_style( 'woocommerce-general' );
-		wp_deregister_style( 'woocommerce-layout' );
-		wp_deregister_style( 'woocommerce-smallscreen' );
-		wp_deregister_style( 'wc-memberships-frontend' );
-
-		wp_dequeue_style( 'woocommerce-inline' );
-		wp_dequeue_style( 'woocommerce-general' );
-		wp_dequeue_style( 'woocommerce-layout' );
-		wp_dequeue_style( 'woocommerce-smallscreen' );
-		wp_dequeue_style( 'wc-memberships-frontend' );
-
-		// TablePress (doesn't fully work)
-		// wp_deregister_style( 'tablepress-default' );
-		wp_deregister_style( 'tablepress-responsive-tables' );
-		wp_deregister_style( 'tablepress-responsive-tables-flip' );
-		wp_deregister_style( 'tablepress-combined' );
-
-		// wp_dequeue_style( 'tablepress-default' );
-		wp_dequeue_style( 'tablepress-responsive-tables' );
-		wp_dequeue_style( 'tablepress-responsive-tables-flip' );
-		wp_dequeue_style( 'tablepress-combined' );
-
-	}
-
-	// Prevent WP Review Pro stylesheets from appearing on non-product pages.
-	if ( !is_page_template( 'product-page.php' ) && !is_admin() ) {
-
-		wp_deregister_style( 'fontawesome' );
-		wp_deregister_style( 'magnificPopup' );
-		wp_deregister_style( 'wp_review-style' );
-
-		wp_dequeue_style( 'fontawesome' );
-		wp_dequeue_style( 'magnificPopup' );
-		wp_dequeue_style( 'wp_review-style' );
-
-	}
-
-}
-
-// Hooked to the wp_print_styles action, with a late priority so that it is after the style was enqueued.
-add_action( 'wp_print_styles', 'lawyerist_dequeue_styles', 100 );
-
-
-function lawyerist_dequeue_scripts() {
-
-	// Prevent stylesheets and scripts from loading on the front page.
-	if ( is_front_page() ) {
-
-		// WooCommerce
-		wp_deregister_script( 'js-cookie' );
-		wp_deregister_script( 'wc-cart-fragments' );
-		wp_deregister_script( 'woocommerce' );
-		wp_deregister_script( 'wc-add-to-cart' );
-
-		wp_dequeue_script( 'js-cookie' );
-		wp_dequeue_script( 'wc-cart-fragments' );
-		wp_dequeue_script( 'woocommerce' );
-		wp_dequeue_script( 'wc-add-to-cart' );
-
-	}
-
-	// Prevent WP Review Pro stylesheets and scripts from appearing on non-product pages.
-	// IF the scripts don't load on the admin end of things, it breaks reviews.
-	if ( !is_page_template( 'product-page.php' ) && !is_admin() ) {
-
-		wp_deregister_script( 'jquery-knob' );
-		wp_deregister_script( 'magnificPopup' );
-		wp_deregister_script( 'stacktable' );
-		wp_deregister_script( 'wp-review-exit-intent' );
-		wp_deregister_script( 'wp_review-js' );
-		wp_deregister_script( 'wp_review-jquery-appear' );
-
-		wp_dequeue_script( 'jquery-knob' );
-		wp_dequeue_script( 'magnificPopup' );
-		wp_dequeue_script( 'stacktable' );
-		wp_dequeue_script( 'wp-review-exit-intent' );
-		wp_dequeue_script( 'wp_review-js' );
-		wp_dequeue_script( 'wp_review-jquery-appear' );
-
-	}
-
-}
-
-// Hooked to the wp_print_styles action, with a late priority so that it is after the style was enqueued.
-add_action( 'wp_print_scripts', 'lawyerist_dequeue_scripts', 100 );
-
 
 /*------------------------------
 Theme Setup
@@ -201,8 +107,6 @@ Theme Setup
 
 function lawyerist_theme_setup() {
 
-	// add_theme_support( 'disable-custom-colors' );
-	// add_theme_support( 'editor-styles' );
 	add_theme_support( 'html5', array( 'search-form' ) );
 	add_theme_support( 'post-thumbnails' );
 	add_theme_support( 'responsive-embeds' );

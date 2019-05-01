@@ -22,14 +22,19 @@ jQuery( document ).ready( function( $ ) {
 *
 * Opens and closes things with the .expand-this class.
 */
+
 jQuery( document ).ready( function( $ ) {
 
-  $( ".expandthis-hide" ).hide();
+  if ( ( $( ".expandthis-hide" ).length > 0 ) && ( $( ".expandthis-hide" ).length > 0 ) ) {
 
-  $( ".expandthis-click" ).click( function() {
-    $( this ).toggleClass( "open" ).next( ".expandthis-hide" ).slideToggle( 145 );
-    $( ".open" ).not( this ).toggleClass( "open" ).next( ".expandthis-hide" ).slideToggle( 95 );
-  });
+    $( ".expandthis-hide" ).hide();
+
+    $( ".expandthis-click" ).click( function() {
+      $( this ).toggleClass( "open" ).next( ".expandthis-hide" ).slideToggle( 145 );
+      $( ".open" ).not( this ).toggleClass( "open" ).next( ".expandthis-hide" ).slideToggle( 95 );
+    });
+
+  }
 
 });
 

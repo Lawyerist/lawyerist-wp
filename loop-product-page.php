@@ -140,7 +140,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
                 echo '</div>'; // Close .rating-breakdown
 
-              echo '</div>'; // CLose .expandthis-hide
+              echo '</div>'; // Close .expandthis-hide
 
             echo '</div>'; // Close .card .rating-box
 
