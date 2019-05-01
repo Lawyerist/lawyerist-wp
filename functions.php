@@ -474,9 +474,9 @@ function lawyerist_add_learndash_breadcrumbs( $links ) {
 
 		}
 
-		return $links;
-
 	}
+
+	return $links;
 
 }
 
