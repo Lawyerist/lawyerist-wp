@@ -522,6 +522,26 @@ Block Styles
   margin: 0 0 3rem 0;
 }
 
+.ld-video,
+#lens-wrapper,
+.wp-block-embed.is-type-video {
+  margin-bottom: 3rem;
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  padding-top: 25px;
+  height: 0;
+}
+
+  .ld-video iframe,
+  #lens-wrapper iframe,
+  .wp-block-embed.is-type-video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
 .wp-block-video video {
   width: 100%;
 }
@@ -1412,21 +1432,6 @@ Selectors
     margin-top: 1rem;
   }
 
-  #lens-wrapper {
-    position: relative;
-  	padding-bottom: 56.25%; /* 16:9 */
-  	padding-top: 25px;
-  	height: 0;
-  }
-
-    #lens-wrapper iframe {
-      position: absolute;
-    	top: 0;
-    	left: 0;
-    	width: 100%;
-    	height: 100%;
-    }
-
   .card-label a {
     color: #666;
   }
@@ -1893,6 +1898,10 @@ p.dashboard-widget-note {
 .home .lens_playlist iframe {
   margin-bottom: 0 !important;
 }
+
+  .home #lens-wrapper {
+    margin-bottom: 0;
+  }
 
 .home #blog-posts {
   padding: 2rem;
