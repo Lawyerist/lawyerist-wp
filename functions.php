@@ -145,7 +145,13 @@ function lawyerist_loginout( $items, $args ) {
 				echo '<li class="menu-item menu-item-loginout menu-item-has-children"><a>Account</a>';
 					echo '<ul class="sub-menu">';
 						echo '<li class="menu-item"><a href="https://lawyerist.com/account/">My Account</a>';
-						echo '<li class="menu-item"><a href="https://lawyerist.com/labster-portal/">Member Portal</a></li>';
+
+						$user_id = get_current_user_id();
+
+						if ( wc_memberships_is_user_active_member( $user_id, 'lab' ) || wc_memberships_is_user_active_member( $user_id, 'lab-pro' ) ) {
+							echo '<li class="menu-item"><a href="https://lawyerist.com/labster-portal/">Member Portal</a></li>';
+						}
+
 						echo '<li class="menu-item"><a href="https://lawyerist.com/scorecard/">Update My Scorecard</a></li>';
 					echo '</ul>';
 				echo '</li>';
