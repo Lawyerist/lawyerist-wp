@@ -325,6 +325,7 @@ body {
             padding: 0 0 .75rem 0;
             position: absolute;
               left: 0;
+              top: 6.3rem;
             width: 100%;
             z-index: 10;
           }
