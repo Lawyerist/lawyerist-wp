@@ -474,7 +474,7 @@ function lawyerist_add_learndash_breadcrumbs( $links ) {
 
 }
 
-// add_filter( 'wpseo_breadcrumb_links', 'lawyerist_add_learndash_breadcrumbs' );
+add_filter( 'wpseo_breadcrumb_links', 'lawyerist_add_learndash_breadcrumbs' );
 
 
 
@@ -1704,7 +1704,7 @@ function lawyerist_ld_disable_comments() {
 
 }
 
-// add_filter( 'init', 'lawyerist_ld_disable_comments' );
+add_filter( 'init', 'lawyerist_ld_disable_comments' );
 
 
 /* TAXONOMY *******************/
