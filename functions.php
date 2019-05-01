@@ -55,7 +55,6 @@ WOOCOMMERCE
 
 LEARNDASH
 - Disable Comments on LearnDash Pages
-- Use Menu Order on LearnDash Course Archives
 
 TAXONOMY
 - Page Type Custom Taxonomy
@@ -469,9 +468,9 @@ function lawyerist_add_learndash_breadcrumbs( $links ) {
 
 		}
 
-	}
+		return $links;
 
-	return $links;
+	}
 
 }
 
