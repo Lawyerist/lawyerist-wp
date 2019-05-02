@@ -846,7 +846,7 @@ function lawyerist_list_child_pages_fallback( $content ) {
 	global $post;
 	$children = get_pages( array( 'child_of' => $post->ID ) );
 
-if ( is_page() && ( count( $children ) > 0 ) && !has_shortcode( $content, 'list-child-pages' ) && !has_shortcode( $content, 'list-products' ) ) {
+if ( is_page() && !is_product_portal() && !has_shortcode( $content, 'list-child-pages' ) ) {
 
 		ob_start();
 
