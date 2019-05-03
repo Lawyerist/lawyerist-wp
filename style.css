@@ -1750,8 +1750,7 @@ p.dashboard-widget-note {
 /* Call to Action */
 
 #big_hero_cta {
-  margin: 0 auto 6rem auto;
-  max-width: 68rem;
+  margin-bottom: 3rem;
   padding: 0;
   position: relative;
 }
@@ -1796,10 +1795,10 @@ p.dashboard-widget-note {
         right: 2rem;
     }
 
-    #big_hero_cta .card a:hover p,
-    #big_hero_cta .card a:focus p,
-    #big_hero_cta .card a:hover ul,
-    #big_hero_cta .card a:focus ul {
+    #big_hero_cta a:hover p,
+    #big_hero_cta a:focus p,
+    #big_hero_cta a:hover ul,
+    #big_hero_cta a:focus ul {
       color: #111;
     }
 
@@ -1808,6 +1807,11 @@ p.dashboard-widget-note {
     margin-bottom: .25em;
     text-transform: uppercase;
   }
+
+    #big_hero_cta .headline:hover,
+    #big_hero_cta .headline:focus {
+      color: #333;
+    }
 
   #big_hero_cta p {
     font-size: 1.8rem;
