@@ -305,7 +305,7 @@
 				endif;
 				// End of blog posts.
 
-				// Outputs the most recent download.
+				// Outputs a random download.
 				$download_query_args = array(
 					'orderby'							=> 'rand',
 					'post_type'						=> 'product',
@@ -335,7 +335,7 @@
 
 					// Starts the post container.
 					echo '<div ' ;
-					post_class( 'card has-card-label' );
+					post_class( 'card download has-card-label' );
 					echo '>';
 
 						// Starts the link container. Makes for big click targets!
@@ -357,7 +357,7 @@
 
 								echo '<p class="excerpt">' . $download_excerpt . '</p>';
 
-								echo '<a href="' . $download_url . '" class="button">Get it Now</a>';
+								echo '<div class="button">Get it Now</div>';
 
 								// Clearfix
 								echo '<div class="clear"></div>';

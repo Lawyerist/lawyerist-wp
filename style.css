@@ -355,7 +355,7 @@ body {
             speak: none;
             text-align: center;
             vertical-align: top;
-            width: 3.2rem;
+            width: 1.2em;
           }
 
           #menu-main-menu .sub-menu .menu-item-has-children > a.open::after {
@@ -1938,9 +1938,15 @@ p.dashboard-widget-note {
           width: 100%;
         }
 
-.home .type-product.has-card-label .headline-excerpt {
+.home .download .headline-excerpt {
   padding: 4rem;
 }
+
+  .home .download a:hover h2,
+  .home .download a:hover p {
+    color: unset !important;
+  }
+
 
 /*------------------------------
 Content
