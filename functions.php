@@ -866,7 +866,7 @@ if ( is_page() && !is_product_portal() && !has_shortcode( $content, 'list-child-
 
 }
 
-// add_action( 'the_content', 'lawyerist_list_child_pages_fallback' );
+add_action( 'the_content', 'lawyerist_list_child_pages_fallback' );
 
 
 /*------------------------------
