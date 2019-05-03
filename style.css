@@ -634,6 +634,7 @@ p.woocommerce-result-count,
 .woocommerce-account .woocommerce-LostPassword,
 .woocommerce-account .woocommerce-MyAccount-navigation,
 .woocommerce nav.woocommerce-pagination,
+a.wp-block-button__link,
 a.wp-block-file__button,
 .wp-caption-text,
 .wp-review-feedback {
@@ -3718,7 +3719,9 @@ a.review-btn,
 .woocommerce #respond input#submit.alt,
 .woocommerce a.button.alt,
 .woocommerce button.button.alt,
-.woocommerce input.button.alt {
+.woocommerce input.button.alt,
+.wp-block-button a.wp-block-button__link,
+.wp-block-file a.wp-block-file__button {
   background-color: #b00;
   border: 0;
   border-radius: 1.8rem;
@@ -3782,15 +3785,6 @@ a.review-btn,
     width: 100%;
   }
 
-  .wp-block-file a.wp-block-file__button {
-    background-color: #a00;
-    border-radius: 1.4rem;
-    display: unset;
-    font-size: 1.3rem;
-    padding: .5em 1em;
-    text-transform: uppercase;
-  }
-
   #sidebar_column button,
   #sidebar_column .button,
   #sidebar_column a.button,
@@ -3828,6 +3822,15 @@ a.review-btn,
       text-indent: 0;
     }
 
+  .wp-block-file a.wp-block-file__button {
+    background-color: #a00;
+    border-radius: 1.4rem;
+    display: unset;
+    font-size: 1.3rem !important;
+    padding: .5em 1em;
+    text-transform: uppercase;
+  }
+
 button:focus,
 .button:focus,
 a.button:focus,
@@ -3846,6 +3849,7 @@ a.review-btn:focus,
 .woocommerce a.button.alt:focus,
 .woocommerce button.button.alt:focus,
 .woocommerce input.button.alt:focus,
+.wp-block-button a.wp-block-button__link:focus,
 .wp-block-file a.wp-block-file__button:focus {
   box-shadow: none;
   color: #fff;
@@ -3870,6 +3874,7 @@ a.review-btn:hover,
 .woocommerce a.button.alt:hover,
 .woocommerce button.button.alt:hover,
 .woocommerce input.button.alt:hover,
+.wp-block-button a.wp-block-button__link:hover,
 .wp-block-file a.wp-block-file__button:hover {
   background-color: #c00;
   box-shadow: .1rem .1rem .3rem rgba(0, 0, 0, 0.4);
@@ -3895,6 +3900,7 @@ a.review-btn:active,
 .woocommerce a.button.alt:active,
 .woocommerce button.button.alt:active,
 .woocommerce input.button.alt:active,
+.wp-block-button a.wp-block-button__link:active,
 .wp-block-file a.wp-block-file__button:active {
   background-color: #a00;
   box-shadow: none;
