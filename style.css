@@ -3106,6 +3106,10 @@ Content
           padding-left: 9.5rem;
         }
 
+          .product-pages-list .title {
+            padding: 0;
+          }
+
           .review_count {
             display: block;
           }
