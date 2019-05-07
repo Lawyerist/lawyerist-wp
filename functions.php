@@ -133,7 +133,7 @@ function lawyerist_register_menus() {
 
 }
 
-add_action( 'init','lawyerist_register_menus' );
+add_action( 'init', 'lawyerist_register_menus' );
 
 
 function lawyerist_loginout( $items, $args ) {
@@ -148,7 +148,7 @@ function lawyerist_loginout( $items, $args ) {
 
 						$user_id = get_current_user_id();
 
-						if ( wc_memberships_is_user_active_member( $user_id, 'lab' ) || wc_memberships_is_user_active_member( $user_id, 'lab-pro' ) ) {
+						if ( function_exists( 'wc_memberships' ) && ( wc_memberships_is_user_active_member( $user_id, 'lab' ) || wc_memberships_is_user_active_member( $user_id, 'lab-pro' ) ) ) {
 							echo '<li class="menu-item"><a href="https://lawyerist.com/labster-portal/">Member Portal</a></li>';
 						}
 
