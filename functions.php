@@ -1482,6 +1482,9 @@ function lawyerist_woocommerce_support() {
 
 add_action( 'after_setup_theme', 'lawyerist_woocommerce_support' );
 
+/* Apply a new credit card to all subscriptions by default. */
+add_filter( 'wcs_update_all_subscriptions_payment_method_checked', '__return_true' );
+
 
 /*------------------------------
 Check to See if Page is Really a WooCommerce Page
