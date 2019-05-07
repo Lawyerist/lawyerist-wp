@@ -80,8 +80,8 @@ function lawyerist_stylesheets_scripts() {
 	wp_register_style( 'stylesheet', get_template_directory_uri() . '/style.css', array(), $cacheBusterCSS, 'all' );
 	wp_enqueue_style( 'stylesheet' );
 
-	// Load the comment-reply script, but only if we're on a single page and comments are open and threaded.
-	if ( !is_admin() && is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+	// Load the comment-reply script, but only if we're on a single post page and comments are open and threaded.
+	if ( !is_admin() && is_single() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
 
@@ -446,6 +446,17 @@ function lawyerist_add_learndash_breadcrumbs( $links ) {
 
 	$post_type = get_post_type( $post->ID );
 
+	if ( $post_type == 'sfwd-courses' ) {
+
+		$replace_course_breadcrumb[] = array(
+			'url'		=> 'https://lawyerist.com/labster-portal/',
+			'text'	=> 'Member Portal',
+		);
+
+		array_splice( $links, 1, 1, $replace_course_breadcrumb );
+
+	}
+
 	if ( $post_type == 'sfwd-lessons' || $post_type == 'sfwd-topic' ) {
 
 		$course_id 		= learndash_get_course_id( $post->ID );
@@ -457,7 +468,7 @@ function lawyerist_add_learndash_breadcrumbs( $links ) {
         'text' => $course_title,
         );
 
-		array_splice( $links, 1, -2, $course_breadcrumb );
+		array_splice( $links, 1, 0, $course_breadcrumb );
 
 		if ( $post_type == 'sfwd-topic' ) {
 
@@ -470,7 +481,7 @@ function lawyerist_add_learndash_breadcrumbs( $links ) {
 	        'text' => $lesson_title,
 	        );
 
-			array_splice( $links, 1, -2, $lesson_breadcrumb );
+			array_splice( $links, 1, 0, $lesson_breadcrumb );
 
 		}
 
