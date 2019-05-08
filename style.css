@@ -1369,7 +1369,7 @@ Selectors
 
   /* Highlight colors. */
 
-  .card.type-product {
+  .card.download {
     border-top: .7rem solid #ed9c28;
   }
 
@@ -1482,34 +1482,45 @@ Selectors
     padding-left: 20%
   }
 
-.card.type-product .headline-excerpt {
-padding: 6rem;
+.card.download .headline-excerpt {
+  padding: 6rem;
 }
 
-.card.type-product.has-card-label .headline-excerpt {
+.card.download.has-card-label .headline-excerpt {
   padding: 4rem;
 }
 
-  .card.type-product.has-post-thumbnail .headline,
-  .card.type-product.has-post-thumbnail .excerpt,
-  .card.type-product.has-post-thumbnail .postmeta {
+  .card.download .headline {
+    font-size: 3.2rem;
+    margin-bottom: .5rem;
+  }
+
+  .home .card.download .headline,
+  .home .card.download .excerpt,
+  .home .card.download .postmeta,
+  .card.download.has-post-thumbnail .headline,
+  .card.download.has-post-thumbnail .excerpt,
+  .card.download.has-post-thumbnail .postmeta {
     margin-left: 0;
     padding-right: 28rem;
   }
 
-  .card.type-product a.button {
+  .card.download a.button {
     margin-bottom: 0;
   }
 
 @media only screen and ( max-width: 683px ) {
 
-  .card.type-product .headline-excerpt {
+  .card.download .headline-excerpt {
     padding: 3rem;
   }
 
-    .card.type-product.has-post-thumbnail .headline,
-    .card.type-product.has-post-thumbnail .excerpt,
-    .card.type-product.has-post-thumbnail .postmeta {
+    .home .card.download .headline,
+    .home .card.download .excerpt,
+    .home .card.download .postmeta,
+    .card.download.has-post-thumbnail .headline,
+    .card.download.has-post-thumbnail .excerpt,
+    .card.download.has-post-thumbnail .postmeta {
       padding: 0;
     }
 
@@ -1567,7 +1578,7 @@ padding: 6rem;
   }
 
 
-.card.type-product .product-thumbnail {
+.card.download .product-thumbnail {
   float: right;
   margin: 0;
   transform: rotate( .015turn );
@@ -1576,7 +1587,7 @@ padding: 6rem;
 
   @media only screen and ( max-width: 683px ) {
 
-    .card.type-product .product-thumbnail {
+    .card.download .product-thumbnail {
       display: block;
       float: none;
       margin: 0 auto 3rem auto;
@@ -1608,7 +1619,7 @@ padding: 6rem;
     font-size: 2.4rem !important;
   }
 
-  .card.type-product .headline {
+  .card.download .headline {
     margin-bottom: .75em;
   }
 
@@ -1617,12 +1628,12 @@ padding: 6rem;
 
 /* Excerpt styles. */
 
-.card.type-product .excerpt {
+.card.download .excerpt {
   margin-bottom: 1.5em;
 }
 
-.card.type-product a:hover .excerpt,
-.card.type-product a:focus .excerpt {
+.card.download a:hover .excerpt,
+.card.download a:focus .excerpt {
   color: #111;
 }
 

@@ -64,7 +64,10 @@
 					}
 
 				endwhile;
+
 			endif;
+
+			wp_reset_postdata();
 
 			if ( $num_sticky_posts > 0 ) {
 				echo '<div class="separator_3rem"></div>';
@@ -234,6 +237,8 @@
 					echo '</div>';
 
 				endwhile; endif;
+
+				wp_reset_postdata();
 				// End of podcast episode.
 
 
@@ -303,6 +308,8 @@
 					echo '</div>';
 
 				endif;
+
+				wp_reset_postdata();
 				// End of blog posts.
 
 				// Outputs a random download.
@@ -325,13 +332,18 @@
 
 				if ( $download_query->have_posts() ) : while ( $download_query->have_posts() ) : $download_query->the_post();
 
+					$download_ID				= get_the_ID();
 					$download_title			= the_title( '', '', FALSE );
 					$download_url				= get_permalink();
 					$download_excerpt   = get_the_excerpt();
-					$seo_descr    		  = get_post_meta( $post->ID, '_yoast_wpseo_metadesc', true );
+					// $seo_descr    		  = get_post_meta( $download_ID, '_yoast_wpseo_metadesc', true );
 
 					// Sets the post excerpt to the Yoast Meta Description.
-					if ( !empty( $seo_descr ) ) { $download_excerpt = $seo_descr; }
+					// if ( !empty( $seo_descr ) ) { $download_excerpt = $seo_descr; }
+
+					if ( has_post_thumbnail( $download_ID ) ) {
+						$post_classes[] = 'has-post-thumbnail';
+					}
 
 					// Starts the post container.
 					echo '<div ' ;
@@ -345,9 +357,9 @@
 							echo '<div class="headline-excerpt">';
 
 								// Outputs a featured image.
-								if ( has_post_thumbnail() ) {
+								if ( has_post_thumbnail( $download_ID ) ) {
 
-									$thumbnail_url  = get_the_post_thumbnail_url( $post->ID, 'shop_catalog' );
+									$thumbnail_url  = get_the_post_thumbnail_url( $download_ID, 'shop_catalog' );
 									echo '<img class="product-thumbnail" src="' . $thumbnail_url . '" />';
 
 								}
@@ -372,6 +384,8 @@
 					echo '</div>';
 
 				endwhile; endif;
+
+				wp_reset_postdata();
 				// End of download.
 
 			echo '</div>';

@@ -22,7 +22,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
   // This is the post container.
   echo '<div ';
-  post_class( 'hentry' );
+  post_class();
   echo '>';
 
     // Breadcrumbs
