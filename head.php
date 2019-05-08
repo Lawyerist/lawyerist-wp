@@ -14,48 +14,7 @@
 
 <?php
 
-	// Outputs the meta description. (The Yoast SEO plugin overrides this for search
-	// results and takes care of adding the description to singular pages.)
-
-	if ( is_front_page() ) {
-
-		$description	= wp_strip_all_tags( get_bloginfo( 'description' ), true );
-
-	} elseif ( is_archive() && !is_author() && !is_post_type_archive( 'product' ) ) {
-
-		$description = wp_strip_all_tags( term_description(), true );
-
-		if ( empty( $description ) ) {
-			$title = single_term_title( '', FALSE );
-			$description = 'All our posts labeled ' . $title . '.';
-		}
-
-	} elseif ( is_author() ) {
-
-		$description = wp_strip_all_tags( get_the_author_meta( 'description' ), true );
-
-		if ( empty( $description ) ) {
-			$name = get_the_author_meta( 'display_name' );
-			$description = 'Posts by ' . $name . ' on Lawyerist.com.';
-		}
-
-	} elseif ( is_post_type_archive( 'product' ) ) {
-
-		$description = wp_strip_all_tags( term_description(), true );
-
-		if ( empty( $description ) ) {
-			$title = single_term_title( '', FALSE );
-			$description = 'All our ' . $title . ' products.';
-		}
-
-	}
-
-	if ( !empty( $description ) ) {
-
-		echo '<meta name="description" content="' . $description . '">';
-
-	}
-
+	// The Yoast SEO plugin takes care of adding meta descriptions.
 
 	// Noindexes and nofollows sponsored posts.
 	if ( is_single() && has_category( 'sponsored-posts', $post->ID ) ) {
