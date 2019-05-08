@@ -794,9 +794,6 @@ function lawyerist_get_related_pages() {
 					$post_title			= the_title( '', '', FALSE );
 					$post_url				= get_permalink();
 
-					// Sets the post excerpt to the Yoast Meta Description.
-					if ( !empty( $seo_descr ) ) { $post_excerpt = $seo_descr; }
-
 					// Starts the post container.
 					echo '<div ' ;
 					post_class( 'card' );

@@ -14,7 +14,8 @@
 
 <?php
 
-	// Outputs the meta description.
+	// Outputs the meta description. (The Yoast SEO plugin overrides this for search
+	// results and takes care of adding the description to singular pages.)
 
 	if ( is_front_page() ) {
 
