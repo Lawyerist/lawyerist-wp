@@ -31,7 +31,7 @@ CONTENT
 - List Child Pages Fallback
 - Current Posts Widget
 - Ads
-- Affinity Partner Buttons
+- Affinity Partner Claims
 - Mobile Ads
 - Add Image Sizes
 - Remove Inline Width from Image Captions
@@ -1044,8 +1044,41 @@ function lawyerist_get_display_ad() { ?>
 
 
 /*------------------------------
-Affinity Partner Buttons
+Affinity Partner Claims
 ------------------------------*/
+
+function affinity_claim() {
+
+	global $post;
+
+	if ( is_user_logged_in() ) {
+
+    $user_id = get_current_user_id();
+
+    if ( wc_memberships_is_user_active_member( $user_id, 'insider-plus' ) || wc_memberships_is_user_active_member( $user_id, 'lab' ) || wc_memberships_is_user_active_member( $user_id, 'lab-pro' ) ) {
+
+			$workflow						= get_field( 'affinity_workflow' );
+			$discount_descr			= get_field( 'affinity_discount_descr' );
+
+			if ( $workflow = 'warm_handoff' ) {
+
+			} elseif ( $workflow = 'coupon_code' ) {
+
+				$claim_url	= get_field( 'affinity_claim_url' );
+				$claim_code	= get_field( 'affinity_claim_code' );
+
+			} elseif ( $workflow = 'url_only' ) {
+
+				$claim_url	= get_field( 'affinity_claim_url' );
+
+			}
+
+    }
+
+  }
+
+}
+
 
 function lawyerist_affinity_partner_button() {
 
