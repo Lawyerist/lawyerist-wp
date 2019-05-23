@@ -5,7 +5,7 @@
 
 <?php get_template_part( 'head' ); ?>
 
-<body <?php body_class(); ?>>
+<body <?php body_class( 'full-width' ); ?>>
 
 <?php get_header(); ?>
 

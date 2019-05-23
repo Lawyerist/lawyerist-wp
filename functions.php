@@ -17,6 +17,7 @@ UTILITY FUNCTIONS
 - Get Country
 - Get First Image URL
 - Is This a Product Portal?
+- Get Active Labsters
 
 CONTENT
 - Archive Headers
@@ -52,6 +53,9 @@ WOOCOMMERCE
 - Checkout Fields
 - Display Price of Free Products As "Free!" Not "$0.00".
 
+LEARNDASH
+- Disable Comments on LearnDash Pages
+
 TAXONOMY
 - Page Type Custom Taxonomy
 - Sponsors Custom Taxonomy
@@ -68,16 +72,16 @@ Stylesheets & Scripts
 function lawyerist_stylesheets_scripts() {
 
 	// Normalize the default styles. From https://github.com/necolas/normalize.css/
-	wp_register_style( 'normalize-css', get_template_directory_uri() . '/normalize.min.css' );
+	wp_register_style( 'normalize-css', get_template_directory_uri() . '/css/normalize.min.css' );
 	wp_enqueue_style( 'normalize-css' );
 
-	// Load the stylesheet, with a cachebuster.
+	// Load the main stylesheet, with a cachebuster.
 	$cacheBusterCSS = filemtime( get_stylesheet_directory() . '/style.css' );
 	wp_register_style( 'stylesheet', get_template_directory_uri() . '/style.css', array(), $cacheBusterCSS, 'all' );
 	wp_enqueue_style( 'stylesheet' );
 
-	// Load the comment-reply script, but only if we're on a single page and comments are open and threaded.
-	if ( !is_admin() && is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+	// Load the comment-reply script, but only if we're on a single post page and comments are open and threaded.
+	if ( !is_admin() && is_single() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
 
@@ -95,100 +99,6 @@ function lawyerist_stylesheets_scripts() {
 
 add_action( 'wp_enqueue_scripts', 'lawyerist_stylesheets_scripts' );
 
-// Dequeue stylesheet
-function lawyerist_dequeue_styles() {
-
-	// Prevent stylesheets and scripts from loading on the front page.
-	if ( is_front_page() ) {
-
-		// WooCommerce
-		wp_deregister_style( 'woocommerce-inline' );
-		wp_deregister_style( 'woocommerce-general' );
-		wp_deregister_style( 'woocommerce-layout' );
-		wp_deregister_style( 'woocommerce-smallscreen' );
-		wp_deregister_style( 'wc-memberships-frontend' );
-
-		wp_dequeue_style( 'woocommerce-inline' );
-		wp_dequeue_style( 'woocommerce-general' );
-		wp_dequeue_style( 'woocommerce-layout' );
-		wp_dequeue_style( 'woocommerce-smallscreen' );
-		wp_dequeue_style( 'wc-memberships-frontend' );
-
-		// TablePress (doesn't fully work)
-		// wp_deregister_style( 'tablepress-default' );
-		wp_deregister_style( 'tablepress-responsive-tables' );
-		wp_deregister_style( 'tablepress-responsive-tables-flip' );
-		wp_deregister_style( 'tablepress-combined' );
-
-		// wp_dequeue_style( 'tablepress-default' );
-		wp_dequeue_style( 'tablepress-responsive-tables' );
-		wp_dequeue_style( 'tablepress-responsive-tables-flip' );
-		wp_dequeue_style( 'tablepress-combined' );
-
-	}
-
-	// Prevent WP Review Pro stylesheets from appearing on non-product pages.
-	if ( !is_page_template( 'product-page.php' ) && !is_admin() ) {
-
-		wp_deregister_style( 'fontawesome' );
-		wp_deregister_style( 'magnificPopup' );
-		wp_deregister_style( 'wp_review-style' );
-
-		wp_dequeue_style( 'fontawesome' );
-		wp_dequeue_style( 'magnificPopup' );
-		wp_dequeue_style( 'wp_review-style' );
-
-	}
-
-}
-
-// Hooked to the wp_print_styles action, with a late priority so that it is after the style was enqueued.
-add_action( 'wp_print_styles', 'lawyerist_dequeue_styles', 100 );
-
-
-function lawyerist_dequeue_scripts() {
-
-	// Prevent stylesheets and scripts from loading on the front page.
-	if ( is_front_page() ) {
-
-		// WooCommerce
-		wp_deregister_script( 'js-cookie' );
-		wp_deregister_script( 'wc-cart-fragments' );
-		wp_deregister_script( 'woocommerce' );
-		wp_deregister_script( 'wc-add-to-cart' );
-
-		wp_dequeue_script( 'js-cookie' );
-		wp_dequeue_script( 'wc-cart-fragments' );
-		wp_dequeue_script( 'woocommerce' );
-		wp_dequeue_script( 'wc-add-to-cart' );
-
-	}
-
-	// Prevent WP Review Pro stylesheets and scripts from appearing on non-product pages.
-	// IF the scripts don't load on the admin end of things, it breaks reviews.
-	if ( !is_page_template( 'product-page.php' ) && !is_admin() ) {
-
-		wp_deregister_script( 'jquery-knob' );
-		wp_deregister_script( 'magnificPopup' );
-		wp_deregister_script( 'stacktable' );
-		wp_deregister_script( 'wp-review-exit-intent' );
-		wp_deregister_script( 'wp_review-js' );
-		wp_deregister_script( 'wp_review-jquery-appear' );
-
-		wp_dequeue_script( 'jquery-knob' );
-		wp_dequeue_script( 'magnificPopup' );
-		wp_dequeue_script( 'stacktable' );
-		wp_dequeue_script( 'wp-review-exit-intent' );
-		wp_dequeue_script( 'wp_review-js' );
-		wp_dequeue_script( 'wp_review-jquery-appear' );
-
-	}
-
-}
-
-// Hooked to the wp_print_styles action, with a late priority so that it is after the style was enqueued.
-add_action( 'wp_print_scripts', 'lawyerist_dequeue_scripts', 100 );
-
 
 /*------------------------------
 Theme Setup
@@ -196,8 +106,6 @@ Theme Setup
 
 function lawyerist_theme_setup() {
 
-	// add_theme_support( 'disable-custom-colors' );
-	// add_theme_support( 'editor-styles' );
 	add_theme_support( 'html5', array( 'search-form' ) );
 	add_theme_support( 'post-thumbnails' );
 	add_theme_support( 'responsive-embeds' );
@@ -225,13 +133,33 @@ function lawyerist_register_menus() {
 
 }
 
-add_action( 'init','lawyerist_register_menus' );
+add_action( 'init', 'lawyerist_register_menus' );
 
 
 function lawyerist_loginout( $items, $args ) {
 
   	if ( is_user_logged_in() && $args->theme_location == 'header-nav-menu' ) {
-        $items .= '<li class="menu-item menu-item-loginout"><a href="https://lawyerist.com/account/">Account</a></li>';
+
+			ob_start();
+
+				echo '<li class="menu-item menu-item-loginout menu-item-has-children"><a>Account</a>';
+					echo '<ul class="sub-menu">';
+						echo '<li class="menu-item"><a href="https://lawyerist.com/account/">My Account</a>';
+
+						$user_id = get_current_user_id();
+
+						if ( function_exists( 'wc_memberships' ) && ( wc_memberships_is_user_active_member( $user_id, 'lab' ) || wc_memberships_is_user_active_member( $user_id, 'lab-pro' ) ) ) {
+							echo '<li class="menu-item"><a href="https://lawyerist.com/labster-portal/">Member Portal</a></li>';
+						}
+
+						echo '<li class="menu-item"><a href="https://lawyerist.com/scorecard/">Update My Scorecard</a></li>';
+					echo '</ul>';
+				echo '</li>';
+
+			$new_items = ob_get_clean();
+
+      $items .= $new_items;
+
     } elseif ( !is_user_logged_in() && $args->theme_location == 'header-nav-menu' ) {
         $items .= '<li class="menu-item menu-item-loginout"><a href="https://lawyerist.com/account/">Log In</a></li>';
     }
@@ -407,6 +335,54 @@ function is_product_portal() {
 }
 
 
+/*------------------------------
+Get Active Labsters
+------------------------------*/
+
+function get_active_labsters() {
+
+	$labster_query_args = array(
+		'post_type'				=> 'wc_user_membership',
+		'post_status'			=> 'wcm-active',
+		'post_parent__in'	=> array(
+			223686, // Lab Pro
+			223685, // Lab
+		),
+		'posts_per_page'	=> -1,
+	);
+
+	$labster_query = new WP_Query( $labster_query_args );
+
+	if ( $labster_query->have_posts() ) :
+
+		$labsters	= array();
+
+		while ( $labster_query->have_posts() ) : $labster_query->the_post();
+
+			array_push( $labsters, array(
+				'labster_id'	=> get_the_ID(),
+				'email'				=> get_the_author_meta( 'user_email' ),
+				'first_name'	=> get_the_author_meta( 'user_firstname' ),
+				'last_name'		=> get_the_author_meta( 'user_lastname' ),
+			) );
+
+		endwhile; wp_reset_postdata();
+
+		// Sorts $labsters[] by last name.
+		usort( $labsters, function( $a, $b ) {
+			return $a[ 'last_name' ] <=> $b[ 'last_name' ];
+		});
+
+		return $labsters;
+
+	else :
+
+		return;
+
+	endif;
+
+}
+
 /* CONTENT ********************/
 
 /*------------------------------
@@ -451,9 +427,9 @@ function lawyerist_get_archive_header() {
 Yoast SEO Breadcrumbs
 ------------------------------*/
 
-function lawyerist_remove_products_breadcrumb($link_output, $link ){
+function lawyerist_remove_products_breadcrumb( $link_output, $link ) {
 
-	if( is_really_a_woocommerce_page() && $link['text'] == 'Products' ) {
+	if ( is_really_a_woocommerce_page() && $link['text'] == 'Products' ) {
 		$link_output = '';
 	}
 
@@ -461,7 +437,62 @@ function lawyerist_remove_products_breadcrumb($link_output, $link ){
 
 }
 
-add_filter( 'wpseo_breadcrumb_single_link' ,'lawyerist_remove_products_breadcrumb', 10 ,2 );
+add_filter( 'wpseo_breadcrumb_single_link', 'lawyerist_remove_products_breadcrumb', 10, 2 );
+
+
+function lawyerist_add_learndash_breadcrumbs( $links ) {
+
+	global $post;
+
+	$post_type = get_post_type( $post->ID );
+
+	if ( $post_type == 'sfwd-courses' ) {
+
+		$replace_course_breadcrumb[] = array(
+			'url'		=> 'https://lawyerist.com/labster-portal/',
+			'text'	=> 'Member Portal',
+		);
+
+		array_splice( $links, 1, 1, $replace_course_breadcrumb );
+
+	}
+
+	if ( $post_type == 'sfwd-lessons' || $post_type == 'sfwd-topic' ) {
+
+		$course_id 		= learndash_get_course_id( $post->ID );
+		$course_title	= get_the_title( $course_id );
+		$course_url		= get_permalink( $course_id );
+
+		$course_breadcrumb[] = array(
+        'url' => $course_url,
+        'text' => $course_title,
+        );
+
+		array_splice( $links, 1, 0, $course_breadcrumb );
+
+		if ( $post_type == 'sfwd-topic' ) {
+
+			$lesson_id		= learndash_get_lesson_id( $post->ID );
+			$lesson_title	= get_the_title( $lesson_id );
+			$lesson_url		= get_permalink( $lesson_id );
+
+			$lesson_breadcrumb[] = array(
+	        'url' => $lesson_url,
+	        'text' => $lesson_title,
+	        );
+
+			array_splice( $links, 1, 0, $lesson_breadcrumb );
+
+		}
+
+	}
+
+	return $links;
+
+}
+
+add_filter( 'wpseo_breadcrumb_links', 'lawyerist_add_learndash_breadcrumbs' );
+
 
 
 /*------------------------------
@@ -496,7 +527,7 @@ function lawyerist_get_author_bio() {
 	$author_bio           = get_the_author_meta( 'description' );
 	$author_website       = get_the_author_meta( 'user_url' );
 	$parsed_url           = parse_url( $author_website );
-	$author_nice_website  = $parsed_url['host'];
+	$author_nice_website  = $parsed_url[ 'host' ];
 	$author_twitter       = get_the_author_meta( 'twitter' );
 	$author_avatar_sm     = get_avatar( get_the_author_meta( 'user_email' ), 100, '', $author_name );
 	$author_avatar_lg     = get_avatar( get_the_author_meta( 'user_email' ), 300, '', $author_name );
@@ -763,9 +794,6 @@ function lawyerist_get_related_pages() {
 					$post_title			= the_title( '', '', FALSE );
 					$post_url				= get_permalink();
 
-					// Sets the post excerpt to the Yoast Meta Description.
-					if ( !empty( $seo_descr ) ) { $post_excerpt = $seo_descr; }
-
 					// Starts the post container.
 					echo '<div ' ;
 					post_class( 'card' );
@@ -826,7 +854,7 @@ function lawyerist_list_child_pages_fallback( $content ) {
 	global $post;
 	$children = get_pages( array( 'child_of' => $post->ID ) );
 
-if ( is_page() && ( count( $children ) > 0 ) && !has_shortcode( $content, 'list-child-pages' ) && !has_shortcode( $content, 'list-products' ) ) {
+if ( is_page() && !is_product_portal() && !has_shortcode( $content, 'list-child-pages' ) ) {
 
 		ob_start();
 
@@ -846,7 +874,7 @@ if ( is_page() && ( count( $children ) > 0 ) && !has_shortcode( $content, 'list-
 
 }
 
-// add_action( 'the_content', 'lawyerist_list_child_pages_fallback' );
+add_action( 'the_content', 'lawyerist_list_child_pages_fallback' );
 
 
 /*------------------------------
@@ -1462,6 +1490,9 @@ function lawyerist_woocommerce_support() {
 
 add_action( 'after_setup_theme', 'lawyerist_woocommerce_support' );
 
+/* Apply a new credit card to all subscriptions by default. */
+add_filter( 'wcs_update_all_subscriptions_payment_method_checked', '__return_true' );
+
 
 /*------------------------------
 Check to See if Page is Really a WooCommerce Page
@@ -1672,6 +1703,25 @@ function lawyerist_wc_free_products( $price, $product ) {
 }
 
 add_filter( 'woocommerce_get_price_html', 'lawyerist_wc_free_products', 10, 2 );
+
+
+/* LEARNDASH ******************/
+
+/*------------------------------
+Disable Comments on LearnDash Pages
+------------------------------*/
+
+function lawyerist_ld_disable_comments() {
+
+	remove_post_type_support( 'sfwd-courses', 'comments' );
+	remove_post_type_support( 'sfwd-lessons', 'comments' );
+	remove_post_type_support( 'sfwd-topic', 'comments' );
+	remove_post_type_support( 'sfwd-quiz', 'comments' );
+	remove_post_type_support( 'sfwd-essays', 'comments' );
+
+}
+
+add_filter( 'init', 'lawyerist_ld_disable_comments' );
 
 
 /* TAXONOMY *******************/

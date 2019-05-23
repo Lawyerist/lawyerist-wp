@@ -6,7 +6,7 @@ Author:       Sam Glover
 Author URI:   http://samglover.net
 Version:      [see https://github.com/Lawyerist/lawyerist-wp for version history]
 
-License:      Copyright 2018 Lawyerist Media, LLC
+License:      Copyright Lawyerist Media, LLC
 ------------------------------*/
 
 
@@ -14,21 +14,18 @@ License:      Copyright 2018 Lawyerist Media, LLC
 Index
 
 Load Fonts
-Layout
+Layout Elements & Grid Structure
 Layout & Design Elements
   Block Styles
 Typography
 Images
 Expander
-Header
-  Title
-Menu
 Card Styles
 Front Page
   Insider Dasboard
     Scorecard Widget
   Sticky Post
-  Call to action
+  Call to Action
   New Content Blocks
 Content
 	Posts
@@ -38,6 +35,7 @@ Content
   Product Pages
   Affinity Pages
   Team Profiles
+  Labster Directory
   Full Width Template
   No Sidebar Template
 	Comments
@@ -49,6 +47,7 @@ Forms
   Gravity Forms Customizations
   HubSpot Forms Customizations
 WooCommerce
+LearnDash
 Print
 
 ------------------------------*/
@@ -162,85 +161,296 @@ Load Fonts
 
 
 /*------------------------------
-Layout
+Layout Elements & Grid Structure
 ------------------------------*/
 
 html {
-	font-size: 62.5%;
+	font-size: 62.5%; /* 10px */
 }
 
 body {
   background-color: #fff;
+  display: grid;
+  grid-row-gap: 3rem;
+  grid-template-areas:
+    'lbuffer-header header  rbuffer-header'
+    'lbuffer        main    rbuffer'
+    'lbuffer-footer footer  rbuffer-footer'
+  ;
+  grid-template-columns:
+    minmax( 1rem, 1fr )
+    minmax( 32rem, 102.4rem )
+    minmax( 1rem, 1fr )
+  ;
 	line-height: 1em;
 	margin: 0;
 	padding: 0;
   width: 100%;
 }
 
-#header_container {
-  background-color: #111;
-  width: 100%;
-}
-
-  #header {
-    margin: 0 auto;
-    max-width: 100.4rem;
-    padding: 1.2rem 1rem;
+  #header_shadow {
+    box-shadow: 0 .2rem .3rem rgba(0, 0, 0, 0.2);
+    grid-area: 1 / 1 / 2 / -1;
   }
 
-#main_menu_container {
-  background: #c00;
-  box-shadow: 0 .2rem .3rem rgba(0, 0, 0, 0.2);
-	margin-bottom: 2rem;
-	width: 100%;
-}
+  #black-stripe {
+    background-color: #111;
+    grid-area: 1 / 1 / 2 / 2;
+  }
 
-	#menu-main-menu {
-		display: block;
-    font-size: 0; /* Removes space between li elements. */
-		line-height: 1em;
-		list-style: none;
-		margin: 0 auto;
-		padding: 0;
-    max-width: 101.4rem; /* Same width #header and #column_container, minus padding. */
-	}
+  #red-stripe {
+    background-color: #c00;
+    grid-area: 1 / 3 / 2 / -1;
+  }
+
+  #header {
+    grid-area: header;
+    display: grid;
+    grid-template-areas:
+      'header-title header-menu'
+    ;
+    grid-template-columns: auto 1fr;
+  }
+
+    #title {
+      background: #111;
+      font-size: 3.2rem;
+      font-family: 'adler', serif;
+      font-weight: normal;
+      grid-area: header-title;
+      line-height: 6.3rem;
+      margin: 0;
+      padding: 0 2rem 0 0;
+    }
+
+      #title a {
+        color: #fff;
+      }
+
+      #title a:hover,
+      #title a:focus {
+        color: #ddd;
+        text-decoration: none;
+      }
+
+    .menu-main-menu-container {
+      background: #c00;
+      grid-area: header-menu;
+      padding: 0;
+    }
+
+    	#menu-main-menu {
+        display: grid;
+        grid-template-columns: repeat( 5, 1fr );
+        list-style: none;
+    		margin: 0;
+        position: relative;
+    	}
+
+        #menu-main-menu .menu-item {
+          margin: 0;
+          padding: 0;
+        }
+
+          #menu-main-menu .menu-item a {
+          	color: #fff;
+          	display: block;
+            cursor: pointer;
+          	text-decoration: none;
+          }
+
+          #menu-main-menu .menu-item a.open,
+          #menu-main-menu > .menu-item:hover a {
+            background: #a00;
+            color: #fff;
+            text-decoration: none;
+          }
+
+        /* Top-Level Menu Items */
+
+        #menu-main-menu > .menu-item > a {
+          font-size: 1.4rem;
+          line-height: 1.5;
+          padding: .5rem 0;
+          text-align: center;
+        }
+
+        #menu-main-menu > .menu-item > a:before {
+          display: block;
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          font: normal 3.2rem/1 Genericons;
+          speak: none;
+          vertical-align: top;
+        }
+
+          /* Default/Topics menu item. */
+          #menu-main-menu > .menu-item > a:before {
+            content: '\f505';
+          }
+
+          /* Reviews */
+          #menu-main-menu .menu-item-298881 > a:before {
+            content: '\f408';
+          }
+
+          /* Community */
+          #menu-main-menu .menu-item-211724 > a:before {
+            content: '\f417';
+          }
+
+          /* About */
+          #menu-main-menu .menu-item-208331 > a:before {
+            content: '\f455';
+          }
+
+          /* Log In/Account */
+          #menu-main-menu .menu-item-loginout > a:before {
+            content: '\f304';
+          }
+
+        /* Sub-Menu Items */
+
+        #menu-main-menu .sub-menu {
+          display: none;
+          font-size: 1.6rem;
+          line-height: 1.5;
+          list-style: none;
+          margin: 0;
+        }
+
+          #menu-main-menu > .menu-item-has-children > .sub-menu {
+            background: #a00;
+            box-shadow: 0 .2rem .3rem rgba(0, 0, 0, 0.2);
+            padding: 0 0 .75rem 0;
+            position: absolute;
+              left: 0;
+              top: 6.3rem;
+            width: 100%;
+            z-index: 10;
+          }
+
+          #menu-main-menu > .menu-item-has-children:last-child > .sub-menu {
+            left: unset;
+            right: 0;
+          }
+
+        #menu-main-menu .sub-menu a {
+          box-sizing: border-box;
+          padding: 1rem 2rem;
+          width: 100%;
+        }
+
+          #menu-main-menu .sub-menu a:hover,
+          #menu-main-menu .sub-menu a:focus {
+            color: #ddd;
+          }
+
+          #menu-main-menu .sub-menu .menu-item-has-children > a::after {
+            content: '\f431';
+            display: inline-block;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            font: normal 1.6rem/1.5 Genericons;
+            speak: none;
+            text-align: center;
+            vertical-align: top;
+            width: 1.2em;
+          }
+
+          #menu-main-menu .sub-menu .menu-item-has-children > a.open::after {
+            content: '\f405';
+          }
+
+          /* The next two expand the Join the Lawyerist Community sub menu. */
+          #menu-main-menu #menu-item-270912.menu-item-has-children > a:after {
+            content: '';
+          }
+
+          #menu-main-menu #menu-item-270912.menu-item-has-children > .sub-menu {
+            display: block !important;
+          }
+
+          #menu-main-menu .sub-menu .sub-menu a {
+            padding-left: 3rem;
+          }
+
+          #menu-main-menu .sub-menu .sub-menu a:before {
+            color: #c00;
+            content: "\f428";
+            display: inline-block;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            font: normal 1.6rem/1.5 'Genericons';
+            speak: none;
+            text-indent: -1em;
+            vertical-align: top;
+          }
+
+  @media only screen and ( max-width: 683px ) {
+
+    body {
+      grid-template-columns:
+        minmax( 0, 1fr )
+        minmax( 32rem, 102.4rem )
+        minmax( 0, 1fr )
+      ;
+    }
+
+    #header {
+      grid-template-areas:
+        'header-title'
+        'header-menu'
+      ;
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto;
+    }
+
+      #title {
+        padding: 0 1rem;
+      }
+
+  }
 
 #column_container {
-	margin: 0 auto 2rem auto;
-	width: 100.4rem;
+  display: grid;
+  grid-column-gap: 3rem;
+  grid-template-areas:
+    'content sidebar'
+  ;
+  grid-template-columns:
+    minmax( 32rem, 100% )
+    minmax( 30rem, 30rem )
+  ;
+  grid-area: main;
+}
+
+body.full-width #column_container {
+  grid-template-areas:
+    'content'
+  ;
+  grid-template-columns: minmax( 32rem, 100% );
+  padding: 0 1rem;
 }
 
 	#content_column {
-		float: left;
-    max-width: 68.4rem;
-    width: 68.4rem;
+		grid-area: content;
 	}
 
 	#sidebar_column {
-		float: right;
-		margin: 0;
-    padding: 0;
-		max-width: 30rem;
+		grid-area: sidebar;
 	}
 
     @media only screen and ( max-width: 1023px ) {
     /* Includes 20px for padding (10px on each side). */
 
-      .headline_postmeta {
-        padding: 0;
-      }
-
       #column_container {
-      	width: 100%;
+        grid-template-areas:
+          'content'
+        ;
+        grid-template-columns: minmax( 32rem, 100% );
+        padding: 0 1rem;
       }
-
-        #content_column {
-          box-sizing: border-box;
-      		float: none;
-          margin: 0 auto;
-          padding:0 1rem;
-          width: 100%;
-      	}
 
         #sidebar_column {
           display: none;
@@ -248,17 +458,14 @@ body {
 
     }
 
-#footer_container {
-  background-color: #ddd;
-	margin: 0;
-	padding: 0;
-	width: 100%;
-}
+  #gray-stripe {
+    background-color: #ddd;
+    grid-area: 3 / 1 / -1 / -1;
+  }
 
 	#footer {
-		margin: 0 auto;
-    max-width: 100.4rem;
-		padding: 6rem 1rem;
+    grid-area: footer;
+		padding: 6rem 0;
 	}
 
 
@@ -316,6 +523,30 @@ Block Styles
   margin: 0 0 3rem 0;
 }
 
+.ld-video,
+#lens-wrapper,
+.wp-block-embed.is-type-video {
+  margin-bottom: 3rem;
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  padding-top: 25px;
+  height: 0;
+}
+
+  .ld-video iframe,
+  #lens-wrapper iframe,
+  .wp-block-embed.is-type-video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+.wp-block-video video {
+  width: 100%;
+}
+
 
 /*------------------------------
 Typography
@@ -343,6 +574,7 @@ th,
 .current_posts_heading,
 #dashboard-title,
 .featured_products_heading,
+.learndash #lesson_heading,
 #menu-main-menu .sub-menu .menu-item-has-children > a,
 .product-pages-list .title,
 .toc_title,
@@ -353,10 +585,12 @@ th,
 .affinity-partner-link,
 aside blockquote,
 .breadcrumbs,
+.btn,
 button,
 .button,
 .drop_cap,
 .card-label,
+  .review-summary-title,
 .category_list,
 #cancel-comment-reply-link,
 .comment-author,
@@ -371,6 +605,10 @@ figcaption,
 input[type="button"],
 input[type="submit"],
 label,
+.ld_course_grid_price,
+#learndash_course_status,
+.learndash-topic .learndash_topic_dots,
+#learndash_lesson_topics_list strong:first-of-type,
 .logged-in-as, /* Logged-in message on comment form. */
 #menu-main-menu,
 .onsale,
@@ -388,11 +626,7 @@ p.pullout,
 p.pullquote,
 #scorecard_results #grade_box,
 .scorecard-results-wrapper,
-.card-label,
 .tag_list,
-.theiaPostSlider_nav ._text,
-.toc_list,
-#toc-page-menu,
 ul.blogroll,
 .user-rating,
 p.woocommerce-result-count,
@@ -400,6 +634,8 @@ p.woocommerce-result-count,
 .woocommerce-account .woocommerce-LostPassword,
 .woocommerce-account .woocommerce-MyAccount-navigation,
 .woocommerce nav.woocommerce-pagination,
+a.wp-block-button__link,
+a.wp-block-file__button,
 .wp-caption-text,
 .wp-review-feedback {
   font-family: concourse, sans-serif;
@@ -923,7 +1159,6 @@ img.inline {
 
   }
 
-
   /* The Gallery container (div) */
   .gallery,
   .wp-block-gallery {
@@ -1055,7 +1290,7 @@ Expander
   cursor: pointer;
 }
 
-  .expandthis-click::after {
+  .card .expandthis-click::after {
     content: '\f431';
     display: inline-block;
     -moz-osx-font-smoothing: grayscale;
@@ -1067,7 +1302,7 @@ Expander
     width: 1.2em;
   }
 
-  .expandthis-click.open::after {
+  .card  .expandthis-click.open::after {
     content: '\f405';
   }
 
@@ -1079,253 +1314,6 @@ Expander
   margin-top: .5em;
 }
 
-/*------------------------------
-Header
-------------------------------*/
-
-.member-logged-in .leadinModal.leadinModal-theme-top {
-  box-shadow: 0 .2rem .3rem rgba(0, 0, 0, 0.2);
-  top: 3.2rem;
-}
-
-#header a:hover,
-#header a:focus {
-	text-decoration: none;
-}
-
-
-  /*------------------------------
-  Title
-  ------------------------------*/
-
-  #title {
-  	display: block;
-  	float: left;
-    font-size: 3.2rem;
-    font-family: 'adler', serif;
-    font-weight: normal;
-    height: 3.2rem;
-    line-height: 1.2;
-    margin: 0;
-    padding: 0;
-  	width: auto;
-  }
-
-  	#title a {
-      color: #fff;
-  		display: block;
-  	}
-
-    #title a:hover,
-    #title a:focus {
-      color: #ddd;
-    }
-
-  #description {
-    color: #ccc;
-    float: right;
-    font-size: 1.8rem;
-    line-height: 3.2rem;
-    margin: 0;
-  }
-
-
-    /* 780px */
-    @media only screen and (max-width:779px) {
-
-      #description {
-        display: none;
-      }
-
-    }
-
-
-/*------------------------------
-Menu
-------------------------------*/
-
-#menu-main-menu {
-  position: relative;
-}
-
-#menu-main-menu > .menu-item {
-	display: inline-block;
-	margin: 0;
-  width: 20%;
-}
-
-#menu-main-menu .menu-item {
-  margin: 0;
-  padding: 0;
-}
-
-  #menu-main-menu .menu-item a {
-  	color: #fff;
-  	display: block;
-  	font-size: 1.6rem;
-    line-height: 3.2rem;
-  	padding: .5rem;
-  	text-decoration: none;
-  }
-
-    #menu-main-menu .menu-item a.open,
-    #menu-main-menu > .menu-item:hover a {
-      background: #a00;
-      color: #fff;
-    }
-
-    #menu-main-menu > .menu-item > a:before {
-      display: inline-block;
-      -moz-osx-font-smoothing: grayscale;
-      -webkit-font-smoothing: antialiased;
-      font: normal 3.2rem/1 Genericons;
-      speak: none;
-      vertical-align: top;
-    }
-
-      /* Default/Topics menu item. */
-      #menu-main-menu > .menu-item > a:before {
-        content: '\f505';
-      }
-
-      /* Home */
-      #menu-main-menu .menu-item-home > a:before {
-        content: '\f409';
-      }
-
-      /* Community */
-      #menu-main-menu .menu-item-211724 > a:before {
-        content: '\f417';
-      }
-
-      /* About */
-      #menu-main-menu .menu-item-208331 > a:before {
-        content: '\f455';
-      }
-
-      /* Log In/Account */
-      #menu-main-menu .menu-item-loginout > a:before {
-        content: '\f304';
-      }
-
-
-#menu-main-menu > .menu-item-has-children {
-  position: relative;
-}
-
-  #menu-main-menu .menu-item-has-children > a:after {
-    content: '\f431';
-    display: inline-block;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
-    font: normal 1.6rem/3.2rem Genericons;
-    speak: none;
-    text-align: center;
-    vertical-align: top;
-    width: 3.2rem;
-  }
-
-  #menu-main-menu .menu-item-has-children > a.open:after {
-    content: '\f405';
-  }
-
-  #menu-main-menu .sub-menu {
-    display: none;
-    margin: 0;
-  }
-
-    /* The next two expand the Join the Lawyerist Community sub menu. */
-    #menu-main-menu #menu-item-270912.menu-item-has-children > a:after {
-      content: '';
-    }
-
-    #menu-main-menu #menu-item-270912.menu-item-has-children > .sub-menu {
-      display: block !important;
-    }
-
-    #menu-main-menu > .menu-item-has-children > .sub-menu {
-      background: #a00;
-      box-shadow: 0 .2rem .3rem rgba(0, 0, 0, 0.2);
-      padding: .25rem 0 .75rem 0;
-      position: absolute;
-        left: 0;
-      width: 150%;
-      z-index: 10;
-    }
-
-      #menu-main-menu > .menu-item-has-children > .sub-menu:last-child {
-        right: 0;
-      }
-
-    #menu-main-menu .sub-menu a {
-      padding: .5rem 1rem;
-    }
-
-      #menu-main-menu .sub-menu .menu-item a:hover,
-      #menu-main-menu .sub-menu .menu-item a:focus {
-        color: #ddd;
-      }
-
-      #menu-main-menu ul.sub-menu .sub-menu .menu-item a {
-        margin-left: 1rem;
-      }
-
-        #menu-main-menu ul.sub-menu .sub-menu .menu-item a:before {
-          color: #c00;
-          content: "\f428";
-          display: inline-block;
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          font: normal 1.6rem/3.2rem 'Genericons';
-          speak: none;
-          text-indent: -1em;
-          vertical-align: top;
-        }
-
-
-/* Mobile menu. */
-@media only screen and ( max-width: 749px ) {
-
-  #menu-main-menu > .menu-item {
-    position: static;
-  }
-
-  #menu-main-menu > .menu-item a {
-    font-size: 1.2rem;
-    padding: .5rem .5rem .7rem .5rem;
-    text-align: center;
-  }
-
-    #menu-main-menu > .menu-item > a {
-      line-height: 1;
-    }
-
-    #menu-main-menu .menu-item > a:before {
-      display: block;
-      margin: 0;
-    }
-
-    #menu-main-menu > .menu-item-has-children > a:after {
-      display: none;
-    }
-
-  #menu-main-menu > .menu-item > .sub-menu {
-    left: 0;
-    width: 100%;
-  }
-
-    #menu-main-menu .menu-item-has-children > .sub-menu > .menu-item {
-      float: none;
-      width: unset;
-    }
-
-    #menu-main-menu > .menu-item > .sub-menu a {
-      font-size: 1.8rem;
-      padding: 1rem;
-      text-align: left;
-    }
-
-}
 
 /*------------------------------
 Card Styles
@@ -1343,6 +1331,7 @@ Selectors
 ------------------------------*/
 
 .card,
+.ld-course-list-items .ld_course_grid .thumbnail.course,
 #sponsored_product_updates {
   border-radius: .2rem;
   box-shadow:
@@ -1350,7 +1339,7 @@ Selectors
     .1rem .1rem .3rem rgba(0, 0, 0, 0.2)
   ;
   display: block;
-  margin: 0 .3rem 1rem .1rem;
+  margin-bottom: 1rem;
   text-decoration: none;
 }
 
@@ -1363,7 +1352,7 @@ Selectors
     padding: 0;
   }
 
-  .card *:last-child {
+  .card > *:last-child {
     margin-bottom: 0 !important;
   }
 
@@ -1380,7 +1369,7 @@ Selectors
 
   /* Highlight colors. */
 
-  .card.type-product {
+  .card.download {
     border-top: .7rem solid #ed9c28;
   }
 
@@ -1445,10 +1434,6 @@ Selectors
     margin-top: 1rem;
   }
 
-  .home .lens_playlist.has-card-label .card-label {
-    margin-top: 0;
-  }
-
   .card-label a {
     color: #666;
   }
@@ -1497,34 +1482,45 @@ Selectors
     padding-left: 20%
   }
 
-.card.type-product .headline-excerpt {
-padding: 6rem;
+.card.download .headline-excerpt {
+  padding: 6rem;
 }
 
-.card.type-product.has-card-label .headline-excerpt {
+.card.download.has-card-label .headline-excerpt {
   padding: 4rem;
 }
 
-  .card.type-product.has-post-thumbnail .headline,
-  .card.type-product.has-post-thumbnail .excerpt,
-  .card.type-product.has-post-thumbnail .postmeta {
+  .card.download .headline {
+    font-size: 3.2rem;
+    margin-bottom: .5rem;
+  }
+
+  .home .card.download .headline,
+  .home .card.download .excerpt,
+  .home .card.download .postmeta,
+  .card.download.has-post-thumbnail .headline,
+  .card.download.has-post-thumbnail .excerpt,
+  .card.download.has-post-thumbnail .postmeta {
     margin-left: 0;
     padding-right: 28rem;
   }
 
-  .card.type-product a.button {
+  .card.download a.button {
     margin-bottom: 0;
   }
 
 @media only screen and ( max-width: 683px ) {
 
-  .card.type-product .headline-excerpt {
+  .card.download .headline-excerpt {
     padding: 3rem;
   }
 
-    .card.type-product.has-post-thumbnail .headline,
-    .card.type-product.has-post-thumbnail .excerpt,
-    .card.type-product.has-post-thumbnail .postmeta {
+    .home .card.download .headline,
+    .home .card.download .excerpt,
+    .home .card.download .postmeta,
+    .card.download.has-post-thumbnail .headline,
+    .card.download.has-post-thumbnail .excerpt,
+    .card.download.has-post-thumbnail .postmeta {
       padding: 0;
     }
 
@@ -1582,7 +1578,7 @@ padding: 6rem;
   }
 
 
-.card.type-product .product-thumbnail {
+.card.download .product-thumbnail {
   float: right;
   margin: 0;
   transform: rotate( .015turn );
@@ -1591,7 +1587,7 @@ padding: 6rem;
 
   @media only screen and ( max-width: 683px ) {
 
-    .card.type-product .product-thumbnail {
+    .card.download .product-thumbnail {
       display: block;
       float: none;
       margin: 0 auto 3rem auto;
@@ -1623,7 +1619,7 @@ padding: 6rem;
     font-size: 2.4rem !important;
   }
 
-  .card.type-product .headline {
+  .card.download .headline {
     margin-bottom: .75em;
   }
 
@@ -1632,12 +1628,12 @@ padding: 6rem;
 
 /* Excerpt styles. */
 
-.card.type-product .excerpt {
+.card.download .excerpt {
   margin-bottom: 1.5em;
 }
 
-.card.type-product a:hover .excerpt,
-.card.type-product a:focus .excerpt {
+.card.download a:hover .excerpt,
+.card.download a:focus .excerpt {
   color: #111;
 }
 
@@ -1662,51 +1658,37 @@ Front Page
 ------------------------------*/
 
 .front_page_block {
-  margin: 0 -.7rem 6rem .1rem;
-  max-width: 68rem;
+  margin-bottom: 6rem;
 }
 
-.front_page_block.fp_contains_boxes {
-  max-width: unset;
+.fp_contains_boxes {
+  display: grid;
+  grid-template-columns: repeat( 2, 1fr );
+  grid-gap: 1rem;
 }
 
-.one_half {
-  box-sizing: border-box;
-  float: left;
-  width: 50%;
-}
+  .fp_contains_boxes .card {
+    margin: 0;
+    padding: 0 0 2rem 0;
+  }
 
-.one_half .card {
-  padding: 0 0 2rem 0;
-  margin-right: 1rem;
-}
-
-  .one_half .card img {
+  .fp_contains_boxes .card img {
     border-radius: .2rem .2rem 0 0;
     height: auto;
     margin-bottom: 1rem;
     width: 100%;
   }
 
-  .one_half .card h3 {
+  .fp_contains_boxes .card h3 {
     font-size: 2.4rem;
     margin: 0 2rem;
   }
 
-  .one_half .card p {
+  .fp_contains_boxes .card p {
     font-size: 1.6rem;
     margin: 0 2rem 2rem 2rem;
   }
 
-  .one_half .card .button {
-    display: block;
-    margin: 0 2rem;
-    text-align: center;
-  }
-
-.home .has-post-thumbnail.has-card-label .headline-excerpt {
-  margin-bottom: 2rem;
-}
 
 /* Sticky Post */
 
@@ -1779,8 +1761,7 @@ p.dashboard-widget-note {
 /* Call to Action */
 
 #big_hero_cta {
-  margin: 0 auto 6rem auto;
-  max-width: 68rem;
+  margin-bottom: 3rem;
   padding: 0;
   position: relative;
 }
@@ -1825,10 +1806,10 @@ p.dashboard-widget-note {
         right: 2rem;
     }
 
-    #big_hero_cta .card a:hover p,
-    #big_hero_cta .card a:focus p,
-    #big_hero_cta .card a:hover ul,
-    #big_hero_cta .card a:focus ul {
+    #big_hero_cta a:hover p,
+    #big_hero_cta a:focus p,
+    #big_hero_cta a:hover ul,
+    #big_hero_cta a:focus ul {
       color: #111;
     }
 
@@ -1838,11 +1819,17 @@ p.dashboard-widget-note {
     text-transform: uppercase;
   }
 
+    #big_hero_cta .headline:hover,
+    #big_hero_cta .headline:focus {
+      color: #333;
+    }
+
   #big_hero_cta p {
     font-size: 1.8rem;
   }
 
   #big_hero_cta .button {
+    border-radius: 3.3rem;
     display: block;
     font-size: 3.2rem !important;
     height: auto;
@@ -1929,6 +1916,10 @@ p.dashboard-widget-note {
   margin-bottom: 0 !important;
 }
 
+  .home #lens-wrapper {
+    margin-bottom: 0;
+  }
+
 .home #blog-posts {
   padding: 2rem;
 }
@@ -1962,9 +1953,14 @@ p.dashboard-widget-note {
           width: 100%;
         }
 
-.home .type-product.has-card-label .headline-excerpt {
+.home .download .headline-excerpt {
   padding: 4rem;
 }
+
+  .home .download a:hover h2,
+  .home .download a:hover p {
+    color: unset !important;
+  }
 
 
 /*------------------------------
@@ -2999,25 +2995,6 @@ Content
       top: 2rem;
   }
 
-    a.button.trial-button {
-      border-radius: .3rem;
-      font-size: 1.8rem !important;
-      height: 4.2rem;
-      line-height: 4.2rem;
-      margin: 0 auto;
-      padding: 0 1.8rem;
-    }
-
-      a.button.trial-button:after {
-        content: "\f442";
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-font-smoothing: antialiased;
-        font: normal 1.8rem/1 Genericons;
-        margin-left: .1em;
-        speak: none;
-        vertical-align: text-top;
-      }
-
     .affinity-partner-link {
       display: block;
       font-size: 1.6rem;
@@ -3150,6 +3127,10 @@ Content
           min-height: 8.5rem;
           padding-left: 9.5rem;
         }
+
+          .product-pages-list .title {
+            padding: 0;
+          }
 
           .review_count {
             display: block;
@@ -3647,6 +3628,15 @@ textarea,
     padding-top: 2px;
   }
 
+input[type="file"],
+input#uploadfiles {
+  border: 0;
+  font-size: 1.2rem !important;
+  line-height: 1;
+  margin-bottom: 2rem;
+  padding: 0;
+}
+
 input[type="search"] {
   width: 100%;
 }
@@ -3741,6 +3731,8 @@ input[type="button"],
 input[type="submit"],
 a.review-btn,
 #commentform.wp-review-comment-form input[type="submit"],
+.ld-course-list-items .ld_course_grid .thumbnail.course a.btn-primary,
+.learndash_join_button input#btn-join,
 .woocommerce #respond input#submit,
 .woocommerce a.button,
 .woocommerce button.button,
@@ -3748,10 +3740,12 @@ a.review-btn,
 .woocommerce #respond input#submit.alt,
 .woocommerce a.button.alt,
 .woocommerce button.button.alt,
-.woocommerce input.button.alt {
+.woocommerce input.button.alt,
+.wp-block-button a.wp-block-button__link,
+.wp-block-file a.wp-block-file__button {
   background-color: #b00;
   border: 0;
-  border-radius: .2rem;
+  border-radius: 1.8rem;
   box-shadow: none;
   box-sizing: border-box;
   color: #fff;
@@ -3762,7 +3756,7 @@ a.review-btn,
   line-height: 3.6rem;
   margin-bottom: 3rem;
   outline: none;
-  padding: 0 1.6rem;
+  padding: 0 1em;
   text-decoration: none;
   text-transform: uppercase;
   -webkit-appearance: none;
@@ -3770,22 +3764,31 @@ a.review-btn,
   width: auto;
 }
 
-  a.button.big-button {
-    border-radius: .3rem;
+  a.button.big-button,
+  a.button.trial-button {
+    border-radius: 2.1rem;
     font-size: 1.8rem !important;
     height: 4.2rem;
     line-height: 4.2rem;
     margin: 0 auto;
-    padding: 0 1.8rem;
   }
 
+    a.button.trial-button:after {
+      content: "\f442";
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-font-smoothing: antialiased;
+      font: normal 1.8rem/1 Genericons;
+      margin-left: .1em;
+      speak: none;
+      vertical-align: text-top;
+    }
+
   a.button.really-big-button {
-    border-radius: .6rem;
+    border-radius: 3rem;
     font-size: 3.2rem !important;
     height: 6rem;
     line-height: 6rem;
     margin: 0 auto;
-    padding: 0 3.2rem;
   }
 
   .woocommerce button.button:disabled,
@@ -3795,7 +3798,12 @@ a.review-btn,
     background-color: #ddd;
     box-shadow: none;
     color: #bbb;
-    padding: 0 1.6rem;
+    padding: 0 1em;
+  }
+
+  .ld-course-list-items .ld_course_grid .thumbnail.course a.btn-primary {
+    margin-bottom: 0;
+    width: 100%;
   }
 
   #sidebar_column button,
@@ -3835,6 +3843,15 @@ a.review-btn,
       text-indent: 0;
     }
 
+  .wp-block-file a.wp-block-file__button {
+    background-color: #a00;
+    border-radius: 1.4rem;
+    display: unset;
+    font-size: 1.3rem !important;
+    padding: .5em 1em;
+    text-transform: uppercase;
+  }
+
 button:focus,
 .button:focus,
 a.button:focus,
@@ -3843,6 +3860,8 @@ input[type="button"]:focus,
 input[type="submit"]:focus,
 a.review-btn:focus,
 #commentform.wp-review-comment-form input[type="submit"]:focus,
+.ld-course-list-items .ld_course_grid .thumbnail.course a.btn-primary:focus,
+.learndash_join_button input#btn-join:focus,
 .woocommerce #respond input#submit:focus,
 .woocommerce a.button:focus,
 .woocommerce button.button:focus,
@@ -3850,7 +3869,9 @@ a.review-btn:focus,
 .woocommerce #respond input#submit.alt:focus,
 .woocommerce a.button.alt:focus,
 .woocommerce button.button.alt:focus,
-.woocommerce input.button.alt:focus {
+.woocommerce input.button.alt:focus,
+.wp-block-button a.wp-block-button__link:focus,
+.wp-block-file a.wp-block-file__button:focus {
   box-shadow: none;
   color: #fff;
   outline: none !important;
@@ -3864,6 +3885,8 @@ input[type="button"]:hover,
 input[type="submit"]:hover,
 a.review-btn:hover,
 #commentform.wp-review-comment-form input[type="submit"]:hover,
+.ld-course-list-items .ld_course_grid .thumbnail.course a.btn-primary:hover,
+.learndash_join_button input#btn-join:hover,
 .woocommerce #respond input#submit:hover,
 .woocommerce a.button:hover,
 .woocommerce button.button:hover,
@@ -3871,7 +3894,9 @@ a.review-btn:hover,
 .woocommerce #respond input#submit.alt:hover,
 .woocommerce a.button.alt:hover,
 .woocommerce button.button.alt:hover,
-.woocommerce input.button.alt:hover {
+.woocommerce input.button.alt:hover,
+.wp-block-button a.wp-block-button__link:hover,
+.wp-block-file a.wp-block-file__button:hover {
   background-color: #c00;
   box-shadow: .1rem .1rem .3rem rgba(0, 0, 0, 0.4);
   color: #fff;
@@ -3886,6 +3911,8 @@ input[type="button"]:active,
 input[type="submit"]:active,
 a.review-btn:active,
 #commentform.wp-review-comment-form input[type="submit"]:active,
+.ld-course-list-items .ld_course_grid .thumbnail.course a.btn-primary:active,
+.learndash_join_button input#btn-join:active,
 .woocommerce #respond input#submit:active,
 .woocommerce a.button:active,
 .woocommerce button.button:active,
@@ -3893,7 +3920,9 @@ a.review-btn:active,
 .woocommerce #respond input#submit.alt:active,
 .woocommerce a.button.alt:active,
 .woocommerce button.button.alt:active,
-.woocommerce input.button.alt:active {
+.woocommerce input.button.alt:active,
+.wp-block-button a.wp-block-button__link:active,
+.wp-block-file a.wp-block-file__button:active {
   background-color: #a00;
   box-shadow: none;
   color: #ddd;
@@ -3940,17 +3969,6 @@ a.greybutton:active,
 .woocommerce input.button[name="update_cart"]:active {
   background-color: #bbb;
   color: #efefef;
-}
-
-.mce-toolbar button {
-  text-transform: none;
-}
-
-.mce-toolbar button:hover,
-.mce-toolbar button:focus,
-.mce-toolbar button:active {
-  background-color: unset;
-  box-shadow: unset;
 }
 
 
@@ -4051,6 +4069,11 @@ a.greybutton:active,
   /*------------------------------
   HubSpot Forms Customizations
   ------------------------------*/
+
+  .member-logged-in .leadinModal.leadinModal-theme-top {
+    box-shadow: 0 .2rem .3rem rgba(0, 0, 0, 0.2);
+    top: 3.2rem;
+  }
 
   .hbspt-form fieldset {
     margin-bottom: .75em !important;
@@ -4557,6 +4580,111 @@ body.woocommerce-account {
 body.woocommerce-cart .actions button  {
   margin-bottom: 0;
 }
+
+
+/*------------------------------
+LearnDash
+------------------------------*/
+
+.post-type-archive-sfwd-courses #courses-list {
+  display: grid;
+  grid-template-columns: repeat( 2, 1fr );
+  grid-gap: 1rem;
+}
+
+  .post-type-archive-sfwd-courses #courses-list .card {
+    margin: 0;
+  }
+
+  .post-type-archive-sfwd-courses #courses-list .card h2 {
+    margin-bottom: 0;
+  }
+
+.ld-course-list-items .ld_course_grid .thumbnail.course {
+  border: 0;
+}
+
+  .ld-course-list-items .ld_course_grid .thumbnail .ld_course_grid_price.free {
+    display: none;
+  }
+
+  .ld-course-list-items .ld_course_grid .thumbnail .ld_course_grid_price.ribbon-enrolled {
+    background-color: #888 !important;
+    font-weight: normal !important;
+    text-transform: uppercase;
+  }
+
+  .ld-course-list-items .ld_course_grid .thumbnail .ld_course_grid_price.ribbon-enrolled::before {
+    border-top-color: #666 !important;
+    border-right-color: #666 !important;
+  }
+
+  .ld-course-list-items .ld_course_grid .thumbnail img {
+    margin: 0;
+  }
+
+  .ld-course-list-items .ld_course_grid .thumbnail .caption {
+    padding: 2rem !important;
+  }
+
+.learndash-course #learndash_course_status,
+.learndash-topic .learndash_topic_dots {
+  color: #444;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+}
+
+.learndash-course #learndash_course_content_title {
+  margin-bottom: .5em;
+}
+
+.learndash-course #lesson_heading,
+.learndash-lesson #learndash_lesson_topics_list strong:first-of-type {
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.learndash-course #learndash_lessons,
+.learndash-course #learndash_lessons h4,
+.learndash-course #learndash_lessons a,
+.learndash-lesson #learndash_lesson_topics_list .topic_item a,
+.learndash-lesson #learndash_lesson_topics_list .topic_item a > span {
+  color: unset;
+  font-family: unset;
+  font-size: 2rem;
+}
+
+#learndash_upload_assignment {
+  margin-bottom: 4rem;
+}
+
+  #learndash_upload_assignment td {
+    border: 0;
+  }
+
+#learndash_next_prev_link {
+  display: grid;
+  grid-gap: 2rem;
+  grid-template-columns: repeat( 2, 1fr );
+}
+
+  #learndash_next_prev_link a {
+    float: unset;
+  }
+
+    #learndash_next_prev_link a:hover .meta-nav {
+      text-decoration: none;
+    }
+
+  #learndash_next_prev_link .prev-link {
+    grid-column: 1/1;
+  }
+
+  #learndash_next_prev_link .next-link {
+    grid-column: 2/2;
+    text-align: right;
+  }
 
 
 /*------------------------------

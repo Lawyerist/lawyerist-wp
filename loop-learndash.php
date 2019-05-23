@@ -34,13 +34,6 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
       the_content();
 
-      // Byline
-      if ( !is_really_a_woocommerce_page() ) {
-        get_template_part( 'postmeta', 'page' );
-      }
-
-      echo '<div class="clear"></div>';
-
       // Show page navigation if the post is paginated unless we're displaying
       // the RSS feed.
       if ( !is_feed() ) {
@@ -61,9 +54,6 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
       }
 
     echo '</div>'; // Close .post_body.
-
-    lawyerist_get_related_podcasts();
-    lawyerist_get_related_posts();
 
   echo '</div>'; // Close .post.
 

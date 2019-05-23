@@ -10,7 +10,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
   // This is the post container.
   echo '<div ';
-  post_class( 'hentry' );
+  post_class();
   echo '>';
 
     echo '<div class="headline_postmeta">';
@@ -39,7 +39,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
     // Shows featured image if (1) this isn't a blog post AND (2) this post
     // has a featured image AND (3) it is the first page of the post AND (4) the
     // post DOES NOT have the no-image tag.
-    if ( !has_category( 'blog-posts' ) && has_post_thumbnail() && !has_tag('no-image') ) { the_post_thumbnail('standard_thumbnail'); }
+    if ( ( !has_category( 'blog-posts' ) || has_term( true, 'sponsor' ) ) && has_post_thumbnail() && !has_tag( 'no-image' ) ) { the_post_thumbnail( 'standard_thumbnail' ); }
 
     // Output the post.
     echo '<div class="post_body" itemprop="articleBody">';
