@@ -30,6 +30,10 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
       yoast_breadcrumb( '<div class="breadcrumbs">', '</div>' );
     }
 
+    if ( function_exists( 'affinity_notice' ) ) {
+      echo affinity_notice();
+    }
+
     // Headline Container
     echo '<div class="headline_container">';
 
@@ -80,8 +84,6 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
       // Trial button
       if ( !empty( $trial_button ) ) {
         echo '<p align="center">' . $trial_button . '</p>';
-      } elseif ( function_exists( 'lawyerist_affinity_partner_button' ) ) {
-        lawyerist_affinity_partner_button();
       }
 
       if ( is_product_portal() ) {

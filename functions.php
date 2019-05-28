@@ -31,7 +31,7 @@ CONTENT
 - List Child Pages Fallback
 - Current Posts Widget
 - Ads
-- Affinity Partner Claims
+- Affinity Partner Product Pages
 - Mobile Ads
 - Add Image Sizes
 - Remove Inline Width from Image Captions
@@ -1044,70 +1044,60 @@ function lawyerist_get_display_ad() { ?>
 
 
 /*------------------------------
-Affinity Partner Claims
+Affinity Partner Product Pages
 ------------------------------*/
 
-function affinity_claim() {
+function affinity_notice() {
 
 	global $post;
 
-	if ( is_user_logged_in() ) {
+	if ( has_term( array( 'affinity-partner', 'premier-partner' ), 'page_type', $post->ID ) && get_field( 'affinity_active' ) == true ) {
 
-    $user_id = get_current_user_id();
+		ob_start();
 
-    if ( wc_memberships_is_user_active_member( $user_id, 'insider-plus' ) || wc_memberships_is_user_active_member( $user_id, 'lab' ) || wc_memberships_is_user_active_member( $user_id, 'lab-pro' ) ) {
+			echo '<div class="card">';
 
-			$workflow						= get_field( 'affinity_workflow' );
-			$discount_descr			= get_field( 'affinity_discount_descr' );
+				$user_id		= get_current_user_id();
+				$page_title	= the_title( '', '', FALSE );
 
-			if ( $workflow = 'warm_handoff' ) {
+				if ( wc_memberships_is_user_active_member( $user_id, 'insider-plus' ) || wc_memberships_is_user_active_member( $user_id, 'lab' ) || wc_memberships_is_user_active_member( $user_id, 'lab-pro' ) ) {
 
-			} elseif ( $workflow = 'coupon_code' ) {
+					$workflow				= get_field( 'affinity_workflow' );
+					$discount_descr	= get_field( 'affinity_discount_descr' );
+					$claim_form			= gravity_form( 53, false, false, false, '', true, 100, false );
 
-				$claim_url	= get_field( 'affinity_claim_url' );
-				$claim_code	= get_field( 'affinity_claim_code' );
+					/*
+					if ( $workflow = 'warm_handoff' ) {
 
-			} elseif ( $workflow = 'url_only' ) {
+					} elseif ( $workflow = 'coupon_code' ) {
 
-				$claim_url	= get_field( 'affinity_claim_url' );
+						$claim_url	= get_field( 'affinity_claim_url' );
+						$claim_code	= get_field( 'affinity_claim_code' );
 
-			}
+					} elseif ( $workflow = 'url_only' ) {
 
-    }
+						$claim_url	= get_field( 'affinity_claim_url' );
 
-  }
+					}
+					*/
 
-}
+					$affinity_notice = 'Discount available: ' $discount_descr . '<span class="button expandthis-click">Claim Your Discount</span>';
 
+					$affinity_notice .= '<div class="expandthis-hide"></div>';
 
-function lawyerist_affinity_partner_button() {
+				} else {
 
-	global $post;
+					$affinity_notice = $page_title . ' offers a discount to Insider Plus and Lab members. <a href="https://lawyerist.com/community/">Learn more about membership.</a>';
 
-	if ( is_user_logged_in() ) {
-
-    $user_id = get_current_user_id();
-
-    if ( wc_memberships_is_user_active_member( $user_id, 'insider-plus' ) || wc_memberships_is_user_active_member( $user_id, 'lab' ) || wc_memberships_is_user_active_member( $user_id, 'lab-pro' ) ) {
-
-			$current_slug = $post->post_name;
-			$parent_data	= get_post( $post->post_parent );
-			$parent_slug	= $parent_data->post_name;
-
-			if ( !empty( $current_slug ) ) {
-
-				// Assembles the path.
-				$partner_path = 'affinity-benefits/claim/' . $parent_slug . '/' . $current_slug;
-
-				if ( get_page_by_path( $partner_path ) ) {
-						echo '<a href="https://lawyerist.com/' . $partner_path . '/" class="affinity-partner-link" rel="nofollow">Claim Your Discount</a>';
 				}
 
-			}
+			echo '</div>';
 
-    }
+		$affinity_notice = ob_get_clean();
 
-  }
+		return $affinity_notice;
+
+	}
 
 }
 
