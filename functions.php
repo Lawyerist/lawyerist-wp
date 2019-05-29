@@ -1051,7 +1051,7 @@ function affinity_notice() {
 
 	global $post;
 
-	if ( has_term( array( 'affinity-partner', 'premier-partner' ), 'page_type', $post->ID ) && get_field( 'affinity_active' ) == true ) {
+	if ( has_term( 'affinity-partner', 'page_type', $post->ID ) && get_field( 'affinity_active' ) == true ) {
 
 		$user_id		= get_current_user_id();
 
