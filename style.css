@@ -3073,7 +3073,6 @@ Content
         height: 11rem;
         position: absolute;
           top: 2rem;
-          bottom: 0;
         width: 11rem;
       }
 
@@ -3093,6 +3092,7 @@ Content
 
       .product-pages-list .title_container {
         margin: 0 0 2rem 12.5rem;
+        position: relative;
       }
 
         .product-pages-list .title {
@@ -4428,7 +4428,7 @@ WooCommerce
   box-shadow: .1rem .1rem .3rem rgba(0, 0, 0, 0.2);
   font-weight: normal;
   font-size: 1.4rem;
-  left: 3rem !important;
+    left: 3rem !important;
   line-height: 1.2;
   margin: 0 !important;
   min-height: unset;
@@ -4502,11 +4502,6 @@ a.cart-in-header {
 
 
 /* WooCommerce Product Lists */
-
-.woocommerce ul.products li.product span.onsale {
-  box-shadow: none;
-  left: 0 !important;
-}
 
 .woocommerce ul.products li.product a img {
   margin-bottom: 1.5rem;
