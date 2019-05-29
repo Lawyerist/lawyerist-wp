@@ -582,6 +582,7 @@ th,
   font-family: concourse-headings, sans-serif;
 }
 
+.affinity-partner-discount,
 .affinity-partner-link,
 aside blockquote,
 .breadcrumbs,
@@ -3088,7 +3089,17 @@ Content
         width: 11rem;
       }
 
-        .product-pages-list img {
+        .product-pages-list img.affinity-partner-badge {
+          height: 5.1rem;
+          position: absolute;
+            top: -1.5rem;
+            left: -1.5rem;
+          transform: rotate( -.015turn );
+          width: 6rem;
+          z-index: 10;
+        }
+
+        .product-pages-list img.wp-post-image {
           background-color: #ddd;
           border: .2rem;
           box-sizing: content-box;
@@ -3112,7 +3123,7 @@ Content
           font-size: 2.4rem;
           line-height: 1.2;
           margin-bottom: .33em;
-          padding: 0 2rem 0 0;
+          padding: 0;
         }
 
         .product-pages-list a.title {
@@ -3141,7 +3152,7 @@ Content
         width: 16rem;
       }
 
-        .featured-products-list .image img {
+        .featured-products-list .image img.wp-post-image {
           width: 15rem;
         }
 
