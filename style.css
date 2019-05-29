@@ -1356,6 +1356,13 @@ Selectors
     margin-bottom: 0 !important;
   }
 
+  .card.affinity-discount-card {
+    background: url( 'https://lawyerist.com/lawyerist/wp-content/uploads/2019/01/affinity-partner-badge-150x150.png' ) left 1rem center no-repeat;
+    margin-bottom: 4rem;
+    min-height: 11rem;
+    padding: 2rem 2rem 2rem 19rem;
+  }
+
   .card.front_page_sticky_post,
   .card.has-card-label,
   .card.has-avatar-thumbnail,

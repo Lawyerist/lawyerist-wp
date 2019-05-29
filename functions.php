@@ -1053,43 +1053,24 @@ function affinity_notice() {
 
 	if ( has_term( array( 'affinity-partner', 'premier-partner' ), 'page_type', $post->ID ) && get_field( 'affinity_active' ) == true ) {
 
+		$user_id		= get_current_user_id();
+		$page_title	= the_title( '', '', FALSE );
+
 		ob_start();
 
-			echo '<div class="card">';
+			echo '<div class="card affinity-discount-card">';
 
-				$user_id		= get_current_user_id();
-				$page_title	= the_title( '', '', FALSE );
+				echo '<p class="card-label">Discount Available!</p>';
 
 				if ( wc_memberships_is_user_active_member( $user_id, 'insider-plus' ) || wc_memberships_is_user_active_member( $user_id, 'lab' ) || wc_memberships_is_user_active_member( $user_id, 'lab-pro' ) ) {
 
-					$workflow				= get_field( 'affinity_workflow' );
 					$discount_descr	= get_field( 'affinity_discount_descr' );
-					$claim_form			= gravity_form( 53, false, false, false, '', true, 100, false );
 
-					/*
-					if ( $workflow = 'warm_handoff' ) {
-
-					} elseif ( $workflow = 'coupon_code' ) {
-
-						$claim_url	= get_field( 'affinity_claim_url' );
-						$claim_code	= get_field( 'affinity_claim_code' );
-
-					} elseif ( $workflow = 'url_only' ) {
-
-						$claim_url	= get_field( 'affinity_claim_url' );
-
-					}
-					*/
-
-					$affinity_notice = 'Discount available: ' $discount_descr . '<span class="button expandthis-click">Claim Your Discount</span>';
-
-					$affinity_notice .= '<div class="expandthis-hide"></div>';
-
-				} else {
-
-					$affinity_notice = $page_title . ' offers a discount to Insider Plus and Lab members. <a href="https://lawyerist.com/community/">Learn more about membership.</a>';
+					echo '<p>' . $discount_descr . '</p>';
 
 				}
+
+				echo '<div class="clear"></div>';
 
 			echo '</div>';
 
