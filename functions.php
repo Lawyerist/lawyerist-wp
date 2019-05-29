@@ -1054,19 +1054,50 @@ function affinity_notice() {
 	if ( has_term( array( 'affinity-partner', 'premier-partner' ), 'page_type', $post->ID ) && get_field( 'affinity_active' ) == true ) {
 
 		$user_id		= get_current_user_id();
-		$page_title	= the_title( '', '', FALSE );
 
 		ob_start();
 
 			echo '<div class="card affinity-discount-card">';
 
-				echo '<p class="card-label">Discount Available!</p>';
+				echo '<img alt="Lawyerist affinity partner badge." src="https://lawyerist.com/lawyerist/wp-content/uploads/2019/05/affinity-partner-badge-trimmed.png" height="128" width="150" />';
+
+				echo '<p class="card-label">Discount Available</p>';
 
 				if ( wc_memberships_is_user_active_member( $user_id, 'insider-plus' ) || wc_memberships_is_user_active_member( $user_id, 'lab' ) || wc_memberships_is_user_active_member( $user_id, 'lab-pro' ) ) {
 
 					$discount_descr	= get_field( 'affinity_discount_descr' );
+					$availability		= get_field( 'affinity_availability' );
 
-					echo '<p>' . $discount_descr . '</p>';
+					switch ( $availability ) {
+
+			      case $availability == 'new_only':
+
+							$whom = 'new customers only';
+			        break;
+
+			      case $availability == 'old_only':
+
+			        $whom = 'existing customers only';
+			        break;
+
+						case $availability == 'both_new_and_old':
+
+							$whom = 'both new and existing customers';
+							break;
+
+			    }
+
+					echo '<p>' . $discount_descr . ' Available to ' . $whom . '.</p>';
+
+					echo '<button class="button expandthis-click">Claim Your Discount</button>';
+
+					echo '<div class="expandthis-hide">';
+
+						echo '<p>Please confirm the information below so we can help you claim your benefit!</p>';
+
+						echo do_shortcode( '[gravityform id="53" title="false" description="false" ajax="true"]' );
+
+					echo '</div>';
 
 				}
 
@@ -1431,54 +1462,30 @@ function lawyerist_star_rating( $rating = '' ) {
 /* GRAVITY FORMS **************/
 
 /*------------------------------
-Auto-Populate Form Fields
+Populate Form Fields
 ------------------------------*/
 
-function populate_first_name_field( $value ){
+function populate_fields( $value, $field, $name ) {
 
-	if ( is_user_logged_in() ) {
+	$availability				= get_field( 'affinity_availability' );
+	$workflow						= get_field( 'affinity_workflow' );
+	$claim_url					= get_field( 'affinity_claim_url' );
+	$claim_code					= get_field( 'affinity_claim_code' );
+	$notification_email	= get_field( 'affinity_notification_email' );
 
-		$user_info = get_userdata( get_current_user_id() );
+  $values = array(
+		'affinity-availability'				=> $availability,
+    'affinity-workflow'						=> $workflow,
+		'affinity-claim-url'					=> $claim_url,
+		'affinity-claim-code'					=> $claim_code,
+    'affinity-notification-email'	=> $notification_email,
+  );
 
-		$first_name = $user_info->first_name;
-
-		return $first_name;
-
-	}
-
-}
-
-function populate_last_name_field( $value ){
-
-	if ( is_user_logged_in() ) {
-
-		$user_info = get_userdata( get_current_user_id() );
-
-		$last_name = $user_info->last_name;
-
-		return $last_name;
-
-	}
+  return isset( $values[ $name ] ) ? $values[ $name ] : $value;
 
 }
 
-function populate_email_field( $value ){
-
-	if ( is_user_logged_in() ) {
-
-		$user_info = get_userdata( get_current_user_id() );
-
-		$email = $user_info->user_email;
-
-		return $email;
-
-	}
-
-}
-
-add_filter( 'gform_field_value_first-name', 'populate_first_name_field' );
-add_filter( 'gform_field_value_last-name', 'populate_last_name_field' );
-add_filter( 'gform_field_value_email', 'populate_email_field' );
+add_filter( 'gform_field_value', 'populate_fields', 10, 3 );
 
 
 /* WOOCOMMERCE ****************/

@@ -30,9 +30,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
       yoast_breadcrumb( '<div class="breadcrumbs">', '</div>' );
     }
 
-    if ( function_exists( 'affinity_notice' ) ) {
-      echo affinity_notice();
-    }
+    echo affinity_notice();
 
     // Headline Container
     echo '<div class="headline_container">';
@@ -156,7 +154,10 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
       echo '<div class="clear"></div>';
 
-      echo '<p align="center">' . $trial_button . '</p>';
+      // Trial button
+      if ( !empty( $trial_button ) ) {
+        echo '<p align="center">' . $trial_button . '</p>';
+      }
 
       // Byline
       get_template_part( 'postmeta', 'page' );
