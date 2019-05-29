@@ -1385,13 +1385,25 @@ Selectors
         padding-top: 2rem;
       }
 
-      .card.affinity-discount-card .gform_wrapper {
+      .card.affinity-discount-card .gform_wrapper,
+      .card.affinity-discount-card .gform_confirmation_message {
         background: none;
         border: 0;
         box-shadow: none;
         margin: 0 !important;
         padding: 0;
       }
+
+        .card.affinity-discount-card .gform_confirmation_message a,
+        .card.affinity-discount-card .gform_confirmation_message a:visited {
+          color: #cc0000;
+        }
+
+        .card.affinity-discount-card .gform_confirmation_message a:hover,
+        .card.affinity-discount-card .gform_confirmation_message a:focus {
+        	color: #aa0000;
+        	text-decoration: underline;
+        }
 
   .card.front_page_sticky_post,
   .card.has-card-label,

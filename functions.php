@@ -1093,9 +1093,7 @@ function affinity_notice() {
 
 					echo '<div class="expandthis-hide">';
 
-						echo '<p>Please confirm the information below so we can help you claim your benefit!</p>';
-
-						echo do_shortcode( '[gravityform id="53" title="false" description="false" ajax="true"]' );
+						echo do_shortcode( '[gravityform id="55" title="false" ajax="true"]' );
 
 					echo '</div>';
 
