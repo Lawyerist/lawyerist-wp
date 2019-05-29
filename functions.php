@@ -1053,7 +1053,7 @@ function affinity_notice() {
 
 	if ( has_term( 'affinity-partner', 'page_type', $post->ID ) && get_field( 'affinity_active' ) == true ) {
 
-		$user_id		= get_current_user_id();
+		$user_id = get_current_user_id();
 
 		ob_start();
 
@@ -1096,6 +1096,32 @@ function affinity_notice() {
 						echo do_shortcode( '[gravityform id="55" title="false" ajax="true"]' );
 
 					echo '</div>';
+
+				} else {
+
+					$post_title			= the_title( '', '', FALSE );
+					$availability		= get_field( 'affinity_availability' );
+
+					switch ( $availability ) {
+
+			      case $availability == 'new_only':
+
+							$whom = 'new customers';
+			        break;
+
+			      case $availability == 'old_only':
+
+			        $whom = 'existing customers';
+			        break;
+
+						case $availability == 'both_new_and_old':
+
+							$whom = 'new and existing customers';
+							break;
+
+			    }
+
+					echo '<p>' . $post_title . ' offers a discount to ' . $whom . ' through our Affinity Partner Program. The details of this discount are only available to members. <a href="https://lawyerist.com/affinity-benefits/">Learn more about affinity benefits.</p>';
 
 				}
 
@@ -1459,20 +1485,53 @@ function lawyerist_star_rating( $rating = '' ) {
 
 /* GRAVITY FORMS **************/
 
+/* Enable CC Field on Form Notifications. */
+
+function gf_enable_cc( $enable, $notification, $form ){
+  return true;
+}
+
+add_filter( 'gform_notification_enable_cc', 'gf_enable_cc', 10, 3 );
+
 /*------------------------------
 Populate Form Fields
 ------------------------------*/
 
 function populate_fields( $value, $field, $name ) {
 
+	global $post;
+
+	$post_title	= the_title( '', '', FALSE );
+
+	$discount_descr			= get_field( 'affinity_discount_descr' );
 	$availability				= get_field( 'affinity_availability' );
 	$workflow						= get_field( 'affinity_workflow' );
 	$claim_url					= get_field( 'affinity_claim_url' );
 	$claim_code					= get_field( 'affinity_claim_code' );
 	$notification_email	= get_field( 'affinity_notification_email' );
 
+	switch ( $availability ) {
+
+		case $availability == 'new_only':
+
+			$whom = 'new ' . $post_title . ' customers only';
+			break;
+
+		case $availability == 'old_only':
+
+			$whom = 'existing ' . $post_title . ' customers only';
+			break;
+
+		case $availability == 'both_new_and_old':
+
+			$whom = 'both new and existing ' . $post_title . ' customers';
+			break;
+
+	}
+
   $values = array(
-		'affinity-availability'				=> $availability,
+		'affinity-discount'						=> $discount_descr,
+		'affinity-availability'				=> $whom,
     'affinity-workflow'						=> $workflow,
 		'affinity-claim-url'					=> $claim_url,
 		'affinity-claim-code'					=> $claim_code,
