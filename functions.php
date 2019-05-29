@@ -1053,8 +1053,6 @@ function affinity_notice() {
 
 	if ( has_term( 'affinity-partner', 'page_type', $post->ID ) && get_field( 'affinity_active' ) == true ) {
 
-		$user_id = get_current_user_id();
-
 		ob_start();
 
 			echo '<div class="card affinity-discount-card">';
@@ -1062,6 +1060,8 @@ function affinity_notice() {
 				echo '<img alt="Lawyerist affinity partner badge." src="https://lawyerist.com/lawyerist/wp-content/uploads/2019/05/affinity-partner-badge-trimmed.png" height="128" width="150" />';
 
 				echo '<p class="card-label">Discount Available</p>';
+
+				$user_id = get_current_user_id();
 
 				if ( wc_memberships_is_user_active_member( $user_id, 'insider-plus' ) || wc_memberships_is_user_active_member( $user_id, 'lab' ) || wc_memberships_is_user_active_member( $user_id, 'lab-pro' ) ) {
 
@@ -1121,7 +1121,7 @@ function affinity_notice() {
 
 			    }
 
-					echo '<p>' . $post_title . ' offers a discount to ' . $whom . ' through our Affinity Partner Program. The details of this discount are only available to members. <a href="https://lawyerist.com/affinity-benefits/">Learn more about affinity benefits.</p>';
+					echo '<p>' . $post_title . ' offers a discount to ' . $whom . ' through our Affinity Benefits program. The details of this discount are only available to members. <a href="https://lawyerist.com/affinity-benefits/">Learn more about the Affinity Benefits program.</p>';
 
 				}
 
