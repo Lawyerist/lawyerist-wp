@@ -3094,12 +3094,12 @@ Content
       }
 
         .product-pages-list img.affinity-partner-badge {
-          height: 5.1rem;
+          height: auto;
           position: absolute;
             top: -1.5rem;
             left: -1.5rem;
           transform: rotate( -.015turn );
-          width: 6rem;
+          width: 5rem;
           z-index: 10;
         }
 
