@@ -1406,11 +1406,15 @@ Selectors
         padding: 0;
       }
 
+        .card.affinity-discount-card p a,
+        .card.affinity-discount-card p a:visited,
         .card.affinity-discount-card .gform_confirmation_message a,
         .card.affinity-discount-card .gform_confirmation_message a:visited {
           color: #cc0000;
         }
 
+        .card.affinity-discount-card p a:hover,
+        .card.affinity-discount-card p a:focus,
         .card.affinity-discount-card .gform_confirmation_message a:hover,
         .card.affinity-discount-card .gform_confirmation_message a:focus {
         	color: #aa0000;

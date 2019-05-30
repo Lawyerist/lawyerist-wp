@@ -1121,7 +1121,7 @@ function affinity_notice() {
 
 			    }
 
-					echo '<p>' . $post_title . ' offers a discount to ' . $whom . ' through our Affinity Benefits program. The details of this discount are only available to members. <a href="https://lawyerist.com/affinity-benefits/">Learn more about the Affinity Benefits program.</p>';
+					echo '<p class="discount_descr">' . $post_title . ' offers a discount to ' . $whom . ' through our Affinity Benefits program. The details of this discount are only available to members. <a href="https://lawyerist.com/affinity-benefits/">Learn more about the Affinity Benefits program.</p>';
 
 				}
 
