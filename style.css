@@ -1382,7 +1382,8 @@ Selectors
           left: 2rem;
       }
 
-      .card.affinity-discount-card p {
+      .card.affinity-discount-card p.card-label,
+      .card.affinity-discount-card p.discount_descr {
         margin-left: 16.5rem;
       }
 

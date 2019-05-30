@@ -1087,7 +1087,7 @@ function affinity_notice() {
 
 			    }
 
-					echo '<p>' . $discount_descr . ' Available to ' . $whom . '.</p>';
+					echo '<p class="discount_descr">' . $discount_descr . ' Available to ' . $whom . '.</p>';
 
 					echo '<button class="button expandthis-click">Claim Your Discount</button>';
 
