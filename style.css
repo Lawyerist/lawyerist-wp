@@ -3187,6 +3187,11 @@ Content
           top: 1rem;
         }
 
+          .product-pages-list img.affinity-partner-badge {
+              top: -.5rem;
+              left: -.5rem;
+          }
+
           .product-pages-list .image img.wp-post-image {
             height: 7.5rem;
             width: 7.5rem;
