@@ -2043,7 +2043,7 @@ Content
   display: block;
   font-size: 1.6rem;
   line-height: 1.4;
-  margin-bottom: .5em;
+  margin-bottom: 2rem;
 }
 
   .breadcrumbs:before {
@@ -4492,7 +4492,7 @@ WooCommerce
 }
 
 .single-product .breadcrumbs {
-  margin-bottom: 1em;
+  margin-bottom: 2em;
 }
 
 /* WooCommerce Shopping Cart */
