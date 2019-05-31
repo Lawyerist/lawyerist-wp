@@ -1063,7 +1063,7 @@ function affinity_notice() {
 
 				$user_id = get_current_user_id();
 
-				if ( wc_memberships_is_user_active_member( $user_id, 'insider-plus' ) || wc_memberships_is_user_active_member( $user_id, 'lab' ) || wc_memberships_is_user_active_member( $user_id, 'lab-pro' ) ) {
+				if ( wc_memberships_is_user_active_member( $user_id, 'insider-plus-affinity' ) || wc_memberships_is_user_active_member( $user_id, 'lab' ) || wc_memberships_is_user_active_member( $user_id, 'lab-pro' ) ) {
 
 					$discount_descr	= get_field( 'affinity_discount_descr' );
 					$availability		= get_field( 'affinity_availability' );
