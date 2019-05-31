@@ -1375,7 +1375,6 @@ Selectors
   }
 
       .card.affinity-discount-card img {
-        float: left;
         margin: 0;
         position: absolute;
           top: 2rem;
@@ -1420,6 +1419,34 @@ Selectors
         	color: #aa0000;
         	text-decoration: underline;
         }
+
+    @media only screen and (max-width:549px) {
+
+      .card.affinity-discount-card img {
+        float: left;
+        margin: 0 1.5rem 1.5rem 0;
+        position: relative;
+          top: unset;
+          left: unset;
+        width: 10.59rem;
+      }
+
+      .card.affinity-discount-card p.card-label,
+      .card.affinity-discount-card p.discount_descr,
+      .card.affinity-discount-card button {
+        margin-left: 0;
+      }
+
+      .card.affinity-discount-card p.card-label {
+        font-size: 3rem;
+      }
+
+      .card.affinity-discount-card p.discount_descr {
+        clear: both;
+      }
+
+    }
+
 
   .card.front_page_sticky_post,
   .card.has-card-label,
