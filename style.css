@@ -3127,6 +3127,7 @@ Content
 
         .product-pages-list img.affinity-partner-badge {
           height: auto;
+          margin: 0;
           position: absolute;
             top: -1.5rem;
             left: -1.5rem;
@@ -3255,6 +3256,92 @@ Content
         }
 
       }
+
+  /* Modifies the [list-products] output on the all-reviews page. */
+  .page-id-301729 .product-pages-list {
+    display: grid;
+    grid-template-columns: repeat( 6, 1fr );
+    grid-gap: 1rem;
+  }
+
+    .page-id-301729 ul.product-pages-list li.card {
+      overflow: unset;
+      margin: 0;
+      padding: 0;
+    }
+
+      .page-id-301729 .product-pages-list .image {
+        margin: 0;
+        position: unset;
+          top: unset;
+          left: unset;
+        width: 100%;
+      }
+
+      .page-id-301729 .product-pages-list .image img.wp-post-image {
+        border: 0;
+        display: block;
+        height: auto;
+        padding: 0;
+        position: unset;
+        width: 100%;
+      }
+
+      .page-id-301729 .product-pages-list .image img.affinity-partner-badge {
+        top: -.5rem;
+        left: -.5rem;
+      }
+
+      .page-id-301729 .product-pages-list li.card .title_container {
+        margin: 0;
+        padding: 1rem;
+        position: unset;
+      }
+
+        .page-id-301729 .product-pages-list .title {
+          font-size: 2rem;
+        }
+
+        .page-id-301729 .product-pages-list .user-rating {
+          margin: 0;
+        }
+
+          .page-id-301729 .product-pages-list .lawyerist-star-rating,
+          .page-id-301729 .product-pages-list .review_count {
+            display: block;
+          }
+
+          .page-id-301729 .product-pages-list .review_count {
+            font-size: 1.2rem;
+          }
+
+    .page-id-301729 ul.product-pages-list li:first-child {
+      margin-top: 0;
+    }
+
+    @media only screen and (max-width:799px) {
+
+      .page-id-301729 .product-pages-list {
+        grid-template-columns: repeat( 4, 1fr );
+      }
+
+    }
+
+    @media only screen and (max-width:599px) {
+
+      .page-id-301729 .product-pages-list {
+        grid-template-columns: repeat( 3, 1fr );
+      }
+
+    }
+
+    @media only screen and (max-width:499px) {
+
+      .page-id-301729 .product-pages-list {
+        grid-template-columns: repeat( 2, 1fr );
+      }
+
+    }
 
   blockquote.testimonial {
     background-color: #fff;
