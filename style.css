@@ -1500,6 +1500,18 @@ Selectors
     font-size: 1.6rem;
   }
 
+    .card .excerpt a,
+    .card .excerpt a:visited {
+      color: #c00;
+      text-decoration: none;
+    }
+
+    .card .excerpt a:hover,
+    .card .excerpt a:focus{
+      color: #a00;
+      text-decoration: underline;
+    }
+
   .card .postmeta {
     font-size: 1.4rem;
     margin-bottom: .5rem;
@@ -1509,6 +1521,18 @@ Selectors
   .card p {
     margin-bottom: .75em;
   }
+
+    .card p a,
+    .card p a:visited {
+      color: #c00;
+      text-decoration: none;
+    }
+
+    .card p a:hover,
+    .card p a:focus{
+      color: #a00;
+      text-decoration: underline;
+    }
 
 
 /* Card label styles. */
