@@ -597,7 +597,6 @@ button,
 .comment-author,
 .comment-meta,
 .comment .reply,
-#current_posts,
 .product-page .headline_container .excerpt,
 .profile-page .headline_container .excerpt,
 figcaption,
@@ -1461,10 +1460,6 @@ Selectors
 
   /* Highlight colors. */
 
-  .card.download {
-    border-top: .7rem solid #ed9c28;
-  }
-
   .card.sponsored {
     border-top: .7rem solid #ffffc7;
   }
@@ -1522,14 +1517,14 @@ Selectors
     margin-bottom: .75em;
   }
 
-    .card p a,
-    .card p a:visited {
+    .card .excerpt a,
+    .card .excerpt a:visited {
       color: #c00;
       text-decoration: none;
     }
 
-    .card p a:hover,
-    .card p a:focus{
+    .card .excerpt a:hover,
+    .card .excerpt a:focus{
       color: #a00;
       text-decoration: underline;
     }
@@ -1550,7 +1545,8 @@ Selectors
     margin-top: 1rem;
   }
 
-  .card-label a {
+  .card-label a,
+  .card-label a:visited {
     color: #666;
   }
 
@@ -1597,50 +1593,6 @@ Selectors
     margin-left: 2rem;
     padding-left: 20%
   }
-
-.card.download .headline-excerpt {
-  padding: 6rem;
-}
-
-.card.download.has-card-label .headline-excerpt {
-  padding: 4rem;
-}
-
-  .card.download .headline {
-    font-size: 3.2rem;
-    margin-bottom: .5rem;
-  }
-
-  .home .card.download .headline,
-  .home .card.download .excerpt,
-  .home .card.download .postmeta,
-  .card.download.has-post-thumbnail .headline,
-  .card.download.has-post-thumbnail .excerpt,
-  .card.download.has-post-thumbnail .postmeta {
-    margin-left: 0;
-    padding-right: 28rem;
-  }
-
-  .card.download a.button {
-    margin-bottom: 0;
-  }
-
-@media only screen and ( max-width: 683px ) {
-
-  .card.download .headline-excerpt {
-    padding: 3rem;
-  }
-
-    .home .card.download .headline,
-    .home .card.download .excerpt,
-    .home .card.download .postmeta,
-    .card.download.has-post-thumbnail .headline,
-    .card.download.has-post-thumbnail .excerpt,
-    .card.download.has-post-thumbnail .postmeta {
-      padding: 0;
-    }
-
-}
 
 
 /* Post image styles. */
@@ -1694,23 +1646,6 @@ Selectors
   }
 
 
-.card.download .product-thumbnail {
-  float: right;
-  margin: 0;
-  transform: rotate( .015turn );
-  width: 25rem;
-}
-
-  @media only screen and ( max-width: 683px ) {
-
-    .card.download .product-thumbnail {
-      display: block;
-      float: none;
-      margin: 0 auto 3rem auto;
-    }
-
-  }
-
 /* Headline styles. */
 
 .card .headline {
@@ -1735,23 +1670,10 @@ Selectors
     font-size: 2.4rem !important;
   }
 
-  .card.download .headline {
-    margin-bottom: .75em;
-  }
-
 }
 
 
 /* Excerpt styles. */
-
-.card.download .excerpt {
-  margin-bottom: 1.5em;
-}
-
-.card.download a:hover .excerpt,
-.card.download a:focus .excerpt {
-  color: #111;
-}
 
 @media only screen and ( max-width: 683px ) {
 
@@ -2068,15 +1990,6 @@ p.dashboard-widget-note {
           margin: 0;
           width: 100%;
         }
-
-.home .download .headline-excerpt {
-  padding: 4rem;
-}
-
-  .home .download a:hover h2,
-  .home .download a:hover p {
-    color: unset !important;
-  }
 
 
 /*------------------------------
@@ -2680,85 +2593,6 @@ Content
           font-size: 2.4rem;
           margin-bottom: .5rem;
         }
-
-  #current_posts {
-    background-color: #fbfbfb;
-    border-radius: .2rem;
-    border-top: .7rem solid #c00;
-    box-shadow:
-      0 0 0 .1rem #ddd,
-      .1rem .1rem .3rem rgba(0, 0, 0, 0.2)
-    ;
-    display: block;
-    margin-bottom: 6rem;
-    padding: 2rem 0 0 2rem; /* Right padding and bottom margin are provided by #current_posts a. */
-    text-decoration: none;
-  }
-
-    .current_posts_heading > a {
-      color: #666;
-      display: block;
-      font-size: 1.4rem;
-      font-weight: bold;
-      line-height: 1.5;
-      margin-bottom: .75em;
-      text-transform: uppercase;
-    }
-
-    .current_posts_heading > a:before {
-      display: inline-block;
-      -moz-osx-font-smoothing: grayscale;
-      -webkit-font-smoothing: antialiased;
-      font: normal 1.4rem/1.5 Genericons;
-      margin-right: .25em;
-      speak: none;
-      vertical-align: top;
-    }
-
-    .current_posts_heading > a:before {
-      content: '\f409';
-    }
-
-    #current_posts a.current_post  {
-      box-sizing: border-box;
-      color: inherit;
-      display: inline-block;
-      float: left;
-      margin: 0 0 2rem 0;
-      padding-right: 2rem;
-      width: 25%;
-    }
-
-      /* 700px */
-      @media only screen and ( max-width:699px ) {
-
-        #current_posts a.current_post {
-          width: 50%;
-        }
-
-        #current_posts a.current_post:nth-child( even ) {
-          clear: left;
-        }
-
-      }
-
-      #current_posts a:hover,
-      #current_posts a:focus {
-        color: #a00;
-        text-decoration: none;
-      }
-
-    #current_posts .wp-post-image {
-      margin-bottom: 1rem;
-      width: 100%;
-    }
-
-    .current_post_title,
-    .discussion_title {
-      font-size: 1.8rem;
-      line-height: 1.2;
-      margin-bottom: .2rem;
-    }
 
 
   /*------------------------------
@@ -4905,7 +4739,6 @@ Print
   #lawyerist_ap1,
   .sharedaddy,
   #categories_tags,
-  #current_posts,
   #respond,
   #comments_container,
   #mobile_ad,
