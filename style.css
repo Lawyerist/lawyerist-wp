@@ -362,12 +362,14 @@ body {
             content: '\f405';
           }
 
-          /* The next two expand the Join the Lawyerist Community sub menu. */
-          #menu-main-menu #menu-item-270912.menu-item-has-children > a:after {
+          /* The next two expand specific sub menus. */
+          #menu-main-menu #menu-item-270912.menu-item-has-children > a:after,
+          #menu-main-menu #menu-item-305888.menu-item-has-children > a:after {
             content: '';
           }
 
-          #menu-main-menu #menu-item-270912.menu-item-has-children > .sub-menu {
+          #menu-main-menu #menu-item-270912.menu-item-has-children > .sub-menu,
+          #menu-main-menu #menu-item-305888.menu-item-has-children > .sub-menu {
             display: block !important;
           }
 
