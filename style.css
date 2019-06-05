@@ -3977,6 +3977,11 @@ a.review-btn:active,
   color: #ddd;
 }
 
+.wp-block-button.alignright a.wp-block-button__link,
+.wp-block-button.alignleft a.wp-block-button__link {
+  margin: 0;
+}
+
 button.dismiss-button {
   border-radius: 50%;
   height: 3rem;
