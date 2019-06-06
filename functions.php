@@ -30,7 +30,7 @@ CONTENT
 - Get Related Pages
 - List Child Pages Fallback
 - Ads
-- Affinity Partner Product Pages
+- Affinity Benefit Notice
 - Mobile Ads
 - Add Image Sizes
 - Remove Inline Width from Image Captions
@@ -896,7 +896,7 @@ function lawyerist_get_display_ad() { ?>
 
 
 /*------------------------------
-Affinity Partner Product Pages
+Affinity Benefit Notice
 ------------------------------*/
 
 function affinity_notice() {
