@@ -29,9 +29,8 @@ CONTENT
 - Get Related Posts
 - Get Related Pages
 - List Child Pages Fallback
-- Current Posts Widget
 - Ads
-- Affinity Partner Buttons
+- Affinity Benefit Notice
 - Mobile Ads
 - Add Image Sizes
 - Remove Inline Width from Image Captions
@@ -878,153 +877,6 @@ add_action( 'the_content', 'lawyerist_list_child_pages_fallback' );
 
 
 /*------------------------------
-Current Posts Widget
-------------------------------*/
-
-function lawyerist_current_posts( $this_post ) {
-
-	global $post;
-
-	$this_post[] = $post->ID;
-
-	echo '<div id="current_posts">';
-
-		echo '<div class="current_posts_heading"><a href="' . home_url() . '">What\'s New</a></div>';
-
-			// Outputs the most recent podcast episode.
-			$current_podcast_query_args = array(
-				'category_name'				=> 'lawyerist-podcast',
-				'post__not_in'				=> get_option( 'sticky_posts' ),
-				'posts_per_page'			=> 1,
-				'post__not_in'				=> $this_post,
-			);
-
-			$current_podcast_query = new WP_Query( $current_podcast_query_args );
-
-			if ( $current_podcast_query->have_posts() ) : while ( $current_podcast_query->have_posts() ) : $current_podcast_query->the_post();
-
-				$podcast_title	= the_title( '', '', FALSE );
-				$podcast_url		= get_permalink();
-
-				echo '<a href="' . $podcast_url . '" title="' . $podcast_title . '" class="current_post">';
-
-					echo '<img class="attachment-thumbnail wp-post-image" src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/02/lawyerist-ltn-podcast-logo-16x9-160x90.png" />';
-
-					echo '<p class="current_post_title">' . $podcast_title . '</p>';
-
-				echo '</a>';
-
-			endwhile; endif;
-			// End of podcast episode.
-
-			// Outputs the most recent download.
-			$download_query_args = array(
-				'post_type'						=> 'product',
-				'post__not_in'				=> get_option( 'sticky_posts' ),
-				'posts_per_page'			=> 1,
-				'post__not_in'				=> $this_post,
-				'tax_query'						=> array(
-					array(
-						'taxonomy' => 'product_visibility',
-						'field'    => 'name',
-						'terms'    => 'exclude-from-catalog',
-						'operator' => 'NOT IN',
-					),
-				),
-			);
-
-			$download_query = new WP_Query( $download_query_args );
-
-			if ( $download_query->have_posts() ) : while ( $download_query->have_posts() ) : $download_query->the_post();
-
-				$download_title	= the_title( '', '', FALSE );
-				$download_url		= get_permalink();
-
-				echo '<a href="' . $download_url . '" title="' . $download_title . '" class="current_post">';
-
-					if ( has_post_thumbnail() ) {
-						the_post_thumbnail( 'current_posts_thumbnail' );
-					} else {
-						echo '<img class="attachment-thumbnail wp-post-image" src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/02/current-posts-placeholder-160x90.png" />';
-					}
-
-					echo '<p class="current_post_title">' . $download_title . '</p>';
-
-				echo '</a>';
-
-			endwhile; endif;
-			// End of download.
-
-			// Outputs the most recent blog post.
-			$current_post_query_args = array(
-				'category_name'				=> 'blog-posts',
-				'post__not_in'				=> get_option( 'sticky_posts' ),
-				'posts_per_page'			=> 1,
-				'post__not_in'				=> $this_post,
-			);
-
-			$current_post_query = new WP_Query( $current_post_query_args );
-
-			if ( $current_post_query->have_posts() ) : while ( $current_post_query->have_posts() ) : $current_post_query->the_post();
-
-				$post_title	= the_title( '', '', FALSE );
-				$post_url		= get_permalink();
-
-				echo '<a href="' . $post_url . '" title="' . $post_title . '" class="current_post">';
-
-					if ( has_post_thumbnail() ) {
-						the_post_thumbnail( 'current_posts_thumbnail' );
-					} else {
-						echo '<img class="attachment-thumbnail wp-post-image" src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/02/current-posts-placeholder-160x90.png" />';
-					}
-
-					echo '<p class="current_post_title">' . $post_title . '</p>';
-
-				echo '</a>';
-
-			endwhile; endif;
-			// End of blog post.
-
-			// Outputs the most recent portal.
-			$current_post_query_args = array(
-				'post_parent'					=> 0,
-				'post_type'						=> 'page',
-				'posts_per_page'			=> 1,
-				'post__not_in'				=> $this_post,
-			);
-
-			$current_post_query = new WP_Query( $current_post_query_args );
-
-			if ( $current_post_query->have_posts() ) : while ( $current_post_query->have_posts() ) : $current_post_query->the_post();
-
-				$post_title	= the_title( '', '', FALSE );
-				$post_url		= get_permalink();
-
-				echo '<a href="' . $post_url . '" title="' . $post_title . '" class="current_post">';
-
-					if ( has_post_thumbnail() ) {
-						the_post_thumbnail( 'current_posts_thumbnail' );
-					} else {
-						echo '<img class="attachment-thumbnail wp-post-image" src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/02/current-posts-placeholder-160x90.png" />';
-					}
-
-					echo '<p class="current_post_title">' . $post_title . '</p>';
-
-				echo '</a>';
-
-			endwhile; endif;
-			// End of portal.
-
-		echo '<div class="clear"></div>';
-
-	echo '</div>'; // Close #current_posts.
-
-	wp_reset_postdata(); // Necessary because otherwise comments will not display.
-
-}
-
-
-/*------------------------------
 Ads
 ------------------------------*/
 
@@ -1044,37 +896,96 @@ function lawyerist_get_display_ad() { ?>
 
 
 /*------------------------------
-Affinity Partner Buttons
+Affinity Benefit Notice
 ------------------------------*/
 
-function lawyerist_affinity_partner_button() {
+function affinity_notice() {
 
 	global $post;
 
-	if ( is_user_logged_in() ) {
+	if ( has_term( 'affinity-partner', 'page_type', $post->ID ) && get_field( 'affinity_active' ) == true ) {
 
-    $user_id = get_current_user_id();
+		ob_start();
 
-    if ( wc_memberships_is_user_active_member( $user_id, 'insider-plus' ) || wc_memberships_is_user_active_member( $user_id, 'lab' ) || wc_memberships_is_user_active_member( $user_id, 'lab-pro' ) ) {
+			echo '<div class="card affinity-discount-card">';
 
-			$current_slug = $post->post_name;
-			$parent_data	= get_post( $post->post_parent );
-			$parent_slug	= $parent_data->post_name;
+				echo '<img alt="Lawyerist affinity partner badge." src="https://lawyerist.com/lawyerist/wp-content/uploads/2019/05/affinity-partner-badge-trimmed.png" height="128" width="150" />';
 
-			if ( !empty( $current_slug ) ) {
+				echo '<p class="card-label">Discount Available</p>';
 
-				// Assembles the path.
-				$partner_path = 'affinity-benefits/claim/' . $parent_slug . '/' . $current_slug;
+				$user_id = get_current_user_id();
 
-				if ( get_page_by_path( $partner_path ) ) {
-						echo '<a href="https://lawyerist.com/' . $partner_path . '/" class="affinity-partner-link" rel="nofollow">Claim Your Discount</a>';
+				if ( wc_memberships_is_user_active_member( $user_id, 'insider-plus-affinity' ) || wc_memberships_is_user_active_member( $user_id, 'lab' ) || wc_memberships_is_user_active_member( $user_id, 'lab-pro' ) ) {
+
+					$discount_descr	= get_field( 'affinity_discount_descr' );
+					$availability		= get_field( 'affinity_availability' );
+
+					switch ( $availability ) {
+
+			      case $availability == 'new_only':
+
+							$whom = 'new customers only';
+			        break;
+
+			      case $availability == 'old_only':
+
+			        $whom = 'existing customers only';
+			        break;
+
+						case $availability == 'both_new_and_old':
+
+							$whom = 'both new and existing customers';
+							break;
+
+			    }
+
+					echo '<p class="discount_descr">' . $discount_descr . ' Available to ' . $whom . '.</p>';
+
+					echo '<button class="button expandthis-click">Claim Your Discount</button>';
+
+					echo '<div class="expandthis-hide">';
+
+						echo do_shortcode( '[gravityform id="55" title="false" ajax="true"]' );
+
+					echo '</div>';
+
+				} else {
+
+					$post_title			= the_title( '', '', FALSE );
+					$availability		= get_field( 'affinity_availability' );
+
+					switch ( $availability ) {
+
+			      case $availability == 'new_only':
+
+							$whom = 'new customers';
+			        break;
+
+			      case $availability == 'old_only':
+
+			        $whom = 'existing customers';
+			        break;
+
+						case $availability == 'both_new_and_old':
+
+							$whom = 'new and existing customers';
+							break;
+
+			    }
+
+					echo '<p class="discount_descr">' . $post_title . ' offers a discount to ' . $whom . ' through our Affinity Benefits program. The details of this discount are only available to members. <a href="https://lawyerist.com/affinity-benefits/">Learn more about the Affinity Benefits program</a> or <a href="https://lawyerist.com/account/">log in</a> if you are a member of Insider Plus or Lab.</p>';
+
 				}
 
-			}
+				echo '<div class="clear"></div>';
 
-    }
+			echo '</div>';
 
-  }
+		$affinity_notice = ob_get_clean();
+
+		return $affinity_notice;
+
+	}
 
 }
 
@@ -1426,55 +1337,64 @@ function lawyerist_star_rating( $rating = '' ) {
 
 /* GRAVITY FORMS **************/
 
+/* Enable CC Field on Form Notifications. */
+
+function gf_enable_cc( $enable, $notification, $form ){
+  return true;
+}
+
+add_filter( 'gform_notification_enable_cc', 'gf_enable_cc', 10, 3 );
+
 /*------------------------------
-Auto-Populate Form Fields
+Populate Form Fields
 ------------------------------*/
 
-function populate_first_name_field( $value ){
+function populate_fields( $value, $field, $name ) {
 
-	if ( is_user_logged_in() ) {
+	global $post;
 
-		$user_info = get_userdata( get_current_user_id() );
+	$post_title	= the_title( '', '', FALSE );
 
-		$first_name = $user_info->first_name;
+	$discount_descr			= get_field( 'affinity_discount_descr' );
+	$availability				= get_field( 'affinity_availability' );
+	$workflow						= get_field( 'affinity_workflow' );
+	$claim_url					= get_field( 'affinity_claim_url' );
+	$claim_code					= get_field( 'affinity_claim_code' );
+	$notification_email	= get_field( 'affinity_notification_email' );
 
-		return $first_name;
+	switch ( $availability ) {
 
-	}
+		case $availability == 'new_only':
 
-}
+			$whom = 'new ' . $post_title . ' customers only';
+			break;
 
-function populate_last_name_field( $value ){
+		case $availability == 'old_only':
 
-	if ( is_user_logged_in() ) {
+			$whom = 'existing ' . $post_title . ' customers only';
+			break;
 
-		$user_info = get_userdata( get_current_user_id() );
+		case $availability == 'both_new_and_old':
 
-		$last_name = $user_info->last_name;
-
-		return $last_name;
-
-	}
-
-}
-
-function populate_email_field( $value ){
-
-	if ( is_user_logged_in() ) {
-
-		$user_info = get_userdata( get_current_user_id() );
-
-		$email = $user_info->user_email;
-
-		return $email;
+			$whom = 'both new and existing ' . $post_title . ' customers';
+			break;
 
 	}
 
+  $values = array(
+		'affinity-discount'						=> $discount_descr,
+		'affinity-availability'				=> $whom,
+    'affinity-workflow'						=> $workflow,
+		'affinity-claim-url'					=> $claim_url,
+		'affinity-claim-code'					=> $claim_code,
+    'affinity-notification-email'	=> $notification_email,
+  );
+
+  return isset( $values[ $name ] ) ? $values[ $name ] : $value;
+
 }
 
-add_filter( 'gform_field_value_first-name', 'populate_first_name_field' );
-add_filter( 'gform_field_value_last-name', 'populate_last_name_field' );
-add_filter( 'gform_field_value_email', 'populate_email_field' );
+add_filter( 'gform_field_value', 'populate_fields', 10, 3 );
 
 
 /* WOOCOMMERCE ****************/

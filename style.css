@@ -33,7 +33,7 @@ Content
   Tables
   Resource Pages
   Product Pages
-  Affinity Pages
+  All-Reviews Page
   Team Profiles
   Labster Directory
   Full Width Template
@@ -362,12 +362,14 @@ body {
             content: '\f405';
           }
 
-          /* The next two expand the Join the Lawyerist Community sub menu. */
-          #menu-main-menu #menu-item-270912.menu-item-has-children > a:after {
+          /* The next two expand specific sub menus. */
+          #menu-main-menu #menu-item-270912.menu-item-has-children > a:after,
+          #menu-main-menu #menu-item-305888.menu-item-has-children > a:after {
             content: '';
           }
 
-          #menu-main-menu #menu-item-270912.menu-item-has-children > .sub-menu {
+          #menu-main-menu #menu-item-270912.menu-item-has-children > .sub-menu,
+          #menu-main-menu #menu-item-305888.menu-item-has-children > .sub-menu {
             display: block !important;
           }
 
@@ -582,6 +584,7 @@ th,
   font-family: concourse-headings, sans-serif;
 }
 
+.affinity-partner-discount,
 .affinity-partner-link,
 aside blockquote,
 .breadcrumbs,
@@ -596,7 +599,6 @@ button,
 .comment-author,
 .comment-meta,
 .comment .reply,
-#current_posts,
 .product-page .headline_container .excerpt,
 .profile-page .headline_container .excerpt,
 figcaption,
@@ -848,7 +850,7 @@ p:empty {
 }
 
 p.note {
-	background-color: #f5f5f5;
+	background-color: #f9f9f9;
   border: .1rem solid #ddd;
   border-radius: .2rem;
   box-shadow:
@@ -872,7 +874,7 @@ p.alert {
 }
 
 p.pullout {
-  background-color: #fbfbfb;
+  background-color: #f9f9f9;
   border: .1rem solid #ddd;
   border-radius: .2rem;
   box-shadow:
@@ -1302,8 +1304,18 @@ Expander
     width: 1.2em;
   }
 
-  .card  .expandthis-click.open::after {
+  .card .expandthis-click.open::after {
     content: '\f405';
+  }
+
+  .card .button.expandthis-click::after,
+  .card button.expandthis-click::after {
+    display: none;
+  }
+
+  .card .button.expandthis-click.open,
+  .card button.expandthis-click.open {
+    background: #ddd;
   }
 
   .card .expandthis-click:nth-last-child(2) {
@@ -1333,6 +1345,7 @@ Selectors
 .card,
 .ld-course-list-items .ld_course_grid .thumbnail.course,
 #sponsored_product_updates {
+  background-color: #f9f9f9;
   border-radius: .2rem;
   box-shadow:
     0 0 0 .1rem #ddd,
@@ -1343,9 +1356,10 @@ Selectors
   text-decoration: none;
 }
 
-  .index .card {
+  .index .card,
+  .archive .card,
+  .search-results .card {
     background-color: #fff;
-    padding: 2rem;
   }
 
   .card.has-post-thumbnail {
@@ -1355,6 +1369,87 @@ Selectors
   .card > *:last-child {
     margin-bottom: 0 !important;
   }
+
+  .card.affinity-discount-card {
+    margin: 2rem 0 3rem 0;
+    min-height: 12.8rem;
+    padding: 2rem;
+    position: relative;
+  }
+
+      .card.affinity-discount-card img {
+        margin: 0;
+        position: absolute;
+          top: 2rem;
+          left: 2rem;
+      }
+
+      .card.affinity-discount-card p.card-label,
+      .card.affinity-discount-card p.discount_descr {
+        margin-left: 16.5rem;
+      }
+
+      .card.affinity-discount-card button {
+        margin: 0 0 0 16.5rem;
+      }
+
+      .card.affinity-discount-card .expandthis-hide {
+        clear: both;
+        margin-top: 3rem;
+        padding: 0;
+      }
+
+      .card.affinity-discount-card .gform_wrapper,
+      .card.affinity-discount-card .gform_confirmation_message {
+        background: none;
+        border: 0;
+        box-shadow: none;
+        margin: 0 !important;
+        padding: 0;
+      }
+
+        .card.affinity-discount-card p a,
+        .card.affinity-discount-card p a:visited,
+        .card.affinity-discount-card .gform_confirmation_message a,
+        .card.affinity-discount-card .gform_confirmation_message a:visited {
+          color: #cc0000;
+        }
+
+        .card.affinity-discount-card p a:hover,
+        .card.affinity-discount-card p a:focus,
+        .card.affinity-discount-card .gform_confirmation_message a:hover,
+        .card.affinity-discount-card .gform_confirmation_message a:focus {
+        	color: #aa0000;
+        	text-decoration: underline;
+        }
+
+    @media only screen and (max-width:549px) {
+
+      .card.affinity-discount-card img {
+        float: left;
+        margin: 0 1.5rem 1.5rem 0;
+        position: relative;
+          top: unset;
+          left: unset;
+        width: 10.59rem;
+      }
+
+      .card.affinity-discount-card p.card-label,
+      .card.affinity-discount-card p.discount_descr,
+      .card.affinity-discount-card button {
+        margin-left: 0;
+      }
+
+      .card.affinity-discount-card p.card-label {
+        font-size: 3rem;
+      }
+
+      .card.affinity-discount-card p.discount_descr {
+        clear: both;
+      }
+
+    }
+
 
   .card.front_page_sticky_post,
   .card.has-card-label,
@@ -1368,10 +1463,6 @@ Selectors
   }
 
   /* Highlight colors. */
-
-  .card.download {
-    border-top: .7rem solid #ed9c28;
-  }
 
   .card.sponsored {
     border-top: .7rem solid #ffffc7;
@@ -1408,6 +1499,18 @@ Selectors
     font-size: 1.6rem;
   }
 
+    .card .excerpt a,
+    .card .excerpt a:visited {
+      color: #c00;
+      text-decoration: none;
+    }
+
+    .card .excerpt a:hover,
+    .card .excerpt a:focus{
+      color: #a00;
+      text-decoration: underline;
+    }
+
   .card .postmeta {
     font-size: 1.4rem;
     margin-bottom: .5rem;
@@ -1417,6 +1520,18 @@ Selectors
   .card p {
     margin-bottom: .75em;
   }
+
+    .card .excerpt a,
+    .card .excerpt a:visited {
+      color: #c00;
+      text-decoration: none;
+    }
+
+    .card .excerpt a:hover,
+    .card .excerpt a:focus{
+      color: #a00;
+      text-decoration: underline;
+    }
 
 
 /* Card label styles. */
@@ -1434,7 +1549,8 @@ Selectors
     margin-top: 1rem;
   }
 
-  .card-label a {
+  .card-label a,
+  .card-label a:visited {
     color: #666;
   }
 
@@ -1481,50 +1597,6 @@ Selectors
     margin-left: 2rem;
     padding-left: 20%
   }
-
-.card.download .headline-excerpt {
-  padding: 6rem;
-}
-
-.card.download.has-card-label .headline-excerpt {
-  padding: 4rem;
-}
-
-  .card.download .headline {
-    font-size: 3.2rem;
-    margin-bottom: .5rem;
-  }
-
-  .home .card.download .headline,
-  .home .card.download .excerpt,
-  .home .card.download .postmeta,
-  .card.download.has-post-thumbnail .headline,
-  .card.download.has-post-thumbnail .excerpt,
-  .card.download.has-post-thumbnail .postmeta {
-    margin-left: 0;
-    padding-right: 28rem;
-  }
-
-  .card.download a.button {
-    margin-bottom: 0;
-  }
-
-@media only screen and ( max-width: 683px ) {
-
-  .card.download .headline-excerpt {
-    padding: 3rem;
-  }
-
-    .home .card.download .headline,
-    .home .card.download .excerpt,
-    .home .card.download .postmeta,
-    .card.download.has-post-thumbnail .headline,
-    .card.download.has-post-thumbnail .excerpt,
-    .card.download.has-post-thumbnail .postmeta {
-      padding: 0;
-    }
-
-}
 
 
 /* Post image styles. */
@@ -1578,23 +1650,6 @@ Selectors
   }
 
 
-.card.download .product-thumbnail {
-  float: right;
-  margin: 0;
-  transform: rotate( .015turn );
-  width: 25rem;
-}
-
-  @media only screen and ( max-width: 683px ) {
-
-    .card.download .product-thumbnail {
-      display: block;
-      float: none;
-      margin: 0 auto 3rem auto;
-    }
-
-  }
-
 /* Headline styles. */
 
 .card .headline {
@@ -1619,23 +1674,10 @@ Selectors
     font-size: 2.4rem !important;
   }
 
-  .card.download .headline {
-    margin-bottom: .75em;
-  }
-
 }
 
 
 /* Excerpt styles. */
-
-.card.download .excerpt {
-  margin-bottom: 1.5em;
-}
-
-.card.download a:hover .excerpt,
-.card.download a:focus .excerpt {
-  color: #111;
-}
 
 @media only screen and ( max-width: 683px ) {
 
@@ -1953,15 +1995,6 @@ p.dashboard-widget-note {
           width: 100%;
         }
 
-.home .download .headline-excerpt {
-  padding: 4rem;
-}
-
-  .home .download a:hover h2,
-  .home .download a:hover p {
-    color: unset !important;
-  }
-
 
 /*------------------------------
 Content
@@ -1978,7 +2011,7 @@ Content
   display: block;
   font-size: 1.6rem;
   line-height: 1.4;
-  margin-bottom: .5em;
+  margin-bottom: 2rem;
 }
 
   .breadcrumbs:before {
@@ -2525,7 +2558,7 @@ Content
     #related_podcasts .card,
     #related_posts .card,
     #related_pages .card {
-      background-color: #f5f5f5;
+      background-color: #f9f9f9;
       min-height:7.5rem;
       padding: 2rem;
       position: relative;
@@ -2564,85 +2597,6 @@ Content
           font-size: 2.4rem;
           margin-bottom: .5rem;
         }
-
-  #current_posts {
-    background-color: #fbfbfb;
-    border-radius: .2rem;
-    border-top: .7rem solid #c00;
-    box-shadow:
-      0 0 0 .1rem #ddd,
-      .1rem .1rem .3rem rgba(0, 0, 0, 0.2)
-    ;
-    display: block;
-    margin-bottom: 6rem;
-    padding: 2rem 0 0 2rem; /* Right padding and bottom margin are provided by #current_posts a. */
-    text-decoration: none;
-  }
-
-    .current_posts_heading > a {
-      color: #666;
-      display: block;
-      font-size: 1.4rem;
-      font-weight: bold;
-      line-height: 1.5;
-      margin-bottom: .75em;
-      text-transform: uppercase;
-    }
-
-    .current_posts_heading > a:before {
-      display: inline-block;
-      -moz-osx-font-smoothing: grayscale;
-      -webkit-font-smoothing: antialiased;
-      font: normal 1.4rem/1.5 Genericons;
-      margin-right: .25em;
-      speak: none;
-      vertical-align: top;
-    }
-
-    .current_posts_heading > a:before {
-      content: '\f409';
-    }
-
-    #current_posts a.current_post  {
-      box-sizing: border-box;
-      color: inherit;
-      display: inline-block;
-      float: left;
-      margin: 0 0 2rem 0;
-      padding-right: 2rem;
-      width: 25%;
-    }
-
-      /* 700px */
-      @media only screen and ( max-width:699px ) {
-
-        #current_posts a.current_post {
-          width: 50%;
-        }
-
-        #current_posts a.current_post:nth-child( even ) {
-          clear: left;
-        }
-
-      }
-
-      #current_posts a:hover,
-      #current_posts a:focus {
-        color: #a00;
-        text-decoration: none;
-      }
-
-    #current_posts .wp-post-image {
-      margin-bottom: 1rem;
-      width: 100%;
-    }
-
-    .current_post_title,
-    .discussion_title {
-      font-size: 1.8rem;
-      line-height: 1.2;
-      margin-bottom: .2rem;
-    }
 
 
   /*------------------------------
@@ -3011,15 +2965,8 @@ Content
     margin-left: 0;
   }
 
-    .product-pages-list li {
-      background-color: #f5f5f5;
-      border: .1rem solid #ddd;
-      border-radius: .2rem;
-      box-shadow:
-        .1rem .1rem .3rem rgba(0, 0, 0, 0.2)
-      ;
-      display: block;
-      margin: 0 .3rem 1rem .1rem;
+    .product-pages-list li.card {
+      background-color: #f9f9f9;
       min-height: 11rem;
       overflow: hidden;
       padding: 2rem;
@@ -3036,11 +2983,22 @@ Content
         height: 11rem;
         position: absolute;
           top: 2rem;
-          bottom: 0;
+          left: 2rem;
         width: 11rem;
       }
 
-        .product-pages-list img {
+        .product-pages-list img.affinity-partner-badge {
+          height: auto;
+          margin: 0;
+          position: absolute;
+            top: -1.5rem;
+            left: -1.5rem;
+          transform: rotate( -.015turn );
+          width: 5rem;
+          z-index: 10;
+        }
+
+        .product-pages-list img.wp-post-image {
           background-color: #ddd;
           border: .2rem;
           box-sizing: content-box;
@@ -3056,6 +3014,7 @@ Content
 
       .product-pages-list .title_container {
         margin: 0 0 2rem 12.5rem;
+        position: relative;
       }
 
         .product-pages-list .title {
@@ -3063,7 +3022,7 @@ Content
           font-size: 2.4rem;
           line-height: 1.2;
           margin-bottom: .33em;
-          padding: 0 2rem 0 0;
+          padding: 0;
         }
 
         .product-pages-list a.title {
@@ -3076,14 +3035,14 @@ Content
           text-decoration: none;
         }
 
-    .product-pages-list .excerpt {
+    .product-pages-list li.card .excerpt {
       display: block;
       font-size: 1.6rem;
       margin-left: 12.5rem;
       padding: 0;
     }
 
-    .featured-products-list li {
+    .featured-products-list li.card {
       min-height: 16rem;
     }
 
@@ -3092,7 +3051,7 @@ Content
         width: 16rem;
       }
 
-        .featured-products-list .image img {
+        .featured-products-list .image img.wp-post-image {
           width: 15rem;
         }
 
@@ -3100,29 +3059,35 @@ Content
         margin: 0 0 2rem 17.5rem;
       }
 
-      .featured-products-list .excerpt {
+      .featured-products-list li.card .excerpt {
         margin-left: 17.5rem;
       }
 
       /* When the width reaches 700px. */
       @media only screen and (max-width:699px) {
 
-        .product-pages-list li {
+        .product-pages-list li.card {
           padding: 1rem;
         }
 
         .product-pages-list .image {
           height: 8.5rem;
           width: 8.5rem;
+          left: 1rem;
           top: 1rem;
         }
 
-          .product-pages-list .image img {
+          .product-pages-list img.affinity-partner-badge {
+              top: -.5rem;
+              left: -.5rem;
+          }
+
+          .product-pages-list .image img.wp-post-image {
             height: 7.5rem;
             width: 7.5rem;
           }
 
-        .product-pages-list .title_container {
+        .product-pages-list li.card .title_container {
           margin: 0;
           min-height: 8.5rem;
           padding-left: 9.5rem;
@@ -3148,7 +3113,7 @@ Content
               display: block;
             }
 
-        .product-pages-list .excerpt {
+        .product-pages-list li.card .excerpt {
           margin-left: 0;
         }
 
@@ -3188,50 +3153,66 @@ Content
 
 
   /*------------------------------
-  Affinity Pages
+  All-Reviews Page
   ------------------------------*/
 
-  .affinity-partners-heading {
-    color: #666;
-    display: block;
-    font-size: 1.4rem;
-    font-weight: bold;
-    line-height: 1.5;
-    margin-bottom: .75em;
-    text-transform: uppercase;
+  .page-id-301729 {
+    background-color: #f9f9f9;
   }
 
-  .list-affinity-partners-claim-button {
-    position: absolute;
-      right: 2rem;
-      top: 2rem;
+  .portal-card {
+    background-color: #fff;
+    margin-bottom: 3rem;
+    padding: 2rem;
   }
 
-    a.button.claim-button {
-      margin: 0 auto;
+    a.portal-card:hover,
+    a.portal-card:focus {
+      text-decoration: none;
     }
 
-  /* When the width reaches 700px. */
-  @media only screen and (max-width:699px) {
-
-    .affinity-partners-list .title_container {
+    .portal-card-header {
+      display: grid;
+      grid-template-columns: 1fr max-content;
       margin-bottom: 1.5rem;
     }
 
-    .list-affinity-partners-claim-button {
-      margin: 0 auto 2rem auto;
-      position: relative;
-        right: auto;
-        top: auto;
-      text-align: center;
-    }
-
-      .list-affinity-partners-claim-button .claim-button {
-        display: block;
+      .portal-card-header .headline {
+        font-size: 3.2rem;
+        margin: 0;
       }
 
-  }
+      .portal-card-header button {
+        align-self: center;
+        margin: 0;
+      }
 
+    .portal-card-logos {
+      display: grid;
+      font-size: 1rem;
+      grid-template-columns: repeat( 8, 1fr );
+      grid-gap: 0;
+      line-height: 1;
+      margin: 2rem 0;
+    }
+
+      .portal-card-logos img {
+        height: auto;
+        filter: saturate(90%);
+        margin-bottom: 0;
+        max-width: unset;
+        opacity: .75;
+        width: 100%;
+      }
+
+      .portal-card-logos img:first-child {
+        border-radius: .2rem 0 0 0;
+      }
+
+      .portal-card-logos img:nth-of-type(6) {
+        border-radius: 0 .2rem 0 0;
+      }
+      
 
   /*------------------------------
   Team Profiles
@@ -3365,7 +3346,7 @@ Content
   }
 
     #respond {
-      background-color: #fbfbfb;
+      background-color: #f9f9f9;
       border: .1rem solid #ddd;
       border-radius: .2rem;
       box-shadow:
@@ -3697,7 +3678,7 @@ label {
   }
 
 .post-password-form {
-  background-color: #fbfbfb;
+  background-color: #f9f9f9;
   border-radius: .2rem;
   box-shadow:
     0 0 0 .1rem #ddd,
@@ -3928,6 +3909,10 @@ a.review-btn:active,
   color: #ddd;
 }
 
+.wp-block-button a.wp-block-button__link {
+  margin: 0;
+}
+
 button.dismiss-button {
   border-radius: 50%;
   height: 3rem;
@@ -3978,7 +3963,7 @@ a.greybutton:active,
 
   .gform_wrapper,
   .gform_confirmation_message {
-    background-color: #fbfbfb;
+    background-color: #f9f9f9;
     border: .1rem solid #ddd;
     border-radius: .2rem;
     box-shadow:
@@ -4186,7 +4171,7 @@ WooCommerce
   .woocommerce-error,
   .woocommerce-info,
   .woocommerce-message {
-    background-color: #fbfbfb;
+    background-color: #f9f9f9;
     border-radius: .2rem;
     box-shadow:
       0 0 0 0.1rem #ddd,
@@ -4391,7 +4376,7 @@ WooCommerce
   box-shadow: .1rem .1rem .3rem rgba(0, 0, 0, 0.2);
   font-weight: normal;
   font-size: 1.4rem;
-  left: 3rem !important;
+    left: 3rem !important;
   line-height: 1.2;
   margin: 0 !important;
   min-height: unset;
@@ -4417,7 +4402,7 @@ WooCommerce
 }
 
 .single-product .breadcrumbs {
-  margin-bottom: 1em;
+  margin-bottom: 2em;
 }
 
 /* WooCommerce Shopping Cart */
@@ -4466,11 +4451,6 @@ a.cart-in-header {
 
 /* WooCommerce Product Lists */
 
-.woocommerce ul.products li.product span.onsale {
-  box-shadow: none;
-  left: 0 !important;
-}
-
 .woocommerce ul.products li.product a img {
   margin-bottom: 1.5rem;
 }
@@ -4503,7 +4483,7 @@ body.woocommerce-account {
 }
 
 .woocommerce-account form.login {
-  background-color: #f5f5f5;
+  background-color: #f9f9f9;
   border: .1rem solid #ddd;
   border-radius: .2rem;
   box-shadow:
@@ -4527,7 +4507,7 @@ body.woocommerce-account {
   }
 
 .woocommerce-account .woocommerce-MyAccount-navigation {
-  background-color: #f5f5f5;
+  background-color: #f9f9f9;
   border: .1rem solid #ddd;
   border-radius: .2rem;
   box-shadow:
@@ -4697,7 +4677,6 @@ Print
   #lawyerist_ap1,
   .sharedaddy,
   #categories_tags,
-  #current_posts,
   #respond,
   #comments_container,
   #mobile_ad,
