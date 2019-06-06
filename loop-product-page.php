@@ -84,7 +84,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
         echo '<p align="center">' . $trial_button . '</p>';
       }
 
-      if ( is_product_portal() && !has_shortcode( $post->post_content, 'list-products' ) ) {
+      if ( is_product_portal() && !is_page( '301729' ) && !has_shortcode( $post->post_content, 'list-products' ) ) {
 
         echo do_shortcode( '[list-featured-products]' );
         echo do_shortcode( '[list-products]' );

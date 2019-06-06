@@ -33,7 +33,7 @@ Content
   Tables
   Resource Pages
   Product Pages
-  Affinity Pages
+  All-Reviews Page
   Team Profiles
   Labster Directory
   Full Width Template
@@ -850,7 +850,7 @@ p:empty {
 }
 
 p.note {
-	background-color: #f5f5f5;
+	background-color: #f9f9f9;
   border: .1rem solid #ddd;
   border-radius: .2rem;
   box-shadow:
@@ -874,7 +874,7 @@ p.alert {
 }
 
 p.pullout {
-  background-color: #fbfbfb;
+  background-color: #f9f9f9;
   border: .1rem solid #ddd;
   border-radius: .2rem;
   box-shadow:
@@ -1345,6 +1345,7 @@ Selectors
 .card,
 .ld-course-list-items .ld_course_grid .thumbnail.course,
 #sponsored_product_updates {
+  background-color: #f9f9f9;
   border-radius: .2rem;
   box-shadow:
     0 0 0 .1rem #ddd,
@@ -1355,9 +1356,10 @@ Selectors
   text-decoration: none;
 }
 
-  .index .card {
+  .index .card,
+  .archive .card,
+  .search-results .card {
     background-color: #fff;
-    padding: 2rem;
   }
 
   .card.has-post-thumbnail {
@@ -2556,7 +2558,7 @@ Content
     #related_podcasts .card,
     #related_posts .card,
     #related_pages .card {
-      background-color: #f5f5f5;
+      background-color: #f9f9f9;
       min-height:7.5rem;
       padding: 2rem;
       position: relative;
@@ -2964,7 +2966,7 @@ Content
   }
 
     .product-pages-list li.card {
-      background-color: #f5f5f5;
+      background-color: #f9f9f9;
       min-height: 11rem;
       overflow: hidden;
       padding: 2rem;
@@ -3117,6 +3119,100 @@ Content
 
       }
 
+  blockquote.testimonial {
+    background-color: #fff;
+    border-radius: .2rem;
+    border-top: .7rem solid #ffffc7;
+    box-shadow:
+      0 0 0 .1rem #ddd,
+      .1rem .1rem .3rem rgba(0, 0, 0, 0.2)
+    ;
+    color: #333;
+    display: block;
+    font-family: unset;
+    font-size: 2.4rem;
+    font-style: unset;
+    margin: 0 .3rem 1em .1rem;
+    padding: 2rem;
+  }
+
+  blockquote.testimonial .sponsored_testimonial_label {
+    color: #888;
+    display: block;
+    font-size: 1.4rem;
+    line-height: 1.5;
+    margin-bottom: 0;
+    text-align: right;
+    text-transform: uppercase;
+  }
+
+  blockquote.testimonial .sponsored_testimonial_quotation {
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+
+  /*------------------------------
+  All-Reviews Page
+  ------------------------------*/
+
+  .page-id-301729 {
+    background-color: #f9f9f9;
+  }
+
+  .portal-card {
+    background-color: #fff;
+    margin-bottom: 3rem;
+    padding: 2rem;
+  }
+
+    a.portal-card:hover,
+    a.portal-card:focus {
+      text-decoration: none;
+    }
+
+    .portal-card-header {
+      display: grid;
+      grid-template-columns: 1fr max-content;
+      margin-bottom: 1.5rem;
+    }
+
+      .portal-card-header .headline {
+        font-size: 3.2rem;
+        margin: 0;
+      }
+
+      .portal-card-header button {
+        align-self: center;
+        margin: 0;
+      }
+
+    .portal-card-logos {
+      display: grid;
+      font-size: 1rem;
+      grid-template-columns: repeat( 8, 1fr );
+      grid-gap: 0;
+      line-height: 1;
+      margin: 2rem 0;
+    }
+
+      .portal-card-logos img {
+        height: auto;
+        filter: saturate(90%);
+        margin-bottom: 0;
+        max-width: unset;
+        opacity: .75;
+        width: 100%;
+      }
+
+      .portal-card-logos img:first-child {
+        border-radius: .2rem 0 0 0;
+      }
+
+      .portal-card-logos img:nth-of-type(6) {
+        border-radius: 0 .2rem 0 0;
+      }
+
   /* Modifies the [list-products] output on the all-reviews page. */
   .page-id-301729 .product-pages-list {
     display: grid;
@@ -3202,85 +3298,6 @@ Content
       }
 
     }
-
-  blockquote.testimonial {
-    background-color: #fff;
-    border-radius: .2rem;
-    border-top: .7rem solid #ffffc7;
-    box-shadow:
-      0 0 0 .1rem #ddd,
-      .1rem .1rem .3rem rgba(0, 0, 0, 0.2)
-    ;
-    color: #333;
-    display: block;
-    font-family: unset;
-    font-size: 2.4rem;
-    font-style: unset;
-    margin: 0 .3rem 1em .1rem;
-    padding: 2rem;
-  }
-
-  blockquote.testimonial .sponsored_testimonial_label {
-    color: #888;
-    display: block;
-    font-size: 1.4rem;
-    line-height: 1.5;
-    margin-bottom: 0;
-    text-align: right;
-    text-transform: uppercase;
-  }
-
-  blockquote.testimonial .sponsored_testimonial_quotation {
-    display: block;
-    margin-bottom: 1rem;
-  }
-
-
-  /*------------------------------
-  Affinity Pages
-  ------------------------------*/
-
-  .affinity-partners-heading {
-    color: #666;
-    display: block;
-    font-size: 1.4rem;
-    font-weight: bold;
-    line-height: 1.5;
-    margin-bottom: .75em;
-    text-transform: uppercase;
-  }
-
-  .list-affinity-partners-claim-button {
-    position: absolute;
-      right: 2rem;
-      top: 2rem;
-  }
-
-    a.button.claim-button {
-      margin: 0 auto;
-    }
-
-  /* When the width reaches 700px. */
-  @media only screen and (max-width:699px) {
-
-    .affinity-partners-list .title_container {
-      margin-bottom: 1.5rem;
-    }
-
-    .list-affinity-partners-claim-button {
-      margin: 0 auto 2rem auto;
-      position: relative;
-        right: auto;
-        top: auto;
-      text-align: center;
-    }
-
-      .list-affinity-partners-claim-button .claim-button {
-        display: block;
-      }
-
-  }
-
 
   /*------------------------------
   Team Profiles
@@ -3414,7 +3431,7 @@ Content
   }
 
     #respond {
-      background-color: #fbfbfb;
+      background-color: #f9f9f9;
       border: .1rem solid #ddd;
       border-radius: .2rem;
       box-shadow:
@@ -3746,7 +3763,7 @@ label {
   }
 
 .post-password-form {
-  background-color: #fbfbfb;
+  background-color: #f9f9f9;
   border-radius: .2rem;
   box-shadow:
     0 0 0 .1rem #ddd,
@@ -4031,7 +4048,7 @@ a.greybutton:active,
 
   .gform_wrapper,
   .gform_confirmation_message {
-    background-color: #fbfbfb;
+    background-color: #f9f9f9;
     border: .1rem solid #ddd;
     border-radius: .2rem;
     box-shadow:
@@ -4239,7 +4256,7 @@ WooCommerce
   .woocommerce-error,
   .woocommerce-info,
   .woocommerce-message {
-    background-color: #fbfbfb;
+    background-color: #f9f9f9;
     border-radius: .2rem;
     box-shadow:
       0 0 0 0.1rem #ddd,
@@ -4551,7 +4568,7 @@ body.woocommerce-account {
 }
 
 .woocommerce-account form.login {
-  background-color: #f5f5f5;
+  background-color: #f9f9f9;
   border: .1rem solid #ddd;
   border-radius: .2rem;
   box-shadow:
@@ -4575,7 +4592,7 @@ body.woocommerce-account {
   }
 
 .woocommerce-account .woocommerce-MyAccount-navigation {
-  background-color: #f5f5f5;
+  background-color: #f9f9f9;
   border: .1rem solid #ddd;
   border-radius: .2rem;
   box-shadow:
