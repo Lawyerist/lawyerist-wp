@@ -11,25 +11,6 @@
 
 <link rel="alternate" type="application/rss+xml" title="<?php bloginfo( 'name' ); ?> RSS feed" href="http://feeds.feedburner.com/solosmalltech">
 
-
-<?php
-
-	// The Yoast SEO plugin takes care of adding meta descriptions.
-
-	// Noindexes and nofollows sponsored posts.
-	if ( is_single() && has_category( 'sponsored-posts', $post->ID ) ) {
-
-		echo '<meta name="robots" content="noindex, nofollow">';
-
-	// Noindexes but dofollows hidden products.
-	} elseif ( is_single() && has_term( 'exclude-from-catalog', 'product_visibility', $post->ID ) ) {
-
-		echo '<meta name="robots" content="noindex, follow">';
-
-	}
-
-?>
-
 <!-- Google global site tag (gtag.js) - Google Ads: 928946623 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-928946623"></script>
 <script>
