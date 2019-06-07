@@ -931,6 +931,10 @@ p.pullout {
   margin-bottom: 1em;
 }
 
+  .index .postmeta .date {
+    margin-right: .5em;
+  }
+
   .postmeta cite {
     font-style: normal;
   }
@@ -1360,6 +1364,7 @@ Selectors
   .archive .card,
   .search-results .card {
     background-color: #fff;
+    padding: 2rem;
   }
 
   .card.has-post-thumbnail {
@@ -3212,7 +3217,7 @@ Content
       .portal-card-logos img:nth-of-type(6) {
         border-radius: 0 .2rem 0 0;
       }
-      
+
 
   /*------------------------------
   Team Profiles

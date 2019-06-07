@@ -38,12 +38,16 @@ echo '<div class="postmeta">';
 
     echo 'on <span class="date updated published">' . $date . '</span>';
 
-  // Gets the byline without the author when Lawyerist is the author, and for podcasts.
-  } elseif ( $author == 'Lawyerist' || has_category( 'lawyerist-podcast' ) ) {
+  // Gets just the date on author archives.
+  } elseif ( is_author() ) {
 
     echo '<span class="date updated published">' . $date . '</span>';
 
   } else {
+
+    if ( $author == 'Lawyerist' ) {
+      $author = 'the Lawyerist editorial team';
+    }
 
     echo 'By <span class="vcard author"><cite class="fn">' . $author . '</cite></span> ';
     echo 'on <span class="date updated published">' . $date . '</span> ';

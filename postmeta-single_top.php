@@ -5,11 +5,11 @@
 echo '<div class="postmeta">';
 
   // Get author and date.
-  $author         = get_the_author_meta( 'display_name' );
-  $date           = get_the_time( 'F jS, Y' );
+  $author = get_the_author_meta( 'display_name' );
+  $date   = get_the_time( 'F jS, Y' );
 
-  // Selects product spotlights and sponsored posts (including product updates),
-  // because they should all have a sponsor tag.
+  // Selects product updates and sponsored posts because they should all have a
+  // sponsor tag.
   if ( has_term( true, 'sponsor' ) ) {
 
     $sponsor_IDs = wp_get_post_terms(
@@ -24,7 +24,7 @@ echo '<div class="postmeta">';
 
     $sponsor_info = get_term( $sponsor_IDs[0] );
     $sponsor      = $sponsor_info->name;
-    $sponsor_url  = $sponsor_info->description;
+    $sponsor_url  = filter_var( $sponsor_info->description, FILTER_SANITIZE_URL );
 
     if ( empty( $sponsor_url ) ) {
 
