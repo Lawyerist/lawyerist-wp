@@ -3425,7 +3425,7 @@ Author Bios
 }
 
 #author_connect p {
-  line-height: 1em;
+  line-height: 2rem;
   margin-bottom: 1.3rem;
 }
 
@@ -3434,7 +3434,10 @@ Author Bios
 }
 
 p.author_twitter:before,
+p.author_linkedin:before,
 p.author_website:before {
+  border-radius: .2rem;
+  color: #fff;
   font-size: 16px;
   vertical-align: top;
   text-align: center;
@@ -3446,6 +3449,8 @@ p.author_website:before {
   font-weight: normal;
   font-variant: normal;
   line-height: 1;
+  margin-right: .3em;
+  padding: .2rem;
   speak: none;
   text-decoration: inherit;
   text-transform: none;
@@ -3455,12 +3460,17 @@ p.author_website:before {
 }
 
 p.author_twitter:before {
-  color: #4099ff;
+  background: #4099ff;
   content: '\f202';
 }
 
+p.author_linkedin:before {
+  background: #0077b5;
+  content: '\f207';
+}
+
 p.author_website:before {
-  color: #555;
+  background: #555;
   content: '\f475';
 }
 

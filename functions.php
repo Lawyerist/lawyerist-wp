@@ -524,10 +524,17 @@ function lawyerist_get_author_bio() {
 	$author               = $wp_query->query_vars['author'];
 	$author_name          = get_the_author_meta( 'display_name' );
 	$author_bio           = get_the_author_meta( 'description' );
-	$author_website       = get_the_author_meta( 'user_url' );
-	$parsed_url           = parse_url( $author_website );
-	$author_nice_website  = $parsed_url[ 'host' ];
-	$author_twitter       = get_the_author_meta( 'twitter' );
+
+	$author_url       		= get_the_author_meta( 'user_url' );
+	$author_url_parsed    = parse_url( $author_url );
+	$author_url_host  		= $author_url_parsed[ 'host' ];
+
+	$twitter_username     = get_the_author_meta( 'twitter' );
+
+	$linkedin_url  				= get_the_author_meta( 'linkedin' );
+	$linkedin_url_parsed 	= parse_url( $linkedin_url );
+	$linkedin_username		= $linkedin_url_parsed[ 'path' ];
+
 	$author_avatar_sm     = get_avatar( get_the_author_meta( 'user_email' ), 100, '', $author_name );
 	$author_avatar_lg     = get_avatar( get_the_author_meta( 'user_email' ), 300, '', $author_name );
 
@@ -549,12 +556,19 @@ function lawyerist_get_author_bio() {
 
 	// Show links to the author's website and Twitter and LinkedIn profiles.
 	echo '<div id="author_connect">';
-		if ( $author_twitter == true ) {
-			echo '<p class="author_twitter"><a href="https://twitter.com/' . $author_twitter . '">@' . $author_twitter . '</a></p>';
+
+		if ( $twitter_username == true ) {
+			echo '<p class="author_twitter"><a href="https://twitter.com/' . $twitter_username . '">@' . $twitter_username . '</a></p>';
 		}
-		if ( $author_website == true ) {
-			echo '<p class="author_website"><a href="' . $author_website . '">' . $author_nice_website . '</a></p>';
+
+		if ( $linkedin_username == true ) {
+			echo '<p class="author_linkedin"><a href="' . $linkedin_url . '">' . $linkedin_username . '</a></p>';
 		}
+
+		if ( $author_url == true ) {
+			echo '<p class="author_website"><a href="' . $author_url . '">' . $author_url_host . '</a></p>';
+		}
+
 	echo '</div>'; // Close #author_connect.
 
 	echo '</div>'; // End author bio.
