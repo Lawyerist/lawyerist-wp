@@ -343,10 +343,7 @@ function get_active_labsters() {
 	$labster_query_args = array(
 		'post_type'				=> 'wc_user_membership',
 		'post_status'			=> 'wcm-active',
-		'post_parent__in'	=> array(
-			223686, // Lab Pro
-			223685, // Lab
-		),
+		'post_parent'			=> 223685,
 		'posts_per_page'	=> -1,
 	);
 
