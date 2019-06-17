@@ -1,5 +1,7 @@
 <?php // This must be used within the Loop.
 
+lawyerist_get_author_bio();
+
 $date           = get_the_time( 'F jS, Y' );
 $updated_date   = get_the_modified_date( 'F jS, Y' );
 

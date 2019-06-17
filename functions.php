@@ -538,7 +538,7 @@ function lawyerist_get_author_bio() {
 
 	if ( is_single() ) {
 
-		echo '<div id="author_bio_footer">' . "\n";
+		echo '<div id="author-bio-footer" class="card">' . "\n";
 		echo $author_avatar_sm;
 
 	} elseif ( is_author() ) {

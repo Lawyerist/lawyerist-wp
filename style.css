@@ -585,7 +585,6 @@ th,
 }
 
 .affinity-partner-discount,
-.affinity-partner-link,
 aside blockquote,
 .breadcrumbs,
 .btn,
@@ -809,6 +808,18 @@ h2,
 .h2 {
 	font-size: 3.2rem;
 	margin-bottom: .5em;
+}
+
+a .headline,
+a:visited .headline {
+  color: #333;
+  text-decoration: none;
+}
+
+a:hover .headline,
+a:focus .headline {
+  color: #a00;
+  text-decoration: none;
 }
 
 h3,
@@ -1357,6 +1368,8 @@ Selectors
   ;
   display: block;
   margin-bottom: 1rem;
+  padding: 2rem;
+  position: relative;
   text-decoration: none;
 }
 
@@ -1364,22 +1377,105 @@ Selectors
   .archive .card,
   .search-results .card {
     background-color: #fff;
-    padding: 2rem;
   }
 
-  .card.has-post-thumbnail {
-    padding: 0;
+  .card a,
+  .card a:visited {
+    color: inherit;
   }
 
-  .card > *:last-child {
+  .card a:hover,
+  .card a:focus {
+    color: #a00;
+    text-decoration: none;
+  }
+
+  /* Card label styles. */
+
+  .card-label,
+  .review-summary-title {
+    color: #666;
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-bottom: .5em;
+    text-transform: uppercase;
+  }
+
+    .home .card-label:last-child {
+      margin-top: 1rem;
+    }
+
+    .card-label a,
+    .card-label a:visited {
+      color: #666;
+    }
+
+      .card-label > a:before {
+        content: '\f505';
+        display: inline-block;
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        font: normal 1.4rem/1.5 Genericons;
+        margin-right: .25em;
+        speak: none;
+        vertical-align: top;
+      }
+
+    .card-label a:hover,
+    .card-label a:focus {
+      color: #a00;
+    }
+
+  .card .headline-excerpt {
+    position: relative;
+  }
+
+    .card .excerpt {
+      font-size: 1.6rem;
+    }
+
+      .card .excerpt a,
+      .card .excerpt a:visited {
+        color: #c00;
+        text-decoration: none;
+      }
+
+      .card .excerpt a:hover,
+      .card .excerpt a:focus{
+        color: #a00;
+        text-decoration: underline;
+      }
+
+    .card .postmeta {
+      font-size: 1.4rem;
+      margin-bottom: .5rem;
+    }
+
+    .card .post.has-post-thumbnail {
+      display: grid;
+      grid-template-columns: 7.5rem 1fr;
+      grid-gap: 1.5rem;
+    }
+
+    .card p {
+      margin-bottom: .75em;
+    }
+
+  .card > *:last-child,
+  #sponsored_product_updates > *:last-child {
     margin-bottom: 0 !important;
   }
+
+    .card > *:last-child > *:last-child,
+    #sponsored_product_updates > *:last-child > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+  /* Affinity discount cards. */
 
   .card.affinity-discount-card {
     margin: 2rem 0 3rem 0;
     min-height: 12.8rem;
-    padding: 2rem;
-    position: relative;
   }
 
       .card.affinity-discount-card img {
@@ -1456,151 +1552,10 @@ Selectors
     }
 
 
-  .card.front_page_sticky_post,
-  .card.has-card-label,
-  .card.has-avatar-thumbnail,
-  #sponsored_product_updates {
-    padding: 2rem;
-  }
-
-  #sponsored_product_updates li:last-child {
-    margin-bottom: 0;
-  }
-
-  /* Highlight colors. */
+  /* Sponsored post cards. */
 
   .card.sponsored {
     border-top: .7rem solid #ffffc7;
-  }
-
-.card a {
-  color: inherit;
-  text-decoration: none;
-}
-
-.card a:hover,
-.card a:focus{
-  color: #a00;
-  text-decoration: none;
-}
-
-.card .headline-excerpt {
-  color: #111;
-  position: relative;
-}
-
-  .card .headline {
-    color: #333;
-    margin-bottom: .2em;
-  }
-
-  .card .headline:hover,
-  .card .headline:focus {
-    color: #a00;
-    text-decoration: none;
-  }
-
-  .card .excerpt {
-    font-size: 1.6rem;
-  }
-
-    .card .excerpt a,
-    .card .excerpt a:visited {
-      color: #c00;
-      text-decoration: none;
-    }
-
-    .card .excerpt a:hover,
-    .card .excerpt a:focus{
-      color: #a00;
-      text-decoration: underline;
-    }
-
-  .card .postmeta {
-    font-size: 1.4rem;
-    margin-bottom: .5rem;
-  }
-
-  .card p,
-  .card p {
-    margin-bottom: .75em;
-  }
-
-    .card .excerpt a,
-    .card .excerpt a:visited {
-      color: #c00;
-      text-decoration: none;
-    }
-
-    .card .excerpt a:hover,
-    .card .excerpt a:focus{
-      color: #a00;
-      text-decoration: underline;
-    }
-
-
-/* Card label styles. */
-
-.card-label,
-.review-summary-title {
-  color: #666;
-  font-size: 1.4rem;
-  font-weight: bold;
-  margin-bottom: .5em;
-  text-transform: uppercase;
-}
-
-  .home .card .card-label:last-child {
-    margin-top: 1rem;
-  }
-
-  .card-label a,
-  .card-label a:visited {
-    color: #666;
-  }
-
-  .card-label > a:before {
-    content: '\f505';
-    display: inline-block;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
-    font: normal 1.4rem/1.5 Genericons;
-    margin-right: .25em;
-    speak: none;
-    vertical-align: top;
-  }
-
-  .card-label a:hover,
-  .card-label a:focus {
-    color: #a00;
-    text-decoration: none;
-  }
-
-
-/* .headline-excerpt styles. */
-.card.has-card-label .headline-excerpt {
-  padding: 0;
-}
-
-.card.has-post-thumbnail .headline-excerpt {
-  padding: 2rem 2rem 2rem 30%;
-}
-
-  .card.has-post-thumbnail .headline,
-  .card.has-post-thumbnail .excerpt,
-  .card.has-post-thumbnail .postmeta {
-    margin-left: 2rem;
-  }
-
-.card.has-avatar-thumbnail .headline-excerpt {
-  padding: 0;
-}
-
-  .card.has-avatar-thumbnail .headline,
-  .card.has-avatar-thumbnail .excerpt,
-  .card.has-avatar-thumbnail .postmeta {
-    margin-left: 2rem;
-    padding-left: 20%
   }
 
 
@@ -1625,28 +1580,12 @@ Selectors
   }
 
 .card .author_avatar {
-  float: left;
-  font-size: 1rem;
-  line-height: 1;
-  position: relative;
-  width: 20%;
 }
-
-  .card .author_avatar:before {
-    content: '';
-    display: block;
-    padding-top: 100%;
-  }
 
   .card .author_avatar img {
     border-radius: 50%;
     height: auto;
     margin: 0;
-    position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
     width: 100%;
   }
 
@@ -2378,41 +2317,6 @@ Content
 
     }
 
-  .single .category-blog-posts .headline_postmeta {
-    min-height: 10rem;
-  }
-
-    .single .category-blog-posts .author_avatar {
-      float: left;
-    }
-
-      .single .category-blog-posts .author_avatar img {
-        margin: 0;
-      }
-
-    .single .category-blog-posts .headline,
-    .single .category-blog-posts .headline_postmeta .postmeta {
-      padding-left: 11.5rem;
-    }
-
-    @media only screen and ( max-width: 499px ) {
-
-      .single .category-blog-posts .author_avatar {
-        float: none;
-      }
-
-        .single .category-blog-posts .author_avatar img {
-          height: 7.5rem;
-          width: 7.5rem;
-        }
-
-      .single .category-blog-posts .headline,
-      .single .category-blog-posts .headline_postmeta .postmeta {
-        padding-left: 0;
-      }
-
-    }
-
   .page_links,
   .woocommerce nav.woocommerce-pagination {
     color: #777;
@@ -2942,8 +2846,7 @@ Content
 
     .product-page .has-post-thumbnail .headline_container .headline,
     .product-page .has-post-thumbnail .headline_container .user-rating,
-    .product-page .has-post-thumbnail .headline_container .excerpt,
-    .product-page .has-post-thumbnail .headline_container .affinity-partner-link {
+    .product-page .has-post-thumbnail .headline_container .excerpt {
       padding-left: 11.5rem;
     }
 
@@ -2953,16 +2856,6 @@ Content
       right: 2rem;
       top: 2rem;
   }
-
-    .affinity-partner-link {
-      display: block;
-      font-size: 1.6rem;
-      text-align: center;
-    }
-
-      .product-page .has-post-thumbnail .headline_container .affinity-partner-link {
-        text-align: unset;
-      }
 
   .product-pages-list {
     list-style: none;
@@ -3042,9 +2935,7 @@ Content
 
     .product-pages-list li.card .excerpt {
       display: block;
-      font-size: 1.6rem;
       margin-left: 12.5rem;
-      padding: 0;
     }
 
     .featured-products-list li.card {
@@ -3474,20 +3365,20 @@ p.author_website:before {
   content: '\f475';
 }
 
-#author_bio_footer {
+#author-bio-footer {
   clear: both;
   margin: 6rem 0;
   min-height: 10rem;
 }
 
-  #author_bio_footer img {
+  #author-bio-footer img {
     float: left;
     margin-bottom: 3rem;
     margin-right: 2rem;
   }
 
-  #author_bio_footer #author_bio,
-  #author_bio_footer #author_connect {
+  #author-bio-footer #author_bio,
+  #author-bio-footer #author_connect {
     padding-left: 12rem;
   }
 
@@ -4734,7 +4625,7 @@ Print
   }
 
   blockquote,
-  #author_bio_footer,
+  #author-bio-footer,
   #footer,
   img {
     page-break-inside: avoid;
