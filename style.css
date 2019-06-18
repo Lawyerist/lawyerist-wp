@@ -1469,7 +1469,9 @@ Selectors
       margin-bottom: 0;
     }
 
-    .card .excerpt {
+    .card .excerpt,
+    .card a .excerpt {
+      color: #111;
       font-size: 1.6rem;
     }
 
