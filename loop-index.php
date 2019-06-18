@@ -28,10 +28,8 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
   // Sets the post excerpt to the Yoast Meta Description.
   if ( !empty( $seo_descr ) ) { $post_excerpt = $seo_descr; }
 
-  $post_classes[] = 'card'; // .post, .page, and .product are added automatically, as are categories, tags, and formats.
-
   // Skips sponsored posts.
-  if ( is_category( 1320 ) ) {
+  if ( is_category( 1320 ) && !is_archive( 'sponsored-posts' ) ) {
 
     continue;
 
@@ -57,7 +55,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
       }
 
       $thumbnail      = '<div class="author_avatar"><img class="avatar" src="' . $first_image_url . '" /></div>';
-      $post_classes[] = 'has-avatar-thumbnail';
+      $post_classes[] = 'has-guest-avatar';
 
     } elseif ( ( is_page() || is_author() ) && has_post_thumbnail() ) {
 
@@ -75,14 +73,12 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
       $author_avatar	= get_avatar( get_the_author_meta( 'user_email' ), 150, '', $author_name );
 
       $thumbnail      = '<div class="author_avatar">' . $author_avatar . '</div>';
-      $post_classes[] = 'has-avatar-thumbnail';
+      $post_classes[] = 'has-author-avatar';
 
     }
 
     // Starts the post container.
-    echo '<div ' ;
-    post_class( $post_classes );
-    echo '>';
+    echo '<div class="card">';
 
       // Outputs the post label if there is one.
       if ( !empty( $card_label ) ) {
@@ -90,16 +86,16 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
       }
 
       // Starts the link container. Makes for big click targets!
-      echo '<a href="' . $post_url . '" title="' . $post_title . '">';
+      echo '<a href="' . $post_url . '" title="' . $post_title . '" ';
+      post_class( $post_classes );
+      echo '>';
+
+        if ( !empty ( $thumbnail ) ) {
+          echo $thumbnail;
+        }
 
         // Now we get the headline and, for some posts, the excerpt.
         echo '<div class="headline-excerpt">';
-
-          // Thumbnail
-
-          if ( !empty ( $thumbnail ) ) {
-            echo $thumbnail;
-          }
 
           // Headline
           echo '<h2 class="headline">' . $post_title . '</h2>';
@@ -118,9 +114,6 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
           if ( $post_type == 'product' ) {
             echo '<a href="' . $post_url . '" class="button">Learn More</a>';
           }
-
-          // Clearfix
-          echo '<div class="clear"></div>';
 
         echo '</div>'; // Close .headline-excerpt.
 

@@ -192,28 +192,24 @@
 
 					echo '<div class="card has-card-label">';
 
-						echo '<div ' ;
-						post_class();
+						// Starts the link container. Makes for big click targets!
+						echo '<a href="' . $podcast_url . '" title="' . $podcast_title . '" ';
+						post_class( 'has-guest-avatar' );
 						echo '>';
 
-							echo '<div class="author_avatar"><img class="avatar" src="' . $first_image_url . '" /></div>';
+							echo '<div class="guest_avatar"><img class="avatar" src="' . $first_image_url . '" /></div>';
 
-							// Starts the link container. Makes for big click targets!
-							echo '<a href="' . $podcast_url . '" title="' . $podcast_title . '">';
+							// Now we get the headline and excerpt (except for certain kinds of posts).
+							echo '<div class="headline-excerpt">';
 
-								// Now we get the headline and excerpt (except for certain kinds of posts).
-								echo '<div class="headline-excerpt">';
+								// Headline
+								echo '<h2 class="headline" title="' . $podcast_title . '">' . $podcast_title . '</h2>';
 
-									// Headline
-									echo '<h2 class="headline" title="' . $podcast_title . '">' . $podcast_title . '</h2>';
+								get_template_part( 'postmeta', 'index' );
 
-									get_template_part( 'postmeta', 'index' );
+							echo '</div>'; // Close .headline-excerpt.
 
-								echo '</div>'; // Close .headline-excerpt.
-
-							echo '</a>'; // This closes the post link container (.post).
-
-						echo '</div>';
+						echo '</a>'; // This closes the post link container (.post).
 
 						// Outputs the label.
 						$cat_IDs = wp_get_post_terms(
@@ -279,22 +275,19 @@
 
 							// Starts the link container. Makes for big click targets!
 							echo '<a href="' . $post_url . '" title="' . $post_title . '"';
-							post_class();
+							post_class( 'has-author-avatar' );
 							echo '>';
+
+								// Outputs the author's avatar.
+								echo '<div class="author_avatar">' . $author_avatar . '</div>';
 
 								// Now we get the headline and excerpt (except for certain kinds of posts).
 								echo '<div class="headline-excerpt">';
-
-									// Outputs the author's avatar.
-									echo '<div class="author_avatar">' . $author_avatar . '</div>';
 
 									// Headline
 									echo '<h2 class="headline">' . $post_title . '</h2>';
 
 									get_template_part( 'postmeta', 'index' );
-
-									// Clearfix
-									echo '<div class="clear"></div>';
 
 								echo '</div>'; // Close .headline-excerpt.
 

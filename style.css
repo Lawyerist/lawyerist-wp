@@ -1379,15 +1379,14 @@ Selectors
     background-color: #fff;
   }
 
-  .card a,
-  .card a:visited {
-    color: inherit;
-  }
-
   .card a:hover,
   .card a:focus {
     color: #a00;
     text-decoration: none;
+  }
+
+  .card img.size-thumbnail {
+    max-width: unset;
   }
 
   /* Card label styles. */
@@ -1426,9 +1425,49 @@ Selectors
       color: #a00;
     }
 
-  .card .headline-excerpt {
-    position: relative;
+
+  /* Card thumbnail styles. */
+
+  .card .default_thumbnail {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: .2rem 0 0 .2rem;
+    float: left;
+    height: 100%;
+    margin: 0;
+    position: absolute;
+      top: 0;
+      left: 0;
+    width: 30%;
   }
+
+    .card .has-card-label .default_thumbnail {
+      border-radius: 0;
+    }
+
+
+  /* Headline-excerpt styles. */
+
+  .card .headline-excerpt {
+  }
+
+    /* Headline styles. */
+
+    .card .headline {
+      font-size: 2.4rem;
+      margin-bottom: .5rem;
+    }
+
+    .card .category-lawyerist-podcast .headline {
+      font-size: 3.2rem;
+      margin-bottom: .25em;
+    }
+
+    .card .page .headline {
+      font-size: 3.2rem;
+      margin-bottom: 0;
+    }
 
     .card .excerpt {
       font-size: 1.6rem;
@@ -1451,11 +1490,97 @@ Selectors
       margin-bottom: .5rem;
     }
 
-    .card .post.has-post-thumbnail {
+
+    /* Excerpt styles. */
+
+    @media only screen and ( max-width: 683px ) {
+
+      .card .excerpt {
+        display: none;
+      }
+
+    }
+
+
+    /* Cards with post/page/podcast guest/author images. */
+
+    .card .has-post-thumbnail {
+      display: grid;
+      grid-template-columns: 10rem 1fr;
+      grid-gap: 1.5rem;
+    }
+
+      .card .post-thumbnail {
+        height: 10rem;
+        line-height: 1;
+        width: 10rem;
+      }
+
+        .card .post-thumbnail img {
+          border-radius: 50%;
+          height: auto;
+          margin: 0;
+          width: 100%;
+        }
+
+    .card .page.has-post-thumbnail {
+      grid-template-columns: 7.5rem 1fr;
+    }
+
+      .card .page.has-post-thumbnail > * {
+        align-self: center;
+      }
+
+      .card .page.has-post-thumbnail .post-thumbnail {
+        height: 7.5rem;
+        line-height: 1;
+        width: 7.5rem;
+      }
+
+        .card .page.has-post-thumbnail .post-thumbnail img {
+          border-radius: 50%;
+          height: auto;
+          margin: 0;
+          width: 100%;
+        }
+
+    .card .has-guest-avatar {
+      display: grid;
+      grid-template-columns: 10rem 1fr;
+      grid-gap: 1.5rem;
+    }
+
+      .card .guest_avatar {
+        height: 10rem;
+        line-height: 1;
+        width: 10rem;
+      }
+
+        .card .guest_avatar img {
+          border-radius: 50%;
+          height: auto;
+          margin: 0;
+          width: 100%;
+        }
+
+    .card .has-author-avatar {
       display: grid;
       grid-template-columns: 7.5rem 1fr;
       grid-gap: 1.5rem;
     }
+
+      .card .author_avatar {
+        height: 7.5rem;
+        line-height: 1;
+        width: 7.5rem;
+      }
+
+        .card .author_avatar img {
+          border-radius: 50%;
+          height: auto;
+          margin: 0;
+          width: 100%;
+        }
 
     .card p {
       margin-bottom: .75em;
@@ -1470,6 +1595,23 @@ Selectors
     #sponsored_product_updates > *:last-child > *:last-child {
       margin-bottom: 0 !important;
     }
+
+
+  /* Sponsored post cards. */
+
+  .card.sponsored {
+    border-top: .7rem solid #ffffc7;
+  }
+
+
+  /* Related podcasts, posts, and pages cards. */
+
+  #related_podcasts .card,
+  #related_posts .card,
+  #related_pages .card {
+    padding: 1.5rem;
+  }
+
 
   /* Affinity discount cards. */
 
@@ -1550,86 +1692,6 @@ Selectors
       }
 
     }
-
-
-  /* Sponsored post cards. */
-
-  .card.sponsored {
-    border-top: .7rem solid #ffffc7;
-  }
-
-
-/* Post image styles. */
-
-.card .default_thumbnail {
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  border-radius: .2rem 0 0 .2rem;
-  float: left;
-  height: 100%;
-  margin: 0;
-  position: absolute;
-    top: 0;
-    left: 0;
-  width: 30%;
-}
-
-  .card .has-card-label .default_thumbnail {
-    border-radius: 0;
-  }
-
-.card .author_avatar {
-}
-
-  .card .author_avatar img {
-    border-radius: 50%;
-    height: auto;
-    margin: 0;
-    width: 100%;
-  }
-
-  .card .author_avatar img.size-thumbnail {
-    max-width: unset;
-  }
-
-
-/* Headline styles. */
-
-.card .headline {
-  font-size: 2.4rem;
-  margin-bottom: .5rem;
-}
-
-.card.category-lawyerist-podcast .headline,
-.card.category-blog-posts .headline {
-  font-size: 3.2rem;
-  margin-bottom: .25em;
-}
-
-.card.page .headline {
-  font-size: 3.2rem;
-  margin-bottom: 0;
-}
-
-@media only screen and ( max-width: 683px ) {
-
-  .card .headline-excerpt .headline {
-    font-size: 2.4rem !important;
-  }
-
-}
-
-
-/* Excerpt styles. */
-
-@media only screen and ( max-width: 683px ) {
-
-  .card .excerpt {
-    display: none;
-  }
-
-}
 
 
 /* Postmeta styles */
@@ -1906,38 +1968,9 @@ p.dashboard-widget-note {
     margin-bottom: 0;
   }
 
-.home #blog-posts {
-  padding: 2rem;
+.home #blog-posts .post {
+  margin-bottom: 1.5rem;
 }
-
-  .home #blog-posts .post {
-    display: block;
-    margin-bottom: 1rem;
-  }
-
-    .home #blog-posts .headline-excerpt {
-      margin-bottom: 2rem;
-      padding: 0;
-    }
-
-      .home #blog-posts .headline,
-      .home #blog-posts .postmeta {
-        margin-left: 1.5rem;
-        padding-left: 7.5rem;
-      }
-
-      .home #blog-posts .author_avatar {
-        float: left;
-        font-size: 1rem;
-        line-height: 1;
-        width: 7.5rem;
-      }
-
-        .home #blog-posts .author_avatar img {
-          height: auto;
-          margin: 0;
-          width: 100%;
-        }
 
 
 /*------------------------------
@@ -2463,49 +2496,6 @@ Content
         }
 
       }
-
-    #related_podcasts .card,
-    #related_posts .card,
-    #related_pages .card {
-      background-color: #f9f9f9;
-      min-height:7.5rem;
-      padding: 2rem;
-      position: relative;
-    }
-
-      #related_podcasts .author_avatar,
-      #related_posts .author_avatar,
-      #related_pages .author_avatar {
-        width: 7.5rem;
-      }
-
-      #related_podcasts .headline-excerpt,
-      #related_posts .headline-excerpt {
-        padding: 0 0 0 9rem;
-      }
-
-      #related_pages .headline-excerpt {
-        padding: 0 2rem 0 9rem;
-        position: absolute;
-          top: 50%;
-        transform: translateY(-50%);
-      }
-
-        #related_podcasts .headline,
-        #related_posts .headline,
-        #related_pages .headline,
-        #related_podcasts .postmeta,
-        #related_posts .postmeta,
-        #related_pages .postmeta {
-          margin-left: 0;
-          padding-left: 0;
-        }
-
-        #related_podcasts .headline,
-        #related_posts .headline {
-          font-size: 2.4rem;
-          margin-bottom: .5rem;
-        }
 
 
   /*------------------------------

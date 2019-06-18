@@ -626,12 +626,12 @@ function lawyerist_get_related_podcasts() {
 					$post_title			= the_title( '', '', FALSE );
 					$post_url				= get_permalink();
 
-					echo '<div ' ;
-					post_class( 'card' );
-					echo '>';
+					echo '<div class="card">';
 
 						// Starts the link container. Makes for big click targets!
-						echo '<a href="' . $post_url . '" title="' . $post_title . '">';
+						echo '<a href="' . $post_url . '" title="' . $post_title . '" ';
+						post_class( 'has-guest-avatar' );
+						echo '>';
 
 							// Outputs the podcast guest thumbnail.
 							$first_image_url = get_first_image_url();
@@ -640,16 +640,13 @@ function lawyerist_get_related_podcasts() {
 								$first_image_url = 'https://lawyerist.com/lawyerist/wp-content/uploads/2018/09/podcast-mic-square-150x150.png';
 							}
 
-							echo '<div class="author_avatar"><img class="avatar" src="' . $first_image_url . '" /></div>';
+							echo '<div class="guest_avatar"><img class="avatar" src="' . $first_image_url . '" /></div>';
 
 							echo '<div class="headline-excerpt">';
 
 								echo '<h2 class="headline" title="' . $post_title . '">' . $post_title . '</h2>';
 
 								get_template_part( 'postmeta', 'index' );
-
-								// Clearfix
-								echo '<div class="clear"></div>';
 
 							echo '</div>'; // Close .headline-excerpt.
 
@@ -658,8 +655,6 @@ function lawyerist_get_related_podcasts() {
 					echo '</div>'; // This closes .card.
 
 				endwhile;
-
-				echo '<div class="clear"></div>';
 
 			echo '</div>';
 
@@ -712,12 +707,12 @@ function lawyerist_get_related_posts() {
 					$author_avatar	= get_avatar( get_the_author_meta( 'user_email' ), 150, '', $author_name );
 
 					// Starts the post container.
-					echo '<div ' ;
-					post_class( 'card' );
-					echo '>';
+					echo '<div class="card">';
 
 						// Starts the link container. Makes for big click targets!
-						echo '<a href="' . $post_url . '" title="' . $post_title . '">';
+						echo '<a href="' . $post_url . '" title="' . $post_title . '" ';
+						post_class( 'has-author-avatar' );
+						echo '>';
 
 							// Outputs the author's avatar.
 							echo '<div class="author_avatar">' . $author_avatar . '</div>';
@@ -729,9 +724,6 @@ function lawyerist_get_related_posts() {
 
 								get_template_part( 'postmeta', 'index' );
 
-								// Clearfix
-								echo '<div class="clear"></div>';
-
 							echo '</div>'; // Close .headline-excerpt.
 
 						echo '</a>'; // This closes the post link container (.post).
@@ -739,8 +731,6 @@ function lawyerist_get_related_posts() {
 					echo '</div>';
 
 				endwhile;
-
-				echo '<div class="clear"></div>';
 
 			echo '</div>';
 
@@ -805,20 +795,20 @@ function lawyerist_get_related_pages() {
 					$post_url				= get_permalink();
 
 					// Starts the post container.
-					echo '<div ' ;
-					post_class( 'card' );
-					echo '>';
+					echo '<div class="card">';
 
 						// Starts the link container. Makes for big click targets!
-						echo '<a href="' . $post_url . '" title="' . $post_title . '">';
+						echo '<a href="' . $post_url . '" title="' . $post_title . '" ';
+						post_class();
+						echo '>';
 
 							// Outputs the post thumbnail or a default image.
 							if ( has_post_thumbnail() ) {
-								echo '<div class="author_avatar">';
+								echo '<div class="post-thumbnail">';
 									the_post_thumbnail( 'thumbnail' );
 								echo '</div>';
 							} else {
-								echo '<div class="author_avatar"><img class="attachment-thumbnail wp-post-image" src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/02/L-dot.png" /></div>';
+								echo '<div class="thumbnail"><img class="attachment-thumbnail wp-post-image" src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/02/L-dot.png" /></div>';
 							}
 
 							echo '<div class="headline-excerpt">';
@@ -827,15 +817,11 @@ function lawyerist_get_related_pages() {
 
 							echo '</div>'; // Close .headline-excerpt.
 
-							echo '<div class="clear"></div>';
-
 						echo '</a>'; // This closes the post link container (.post).
 
 					echo '</div>';
 
 				endwhile;
-
-				echo '<div class="clear"></div>';
 
 			echo '</div>';
 
