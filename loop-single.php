@@ -18,8 +18,6 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
       // Headline
       echo '<h1 class="headline entry-title">' . $post_title . '</h1>';
 
-      // Call the lawyerist_postmeta function, which outputs the byline, date,
-      // and comment count.
       get_template_part( 'postmeta', 'single_top' );
 
       echo '<div class="clear"></div>';

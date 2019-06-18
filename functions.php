@@ -272,6 +272,83 @@ function get_country() {
 }
 
 /*------------------------------
+Get Sponsor
+------------------------------*/
+
+function get_sponsor() {
+
+	global $post;
+
+	if ( has_term( true, 'sponsor' ) ) {
+
+		$sponsor_IDs = wp_get_post_terms(
+			$post->ID,
+			'sponsor',
+			array(
+				'fields' 	=> 'ids',
+				'orderby' => 'count',
+				'order' 	=> 'DESC'
+			)
+		);
+
+		$sponsor_info = get_term( $sponsor_IDs[0] );
+		$sponsor      = $sponsor_info->name;
+
+		if ( !empty( $sponsor ) ) {
+
+			return $sponsor;
+
+		}
+
+	} else {
+
+		return;
+
+	}
+
+}
+
+
+function get_sponsor_link() {
+
+	global $post;
+
+	if ( has_term( true, 'sponsor' ) ) {
+
+		$sponsor_IDs = wp_get_post_terms(
+			$post->ID,
+			'sponsor',
+			array(
+				'fields' 	=> 'ids',
+				'orderby' => 'count',
+				'order' 	=> 'DESC'
+			)
+		);
+
+		$sponsor_info = get_term( $sponsor_IDs[0] );
+		$sponsor      = $sponsor_info->name;
+		$sponsor_url  = filter_var( $sponsor_info->description, FILTER_SANITIZE_URL );
+
+		if ( !empty( $sponsor_url ) ) {
+
+			return '<a href="' . $sponsor_url . '">' . $sponsor . '</a>';
+
+		} else {
+
+			return $sponsor;
+
+		}
+
+	} else {
+
+		return;
+
+	}
+
+}
+
+
+/*------------------------------
 Get First Image URL
 ------------------------------*/
 
@@ -522,6 +599,8 @@ function lawyerist_get_author_bio() {
 	$author_name          = get_the_author_meta( 'display_name' );
 	$author_bio           = get_the_author_meta( 'description' );
 
+	$author_avatar     		= get_avatar( get_the_author_meta( 'user_email' ), 300, '', $author_name );
+
 	$author_url       		= get_the_author_meta( 'user_url' );
 	$author_url_parsed    = parse_url( $author_url );
 	$author_url_host  		= $author_url_parsed[ 'host' ];
@@ -532,43 +611,39 @@ function lawyerist_get_author_bio() {
 	$linkedin_url_parsed 	= parse_url( $linkedin_url );
 	$linkedin_username		= $linkedin_url_parsed[ 'path' ];
 
-	$author_avatar_sm     = get_avatar( get_the_author_meta( 'user_email' ), 100, '', $author_name );
-	$author_avatar_lg     = get_avatar( get_the_author_meta( 'user_email' ), 300, '', $author_name );
 
+	echo '<div class="author-bio-box card">' . "\n";
 
-	if ( is_single() ) {
-
-		echo '<div id="author-bio-footer" class="card">' . "\n";
-		echo $author_avatar_sm;
-
-	} elseif ( is_author() ) {
-
-		echo '<div id="author_header">' . "\n";
-		echo $author_avatar_lg;
-		echo '<h1>' . $author_name . '</h1>' . "\n";
-
-	}
-
-	echo '<div id="author_bio">' . $author_bio . '</div>';
-
-	// Show links to the author's website and Twitter and LinkedIn profiles.
-	echo '<div id="author_connect">';
-
-		if ( $twitter_username == true ) {
-			echo '<p class="author_twitter"><a href="https://twitter.com/' . $twitter_username . '">@' . $twitter_username . '</a></p>';
+		if ( is_author() ) {
+			echo '<h1>' . $author_name . '</h1>' . "\n";
 		}
 
-		if ( $linkedin_username == true ) {
-			echo '<p class="author_linkedin"><a href="' . $linkedin_url . '">' . $linkedin_username . '</a></p>';
-		}
+		echo $author_avatar;
 
-		if ( $author_url == true ) {
-			echo '<p class="author_website"><a href="' . $author_url . '">' . $author_url_host . '</a></p>';
-		}
+		echo '<div class="author-bio-connect">';
 
-	echo '</div>'; // Close #author_connect.
+			echo '<div class="author-bio">' . $author_bio . '</div>';
 
-	echo '</div>'; // End author bio.
+			// Show links to the author's website and Twitter and LinkedIn profiles.
+			echo '<div class="author-connect">';
+
+				if ( $twitter_username == true ) {
+					echo '<p class="author-twitter"><a href="https://twitter.com/' . $twitter_username . '">@' . $twitter_username . '</a></p>';
+				}
+
+				if ( $linkedin_username == true ) {
+					echo '<p class="author-linkedin"><a href="' . $linkedin_url . '">' . $linkedin_username . '</a></p>';
+				}
+
+				if ( $author_url == true ) {
+					echo '<p class="author-website"><a href="' . $author_url . '">' . $author_url_host . '</a></p>';
+				}
+
+			echo '</div>'; // Close .author_connect.
+
+		echo '</div>'; // Close .author-bio-connect.
+
+	echo '</div>'; // Close .author-bio-box.
 
 }
 

@@ -1,81 +1,86 @@
 <?php // This must be used within the Loop.
 
-$author           = get_the_author_meta( 'display_name' );
-$author_ID        = get_the_author_meta( 'ID' );
-$profile_page_url = get_field( 'profile_page', 'user_' . $author_ID );
-$date             = get_the_time( 'F jS, Y' );
-$updated_date     = get_the_modified_date( 'F jS, Y' );
-
-if ( $author == 'Lawyerist' ) {
-  $author = 'the Lawyerist editorial team';
-}
-
-if ( empty( $profile_page_url ) ) {
-  $profile_page_url = get_author_posts_url( $author_ID );
-}
-
 echo '<div class="postmeta">';
 
-  // Selects product updates and sponsored posts because they should all have a
-  // sponsor tag.
-  if ( has_term( true, 'sponsor' ) ) {
+  /* Gets the date because we always show the date. */
+  $date = get_the_time( 'F jS, Y' );
 
-    $sponsor_IDs = wp_get_post_terms(
-      $post->ID,
-      'sponsor',
-      array(
-        'fields' 	=> 'ids',
-        'orderby' => 'count',
-        'order' 	=> 'DESC'
-      )
-    );
+  /* Shows just the date for podcast posts and on author archives. */
+  if ( has_category( 'lawyerist-podcast' ) ) {
 
-    $sponsor_info = get_term( $sponsor_IDs[0] );
-    $sponsor      = $sponsor_info->name;
-    $sponsor_url  = filter_var( $sponsor_info->description, FILTER_SANITIZE_URL );
+    echo '<span class="date published">' . $date . '</span>';
 
-    if ( empty( $sponsor_url ) ) {
+  /* Shows just the sponsor on product updates and sponsored posts. */
+  } elseif ( has_category( 'sponsored-posts' ) ) {
 
-      // Does not output the sponsor name as a link if there is not a valid URL
-      // in the sponsor tag description.
-      if ( has_category( 'sponsored-posts' ) ) {
+    $sponsor = get_sponsor_link();
 
-        // Product updates and old sponsored posts. Contains no author schema.
-        echo '<span class="sponsor">Sponsored by ' . $sponsor . '</span> ';
+    if ( !empty( $sponsor) ) {
 
-      } else {
+      echo '<span class="sponsor">Sponsored by ' . $sponsor . '</span> ';
 
-        // Product spotlights, with author schema.
-        echo 'By <span class="vcard author"><cite class="fn">' . $author . '</cite></span>,&nbsp;<span class="sponsor">sponsored by ' . $sponsor . '</span>, ';
-
-      }
-
-    // Outputs the sponsor name with a link if a valid URL is in the sponsor
-    // tag description.
     } else {
 
-      if ( has_category( 'sponsored-posts' ) ) {
+      echo '<span class="sponsor">Sponsored post</span>, published ';
 
-        // Product updates and old sponsored posts. Contains no author schema.
-        echo '<span class="sponsor">Sponsored by <a href="' . $sponsor_url . '">' . $sponsor . '</a></span> ';
+    }
+
+    echo 'on <span class="date published">' . $date . '</span>';
+
+
+  /* Shows the author on blog posts, and adds the sponsor for product spotlights. */
+  } elseif ( has_category( 'blog-posts' ) ) {
+
+    $author             = get_the_author_meta( 'display_name' );
+    $author_ID          = get_the_author_meta( 'ID' );
+    $author_post_count  = count_user_posts( $author_ID );
+
+    if ( $author == 'Lawyerist' ) {
+
+      $author = 'the Lawyerist editorial team';
+
+    }
+
+    if ( $author_post_count >= 5 ) {
+
+      $profile_page_url   = get_field( 'profile_page', 'user_' . $author_ID );
+
+      if ( empty( $profile_page_url ) ) {
+        $profile_page_url = get_author_posts_url( $author_ID );
+      }
+
+      echo 'By <span class="vcard author"><cite class="fn"><a href="' . $profile_page_url . '" class="url">' . $author . '</a></cite></span> ';
+
+    } else {
+
+      echo 'By <span class="vcard author"><cite class="fn">' . $author . '</cite></span>';
+
+    }
+
+    if ( has_tag( 'product-spotlights' ) {
+
+      $sponsor = get_sponsor_link();
+
+      if ( !empty( $sponsor ) ) {
+
+        echo ', <span class="sponsor">sponsored by ' . $sponsor . '</span>, ';
 
       } else {
 
-        // Product spotlights, with author schema.
-        echo 'By <span class="vcard author"><cite class="fn">' . $author . '</cite></span>,&nbsp;<span class="sponsor">sponsored by <a href="' . $sponsor_url . '">' . $sponsor . '</a></span>,&nbsp;';
+        echo ', <span class="sponsor">Sponsored post</span>, published ';
 
       }
 
     }
 
-    echo 'on <span class="date updated published">' . $date . '</span>';
+    echo 'on <span class="date published">' . $date . '</span>';
 
   } else {
 
-    echo 'By <span class="vcard author"><cite class="fn"><a href="' . $profile_page_url . '" class="url">' . $author . '</a></cite></span> ';
-    echo 'on <span class="date published">' . $date . '</span> ';
+    echo '<span class="date published">' . $date . '</span>';
 
   }
+
 
   // Comments
   $num_comments	= get_comments_number();
