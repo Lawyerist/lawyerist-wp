@@ -28,115 +28,99 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
   // Sets the post excerpt to the Yoast Meta Description.
   if ( !empty( $seo_descr ) ) { $post_excerpt = $seo_descr; }
 
-  $post_classes[] = 'card'; // .post, .page, and .product are added automatically, as are categories, tags, and formats.
+  // Figures out the post thumbnail.
+  if ( has_category( 'lawyerist-podcast' ) || has_tag( 'how-lawyers-work' ) ) {
 
-  // Skips sponsored posts.
-  if ( is_category( 1320 ) ) {
+    $first_image_url = get_first_image_url();
 
-    continue;
+    if ( empty( $first_image_url ) ) {
 
-  } else {
+      if ( has_category( 'lawyerist-podcast' ) ) {
 
-    // Figures out the post thumbnail.
-    if ( has_category( 'lawyerist-podcast' ) || has_tag( 'how-lawyers-work' ) ) {
+        $first_image_url = 'https://lawyerist.com/lawyerist/wp-content/uploads/2018/09/podcast-mic-square-150x150.png';
 
-      $first_image_url = get_first_image_url();
+      } elseif ( has_tag( 'how-lawyers-work' ) ) {
 
-      if ( empty( $first_image_url ) ) {
-
-        if ( has_category( 'lawyerist-podcast' ) ) {
-
-          $first_image_url = 'https://lawyerist.com/lawyerist/wp-content/uploads/2018/09/podcast-mic-square-150x150.png';
-
-        } elseif ( has_tag( 'how-lawyers-work' ) ) {
-
-          $first_image_url = 'https://lawyerist.com/lawyerist/wp-content/uploads/2018/01/typewriter-150x150.jpg';
-
-        }
+        $first_image_url = 'https://lawyerist.com/lawyerist/wp-content/uploads/2018/01/typewriter-150x150.jpg';
 
       }
-
-      $thumbnail      = '<div class="author_avatar"><img class="avatar" src="' . $first_image_url . '" /></div>';
-      $post_classes[] = 'has-avatar-thumbnail';
-
-    } elseif ( ( is_page() || is_author() ) && has_post_thumbnail() ) {
-
-      $thumbnail_url  = get_the_post_thumbnail_url( $post->ID, 'default_thumbnail' );
-      $thumbnail      = '<div class="default_thumbnail" style="background-image: url( ' . $thumbnail_url . ' );"></div>';
-
-    } elseif ( $post_type == 'product' ) {
-
-      $thumbnail_url  = get_the_post_thumbnail_url( $post->ID, 'shop_single' );
-      $thumbnail      = '<img class="product-thumbnail" src="' . $thumbnail_url . '" />';
-
-    } elseif ( !is_page() && !is_author() ) {
-
-      $author_name		= get_the_author_meta( 'display_name' );
-      $author_avatar	= get_avatar( get_the_author_meta( 'user_email' ), 150, '', $author_name );
-
-      $thumbnail      = '<div class="author_avatar">' . $author_avatar . '</div>';
-      $post_classes[] = 'has-avatar-thumbnail';
 
     }
 
-    // Starts the post container.
-    echo '<div ' ;
+    $thumbnail      = '<div class="guest_avatar"><img class="avatar" src="' . $first_image_url . '" /></div>';
+    $post_classes[] = 'has-guest-avatar';
+
+  } elseif ( ( is_page() || is_author() ) && has_post_thumbnail() ) {
+
+    $thumbnail_url  = get_the_post_thumbnail_url( $post->ID, 'default_thumbnail' );
+    $thumbnail      = '<div class="default_thumbnail" style="background-image: url( ' . $thumbnail_url . ' );"></div>';
+
+  } elseif ( $post_type == 'product' ) {
+
+    $thumbnail_url  = get_the_post_thumbnail_url( $post->ID, 'shop_single' );
+    $thumbnail      = '<img class="product-thumbnail" src="' . $thumbnail_url . '" />';
+
+  } elseif ( !is_page() && !is_author() ) {
+
+    $author_name		= get_the_author_meta( 'display_name' );
+    $author_avatar	= get_avatar( get_the_author_meta( 'user_email' ), 150, '', $author_name );
+
+    $thumbnail      = '<div class="author_avatar">' . $author_avatar . '</div>';
+    $post_classes[] = 'has-author-avatar';
+
+  }
+
+  // Starts the post container.
+  echo '<div class="card">';
+
+    // Outputs the post label if there is one.
+    if ( !empty( $card_label ) ) {
+      echo '<p class="card-label"><a href="' . $card_label_url . '" title="Read all posts in ' . $card_label . '.">' . $card_label . '</a></p>';
+    }
+
+    // Starts the link container. Makes for big click targets!
+    echo '<a href="' . $post_url . '" title="' . $post_title . '" ';
     post_class( $post_classes );
     echo '>';
 
-      // Outputs the post label if there is one.
-      if ( !empty( $card_label ) ) {
-        echo '<p class="card-label"><a href="' . $card_label_url . '" title="Read all posts in ' . $card_label . '.">' . $card_label . '</a></p>';
+      if ( !empty ( $thumbnail ) ) {
+        echo $thumbnail;
       }
 
-      // Starts the link container. Makes for big click targets!
-      echo '<a href="' . $post_url . '" title="' . $post_title . '">';
+      // Now we get the headline and, for some posts, the excerpt.
+      echo '<div class="headline-excerpt">';
 
-        // Now we get the headline and, for some posts, the excerpt.
-        echo '<div class="headline-excerpt">';
+        // Headline
+        echo '<h2 class="headline">' . $post_title . '</h2>';
 
-          // Thumbnail
+        // Output the excerpt, with exceptions.
+        if ( !has_category( 'lawyerist-podcast' ) && !has_category( 'blog-posts' ) && $post_type != 'page' ) {
+          echo '<p class="excerpt">' . $post_excerpt . '</p>';
+        }
 
-          if ( !empty ( $thumbnail ) ) {
-            echo $thumbnail;
-          }
+        // Output the post meta, with exceptions.
+        if ( $post_type == 'post' ) {
+          lawyerist_postmeta();
+        }
 
-          // Headline
-          echo '<h2 class="headline">' . $post_title . '</h2>';
+        // Show a button for products.
+        if ( $post_type == 'product' ) {
+          echo '<a href="' . $post_url . '" class="button">Learn More</a>';
+        }
 
-          // Output the excerpt, with exceptions.
-          if ( !has_category( 'lawyerist-podcast' ) && !has_category( 'blog-posts' ) && $post_type != 'page' ) {
-            echo '<p class="excerpt">' . $post_excerpt . '</p>';
-          }
+      echo '</div>'; // Close .headline-excerpt.
 
-          // Output the post meta, with exceptions.
-          if ( $post_type == 'post' ) {
-            lawyerist_postmeta();
-          }
+    echo '</a>'; // This closes the post link container (.post).
 
-          // Show a button for products.
-          if ( $post_type == 'product' ) {
-            echo '<a href="' . $post_url . '" class="button">Learn More</a>';
-          }
+  echo '</div>'; // Close .post.
+  echo "\n\n";
 
-          // Clearfix
-          echo '<div class="clear"></div>';
+  // Insert product updates, and ads on mobile.
+  if ( $post_num == 1 && is_mobile() ) { lawyerist_get_display_ad(); }
 
-        echo '</div>'; // Close .headline-excerpt.
+  $post_num++; // Increment counter.
 
-      echo '</a>'; // This closes the post link container (.post).
-
-    echo '</div>'; // Close .post.
-    echo "\n\n";
-
-    // Insert product updates, and ads on mobile.
-    if ( $post_num == 1 && is_mobile() ) { lawyerist_get_display_ad(); }
-
-    $post_num++; // Increment counter.
-
-    unset ( $post_classes, $card_label, $card_label_url, $thumbnail, $thumbnail_url ); // Clear variables for the next trip through the Loop.
-
-  } // End loop for excluding sponsored posts and pages without the "Show in Feed" page type.
+  unset ( $post_classes, $card_label, $card_label_url, $thumbnail, $thumbnail_url ); // Clear variables for the next trip through the Loop.
 
 endwhile;
 

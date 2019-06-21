@@ -180,36 +180,32 @@
 
 				if ( $current_podcast_query->have_posts() ) : while ( $current_podcast_query->have_posts() ) : $current_podcast_query->the_post();
 
-					$podcast_title	= the_title( '', '', FALSE );
-					$podcast_url		= get_permalink();
+					$podcast_title		= the_title( '', '', FALSE );
+					$podcast_url			= get_permalink();
+					$first_image_url	= get_first_image_url();
+
+					if ( empty( $first_image_url ) ) {
+						$first_image_url = 'https://lawyerist.com/lawyerist-dev/wp-content/uploads/2018/02/lawyerist-ltn-podcast-logo-16x9-684x385.png';
+					}
 
 					// Starts the post container.
-					echo '<div ' ;
-					post_class( 'card has-avatar-thumbnail has-card-label' );
-					echo '>';
+
+					echo '<div class="card has-card-label">';
 
 						// Starts the link container. Makes for big click targets!
-						echo '<a href="' . $podcast_url . '" title="' . $podcast_title . '">';
+						echo '<a href="' . $podcast_url . '" title="' . $podcast_title . '" ';
+						post_class( 'has-guest-avatar' );
+						echo '>';
+
+							echo '<div class="guest_avatar"><img class="avatar" src="' . $first_image_url . '" /></div>';
 
 							// Now we get the headline and excerpt (except for certain kinds of posts).
 							echo '<div class="headline-excerpt">';
-
-								// Outputs the podcast cover image.
-								$first_image_url = get_first_image_url();
-
-		            if ( empty( $first_image_url ) ) {
-		              $first_image_url = 'https://lawyerist.com/lawyerist-dev/wp-content/uploads/2018/02/lawyerist-ltn-podcast-logo-16x9-684x385.png';
-		            }
-
-		            echo '<div class="author_avatar"><img class="avatar" src="' . $first_image_url . '" /></div>';
 
 								// Headline
 								echo '<h2 class="headline" title="' . $podcast_title . '">' . $podcast_title . '</h2>';
 
 								get_template_part( 'postmeta', 'index' );
-
-								// Clearfix
-								echo '<div class="clear"></div>';
 
 							echo '</div>'; // Close .headline-excerpt.
 
@@ -279,22 +275,19 @@
 
 							// Starts the link container. Makes for big click targets!
 							echo '<a href="' . $post_url . '" title="' . $post_title . '"';
-							post_class();
+							post_class( 'has-author-avatar' );
 							echo '>';
+
+								// Outputs the author's avatar.
+								echo '<div class="author_avatar">' . $author_avatar . '</div>';
 
 								// Now we get the headline and excerpt (except for certain kinds of posts).
 								echo '<div class="headline-excerpt">';
-
-									// Outputs the author's avatar.
-									echo '<div class="author_avatar">' . $author_avatar . '</div>';
 
 									// Headline
 									echo '<h2 class="headline">' . $post_title . '</h2>';
 
 									get_template_part( 'postmeta', 'index' );
-
-									// Clearfix
-									echo '<div class="clear"></div>';
 
 								echo '</div>'; // Close .headline-excerpt.
 
@@ -321,35 +314,35 @@
 			<div class="front_page_block fp_contains_boxes">
 
 				<div class="card">
-					<a href="https://lawyerist.com/scorecard/">
+					<a href="https://lawyerist.com/scorecard/" class="post">
 						<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2019/03/scorecard-front-page.png" alt="Lawyerist Insider logo." />
 						<h3 class="headline">Use the Small Firm Scorecard to Evaluate Your Law Firm</h3>
 					</a>
 				</div>
 
 				<div class="card">
-					<a href="https://lawyerist.com/journal/">
+					<a href="https://lawyerist.com/journal/" class="post">
 						<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/05/lawyerist-productivity-journal-front-page.jpg" alt="The Lawyerist Productivity Journal cover." />
 						<h3 class="headline">Get Organized with the Lawyerist Productivity Journal</h3>
 					</a>
 				</div>
 
 				<div class="card">
-					<a href="https://lawyerist.com/best-law-firm-websites/">
+					<a href="https://lawyerist.com/best-law-firm-websites/" class="post">
 						<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/05/best-law-firm-websites-2018-front-page.jpg" alt="A law firm website as viewed on a laptop." />
 						<h3 class="headline">Check Out the Best Law Firm Websites</h3>
 					</a>
 				</div>
 
 				<div class="card">
-					<a href="https://lawyerist.com/website-designer-assessment/">
+					<a href="https://lawyerist.com/website-designer-assessment/" class="post">
 						<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/05/web-designer-recommendation-front-page.jpg" alt="Law firm website designer at work." />
 						<h3 class="headline">Get a Personalized Web Designer Referral</h3>
 					</a>
 				</div>
 
 				<div class="card">
-					<a href="https://lawyerist.com/law-practice-management-software/">
+					<a href="https://lawyerist.com/law-practice-management-software/" class="post">
 						<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/05/law-practice-management-software-front-page.jpg" alt="Law practice management software graphic." />
 						<h3 class="headline">Law Practice Management Software</h3>
 					</a>
@@ -357,7 +350,7 @@
 
 
 				<div class="card">
-					<a href="https://lawyerist.com/virtual-receptionists/">
+					<a href="https://lawyerist.com/virtual-receptionists/" class="post">
 						<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/05/receptionist-front-page.jpg" alt="Virtual receptionist image." />
 						<h3 class="headline">Virtual Receptionists for Law Firms</h3>
 					</a>
@@ -366,14 +359,14 @@
 
 
 				<div class="card">
-					<a href="https://lawyerist.com/best-law-firm-websites/designers-seo/">
+					<a href="https://lawyerist.com/best-law-firm-websites/designers-seo/" class="post">
 						<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/07/website-designers-seo-consultants-front-page.jpg" alt="SEO Scrabble tiles." />
 						<h3 class="headline">Website Designers & SEO Consultants</h3>
 					</a>
 				</div>
 
 				<div class="card">
-					<a href="https://lawyerist.com/legal-billing-software/">
+					<a href="https://lawyerist.com/legal-billing-software/" class="post">
 						<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/07/time-billing-software-front-page.jpg" alt="An accountant working on a laptop." />
 						<h3 class="headline">Timekeeping & Billing Software for Law Firms</h3>
 					</a>

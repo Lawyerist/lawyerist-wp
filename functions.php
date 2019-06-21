@@ -272,6 +272,85 @@ function get_country() {
 }
 
 /*------------------------------
+Get Sponsor
+------------------------------*/
+
+function get_sponsor() {
+
+	global $post;
+
+	if ( has_term( true, 'sponsor' ) ) {
+
+		$sponsor_IDs = wp_get_post_terms(
+			$post->ID,
+			'sponsor',
+			array(
+				'fields' 	=> 'ids',
+				'orderby' => 'count',
+				'order' 	=> 'DESC',
+			),
+		);
+
+		$sponsor_info = get_term( $sponsor_IDs[0] );
+		$sponsor      = $sponsor_info->name;
+
+		if ( !empty( $sponsor ) ) {
+
+			return $sponsor;
+
+		}
+
+	} else {
+
+		return;
+
+	}
+
+}
+
+
+function get_sponsor_link() {
+
+	global $post;
+
+	if ( has_term( true, 'sponsor' ) ) {
+
+		$sponsor_IDs = wp_get_post_terms(
+			$post->ID,
+			'sponsor',
+			array(
+				'fields' 	=> 'ids',
+				'orderby' => 'count',
+				'order' 	=> 'DESC',
+			),
+		);
+
+		$sponsor_info = get_term( $sponsor_IDs[0] );
+		$sponsor      = $sponsor_info->name;
+		$sponsor_url  = filter_var( $sponsor_info->description, FILTER_SANITIZE_URL );
+
+		if ( !empty( $sponsor_url ) ) {
+
+			$sponsor_link = '<a href="' . $sponsor_url . '">' . $sponsor . '</a>';
+
+			return $sponsor_link;
+
+		} else {
+
+			return $sponsor;
+
+		}
+
+	} else {
+
+		return;
+
+	}
+
+}
+
+
+/*------------------------------
 Get First Image URL
 ------------------------------*/
 
@@ -343,10 +422,7 @@ function get_active_labsters() {
 	$labster_query_args = array(
 		'post_type'				=> 'wc_user_membership',
 		'post_status'			=> 'wcm-active',
-		'post_parent__in'	=> array(
-			223686, // Lab Pro
-			223685, // Lab
-		),
+		'post_parent'			=> 223685,
 		'posts_per_page'	=> -1,
 	);
 
@@ -524,40 +600,52 @@ function lawyerist_get_author_bio() {
 	$author               = $wp_query->query_vars['author'];
 	$author_name          = get_the_author_meta( 'display_name' );
 	$author_bio           = get_the_author_meta( 'description' );
-	$author_website       = get_the_author_meta( 'user_url' );
-	$parsed_url           = parse_url( $author_website );
-	$author_nice_website  = $parsed_url[ 'host' ];
-	$author_twitter       = get_the_author_meta( 'twitter' );
-	$author_avatar_sm     = get_avatar( get_the_author_meta( 'user_email' ), 100, '', $author_name );
-	$author_avatar_lg     = get_avatar( get_the_author_meta( 'user_email' ), 300, '', $author_name );
+
+	$author_avatar     		= get_avatar( get_the_author_meta( 'user_email' ), 300, '', $author_name );
+
+	$author_url       		= get_the_author_meta( 'user_url' );
+	$author_url_parsed    = parse_url( $author_url );
+	$author_url_host  		= $author_url_parsed[ 'host' ];
+
+	$twitter_username     = get_the_author_meta( 'twitter' );
+
+	$linkedin_url  				= get_the_author_meta( 'linkedin' );
+	$linkedin_url_parsed 	= parse_url( $linkedin_url );
+	$linkedin_username		= $linkedin_url_parsed[ 'path' ];
 
 
-	if ( is_single() ) {
+	echo '<div class="author-bio-box card">' . "\n";
 
-		echo '<div id="author_bio_footer">' . "\n";
-		echo $author_avatar_sm;
-
-	} elseif ( is_author() ) {
-
-		echo '<div id="author_header">' . "\n";
-		echo $author_avatar_lg;
-		echo '<h1>' . $author_name . '</h1>' . "\n";
-
-	}
-
-	echo '<div id="author_bio">' . $author_bio . '</div>';
-
-	// Show links to the author's website and Twitter and LinkedIn profiles.
-	echo '<div id="author_connect">';
-		if ( $author_twitter == true ) {
-			echo '<p class="author_twitter"><a href="https://twitter.com/' . $author_twitter . '">@' . $author_twitter . '</a></p>';
+		if ( is_author() ) {
+			echo '<h1>' . $author_name . '</h1>' . "\n";
 		}
-		if ( $author_website == true ) {
-			echo '<p class="author_website"><a href="' . $author_website . '">' . $author_nice_website . '</a></p>';
-		}
-	echo '</div>'; // Close #author_connect.
 
-	echo '</div>'; // End author bio.
+		echo $author_avatar;
+
+		echo '<div class="author-bio-connect">';
+
+			echo '<div class="author-bio">' . $author_bio . '</div>';
+
+			// Show links to the author's website and Twitter and LinkedIn profiles.
+			echo '<div class="author-connect">';
+
+				if ( $twitter_username == true ) {
+					echo '<p class="author-twitter"><a href="https://twitter.com/' . $twitter_username . '">@' . $twitter_username . '</a></p>';
+				}
+
+				if ( $linkedin_username == true ) {
+					echo '<p class="author-linkedin"><a href="' . $linkedin_url . '">' . $linkedin_username . '</a></p>';
+				}
+
+				if ( $author_url == true ) {
+					echo '<p class="author-website"><a href="' . $author_url . '">' . $author_url_host . '</a></p>';
+				}
+
+			echo '</div>'; // Close .author_connect.
+
+		echo '</div>'; // Close .author-bio-connect.
+
+	echo '</div>'; // Close .author-bio-box.
 
 }
 
@@ -615,12 +703,12 @@ function lawyerist_get_related_podcasts() {
 					$post_title			= the_title( '', '', FALSE );
 					$post_url				= get_permalink();
 
-					echo '<div ' ;
-					post_class( 'card' );
-					echo '>';
+					echo '<div class="card">';
 
 						// Starts the link container. Makes for big click targets!
-						echo '<a href="' . $post_url . '" title="' . $post_title . '">';
+						echo '<a href="' . $post_url . '" title="' . $post_title . '" ';
+						post_class( 'has-guest-avatar' );
+						echo '>';
 
 							// Outputs the podcast guest thumbnail.
 							$first_image_url = get_first_image_url();
@@ -629,16 +717,13 @@ function lawyerist_get_related_podcasts() {
 								$first_image_url = 'https://lawyerist.com/lawyerist/wp-content/uploads/2018/09/podcast-mic-square-150x150.png';
 							}
 
-							echo '<div class="author_avatar"><img class="avatar" src="' . $first_image_url . '" /></div>';
+							echo '<div class="guest_avatar"><img class="avatar" src="' . $first_image_url . '" /></div>';
 
 							echo '<div class="headline-excerpt">';
 
 								echo '<h2 class="headline" title="' . $post_title . '">' . $post_title . '</h2>';
 
 								get_template_part( 'postmeta', 'index' );
-
-								// Clearfix
-								echo '<div class="clear"></div>';
 
 							echo '</div>'; // Close .headline-excerpt.
 
@@ -647,8 +732,6 @@ function lawyerist_get_related_podcasts() {
 					echo '</div>'; // This closes .card.
 
 				endwhile;
-
-				echo '<div class="clear"></div>';
 
 			echo '</div>';
 
@@ -701,12 +784,12 @@ function lawyerist_get_related_posts() {
 					$author_avatar	= get_avatar( get_the_author_meta( 'user_email' ), 150, '', $author_name );
 
 					// Starts the post container.
-					echo '<div ' ;
-					post_class( 'card' );
-					echo '>';
+					echo '<div class="card">';
 
 						// Starts the link container. Makes for big click targets!
-						echo '<a href="' . $post_url . '" title="' . $post_title . '">';
+						echo '<a href="' . $post_url . '" title="' . $post_title . '" ';
+						post_class( 'has-author-avatar' );
+						echo '>';
 
 							// Outputs the author's avatar.
 							echo '<div class="author_avatar">' . $author_avatar . '</div>';
@@ -718,9 +801,6 @@ function lawyerist_get_related_posts() {
 
 								get_template_part( 'postmeta', 'index' );
 
-								// Clearfix
-								echo '<div class="clear"></div>';
-
 							echo '</div>'; // Close .headline-excerpt.
 
 						echo '</a>'; // This closes the post link container (.post).
@@ -728,8 +808,6 @@ function lawyerist_get_related_posts() {
 					echo '</div>';
 
 				endwhile;
-
-				echo '<div class="clear"></div>';
 
 			echo '</div>';
 
@@ -794,20 +872,20 @@ function lawyerist_get_related_pages() {
 					$post_url				= get_permalink();
 
 					// Starts the post container.
-					echo '<div ' ;
-					post_class( 'card' );
-					echo '>';
+					echo '<div class="card">';
 
 						// Starts the link container. Makes for big click targets!
-						echo '<a href="' . $post_url . '" title="' . $post_title . '">';
+						echo '<a href="' . $post_url . '" title="' . $post_title . '" ';
+						post_class();
+						echo '>';
 
 							// Outputs the post thumbnail or a default image.
 							if ( has_post_thumbnail() ) {
-								echo '<div class="author_avatar">';
+								echo '<div class="post-thumbnail">';
 									the_post_thumbnail( 'thumbnail' );
 								echo '</div>';
 							} else {
-								echo '<div class="author_avatar"><img class="attachment-thumbnail wp-post-image" src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/02/L-dot.png" /></div>';
+								echo '<div class="thumbnail"><img class="attachment-thumbnail wp-post-image" src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/02/L-dot.png" /></div>';
 							}
 
 							echo '<div class="headline-excerpt">';
@@ -816,15 +894,11 @@ function lawyerist_get_related_pages() {
 
 							echo '</div>'; // Close .headline-excerpt.
 
-							echo '<div class="clear"></div>';
-
 						echo '</a>'; // This closes the post link container (.post).
 
 					echo '</div>';
 
 				endwhile;
-
-				echo '<div class="clear"></div>';
 
 			echo '</div>';
 

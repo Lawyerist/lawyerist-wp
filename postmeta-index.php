@@ -1,12 +1,13 @@
-<?php
+<?php // This must be used within the Loop.
 
-// This must be used within the Loop.
+$author = get_the_author_meta( 'display_name' );
+$date   = get_the_time( 'F jS, Y' );
+
+if ( $author == 'Lawyerist' ) {
+  $author = 'the Lawyerist editorial team';
+}
 
 echo '<div class="postmeta">';
-
-  // Get author and date.
-  $author = get_the_author_meta( 'display_name' );
-  $date   = get_the_time( 'F jS, Y' );
 
   // Gets the byline for sponsored posts.
   if ( has_term( true, 'sponsor' ) || has_category( 'sponsored-posts' ) ) {
@@ -17,7 +18,7 @@ echo '<div class="postmeta">';
       array(
         'fields' 	=> 'ids',
         'orderby' => 'count',
-        'order' 	=> 'DESC'
+        'order' 	=> 'DESC',
       )
     );
 
@@ -38,8 +39,8 @@ echo '<div class="postmeta">';
 
     echo 'on <span class="date updated published">' . $date . '</span>';
 
-  // Gets the byline without the author when Lawyerist is the author, and for podcasts.
-  } elseif ( $author == 'Lawyerist' || has_category( 'lawyerist-podcast' ) ) {
+  // Gets just the date on author archives.
+  } elseif ( is_author() ) {
 
     echo '<span class="date updated published">' . $date . '</span>';
 

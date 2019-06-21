@@ -585,7 +585,6 @@ th,
 }
 
 .affinity-partner-discount,
-.affinity-partner-link,
 aside blockquote,
 .breadcrumbs,
 .btn,
@@ -811,6 +810,18 @@ h2,
 	margin-bottom: .5em;
 }
 
+a .headline,
+a:visited .headline {
+  color: #333;
+  text-decoration: none;
+}
+
+a:hover .headline,
+a:focus .headline {
+  color: #a00;
+  text-decoration: none;
+}
+
 h3,
 .h3 {
 	font-size: 2.8rem;
@@ -930,6 +941,10 @@ p.pullout {
   line-height: 1.4;
   margin-bottom: 1em;
 }
+
+  .index .postmeta .date {
+    margin-right: .5em;
+  }
 
   .postmeta cite {
     font-style: normal;
@@ -1353,6 +1368,8 @@ Selectors
   ;
   display: block;
   margin-bottom: 1rem;
+  padding: 2rem;
+  position: relative;
   text-decoration: none;
 }
 
@@ -1362,19 +1379,247 @@ Selectors
     background-color: #fff;
   }
 
-  .card.has-post-thumbnail {
-    padding: 0;
+  .card a:hover,
+  .card a:focus {
+    color: #a00;
+    text-decoration: none;
   }
 
-  .card > *:last-child {
+  .card img.size-thumbnail {
+    max-width: unset;
+  }
+
+  /* Card label styles. */
+
+  .card-label,
+  .review-summary-title {
+    color: #666;
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-bottom: .5em;
+    text-transform: uppercase;
+  }
+
+    .home .card-label:last-child {
+      margin-top: 1rem;
+    }
+
+    .card-label a,
+    .card-label a:visited {
+      color: #666;
+    }
+
+      .card-label > a:before {
+        content: '\f505';
+        display: inline-block;
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        font: normal 1.4rem/1.5 Genericons;
+        margin-right: .25em;
+        speak: none;
+        vertical-align: top;
+      }
+
+    .card-label a:hover,
+    .card-label a:focus {
+      color: #a00;
+    }
+
+
+  /* Card thumbnail styles. */
+
+  .card .default_thumbnail {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: .2rem 0 0 .2rem;
+    float: left;
+    height: 100%;
+    margin: 0;
+    position: absolute;
+      top: 0;
+      left: 0;
+    width: 30%;
+  }
+
+    .card .has-card-label .default_thumbnail {
+      border-radius: 0;
+    }
+
+
+  /* Headline-excerpt styles. */
+
+  .card .headline-excerpt {
+  }
+
+    /* Headline styles. */
+
+    .card .headline {
+      font-size: 2.4rem;
+      margin-bottom: .5rem;
+    }
+
+    .card .category-lawyerist-podcast .headline {
+      font-size: 3.2rem;
+      margin-bottom: .25em;
+    }
+
+    .card .page .headline {
+      font-size: 3.2rem;
+      margin-bottom: 0;
+    }
+
+    .card .excerpt,
+    .card a .excerpt {
+      color: #111;
+      font-size: 1.6rem;
+    }
+
+      .card .excerpt a,
+      .card .excerpt a:visited {
+        color: #c00;
+        text-decoration: none;
+      }
+
+      .card .excerpt a:hover,
+      .card .excerpt a:focus{
+        color: #a00;
+        text-decoration: underline;
+      }
+
+    .card .postmeta {
+      font-size: 1.4rem;
+      margin-bottom: .5rem;
+    }
+
+
+    /* Excerpt styles. */
+
+    @media only screen and ( max-width: 683px ) {
+
+      .card .excerpt {
+        display: none;
+      }
+
+    }
+
+
+    /* Cards with post/page/podcast guest/author images. */
+
+    .card .has-post-thumbnail {
+      display: grid;
+      grid-template-columns: 10rem 1fr;
+      grid-gap: 1.5rem;
+    }
+
+      .card .post-thumbnail {
+        height: 10rem;
+        line-height: 1;
+        width: 10rem;
+      }
+
+        .card .post-thumbnail img {
+          border-radius: 50%;
+          height: auto;
+          margin: 0;
+          width: 100%;
+        }
+
+    .card .page.has-post-thumbnail {
+      grid-template-columns: 7.5rem 1fr;
+    }
+
+      .card .page.has-post-thumbnail > * {
+        align-self: center;
+      }
+
+      .card .page.has-post-thumbnail .post-thumbnail {
+        height: 7.5rem;
+        line-height: 1;
+        width: 7.5rem;
+      }
+
+        .card .page.has-post-thumbnail .post-thumbnail img {
+          border-radius: 50%;
+          height: auto;
+          margin: 0;
+          width: 100%;
+        }
+
+    .card .has-guest-avatar {
+      display: grid;
+      grid-template-columns: 10rem 1fr;
+      grid-gap: 1.5rem;
+    }
+
+      .card .guest_avatar {
+        height: 10rem;
+        line-height: 1;
+        width: 10rem;
+      }
+
+        .card .guest_avatar img {
+          border-radius: 50%;
+          height: auto;
+          margin: 0;
+          width: 100%;
+        }
+
+    .card .has-author-avatar {
+      display: grid;
+      grid-template-columns: 7.5rem 1fr;
+      grid-gap: 1.5rem;
+    }
+
+      .card .author_avatar {
+        height: 7.5rem;
+        line-height: 1;
+        width: 7.5rem;
+      }
+
+        .card .author_avatar img {
+          border-radius: 50%;
+          height: auto;
+          margin: 0;
+          width: 100%;
+        }
+
+    .card p {
+      margin-bottom: .75em;
+    }
+
+  .card > *:last-child,
+  #sponsored_product_updates > *:last-child {
     margin-bottom: 0 !important;
   }
+
+    .card > *:last-child > *:last-child,
+    #sponsored_product_updates > *:last-child > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+
+  /* Sponsored post cards. */
+
+  .card.sponsored {
+    border-top: .7rem solid #ffffc7;
+  }
+
+
+  /* Related podcasts, posts, and pages cards. */
+
+  #related_podcasts .card,
+  #related_posts .card,
+  #related_pages .card {
+    padding: 1.5rem;
+  }
+
+
+  /* Affinity discount cards. */
 
   .card.affinity-discount-card {
     margin: 2rem 0 3rem 0;
     min-height: 12.8rem;
-    padding: 2rem;
-    position: relative;
   }
 
       .card.affinity-discount-card img {
@@ -1449,243 +1694,6 @@ Selectors
       }
 
     }
-
-
-  .card.front_page_sticky_post,
-  .card.has-card-label,
-  .card.has-avatar-thumbnail,
-  #sponsored_product_updates {
-    padding: 2rem;
-  }
-
-  #sponsored_product_updates li:last-child {
-    margin-bottom: 0;
-  }
-
-  /* Highlight colors. */
-
-  .card.sponsored {
-    border-top: .7rem solid #ffffc7;
-  }
-
-.card a {
-  color: inherit;
-  text-decoration: none;
-}
-
-.card a:hover,
-.card a:focus{
-  color: #a00;
-  text-decoration: none;
-}
-
-.card .headline-excerpt {
-  color: #111;
-  position: relative;
-}
-
-  .card .headline {
-    color: #333;
-    margin-bottom: .2em;
-  }
-
-  .card .headline:hover,
-  .card .headline:focus {
-    color: #a00;
-    text-decoration: none;
-  }
-
-  .card .excerpt {
-    font-size: 1.6rem;
-  }
-
-    .card .excerpt a,
-    .card .excerpt a:visited {
-      color: #c00;
-      text-decoration: none;
-    }
-
-    .card .excerpt a:hover,
-    .card .excerpt a:focus{
-      color: #a00;
-      text-decoration: underline;
-    }
-
-  .card .postmeta {
-    font-size: 1.4rem;
-    margin-bottom: .5rem;
-  }
-
-  .card p,
-  .card p {
-    margin-bottom: .75em;
-  }
-
-    .card .excerpt a,
-    .card .excerpt a:visited {
-      color: #c00;
-      text-decoration: none;
-    }
-
-    .card .excerpt a:hover,
-    .card .excerpt a:focus{
-      color: #a00;
-      text-decoration: underline;
-    }
-
-
-/* Card label styles. */
-
-.card-label,
-.review-summary-title {
-  color: #666;
-  font-size: 1.4rem;
-  font-weight: bold;
-  margin-bottom: .5em;
-  text-transform: uppercase;
-}
-
-  .home .card .card-label:last-child {
-    margin-top: 1rem;
-  }
-
-  .card-label a,
-  .card-label a:visited {
-    color: #666;
-  }
-
-  .card-label > a:before {
-    content: '\f505';
-    display: inline-block;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
-    font: normal 1.4rem/1.5 Genericons;
-    margin-right: .25em;
-    speak: none;
-    vertical-align: top;
-  }
-
-  .card-label a:hover,
-  .card-label a:focus {
-    color: #a00;
-    text-decoration: none;
-  }
-
-
-/* .headline-excerpt styles. */
-.card.has-card-label .headline-excerpt {
-  padding: 0;
-}
-
-.card.has-post-thumbnail .headline-excerpt {
-  padding: 2rem 2rem 2rem 30%;
-}
-
-  .card.has-post-thumbnail .headline,
-  .card.has-post-thumbnail .excerpt,
-  .card.has-post-thumbnail .postmeta {
-    margin-left: 2rem;
-  }
-
-.card.has-avatar-thumbnail .headline-excerpt {
-  padding: 0;
-}
-
-  .card.has-avatar-thumbnail .headline,
-  .card.has-avatar-thumbnail .excerpt,
-  .card.has-avatar-thumbnail .postmeta {
-    margin-left: 2rem;
-    padding-left: 20%
-  }
-
-
-/* Post image styles. */
-
-.card .default_thumbnail {
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  border-radius: .2rem 0 0 .2rem;
-  float: left;
-  height: 100%;
-  margin: 0;
-  position: absolute;
-    top: 0;
-    left: 0;
-  width: 30%;
-}
-
-  .card .has-card-label .default_thumbnail {
-    border-radius: 0;
-  }
-
-.card .author_avatar {
-  float: left;
-  font-size: 1rem;
-  line-height: 1;
-  position: relative;
-  width: 20%;
-}
-
-  .card .author_avatar:before {
-    content: '';
-    display: block;
-    padding-top: 100%;
-  }
-
-  .card .author_avatar img {
-    border-radius: 50%;
-    height: auto;
-    margin: 0;
-    position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-    width: 100%;
-  }
-
-  .card .author_avatar img.size-thumbnail {
-    max-width: unset;
-  }
-
-
-/* Headline styles. */
-
-.card .headline {
-  font-size: 2.4rem;
-  margin-bottom: .5rem;
-}
-
-.card.category-lawyerist-podcast .headline,
-.card.category-blog-posts .headline {
-  font-size: 3.2rem;
-  margin-bottom: .25em;
-}
-
-.card.page .headline {
-  font-size: 3.2rem;
-  margin-bottom: 0;
-}
-
-@media only screen and ( max-width: 683px ) {
-
-  .card .headline-excerpt .headline {
-    font-size: 2.4rem !important;
-  }
-
-}
-
-
-/* Excerpt styles. */
-
-@media only screen and ( max-width: 683px ) {
-
-  .card .excerpt {
-    display: none;
-  }
-
-}
 
 
 /* Postmeta styles */
@@ -1962,38 +1970,9 @@ p.dashboard-widget-note {
     margin-bottom: 0;
   }
 
-.home #blog-posts {
-  padding: 2rem;
+.home #blog-posts .post {
+  margin-bottom: 1.5rem;
 }
-
-  .home #blog-posts .post {
-    display: block;
-    margin-bottom: 1rem;
-  }
-
-    .home #blog-posts .headline-excerpt {
-      margin-bottom: 2rem;
-      padding: 0;
-    }
-
-      .home #blog-posts .headline,
-      .home #blog-posts .postmeta {
-        margin-left: 1.5rem;
-        padding-left: 7.5rem;
-      }
-
-      .home #blog-posts .author_avatar {
-        float: left;
-        font-size: 1rem;
-        line-height: 1;
-        width: 7.5rem;
-      }
-
-        .home #blog-posts .author_avatar img {
-          height: auto;
-          margin: 0;
-          width: 100%;
-        }
 
 
 /*------------------------------
@@ -2373,41 +2352,6 @@ Content
 
     }
 
-  .single .category-blog-posts .headline_postmeta {
-    min-height: 10rem;
-  }
-
-    .single .category-blog-posts .author_avatar {
-      float: left;
-    }
-
-      .single .category-blog-posts .author_avatar img {
-        margin: 0;
-      }
-
-    .single .category-blog-posts .headline,
-    .single .category-blog-posts .headline_postmeta .postmeta {
-      padding-left: 11.5rem;
-    }
-
-    @media only screen and ( max-width: 499px ) {
-
-      .single .category-blog-posts .author_avatar {
-        float: none;
-      }
-
-        .single .category-blog-posts .author_avatar img {
-          height: 7.5rem;
-          width: 7.5rem;
-        }
-
-      .single .category-blog-posts .headline,
-      .single .category-blog-posts .headline_postmeta .postmeta {
-        padding-left: 0;
-      }
-
-    }
-
   .page_links,
   .woocommerce nav.woocommerce-pagination {
     color: #777;
@@ -2554,49 +2498,6 @@ Content
         }
 
       }
-
-    #related_podcasts .card,
-    #related_posts .card,
-    #related_pages .card {
-      background-color: #f9f9f9;
-      min-height:7.5rem;
-      padding: 2rem;
-      position: relative;
-    }
-
-      #related_podcasts .author_avatar,
-      #related_posts .author_avatar,
-      #related_pages .author_avatar {
-        width: 7.5rem;
-      }
-
-      #related_podcasts .headline-excerpt,
-      #related_posts .headline-excerpt {
-        padding: 0 0 0 9rem;
-      }
-
-      #related_pages .headline-excerpt {
-        padding: 0 2rem 0 9rem;
-        position: absolute;
-          top: 50%;
-        transform: translateY(-50%);
-      }
-
-        #related_podcasts .headline,
-        #related_posts .headline,
-        #related_pages .headline,
-        #related_podcasts .postmeta,
-        #related_posts .postmeta,
-        #related_pages .postmeta {
-          margin-left: 0;
-          padding-left: 0;
-        }
-
-        #related_podcasts .headline,
-        #related_posts .headline {
-          font-size: 2.4rem;
-          margin-bottom: .5rem;
-        }
 
 
   /*------------------------------
@@ -2937,8 +2838,7 @@ Content
 
     .product-page .has-post-thumbnail .headline_container .headline,
     .product-page .has-post-thumbnail .headline_container .user-rating,
-    .product-page .has-post-thumbnail .headline_container .excerpt,
-    .product-page .has-post-thumbnail .headline_container .affinity-partner-link {
+    .product-page .has-post-thumbnail .headline_container .excerpt {
       padding-left: 11.5rem;
     }
 
@@ -2948,16 +2848,6 @@ Content
       right: 2rem;
       top: 2rem;
   }
-
-    .affinity-partner-link {
-      display: block;
-      font-size: 1.6rem;
-      text-align: center;
-    }
-
-      .product-page .has-post-thumbnail .headline_container .affinity-partner-link {
-        text-align: unset;
-      }
 
   .product-pages-list {
     list-style: none;
@@ -3037,9 +2927,7 @@ Content
 
     .product-pages-list li.card .excerpt {
       display: block;
-      font-size: 1.6rem;
       margin-left: 12.5rem;
-      padding: 0;
     }
 
     .featured-products-list li.card {
@@ -3212,7 +3100,7 @@ Content
       .portal-card-logos img:nth-of-type(6) {
         border-radius: 0 .2rem 0 0;
       }
-      
+
 
   /*------------------------------
   Team Profiles
@@ -3408,108 +3296,73 @@ p.comment-subscription-form input[type="checkbox"] {
 Author Bios
 ------------------------------*/
 
-#author_bio,
-#author_connect {
-  color: #666;
-  font-size: 1.6rem;
+.author-bio-box {
+  display: grid;
+  grid-template-columns: 15rem 1fr;
+  grid-gap: 1.5rem;
 }
 
-#author_bio {
-  line-height: 1.5;
-  margin-bottom: 1.5em;
-}
-
-#author_connect p {
-  line-height: 1em;
-  margin-bottom: 1.3rem;
-}
-
-#author_connect p:last-child {
-  margin-bottom: 3rem;
-}
-
-p.author_twitter:before,
-p.author_website:before {
-  font-size: 16px;
-  vertical-align: top;
-  text-align: center;
-  -moz-transition: color .1s ease-in 0;
-  -webkit-transition: color .1s ease-in 0;
-  display: inline-block;
-  font-family: 'Genericons';
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  line-height: 1;
-  speak: none;
-  text-decoration: inherit;
-  text-transform: none;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  speak: none;
-}
-
-p.author_twitter:before {
-  color: #4099ff;
-  content: '\f202';
-}
-
-p.author_website:before {
-  color: #555;
-  content: '\f475';
-}
-
-#author_bio_footer {
-  clear: both;
-  margin: 6rem 0;
-  min-height: 10rem;
-}
-
-  #author_bio_footer img {
-    float: left;
-    margin-bottom: 3rem;
-    margin-right: 2rem;
+  .author-bio-box img.wp-user-avatar {
+    line-height: 1;
+    margin: 0;
   }
 
-  #author_bio_footer #author_bio,
-  #author_bio_footer #author_connect {
-    padding-left: 12rem;
+  .author-bio {
+    font-size: 1.6rem;
+    line-height: 1.5;
+    margin-bottom: 1.5em;
   }
 
-#author_header {
-  border-bottom: .1rem solid #ddd;
-  margin-bottom: 2rem;
-  min-height: 30rem;
-  padding-bottom: 2rem;
-}
-
-  #author_header img {
-    border-radius: 0;
-    float: left;
-    height: auto;
-    margin: 0 2rem 1em 0;
-    width: 30rem;
+  .author-connect {
+    font-size: 1.6rem;
+    line-height: 2rem;
+    margin-bottom: .5em;
   }
 
-  #author_header #author_bio,
-  #author_header #author_connect {
-    padding-left: 32rem;
-  }
-
-@media only screen and (max-width: 683px) {
-
-  #author_header img {
-    float: none;
-    height: auto;
-    width: 100%;
-  }
-
-    #author_header #author_bio,
-    #author_header #author_connect {
-      padding-left: 0;
+    .author-twitter:before,
+    .author-linkedin:before,
+    .author-website:before {
+      border-radius: .2rem;
+      color: #fff;
+      font-size: 16px;
+      vertical-align: top;
+      text-align: center;
+      -moz-transition: color .1s ease-in 0;
+      -webkit-transition: color .1s ease-in 0;
+      display: inline-block;
+      font-family: 'Genericons';
+      font-style: normal;
+      font-weight: normal;
+      font-variant: normal;
+      line-height: 1;
+      margin-right: .3em;
+      padding: .2rem;
+      speak: none;
+      text-decoration: inherit;
+      text-transform: none;
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-font-smoothing: antialiased;
+      speak: none;
     }
 
-}
+    .author-twitter:before {
+      background: #4099ff;
+      content: '\f202';
+    }
+
+    .author-linkedin:before {
+      background: #0077b5;
+      content: '\f207';
+    }
+
+    .author-website:before {
+      background: #555;
+      content: '\f475';
+    }
+
+    .author-connect > *:last-child {
+      margin-bottom: 0;
+    }
 
 
 /*------------------------------
@@ -4719,7 +4572,7 @@ Print
   }
 
   blockquote,
-  #author_bio_footer,
+  #author-bio-footer,
   #footer,
   img {
     page-break-inside: avoid;
