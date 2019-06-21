@@ -287,8 +287,8 @@ function get_sponsor() {
 			array(
 				'fields' 	=> 'ids',
 				'orderby' => 'count',
-				'order' 	=> 'DESC'
-			)
+				'order' 	=> 'DESC',
+			),
 		);
 
 		$sponsor_info = get_term( $sponsor_IDs[0] );
@@ -321,8 +321,8 @@ function get_sponsor_link() {
 			array(
 				'fields' 	=> 'ids',
 				'orderby' => 'count',
-				'order' 	=> 'DESC'
-			)
+				'order' 	=> 'DESC',
+			),
 		);
 
 		$sponsor_info = get_term( $sponsor_IDs[0] );
@@ -331,7 +331,9 @@ function get_sponsor_link() {
 
 		if ( !empty( $sponsor_url ) ) {
 
-			return '<a href="' . $sponsor_url . '">' . $sponsor . '</a>';
+			$sponsor_link = '<a href="' . $sponsor_url . '">' . $sponsor . '</a>';
+
+			return $sponsor_link;
 
 		} else {
 
