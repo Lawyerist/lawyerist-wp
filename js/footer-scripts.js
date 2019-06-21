@@ -63,11 +63,11 @@ function stickySidebarAd( $ ) {
   // Checks to see if the sidebar ad is present.
   if ( jQuery( '#lawyerist_display_ad' ).length > 0 ) {
 
-    var windowTop      = jQuery( window ).scrollTop();
-    var sidebarAdTop   = jQuery( '#lawyerist_display_ad' ).offset().top;
-    var sidebarTop     = jQuery( '#sidebar_column' ).offset().top;
-    var sidebarHeight  = jQuery( '#sidebar_column' ).outerHeight();
-    var sidebarBottom  = sidebarTop + sidebarHeight;
+    var windowTop       = jQuery( window ).scrollTop();
+    var sidebarTop      = jQuery( '#sidebar_column' ).offset().top;
+    var sidebarAdHeight = jQuery( '#lawyerist_display_ad' ).outerHeight();
+    var sponsorAdHeight = jQuery( '#custom_html-2' ).outerHeight();
+    var sidebarBottom   = sidebarTop + sidebarAdHeight + sponsorAdHeight;
 
     if ( windowTop > sidebarBottom ) {
       jQuery( '#lawyerist_display_ad' ).addClass( 'stick' );
