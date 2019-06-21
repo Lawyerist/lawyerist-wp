@@ -16,9 +16,16 @@
 	</div>
 
 	<ol class="commentlist">
-	<?php wp_list_comments( array(
-		'avatar_size'	=> 48, 'max_depth' => 1,
-	) ); ?>
+	<?php
+
+		wp_list_comments( array(
+			'avatar_size'				=> 48,
+			'max_depth'					=> 1,
+			'reverse_top_level'	=> true,
+			'reverse_children'	=> true,
+		) );
+
+	?>
 	</ol>
 
 	<div class="navigation">
