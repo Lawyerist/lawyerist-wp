@@ -3247,6 +3247,12 @@ Author Bios
   grid-gap: 1.5rem;
 }
 
+  .author-bio-box h1 {
+    grid-column-start: 1;
+    grid-column-end: -1;
+    margin-bottom: 0;
+  }
+
   .author-bio-box img.wp-user-avatar {
     line-height: 1;
     margin: 0;
