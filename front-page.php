@@ -190,14 +190,14 @@
 
 					// Starts the post container.
 
-					echo '<div class="card has-card-label">';
+					echo '<div id="fp-latest-podcast" class="card has-card-label">';
 
 						// Starts the link container. Makes for big click targets!
 						echo '<a href="' . $podcast_url . '" title="' . $podcast_title . '" ';
 						post_class( 'has-guest-avatar' );
 						echo '>';
 
-							echo '<div class="guest_avatar"><img class="avatar" src="' . $first_image_url . '" /></div>';
+							echo '<div class="guest-avatar"><img class="avatar" src="' . $first_image_url . '" /></div>';
 
 							// Now we get the headline and excerpt (except for certain kinds of posts).
 							echo '<div class="headline-excerpt">';
@@ -239,7 +239,7 @@
 
 
 				// Embedded Lawyerist Lens playlist.
-				echo '<div id="lens_playlist" class="card has-card-label">';
+				echo '<div id="fp-lens-playlist" class="card has-card-label">';
 
 					echo '<div id="lens-wrapper"><iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLtFJu5URBISmTDaVOF3l-cQl08f2qUMr_" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>';
 
@@ -263,7 +263,7 @@
 				if ( $current_post_query->have_posts() ) :
 
 					// Starts the post container.
-					echo '<div id="blog-posts" class="card">';
+					echo '<div id="fp-blog-posts" class="card">';
 
 						while ( $current_post_query->have_posts() ) : $current_post_query->the_post();
 
@@ -271,15 +271,24 @@
 						$post_url				= get_permalink();
 
 						$author_name		= get_the_author_meta( 'display_name' );
-						$author_avatar	= get_avatar( get_the_author_meta( 'user_email' ), 75, '', $author_name );
+						$author_avatar	= get_avatar( get_the_author_meta( 'user_email' ), 100, '', $author_name );
+
+						if ( has_post_thumbnail() ) {
+
+							$thumbnail_url  = get_the_post_thumbnail_url( $post->ID, 'default_thumbnail' );
+					    $thumbnail      = '<div class="featured-thumbnail" style="background-image: url( ' . $thumbnail_url . ' );"></div>';
+					    $post_classes[] = 'has-featured-thumbnail';
+
+						}
 
 							// Starts the link container. Makes for big click targets!
 							echo '<a href="' . $post_url . '" title="' . $post_title . '"';
-							post_class( 'has-author-avatar' );
+							post_class( $post_classes );
 							echo '>';
 
-								// Outputs the author's avatar.
-								echo '<div class="author_avatar">' . $author_avatar . '</div>';
+							if ( !empty ( $thumbnail ) ) {
+								echo $thumbnail;
+							}
 
 								// Now we get the headline and excerpt (except for certain kinds of posts).
 								echo '<div class="headline-excerpt">';
@@ -292,6 +301,9 @@
 								echo '</div>'; // Close .headline-excerpt.
 
 							echo '</a>'; // This closes the post link container (.post).
+
+							unset( $thumbnail );
+							unset( $post_classes );
 
 						endwhile;
 

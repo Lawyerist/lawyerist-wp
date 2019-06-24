@@ -694,7 +694,7 @@ function lawyerist_get_related_podcasts() {
 
 		if ( $lawyerist_related_podcasts_query->have_posts() ) :
 
-			echo '<div id="related_podcasts">';
+			echo '<div id="related-podcasts">';
 			echo '<h2>Podcasts About ' . $current_title . '</h2>';
 
 				// Start the Loop.
@@ -717,7 +717,7 @@ function lawyerist_get_related_podcasts() {
 								$first_image_url = 'https://lawyerist.com/lawyerist/wp-content/uploads/2018/09/podcast-mic-square-150x150.png';
 							}
 
-							echo '<div class="guest_avatar"><img class="avatar" src="' . $first_image_url . '" /></div>';
+							echo '<div class="guest-avatar"><img class="avatar" src="' . $first_image_url . '" /></div>';
 
 							echo '<div class="headline-excerpt">';
 
@@ -772,7 +772,7 @@ function lawyerist_get_related_posts() {
 
 		if ( $lawyerist_related_posts_query->have_posts() ) :
 
-			echo '<div id="related_posts">';
+			echo '<div id="related-posts">';
 			echo '<h2>Posts About ' . $current_title . '</h2>';
 
 				while ( $lawyerist_related_posts_query->have_posts() ) : $lawyerist_related_posts_query->the_post();
@@ -781,18 +781,26 @@ function lawyerist_get_related_posts() {
 					$post_url				= get_permalink();
 
 					$author_name		= get_the_author_meta( 'display_name' );
-					$author_avatar	= get_avatar( get_the_author_meta( 'user_email' ), 150, '', $author_name );
+
+					if ( has_post_thumbnail() ) {
+
+						$thumbnail_url  = get_the_post_thumbnail_url( $post->ID, 'default_thumbnail' );
+				    $thumbnail      = '<div class="featured-thumbnail" style="background-image: url( ' . $thumbnail_url . ' );"></div>';
+				    $post_classes[] = 'has-featured-thumbnail';
+
+					}
 
 					// Starts the post container.
 					echo '<div class="card">';
 
 						// Starts the link container. Makes for big click targets!
 						echo '<a href="' . $post_url . '" title="' . $post_title . '" ';
-						post_class( 'has-author-avatar' );
+						post_class( $post_classes );
 						echo '>';
 
-							// Outputs the author's avatar.
-							echo '<div class="author_avatar">' . $author_avatar . '</div>';
+							if ( !empty ( $thumbnail ) ) {
+				        echo $thumbnail;
+				      }
 
 							echo '<div class="headline-excerpt">';
 
@@ -806,6 +814,9 @@ function lawyerist_get_related_posts() {
 						echo '</a>'; // This closes the post link container (.post).
 
 					echo '</div>';
+
+					unset( $thumbnail );
+					unset( $post_classes );
 
 				endwhile;
 
@@ -863,7 +874,7 @@ function lawyerist_get_related_pages() {
 
 		if ( $lawyerist_related_pages_query->have_posts() ) :
 
-			echo '<div id="related_pages">';
+			echo '<div id="related-pages">';
 			echo '<h2>More Resources</h2>';
 
 				while ( $lawyerist_related_pages_query->have_posts() ) : $lawyerist_related_pages_query->the_post();
@@ -871,21 +882,24 @@ function lawyerist_get_related_pages() {
 					$post_title			= the_title( '', '', FALSE );
 					$post_url				= get_permalink();
 
+					if ( has_post_thumbnail() ) {
+
+						$thumbnail_url  = get_the_post_thumbnail_url( $post->ID, 'default_thumbnail' );
+				    $thumbnail      = '<div class="featured-thumbnail" style="background-image: url( ' . $thumbnail_url . ' );"></div>';
+				    $post_classes[] = 'has-featured-thumbnail';
+
+					}
+
 					// Starts the post container.
 					echo '<div class="card">';
 
 						// Starts the link container. Makes for big click targets!
 						echo '<a href="' . $post_url . '" title="' . $post_title . '" ';
-						post_class();
+						post_class( $post_classes );
 						echo '>';
 
-							// Outputs the post thumbnail or a default image.
-							if ( has_post_thumbnail() ) {
-								echo '<div class="post-thumbnail">';
-									the_post_thumbnail( 'thumbnail' );
-								echo '</div>';
-							} else {
-								echo '<div class="thumbnail"><img class="attachment-thumbnail wp-post-image" src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/02/L-dot.png" /></div>';
+							if ( !empty ( $thumbnail ) ) {
+								echo $thumbnail;
 							}
 
 							echo '<div class="headline-excerpt">';
@@ -897,6 +911,9 @@ function lawyerist_get_related_pages() {
 						echo '</a>'; // This closes the post link container (.post).
 
 					echo '</div>';
+
+					unset( $thumbnail );
+					unset( $post_classes );
 
 				endwhile;
 

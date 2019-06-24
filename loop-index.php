@@ -47,26 +47,14 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
     }
 
-    $thumbnail      = '<div class="guest_avatar"><img class="avatar" src="' . $first_image_url . '" /></div>';
+    $thumbnail      = '<div class="guest-avatar"><img class="avatar" src="' . $first_image_url . '" /></div>';
     $post_classes[] = 'has-guest-avatar';
 
-  } elseif ( ( is_page() || is_author() ) && has_post_thumbnail() ) {
+  } elseif ( has_post_thumbnail() ) {
 
     $thumbnail_url  = get_the_post_thumbnail_url( $post->ID, 'default_thumbnail' );
-    $thumbnail      = '<div class="default_thumbnail" style="background-image: url( ' . $thumbnail_url . ' );"></div>';
-
-  } elseif ( $post_type == 'product' ) {
-
-    $thumbnail_url  = get_the_post_thumbnail_url( $post->ID, 'shop_single' );
-    $thumbnail      = '<img class="product-thumbnail" src="' . $thumbnail_url . '" />';
-
-  } elseif ( !is_page() && !is_author() ) {
-
-    $author_name		= get_the_author_meta( 'display_name' );
-    $author_avatar	= get_avatar( get_the_author_meta( 'user_email' ), 150, '', $author_name );
-
-    $thumbnail      = '<div class="author_avatar">' . $author_avatar . '</div>';
-    $post_classes[] = 'has-author-avatar';
+    $thumbnail      = '<div class="featured-thumbnail" style="background-image: url( ' . $thumbnail_url . ' );"></div>';
+    $post_classes[] = 'has-featured-thumbnail';
 
   }
 
