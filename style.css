@@ -3245,6 +3245,7 @@ Author Bios
   display: grid;
   grid-template-columns: 15rem 1fr;
   grid-gap: 1.5rem;
+  margin-bottom: 4rem;
 }
 
   .author-bio-box h1 {
@@ -4523,7 +4524,6 @@ Print
   }
 
   blockquote,
-  #author-bio-footer,
   #footer,
   img {
     page-break-inside: avoid;
