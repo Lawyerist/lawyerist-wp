@@ -18,6 +18,16 @@ echo '<div class="postmeta">';
 
   echo 'Page edited by <span class="vcard author"><cite class="fn"><a href="' . $profile_page_url . '" class="url">' . $author . '</a></cite></span>. ';
 
+  $coauthors  = get_coauthors();
+
+	if ( count( $coauthors ) > 1 ) {
+
+    echo '<span class="coauthors">';
+    lawyerist_get_coauthors();
+    echo '</span> ';
+
+  }
+
   echo 'Last updated <span class="date updated published">' . $updated_date . '</span>.';
 
 echo '</div>'; // Close .postmeta.
