@@ -851,20 +851,6 @@ function lawyerist_get_related_pages() {
 
 		$lawyerist_related_pages_query_args = array(
 			'post__not_in'				=> $current_id,
-			'post_parent__not_in'	=> array( // Excludes Affinity partner pages.
-				239204, // Affinity Benefits
-				242095, // Claim Your Affinity benefits
-				242252, // Accounting Software
-				242234, // Credit Card Processing
-				242243, // Intake CRM Software
-				242244, // Law Practice Management Software
-				269706, // Lawyer Ratings & Directories
-				242251, // Legal Timekeeping & Billing Software
-				242249, // Online Legal Research Tools
-				243267, // Other Legal Marketing Tools
-				242253, // Virtual Receptionists
-				242254, // Website Designers & SEO Consultants
-			),
 			'posts_per_page'			=> -1,
 			'post_type'						=> 'page',
 			'post_name__in' 			=> $current_tags_slugs,
