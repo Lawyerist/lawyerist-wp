@@ -11,6 +11,26 @@
 
 <link rel="alternate" type="application/rss+xml" title="<?php bloginfo( 'name' ); ?> RSS feed" href="http://feeds.feedburner.com/solosmalltech">
 
+
+<?php
+
+if ( is_author() ) {
+
+  global $wp_query;
+
+  $author_ID          = $wp_query->queried_object->data->ID;
+  $author_name        = $wp_query->queried_object->data->display_name;
+  $author_post_count  = count_user_posts( $author_ID );
+
+  if ( $author_post_count < 5 ) {
+    echo '<!-- ' . $author_name . ' has ' . sprintf ( _n( '%s post', '%s posts', $author_post_count ), $author_post_count ). ', so this page is noindexed. -->';
+    echo '<meta name="robots" content="noindex">';
+  }
+
+}
+
+?>
+
 <!-- Google global site tag (gtag.js) - Google Ads: 928946623 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-928946623"></script>
 <script>
@@ -42,7 +62,6 @@
   });
 </script>
 <!-- End DoubleClick Tag for Sidebar Ad -->
-
 
 <!-- Google Webmaster Tools site verification tag for Sam -->
 <meta name="google-site-verification" content="GwbQ-BLG3G-tXV4-uG-_kZIaxXxm_Wqmzg5wFSBa9hI" />
