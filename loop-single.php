@@ -13,6 +13,11 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
   post_class();
   echo '>';
 
+    // Featured image
+    if ( has_post_thumbnail() ) {
+        the_post_thumbnail( 'standard_thumbnail' );
+    }
+
     echo '<div class="headline_postmeta">';
 
       // Headline
@@ -23,10 +28,6 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
       echo '<div class="clear"></div>';
 
     echo '</div>'; // Close .headline_postmeta.
-
-    // Shows featured image if (1) this post has a featured image AND (2) this
-    // post DOES NOT have the no-image tag.
-    if ( has_post_thumbnail() && !has_tag( 'no-image' ) ) { the_post_thumbnail( 'standard_thumbnail' ); }
 
     // Output the post.
     echo '<div class="post_body" itemprop="articleBody">';

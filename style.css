@@ -31,7 +31,6 @@ Content
 	Posts
   Scorecard Results
   Tables
-  Resource Pages
   Product Pages
   All-Reviews Page
   Team Profiles
@@ -599,7 +598,6 @@ button,
 .comment-meta,
 .comment .reply,
 .product-page .headline_container .excerpt,
-.profile-page .headline_container .excerpt,
 figcaption,
 #footer,
 #header,
@@ -614,11 +612,11 @@ label,
 #menu-main-menu,
 .onsale,
 #opc-product-selection,
+.page .excerpt,
 .page_links,
 .postmeta,
 .price_tag,
 .product_meta,
-.resource-page .headline_container .excerpt,
 #review,
   .rating-breakdown,
 #sponsored_product_updates,
@@ -932,8 +930,8 @@ p.pullout {
 .postmeta,
 .product_meta,
 .user-rating,
+.page .excerpt,
 .product-page .headline_container .excerpt,
-.resource-page .headline_container .excerpt,
 .profile-page .headline_container .excerpt {
 	color: #777;
   display: block;
@@ -2705,51 +2703,6 @@ Content
 
 
   /*------------------------------
-  Resource Pages
-  ------------------------------*/
-
-  .resource-page .headline_container {
-    margin-bottom: 3rem;
-  }
-
-  .resource-page div[itemprop="image"] {
-    background-color: #ddd;
-    border-radius: .2rem;
-    box-sizing: border-box;
-    float: left;
-    height: 10rem;
-    margin: 0 1.5rem 0 0;
-    padding: .5rem;
-    width: 10rem;
-  }
-
-    .resource-page .headline_container img.wp-post-image {
-      height: 100%;
-      margin: auto 0;
-      max-width: none;
-      width: auto;
-    }
-
-  .resource-page .has-post-thumbnail .headline_container .headline,
-  .resource-page .has-post-thumbnail .headline_container .excerpt {
-    padding-left: 11.5rem;
-  }
-
-  @media only screen and ( max-width: 499px ) {
-
-    .resource-page div[itemprop="image"] {
-      display: none;
-    }
-
-    .resource-page .has-post-thumbnail .headline_container .headline,
-    .resource-page .has-post-thumbnail .headline_container .excerpt {
-      padding-left: 0;
-    }
-
-  }
-
-
-  /*------------------------------
   Product Pages
   ------------------------------*/
 
@@ -3045,46 +2998,6 @@ Content
       .portal-card-logos img:nth-of-type(6) {
         border-radius: 0 .2rem 0 0;
       }
-
-
-  /*------------------------------
-  Team Profiles
-  ------------------------------*/
-
-  .profile-page .headline_container {
-    margin-bottom: 3rem;
-    position: relative;
-  }
-
-    .profile-page .has-post-thumbnail .headline_container {
-      min-height: 17.5rem;
-    }
-
-    .profile-page .has-post-thumbnail .headline_container .headline,
-    .profile-page .has-post-thumbnail .headline_container .excerpt {
-      padding-left: 17.5rem;
-    }
-
-    .profile-page .headline_container div[itemprop="image"] {
-      background-color: #ddd;
-      border-radius: .2rem;
-      height: 15rem;
-      padding: .5rem;
-      position: absolute;
-        top: 0;
-        bottom: 0;
-      width: 15rem;
-    }
-
-    .profile-page .headline_container img.wp-post-image {
-      height: auto;
-      margin: auto 0;
-      max-width: none;
-      position: absolute;
-        top: 0;
-        bottom: 0;
-      width: 15rem;
-    }
 
 
   /*------------------------------

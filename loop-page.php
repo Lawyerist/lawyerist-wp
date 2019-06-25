@@ -4,8 +4,8 @@
 if ( have_posts() ) : while ( have_posts() ) : the_post();
 
   // Assign post variables.
-  $post_title   = the_title( '', '', FALSE );
-  $post_type    = get_post_type( $post->ID );
+  $page_title   = the_title( '', '', FALSE );
+  $page_ID      = $post->ID;
 
   // This is the post container.
   echo '<div ';
@@ -17,17 +17,32 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
       yoast_breadcrumb( '<div class="breadcrumbs">', '</div>' );
     }
 
-    echo '<div class="headline_postmeta">';
-
-      // Headline
-      echo '<h1 class="headline entry-title">' . $post_title . '</h1>';
-
-    echo '</div>'; // Close .headline_postmeta.
-
     // Featured image
     if ( has_post_thumbnail() ) {
         the_post_thumbnail( 'standard_thumbnail' );
     }
+
+    echo '<div class="headline_postmeta">';
+
+      // Headline
+      echo '<h1 class="headline entry-title">' . $page_title . '</h1>';
+
+      // Output the excerpt.
+      $seo_descr = get_post_meta( $page_ID, '_yoast_wpseo_metadesc', true );
+
+      if ( !empty( $seo_descr ) ) {
+
+        $page_excerpt = $seo_descr;
+
+      } else {
+
+        $page_excerpt = get_the_excerpt();
+
+      }
+
+      echo '<p class="excerpt">' . $page_excerpt . '</p>';
+
+    echo '</div>'; // Close .headline_postmeta.
 
     // Output the post.
     echo '<div class="post_body" itemprop="articleBody">';
@@ -38,8 +53,6 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
       if ( !is_really_a_woocommerce_page() ) {
         get_template_part( 'postmeta', 'page' );
       }
-
-      echo '<div class="clear"></div>';
 
       // Show page navigation if the post is paginated unless we're displaying
       // the RSS feed.
@@ -61,6 +74,20 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
       }
 
     echo '</div>'; // Close .post_body.
+
+    if ( comments_open() ) {
+
+      echo '<div id="comments_container">';
+
+      if ( function_exists( 'wp_review_show_total' ) ) {
+        comments_template( '/reviews.php' );
+      } else {
+        comments_template( '/comments.php' );
+      }
+
+      echo '</div>';
+
+    }
 
     lawyerist_get_related_podcasts();
     lawyerist_get_related_posts();
