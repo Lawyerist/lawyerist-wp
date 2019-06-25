@@ -52,7 +52,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
   } elseif ( has_post_thumbnail() ) {
 
-    $thumbnail_url  = get_the_post_thumbnail_url( $post->ID, 'default_thumbnail' );
+    $thumbnail_url  = get_the_post_thumbnail_url( $post->ID );
     $thumbnail      = '<div class="featured-thumbnail" style="background-image: url( ' . $thumbnail_url . ' );"></div>';
     $post_classes[] = 'has-featured-thumbnail';
 

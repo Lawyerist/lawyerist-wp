@@ -33,7 +33,6 @@ CONTENT
 - Ads
 - Affinity Benefit Notice
 - Mobile Ads
-- Add Image Sizes
 - Remove Inline Width from Image Captions
 - Featured Images in RSS Feeds
 - Remove Hidden Products from RSS Feed
@@ -843,7 +842,7 @@ function lawyerist_get_related_posts() {
 
 					if ( has_post_thumbnail() ) {
 
-						$thumbnail_url  = get_the_post_thumbnail_url( $post->ID, 'default_thumbnail' );
+						$thumbnail_url  = get_the_post_thumbnail_url( $post->ID );
 				    $thumbnail      = '<div class="featured-thumbnail" style="background-image: url( ' . $thumbnail_url . ' );"></div>';
 				    $post_classes[] = 'has-featured-thumbnail';
 
@@ -929,7 +928,7 @@ function lawyerist_get_related_pages() {
 
 					if ( has_post_thumbnail() ) {
 
-						$thumbnail_url  = get_the_post_thumbnail_url( $post->ID, 'default_thumbnail' );
+						$thumbnail_url  = get_the_post_thumbnail_url( $post->ID );
 				    $thumbnail      = '<div class="featured-thumbnail" style="background-image: url( ' . $thumbnail_url . ' );"></div>';
 				    $post_classes[] = 'has-featured-thumbnail';
 
@@ -1169,15 +1168,6 @@ function lawyerist_mobile_display_ad( $content ) {
 }
 
 add_filter( 'the_content', 'lawyerist_mobile_display_ad' );
-
-
-/*------------------------------
-Add Image Sizes
-------------------------------*/
-
-if ( function_exists( 'add_image_size' ) ) {
-	add_image_size( 'default_thumbnail', 300, 250, true ); // The default thumbnail in index lists.
-}
 
 
 /*------------------------------

@@ -8,7 +8,7 @@ echo '<div class="postmeta">';
   // Shows just the date for podcast posts and on author archives.
   if ( has_category( 'lawyerist-podcast' ) ) {
 
-    echo '<span class="date published">' . $date . '</span>';
+    echo '<span class="date published">' . $date . '</span> ';
 
   // Shows just the sponsor on product updates and sponsored posts.
   } elseif ( has_category( 'sponsored-posts' ) ) {
@@ -25,7 +25,7 @@ echo '<div class="postmeta">';
 
     }
 
-    echo 'on <span class="date published">' . $date . '</span>';
+    echo 'on <span class="date published">' . $date . '</span> ';
 
 
   // Shows the author on blog posts, and adds the sponsor for product spotlights.
@@ -73,11 +73,11 @@ echo '<div class="postmeta">';
 
     }
 
-    echo 'on <span class="date published">' . $date . '</span>';
+    echo 'on <span class="date published">' . $date . '</span> ';
 
   } else {
 
-    echo '<span class="date published">' . $date . '</span>';
+    echo '<span class="date published">' . $date . '</span> ';
 
   }
 
