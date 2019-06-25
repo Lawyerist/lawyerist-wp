@@ -666,45 +666,43 @@ function lawyerist_get_coauthors() {
 	  // Removes the primary author.
 	  unset( $coauthors[0] );
 
-	  echo '<p class="coauthors"><em>';
+    $coauthor_list = array();
 
-	    $coauthor_list = array();
+    foreach ( $coauthors as $coauthor ) {
 
-	    foreach ( $coauthors as $coauthor ) {
+      if ( count_user_posts( $coauthor->data->ID ) >= 5 ) {
 
-	      if ( count_user_posts( $coauthor->data->ID ) >= 5 ) {
+        $profile_page_url = get_field( 'profile_page', 'user_' . $coauthor->data->ID );
 
-	        $profile_page_url = get_field( 'profile_page', 'user_' . $coauthor->data->ID );
+        if ( empty( $profile_page_url ) ) {
+          $profile_page_url = get_author_posts_url( $coauthor->data->ID );
+        }
 
-	        if ( empty( $profile_page_url ) ) {
-	          $profile_page_url = get_author_posts_url( $coauthor->data->ID );
-	        }
+        $coauthor_list[] = '<span class="vcard author"><cite class="fn"><a href="' . $profile_page_url . '">' . $coauthor->data->display_name . '</a></cite></span>';
 
-	        $coauthor_list[] = '<span class="vcard author"><cite class="fn"><a href="' . $profile_page_url . '">' . $coauthor->data->display_name . '</a></cite></span>';
+      } else {
 
-	      } else {
+        $coauthor_list[] = '<span class="vcard author"><cite class="fn">' . $coauthor->data->display_name . '</cite></span>';
 
-	        $coauthor_list[] = '<span class="vcard author"><cite class="fn">' . $coauthor->data->display_name . '</cite></span>';
+      }
 
-	      }
+    }
 
-	    }
+    if ( count( $coauthor_list ) === 1 ) {
 
-	    if ( count( $coauthor_list ) === 1 ) {
+      echo $coauthor_list[ 0 ];
 
-	      echo $coauthor_list[ 0 ];
+    } elseif ( count( $coauthor_list ) === 2 ) {
 
-	    } elseif ( count( $coauthor_list ) === 2 ) {
+      echo implode( ' and ', $coauthor_list );
 
-	      echo implode( ' and ', $coauthor_list );
+    } else {
 
-	    } else {
+      echo implode( ', ', array_slice( $coauthor_list, 0, -1 ) ) . ', and ' . end( $coauthor_list );
 
-	      echo implode( ', ', array_slice( $coauthor_list, 0, -1 ) ) . ', and ' . end( $coauthor_list );
+    }
 
-	    }
-
-	  echo ' also contributed to this page.</em></p>';
+	  echo ' also contributed to this page.';
 
 	}
 
