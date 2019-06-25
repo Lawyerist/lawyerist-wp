@@ -598,7 +598,7 @@ function lawyerist_get_author_bio() {
 
 	global $wp_query;
 
-	$author               = $wp_query->query_vars['author'];
+	$author               = $wp_query->query_vars[ 'author' ];
 	$author_name          = get_the_author_meta( 'display_name' );
 	$author_bio           = get_the_author_meta( 'description' );
 
