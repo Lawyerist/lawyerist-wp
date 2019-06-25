@@ -19,30 +19,26 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
     // Featured image
     if ( has_post_thumbnail() ) {
-        the_post_thumbnail( 'standard_thumbnail' );
+        the_post_thumbnail();
     }
 
-    echo '<div class="headline_postmeta">';
+    // Headline
+    echo '<h1 class="headline entry-title">' . $page_title . '</h1>';
 
-      // Headline
-      echo '<h1 class="headline entry-title">' . $page_title . '</h1>';
+    // Output the excerpt.
+    $seo_descr = get_post_meta( $page_ID, '_yoast_wpseo_metadesc', true );
 
-      // Output the excerpt.
-      $seo_descr = get_post_meta( $page_ID, '_yoast_wpseo_metadesc', true );
+    if ( !empty( $seo_descr ) ) {
 
-      if ( !empty( $seo_descr ) ) {
+      $page_excerpt = $seo_descr;
 
-        $page_excerpt = $seo_descr;
+    } else {
 
-      } else {
+      $page_excerpt = get_the_excerpt();
 
-        $page_excerpt = get_the_excerpt();
+    }
 
-      }
-
-      echo '<p class="excerpt">' . $page_excerpt . '</p>';
-
-    echo '</div>'; // Close .headline_postmeta.
+    echo '<p class="excerpt">' . $page_excerpt . '</p>';
 
     // Output the post.
     echo '<div class="post_body" itemprop="articleBody">';

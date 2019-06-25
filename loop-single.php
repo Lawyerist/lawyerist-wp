@@ -15,19 +15,14 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
     // Featured image
     if ( has_post_thumbnail() ) {
-        the_post_thumbnail( 'standard_thumbnail' );
+      the_post_thumbnail();
     }
 
-    echo '<div class="headline_postmeta">';
+    // Headline
+    echo '<h1 class="headline entry-title">' . $post_title . '</h1>';
 
-      // Headline
-      echo '<h1 class="headline entry-title">' . $post_title . '</h1>';
+    get_template_part( 'postmeta', 'single_top' );
 
-      get_template_part( 'postmeta', 'single_top' );
-
-      echo '<div class="clear"></div>';
-
-    echo '</div>'; // Close .headline_postmeta.
 
     // Output the post.
     echo '<div class="post_body" itemprop="articleBody">';

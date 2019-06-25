@@ -597,7 +597,7 @@ button,
 .comment-author,
 .comment-meta,
 .comment .reply,
-.product-page .headline_container .excerpt,
+.product-page .excerpt,
 figcaption,
 #footer,
 #header,
@@ -927,16 +927,26 @@ p.pullout {
   padding: 0 1rem 1rem 1rem;
 }
 
+.page .excerpt,
+.single .postmeta {
+  margin-bottom: 4rem;
+}
+
 .postmeta,
 .product_meta,
 .user-rating,
 .page .excerpt,
-.product-page .headline_container .excerpt,
-.profile-page .headline_container .excerpt {
+.product-page .excerpt {
 	color: #777;
   display: block;
   font-size: 1.6rem;
   line-height: 1.4;
+}
+
+.postmeta,
+.product_meta,
+.user-rating,
+.product-page .excerpt {
   margin-bottom: 1em;
 }
 
@@ -1140,12 +1150,6 @@ img.avatar {
 
 img.inline {
   display: inline !important;
-}
-
-.page img.wp-post-image.size-standard_thumbnail,
-.single img.wp-post-image.size-standard_thumbnail {
-  margin-bottom: 2rem;
-  width: 100%;
 }
 
 .wp-caption {
