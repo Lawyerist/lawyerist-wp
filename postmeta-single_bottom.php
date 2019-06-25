@@ -1,10 +1,10 @@
 <?php // This must be used within the Loop.
 
-/* $coauthors = get_coauthors();
+$coauthors = get_coauthors();
 
 echo '<pre>';
 var_dump( $coauthors );
-echo '</pre>'; */
+echo '</pre>';
 
 lawyerist_get_author_bio();
 
