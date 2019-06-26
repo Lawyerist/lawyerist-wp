@@ -66,7 +66,7 @@ function stickySidebarAd( $ ) {
     var windowTop       = jQuery( window ).scrollTop();
     var sidebarTop      = jQuery( '#sidebar_column' ).offset().top;
     var sidebarAdHeight = jQuery( '#lawyerist_display_ad' ).outerHeight();
-    var sponsorAdHeight = jQuery( '#custom_html-2' ).outerHeight();
+    var sponsorAdHeight = jQuery( '#platinum-sponsors-widget' ).outerHeight();
     var sidebarBottom   = sidebarTop + sidebarAdHeight + sponsorAdHeight;
 
     if ( windowTop > sidebarBottom ) {

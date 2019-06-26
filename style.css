@@ -3256,23 +3256,22 @@ Sidebar
 
 #lawyerist_display_ad.stick {
   position: fixed;
-  top: 2rem;
+  top: 3rem;
 }
 
 .admin-bar #lawyerist_display_ad.stick {
-  top: 5.2rem;
+  top: 6.2rem;
 }
 
 
 /* Platinum Sponsors widget. */
-#custom_html-2 a,
-#custom_html-2 img,
-#custom_html-2 p {
+#platinum-sponsors-widget a,
+#platinum-sponsors-widget img {
   display: block;
   margin: 0;
 }
 
-#custom_html-2 a {
+#platinum-sponsors-widget a {
   margin-bottom: .1rem;
 }
 
