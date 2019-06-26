@@ -1160,6 +1160,13 @@ function lawyerist_platinum_sponsors_widget() {
 		'orderby'					=> 'rand',
 		'post_type'				=> 'page',
 		'posts_per_page'	=> -1,
+		'tax_query' => array(
+      array(
+        'taxonomy' => 'page_type',
+        'field'    => 'slug',
+        'terms'    => array( 'platinum-sponsor' ),
+      ),
+    ),
 	);
 
 	$platinum_sponsors_query = new WP_Query( $args );
