@@ -466,7 +466,7 @@ body.full-width #column_container {
 
 	#footer {
     grid-area: footer;
-		padding: 6rem 0;
+		padding: 6rem 2rem;
 	}
 
 
