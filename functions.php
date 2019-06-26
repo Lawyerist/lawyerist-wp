@@ -30,13 +30,16 @@ CONTENT
 - Get Related Posts
 - Get Related Pages
 - List Child Pages Fallback
-- Ads
-- Affinity Benefit Notice
-- Mobile Ads
 - Remove Inline Width from Image Captions
 - Featured Images in RSS Feeds
 - Remove Hidden Products from RSS Feed
 - Remove Default Gallery Styles
+
+PARTNERSHIPS
+- Display Ad
+- Mobile Display Ad
+- Platinum Sidebar Widget
+- Affinity Benefit Notice
 
 COMMENTS & REVIEWS
 - Show Commenter's First Name & Initial
@@ -1012,7 +1015,76 @@ add_action( 'the_content', 'lawyerist_list_child_pages_fallback' );
 
 
 /*------------------------------
-Ads
+Remove Inline Width from Image Captions
+------------------------------*/
+
+function lawyerist_remove_caption_padding( $width ) {
+
+	return $width - 10;
+
+}
+
+add_filter( 'img_caption_shortcode_width', 'lawyerist_remove_caption_padding' );
+
+
+/*------------------------------
+Featured Images in RSS Feeds
+------------------------------*/
+
+function featuredtoRSS( $content ) {
+
+	global $post;
+
+	if ( has_post_thumbnail( $post->ID ) ) {
+		$content = '' . get_the_post_thumbnail( $post->ID, 'featured_top', array( 'style' => 'display:block;height:auto;margin:0 0 15px 0;width:560px;' ) ) . '' . $content;
+	}
+
+	return $content;
+
+}
+
+add_filter('the_excerpt_rss', 'featuredtoRSS');
+add_filter('the_content_feed', 'featuredtoRSS');
+
+
+/*------------------------------
+Remove Hidden Products from RSS Feed
+------------------------------*/
+
+function lawyerist_remove_hidden_products_from_feed( $query ) {
+
+	if ( $query->is_feed() ) {
+
+		$query->set( 'post_type', array( 'post', 'product' ) );
+		$query->set( 'tax_query', array(
+			array(
+				'taxonomy' => 'product_visibility',
+				'field'    => 'name',
+				'terms'    => 'exclude-from-catalog',
+				'operator' => 'NOT IN',
+			),
+		) );
+
+	}
+
+	return $query;
+
+}
+
+add_filter( 'pre_get_posts', 'lawyerist_remove_hidden_products_from_feed' );
+
+
+/*------------------------------
+Remove Default Gallery Styles
+------------------------------*/
+
+add_filter( 'use_default_gallery_style', '__return_false' );
+
+
+/* PARTNERSHIPS	***************/
+
+/*------------------------------
+Display Ad
 ------------------------------*/
 
 function lawyerist_get_display_ad() { ?>
@@ -1028,6 +1100,95 @@ function lawyerist_get_display_ad() { ?>
 	</div>
 
 <?php }
+
+
+/*------------------------------
+Mobile Display Ad
+------------------------------*/
+
+// Inserts the mobile ad on single posts and pages.
+
+function lawyerist_mobile_display_ad( $content ) {
+
+	if ( is_mobile() && ( is_single() || is_page() ) && is_main_query() && !is_page_template( 'product-page.php' ) ) {
+
+		$p_close		= '</p>';
+		$paragraphs = explode( $p_close, $content );
+
+		ob_start();
+			echo lawyerist_get_display_ad();
+		$display_ad = ob_get_clean();
+
+		foreach ( $paragraphs as $p_num => $paragraph ) {
+
+			// Only add closing tag to non-empty paragraphs
+			if ( trim( $paragraph ) ) {
+				// Adding closing markup now, rather than at implode, means insertion
+				// is outside of the paragraph markup, and not just inside of it.
+				$paragraphs[$p_num] .= $p_close;
+			}
+
+			// Insert DFP code after 3rd paragraph
+			// (0 is paragraph #1 in the $paragraphs array)
+			if ( ( count( $paragraphs ) > 3 ) && $p_num == 2 ) {
+				$paragraphs[$p_num] .= $display_ad;
+			}
+
+		}
+
+		$content = implode( '', $paragraphs );
+
+	}
+
+	return $content;
+
+}
+
+add_filter( 'the_content', 'lawyerist_mobile_display_ad' );
+
+
+/*------------------------------
+Platinum Sidebar Widget
+------------------------------*/
+
+function lawyerist_platinum_sponsors_widget() {
+
+	// Outputs the most recent podcast episode.
+	$args = array(
+		'meta_key'				=> 'show_in_platinum_sidebar_widget',
+		'meta_value'			=> true,
+		'orderby'					=> 'rand',
+		'post_type'				=> 'page',
+		'posts_per_page'	=> -1,
+	);
+
+	$platinum_sponsors_query = new WP_Query( $args );
+
+	if ( $platinum_sponsors_query->have_posts() ) :
+
+		echo '<li id="platinum-sponsors-widget" class="widget">' . "\n" . '<div class="textwidget custom-html-widget">';
+
+			echo '<h3>Platinum Sponsors</h3>';
+
+			while ( $platinum_sponsors_query->have_posts() ) : $platinum_sponsors_query->the_post();
+
+					$product_page_title			= the_title( '', '', FALSE );
+					$product_page_url				= get_permalink();
+					$platinum_sidebar_image	= get_field( 'platinum_sidebar_image' );
+
+					echo '<a href="' . $product_page_url . '?utm_source=lawyerist&amp;utm_medium=platinum_sidebar_widget">';
+						echo wp_get_attachment_image( $platinum_sidebar_image, 'full' );
+					echo '</a>';
+
+			endwhile;
+
+		echo '</div>' . "\n" . '</li>';
+
+	endif;
+
+	wp_reset_postdata();
+
+}
 
 
 /*------------------------------
@@ -1123,118 +1284,6 @@ function affinity_notice() {
 	}
 
 }
-
-
-/*------------------------------
-Mobile Ads
-------------------------------*/
-
-// Inserts the mobile ad on single posts and pages.
-
-function lawyerist_mobile_display_ad( $content ) {
-
-	if ( is_mobile() && ( is_single() || is_page() ) && is_main_query() && !is_page_template( 'product-page.php' ) ) {
-
-		$p_close		= '</p>';
-		$paragraphs = explode( $p_close, $content );
-
-		ob_start();
-			echo lawyerist_get_display_ad();
-		$display_ad = ob_get_clean();
-
-		foreach ( $paragraphs as $p_num => $paragraph ) {
-
-			// Only add closing tag to non-empty paragraphs
-			if ( trim( $paragraph ) ) {
-				// Adding closing markup now, rather than at implode, means insertion
-				// is outside of the paragraph markup, and not just inside of it.
-				$paragraphs[$p_num] .= $p_close;
-			}
-
-			// Insert DFP code after 3rd paragraph
-			// (0 is paragraph #1 in the $paragraphs array)
-			if ( ( count( $paragraphs ) > 3 ) && $p_num == 2 ) {
-				$paragraphs[$p_num] .= $display_ad;
-			}
-
-		}
-
-		$content = implode( '', $paragraphs );
-
-	}
-
-	return $content;
-
-}
-
-add_filter( 'the_content', 'lawyerist_mobile_display_ad' );
-
-
-/*------------------------------
-Remove Inline Width from Image Captions
-------------------------------*/
-
-function lawyerist_remove_caption_padding( $width ) {
-
-	return $width - 10;
-
-}
-
-add_filter( 'img_caption_shortcode_width', 'lawyerist_remove_caption_padding' );
-
-
-/*------------------------------
-Featured Images in RSS Feeds
-------------------------------*/
-
-function featuredtoRSS( $content ) {
-
-	global $post;
-
-	if ( has_post_thumbnail( $post->ID ) ) {
-		$content = '' . get_the_post_thumbnail( $post->ID, 'featured_top', array( 'style' => 'display:block;height:auto;margin:0 0 15px 0;width:560px;' ) ) . '' . $content;
-	}
-
-	return $content;
-
-}
-
-add_filter('the_excerpt_rss', 'featuredtoRSS');
-add_filter('the_content_feed', 'featuredtoRSS');
-
-
-/*------------------------------
-Remove Hidden Products from RSS Feed
-------------------------------*/
-
-function lawyerist_remove_hidden_products_from_feed( $query ) {
-
-	if ( $query->is_feed() ) {
-
-		$query->set( 'post_type', array( 'post', 'product' ) );
-		$query->set( 'tax_query', array(
-			array(
-				'taxonomy' => 'product_visibility',
-				'field'    => 'name',
-				'terms'    => 'exclude-from-catalog',
-				'operator' => 'NOT IN',
-			),
-		) );
-
-	}
-
-	return $query;
-
-}
-
-add_filter( 'pre_get_posts', 'lawyerist_remove_hidden_products_from_feed' );
-
-
-/*------------------------------
-Remove Default Gallery Styles
-------------------------------*/
-
-add_filter( 'use_default_gallery_style', '__return_false' );
 
 
 /* COMMENTS & REVIEWS *********/
