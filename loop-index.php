@@ -47,14 +47,13 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
     }
 
-    $thumbnail      = '<div class="guest-avatar"><img class="avatar" src="' . $first_image_url . '" /></div>';
+    $thumbnail      = '<img class="guest-avatar" src="' . $first_image_url . '" />';
     $post_classes[] = 'has-guest-avatar';
 
   } elseif ( has_post_thumbnail() ) {
 
-    $thumbnail_url  = get_the_post_thumbnail_url( $post->ID );
-    $thumbnail      = '<div class="featured-thumbnail" style="background-image: url( ' . $thumbnail_url . ' );"></div>';
-    $post_classes[] = 'has-featured-thumbnail';
+    $thumbnail_id   = get_post_thumbnail_id();
+    $thumbnail      = wp_get_attachment_image( $thumbnail_id, 'medium' );
 
   }
 

@@ -778,7 +778,7 @@ function lawyerist_get_related_podcasts() {
 								$first_image_url = 'https://lawyerist.com/lawyerist/wp-content/uploads/2018/09/podcast-mic-square-150x150.png';
 							}
 
-							echo '<div class="guest-avatar"><img class="avatar" src="' . $first_image_url . '" /></div>';
+							echo '<img class="guest-avatar" src="' . $first_image_url . '" />';
 
 							echo '<div class="headline-excerpt">';
 
@@ -845,9 +845,8 @@ function lawyerist_get_related_posts() {
 
 					if ( has_post_thumbnail() ) {
 
-						$thumbnail_url  = get_the_post_thumbnail_url( $post->ID );
-				    $thumbnail      = '<div class="featured-thumbnail" style="background-image: url( ' . $thumbnail_url . ' );"></div>';
-				    $post_classes[] = 'has-featured-thumbnail';
+						$thumbnail_id = get_post_thumbnail_id();
+				    $thumbnail    = wp_get_attachment_image( $thumbnail_id, 'medium' );
 
 					}
 
@@ -931,9 +930,8 @@ function lawyerist_get_related_pages() {
 
 					if ( has_post_thumbnail() ) {
 
-						$thumbnail_url  = get_the_post_thumbnail_url( $post->ID );
-				    $thumbnail      = '<div class="featured-thumbnail" style="background-image: url( ' . $thumbnail_url . ' );"></div>';
-				    $post_classes[] = 'has-featured-thumbnail';
+						$thumbnail_id	= get_post_thumbnail_id();
+				    $thumbnail    = wp_get_attachment_image( $thumbnail_id, 'medium' );
 
 					}
 
@@ -1184,7 +1182,7 @@ function lawyerist_platinum_sponsors_widget() {
 					$platinum_sidebar_image	= get_field( 'platinum_sidebar_image' );
 
 					echo '<a href="' . $product_page_url . '?utm_source=lawyerist&amp;utm_medium=platinum_sidebar_widget">';
-						echo wp_get_attachment_image( $platinum_sidebar_image, 'full' );
+						echo wp_get_attachment_image( $platinum_sidebar_image, 'large' );
 					echo '</a>';
 
 			endwhile;

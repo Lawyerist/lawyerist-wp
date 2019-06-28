@@ -958,6 +958,10 @@ p.pullout {
     font-style: normal;
   }
 
+  .postmeta .sponsor {
+    background-color: #ffffc7;
+  }
+
   .comment_link:before {
     content: '\f300';
     display: inline-block;
@@ -1039,7 +1043,6 @@ Images
 img {
   box-sizing: border-box;
   height: auto;
-  margin-bottom: 3rem;
   max-width: 100%;
   padding: 0;
 }
@@ -1096,34 +1099,6 @@ img.size-large {
   width: 100%;
 }
 
-img.size-medium,
-img.wp-post-image.attachment-medium {
-  max-width: 39rem;
-  width: 30rem;
-}
-
-img.wp-post-image.attachment-medium {
-  float: right;
-  padding-left: 1.5rem;
-}
-
-  /* 2x the max width of the image (600px), plus 2x the image margin (630px),
-  plus 2x the #content_column padding (650px). */
-  @media only screen and (max-width:649px) {
-
-    img.size-medium,
-    img.wp-post-image.attachment-medium {
-      clear: both;
-    	display: block;
-      float: none;
-    	margin-left: auto;
-      margin-right: auto;
-      max-width: none;
-      padding: 0;
-    }
-
-  }
-
 img.size-thumbnail {
   max-width: 33.333%;
   width: 15rem;
@@ -1150,6 +1125,11 @@ img.avatar {
 
 img.inline {
   display: inline !important;
+}
+
+.page #featured-image,
+.single #featured-image {
+  margin-bottom: 3rem;
 }
 
 .wp-caption {
@@ -1376,7 +1356,7 @@ Selectors
 
   .card a.page,
   .card a.post,
-  .card.affinity-discount-card,
+  .affinity-discount-card,
   .card.author-bio-box,
   .card.dashboard-scorecard-widget,
   .card#fp-blog-posts,
@@ -1453,53 +1433,63 @@ Selectors
   max-width: unset;
 }
 
+.card a.has-featured-thumbnail,
+.card a.has-post-thumbnail {
+  display: grid;
+  grid-template-columns: 40% 1fr;
+  grid-gap: 0;
+  padding: 0;
+}
+
+  @media only screen and (max-width:639px) {
+
+    .card a.has-featured-thumbnail,
+    .card a.has-post-thumbnail {
+      display: block;
+    }
+
+    .card a.has-post-thumbnail img {
+      border-radius: 0 .2rem .2rem 0;
+      display: block;
+    }
+
+  }
+
+  .card a.has-post-thumbnail > * {
+    align-self: center;
+  }
+
+  .card a.has-post-thumbnail img {
+    display: block;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+
+  .card a.has-featured-thumbnail .headline-excerpt,
+  .card a.has-post-thumbnail .headline-excerpt {
+    padding: 2rem;
+  }
+
+    .card a.has-featured-thumbnail .headline-excerpt > *:last-child,
+    .card a.has-post-thumbnail .headline-excerpt > *:last-child {
+      margin-bottom: 0;
+    }
+
 .card a.has-guest-avatar {
   display: grid;
   grid-template-columns: 10rem 1fr;
-  grid-gap: 2rem;
+  grid-gap: 0;
+  padding: 2rem;
 }
 
-  .card a.has-guest-avatar .guest-avatar {
-    height: 10rem;
-    line-height: 1;
-    width: 10rem;
-  }
-
-    .card a.has-guest-avatar .guest-avatar img {
+    .card a.has-guest-avatar img.guest-avatar {
       border-radius: 50%;
       height: auto;
       margin: 0;
       width: 100%;
     }
-
-.card a.has-featured-thumbnail {
-  display: grid;
-  grid-template-columns: 30% 1fr;
-  grid-gap: 0;
-  padding: 0;
-}
-
-  .card a.has-featured-thumbnail .featured-thumbnail {
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    border-radius: .2rem 0 0 .2rem;
-    height: 100%;
-    margin: 0;
-  }
-
-    #fp-blog-posts.card a.has-featured-thumbnail .featured-thumbnail {
-      border-radius: 0;
-    }
-
-  .card a.has-featured-thumbnail .headline-excerpt {
-    padding: 2rem;
-  }
-
-    .card a.has-featured-thumbnail .headline-excerpt > *:last-child {
-      margin-bottom: 0;
-    }
-
 
 /* Headline-excerpt styles. */
 
@@ -1562,93 +1552,24 @@ Selectors
     margin-bottom: 0 !important;
   }
 
+.cards {
+  display: grid;
+  grid-template-columns: repeat( 2, 1fr );
+  grid-gap: 1rem;
+  margin-bottom: 4rem;
+}
 
-  /* Affinity discount cards. */
-
-  .card.affinity-discount-card {
-    margin: 2rem 0 3rem 0;
-    min-height: 12.8rem;
+  .cards .card {
+    margin: 0;
   }
 
-      .card.affinity-discount-card img {
-        margin: 0;
-        position: absolute;
-          top: 2rem;
-          left: 2rem;
-      }
-
-      .card.affinity-discount-card p.card-label,
-      .card.affinity-discount-card p.discount_descr {
-        margin-left: 16.5rem;
-      }
-
-      .card.affinity-discount-card button {
-        margin: 0 0 0 16.5rem;
-      }
-
-      .card.affinity-discount-card .expandthis-hide {
-        clear: both;
-        margin-top: 3rem;
-        padding: 0;
-      }
-
-      .card.affinity-discount-card .gform_wrapper,
-      .card.affinity-discount-card .gform_confirmation_message {
-        background: none;
-        border: 0;
-        box-shadow: none;
-        margin: 0 !important;
-        padding: 0;
-      }
-
-        .card.affinity-discount-card p a,
-        .card.affinity-discount-card p a:visited,
-        .card.affinity-discount-card .gform_confirmation_message a,
-        .card.affinity-discount-card .gform_confirmation_message a:visited {
-          color: #cc0000;
-        }
-
-        .card.affinity-discount-card p a:hover,
-        .card.affinity-discount-card p a:focus,
-        .card.affinity-discount-card .gform_confirmation_message a:hover,
-        .card.affinity-discount-card .gform_confirmation_message a:focus {
-        	color: #aa0000;
-        	text-decoration: underline;
-        }
-
-    @media only screen and (max-width:549px) {
-
-      .card.affinity-discount-card img {
-        float: left;
-        margin: 0 1.5rem 1.5rem 0;
-        position: relative;
-          top: unset;
-          left: unset;
-        width: 10.59rem;
-      }
-
-      .card.affinity-discount-card p.card-label,
-      .card.affinity-discount-card p.discount_descr,
-      .card.affinity-discount-card button {
-        margin-left: 0;
-      }
-
-      .card.affinity-discount-card p.card-label {
-        font-size: 3rem;
-      }
-
-      .card.affinity-discount-card p.discount_descr {
-        clear: both;
-      }
-
+    .cards .card a.has-post-thumbnail {
+      display: block;
     }
 
-
-/* Postmeta styles */
-
-.sponsor {
-  background-color: #ffffc7;
-}
+    .cards .card .headline-excerpt {
+      padding: 2rem;
+    }
 
 
 /*------------------------------
@@ -1658,34 +1579,6 @@ Front Page
 .front_page_block {
   margin-bottom: 6rem;
 }
-
-.fp_contains_boxes {
-  display: grid;
-  grid-template-columns: repeat( 2, 1fr );
-  grid-gap: 1rem;
-}
-
-  .fp_contains_boxes .card {
-    margin: 0;
-    padding: 0 0 2rem 0;
-  }
-
-  .fp_contains_boxes .card img {
-    border-radius: .2rem .2rem 0 0;
-    height: auto;
-    margin-bottom: 1rem;
-    width: 100%;
-  }
-
-  .fp_contains_boxes .card h3 {
-    font-size: 2.4rem;
-    margin: 0 2rem;
-  }
-
-  .fp_contains_boxes .card p {
-    font-size: 1.6rem;
-    margin: 0 2rem 2rem 2rem;
-  }
 
 
 /* Sticky Post */
@@ -2360,64 +2253,6 @@ Content
       padding: 1rem 0;
     }
 
-  #child_pages_list {
-    margin-bottom: 4rem;
-  }
-
-    #child_pages_list .page {
-      margin-bottom: 1rem;
-      position: relative;
-    }
-
-      #child_pages_list .page:last-child {
-        margin-bottom: 0;
-      }
-
-    #child_pages_list .child_pages_heading {
-      color: #666;
-    }
-
-    #child_pages_list .child_pages_heading:before {
-      content: '\f505';
-      display: inline-block;
-      -moz-osx-font-smoothing: grayscale;
-      -webkit-font-smoothing: antialiased;
-      font: normal 1.4rem/1.5 Genericons;
-      margin-right: .25em;
-      speak: none;
-      vertical-align: top;
-    }
-
-    #child_pages_list .wp-post-image {
-      border-radius: 50%;
-      float: left;
-      height: 7.5rem;
-      margin: 0 1.5rem 0 0;
-      width: 7.5rem;
-    }
-
-    #child_pages_list .headline-excerpt {
-      padding: 0 0 0 9rem;
-      position: absolute;
-        top: 50%;
-      transform: translateY(-50%);
-     }
-
-      #child_pages_list .headline {
-        font-size: 2.4rem;
-        margin-bottom: 0;
-      }
-
-      #child_pages_list a:hover,
-      #child_pages_list a:focus {
-        text-decoration: none;
-      }
-
-        #child_pages_list a:hover .headline,
-        #child_pages_list a:focus .headline {
-          color: #a00;
-        }
-
   #related-podcasts,
   #related-posts,
   #related-pages {
@@ -2716,6 +2551,86 @@ Content
     max-width: none;
     width: 100%;
   }
+
+  /* Affinity discount cards. */
+
+  .affinity-discount-card {
+    margin: 2rem 0 3rem 0;
+    min-height: 12.8rem;
+  }
+
+      .affinity-discount-card img {
+        margin: 0;
+        position: absolute;
+          top: 2rem;
+          left: 2rem;
+      }
+
+      .affinity-discount-card p.card-label,
+      .affinity-discount-card p.discount_descr {
+        margin-left: 16.5rem;
+      }
+
+      .affinity-discount-card button {
+        margin: 0 0 0 16.5rem;
+      }
+
+      .affinity-discount-card .expandthis-hide {
+        clear: both;
+        margin-top: 3rem;
+        padding: 0;
+      }
+
+      .affinity-discount-card .gform_wrapper,
+      .affinity-discount-card .gform_confirmation_message {
+        background: none;
+        border: 0;
+        box-shadow: none;
+        margin: 0 !important;
+        padding: 0;
+      }
+
+        .affinity-discount-card p a,
+        .affinity-discount-card p a:visited,
+        .affinity-discount-card .gform_confirmation_message a,
+        .affinity-discount-card .gform_confirmation_message a:visited {
+          color: #cc0000;
+        }
+
+        .affinity-discount-card p a:hover,
+        .affinity-discount-card p a:focus,
+        .affinity-discount-card .gform_confirmation_message a:hover,
+        .affinity-discount-card .gform_confirmation_message a:focus {
+        	color: #aa0000;
+        	text-decoration: underline;
+        }
+
+    @media only screen and (max-width:549px) {
+
+      .affinity-discount-card img {
+        float: left;
+        margin: 0 1.5rem 1.5rem 0;
+        position: relative;
+          top: unset;
+          left: unset;
+        width: 10.59rem;
+      }
+
+      .affinity-discount-card p.card-label,
+      .affinity-discount-card p.discount_descr,
+      .affinity-discount-card button {
+        margin-left: 0;
+      }
+
+      .affinity-discount-card p.card-label {
+        font-size: 3rem;
+      }
+
+      .affinity-discount-card p.discount_descr {
+        clear: both;
+      }
+
+    }
 
   .product-page .headline_container {
     margin-bottom: 3rem;

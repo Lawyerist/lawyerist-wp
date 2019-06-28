@@ -197,7 +197,7 @@
 						post_class( 'has-guest-avatar' );
 						echo '>';
 
-							echo '<div class="guest-avatar"><img class="avatar" src="' . $first_image_url . '" /></div>';
+							echo '<img class="guest-avatar" src="' . $first_image_url . '" />';
 
 							// Now we get the headline and excerpt (except for certain kinds of posts).
 							echo '<div class="headline-excerpt">';
@@ -275,9 +275,8 @@
 
 						if ( has_post_thumbnail() ) {
 
-							$thumbnail_url  = get_the_post_thumbnail_url( $post->ID );
-					    $thumbnail      = '<div class="featured-thumbnail" style="background-image: url( ' . $thumbnail_url . ' );"></div>';
-					    $post_classes[] = 'has-featured-thumbnail';
+							$thumbnail_id   = get_post_thumbnail_id();
+					    $thumbnail      = wp_get_attachment_image( $thumbnail_id, 'medium' );
 
 						}
 
@@ -323,64 +322,80 @@
 		?>
 
 			<!-- Outputs strategic pages. -->
-			<div class="front_page_block fp_contains_boxes">
+			<div class="cards front_page_block">
 
 				<div class="card">
-					<a href="https://lawyerist.com/scorecard/" class="post">
+					<a href="https://lawyerist.com/scorecard/" class="post has-post-thumbnail">
 						<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2019/03/scorecard-front-page.png" alt="Lawyerist Insider logo." />
-						<h3 class="headline">Use the Small Firm Scorecard to Evaluate Your Law Firm</h3>
+						<div class="headline-excerpt">
+							<h3 class="headline">Use the Small Firm Scorecard to Evaluate Your Law Firm</h3>
+						</div>
 					</a>
 				</div>
 
 				<div class="card">
-					<a href="https://lawyerist.com/journal/" class="post">
+					<a href="https://lawyerist.com/journal/" class="post has-post-thumbnail">
 						<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/05/lawyerist-productivity-journal-front-page.jpg" alt="The Lawyerist Productivity Journal cover." />
-						<h3 class="headline">Get Organized with the Lawyerist Productivity Journal</h3>
+						<div class="headline-excerpt">
+							<h3 class="headline">Get Organized with the Lawyerist Productivity Journal</h3>
+						</div>
 					</a>
 				</div>
 
 				<div class="card">
-					<a href="https://lawyerist.com/best-law-firm-websites/" class="post">
+					<a href="https://lawyerist.com/best-law-firm-websites/" class="post has-post-thumbnail">
 						<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/05/best-law-firm-websites-2018-front-page.jpg" alt="A law firm website as viewed on a laptop." />
-						<h3 class="headline">Check Out the Best Law Firm Websites</h3>
+						<div class="headline-excerpt">
+							<h3 class="headline">Check Out the Best Law Firm Websites</h3>
+						</div>
 					</a>
 				</div>
 
 				<div class="card">
-					<a href="https://lawyerist.com/website-designer-assessment/" class="post">
+					<a href="https://lawyerist.com/website-designer-assessment/" class="post has-post-thumbnail">
 						<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/05/web-designer-recommendation-front-page.jpg" alt="Law firm website designer at work." />
-						<h3 class="headline">Get a Personalized Web Designer Referral</h3>
+						<div class="headline-excerpt">
+							<h3 class="headline">Get a Personalized Web Designer Referral</h3>
+						</div>
 					</a>
 				</div>
 
 				<div class="card">
-					<a href="https://lawyerist.com/law-practice-management-software/" class="post">
+					<a href="https://lawyerist.com/law-practice-management-software/" class="post has-post-thumbnail">
 						<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/05/law-practice-management-software-front-page.jpg" alt="Law practice management software graphic." />
-						<h3 class="headline">Law Practice Management Software</h3>
+						<div class="headline-excerpt">
+							<h3 class="headline">Law Practice Management Software</h3>
+						</div>
 					</a>
 				</div>
 
 
 				<div class="card">
-					<a href="https://lawyerist.com/virtual-receptionists/" class="post">
+					<a href="https://lawyerist.com/virtual-receptionists/" class="post has-post-thumbnail">
 						<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/05/receptionist-front-page.jpg" alt="Virtual receptionist image." />
-						<h3 class="headline">Virtual Receptionists for Law Firms</h3>
+						<div class="headline-excerpt">
+							<h3 class="headline">Virtual Receptionists for Law Firms</h3>
+						</div>
 					</a>
 				</div>
 
 
 
 				<div class="card">
-					<a href="https://lawyerist.com/best-law-firm-websites/designers-seo/" class="post">
+					<a href="https://lawyerist.com/best-law-firm-websites/designers-seo/" class="post has-post-thumbnail">
 						<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/07/website-designers-seo-consultants-front-page.jpg" alt="SEO Scrabble tiles." />
-						<h3 class="headline">Website Designers & SEO Consultants</h3>
+						<div class="headline-excerpt">
+							<h3 class="headline">Website Designers & SEO Consultants</h3>
+						</div>
 					</a>
 				</div>
 
 				<div class="card">
-					<a href="https://lawyerist.com/legal-billing-software/" class="post">
+					<a href="https://lawyerist.com/legal-billing-software/" class="post has-post-thumbnail">
 						<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/07/time-billing-software-front-page.jpg" alt="An accountant working on a laptop." />
-						<h3 class="headline">Timekeeping & Billing Software for Law Firms</h3>
+						<div class="headline-excerpt">
+							<h3 class="headline">Timekeeping & Billing Software for Law Firms</h3>
+						</div>
 					</a>
 				</div>
 
