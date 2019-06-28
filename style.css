@@ -1361,7 +1361,8 @@ Selectors
   .card.dashboard-scorecard-widget,
   .card#fp-blog-posts,
   .card#fp-latest-podcast,
-  .card#fp-lens-playlist {
+  .card#fp-lens-playlist,
+  #sponsored_product_updates {
     padding: 2rem;
   }
 
@@ -2258,29 +2259,6 @@ Content
   #related-pages {
     margin-bottom: 4rem;
   }
-
-    .page-template-product-page #related-podcasts,
-    .page-template-full-width #related-podcasts,
-    .page-template-product-page #related-posts,
-    .page-template-full-width #related-posts {
-      box-sizing: border-box;
-      float: left;
-      max-width: 50%;
-      padding-right: 1rem;
-    }
-
-      @media only screen and ( max-width: 683px ) {
-
-        .page-template-product-page #related-podcasts,
-        .page-template-full-width #related-podcasts,
-        .page-template-product-page #related-posts,
-        .page-template-full-width #related-posts {
-          float: none;
-          padding-right: 0;
-          max-width: unset;
-        }
-
-      }
 
 
   /*------------------------------
