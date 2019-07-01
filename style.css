@@ -1568,6 +1568,10 @@ Selectors
     margin: 0;
   }
 
+    .cards .card a.post {
+      padding: 0;
+    }
+
     .cards .card a.has-post-thumbnail {
       display: block;
     }
