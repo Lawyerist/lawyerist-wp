@@ -1377,6 +1377,7 @@ Selectors
     text-decoration: none;
   }
 
+  .card a.page,
   .card a.post {
     display: block;
   }
