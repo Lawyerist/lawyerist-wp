@@ -1203,6 +1203,10 @@ img.inline {
       grid-template-columns: repeat( 9, 1fr );
     }
 
+    #contributors-list .gallery-item {
+      margin: 0;
+    }
+
     .wp-block-gallery.columns-2 .blocks-gallery-item,
     .wp-block-gallery.columns-3 .blocks-gallery-item,
     .wp-block-gallery.columns-4 .blocks-gallery-item {
