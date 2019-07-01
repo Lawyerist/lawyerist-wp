@@ -57,11 +57,11 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
     echo '</div>'; // Close .post_body.
 
+    lawyerist_get_related_resources();
+
     echo '<div id="comments_container">';
     comments_template( '/comments.php' );
     echo '</div>';
-
-    lawyerist_get_related_pages();
 
   echo '</div>'; // Close .post.
 

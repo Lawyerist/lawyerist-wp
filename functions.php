@@ -892,79 +892,141 @@ function lawyerist_get_related_posts() {
 
 
 /*------------------------------
-Get Related Pages
+Get Related Resources
 ------------------------------*/
 
-function lawyerist_get_related_pages() {
+function lawyerist_get_related_resources() {
 
 	global $post;
 
-	$current_id[]				= $post->ID;
-	$current_tags				= get_the_tags( $post->ID );
-	$current_tags_slugs	= array();
+	if ( is_singular( 'post') ) {
 
-	if ( !empty( $current_tags ) ) {
+		$current_id[]				= $post->ID;
+		$current_tags				= get_the_tags( $post->ID );
+		$current_tags_slugs	= array();
 
-		foreach( $current_tags as $current_tag ) {
-			array_push( $current_tags_slugs, $current_tag->slug );
-		}
+		if ( !empty( $current_tags ) ) {
 
-		$lawyerist_related_pages_query_args = array(
-			'post__not_in'				=> $current_id,
-			'posts_per_page'			=> -1,
-			'post_type'						=> 'page',
-			'post_name__in' 			=> $current_tags_slugs,
-		);
+			foreach( $current_tags as $current_tag ) {
+				array_push( $current_tags_slugs, $current_tag->slug );
+			}
 
-		$lawyerist_related_pages_query = new WP_Query( $lawyerist_related_pages_query_args );
+			echo '<div id="related-resources">';
 
-		if ( $lawyerist_related_pages_query->have_posts() ) :
+				echo '<h2>More Resources</h2>';
 
-			echo '<div id="related-pages">';
-			echo '<h2>More Resources</h2>';
+				echo '<div class="cards cards-4-columns">';
 
-				while ( $lawyerist_related_pages_query->have_posts() ) : $lawyerist_related_pages_query->the_post();
+					$args = array(
+						'post__not_in'		=> $current_id,
+						'posts_per_page'	=> 4,
+						'post_type'				=> 'page',
+						'post_name__in' 	=> $current_tags_slugs,
+					);
 
-					$post_title			= the_title( '', '', FALSE );
-					$post_url				= get_permalink();
+					$related_pages		= new WP_Query( $args );
+					$resources_count	= $related_pages->post_count;
 
-					if ( has_post_thumbnail() ) {
+					if ( $related_pages->have_posts() ) : while ( $related_pages->have_posts() ) : $related_pages->the_post();
 
-						$thumbnail_id	= get_post_thumbnail_id();
-				    $thumbnail    = wp_get_attachment_image( $thumbnail_id, 'medium' );
+						$post_title			= the_title( '', '', FALSE );
+						$post_url				= get_permalink();
+
+						if ( has_post_thumbnail() ) {
+
+							$thumbnail_id	= get_post_thumbnail_id();
+					    $thumbnail    = wp_get_attachment_image( $thumbnail_id, 'medium' );
+
+						}
+
+						// Starts the post container.
+						echo '<div class="card">';
+
+							// Starts the link container. Makes for big click targets!
+							echo '<a href="' . $post_url . '" title="' . $post_title . '" ';
+							post_class( $post_classes );
+							echo '>';
+
+								if ( !empty ( $thumbnail ) ) {
+									echo $thumbnail;
+								}
+
+								echo '<div class="headline-excerpt">';
+
+									echo '<h2 class="headline" title="' . $post_title . '">' . $post_title . '</h2>';
+
+								echo '</div>'; // Close .headline-excerpt.
+
+							echo '</a>'; // This closes the post link container (.post).
+
+						echo '</div>';
+
+						unset( $thumbnail );
+						unset( $post_classes );
+
+					endwhile; endif;
+
+					if ( $resources_count < 4 ) {
+
+						$args = array(
+							'category__not_in'	=> array(
+								1320, // Sponsored posts.
+							),
+							'orderby'						=> 'date',
+							'post__not_in'			=> $current_id,
+							'posts_per_page'		=> 4 - $resources_count,
+							'post_type'					=> 'post',
+							'tag_slug__in' 			=> $current_tags_slugs,
+						);
+
+						$related_posts = new WP_Query( $args );
+
+						if ( $related_posts->have_posts() ) : while ( $related_posts->have_posts() ) : $related_posts->the_post();
+
+							$post_title			= the_title( '', '', FALSE );
+							$post_url				= get_permalink();
+
+							if ( has_post_thumbnail() ) {
+
+								$thumbnail_id	= get_post_thumbnail_id();
+						    $thumbnail    = wp_get_attachment_image( $thumbnail_id, 'medium' );
+
+							}
+
+							// Starts the post container.
+							echo '<div class="card">';
+
+								// Starts the link container. Makes for big click targets!
+								echo '<a href="' . $post_url . '" title="' . $post_title . '" ';
+								post_class( $post_classes );
+								echo '>';
+
+									if ( !empty ( $thumbnail ) ) {
+										echo $thumbnail;
+									}
+
+									echo '<div class="headline-excerpt">';
+
+										echo '<h2 class="headline" title="' . $post_title . '">' . $post_title . '</h2>';
+
+									echo '</div>'; // Close .headline-excerpt.
+
+								echo '</a>'; // This closes the post link container (.post).
+
+							echo '</div>';
+
+							unset( $thumbnail );
+							unset( $post_classes );
+
+						endwhile; endif;
 
 					}
 
-					// Starts the post container.
-					echo '<div class="card">';
-
-						// Starts the link container. Makes for big click targets!
-						echo '<a href="' . $post_url . '" title="' . $post_title . '" ';
-						post_class( $post_classes );
-						echo '>';
-
-							if ( !empty ( $thumbnail ) ) {
-								echo $thumbnail;
-							}
-
-							echo '<div class="headline-excerpt">';
-
-								echo '<h2 class="headline" title="' . $post_title . '">' . $post_title . '</h2>';
-
-							echo '</div>'; // Close .headline-excerpt.
-
-						echo '</a>'; // This closes the post link container (.post).
-
-					echo '</div>';
-
-					unset( $thumbnail );
-					unset( $post_classes );
-
-				endwhile;
+				echo '</div>';
 
 			echo '</div>';
 
-		endif;
+		}
 
 		wp_reset_postdata();
 
