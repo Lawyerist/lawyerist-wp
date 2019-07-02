@@ -1,10 +1,14 @@
 <?php // This must be used within the Loop.
 
-lawyerist_get_author_bio();
+if ( !get_the_author_meta( 'ID' ) == 26 ) {
 
-echo '<p class="coauthors"><em>';
-lawyerist_get_coauthors();
-echo '</em></p>';
+  lawyerist_get_author_bio();
+
+  echo '<p class="coauthors"><em>';
+  lawyerist_get_coauthors();
+  echo '</em></p>';
+
+}
 
 $date         = get_the_time( 'F jS, Y' );
 $updated_date = get_the_modified_date( 'F jS, Y' );
