@@ -1294,7 +1294,28 @@ function affinity_notice() {
 
 				$user_id = get_current_user_id();
 
-				if ( wc_memberships_is_user_active_member( $user_id, 'insider-plus-affinity' ) || wc_memberships_is_user_active_member( $user_id, 'lab' ) || wc_memberships_is_user_active_member( $user_id, 'lab-pro' ) ) {
+				/* Workaround because WooCommerce Memberships isn't getting membership status. */
+
+				$memberships = wc_memberships_get_user_memberships( $user_id );
+
+				foreach ( $memberships as $membership ) {
+
+					if ( $membership->status == 'wcm-active' && ( $membership->plan->slug == 'lab' || $membership->plan->slug == 'insider-plus-affinity' ) ) {
+
+						$show_affinity = true;
+
+						break;
+
+					}
+
+				}
+
+				if ( $show_affinity == true ) {
+
+				/* End workaround. */
+
+				// This is what's not working.
+				// if ( wc_memberships_is_user_active_member( $user_id, 'insider-plus-affinity' ) || wc_memberships_is_user_active_member( $user_id, 'lab' ) ) {
 
 					$discount_descr	= get_field( 'affinity_discount_descr' );
 					$availability		= get_field( 'affinity_availability' );
