@@ -151,7 +151,28 @@ function lawyerist_loginout( $items, $args ) {
 
 						$user_id = get_current_user_id();
 
-						if ( function_exists( 'wc_memberships' ) && ( wc_memberships_is_user_active_member( $user_id, 'lab' ) || wc_memberships_is_user_active_member( $user_id, 'lab-pro' ) ) ) {
+						/* Workaround because WooCommerce Memberships isn't getting membership status. */
+
+						$memberships = wc_memberships_get_user_memberships( $user_id );
+
+						foreach ( $memberships as $membership ) {
+
+							if ( $membership->status == 'wcm-active' && $membership->plan->slug == 'lab' ) {
+
+								$is_labster = true;
+
+								break;
+
+							}
+
+						}
+
+						if ( $is_labster == true ) {
+
+						/* End workaround. */
+
+						// This is what's not working.
+						// if ( function_exists( 'wc_memberships' ) && wc_memberships_is_user_active_member( $user_id, 'lab' ) ) {
 							echo '<li class="menu-item"><a href="https://lawyerist.com/labster-portal/">Member Portal</a></li>';
 						}
 
@@ -1302,7 +1323,7 @@ function affinity_notice() {
 
 					if ( $membership->status == 'wcm-active' && ( $membership->plan->slug == 'lab' || $membership->plan->slug == 'insider-plus-affinity' ) ) {
 
-						$show_affinity = true;
+						$is_labster_or_insider_plus = true;
 
 						break;
 
@@ -1310,12 +1331,12 @@ function affinity_notice() {
 
 				}
 
-				if ( $show_affinity == true ) {
+				if ( $is_labster_or_insider_plus == true ) {
 
 				/* End workaround. */
 
 				// This is what's not working.
-				// if ( wc_memberships_is_user_active_member( $user_id, 'insider-plus-affinity' ) || wc_memberships_is_user_active_member( $user_id, 'lab' ) ) {
+				// if ( function_exists( 'wc_memberships' ) &&( wc_memberships_is_user_active_member( $user_id, 'insider-plus-affinity' ) || wc_memberships_is_user_active_member( $user_id, 'lab' ) ) ) {
 
 					$discount_descr	= get_field( 'affinity_discount_descr' );
 					$availability		= get_field( 'affinity_availability' );
