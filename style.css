@@ -3766,6 +3766,10 @@ WooCommerce
 
 }
 
+#add_payment_method #payment div.payment_box .form-row {
+  padding: unset;
+}
+
 .woocommerce-page ul.products li.product-category {
   background-color: #fff;
   border-radius: .2rem;
