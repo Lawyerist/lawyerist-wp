@@ -49,13 +49,15 @@ echo '<div class="postmeta">';
         $profile_page_url = get_author_posts_url( $author_ID );
       }
 
-      echo 'By <span class="vcard author"><cite class="fn"><a href="' . $profile_page_url . '" class="url">' . $author . '</a></cite></span> ';
+      echo 'By <span class="vcard author"><cite class="fn"><a href="' . $profile_page_url . '" class="url">' . $author . '</a></cite></span>';
 
     } else {
 
-      echo 'By <span class="vcard author"><cite class="fn">' . $author . '</cite></span> ';
+      echo 'By <span class="vcard author"><cite class="fn">' . $author . '</cite></span>';
 
     }
+
+    if ( !has_tag( 'product-spotlights' ) ) { echo ' '; }
 
     if ( has_tag( 'product-spotlights' ) ) {
 

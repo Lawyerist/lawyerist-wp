@@ -952,7 +952,7 @@ function lawyerist_get_related_resources() {
 
 							// Starts the link container. Makes for big click targets!
 							echo '<a href="' . $post_url . '" title="' . $post_title . '" ';
-							post_class( $post_classes );
+							post_class();
 							echo '>';
 
 								if ( !empty ( $thumbnail ) ) {
@@ -970,7 +970,6 @@ function lawyerist_get_related_resources() {
 						echo '</div>';
 
 						unset( $thumbnail );
-						unset( $post_classes );
 
 					endwhile; endif;
 
@@ -1006,7 +1005,7 @@ function lawyerist_get_related_resources() {
 
 								// Starts the link container. Makes for big click targets!
 								echo '<a href="' . $post_url . '" title="' . $post_title . '" ';
-								post_class( $post_classes );
+								post_class();
 								echo '>';
 
 									if ( !empty ( $thumbnail ) ) {
@@ -1024,7 +1023,6 @@ function lawyerist_get_related_resources() {
 							echo '</div>';
 
 							unset( $thumbnail );
-							unset( $post_classes );
 
 						endwhile; wp_reset_postdata(); endif;
 
