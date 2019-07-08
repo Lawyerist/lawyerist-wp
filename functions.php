@@ -215,10 +215,6 @@ function lawyerist_register_sidebars()  {
 
 add_action( 'widgets_init', 'lawyerist_register_sidebars' );
 
-// Enable shortcodes in text widgets
-add_filter( 'widget_text', 'do_shortcode' );
-
-
 
 /* ADMIN ********************/
 
