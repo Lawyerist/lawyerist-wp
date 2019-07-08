@@ -3,7 +3,7 @@
 
 <?php get_template_part( 'head' ); ?>
 
-<body <?php body_class( 'index' ); ?>>
+<body <?php body_class(); ?>>
 
 <?php get_header(); ?>
 
@@ -419,8 +419,6 @@
 
 	<?php if ( !is_mobile() ) { include( 'sidebar.php' ); } ?>
 
-	<div class="clear"></div>
-
 <?php
 
 	endif;
@@ -428,8 +426,6 @@
 ?>
 
 </div><!--end #column_container-->
-
-<div class="clear"></div>
 
 <?php get_footer(); ?>
 

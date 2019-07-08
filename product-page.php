@@ -22,11 +22,7 @@
 
 	</div><!-- end #content_column -->
 
-	<div class="clear"></div>
-
 </div><!--end #column_container-->
-
-<div class="clear"></div>
 
 <?php get_footer(); ?>
 
