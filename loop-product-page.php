@@ -30,7 +30,9 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
       yoast_breadcrumb( '<div class="breadcrumbs">', '</div>' );
     }
 
-    echo affinity_notice();
+    if ( has_term( 'affinity-partner', 'page_type', $post->ID ) && get_field( 'affinity_active' ) == true ) {
+      echo affinity_notice();
+    }
 
     // Headline Container
     echo '<div class="headline_container">';

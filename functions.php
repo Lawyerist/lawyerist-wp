@@ -140,33 +140,37 @@ add_action( 'init', 'lawyerist_register_menus' );
 
 function lawyerist_loginout( $items, $args ) {
 
-  	if ( is_user_logged_in() && $args->theme_location == 'header-nav-menu' ) {
+	if ( !function_exists( 'wc_memberships' ) ) {
+    return;
+  }
 
-			ob_start();
+	if ( is_user_logged_in() && $args->theme_location == 'header-nav-menu' ) {
 
-				echo '<li class="menu-item menu-item-loginout menu-item-has-children"><a>Account</a>';
-					echo '<ul class="sub-menu">';
-						echo '<li class="menu-item"><a href="https://lawyerist.com/account/">My Account</a>';
+		ob_start();
 
-						$user_id = get_current_user_id();
+			echo '<li class="menu-item menu-item-loginout menu-item-has-children"><a>Account</a>';
+				echo '<ul class="sub-menu">';
+					echo '<li class="menu-item"><a href="https://lawyerist.com/account/">My Account</a>';
 
-						if ( function_exists( 'wc_memberships' ) && wc_memberships_is_user_active_member( $user_id, 'lab' ) ) {
-							echo '<li class="menu-item"><a href="https://lawyerist.com/labster-portal/">Member Portal</a></li>';
-						}
+					$user_id = get_current_user_id();
 
-						echo '<li class="menu-item"><a href="https://lawyerist.com/scorecard/">Update My Scorecard</a></li>';
-					echo '</ul>';
-				echo '</li>';
+					if ( wc_memberships_is_user_active_member( $user_id, 'lab' ) ) {
+						echo '<li class="menu-item"><a href="https://lawyerist.com/labster-portal/">Member Portal</a></li>';
+					}
 
-			$new_items = ob_get_clean();
+					echo '<li class="menu-item"><a href="https://lawyerist.com/scorecard/">Update My Scorecard</a></li>';
+				echo '</ul>';
+			echo '</li>';
 
-      $items .= $new_items;
+		$new_items = ob_get_clean();
 
-    } elseif ( !is_user_logged_in() && $args->theme_location == 'header-nav-menu' ) {
-        $items .= '<li class="menu-item menu-item-loginout"><a href="https://lawyerist.com/account/">Log In</a></li>';
-    }
+    $items .= $new_items;
 
-    return $items;
+  } elseif ( !is_user_logged_in() && $args->theme_location == 'header-nav-menu' ) {
+      $items .= '<li class="menu-item menu-item-loginout"><a href="https://lawyerist.com/account/">Log In</a></li>';
+  }
+
+  return $items;
 
 }
 
@@ -1263,89 +1267,89 @@ Affinity Benefit Notice
 
 function affinity_notice() {
 
+	if ( !function_exists( 'wc_memberships' ) ) {
+    return;
+  }
+
 	global $post;
 
-	if ( has_term( 'affinity-partner', 'page_type', $post->ID ) && get_field( 'affinity_active' ) == true ) {
+	ob_start();
 
-		ob_start();
+		echo '<div class="card affinity-discount-card">';
 
-			echo '<div class="card affinity-discount-card">';
+			echo '<img alt="Lawyerist affinity partner badge." src="https://lawyerist.com/lawyerist/wp-content/uploads/2019/05/affinity-partner-badge-trimmed.png" height="128" width="150" />';
 
-				echo '<img alt="Lawyerist affinity partner badge." src="https://lawyerist.com/lawyerist/wp-content/uploads/2019/05/affinity-partner-badge-trimmed.png" height="128" width="150" />';
+			echo '<p class="card-label">Discount Available</p>';
 
-				echo '<p class="card-label">Discount Available</p>';
+			$user_id = get_current_user_id();
 
-				$user_id = get_current_user_id();
+			if ( wc_memberships_is_user_active_member( $user_id, 'insider-plus-affinity' ) || wc_memberships_is_user_active_member( $user_id, 'lab' ) ) {
 
-				if ( function_exists( 'wc_memberships' ) &&( wc_memberships_is_user_active_member( $user_id, 'insider-plus-affinity' ) || wc_memberships_is_user_active_member( $user_id, 'lab' ) ) ) {
+				$discount_descr	= get_field( 'affinity_discount_descr' );
+				$availability		= get_field( 'affinity_availability' );
 
-					$discount_descr	= get_field( 'affinity_discount_descr' );
-					$availability		= get_field( 'affinity_availability' );
+				switch ( $availability ) {
 
-					switch ( $availability ) {
+		      case $availability == 'new_only':
 
-			      case $availability == 'new_only':
+						$whom = 'new customers only';
+		        break;
 
-							$whom = 'new customers only';
-			        break;
+		      case $availability == 'old_only':
 
-			      case $availability == 'old_only':
+		        $whom = 'existing customers only';
+		        break;
 
-			        $whom = 'existing customers only';
-			        break;
+					case $availability == 'both_new_and_old':
 
-						case $availability == 'both_new_and_old':
+						$whom = 'both new and existing customers';
+						break;
 
-							$whom = 'both new and existing customers';
-							break;
+		    }
 
-			    }
+				echo '<p class="discount_descr">' . $discount_descr . ' Available to ' . $whom . '.</p>';
 
-					echo '<p class="discount_descr">' . $discount_descr . ' Available to ' . $whom . '.</p>';
+				echo '<button class="button expandthis-click">Claim Your Discount</button>';
 
-					echo '<button class="button expandthis-click">Claim Your Discount</button>';
+				echo '<div class="expandthis-hide">';
 
-					echo '<div class="expandthis-hide">';
+					echo do_shortcode( '[gravityform id="55" title="false" ajax="true"]' );
 
-						echo do_shortcode( '[gravityform id="55" title="false" ajax="true"]' );
+				echo '</div>';
 
-					echo '</div>';
+			} else {
 
-				} else {
+				$post_title			= the_title( '', '', FALSE );
+				$availability		= get_field( 'affinity_availability' );
 
-					$post_title			= the_title( '', '', FALSE );
-					$availability		= get_field( 'affinity_availability' );
+				switch ( $availability ) {
 
-					switch ( $availability ) {
+		      case $availability == 'new_only':
 
-			      case $availability == 'new_only':
+						$whom = 'new customers';
+		        break;
 
-							$whom = 'new customers';
-			        break;
+		      case $availability == 'old_only':
 
-			      case $availability == 'old_only':
+		        $whom = 'existing customers';
+		        break;
 
-			        $whom = 'existing customers';
-			        break;
+					case $availability == 'both_new_and_old':
 
-						case $availability == 'both_new_and_old':
+						$whom = 'new and existing customers';
+						break;
 
-							$whom = 'new and existing customers';
-							break;
+		    }
 
-			    }
+				echo '<p class="discount_descr">' . $post_title . ' offers a discount to ' . $whom . ' through our Affinity Benefits program. The details of this discount are only available to members. <a href="https://lawyerist.com/affinity-benefits/">Learn more about the Affinity Benefits program</a> or <a href="https://lawyerist.com/account/">log in</a> if you are a member of Insider Plus or Lab.</p>';
 
-					echo '<p class="discount_descr">' . $post_title . ' offers a discount to ' . $whom . ' through our Affinity Benefits program. The details of this discount are only available to members. <a href="https://lawyerist.com/affinity-benefits/">Learn more about the Affinity Benefits program</a> or <a href="https://lawyerist.com/account/">log in</a> if you are a member of Insider Plus or Lab.</p>';
+			}
 
-				}
+		echo '</div>';
 
-			echo '</div>';
+	$affinity_notice = ob_get_clean();
 
-		$affinity_notice = ob_get_clean();
-
-		return $affinity_notice;
-
-	}
+	return $affinity_notice;
 
 }
 
@@ -1624,9 +1628,7 @@ Check to See if Page is Really a WooCommerce Page
 function is_really_a_woocommerce_page() {
 
 	if ( function_exists( 'is_woocommerce' ) && is_woocommerce() ) {
-
 		return true;
-
 	}
 
 	$woocommerce_keys = array (
@@ -1807,7 +1809,7 @@ function lawyerist_wc_free_products( $price, $product ) {
 
 	global $woocommerce;
 
-	if ( wc_memberships_user_has_member_discount() && $product->get_price() == 0 ) {
+	if ( $product->get_price() == 0 ) {
 
 		$reg_price = $product->get_regular_price();
 
