@@ -24,11 +24,7 @@
 
 	<?php if ( !is_mobile() ) { include( 'sidebar.php' ); } ?>
 
-	<div class="clear"></div>
-
 </div><!--end #column_container-->
-
-<div class="clear"></div>
 
 <?php get_footer(); ?>
 
