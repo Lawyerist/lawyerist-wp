@@ -153,7 +153,7 @@ function lawyerist_loginout( $items, $args ) {
 					echo '<li class="menu-item"><a href="https://lawyerist.com/account/">My Account</a>';
 
 					$user_id = get_current_user_id();
-					
+
 					if ( wc_memberships_is_user_active_member( $user_id, 'lab' ) ) {
 						echo '<li class="menu-item"><a href="https://lawyerist.com/labster-portal/">Member Portal</a></li>';
 					}
@@ -661,9 +661,12 @@ function lawyerist_show_authors_pages( $query ) {
 
   }
 
+	remove_action( 'pre_get_posts', 'lawyerist_show_authors_pages' );
+
+
 }
 
-// add_action( 'pre_get_posts', 'lawyerist_show_authors_pages' );
+add_action( 'pre_get_posts', 'lawyerist_show_authors_pages' );
 
 
 /*------------------------------
