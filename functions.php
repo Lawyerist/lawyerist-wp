@@ -409,7 +409,6 @@ function is_product_portal() {
 	$get_children_args = array(
 		'child_of'	=> $post->ID,
 		'exclude_tree' => array(
-			245258, // Community
 			245317, // Insider
 			220087, // Lab
 			128819, // LabCon
