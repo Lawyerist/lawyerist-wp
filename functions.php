@@ -381,14 +381,11 @@ function get_first_image_url() {
 
 	$first_image_url = '';
 
-	ob_start();
-	ob_end_clean();
-
 	$output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
 
 	if ( !empty( $matches[1][0] ) ) {
 
-		$first_image_url = $matches[1][0];
+		$first_image_url = filter_var( $matches[1][0], FILTER_SANITIZE_URL );
 
 		return $first_image_url;
 
