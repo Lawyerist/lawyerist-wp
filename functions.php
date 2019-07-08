@@ -748,7 +748,7 @@ Custom Default Gravatar
 
 function lawyerist_custom_gravatar ( $avatar_defaults ) {
 
-	$lawyerist_avatar = get_bloginfo('template_directory') . '/images/lawyerist-default-gravatar.png';
+	$lawyerist_avatar = get_bloginfo( 'template_directory' ) . '/images/lawyerist-default-gravatar.png';
 	$avatar_defaults[ $lawyerist_avatar ] = "Lawyerist.com Logo";
 
 	return $avatar_defaults;
@@ -886,7 +886,7 @@ function lawyerist_get_related_posts() {
 
 						// Starts the link container. Makes for big click targets!
 						echo '<a href="' . $post_url . '" title="' . $post_title . '" ';
-						post_class( $post_classes );
+						post_class();
 						echo '>';
 
 							if ( !empty ( $thumbnail ) ) {
@@ -907,7 +907,6 @@ function lawyerist_get_related_posts() {
 					echo '</div>';
 
 					unset( $thumbnail );
-					unset( $post_classes );
 
 				endwhile;
 
