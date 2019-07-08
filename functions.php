@@ -666,6 +666,7 @@ function lawyerist_get_author_bio() {
 
 }
 
+
 /*------------------------------
 Show Pages in Author Archives
 ------------------------------*/
@@ -681,6 +682,7 @@ function lawyerist_show_authors_pages( $query ) {
 }
 
 add_action( 'pre_get_posts', 'lawyerist_show_authors_pages' );
+
 
 /*------------------------------
 List of Coauthors
