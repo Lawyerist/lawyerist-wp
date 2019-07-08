@@ -43,7 +43,6 @@ PARTNERSHIPS
 - Affinity Benefit Notice
 
 COMMENTS & REVIEWS
-- Show Commenter's First Name & Initial
 - Reviews
 
 GRAVITY FORMS
@@ -1382,8 +1381,6 @@ function affinity_notice() {
 
 				}
 
-				echo '<div class="clear"></div>';
-
 			echo '</div>';
 
 		$affinity_notice = ob_get_clean();
@@ -1396,41 +1393,6 @@ function affinity_notice() {
 
 
 /* COMMENTS & REVIEWS *********/
-
-/*------------------------------
-Show Commenter's First Name & Initial
-------------------------------*/
-
-function lawyerist_comment_author_name( $author = '' ) {
-
-	// Get the comment ID from WP_Query
-	$comment = get_comment( $comment_ID );
-
-	if ( !empty( $comment->comment_author ) ) {
-
-		if ( !empty( $comment->user_id ) ) {
-
-			$user		= get_userdata( $comment->user_id );
-			$author	= $user->first_name . ' ' . $user->last_name;
-
-		} else {
-
-				$author	= $comment->comment_author;
-
-		}
-
-	} else {
-
-		$author = __('Anonymous');
-
-	}
-
-	return $author;
-
-}
-
-add_filter( 'get_comment_author', 'lawyerist_comment_author_name', 10, 1 );
-
 
 /*------------------------------
 Reviews
