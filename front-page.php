@@ -63,11 +63,9 @@
 
 					}
 
-				endwhile;
+				endwhile; wp_reset_postdata();
 
 			endif;
-
-			wp_reset_postdata();
 
 			if ( $num_sticky_posts > 0 ) {
 				echo '<div class="separator_3rem"></div>';
@@ -250,9 +248,8 @@
 
 					echo '</div>';
 
-				endwhile; endif;
+				endwhile; wp_reset_postdata(); endif;
 
-				wp_reset_postdata();
 				// End of podcast episode.
 
 
@@ -322,7 +319,7 @@
 							unset( $thumbnail );
 							unset( $post_classes );
 
-						endwhile;
+						endwhile; wp_reset_postdata();
 
 						// Outputs the label.
 						echo '<p class="card-label"><a href="https://lawyerist.com/category/blog-posts/" title="All Blog Posts">All Blog Posts</a></p>';
@@ -331,7 +328,6 @@
 
 				endif;
 
-				wp_reset_postdata();
 				// End of blog posts.
 
 			echo '</div>';

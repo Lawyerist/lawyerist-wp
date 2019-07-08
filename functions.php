@@ -823,13 +823,11 @@ function lawyerist_get_related_podcasts() {
 
 					echo '</div>'; // This closes .card.
 
-				endwhile;
+				endwhile; wp_reset_postdata();
 
 			echo '</div>';
 
 		endif;
-
-		wp_reset_postdata();
 
 	}
 
@@ -908,13 +906,11 @@ function lawyerist_get_related_posts() {
 
 					unset( $thumbnail );
 
-				endwhile;
+				endwhile; wp_reset_postdata();
 
 			echo '</div>';
 
 		endif;
-
-		wp_reset_postdata();
 
 	}
 
@@ -1048,7 +1044,7 @@ function lawyerist_get_related_resources() {
 							unset( $thumbnail );
 							unset( $post_classes );
 
-						endwhile; endif;
+						endwhile; wp_reset_postdata(); endif;
 
 					}
 
@@ -1058,8 +1054,6 @@ function lawyerist_get_related_resources() {
 
 		}
 
-		wp_reset_postdata();
-
 	}
 
 }
@@ -1067,7 +1061,6 @@ function lawyerist_get_related_resources() {
 
 /*------------------------------
 List Child Pages Fallback
-
 
 Outputs child pages if all of the following are true:
 
@@ -1126,7 +1119,7 @@ function featuredtoRSS( $content ) {
 	global $post;
 
 	if ( has_post_thumbnail( $post->ID ) ) {
-		$content = '' . get_the_post_thumbnail( $post->ID, 'featured_top', array( 'style' => 'display:block;height:auto;margin:0 0 15px 0;width:560px;' ) ) . '' . $content;
+		$content = '' . get_the_post_thumbnail( $post->ID, 'featured_top', array( 'style' => 'display:block; height:auto; margin:0 0 15px 0; width:560px;' ) ) . '' . $content;
 	}
 
 	return $content;
@@ -1277,13 +1270,11 @@ function lawyerist_platinum_sponsors_widget() {
 						echo wp_get_attachment_image( $platinum_sidebar_image, 'large' );
 					echo '</a>';
 
-			endwhile;
+			endwhile; wp_reset_postdata();
 
 		echo '</div>' . "\n" . '</li>';
 
 	endif;
-
-	wp_reset_postdata();
 
 }
 
