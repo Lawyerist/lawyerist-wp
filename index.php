@@ -3,7 +3,7 @@
 
 <?php get_template_part( 'head' ); ?>
 
-<body <?php body_class( 'index' ); ?>>
+<body <?php body_class(); ?>>
 
 <?php get_header(); ?>
 
@@ -13,10 +13,26 @@
 
     <?php
 
-    if ( is_archive() || is_search() ) { lawyerist_get_archive_header(); }
+    // Gets the archive header for archive, author, and search pages.
+    if ( is_archive() || is_author() || is_search() ) {
 
-    // Get the Loop.
-    get_template_part( 'loop', 'index' );
+      lawyerist_get_archive_header();
+
+    }
+
+    // Gets the appropriate Loop.
+    if ( is_single() ) {
+
+      get_template_part( 'loop', 'single' );
+
+    } elseif ( is_page() ) {
+
+      get_template_part( 'loop', 'page' );
+
+    } else {
+
+      get_template_part( 'loop', 'index' );
+    }
 
     ?>
 
@@ -24,11 +40,7 @@
 
 	<?php if ( !is_mobile() ) { get_template_part( 'sidebar' ); } ?>
 
-	<div class="clear"></div>
-
 </div><!-- end #column_container -->
-
-<div class="clear"></div>
 
 <?php get_footer(); ?>
 
