@@ -84,7 +84,7 @@ function lawyerist_stylesheets_scripts() {
 	wp_enqueue_style( 'stylesheet' );
 
 	// Load the comment-reply script, but only if we're on a single post page and comments are open and threaded.
-	if ( !is_admin() && is_single() && comments_open() && get_option( 'thread_comments' ) ) {
+	if ( !is_admin() && is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
 

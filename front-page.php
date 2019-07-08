@@ -300,7 +300,7 @@
 
 							// Starts the link container. Makes for big click targets!
 							echo '<a href="' . $post_url . '" title="' . $post_title . '"';
-							post_class( $post_classes );
+							post_class();
 							echo '>';
 
 							if ( !empty ( $thumbnail ) ) {
