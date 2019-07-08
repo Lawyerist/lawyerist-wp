@@ -153,29 +153,8 @@ function lawyerist_loginout( $items, $args ) {
 					echo '<li class="menu-item"><a href="https://lawyerist.com/account/">My Account</a>';
 
 					$user_id = get_current_user_id();
-
-					/* Workaround because WooCommerce Memberships isn't getting membership status. */
-
-					$memberships = wc_memberships_get_user_memberships( $user_id );
-
-					foreach ( $memberships as $membership ) {
-
-						if ( $membership->status == 'wcm-active' && $membership->plan->slug == 'lab' ) {
-
-							$is_labster = true;
-
-							break;
-
-						}
-
-					}
-
-					if ( $is_labster == true ) {
-
-					/* End workaround. */
-
-					// This is what's not working.
-					// if ( wc_memberships_is_user_active_member( $user_id, 'lab' ) ) {
+					
+					if ( wc_memberships_is_user_active_member( $user_id, 'lab' ) ) {
 						echo '<li class="menu-item"><a href="https://lawyerist.com/labster-portal/">Member Portal</a></li>';
 					}
 
@@ -684,7 +663,7 @@ function lawyerist_show_authors_pages( $query ) {
 
 }
 
-add_action( 'pre_get_posts', 'lawyerist_show_authors_pages' );
+// add_action( 'pre_get_posts', 'lawyerist_show_authors_pages' );
 
 
 /*------------------------------
@@ -1302,28 +1281,7 @@ function affinity_notice() {
 
 			$user_id = get_current_user_id();
 
-			/* Workaround because WooCommerce Memberships isn't getting membership status. */
-
-			$memberships = wc_memberships_get_user_memberships( $user_id );
-
-			foreach ( $memberships as $membership ) {
-
-				if ( $membership->status == 'wcm-active' && ( $membership->plan->slug == 'lab' || $membership->plan->slug == 'insider-plus-affinity' ) ) {
-
-					$is_labster_or_insider_plus = true;
-
-					break;
-
-				}
-
-			}
-
-			if ( $is_labster_or_insider_plus == true ) {
-
-			/* End workaround. */
-
-			// This is what's not working.
-			// if ( wc_memberships_is_user_active_member( $user_id, 'insider-plus-affinity' ) ) {
+			if ( wc_memberships_is_user_active_member( $user_id, 'insider-plus-affinity' ) ) {
 
 				$discount_descr	= get_field( 'affinity_discount_descr' );
 				$availability		= get_field( 'affinity_availability' );
