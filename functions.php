@@ -655,13 +655,13 @@ Show Pages in Author Archives
 
 function lawyerist_show_authors_pages( $query ) {
 
-  if ( !is_admin() && $query->is_author() ) {
+  if ( !is_admin() && $query->is_author() && $query->is_main_query() ) {
 
     $query->set( 'post_type', array( 'post', 'page' ) );
 
   }
 
-	remove_action( 'pre_get_posts', 'lawyerist_show_authors_pages' );
+	// remove_action( 'pre_get_posts', 'lawyerist_show_authors_pages' );
 
 
 }
