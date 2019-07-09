@@ -75,7 +75,7 @@
 			// Outputes the Scorecard Report Card widget.
 			if ( is_user_logged_in() ) {
 
-				echo '<div id="insider-dashboard" class="front_page_block">';
+				echo '<div id="insider-dashboard">';
 
 					$current_user = wp_get_current_user();
 					echo '<p id="dashboard-title">' . $current_user->user_firstname . ' ' . $current_user->user_lastname . '\'s Dashboard</p>';
@@ -182,118 +182,114 @@
 			}
 
 
-			// Outputs a block of new stuff (podcast, Lens, download, and blog posts).
-			echo '<div class="front_page_block">';
+			// Outputs the most recent podcast episode.
+			$current_podcast_query_args = array(
+				'category_name'				=> 'lawyerist-podcast',
+				'post__not_in'				=> get_option( 'sticky_posts' ),
+				'posts_per_page'			=> 1,
+			);
 
-				// Outputs the most recent podcast episode.
-				$current_podcast_query_args = array(
-					'category_name'				=> 'lawyerist-podcast',
-					'post__not_in'				=> get_option( 'sticky_posts' ),
-					'posts_per_page'			=> 1,
-				);
+			$current_podcast_query = new WP_Query( $current_podcast_query_args );
 
-				$current_podcast_query = new WP_Query( $current_podcast_query_args );
+			if ( $current_podcast_query->have_posts() ) : while ( $current_podcast_query->have_posts() ) : $current_podcast_query->the_post();
 
-				if ( $current_podcast_query->have_posts() ) : while ( $current_podcast_query->have_posts() ) : $current_podcast_query->the_post();
+				$podcast_title		= the_title( '', '', FALSE );
+				$podcast_url			= get_permalink();
+				$first_image_url	= get_first_image_url();
 
-					$podcast_title		= the_title( '', '', FALSE );
-					$podcast_url			= get_permalink();
-					$first_image_url	= get_first_image_url();
+				if ( empty( $first_image_url ) ) {
+					$first_image_url = 'https://lawyerist.com/lawyerist-dev/wp-content/uploads/2018/02/lawyerist-ltn-podcast-logo-16x9-684x385.png';
+				}
 
-					if ( empty( $first_image_url ) ) {
-						$first_image_url = 'https://lawyerist.com/lawyerist-dev/wp-content/uploads/2018/02/lawyerist-ltn-podcast-logo-16x9-684x385.png';
+				// Starts the post container.
+
+				echo '<div id="fp-latest-podcast" class="card has-card-label">';
+
+					// Starts the link container. Makes for big click targets!
+					echo '<a href="' . $podcast_url . '" title="' . $podcast_title . '" ';
+					post_class( 'has-guest-avatar' );
+					echo '>';
+
+						echo '<img class="guest-avatar" src="' . $first_image_url . '" />';
+
+						// Now we get the headline and excerpt (except for certain kinds of posts).
+						echo '<div class="headline-excerpt">';
+
+							// Headline
+							echo '<h2 class="headline" title="' . $podcast_title . '">' . $podcast_title . '</h2>';
+
+							get_template_part( 'postmeta', 'index' );
+
+						echo '</div>'; // Close .headline-excerpt.
+
+					echo '</a>'; // This closes the post link container (.post).
+
+					// Outputs the label.
+					$cat_IDs = wp_get_post_terms(
+						$post->ID,
+						'category',
+						array(
+							'fields' 	=> 'ids',
+							'orderby' => 'count',
+							'order' 	=> 'DESC'
+						)
+					);
+
+					$cat_info				= get_term( $cat_IDs[0] );
+					$card_label 		= $cat_info->name;
+					$card_label_url	=	get_term_link( $cat_IDs[0], 'category' );
+
+					if ( !empty( $card_label ) ) {
+						echo '<p class="card-label"><a href="' . $card_label_url . '" title="All episodes of ' . $card_label . '.">All episodes of ' . $card_label . '</a></p>';
 					}
 
-					// Starts the post container.
-
-					echo '<div id="fp-latest-podcast" class="card has-card-label">';
-
-						// Starts the link container. Makes for big click targets!
-						echo '<a href="' . $podcast_url . '" title="' . $podcast_title . '" ';
-						post_class( 'has-guest-avatar' );
-						echo '>';
-
-							echo '<img class="guest-avatar" src="' . $first_image_url . '" />';
-
-							// Now we get the headline and excerpt (except for certain kinds of posts).
-							echo '<div class="headline-excerpt">';
-
-								// Headline
-								echo '<h2 class="headline" title="' . $podcast_title . '">' . $podcast_title . '</h2>';
-
-								get_template_part( 'postmeta', 'index' );
-
-							echo '</div>'; // Close .headline-excerpt.
-
-						echo '</a>'; // This closes the post link container (.post).
-
-						// Outputs the label.
-						$cat_IDs = wp_get_post_terms(
-							$post->ID,
-							'category',
-							array(
-								'fields' 	=> 'ids',
-								'orderby' => 'count',
-								'order' 	=> 'DESC'
-							)
-						);
-
-						$cat_info				= get_term( $cat_IDs[0] );
-						$card_label 		= $cat_info->name;
-						$card_label_url	=	get_term_link( $cat_IDs[0], 'category' );
-
-						if ( !empty( $card_label ) ) {
-							echo '<p class="card-label"><a href="' . $card_label_url . '" title="All episodes of ' . $card_label . '.">All episodes of ' . $card_label . '</a></p>';
-						}
-
-					echo '</div>';
-
-				endwhile; wp_reset_postdata(); endif;
-
-				// End of podcast episode.
-
-
-				// Embedded Lawyerist Lens playlist.
-				echo '<div id="fp-lens-playlist" class="card has-card-label">';
-
-					echo '<div id="lens-wrapper"><iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLtFJu5URBISmTDaVOF3l-cQl08f2qUMr_" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>';
-
-					echo '<p class="card-label"><a href="https://www.youtube.com/playlist?list=PLtFJu5URBISmTDaVOF3l-cQl08f2qUMr_" title="Watch all episodes of Lawyerist Lens on YouTube">Watch all episodes of Lawyerist Lens on YouTube</a></p>';
-
 				echo '</div>';
-				// End of embedded Lawyerist Lens playlist.
+
+			endwhile; wp_reset_postdata(); endif;
+
+			// End of podcast episode.
 
 
-				// Outputs the 5 most recent blog posts.
-				$current_post_query_args = array(
-					'category__in'				=> array(
-						'555', // Blog Posts
-					),
-					'post__not_in'				=> get_option( 'sticky_posts' ),
-					'posts_per_page'			=> 5,
-				);
+			// Embedded Lawyerist Lens playlist.
+			echo '<div id="fp-lens-playlist" class="card has-card-label">';
 
-				$current_post_query = new WP_Query( $current_post_query_args );
+				echo '<div id="lens-wrapper"><iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLtFJu5URBISmTDaVOF3l-cQl08f2qUMr_" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>';
 
-				if ( $current_post_query->have_posts() ) :
+				echo '<p class="card-label"><a href="https://www.youtube.com/playlist?list=PLtFJu5URBISmTDaVOF3l-cQl08f2qUMr_" title="Watch all episodes of Lawyerist Lens on YouTube">Watch all episodes of Lawyerist Lens on YouTube</a></p>';
 
-					// Starts the post container.
-					echo '<div id="fp-blog-posts" class="card">';
+			echo '</div>';
+			// End of embedded Lawyerist Lens playlist.
 
-						while ( $current_post_query->have_posts() ) : $current_post_query->the_post();
 
-						$post_title			= the_title( '', '', FALSE );
-						$post_url				= get_permalink();
+			// Outputs 4 pages with Show in Recent.
+			$args = array(
+				'meta_key'				=> 'show_in_recent',
+				'meta_value'			=> true,
+				'orderby'					=> 'modified',
+				'post_type'				=> 'page',
+				'posts_per_page'	=> 4,
+			);
 
-						$author_name		= get_the_author_meta( 'display_name' );
-						$author_avatar	= get_avatar( get_the_author_meta( 'user_email' ), 100, '', $author_name );
+			$recent_pages_query = new WP_Query( $args );
 
-						if ( has_post_thumbnail() ) {
+			if ( $recent_pages_query->have_posts() ) :
 
-							$thumbnail_id   = get_post_thumbnail_id();
-					    $thumbnail      = wp_get_attachment_image( $thumbnail_id, 'medium' );
+				// Starts the post container.
+				echo '<div id="fp-recent-pages" class="cards">';
 
-						}
+					while ( $recent_pages_query->have_posts() ) : $recent_pages_query->the_post();
+
+					$post_title			= the_title( '', '', FALSE );
+					$post_url				= get_permalink();
+
+					if ( has_post_thumbnail() ) {
+
+						$thumbnail_id   = get_post_thumbnail_id();
+				    $thumbnail      = wp_get_attachment_image( $thumbnail_id, 'medium' );
+
+					}
+
+						echo '<div class="card">';
 
 							// Starts the link container. Makes for big click targets!
 							echo '<a href="' . $post_url . '" title="' . $post_title . '"';
@@ -316,104 +312,147 @@
 
 							echo '</a>'; // This closes the post link container (.post).
 
-							unset( $thumbnail );
-							unset( $post_classes );
+						echo '</div>';
 
-						endwhile; wp_reset_postdata();
+						unset( $thumbnail );
 
-						// Outputs the label.
-						echo '<p class="card-label"><a href="https://lawyerist.com/category/blog-posts/" title="All Blog Posts">All Blog Posts</a></p>';
+					endwhile; wp_reset_postdata();
 
-					echo '</div>';
+				echo '</div>';
 
-				endif;
+			endif;
+			// End of recent pages.
 
-				// End of blog posts.
 
-			echo '</div>';
-			// End of new stuff.
+			// Outputs the 6 most recent blog posts.
+			$args = array(
+				'category__in'				=> array(
+					'555', // Blog Posts
+				),
+				'post__not_in'				=> get_option( 'sticky_posts' ),
+				'posts_per_page'			=> 6,
+			);
+
+			$current_post_query = new WP_Query( $args );
+
+			if ( $current_post_query->have_posts() ) :
+
+				// Starts the post container.
+				echo '<div id="fp-blog-posts" class="card">';
+
+					while ( $current_post_query->have_posts() ) : $current_post_query->the_post();
+
+					$post_title			= the_title( '', '', FALSE );
+					$post_url				= get_permalink();
+
+					if ( has_post_thumbnail() ) {
+
+						$thumbnail_id   = get_post_thumbnail_id();
+				    $thumbnail      = wp_get_attachment_image( $thumbnail_id, 'medium' );
+
+					}
+
+						// Starts the link container. Makes for big click targets!
+						echo '<a href="' . $post_url . '" title="' . $post_title . '"';
+						post_class();
+						echo '>';
+
+						if ( !empty ( $thumbnail ) ) {
+							echo $thumbnail;
+						}
+
+							// Now we get the headline and excerpt (except for certain kinds of posts).
+							echo '<div class="headline-excerpt">';
+
+								// Headline
+								echo '<h2 class="headline">' . $post_title . '</h2>';
+
+								get_template_part( 'postmeta', 'index' );
+
+							echo '</div>'; // Close .headline-excerpt.
+
+						echo '</a>'; // This closes the post link container (.post).
+
+						unset( $thumbnail );
+
+					endwhile; wp_reset_postdata();
+
+					// Outputs the label.
+					echo '<p class="card-label"><a href="https://lawyerist.com/category/blog-posts/" title="All Blog Posts">All Blog Posts</a></p>';
+
+				echo '</div>';
+
+			endif;
+			// End of blog posts.
+
+
+			// Outputs up to 12 pages with Show in Featured.
+			$args = array(
+				'meta_key'		=> 'order_in_featured',
+				'meta_query'	=> array(
+	        array(
+            'key'		=> 'show_in_featured',
+            'value'	=> true,
+	        ),
+		    ),
+				'order'						=> 'ASC',
+				'orderby'					=> 'meta_value_num',
+				'post_type'				=> 'page',
+				'posts_per_page'	=> 12,
+			);
+
+			$featured_pages_query = new WP_Query( $args );
+
+			if ( $featured_pages_query->have_posts() ) :
+
+				// Starts the post container.
+				echo '<div id="fp-recent-pages" class="cards">';
+
+					while ( $featured_pages_query->have_posts() ) : $featured_pages_query->the_post();
+
+					$post_title			= the_title( '', '', FALSE );
+					$post_url				= get_permalink();
+
+					if ( has_post_thumbnail() ) {
+
+						$thumbnail_id   = get_post_thumbnail_id();
+				    $thumbnail      = wp_get_attachment_image( $thumbnail_id, 'medium' );
+
+					}
+
+						echo '<div class="card">';
+
+							// Starts the link container. Makes for big click targets!
+							echo '<a href="' . $post_url . '" title="' . $post_title . '"';
+							post_class();
+							echo '>';
+
+							if ( !empty ( $thumbnail ) ) {
+								echo $thumbnail;
+							}
+
+								// Now we get the headline and excerpt (except for certain kinds of posts).
+								echo '<div class="headline-excerpt">';
+
+									// Headline
+									echo '<h2 class="headline">' . $post_title . '</h2>';
+
+								echo '</div>'; // Close .headline-excerpt.
+
+							echo '</a>'; // This closes the post link container (.post).
+
+						echo '</div>';
+
+						unset( $thumbnail );
+
+					endwhile; wp_reset_postdata();
+
+				echo '</div>';
+
+			endif;
+			// End of featured pages.
 
 		?>
-
-			<!-- Outputs strategic pages. -->
-			<div class="cards front_page_block">
-
-				<div class="card">
-					<a href="https://lawyerist.com/scorecard/" class="post has-post-thumbnail">
-						<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2019/03/scorecard-front-page.png" alt="Lawyerist Insider logo." />
-						<div class="headline-excerpt">
-							<h3 class="headline">Use the Small Firm Scorecard to Evaluate Your Law Firm</h3>
-						</div>
-					</a>
-				</div>
-
-				<div class="card">
-					<a href="https://lawyerist.com/journal/" class="post has-post-thumbnail">
-						<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/05/lawyerist-productivity-journal-front-page.jpg" alt="The Lawyerist Productivity Journal cover." />
-						<div class="headline-excerpt">
-							<h3 class="headline">Get Organized with the Lawyerist Productivity Journal</h3>
-						</div>
-					</a>
-				</div>
-
-				<div class="card">
-					<a href="https://lawyerist.com/best-law-firm-websites/" class="post has-post-thumbnail">
-						<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/05/best-law-firm-websites-2018-front-page.jpg" alt="A law firm website as viewed on a laptop." />
-						<div class="headline-excerpt">
-							<h3 class="headline">Check Out the Best Law Firm Websites</h3>
-						</div>
-					</a>
-				</div>
-
-				<div class="card">
-					<a href="https://lawyerist.com/website-designer-assessment/" class="post has-post-thumbnail">
-						<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/05/web-designer-recommendation-front-page.jpg" alt="Law firm website designer at work." />
-						<div class="headline-excerpt">
-							<h3 class="headline">Get a Personalized Web Designer Referral</h3>
-						</div>
-					</a>
-				</div>
-
-				<div class="card">
-					<a href="https://lawyerist.com/law-practice-management-software/" class="post has-post-thumbnail">
-						<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/05/law-practice-management-software-front-page.jpg" alt="Law practice management software graphic." />
-						<div class="headline-excerpt">
-							<h3 class="headline">Law Practice Management Software</h3>
-						</div>
-					</a>
-				</div>
-
-
-				<div class="card">
-					<a href="https://lawyerist.com/virtual-receptionists/" class="post has-post-thumbnail">
-						<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/05/receptionist-front-page.jpg" alt="Virtual receptionist image." />
-						<div class="headline-excerpt">
-							<h3 class="headline">Virtual Receptionists for Law Firms</h3>
-						</div>
-					</a>
-				</div>
-
-
-
-				<div class="card">
-					<a href="https://lawyerist.com/best-law-firm-websites/designers-seo/" class="post has-post-thumbnail">
-						<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/07/website-designers-seo-consultants-front-page.jpg" alt="SEO Scrabble tiles." />
-						<div class="headline-excerpt">
-							<h3 class="headline">Website Designers & SEO Consultants</h3>
-						</div>
-					</a>
-				</div>
-
-				<div class="card">
-					<a href="https://lawyerist.com/legal-billing-software/" class="post has-post-thumbnail">
-						<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/07/time-billing-software-front-page.jpg" alt="An accountant working on a laptop." />
-						<div class="headline-excerpt">
-							<h3 class="headline">Timekeeping & Billing Software for Law Firms</h3>
-						</div>
-					</a>
-				</div>
-
-			</div>
 
 	</div><!-- end #content_column -->
 

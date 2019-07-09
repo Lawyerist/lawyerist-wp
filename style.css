@@ -1366,6 +1366,12 @@ Selectors
     padding: 2rem;
   }
 
+  .card#fp-blog-posts,
+  .card#fp-latest-podcast,
+  .card#fp-lens-playlist {
+    margin-bottom: 4rem;
+  }
+
   .card a.post:hover,
   .card a.post:focus,
   .card a.page:hover,
@@ -1603,11 +1609,6 @@ Selectors
 /*------------------------------
 Front Page
 ------------------------------*/
-
-.front_page_block {
-  margin-bottom: 6rem;
-}
-
 
 /* Sticky Post */
 
