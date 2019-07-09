@@ -1830,6 +1830,30 @@ function lawyerist_wc_free_products( $price, $product ) {
 
 add_filter( 'woocommerce_get_price_html', 'lawyerist_wc_free_products', 10, 2 );
 
+/*------------------------------
+Remove My Account Navigation Items
+------------------------------*/
+
+function lawyerist_remove_my_account_links( $menu_links ){
+
+	// unset( $menu_links[ 'dashboard' ] );
+	// unset( $menu_links[ 'orders' ] );
+	unset( $menu_links[ 'subscriptions' ] );
+	unset( $menu_links[ 'downloads' ] );
+	unset( $menu_links[ 'edit-address' ] );
+	// unset( $menu_links[ 'payment-methods' ] );
+	// unset( $menu_links[ 'edit-account' ] );
+	// unset( $menu_links[ 'customer-logout' ] );
+
+	/* This method doesn't work for removing the "Memberships" link, so we do that
+	by removing the endpoint in WooCommerce > Settings > Account. */
+
+	return $menu_links;
+
+}
+
+add_filter ( 'woocommerce_account_menu_items', 'lawyerist_remove_my_account_links' );
+
 
 /* LEARNDASH ******************/
 
