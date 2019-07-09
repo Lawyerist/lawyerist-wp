@@ -1846,7 +1846,7 @@ function lawyerist_remove_my_account_links( $menu_links ){
 	// unset( $menu_links[ 'customer-logout' ] );
 
 	/* This method doesn't work for removing the "Memberships" link, so we do that
-	by removing the endpoint in WooCommerce > Settings > Account. */
+	by removing the endpoint in WooCommerce > Settings > Advanced. */
 
 	return $menu_links;
 
