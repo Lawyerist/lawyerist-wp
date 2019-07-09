@@ -306,8 +306,6 @@
 									// Headline
 									echo '<h2 class="headline">' . $post_title . '</h2>';
 
-									get_template_part( 'postmeta', 'index' );
-
 								echo '</div>'; // Close .headline-excerpt.
 
 							echo '</a>'; // This closes the post link container (.post).
