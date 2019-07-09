@@ -264,13 +264,13 @@
 				// End of embedded Lawyerist Lens playlist.
 
 
-				// Outputs the 3 most recent blog posts.
+				// Outputs the 5 most recent blog posts.
 				$current_post_query_args = array(
 					'category__in'				=> array(
 						'555', // Blog Posts
 					),
 					'post__not_in'				=> get_option( 'sticky_posts' ),
-					'posts_per_page'			=> 3,
+					'posts_per_page'			=> 5,
 				);
 
 				$current_post_query = new WP_Query( $current_post_query_args );
