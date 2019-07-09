@@ -161,6 +161,8 @@
 			}
 
 
+			echo '<p class="fp-section-header">Recent Updates</p>';
+
 			// Outputs the most recent podcast episode.
 			$current_podcast_query_args = array(
 				'category_name'				=> 'lawyerist-podcast',
@@ -362,6 +364,8 @@
 			endif;
 			// End of blog posts.
 
+
+			echo '<p class="fp-section-header">Featured Resources</p>';
 
 			// Outputs up to 12 pages with Show in Featured.
 			$args = array(

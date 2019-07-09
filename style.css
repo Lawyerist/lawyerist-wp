@@ -575,6 +575,7 @@ th,
 .current_posts_heading,
 #dashboard-title,
 .featured_products_heading,
+.fp-section-header,
 .learndash #lesson_heading,
 #menu-main-menu .sub-menu .menu-item-has-children > a,
 .product-pages-list .title,
@@ -1366,12 +1367,6 @@ Selectors
     padding: 2rem;
   }
 
-  .card#fp-blog-posts,
-  .card#fp-latest-podcast,
-  .card#fp-lens-playlist {
-    margin-bottom: 4rem;
-  }
-
   .card a.post:hover,
   .card a.post:focus,
   .card a.page:hover,
@@ -1382,6 +1377,11 @@ Selectors
   .card a.page,
   .card a.post {
     display: block;
+  }
+
+  .home .card,
+  .home .cards {
+    margin-bottom: 1rem;
   }
 
   .home .card a.post {
@@ -1829,6 +1829,13 @@ p.dashboard-widget-note {
     }
 
   }
+
+.fp-section-header {
+  color: #555;
+  line-height: 1;
+  margin: 4rem 0 2rem 0;
+  text-transform: uppercase;
+}
 
 /* New Content Blocks */
 
