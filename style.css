@@ -1398,9 +1398,13 @@ Selectors
     display: block;
   }
 
-  .home .card,
+  .home .card {
+    margin-bottom: 2rem;
+  }
+
   .home .cards {
-    margin-bottom: 1rem;
+    grid-gap: 2rem;
+    margin-bottom: 2rem;
   }
 
   .home .card a.post {
@@ -1429,7 +1433,7 @@ Selectors
 }
 
   .home .card-label:last-child {
-    margin-top: 1rem;
+    margin-top: 2rem;
   }
 
   .card-label a,
@@ -1482,10 +1486,6 @@ Selectors
 
   .card a.has-post-thumbnail img {
     border-radius: .2rem 0 0 .2rem;
-  }
-
-  .card.composite-card a.has-post-thumbnail img {
-    border-radius: unset;
   }
 
   @media only screen and (max-width:639px) {
@@ -1873,16 +1873,20 @@ p.dashboard-widget-note {
 
 /* New Content Blocks */
 
-.home #fp-lens-playlist iframe {
+#fp-lens-playlist iframe {
   margin-bottom: 0 !important;
 }
 
-  .home #lens-wrapper {
+  #fp-lens-playlist #lens-wrapper {
     margin-bottom: 0;
   }
 
-.home #fp-blog-posts .post {
-  margin-bottom: 1.5rem;
+#fp-blog-posts .post {
+  margin-bottom: 2rem;
+}
+
+#fp-blog-posts a.has-post-thumbnail img {
+  border-radius: unset;
 }
 
 

@@ -317,7 +317,7 @@
 			if ( $current_post_query->have_posts() ) :
 
 				// Starts the post container.
-				echo '<div id="fp-blog-posts" class="card composite-card">';
+				echo '<div id="fp-blog-posts" class="card">';
 
 					while ( $current_post_query->have_posts() ) : $current_post_query->the_post();
 
