@@ -602,6 +602,7 @@ button,
 figcaption,
 #footer,
 #header,
+.home .card .headline,
 input[type="button"],
 input[type="submit"],
 label,
@@ -819,6 +820,11 @@ a:hover .headline,
 a:focus .headline {
   color: #a00;
   text-decoration: none;
+}
+
+.home .card .headline {
+  font-size: 1.8rem;
+  font-weight: normal;
 }
 
 h3,
@@ -1449,6 +1455,23 @@ Selectors
   padding: 0;
 }
 
+  .card a.has-post-thumbnail > * {
+    align-self: center;
+  }
+
+  .card a.has-post-thumbnail img {
+    display: block;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+
+  .archive .card a.has-post-thumbnail img,
+  .index .card a.has-post-thumbnail img {
+    border-radius: .2rem 0 0 .2rem;
+  }
+
   @media only screen and (max-width:639px) {
 
     .card a.has-featured-thumbnail,
@@ -1461,18 +1484,6 @@ Selectors
       display: block;
     }
 
-  }
-
-  .card a.has-post-thumbnail > * {
-    align-self: center;
-  }
-
-  .card a.has-post-thumbnail img {
-    display: block;
-    height: auto;
-    margin: 0;
-    padding: 0;
-    width: 100%;
   }
 
   .card a.has-featured-thumbnail .headline-excerpt,
@@ -1498,6 +1509,18 @@ Selectors
       margin: 0;
       width: 100%;
     }
+
+  @media only screen and ( max-width: 399px ) {
+
+    .card a.has-guest-avatar {
+      display: block;
+    }
+
+    .card a.has-post-thumbnail .headline-excerpt {
+      padding: 2rem 0;
+    }
+
+  }
 
 /* Headline-excerpt styles. */
 
@@ -1530,6 +1553,14 @@ Selectors
       text-decoration: underline;
     }
 
+    @media only screen and ( max-width: 683px ) {
+
+      .card .excerpt {
+        display: none;
+      }
+
+    }
+
   .card p {
     margin-bottom: .75em;
   }
@@ -1537,17 +1568,6 @@ Selectors
   .card .postmeta {
     font-size: 1.4rem;
     margin-bottom: .5rem;
-  }
-
-
-  /* Excerpt styles. */
-
-  @media only screen and ( max-width: 683px ) {
-
-    .card .excerpt {
-      display: none;
-    }
-
   }
 
 .card > *:last-child,
@@ -1577,6 +1597,10 @@ Selectors
 
     .cards .card a.has-post-thumbnail {
       display: block;
+    }
+
+    .cards .card a.has-post-thumbnail img {
+      border-radius: .2rem .2rem 0 0;
     }
 
     .cards .card .headline-excerpt {
