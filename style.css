@@ -591,6 +591,7 @@ aside blockquote,
 button,
 .button,
 .drop_cap,
+.card .headline,
 .card-label,
   .review-summary-title,
 .category_list,
@@ -602,7 +603,6 @@ button,
 figcaption,
 #footer,
 #header,
-.home .card .headline,
 input[type="button"],
 input[type="submit"],
 label,
@@ -810,6 +810,11 @@ h2,
 	margin-bottom: .5em;
 }
 
+.card h2.headline {
+  font-size: 1.8rem;
+  font-weight: normal;
+}
+
 a .headline,
 a:visited .headline {
   color: #333;
@@ -820,11 +825,6 @@ a:hover .headline,
 a:focus .headline {
   color: #a00;
   text-decoration: none;
-}
-
-.home .card .headline {
-  font-size: 1.8rem;
-  font-weight: normal;
 }
 
 h3,
