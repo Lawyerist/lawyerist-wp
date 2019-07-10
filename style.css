@@ -1467,9 +1467,12 @@ Selectors
     width: 100%;
   }
 
-  .archive .card a.has-post-thumbnail img,
-  .index .card a.has-post-thumbnail img {
+  .card a.has-post-thumbnail img {
     border-radius: .2rem 0 0 .2rem;
+  }
+
+  .card.composite-card a.has-post-thumbnail img {
+    border-radius: unset;
   }
 
   @media only screen and (max-width:639px) {
@@ -1587,48 +1590,41 @@ Selectors
   margin-bottom: 4rem;
 }
 
+.cards-3-columns {
+  grid-template-columns: repeat( 3, 1fr );
+}
+
+.cards-4-columns {
+  grid-template-columns: repeat( 4, 1fr );
+}
+
+  @media only screen and ( max-width: 639px ) {
+
+    .cards-3-columns,
+    .cards-4-columns {
+      grid-template-columns: repeat( 2, 1fr );
+    }
+
+  }
+
   .cards .card {
     margin: 0;
   }
 
-    .cards .card a.post {
-      padding: 0;
-    }
-
     .cards .card a.has-post-thumbnail {
       display: block;
+      padding: 0;
     }
 
     .cards .card a.has-post-thumbnail img {
       border-radius: .2rem .2rem 0 0;
     }
 
-    .cards .card .headline-excerpt {
+    .cards .card .headline-excerpt,
+    .cards .card a.has-post-thumbnail .headline-excerpt {
       padding: 2rem;
     }
 
-  .cards-4-columns {
-    grid-template-columns: repeat( 4, 1fr );
-  }
-
-    .cards-4-columns .card .headline-excerpt,
-    .cards .card a.has-post-thumbnail .headline-excerpt {
-      padding: 1.5rem;
-    }
-
-      .cards-4-columns .headline {
-        font-family: concourse, sans-serif;
-        font-size: 1.6rem;
-        font-weight: normal;
-      }
-
-  @media only screen and ( max-width: 639px ) {
-
-    .cards-4-columns {
-      grid-template-columns: repeat( 2, 1fr );
-    }
-
-  }
 
 /*------------------------------
 Front Page

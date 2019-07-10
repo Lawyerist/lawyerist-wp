@@ -260,15 +260,15 @@
 
 					while ( $recent_pages_query->have_posts() ) : $recent_pages_query->the_post();
 
-					$post_title			= the_title( '', '', FALSE );
-					$post_url				= get_permalink();
+						$post_title			= the_title( '', '', FALSE );
+						$post_url				= get_permalink();
 
-					if ( has_post_thumbnail() ) {
+						if ( has_post_thumbnail() ) {
 
-						$thumbnail_id   = get_post_thumbnail_id();
-				    $thumbnail      = wp_get_attachment_image( $thumbnail_id, 'medium' );
+							$thumbnail_id   = get_post_thumbnail_id();
+					    $thumbnail      = wp_get_attachment_image( $thumbnail_id, 'medium' );
 
-					}
+						}
 
 						echo '<div class="card">';
 
@@ -317,7 +317,7 @@
 			if ( $current_post_query->have_posts() ) :
 
 				// Starts the post container.
-				echo '<div id="fp-blog-posts" class="card">';
+				echo '<div id="fp-blog-posts" class="card composite-card">';
 
 					while ( $current_post_query->have_posts() ) : $current_post_query->the_post();
 

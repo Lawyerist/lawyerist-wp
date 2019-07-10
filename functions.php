@@ -27,6 +27,7 @@ CONTENT
 - Show Pages in Author Archives
 - List of Coauthors
 - Custom Default Gravatar
+- Get Alternative Products
 - Get Related Podcasts
 - Get Related Posts
 - Get Related Pages
@@ -744,6 +745,68 @@ add_filter( 'avatar_defaults', 'lawyerist_custom_gravatar' );
 
 
 /*------------------------------
+Get Alternative Products
+------------------------------*/
+
+function lawyerist_get_alternative_products() {
+
+	global $post;
+
+	$page_title		= get_the_title ( $post->ID );
+	$alternatives = get_field( 'alternative_products' );
+
+	if ( !empty( $alternatives ) ) {
+
+		echo '<h2>Alternatives to ' . $page_title . '</h2>';
+
+		echo '<div id="alternative-products" class="cards cards-3-columns">';
+
+			foreach ( $alternatives as $alternative ) {
+
+				$alt_title			= get_the_title( $alternative );
+				$alt_url				= get_permalink( $alternative );
+
+				if ( has_post_thumbnail() ) {
+
+					$alt_thumbnail_id   = get_post_thumbnail_id( $alternative );
+					$alt_thumbnail      = wp_get_attachment_image( $alt_thumbnail_id, 'medium' );
+
+				}
+
+				echo '<div class="card">';
+
+					// Starts the link container. Makes for big click targets!
+					echo '<a href="' . $alt_url . '" title="' . $alt_title . '"';
+					post_class();
+					echo '>';
+
+					if ( !empty ( $alt_thumbnail ) ) {
+						echo $alt_thumbnail;
+					}
+
+						// Now we get the headline and excerpt (except for certain kinds of posts).
+						echo '<div class="headline-excerpt">';
+
+							// Headline
+							echo '<h2 class="headline">' . $alt_title . '</h2>';
+
+						echo '</div>'; // Close .headline-excerpt.
+
+					echo '</a>'; // This closes the post link container (.post).
+
+				echo '</div>';
+
+				unset( $alt_thumbnail );
+
+			}
+
+		echo '</div>';
+
+	}
+
+}
+
+/*------------------------------
 Get Related Podcasts
 ------------------------------*/
 
@@ -771,8 +834,9 @@ function lawyerist_get_related_podcasts() {
 
 		if ( $lawyerist_related_podcasts_query->have_posts() ) :
 
-			echo '<div id="related-podcasts">';
 			echo '<h2>Podcasts About ' . $current_title . '</h2>';
+
+			echo '<div id="related-podcasts" class="cards">';
 
 				// Start the Loop.
 				while ( $lawyerist_related_podcasts_query->have_posts() ) : $lawyerist_related_podcasts_query->the_post();
@@ -847,8 +911,9 @@ function lawyerist_get_related_posts() {
 
 		if ( $lawyerist_related_posts_query->have_posts() ) :
 
-			echo '<div id="related-posts">';
 			echo '<h2>Posts About ' . $current_title . '</h2>';
+
+			echo '<div id="related-posts" class="cards">';
 
 				while ( $lawyerist_related_posts_query->have_posts() ) : $lawyerist_related_posts_query->the_post();
 

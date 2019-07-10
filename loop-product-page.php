@@ -154,12 +154,12 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
       the_content();
 
-      echo '<div class="clear"></div>';
-
       // Trial button
       if ( !empty( $trial_button ) ) {
         echo '<p align="center">' . $trial_button . '</p>';
       }
+
+      lawyerist_get_alternative_products();
 
       // Byline
       get_template_part( 'postmeta', 'page' );
