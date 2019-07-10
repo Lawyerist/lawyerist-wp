@@ -234,7 +234,7 @@
 			// Embedded Lawyerist Lens playlist.
 			echo '<div id="fp-lens-playlist" class="card has-card-label">';
 
-				echo '<div id="lens-wrapper"><iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLtFJu5URBISmTDaVOF3l-cQl08f2qUMr_" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>';
+				echo '<div id="lens-wrapper"><iframe width="560" height="315" data-src="https://www.youtube.com/embed/videoseries?list=PLtFJu5URBISmTDaVOF3l-cQl08f2qUMr_" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>';
 
 				echo '<p class="card-label"><a href="https://www.youtube.com/playlist?list=PLtFJu5URBISmTDaVOF3l-cQl08f2qUMr_" title="Watch all episodes of Lawyerist Lens on YouTube">Watch all episodes of Lawyerist Lens on YouTube</a></p>';
 

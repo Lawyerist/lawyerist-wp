@@ -58,100 +58,113 @@ Load Fonts
 
 /* Adler */
 @font-face {
-    font-family: 'adler';
-    src: url('./fonts/adler/adler-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+  font-display: auto;
+  font-family: 'adler';
+  src: url('./fonts/adler/adler-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
 
 
 /* Concourse (headings) */
 @font-face {
-    font-family: 'concourse-headings';
-    src: url('./fonts/concourse/concourse_t6_regular-webfont.woff') format('woff');
-    font-weight: bold;
-    font-style: normal;
+  font-display: auto;
+  font-family: 'concourse-headings';
+  src: url('./fonts/concourse/concourse_t6_regular-webfont.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: 'concourse-headings';
-    src: url('./fonts/concourse/concourse_t6_italic-webfont.woff') format('woff');
-    font-weight: bold;
-    font-style: italic;
+  font-display: auto;
+  font-family: 'concourse-headings';
+  src: url('./fonts/concourse/concourse_t6_italic-webfont.woff') format('woff');
+  font-weight: bold;
+  font-style: italic;
 }
 
 
 /* Concourse (meta) */
 @font-face {
-    font-family: 'concourse';
-    src: url('./fonts/concourse/concourse_t4_regular-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+  font-display: auto;
+  font-family: 'concourse';
+  src: url('./fonts/concourse/concourse_t4_regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: 'concourse';
-    src: url('./fonts/concourse/concourse_t4_italic-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: italic;
+  font-display: auto;
+  font-family: 'concourse';
+  src: url('./fonts/concourse/concourse_t4_italic-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
 }
 
 @font-face {
-    font-family: 'concourse';
-    src: url('./fonts/concourse/concourse_t4_bold-webfont.woff') format('woff');
-    font-weight: bold;
-    font-style: normal;
+  font-display: auto;
+  font-family: 'concourse';
+  src: url('./fonts/concourse/concourse_t4_bold-webfont.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: 'concourse';
-    src: url('./fonts/concourse/concourse_t4_bold_italic-webfont.woff') format('woff');
-    font-weight: bold;
-    font-style: italic;
+  font-display: auto;
+  font-family: 'concourse';
+  src: url('./fonts/concourse/concourse_t4_bold_italic-webfont.woff') format('woff');
+  font-weight: bold;
+  font-style: italic;
 }
 
 
 /* Equity (body text) */
 @font-face {
-    font-family: 'equity';
-    src: url('./fonts/equity/equity_text_b_regular-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+  font-display: auto;
+  font-family: 'equity';
+  src: url('./fonts/equity/equity_text_b_regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: 'equity';
-    src: url('./fonts/equity/equity_text_b_italic-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: italic;
+  font-display: auto;
+  font-family: 'equity';
+  src: url('./fonts/equity/equity_text_b_italic-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
 }
 
 @font-face {
-    font-family: 'equity';
-    src: url('./fonts/equity/equity_text_b_bold-webfont.woff') format('woff');
-    font-weight: bold;
-    font-style: normal;
+  font-display: auto;
+  font-family: 'equity';
+  src: url('./fonts/equity/equity_text_b_bold-webfont.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: 'equity';
-    src: url('./fonts/equity/equity_text_b_bold_italic-webfont.woff') format('woff');
-    font-weight: bold;
-    font-style: italic;
+  font-display: auto;
+  font-family: 'equity';
+  src: url('./fonts/equity/equity_text_b_bold_italic-webfont.woff') format('woff');
+  font-weight: bold;
+  font-style: italic;
 }
 
 
 /* Triplicate (code) */
 @font-face {
-    font-family: 'triplicate';
-    src: url('./fonts/triplicate/triplicate_t4_code_regular-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+  font-display: auto;
+  font-family: 'triplicate';
+  src: url('./fonts/triplicate/triplicate_t4_code_regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
 
 
 /* Genericons */
 @font-face {
+  font-display: auto;
   font-family: 'Genericons';
   src: url('./fonts/genericons/Genericons.woff') format('woff');
   font-weight: normal;
