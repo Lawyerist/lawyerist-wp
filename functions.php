@@ -662,9 +662,6 @@ function lawyerist_show_authors_pages( $query ) {
 
   }
 
-	// remove_action( 'pre_get_posts', 'lawyerist_show_authors_pages' );
-
-
 }
 
 add_action( 'pre_get_posts', 'lawyerist_show_authors_pages' );
