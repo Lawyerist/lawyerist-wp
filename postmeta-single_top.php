@@ -5,7 +5,7 @@ echo '<div class="postmeta">';
   // Gets the date because we always show the date.
   $date = get_the_time( 'F jS, Y' );
 
-  // Shows just the date for podcast posts and on author archives.
+  // Shows just the date for podcast posts.
   if ( has_category( 'lawyerist-podcast' ) ) {
 
     echo '<span class="date published">' . $date . '</span> ';

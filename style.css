@@ -1374,16 +1374,24 @@ Selectors
   text-decoration: none;
 }
 
+.card .card {
+  border-radius: unset;
+  box-shadow: unset;
+  margin-bottom: 2rem;
+}
+
   .card a.page,
   .card a.post,
+  .has-card-label,
   .affinity-discount-card,
-  .card.author-bio-box,
-  .card.dashboard-scorecard-widget,
-  .card#fp-blog-posts,
-  .card#fp-latest-podcast,
-  .card#fp-lens-playlist,
+  .author-bio-box,
+  .dashboard-scorecard-widget,
   #sponsored_product_updates {
     padding: 2rem;
+  }
+
+  .podcast-card.has-card-label a.post {
+    padding: 0;
   }
 
   .card a.post:hover,
@@ -1398,17 +1406,9 @@ Selectors
     display: block;
   }
 
-  .home .card {
-    margin-bottom: 1rem;
-  }
-
   .home .cards {
     grid-gap: 1rem;
     margin-bottom: 1rem;
-  }
-
-  .home .card a.post {
-    padding: 0;
   }
 
   .home .card,
@@ -1432,8 +1432,8 @@ Selectors
   text-transform: uppercase;
 }
 
-  .home .card-label:last-child {
-    margin-top: 2rem;
+  .card-bottom-label {
+    margin-top: 1.5rem;
   }
 
   .card-label a,
@@ -2057,6 +2057,7 @@ Content
     }
 
       #review {
+        background: unset;
         border: 0;
         margin: 0;
         padding: 0;

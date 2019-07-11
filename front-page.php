@@ -164,67 +164,21 @@
 			echo '<p class="fp-section-header">Recent Updates</p>';
 
 			// Outputs the most recent podcast episode.
-			$current_podcast_query_args = array(
+			$args = array(
 				'category_name'				=> 'lawyerist-podcast',
 				'post__not_in'				=> get_option( 'sticky_posts' ),
 				'posts_per_page'			=> 1,
 			);
 
-			$current_podcast_query = new WP_Query( $current_podcast_query_args );
+			$current_podcast_query = new WP_Query( $args );
 
 			if ( $current_podcast_query->have_posts() ) : while ( $current_podcast_query->have_posts() ) : $current_podcast_query->the_post();
 
-				$podcast_title		= the_title( '', '', FALSE );
-				$podcast_url			= get_permalink();
-				$first_image_url	= get_first_image_url();
+				$all_eps_txt		= 'All episodes of The Lawyerist Podcast';
+				$all_eps_url		=	get_permalink( '79318' );
+				$all_eps_label	= '<a href="' . $all_eps_url . '" title="' . $all_eps_txt . '.">' . $all_eps_txt . '</a>';
 
-				if ( empty( $first_image_url ) ) {
-					$first_image_url = 'https://lawyerist.com/lawyerist-dev/wp-content/uploads/2018/02/lawyerist-ltn-podcast-logo-16x9-684x385.png';
-				}
-
-				// Starts the post container.
-
-				echo '<div id="fp-latest-podcast" class="card has-card-label">';
-
-					// Starts the link container. Makes for big click targets!
-					echo '<a href="' . $podcast_url . '" title="' . $podcast_title . '" ';
-					post_class( 'has-guest-avatar' );
-					echo '>';
-
-						echo '<img class="guest-avatar" src="' . $first_image_url . '" />';
-
-						// Now we get the headline and excerpt (except for certain kinds of posts).
-						echo '<div class="headline-excerpt">';
-
-							// Headline
-							echo '<h2 class="headline" title="' . $podcast_title . '">' . $podcast_title . '</h2>';
-
-							get_template_part( 'postmeta', 'index' );
-
-						echo '</div>'; // Close .headline-excerpt.
-
-					echo '</a>'; // This closes the post link container (.post).
-
-					// Outputs the label.
-					$cat_IDs = wp_get_post_terms(
-						$post->ID,
-						'category',
-						array(
-							'fields' 	=> 'ids',
-							'orderby' => 'count',
-							'order' 	=> 'DESC'
-						)
-					);
-
-					$cat_info				= get_term( $cat_IDs[0] );
-					$card_label 		= $cat_info->name;
-					$card_label_url	=	get_term_link( $cat_IDs[0], 'category' );
-
-					if ( !empty( $card_label ) ) {
-						echo '<p class="card-label"><a href="' . $card_label_url . '" title="All episodes of ' . $card_label . '.">All episodes of ' . $card_label . '</a></p>';
-					}
-
-				echo '</div>';
+				lawyerist_get_card( '', '', $all_eps_label );
 
 			endwhile; wp_reset_postdata(); endif;
 
@@ -236,7 +190,7 @@
 
 				echo '<div id="lens-wrapper"><iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLtFJu5URBISmTDaVOF3l-cQl08f2qUMr_" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>';
 
-				echo '<p class="card-label"><a href="https://www.youtube.com/playlist?list=PLtFJu5URBISmTDaVOF3l-cQl08f2qUMr_" title="Watch all episodes of Lawyerist Lens on YouTube">Watch all episodes of Lawyerist Lens on YouTube</a></p>';
+				echo '<p class="card-label card-bottom-label"><a href="https://www.youtube.com/playlist?list=PLtFJu5URBISmTDaVOF3l-cQl08f2qUMr_" title="Watch all episodes of Lawyerist Lens on YouTube">Watch all episodes of Lawyerist Lens on YouTube</a></p>';
 
 			echo '</div>';
 			// End of embedded Lawyerist Lens playlist.
@@ -260,40 +214,7 @@
 
 					while ( $recent_pages_query->have_posts() ) : $recent_pages_query->the_post();
 
-						$post_title			= the_title( '', '', FALSE );
-						$post_url				= get_permalink();
-
-						if ( has_post_thumbnail() ) {
-
-							$thumbnail_id   = get_post_thumbnail_id();
-					    $thumbnail      = wp_get_attachment_image( $thumbnail_id, 'medium' );
-
-						}
-
-						echo '<div class="card">';
-
-							// Starts the link container. Makes for big click targets!
-							echo '<a href="' . $post_url . '" title="' . $post_title . '"';
-							post_class();
-							echo '>';
-
-							if ( !empty ( $thumbnail ) ) {
-								echo $thumbnail;
-							}
-
-								// Now we get the headline and excerpt (except for certain kinds of posts).
-								echo '<div class="headline-excerpt">';
-
-									// Headline
-									echo '<h2 class="headline">' . $post_title . '</h2>';
-
-								echo '</div>'; // Close .headline-excerpt.
-
-							echo '</a>'; // This closes the post link container (.post).
-
-						echo '</div>';
-
-						unset( $thumbnail );
+						lawyerist_get_card();
 
 					endwhile; wp_reset_postdata();
 
@@ -317,47 +238,17 @@
 			if ( $current_post_query->have_posts() ) :
 
 				// Starts the post container.
-				echo '<div id="fp-blog-posts" class="card">';
+				echo '<div id="fp-blog-posts" class="card has-card-label">';
 
 					while ( $current_post_query->have_posts() ) : $current_post_query->the_post();
 
-					$post_title			= the_title( '', '', FALSE );
-					$post_url				= get_permalink();
-
-					if ( has_post_thumbnail() ) {
-
-						$thumbnail_id   = get_post_thumbnail_id();
-				    $thumbnail      = wp_get_attachment_image( $thumbnail_id, 'medium' );
-
-					}
-
-						// Starts the link container. Makes for big click targets!
-						echo '<a href="' . $post_url . '" title="' . $post_title . '"';
-						post_class();
-						echo '>';
-
-						if ( !empty ( $thumbnail ) ) {
-							echo $thumbnail;
-						}
-
-							// Now we get the headline and excerpt (except for certain kinds of posts).
-							echo '<div class="headline-excerpt">';
-
-								// Headline
-								echo '<h2 class="headline">' . $post_title . '</h2>';
-
-								get_template_part( 'postmeta', 'index' );
-
-							echo '</div>'; // Close .headline-excerpt.
-
-						echo '</a>'; // This closes the post link container (.post).
-
-						unset( $thumbnail );
+						lawyerist_get_card();
 
 					endwhile; wp_reset_postdata();
 
-					// Outputs the label.
-					echo '<p class="card-label"><a href="https://lawyerist.com/category/blog-posts/" title="All Blog Posts">All Blog Posts</a></p>';
+					$all_posts_txt		= 'All Blog Posts';
+					$all_posts_url		=	get_category_link( 555 );
+					echo '<p class="card-label card-bottom-label"><a href="' . $all_posts_url . '" title="' . $all_posts_txt . '">' . $all_posts_txt . '</a></p>';
 
 				echo '</div>';
 
@@ -391,40 +282,7 @@
 
 					while ( $featured_pages_query->have_posts() ) : $featured_pages_query->the_post();
 
-					$post_title			= the_title( '', '', FALSE );
-					$post_url				= get_permalink();
-
-					if ( has_post_thumbnail() ) {
-
-						$thumbnail_id   = get_post_thumbnail_id();
-				    $thumbnail      = wp_get_attachment_image( $thumbnail_id, 'medium' );
-
-					}
-
-						echo '<div class="card">';
-
-							// Starts the link container. Makes for big click targets!
-							echo '<a href="' . $post_url . '" title="' . $post_title . '"';
-							post_class();
-							echo '>';
-
-							if ( !empty ( $thumbnail ) ) {
-								echo $thumbnail;
-							}
-
-								// Now we get the headline and excerpt (except for certain kinds of posts).
-								echo '<div class="headline-excerpt">';
-
-									// Headline
-									echo '<h2 class="headline">' . $post_title . '</h2>';
-
-								echo '</div>'; // Close .headline-excerpt.
-
-							echo '</a>'; // This closes the post link container (.post).
-
-						echo '</div>';
-
-						unset( $thumbnail );
+						lawyerist_get_card();
 
 					endwhile; wp_reset_postdata();
 

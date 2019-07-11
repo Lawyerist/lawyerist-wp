@@ -19,10 +19,12 @@ UTILITY FUNCTIONS
 - Is This a Product Portal?
 - Get Active Labsters
 
+CARDS
+- Post Cards
+
 CONTENT
 - Archive Headers
 - Yoast SEO Breadcrumbs
-- Postmeta
 - Author Bios
 - Show Pages in Author Archives
 - List of Coauthors
@@ -358,9 +360,13 @@ function get_sponsor_link() {
 Get First Image URL
 ------------------------------*/
 
-function get_first_image_url() {
+function get_first_image_url( $post_ID = NULL ) {
 
-	global $post;
+	if ( empty( $post_ID ) ) {
+		global $post;
+	} else {
+		$post = get_post( $post_ID );
+	}
 
 	$first_image_url = '';
 
@@ -455,6 +461,178 @@ function get_active_labsters() {
 		return;
 
 	endif;
+
+}
+
+
+/* CARDS **********************/
+
+/**
+* Post Cards
+*
+* @param int $post_ID Optional. Accepts a valid post ID.
+* @param string $card_top_label Optional.
+* @param string $card_bottom_label Optional.
+*/
+
+function lawyerist_get_card( $post_ID = null, $card_top_label = null, $card_bottom_label = null, $title_only = false ) {
+
+	// Gets the post object.
+	if ( empty( $post_ID ) ) {
+		global $post;
+		$post_ID = $post->ID;
+	} else {
+		$post = get_post( $post_ID );
+	}
+
+	$post_type = get_post_type( $post_ID );
+
+	// Assigns card classes based on post type and a couple of special cases.
+	$card_classes		= array( 'card' );
+	$card_classes[]	= $post_type . '-card';
+
+	if ( has_category( 'lawyerist-podcast' ) ) {
+		$card_classes[] = 'podcast-card';
+	}
+
+	if ( has_tag( 'how-lawyers-work' ) ) {
+		$card_classes[] = 'hlw-card';
+	}
+
+	if ( is_page_template( 'product-page.php' ) ) {
+		$card_classes[] = 'product-page-card';
+	}
+
+	if ( !empty( $card_top_label ) || !empty( $card_bottom_label ) ) {
+		$card_classes[] = 'has-card-label';
+	}
+
+	// Gets the guest image for podcast and How Lawyers Work posts, or the post
+	// thumbnail for everything else.
+	if ( has_category( 'lawyerist-podcast' ) || has_tag( 'how-lawyers-work' ) ) {
+
+		$first_image_url = get_first_image_url( $post_ID );
+
+		if ( !empty( $first_image_url ) ) {
+			$thumbnail			= '<img class="guest-avatar" src="' . $first_image_url . '" />';
+			$post_classes[]	= 'has-guest-avatar';
+		}
+
+	} elseif ( has_post_thumbnail() ) {
+
+    $thumbnail_id   = get_post_thumbnail_id( $post_ID );
+    $thumbnail      = wp_get_attachment_image( $thumbnail_id, 'medium' );
+
+  }
+
+	// Gets the post title and permalink for the link container.
+	$post_title	= get_the_title( $post_ID );
+	$post_url		= get_permalink( $post_ID );
+
+	echo '<div class="' . implode( ' ', $card_classes ) . '">';
+
+		if ( !empty( $card_top_label ) ) {
+			echo '<p class="card-label card-top-label">' . $card_top_label . '</p>';
+		}
+
+		echo '<a href="' . $post_url . '" title="' . $post_title . '" ';
+		post_class( $post_classes );
+		echo '>';
+
+			echo $thumbnail;
+
+			echo '<div class="headline-excerpt">';
+
+				echo '<h2 class="headline" title="' . $post_title . '">' . $post_title . '</h2>';
+
+				// Outputs the excerpt, with exceptions.
+        if ( !has_category( 'lawyerist-podcast' ) && !has_category( 'blog-posts' ) && $post_type != 'page' ) {
+
+					$post_excerpt = get_the_excerpt( $post_ID );
+					$seo_descr		= get_post_meta( $post_ID, '_yoast_wpseo_metadesc', true );
+
+					if ( !empty( $seo_descr ) ) { $post_excerpt = $seo_descr; }
+
+          echo '<p class="excerpt">' . $post_excerpt . '</p>';
+
+        }
+
+				// Outputs the postmeta, with exceptions.
+        if ( $post_type == 'post' && $title_only == false ) {
+
+					echo '<div class="postmeta">';
+
+						$post_date = get_the_time( 'F jS, Y', $post_ID );
+
+						if ( has_category( 'lawyerist-podcast' ) ) {
+
+					    echo '<span class="date updated published">' . $post_date . '</span>';
+
+					  } else {
+
+							$author = get_the_author_meta( 'display_name' );
+
+							if ( $author == 'Lawyerist' ) {
+								$author = 'the Lawyerist editorial team';
+							}
+
+							if ( has_term( true, 'sponsor' ) || has_category( 'sponsored-posts' ) ) {
+
+						    $sponsor_IDs = wp_get_post_terms(
+						      $post_ID,
+						      'sponsor',
+						      array(
+						        'fields' 	=> 'ids',
+						        'orderby' => 'count',
+						        'order' 	=> 'DESC',
+						      )
+						    );
+
+						    $sponsor_info = get_term( $sponsor_IDs[0] );
+						    $sponsor      = $sponsor_info->name;
+
+						    // Replaces the author with the sponsor on sponsored product updates and old sponsored posts.
+						    if ( has_category( 'sponsored-posts' ) ) {
+
+						      echo '<span class="sponsor">Sponsored by ' . $sponsor . '</span> ';
+
+						    // Adds "sponsored by" after the author on product spotlights.
+						    } else {
+
+						      echo 'By <span class="vcard author"><cite class="fn">' . $author . '</cite></span>,&nbsp;<span class="sponsor">sponsored by ' . $sponsor . '</span>, ';
+
+						    }
+
+						    echo 'on <span class="date updated published">' . $post_date . '</span>';
+
+						  } elseif ( has_category( 'lawyerist-podcast' ) || is_author() ) {
+
+						    echo '<span class="date updated published">' . $post_date . '</span>';
+
+						  } else {
+
+						    echo 'By <span class="vcard author"><cite class="fn">' . $author . '</cite></span> ';
+						    echo 'on <span class="date updated published">' . $post_date . '</span> ';
+
+						  }
+
+						}
+
+					echo '</div>';
+
+        }
+
+			echo '</div>'; // Close .headline-excerpt.
+
+		echo '</a>'; // Close the post container.
+
+		if ( !empty( $card_bottom_label ) ) {
+			echo '<p class="card-label card-bottom-label">' . $card_bottom_label . '</p>';
+		}
+
+	echo '</div>'; // Close .card .podcast-card.
+
+	unset( $thumbnail );
 
 }
 
@@ -568,26 +746,6 @@ function lawyerist_add_learndash_breadcrumbs( $links ) {
 }
 
 add_filter( 'wpseo_breadcrumb_links', 'lawyerist_add_learndash_breadcrumbs' );
-
-
-
-/*------------------------------
-Postmeta
-------------------------------*/
-
-function lawyerist_postmeta() {
-
-	if ( is_home() || is_archive() || is_search() ) {
-
-		get_template_part( 'postmeta', 'index' );
-
-	} elseif ( is_single() ) {
-
-		get_template_part( 'postmeta', 'single' );
-
-	}
-
-}
 
 
 /*------------------------------
@@ -818,7 +976,7 @@ function lawyerist_get_related_podcasts() {
 
 	if ( !empty( $current_slug ) ) {
 
-		$lawyerist_related_podcasts_query_args = array(
+		$args = array(
 			'category_name'			=> 'lawyerist-podcast',
 			'category__not_in'	=> array(
 				1320, // Excludes sponsored posts.
@@ -828,47 +986,18 @@ function lawyerist_get_related_podcasts() {
 			'tag' 						=> $current_slug,
 		);
 
-		$lawyerist_related_podcasts_query = new WP_Query( $lawyerist_related_podcasts_query_args );
+		$lawyerist_related_podcasts_query = new WP_Query( $args );
 
 		if ( $lawyerist_related_podcasts_query->have_posts() ) :
 
 			echo '<h2>Podcasts About ' . $current_title . '</h2>';
 
-			echo '<div id="related-podcasts" class="cards">';
+			echo '<div id="related-podcasts">';
 
 				// Start the Loop.
 				while ( $lawyerist_related_podcasts_query->have_posts() ) : $lawyerist_related_podcasts_query->the_post();
 
-					$post_title			= the_title( '', '', FALSE );
-					$post_url				= get_permalink();
-
-					echo '<div class="card">';
-
-						// Starts the link container. Makes for big click targets!
-						echo '<a href="' . $post_url . '" title="' . $post_title . '" ';
-						post_class( 'has-guest-avatar' );
-						echo '>';
-
-							// Outputs the podcast guest thumbnail.
-							$first_image_url = get_first_image_url();
-
-							if ( empty( $first_image_url ) ) {
-								$first_image_url = 'https://lawyerist.com/lawyerist/wp-content/uploads/2018/09/podcast-mic-square-150x150.png';
-							}
-
-							echo '<img class="guest-avatar" src="' . $first_image_url . '" />';
-
-							echo '<div class="headline-excerpt">';
-
-								echo '<h2 class="headline" title="' . $post_title . '">' . $post_title . '</h2>';
-
-								get_template_part( 'postmeta', 'index' );
-
-							echo '</div>'; // Close .headline-excerpt.
-
-						echo '</a>'; // This closes the link container.
-
-					echo '</div>'; // This closes .card.
+					lawyerist_get_card();
 
 				endwhile; wp_reset_postdata();
 
@@ -895,7 +1024,7 @@ function lawyerist_get_related_posts() {
 
 	if ( !empty( $current_slug ) ) {
 
-		$lawyerist_related_posts_query_args = array(
+		$args = array(
 			'category__not_in'	=> array(
 				1320, // Excludes sponsored posts.
 				4183, // Excludes podcast episodes.
@@ -905,54 +1034,17 @@ function lawyerist_get_related_posts() {
 			'tag' 						=> $current_slug,
 		);
 
-		$lawyerist_related_posts_query = new WP_Query( $lawyerist_related_posts_query_args );
+		$lawyerist_related_posts_query = new WP_Query( $args );
 
 		if ( $lawyerist_related_posts_query->have_posts() ) :
 
 			echo '<h2>Posts About ' . $current_title . '</h2>';
 
-			echo '<div id="related-posts" class="cards">';
+			echo '<div id="related-posts">';
 
 				while ( $lawyerist_related_posts_query->have_posts() ) : $lawyerist_related_posts_query->the_post();
 
-					$post_title			= the_title( '', '', FALSE );
-					$post_url				= get_permalink();
-
-					$author_name		= get_the_author_meta( 'display_name' );
-
-					if ( has_post_thumbnail() ) {
-
-						$thumbnail_id = get_post_thumbnail_id();
-				    $thumbnail    = wp_get_attachment_image( $thumbnail_id, 'medium' );
-
-					}
-
-					// Starts the post container.
-					echo '<div class="card">';
-
-						// Starts the link container. Makes for big click targets!
-						echo '<a href="' . $post_url . '" title="' . $post_title . '" ';
-						post_class();
-						echo '>';
-
-							if ( !empty ( $thumbnail ) ) {
-				        echo $thumbnail;
-				      }
-
-							echo '<div class="headline-excerpt">';
-
-								// Headline
-								echo '<h2 class="headline" title="' . $post_title . '">' . $post_title . '</h2>';
-
-								get_template_part( 'postmeta', 'index' );
-
-							echo '</div>'; // Close .headline-excerpt.
-
-						echo '</a>'; // This closes the post link container (.post).
-
-					echo '</div>';
-
-					unset( $thumbnail );
+					lawyerist_get_card();
 
 				endwhile; wp_reset_postdata();
 
@@ -1003,39 +1095,7 @@ function lawyerist_get_related_resources() {
 
 					if ( $related_pages->have_posts() ) : while ( $related_pages->have_posts() ) : $related_pages->the_post();
 
-						$post_title			= the_title( '', '', FALSE );
-						$post_url				= get_permalink();
-
-						if ( has_post_thumbnail() ) {
-
-							$thumbnail_id	= get_post_thumbnail_id();
-					    $thumbnail    = wp_get_attachment_image( $thumbnail_id, 'medium' );
-
-						}
-
-						// Starts the post container.
-						echo '<div class="card">';
-
-							// Starts the link container. Makes for big click targets!
-							echo '<a href="' . $post_url . '" title="' . $post_title . '" ';
-							post_class();
-							echo '>';
-
-								if ( !empty ( $thumbnail ) ) {
-									echo $thumbnail;
-								}
-
-								echo '<div class="headline-excerpt">';
-
-									echo '<h2 class="headline" title="' . $post_title . '">' . $post_title . '</h2>';
-
-								echo '</div>'; // Close .headline-excerpt.
-
-							echo '</a>'; // This closes the post link container (.post).
-
-						echo '</div>';
-
-						unset( $thumbnail );
+						lawyerist_get_card();
 
 					endwhile; endif;
 
@@ -1056,39 +1116,7 @@ function lawyerist_get_related_resources() {
 
 						if ( $related_posts->have_posts() ) : while ( $related_posts->have_posts() ) : $related_posts->the_post();
 
-							$post_title			= the_title( '', '', FALSE );
-							$post_url				= get_permalink();
-
-							if ( has_post_thumbnail() ) {
-
-								$thumbnail_id	= get_post_thumbnail_id();
-						    $thumbnail    = wp_get_attachment_image( $thumbnail_id, 'medium' );
-
-							}
-
-							// Starts the post container.
-							echo '<div class="card">';
-
-								// Starts the link container. Makes for big click targets!
-								echo '<a href="' . $post_url . '" title="' . $post_title . '" ';
-								post_class();
-								echo '>';
-
-									if ( !empty ( $thumbnail ) ) {
-										echo $thumbnail;
-									}
-
-									echo '<div class="headline-excerpt">';
-
-										echo '<h2 class="headline" title="' . $post_title . '">' . $post_title . '</h2>';
-
-									echo '</div>'; // Close .headline-excerpt.
-
-								echo '</a>'; // This closes the post link container (.post).
-
-							echo '</div>';
-
-							unset( $thumbnail );
+							lawyerist_get_card( '', '', '', true );
 
 						endwhile; wp_reset_postdata(); endif;
 
@@ -1282,7 +1310,6 @@ Platinum Sidebar Widget
 
 function lawyerist_platinum_sponsors_widget() {
 
-	// Outputs the most recent podcast episode.
 	$args = array(
 		'meta_key'				=> 'show_in_platinum_sidebar_widget',
 		'meta_value'			=> true,

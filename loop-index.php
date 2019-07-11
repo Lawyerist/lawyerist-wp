@@ -17,97 +17,12 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
   $this_post[] = $post->ID; // We use this to exclude the current post from things.
 
-  // Assign post variables.
-  $post_title     = the_title( '', '', FALSE );
-  $post_excerpt   = get_the_excerpt();
-  $seo_title      = get_post_meta( $post->ID, '_yoast_wpseo_title', true );
-  $seo_descr      = get_post_meta( $post->ID, '_yoast_wpseo_metadesc', true );
-  $post_url       = get_permalink();
-  $post_type      = get_post_type( $post->ID );
-
-  // Sets the post excerpt to the Yoast Meta Description.
-  if ( !empty( $seo_descr ) ) { $post_excerpt = $seo_descr; }
-
-  // Figures out the post thumbnail.
-  if ( has_category( 'lawyerist-podcast' ) || has_tag( 'how-lawyers-work' ) ) {
-
-    $first_image_url = get_first_image_url();
-
-    if ( empty( $first_image_url ) ) {
-
-      if ( has_category( 'lawyerist-podcast' ) ) {
-
-        $first_image_url = 'https://lawyerist.com/lawyerist/wp-content/uploads/2018/09/podcast-mic-square-150x150.png';
-
-      } elseif ( has_tag( 'how-lawyers-work' ) ) {
-
-        $first_image_url = 'https://lawyerist.com/lawyerist/wp-content/uploads/2018/01/typewriter-150x150.jpg';
-
-      }
-
-    }
-
-    $thumbnail      = '<img class="guest-avatar" src="' . $first_image_url . '" />';
-    $post_classes[] = 'has-guest-avatar';
-
-  } elseif ( has_post_thumbnail() ) {
-
-    $thumbnail_id   = get_post_thumbnail_id();
-    $thumbnail      = wp_get_attachment_image( $thumbnail_id, 'medium' );
-
-  }
-
-  // Starts the post container.
-  echo '<div class="card">';
-
-    // Outputs the post label if there is one.
-    if ( !empty( $card_label ) ) {
-      echo '<p class="card-label"><a href="' . $card_label_url . '" title="Read all posts in ' . $card_label . '.">' . $card_label . '</a></p>';
-    }
-
-    // Starts the link container. Makes for big click targets!
-    echo '<a href="' . $post_url . '" title="' . $post_title . '" ';
-    post_class( $post_classes );
-    echo '>';
-
-      if ( !empty ( $thumbnail ) ) {
-        echo $thumbnail;
-      }
-
-      // Now we get the headline and, for some posts, the excerpt.
-      echo '<div class="headline-excerpt">';
-
-        // Headline
-        echo '<h2 class="headline">' . $post_title . '</h2>';
-
-        // Output the excerpt, with exceptions.
-        if ( !has_category( 'lawyerist-podcast' ) && !has_category( 'blog-posts' ) && $post_type != 'page' ) {
-          echo '<p class="excerpt">' . $post_excerpt . '</p>';
-        }
-
-        // Output the post meta, with exceptions.
-        if ( $post_type == 'post' ) {
-          lawyerist_postmeta();
-        }
-
-        // Show a button for products.
-        if ( $post_type == 'product' ) {
-          echo '<a href="' . $post_url . '" class="button">Learn More</a>';
-        }
-
-      echo '</div>'; // Close .headline-excerpt.
-
-    echo '</a>'; // This closes the post link container (.post).
-
-  echo '</div>'; // Close .post.
-  echo "\n\n";
+  lawyerist_get_card();
 
   // Insert product updates, and ads on mobile.
   if ( $post_num == 1 && is_mobile() ) { lawyerist_get_display_ad(); }
 
   $post_num++; // Increment counter.
-
-  unset ( $post_classes, $card_label, $card_label_url, $thumbnail, $thumbnail_url ); // Clear variables for the next trip through the Loop.
 
 endwhile;
 
