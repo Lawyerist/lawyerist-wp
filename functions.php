@@ -98,13 +98,6 @@ function lawyerist_stylesheets_scripts() {
 	wp_register_script( 'footer-scripts', get_template_directory_uri() . '/js/footer-scripts.js',  array( 'jquery' ), $cacheBusterMC, true );
 	wp_enqueue_script( 'footer-scripts' );
 
-	// Load YouTube defer script.
-	if ( is_home() ) {
-		$cacheBusterYT = filemtime( get_stylesheet_directory() . '/js/defer-youtube.js' );
-		wp_register_script( 'defer-youtube', get_template_directory_uri() . '/js/defer-youtube.js',  array( 'jquery' ), $cacheBusterYT, true );
-		wp_enqueue_script( 'defer-youtube' );
-	}
-
 }
 
 add_action( 'wp_enqueue_scripts', 'lawyerist_stylesheets_scripts' );
@@ -464,6 +457,7 @@ function get_active_labsters() {
 	endif;
 
 }
+
 
 /* CONTENT ********************/
 
