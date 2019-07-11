@@ -1399,12 +1399,12 @@ Selectors
   }
 
   .home .card {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
   }
 
   .home .cards {
-    grid-gap: 2rem;
-    margin-bottom: 2rem;
+    grid-gap: 1rem;
+    margin-bottom: 1rem;
   }
 
   .home .card a.post {
