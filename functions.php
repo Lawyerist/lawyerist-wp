@@ -473,16 +473,22 @@ function get_active_labsters() {
 * @param int $post_ID Optional. Accepts a valid post ID.
 * @param string $card_top_label Optional.
 * @param string $card_bottom_label Optional.
+* @param bool $title_only. Whether to show the title by itself, or include the
+* byline. Defaults to false (i.e., does show the byline).
 */
 
-function lawyerist_get_card( $post_ID = null, $card_top_label = null, $card_bottom_label = null, $title_only = false ) {
+function lawyerist_get_post_card( $post_ID = null, $card_top_label = null, $card_bottom_label = null, $title_only = false ) {
 
 	// Gets the post object.
 	if ( empty( $post_ID ) ) {
+
 		global $post;
 		$post_ID = $post->ID;
+
 	} else {
+
 		$post = get_post( $post_ID );
+
 	}
 
 	$post_type = get_post_type( $post_ID );
@@ -491,21 +497,10 @@ function lawyerist_get_card( $post_ID = null, $card_top_label = null, $card_bott
 	$card_classes		= array( 'card' );
 	$card_classes[]	= $post_type . '-card';
 
-	if ( has_category( 'lawyerist-podcast' ) ) {
-		$card_classes[] = 'podcast-card';
-	}
-
-	if ( has_tag( 'how-lawyers-work' ) ) {
-		$card_classes[] = 'hlw-card';
-	}
-
-	if ( is_page_template( 'product-page.php' ) ) {
-		$card_classes[] = 'product-page-card';
-	}
-
-	if ( !empty( $card_top_label ) || !empty( $card_bottom_label ) ) {
-		$card_classes[] = 'has-card-label';
-	}
+	if ( has_category( 'lawyerist-podcast' ) ) { $card_classes[] = 'podcast-card'; }
+	if ( has_tag( 'how-lawyers-work' ) ) { $card_classes[] = 'hlw-card'; }
+	if ( is_page_template( 'product-page.php' ) ) { $card_classes[] = 'product-page-card'; }
+	if ( !empty( $card_top_label ) || !empty( $card_bottom_label ) ) { $card_classes[] = 'has-card-label'; }
 
 	// Gets the guest image for podcast and How Lawyers Work posts, or the post
 	// thumbnail for everything else.
@@ -557,7 +552,7 @@ function lawyerist_get_card( $post_ID = null, $card_top_label = null, $card_bott
 
         }
 
-				// Outputs the postmeta, with exceptions.
+				// Outputs the byline, with exceptions.
         if ( $post_type == 'post' && $title_only == false ) {
 
 					echo '<div class="postmeta">';
@@ -630,7 +625,7 @@ function lawyerist_get_card( $post_ID = null, $card_top_label = null, $card_bott
 			echo '<p class="card-label card-bottom-label">' . $card_bottom_label . '</p>';
 		}
 
-	echo '</div>'; // Close .card .podcast-card.
+	echo '</div>'; // Close .card.
 
 	unset( $thumbnail );
 
@@ -997,7 +992,7 @@ function lawyerist_get_related_podcasts() {
 				// Start the Loop.
 				while ( $lawyerist_related_podcasts_query->have_posts() ) : $lawyerist_related_podcasts_query->the_post();
 
-					lawyerist_get_card();
+					lawyerist_get_post_card();
 
 				endwhile; wp_reset_postdata();
 
@@ -1044,7 +1039,7 @@ function lawyerist_get_related_posts() {
 
 				while ( $lawyerist_related_posts_query->have_posts() ) : $lawyerist_related_posts_query->the_post();
 
-					lawyerist_get_card();
+					lawyerist_get_post_card();
 
 				endwhile; wp_reset_postdata();
 
@@ -1095,7 +1090,7 @@ function lawyerist_get_related_resources() {
 
 					if ( $related_pages->have_posts() ) : while ( $related_pages->have_posts() ) : $related_pages->the_post();
 
-						lawyerist_get_card();
+						lawyerist_get_post_card();
 
 					endwhile; endif;
 
@@ -1116,7 +1111,7 @@ function lawyerist_get_related_resources() {
 
 						if ( $related_posts->have_posts() ) : while ( $related_posts->have_posts() ) : $related_posts->the_post();
 
-							lawyerist_get_card( '', '', '', true );
+							lawyerist_get_post_card( '', '', '', true );
 
 						endwhile; wp_reset_postdata(); endif;
 

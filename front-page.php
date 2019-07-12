@@ -178,7 +178,7 @@
 				$all_eps_url		=	get_permalink( '79318' );
 				$all_eps_label	= '<a href="' . $all_eps_url . '" title="' . $all_eps_txt . '.">' . $all_eps_txt . '</a>';
 
-				lawyerist_get_card( '', '', $all_eps_label );
+				lawyerist_get_post_card( '', '', $all_eps_label );
 
 			endwhile; wp_reset_postdata(); endif;
 
@@ -214,7 +214,7 @@
 
 					while ( $recent_pages_query->have_posts() ) : $recent_pages_query->the_post();
 
-						lawyerist_get_card();
+						lawyerist_get_post_card();
 
 					endwhile; wp_reset_postdata();
 
@@ -242,7 +242,7 @@
 
 					while ( $current_post_query->have_posts() ) : $current_post_query->the_post();
 
-						lawyerist_get_card();
+						lawyerist_get_post_card();
 
 					endwhile; wp_reset_postdata();
 
@@ -282,7 +282,7 @@
 
 					while ( $featured_pages_query->have_posts() ) : $featured_pages_query->the_post();
 
-						lawyerist_get_card();
+						lawyerist_get_post_card();
 
 					endwhile; wp_reset_postdata();
 

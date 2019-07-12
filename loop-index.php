@@ -17,7 +17,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
   $this_post[] = $post->ID; // We use this to exclude the current post from things.
 
-  lawyerist_get_card();
+  lawyerist_get_post_card();
 
   // Insert product updates, and ads on mobile.
   if ( $post_num == 1 && is_mobile() ) { lawyerist_get_display_ad(); }
