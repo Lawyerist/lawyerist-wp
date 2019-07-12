@@ -536,21 +536,9 @@ function lawyerist_get_post_card( $post_ID = null, $card_top_label = null, $card
 
 			echo $thumbnail;
 
-			echo '<div class="headline-excerpt">';
+			echo '<div class="headline-byline">';
 
 				echo '<h2 class="headline" title="' . $post_title . '">' . $post_title . '</h2>';
-
-				// Outputs the excerpt, with exceptions.
-        if ( !has_category( 'lawyerist-podcast' ) && !has_category( 'blog-posts' ) && $post_type != 'page' ) {
-
-					$post_excerpt = get_the_excerpt( $post_ID );
-					$seo_descr		= get_post_meta( $post_ID, '_yoast_wpseo_metadesc', true );
-
-					if ( !empty( $seo_descr ) ) { $post_excerpt = $seo_descr; }
-
-          echo '<p class="excerpt">' . $post_excerpt . '</p>';
-
-        }
 
 				// Outputs the byline, with exceptions.
         if ( $post_type == 'post' && $title_only == false ) {
@@ -617,7 +605,7 @@ function lawyerist_get_post_card( $post_ID = null, $card_top_label = null, $card
 
         }
 
-			echo '</div>'; // Close .headline-excerpt.
+			echo '</div>'; // Close .headline-byline.
 
 		echo '</a>'; // Close the post container.
 
@@ -936,12 +924,12 @@ function lawyerist_get_alternative_products() {
 					}
 
 						// Now we get the headline and excerpt (except for certain kinds of posts).
-						echo '<div class="headline-excerpt">';
+						echo '<div class="headline-byline">';
 
 							// Headline
 							echo '<h2 class="headline">' . $alt_title . '</h2>';
 
-						echo '</div>'; // Close .headline-excerpt.
+						echo '</div>'; // Close .headline-byline.
 
 					echo '</a>'; // This closes the post link container (.post).
 
@@ -1076,48 +1064,44 @@ function lawyerist_get_related_resources() {
 
 				echo '<h2>More Resources</h2>';
 
-				echo '<div class="cards cards-4-columns">';
+				$args = array(
+					'post__not_in'		=> $current_id,
+					'posts_per_page'	=> 4,
+					'post_type'				=> 'page',
+					'post_name__in' 	=> $current_tags_slugs,
+				);
+
+				$related_pages		= new WP_Query( $args );
+				$resources_count	= $related_pages->post_count;
+
+				if ( $related_pages->have_posts() ) : while ( $related_pages->have_posts() ) : $related_pages->the_post();
+
+					lawyerist_get_post_card();
+
+				endwhile; endif;
+
+				if ( $resources_count < 4 ) {
 
 					$args = array(
-						'post__not_in'		=> $current_id,
-						'posts_per_page'	=> 4,
-						'post_type'				=> 'page',
-						'post_name__in' 	=> $current_tags_slugs,
+						'category__not_in'	=> array(
+							1320, // Sponsored posts.
+						),
+						'orderby'						=> 'date',
+						'post__not_in'			=> $current_id,
+						'posts_per_page'		=> 4 - $resources_count,
+						'post_type'					=> 'post',
+						'tag_slug__in' 			=> $current_tags_slugs,
 					);
 
-					$related_pages		= new WP_Query( $args );
-					$resources_count	= $related_pages->post_count;
+					$related_posts = new WP_Query( $args );
 
-					if ( $related_pages->have_posts() ) : while ( $related_pages->have_posts() ) : $related_pages->the_post();
+					if ( $related_posts->have_posts() ) : while ( $related_posts->have_posts() ) : $related_posts->the_post();
 
-						lawyerist_get_post_card();
+						lawyerist_get_post_card( '', '', '', true );
 
-					endwhile; endif;
+					endwhile; wp_reset_postdata(); endif;
 
-					if ( $resources_count < 4 ) {
-
-						$args = array(
-							'category__not_in'	=> array(
-								1320, // Sponsored posts.
-							),
-							'orderby'						=> 'date',
-							'post__not_in'			=> $current_id,
-							'posts_per_page'		=> 4 - $resources_count,
-							'post_type'					=> 'post',
-							'tag_slug__in' 			=> $current_tags_slugs,
-						);
-
-						$related_posts = new WP_Query( $args );
-
-						if ( $related_posts->have_posts() ) : while ( $related_posts->have_posts() ) : $related_posts->the_post();
-
-							lawyerist_get_post_card( '', '', '', true );
-
-						endwhile; wp_reset_postdata(); endif;
-
-					}
-
-				echo '</div>';
+				}
 
 			echo '</div>';
 

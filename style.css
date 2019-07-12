@@ -823,11 +823,6 @@ h2,
 	margin-bottom: .5em;
 }
 
-.card h2.headline {
-  font-size: 1.8rem;
-  font-weight: normal;
-}
-
 a .headline,
 a:visited .headline {
   color: #333;
@@ -1346,17 +1341,6 @@ Expander
 
 /*------------------------------
 Card Styles
-
-Selectors
-.has-post-thumbnail
-.has-avatar-thumbnail
-.has-card-label
-.category-lawyerist-podcast
-.category-blog-posts
-.sponsored
-.type-product
-.page
-
 ------------------------------*/
 
 .card,
@@ -1374,57 +1358,51 @@ Selectors
   text-decoration: none;
 }
 
+.card .sponsored {
+  border-top: .7rem solid #ffffc7;
+}
+
+.home .card,
+.archive .card,
+.search-results .card {
+  background-color: #fff;
+}
+
 .card .card {
   border-radius: unset;
   box-shadow: unset;
   margin-bottom: 2rem;
 }
 
-  .card a.page,
-  .card a.post,
-  .has-card-label,
-  .affinity-discount-card,
-  .author-bio-box,
-  .dashboard-scorecard-widget,
-  #sponsored_product_updates {
-    padding: 2rem;
-  }
-
-  .podcast-card.has-card-label a.post {
-    padding: 0;
-  }
-
-  .card a.post:hover,
-  .card a.post:focus,
-  .card a.page:hover,
-  .card a.page:focus {
-    text-decoration: none;
-  }
+.has-card-label,
+.affinity-discount-card,
+.author-bio-box,
+.dashboard-scorecard-widget,
+#sponsored_product_updates {
+  padding: 2rem;
+}
 
   .card a.page,
   .card a.post {
     display: block;
+    padding: 2rem;
   }
 
-  .home .cards {
-    grid-gap: 1rem;
-    margin-bottom: 1rem;
+  .has-card-label a.post {
+    padding: 0;
   }
 
-  .home .card,
-  .archive .card,
-  .search-results .card {
-    background-color: #fff;
+  .card a.page:hover,
+  .card a.page:focus,
+  .card a.post:hover,
+  .card a.post:focus {
+    text-decoration: none;
   }
 
-  .card.sponsored {
-    border-top: .7rem solid #ffffc7;
-  }
 
-/* Card label styles. */
+/* Card labels. */
 
-.card-label,
-.review-summary-title {
+.card-label {
   color: #666;
   font-size: 1.4rem;
   font-weight: bold;
@@ -1433,15 +1411,10 @@ Selectors
 }
 
   .card-bottom-label {
-    margin-top: 1.5rem;
+    margin-top: 1em;
   }
 
-  .card-label a,
-  .card-label a:visited {
-    color: #666;
-  }
-
-    .card-label > a:before {
+    .card-bottom-label > a:before {
       content: '\f505';
       display: inline-block;
       -moz-osx-font-smoothing: grayscale;
@@ -1452,19 +1425,23 @@ Selectors
       vertical-align: top;
     }
 
+  .card-label a,
+  .card-label a:visited {
+    color: #666;
+  }
+
   .card-label a:hover,
   .card-label a:focus {
     color: #a00;
   }
 
 
-/* Thumbnails. */
+/* Card thumbnails. */
 
-.card img.size-thumbnail {
+.card img {
   max-width: unset;
 }
 
-.card a.has-featured-thumbnail,
 .card a.has-post-thumbnail {
   display: grid;
   grid-template-columns: 40% 1fr;
@@ -1490,7 +1467,6 @@ Selectors
 
   @media only screen and (max-width:639px) {
 
-    .card a.has-featured-thumbnail,
     .card a.has-post-thumbnail {
       display: block;
     }
@@ -1502,83 +1478,54 @@ Selectors
 
   }
 
-  .card a.has-featured-thumbnail .headline-excerpt,
-  .card a.has-post-thumbnail .headline-excerpt {
-    padding: 2rem;
-  }
-
-    .card a.has-featured-thumbnail .headline-excerpt > *:last-child,
-    .card a.has-post-thumbnail .headline-excerpt > *:last-child {
-      margin-bottom: 0;
-    }
-
 .card a.has-guest-avatar {
   display: grid;
-  grid-template-columns: 10rem 1fr;
+  grid-template-columns: 15rem 1fr;
   grid-gap: 0;
   padding: 2rem;
 }
 
-    .card a.has-guest-avatar img.guest-avatar {
-      border-radius: 50%;
-      height: auto;
-      margin: 0;
-      width: 100%;
-    }
+.has-card-label a.has-guest-avatar {
+  padding: 0;
+}
 
-  @media only screen and ( max-width: 399px ) {
+  .card a.has-guest-avatar img.guest-avatar {
+    border-radius: 50%;
+    height: auto;
+    margin: 0;
+    width: 100%;
+  }
 
-    .card a.has-guest-avatar {
-      display: block;
-    }
+  @media only screen and ( max-width: 639px ) {
 
-    .card a.has-post-thumbnail .headline-excerpt {
-      padding: 2rem 0;
+    .card a.has-post-thumbnail {
+      grid-template-columns: 7.5rem 1fr;
     }
 
   }
 
-/* Headline-excerpt styles. */
+/* Headline-byline styles. */
 
-.card .headline-excerpt . *:last-child {
+.card .headline-byline . *:last-child {
   margin-bottom: 0;
 }
 
+.card a.has-guest-avatar .headline-byline,
+.card a.has-post-thumbnail .headline-byline {
+  padding: 2rem;
+}
+
+  .card a.has-guest-avatar .headline-byline > *:last-child,
+  .card a.has-post-thumbnail .headline-byline > *:last-child {
+    margin-bottom: 0;
+  }
+
   /* Headline styles. */
 
-  .card .headline {
-    font-size: 2.4rem;
+  .card h2.headline {
+    font-size: 1.8rem;
+    font-weight: normal;
     margin-bottom: .5rem;
-  }
-
-  .card .excerpt,
-  .card a .excerpt {
-    color: #111;
-    font-size: 1.6rem;
-  }
-
-    .card .excerpt a,
-    .card .excerpt a:visited {
-      color: #c00;
-      text-decoration: none;
-    }
-
-    .card .excerpt a:hover,
-    .card .excerpt a:focus{
-      color: #a00;
-      text-decoration: underline;
-    }
-
-    @media only screen and ( max-width: 683px ) {
-
-      .card .excerpt {
-        display: none;
-      }
-
-    }
-
-  .card p {
-    margin-bottom: .75em;
   }
 
   .card .postmeta {
@@ -1595,6 +1542,8 @@ Selectors
   #sponsored_product_updates > *:last-child > *:last-child {
     margin-bottom: 0 !important;
   }
+
+/* Card groups. Default is two columns. */
 
 .cards {
   display: grid;
@@ -1633,8 +1582,7 @@ Selectors
       border-radius: .2rem .2rem 0 0;
     }
 
-    .cards .card .headline-excerpt,
-    .cards .card a.has-post-thumbnail .headline-excerpt {
+    .cards .card .headline-byline {
       padding: 2rem;
     }
 

@@ -31,8 +31,6 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
       the_content();
 
-      echo '<div class="clear"></div>';
-
       // Show page navigation if the post is paginated unless we're displaying
       // the RSS feed.
       if ( !is_feed() ) {
