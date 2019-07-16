@@ -37,6 +37,7 @@ Content
   Labster Directory
   Full Width Template
   No Sidebar Template
+  Book Landing Page
 	Comments
 Author Bios
 Sidebar
@@ -2936,6 +2937,37 @@ Content
     float: none;
     margin: 0 auto;
   }
+
+
+  /*------------------------------
+  Book Landing Page
+  ------------------------------*/
+
+  .book .page {
+    display: grid;
+    grid-template-columns: repeat( 2, 1fr );
+    grid-gap: 3rem;
+    padding: 8rem 0;
+  }
+
+    .book .page > * {
+      align-self: center;
+    }
+
+    .book .hbspt-form input[type="email"] {
+      font-size: 150% !important;
+      margin-bottom: 2rem;
+      width: 100%;
+    }
+
+    .book .hbspt-form label,
+    .book .hbspt-form .hs-error-msg {
+      margin-bottom: 2rem;
+    }
+
+    .book .hbspt-form input[type="submit"] {
+      margin: 2rem 0;
+    }
 
 
 	/*------------------------------
