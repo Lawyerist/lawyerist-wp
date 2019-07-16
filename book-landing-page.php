@@ -1,4 +1,4 @@
-<?php /* Template Name: Book Landing Page */ ?>
+<?php /* Template Name: The Small Firm Roadmap */ ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -27,45 +27,63 @@
 		  post_class();
 		  echo '>';
 
-				echo '<div id="book-cover">';
+				echo '<div class="row top">';
 
-			    // Featured image
-			    if ( has_post_thumbnail() ) { the_post_thumbnail(); }
+					echo '<div id="book-cover">';
 
-				echo '</div>';
+				    // Featured image
+				    if ( has_post_thumbnail() ) { the_post_thumbnail(); }
 
-				echo '<div id="book-cta">';
+					echo '</div>';
 
-			    // Headline
-			    echo '<h1 class="headline entry-title">' . $page_title . '</h1>';
+					echo '<div id="book-cta">';
 
-			    // Output the post.
-			    echo '<div class="post_body" itemprop="articleBody">';
+						echo '<h1 class="headline entry-title">' . $page_title . '</h1>';
 
-			      the_content();
+						?>
 
-			    echo '</div>'; // Close .post_body.
+						<!--[if lte IE 8]>
+						<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
+						<![endif]-->
+						<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2.js"></script>
+						<script>
+						  hbspt.forms.create({
+							portalId: "2910598",
+							formId: "023c3c21-a88a-45b1-a1dd-f3b12bc2624d"
+						});
+						</script>
 
-					// Show page navigation if the post is paginated unless we're displaying
-					// the RSS feed.
-					if ( !is_feed() ) {
+						<?php
 
-						$wp_link_pages_args = array(
-							'before'            => '<p class="page_links">',
-							'after'             => '</p>',
-							'link_before'       => '<span class="page_number">',
-							'link_after'        => '</span>',
-							'next_or_number'    => 'next',
-							'nextpagelink'      => 'Next Page &raquo;',
-							'previouspagelink'  => '&laquo; Previous Page',
-							'separator'         => '|',
-						);
-
-						wp_link_pages( $wp_link_pages_args );
-
-					}
+					echo '</div>';
 
 				echo '</div>';
+
+		    // Output the post.
+		    echo '<div class="post_body" itemprop="articleBody">';
+
+		      the_content();
+
+		    echo '</div>'; // Close .post_body.
+
+				// Show page navigation if the post is paginated unless we're displaying
+				// the RSS feed.
+				if ( !is_feed() ) {
+
+					$wp_link_pages_args = array(
+						'before'            => '<p class="page_links">',
+						'after'             => '</p>',
+						'link_before'       => '<span class="page_number">',
+						'link_after'        => '</span>',
+						'next_or_number'    => 'next',
+						'nextpagelink'      => 'Next Page &raquo;',
+						'previouspagelink'  => '&laquo; Previous Page',
+						'separator'         => '|',
+					);
+
+					wp_link_pages( $wp_link_pages_args );
+
+				}
 
 		  echo '</div>'; // Close .post.
 
