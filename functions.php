@@ -38,6 +38,7 @@ CONTENT
 - Featured Images in RSS Feeds
 - Remove Hidden Products from RSS Feed
 - Remove Default Gallery Styles
+- Show Commenter's First Name & Initial
 
 PARTNERSHIPS
 - Display Ad
@@ -1217,6 +1218,38 @@ Remove Default Gallery Styles
 ------------------------------*/
 
 add_filter( 'use_default_gallery_style', '__return_false' );
+
+
+/*------------------------------
+Show Commenter's First Name & Initial
+------------------------------*/
+function lawyerist_comment_author_name( $author = '' ) {
+
+	$comment = get_comment( $comment_ID );
+
+	if ( !empty( $comment->comment_author ) ) {
+
+		if ( !empty( $comment->user_id ) ) {
+
+			$user		= get_userdata( $comment->user_id );
+			$author	= $user->first_name . ' ' . substr( $user->last_name, 0, 1 ) . '.';
+
+		} else {
+
+			$author	= $comment->comment_author;
+
+		}
+
+	} else {
+
+		$author = __('Anonymous');
+
+	}
+
+	return $author;
+}
+
+add_filter( 'get_comment_author', 'lawyerist_comment_author_name', 10, 1 );
 
 
 /* PARTNERSHIPS	***************/
