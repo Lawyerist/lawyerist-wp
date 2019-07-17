@@ -1934,6 +1934,10 @@ Content
   width: 30rem;
 }
 
+.mobile #lawyerist_display_ad {
+  margin-bottom: 1rem;
+}
+
 
     /* WP Review Pro styles */
 
@@ -2954,7 +2958,7 @@ Content
     .book .row.top {
       display: block;
     }
-    
+
   }
 
   .book .row.top {
