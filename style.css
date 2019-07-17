@@ -3490,6 +3490,12 @@ a.review-btn,
     padding: 0 1em;
   }
 
+  table a.button,
+  .woocommerce table a.button {
+    display: inline-block;
+    margin: .5rem .5rem .5rem 0;
+  }
+
   .ld-course-list-items .ld_course_grid .thumbnail.course a.btn-primary {
     margin-bottom: 0;
     width: 100%;
@@ -3895,11 +3901,6 @@ WooCommerce
     padding: 2rem;
     text-decoration: none;
   }
-
-    .woocommerce-orders-table a.button,
-    .woocommerce-info a.button {
-      margin-bottom: 0;
-    }
 
   .woocommerce-error {
     border-top: .5rem solid #c00;
