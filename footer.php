@@ -13,7 +13,3 @@
 	<?php wp_footer(); ?>
 
 </div>
-
-<!-- Amazon Associates OneTag -->
-<div id="amzn-assoc-ad-01e6e315-1d4b-424c-8d56-fc2b9f9463bb"></div><script async src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US&adInstanceId=01e6e315-1d4b-424c-8d56-fc2b9f9463bb"></script>
-<!-- End Amazon Associates OneTag -->
