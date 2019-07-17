@@ -251,6 +251,7 @@ Remove Menu Items
 
 function lawyerist_remove_admin_bar_items( $wp_admin_bar ) {
 
+	// Remove from the +New menu.
 	$wp_admin_bar->remove_node( 'new-link' );
 	$wp_admin_bar->remove_node( 'new-media' );
 	$wp_admin_bar->remove_node( 'new-product' );
@@ -267,6 +268,9 @@ function lawyerist_remove_admin_bar_items( $wp_admin_bar ) {
 	$wp_admin_bar->remove_node( 'new-wc_membership_plan' );
 	$wp_admin_bar->remove_node( 'new-user' );
 	$wp_admin_bar->remove_node( 'new-tablepress-table' );
+
+	// Remove Monster Insights.
+	$wp_admin_bar->remove_node( 'monsterinsights_frontend_button' );
 
 }
 add_action( 'admin_bar_menu', 'lawyerist_remove_admin_bar_items', 999 );
