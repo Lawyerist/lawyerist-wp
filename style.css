@@ -3838,6 +3838,11 @@ WooCommerce
   padding: unset;
 }
 
+/* Hide subscription cancel button. */
+.woocommerce-view-subscription a.button.cancel {
+  display: none;
+}
+
 .woocommerce-page ul.products li.product-category {
   background-color: #fff;
   border-radius: .2rem;

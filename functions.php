@@ -57,6 +57,7 @@ WOOCOMMERCE
 - Check to See if a Product ID is in the Cart
 - Checkout Fields
 - Display Price of Free Products As "Free!" Not "$0.00".
+- Remove My Account Navigation Items
 
 LEARNDASH
 - Disable Comments on LearnDash Pages
@@ -1908,7 +1909,7 @@ function lawyerist_remove_my_account_links( $menu_links ){
 
 	// unset( $menu_links[ 'dashboard' ] );
 	// unset( $menu_links[ 'orders' ] );
-	unset( $menu_links[ 'subscriptions' ] );
+	// unset( $menu_links[ 'subscriptions' ] );
 	unset( $menu_links[ 'downloads' ] );
 	unset( $menu_links[ 'edit-address' ] );
 	// unset( $menu_links[ 'payment-methods' ] );
