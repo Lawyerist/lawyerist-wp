@@ -3838,11 +3838,6 @@ WooCommerce
   padding: unset;
 }
 
-/* Hide subscription cancel button. */
-.woocommerce-view-subscription a.button.cancel {
-  display: none;
-}
-
 .woocommerce-page ul.products li.product-category {
   background-color: #fff;
   border-radius: .2rem;
@@ -4278,6 +4273,13 @@ body.woocommerce-account {
 
 body.woocommerce-cart .actions button  {
   margin-bottom: 0;
+}
+
+/* WooCommerce My Acount > Orders & Subscriptions */
+
+.woocommerce table.my_account_orders .order-actions,
+.woocommerce table.my_account_orders .woocommerce-orders-table__cell-order-actions {
+  text-align: right;
 }
 
 

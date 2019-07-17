@@ -1909,7 +1909,7 @@ function lawyerist_remove_my_account_links( $menu_links ){
 
 	// unset( $menu_links[ 'dashboard' ] );
 	// unset( $menu_links[ 'orders' ] );
-	// unset( $menu_links[ 'subscriptions' ] );
+	unset( $menu_links[ 'subscriptions' ] );
 	unset( $menu_links[ 'downloads' ] );
 	unset( $menu_links[ 'edit-address' ] );
 	// unset( $menu_links[ 'payment-methods' ] );
