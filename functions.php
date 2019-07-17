@@ -266,6 +266,7 @@ function lawyerist_remove_admin_bar_items( $wp_admin_bar ) {
 	$wp_admin_bar->remove_node( 'new-shop_subscription' );
 	$wp_admin_bar->remove_node( 'new-groups' );
 	$wp_admin_bar->remove_node( 'new-wc_membership_plan' );
+	$wp_admin_bar->remove_node( 'new-wc_user_membership' );
 	$wp_admin_bar->remove_node( 'new-user' );
 	$wp_admin_bar->remove_node( 'new-tablepress-table' );
 
