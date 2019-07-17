@@ -12,6 +12,7 @@ STRUCTURE
 
 ADMIN
 - Login Form
+- Remove Menu Items
 
 UTILITY FUNCTIONS
 - Get Country
@@ -242,6 +243,45 @@ add_action( 'login_enqueue_scripts', 'lawyerist_login_logo' );
 add_filter( 'login_headerurl', 'lawyerist_login_logo_url' );
 add_filter( 'login_headertitle', 'lawyerist_login_logo_url_title' );
 add_filter( 'login_message', 'lawyerist_login_message' );
+
+
+/*------------------------------
+Remove Menu Items
+------------------------------*/
+
+function lawyerist_remove_admin_bar_items( $wp_admin_bar ) {
+
+	$wp_admin_bar->remove_node( 'new-link' );
+	$wp_admin_bar->remove_node( 'new-media' );
+	$wp_admin_bar->remove_node( 'new-product' );
+	$wp_admin_bar->remove_node( 'new-shop_coupon' );
+	$wp_admin_bar->remove_node( 'new-wc_zapier_feed' );
+	$wp_admin_bar->remove_node( 'new-sfwd-courses' );
+	$wp_admin_bar->remove_node( 'new-sfwd-lessons' );
+	$wp_admin_bar->remove_node( 'new-sfwd-topic' );
+	$wp_admin_bar->remove_node( 'new-sfwd-quiz' );
+	$wp_admin_bar->remove_node( 'new-sfwd-question' );
+	$wp_admin_bar->remove_node( 'new-sfwd-certificates' );
+	$wp_admin_bar->remove_node( 'new-shop_subscription' );
+	$wp_admin_bar->remove_node( 'new-groups' );
+	$wp_admin_bar->remove_node( 'new-wc_membership_plan' );
+	$wp_admin_bar->remove_node( 'new-user' );
+	$wp_admin_bar->remove_node( 'new-tablepress-table' );
+
+}
+add_action( 'admin_bar_menu', 'lawyerist_remove_admin_bar_items', 999 );
+
+
+function lawyerist_remove_stubborn_admin_bar_items() {
+
+	global $wp_admin_bar;
+
+	// replace 'updraft_admin_node' with your node id
+	$wp_admin_bar->remove_menu( 'gravityforms-new-form' );
+
+}
+add_action( 'wp_before_admin_bar_render', 'lawyerist_remove_stubborn_admin_bar_items', 999 );
+
 
 
 /* UTILITY FUNCTIONS ********************/
