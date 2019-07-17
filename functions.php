@@ -505,6 +505,8 @@ function lawyerist_get_post_card( $post_ID = null, $card_top_label = null, $card
 	if ( is_page_template( 'product-page.php' ) ) { $card_classes[] = 'product-page-card'; }
 	if ( !empty( $card_top_label ) || !empty( $card_bottom_label ) ) { $card_classes[] = 'has-card-label'; }
 
+	$post_classes = array();
+
 	// Gets the guest image for podcast and How Lawyers Work posts, or the post
 	// thumbnail for everything else.
 	if ( has_category( 'lawyerist-podcast' ) || has_tag( 'how-lawyers-work' ) ) {
