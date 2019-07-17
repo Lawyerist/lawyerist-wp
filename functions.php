@@ -62,6 +62,7 @@ LEARNDASH
 - Disable Comments on LearnDash Pages
 
 TAXONOMY
+- Disable Tag Archives
 - Page Type Custom Taxonomy
 - Sponsors Custom Taxonomy
 
@@ -1944,6 +1945,26 @@ add_filter( 'init', 'lawyerist_ld_disable_comments' );
 
 
 /* TAXONOMY *******************/
+
+/*------------------------------
+Disable Tag Archives
+------------------------------*/
+
+function lawyerist_disable_tag_archives() {
+
+	if ( is_admin() ) {
+		return;
+	}
+
+  if ( is_tag() ) {
+		global $wp_query;
+    $wp_query->set_404();
+  }
+
+}
+
+add_action( 'pre_get_posts', 'lawyerist_disable_tag_archives' );
+
 
 /*------------------------------
 Page Type Custom Taxonomy
