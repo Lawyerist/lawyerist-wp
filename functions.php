@@ -1961,6 +1961,51 @@ function lawyerist_remove_my_account_links( $menu_links ){
 add_filter ( 'woocommerce_account_menu_items', 'lawyerist_remove_my_account_links' );
 
 
+/*------------------------------
+Hide Product Categories & Tags
+------------------------------*/
+
+// Overwrites product_tag taxonomy properties to hide it from the WP admin.
+add_action('init', function() {
+    register_taxonomy('product_tag', 'product', [
+        'public'            => false,
+        'show_ui'           => false,
+        'show_admin_column' => false,
+        'show_in_nav_menus' => false,
+        'show_tagcloud'     => false,
+    ]);
+}, 100);
+
+
+// And remove tags from the Products table.
+add_action( 'admin_init' , function() {
+    add_filter('manage_product_posts_columns', function($columns) {
+        unset($columns['product_tag']);
+        return $columns;
+    }, 100);
+});
+
+
+// Overwrites product_cat taxonomy properties to hide it from the WP admin.
+add_action('init', function() {
+    register_taxonomy('product_cat', 'product', [
+        'public'            => false,
+        'show_ui'           => false,
+        'show_admin_column' => false,
+        'show_in_nav_menus' => false,
+        'show_tagcloud'     => false,
+    ]);
+}, 100);
+
+// And remove categories from the Products table.
+add_action( 'admin_init' , function() {
+    add_filter('manage_product_posts_columns', function($columns) {
+        unset($columns['product_cat']);
+        return $columns;
+    }, 100);
+});
+
+
 /* LEARNDASH ******************/
 
 /*------------------------------
