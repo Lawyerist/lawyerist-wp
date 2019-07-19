@@ -3008,6 +3008,7 @@ Content
     }
 
     .book .wp-block-quote cite {
+      font-size: 2rem;
       line-height: 1.2;
       margin-top: 0;
     }
