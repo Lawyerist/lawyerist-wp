@@ -1507,7 +1507,7 @@ Card Styles
 
 /* Headline-byline styles. */
 
-.card .headline-byline . *:last-child {
+.card .headline-byline *:last-child {
   margin-bottom: 0;
 }
 
