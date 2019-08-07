@@ -1429,7 +1429,9 @@ function affinity_notice() {
 
 		echo '<div class="card affinity-discount-card">';
 
-			echo '<img alt="Lawyerist affinity partner badge." src="https://lawyerist.com/lawyerist/wp-content/uploads/2019/05/affinity-partner-badge-trimmed.png" height="128" width="150" />';
+			$theme_dir = get_template_directory_uri();
+
+			echo '<img alt="Lawyerist affinity partner badge." src="' . $theme_dir . '/images/affinity-partner-badge.png" height="128" width="150" />';
 
 			echo '<p class="card-label">Discount Available</p>';
 

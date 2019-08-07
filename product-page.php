@@ -16,7 +16,11 @@
 		<?php
 
 		// Get the Loop.
-    get_template_part( 'loop', 'product-page' );
+		if ( is_product_portal() ) {
+			get_template_part( 'loop', 'page' );
+		} else {
+			get_template_part( 'loop', 'product-page' );
+		}
 
 		?>
 
