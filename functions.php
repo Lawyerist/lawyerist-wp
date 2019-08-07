@@ -131,7 +131,7 @@ add_action( 'after_setup_theme', 'lawyerist_theme_setup' );
 Template Files
 ------------------------------*/
 
-require_once( plugin_dir_path( __FILE__ ) . 'shortcodes.php' );
+require_once( 'shortcodes.php' );
 
 
 
