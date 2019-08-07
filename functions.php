@@ -5,6 +5,7 @@
 SETUP
 - Stylesheets & Scripts
 - Theme Setup
+- Template Files
 
 STRUCTURE
 - Nav Menu
@@ -124,6 +125,14 @@ function lawyerist_theme_setup() {
 }
 
 add_action( 'after_setup_theme', 'lawyerist_theme_setup' );
+
+
+/*------------------------------
+Template Files
+------------------------------*/
+
+require_once( plugin_dir_path( __FILE__ ) . 'shortcodes.php' );
+
 
 
 /* STRUCTURE ******************/
