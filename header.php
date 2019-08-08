@@ -1,19 +1,23 @@
-<div id="header_shadow"></div>
-<div id="black-stripe"></div>
-<div id="red-stripe"></div>
+<div id="header-grid">
 
-<div id="header">
+	<div id="black-buffer"></div>
 
-	<?php if ( is_front_page() ) { ?>
+	<div id="header">
 
-		<h1 id="title"><a href="<?php echo home_url(); ?>"><?php bloginfo( 'name' ); ?></a></h1>
+		<?php if ( is_front_page() ) { ?>
 
-	<?php } else { ?>
+			<h1 id="title"><a href="<?php echo home_url(); ?>"><?php bloginfo( 'name' ); ?></a></h1>
 
-		<p id="title"><a href="<?php echo home_url(); ?>"><?php bloginfo( 'name' ); ?></a></p>
+		<?php } else { ?>
 
-	<?php } ?>
+			<p id="title"><a href="<?php echo home_url(); ?>"><?php bloginfo( 'name' ); ?></a></p>
 
-	<?php wp_nav_menu( array( 'theme_location' => 'header-nav-menu' ) ); ?>
+		<?php } ?>
+
+		<?php wp_nav_menu( array( 'theme_location' => 'header-nav-menu' ) ); ?>
+
+	</div>
+
+	<div id="red-buffer"></div>
 
 </div><!-- #header -->
