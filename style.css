@@ -37,7 +37,6 @@ Content
   Labster Directory
   Full Width Template
   No Sidebar Template
-  Book Landing Page
 	Comments
 Author Bios
 Sidebar
@@ -2933,76 +2932,6 @@ Content
     margin: 0 auto;
   }
 
-
-  /*------------------------------
-  Book Landing Page
-  ------------------------------*/
-
-  .book .row.top {
-    display: grid;
-    grid-template-columns: repeat( 2, 1fr );
-    grid-gap: 3rem;
-  }
-
-  @media only screen and ( max-width:699px ) {
-
-    .book .row.top {
-      display: block;
-    }
-
-  }
-
-  .book .row.top {
-    padding: 8rem 0;
-  }
-
-    .book .row.top > * {
-      align-self: center;
-    }
-
-  .book .hbspt-form input[type="email"] {
-    font-size: 150% !important;
-    margin-bottom: 2rem;
-    width: 100%;
-  }
-
-  .book .hbspt-form label,
-  .book .hbspt-form .hs-error-msg {
-    margin-bottom: 2rem;
-  }
-
-  .book .hbspt-form input[type="submit"] {
-    margin: 2rem 0;
-  }
-
-  .book .wp-block-gallery {
-    margin: 4rem 0 8rem 0;
-  }
-
-    .book .wp-block-gallery .blocks-gallery-item figure img {
-      border-radius: 50%;
-      box-shadow: 0.1rem 0.1rem 0.3rem rgba( 0, 0, 0, 0.2 );
-    }
-
-  .book .wp-block-quote {
-    border: 0;
-    margin: 4rem 0 8rem 0;
-    padding: 0;
-  }
-
-    .book .wp-block-quote p {
-      background: #eee;
-      color: #333;
-      font-size: 3rem;
-      margin-bottom: 2rem;
-      padding: 4rem;
-    }
-
-    .book .wp-block-quote cite {
-      font-size: 2rem;
-      line-height: 1.2;
-      margin-top: 0;
-    }
 
 	/*------------------------------
 	Comments
