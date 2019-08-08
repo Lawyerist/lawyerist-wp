@@ -1,10 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<?php get_template_part('head'); ?>
-
-<body <?php body_class(); ?>>
-
 <?php get_header(); ?>
 
 <div id="column_container">
@@ -42,6 +35,3 @@
 <div class="clear"></div>
 
 <?php get_footer(); ?>
-
-</body>
-</html>
