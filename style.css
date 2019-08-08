@@ -578,7 +578,7 @@ th,
 .fp-section-header,
 .learndash #lesson_heading,
 #menu-main-menu .sub-menu .menu-item-has-children > a,
-.page-template-product-pages-list .title,
+.product-pages-list .title,
 .toc_title,
 .woocommerce-tabs .tabs {
   font-family: concourse-headings, sans-serif;
@@ -2656,13 +2656,13 @@ Content
       top: 2rem;
   }
 
-  .page-template-product-pages-list {
+  .product-pages-list {
     list-style: none;
     margin-top: 0;
     margin-left: 0;
   }
 
-    .page-template-product-pages-list li.card {
+    .product-pages-list li.card {
       background-color: #f9f9f9;
       min-height: 11rem;
       overflow: hidden;
@@ -2670,13 +2670,13 @@ Content
       position: relative;
     }
 
-      .page-template-product-pages-list li.page_type-platinum-sponsor,
-      .page-template-product-pages-list li.page_type-gold-sponsor,
-      .page-template-product-pages-list li.page_type-silver-sponsor {
+      .product-pages-list li.page_type-platinum-sponsor,
+      .product-pages-list li.page_type-gold-sponsor,
+      .product-pages-list li.page_type-silver-sponsor {
         background-color: #ffffc7;
       }
 
-      .page-template-product-pages-list .image {
+      .product-pages-list .image {
         height: 11rem;
         position: absolute;
           top: 2rem;
@@ -2684,7 +2684,7 @@ Content
         width: 11rem;
       }
 
-        .page-template-product-pages-list img.affinity-partner-badge {
+        .product-pages-list img.affinity-partner-badge {
           height: auto;
           margin: 0;
           position: absolute;
@@ -2695,7 +2695,7 @@ Content
           z-index: 10;
         }
 
-        .page-template-product-pages-list img.wp-post-image {
+        .product-pages-list img.wp-post-image {
           background-color: #ddd;
           border: .2rem;
           box-sizing: content-box;
@@ -2709,12 +2709,12 @@ Content
           width: 10rem;
         }
 
-      .page-template-product-pages-list .title_container {
+      .product-pages-list .title_container {
         margin: 0 0 2rem 12.5rem;
         position: relative;
       }
 
-        .page-template-product-pages-list .title {
+        .product-pages-list .title {
           display: inline-block;
           font-size: 2.4rem;
           line-height: 1.2;
@@ -2722,17 +2722,17 @@ Content
           padding: 0;
         }
 
-        .page-template-product-pages-list a.title {
+        .product-pages-list a.title {
           color: #333;
         }
 
-        .page-template-product-pages-list a.title:hover,
-        .page-template-product-pages-list a.title:focus {
+        .product-pages-list a.title:hover,
+        .product-pages-list a.title:focus {
           color: #a00;
           text-decoration: none;
         }
 
-    .page-template-product-pages-list li.card .excerpt {
+    .product-pages-list li.card .excerpt {
       display: block;
       margin-left: 12.5rem;
     }
@@ -2761,34 +2761,34 @@ Content
       /* When the width reaches 700px. */
       @media only screen and (max-width:699px) {
 
-        .page-template-product-pages-list li.card {
+        .product-pages-list li.card {
           padding: 1rem;
         }
 
-        .page-template-product-pages-list .image {
+        .product-pages-list .image {
           height: 8.5rem;
           width: 8.5rem;
           left: 1rem;
           top: 1rem;
         }
 
-          .page-template-product-pages-list img.affinity-partner-badge {
+          .product-pages-list img.affinity-partner-badge {
               top: -.5rem;
               left: -.5rem;
           }
 
-          .page-template-product-pages-list .image img.wp-post-image {
+          .product-pages-list .image img.wp-post-image {
             height: 7.5rem;
             width: 7.5rem;
           }
 
-        .page-template-product-pages-list li.card .title_container {
+        .product-pages-list li.card .title_container {
           margin: 0;
           min-height: 8.5rem;
           padding-left: 9.5rem;
         }
 
-          .page-template-product-pages-list .title {
+          .product-pages-list .title {
             padding: 0;
           }
 
@@ -2808,7 +2808,7 @@ Content
               display: block;
             }
 
-        .page-template-product-pages-list li.card .excerpt {
+        .product-pages-list li.card .excerpt {
           margin-left: 0;
         }
 
