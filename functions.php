@@ -1864,15 +1864,11 @@ function lawyerist_checkout_fields( $fields ) {
 	// Changes field labels.
 	$fields['billing']['billing_postcode']['label'] = 'Zip code';
 
-	// Creates an array of Insider, Lab, and LabCon product IDs.
+	// Creates an array of Insider & Lab product IDs.
 	$lab_insider_product_ids = array(
 		208237, // Lawyerist Insider
 		242723, // Lawyerist Insider Plus
 		259298, // Lawyerist Lab
-		224435, // Lawyerist Lab Pro
-		227674, // Lawyerist LabCon
-		291111, // Lawyerist LabCon Early Bird Payment Plan
-		235522, // Lawyerist LabCon Pre-Registration
 	);
 
 	foreach ( $lab_insider_product_ids as $val ) {
