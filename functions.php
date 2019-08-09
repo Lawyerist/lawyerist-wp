@@ -1319,12 +1319,11 @@ Display Ad
 function lawyerist_get_display_ad() { ?>
 
 	<div id="lawyerist_display_ad" class="lawyerist_display_ad_in_sidebar">
-		<div id='div-gpt-ad-1516051566911-0' style='height:250px; width:300px;'>
-			<script>
-				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1516051566911-0'); });
-				// Set timer to refresh the display ad slot every 30 seconds
-				setInterval(function(){googletag.pubads().refresh();}, 30000);
-			</script>
+		<!-- /12659965/lawyerist_300x250_ad_position -->
+		<div id='div-gpt-ad-1565383693580-0' style='width: 300px; height: 250px;'>
+		  <script>
+		    googletag.cmd.push(function() { googletag.display('div-gpt-ad-1565383693580-0'); });
+		  </script>
 		</div>
 	</div>
 
