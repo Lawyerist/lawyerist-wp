@@ -22,7 +22,7 @@ Author URI: http://samglover.net
   - Get Affinity Confirmation Message
   - Get Scorecard Grade
   - Get Website Recommendations
-- List Authors
+- List Contributors
 - List Labsters
 */
 
@@ -1016,7 +1016,7 @@ add_shortcode( 'website-recommendations', 'lawyerist_get_website_recommendations
 
 
 /*------------------------------
-List Authors
+List Contributors
 ------------------------------*/
 
 function list_contributors_shortcode() {
@@ -1034,7 +1034,7 @@ function list_contributors_shortcode() {
 
   ob_start();
 
-    echo '<div id="contributors-list" class="gallery gallery-columns-4">';
+    echo '<div id="contributors-list">';
 
     if ( !empty( $contributors->results ) ) {
 
@@ -1042,10 +1042,10 @@ function list_contributors_shortcode() {
 
         if ( count_user_posts( $contributor->ID ) >= 5 ) {
 
-          echo '<dl class="gallery-item">';
-          echo '<dt class="gallery-icon">' . get_avatar( $contributor->ID, 150 ) . '</dt>';
-          echo '<dd class="wp-caption-text gallery-caption"><a href="' . get_author_posts_url( $contributor->ID ) . '">' . $contributor->display_name . '</a></dd>';
-          echo '</dl>';
+          echo '<div class="contributor">';
+          echo '<div class="contributor-avatar">' . get_avatar( $contributor->ID, 150 ) . '</div>';
+          echo '<div class="contributor-caption wp-caption-text"><a href="' . get_author_posts_url( $contributor->ID ) . '">' . $contributor->display_name . '</a></div>';
+          echo '</div>';
 
         }
 
