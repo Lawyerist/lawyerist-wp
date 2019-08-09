@@ -1177,16 +1177,18 @@ List Child Pages Fallback
 Outputs child pages if all of the following are true:
 
 1. The page has children.
-2. The page is not a product portal.
-3. The [list-child-pages] shortcode is not used anywhere on the page.
+2. The page is not one of several listed.
+3. The page is not a product portal.
+4. The [list-child-pages] shortcode is not used anywhere on the page.
 ------------------------------*/
 
 function lawyerist_list_child_pages_fallback( $content ) {
 
 	global $post;
+
 	$children = get_pages( array( 'child_of' => $post->ID ) );
 
-if ( is_page() && !is_product_portal() && !has_shortcode( $content, 'list-child-pages' ) ) {
+if ( is_page() && !is_page( 'about' ) && !is_product_portal() && !has_shortcode( $content, 'list-child-pages' ) ) {
 
 		ob_start();
 
