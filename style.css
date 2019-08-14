@@ -58,7 +58,7 @@ Load Fonts
 
 /* Adler */
 @font-face {
-  font-display: swap;
+  font-display: block;
   font-family: 'adler';
   src:  local( 'Adler' ),
         url( './fonts/adler/adler-webfont.woff2' ) format( 'woff2' ),
@@ -70,7 +70,7 @@ Load Fonts
 
 /* Genericons */
 @font-face {
-  font-display: swap;
+  font-display: block;
   font-family: 'Genericons';
   src:  local( 'Genericons' ),
         url( './fonts/genericons/Genericons.woff2' ) format( 'woff2' ),
