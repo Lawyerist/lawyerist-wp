@@ -25,7 +25,7 @@ jQuery( document ).ready( function( $ ) {
 
 jQuery( document ).ready( function( $ ) {
 
-  if ( ( $( ".expandthis-hide" ).length > 0 ) && ( $( ".expandthis-hide" ).length > 0 ) ) {
+  if ( $( ".expandthis-hide" ).length > 0 ) {
 
     $( ".expandthis-hide" ).hide();
 

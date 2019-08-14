@@ -4,6 +4,8 @@
 
 	<div id="content_column">
 
+		<p><a href="#" class="lawyerist-login">Log In</a></p>
+
 	<?php
 
 		// Checks to see if the front page is set to show blog posts, and if so uses
