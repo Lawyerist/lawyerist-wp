@@ -1437,60 +1437,38 @@ function affinity_notice() {
 
 	ob_start();
 
+			$availability = get_field( 'affinity_availability' );
+
+			switch ( $availability ) {
+
+				case $availability == 'new_only':
+
+					$whom = 'new customers';
+					break;
+
+				case $availability == 'old_only':
+
+					$whom = 'existing customers';
+					break;
+
+				case $availability == 'both_new_and_old':
+
+					$whom = 'new & existing customers';
+					break;
+
+			}
+
+			$card_label = 'Discount Available to ' . $whom;
+
 			$user_id = get_current_user_id();
 
 			if ( wc_memberships_is_user_active_member( $user_id, 'insider-plus-affinity' ) ) {
 
-				$availability		= get_field( 'affinity_availability' );
-
-				switch ( $availability ) {
-
-		      case $availability == 'new_only':
-
-						$whom = 'New Customers';
-		        break;
-
-		      case $availability == 'old_only':
-
-		        $whom = 'Existing Customers';
-		        break;
-
-					case $availability == 'both_new_and_old':
-
-						$whom = 'New & Existing Customers';
-						break;
-
-		    }
-
-				$card_label			= 'Discount Available to ' . $whom;
 				$discount_descr	= get_field( 'affinity_discount_descr' );
 
 			} else {
 
-				$post_title		= the_title( '', '', FALSE );
-				$availability	= get_field( 'affinity_availability' );
-
-				$card_label		= 'Discount Available';
-
-				switch ( $availability ) {
-
-		      case $availability == 'new_only':
-
-						$whom = 'new customers';
-		        break;
-
-		      case $availability == 'old_only':
-
-		        $whom = 'existing customers';
-		        break;
-
-					case $availability == 'both_new_and_old':
-
-						$whom = 'new and existing customers';
-						break;
-
-		    }
-
+				$post_title			= the_title( '', '', FALSE );
 				$discount_descr = $post_title . ' offers a discount to ' . $whom . ' through our Affinity Benefits program. The details of this discount are only available to members. <a href="https://lawyerist.com/affinity-benefits/">Learn more about the Affinity Benefits program</a> or <a href="https://lawyerist.com/account/">log in</a> if you are a member of Insider Plus or Lab.';
 
 			}
@@ -1514,7 +1492,7 @@ function affinity_notice() {
 							echo do_shortcode( '[gravityform id="55" title="false" ajax="true"]' );
 
 						echo '</div>';
-						
+
 					}
 
 				echo '</div>';
