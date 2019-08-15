@@ -3298,6 +3298,10 @@ a.review-btn,
     padding: 0 1em;
   }
 
+  .woocommerce .subscription_details a.cancel {
+    display: none;
+  }
+
   table a.button,
   .woocommerce table a.button {
     display: inline-block;
