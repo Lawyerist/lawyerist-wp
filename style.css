@@ -247,6 +247,8 @@ body {
 
         #title a {
           color: #fff;
+          display: block;
+          transform: translateY( 5% );
         }
 
         #title a:hover,
