@@ -1437,54 +1437,40 @@ function affinity_notice() {
 
 	ob_start();
 
-		echo '<div class="card affinity-discount-card">';
-
-			$theme_dir = get_template_directory_uri();
-
-			echo '<img alt="Lawyerist affinity partner badge." src="' . $theme_dir . '/images/affinity-partner-badge.png" height="128" width="150" />';
-
-			echo '<p class="card-label">Discount Available</p>';
-
 			$user_id = get_current_user_id();
 
 			if ( wc_memberships_is_user_active_member( $user_id, 'insider-plus-affinity' ) ) {
 
-				$discount_descr	= get_field( 'affinity_discount_descr' );
 				$availability		= get_field( 'affinity_availability' );
 
 				switch ( $availability ) {
 
 		      case $availability == 'new_only':
 
-						$whom = 'new customers only';
+						$whom = 'New Customers';
 		        break;
 
 		      case $availability == 'old_only':
 
-		        $whom = 'existing customers only';
+		        $whom = 'Existing Customers';
 		        break;
 
 					case $availability == 'both_new_and_old':
 
-						$whom = 'both new and existing customers';
+						$whom = 'New & Existing Customers';
 						break;
 
 		    }
 
-				echo '<p class="discount_descr">' . $discount_descr . ' Available to ' . $whom . '.</p>';
-
-				echo '<button class="button expandthis-click">Claim Your Discount</button>';
-
-				echo '<div class="expandthis-hide">';
-
-					echo do_shortcode( '[gravityform id="55" title="false" ajax="true"]' );
-
-				echo '</div>';
+				$card_label			= 'Discount Available to ' . $whom;
+				$discount_descr	= get_field( 'affinity_discount_descr' );
 
 			} else {
 
-				$post_title			= the_title( '', '', FALSE );
-				$availability		= get_field( 'affinity_availability' );
+				$post_title		= the_title( '', '', FALSE );
+				$availability	= get_field( 'affinity_availability' );
+
+				$card_label		= 'Discount Available';
 
 				switch ( $availability ) {
 
@@ -1505,11 +1491,35 @@ function affinity_notice() {
 
 		    }
 
-				echo '<p class="discount_descr">' . $post_title . ' offers a discount to ' . $whom . ' through our Affinity Benefits program. The details of this discount are only available to members. <a href="https://lawyerist.com/affinity-benefits/">Learn more about the Affinity Benefits program</a> or <a href="https://lawyerist.com/account/">log in</a> if you are a member of Insider Plus or Lab.</p>';
+				$discount_descr = $post_title . ' offers a discount to ' . $whom . ' through our Affinity Benefits program. The details of this discount are only available to members. <a href="https://lawyerist.com/affinity-benefits/">Learn more about the Affinity Benefits program</a> or <a href="https://lawyerist.com/account/">log in</a> if you are a member of Insider Plus or Lab.';
 
 			}
 
-		echo '</div>';
+			echo '<div class="card affinity-discount-card">';
+
+				echo '<p class="card-label">' . $card_label . '</p>';
+
+					$theme_dir = get_template_directory_uri();
+
+					echo '<img alt="Lawyerist affinity partner badge." src="' . $theme_dir . '/images/affinity-partner-badge.png" height="128" width="150" />';
+
+					echo '<p class="discount_descr">' . $discount_descr . '</p>';
+
+					if ( wc_memberships_is_user_active_member( $user_id, 'insider-plus-affinity' ) ) {
+
+						echo '<button class="button expandthis-click">Claim Your Discount</button>';
+
+						echo '<div class="expandthis-hide">';
+
+							echo do_shortcode( '[gravityform id="55" title="false" ajax="true"]' );
+
+						echo '</div>';
+						
+					}
+
+				echo '</div>';
+
+			echo '</div>';
 
 	$affinity_notice = ob_get_clean();
 
