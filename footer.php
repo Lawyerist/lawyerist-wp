@@ -14,6 +14,42 @@
 
 		</div>
 
+		<style>
+
+		#modal-login-container {
+			background-color: rgb( 0, 0, 0 );
+			background-color: rgb( 0, 0, 0, .4 );
+			height: 100%;
+			width: 100%;
+			position: fixed;
+				left: 0;
+				top: 0;
+		}
+
+		#modal-login-container .card {
+			margin: 40% auto;
+			min-width: 30rem;
+			padding: 2rem;
+			width: 50%;
+		}
+
+		</style>
+
+		<div id="modal-login-container">
+
+			<div class="card">
+				<div id="modal-login">
+					<?php wp_login_form(); ?>
+				</div>
+				<div id="modal-register">
+					<?php echo do_shortcode( '[gravityform id="57" title="false" ajax="true"]' ); ?>
+				</div>
+				<div id="modal-forgot-password">
+				</dvi>
+			</div>
+
+		</div>
+
 	</div>
 
 </body>
