@@ -40,12 +40,15 @@
 			<div class="card">
 				<div id="modal-login">
 					<?php wp_login_form(); ?>
+					<div class="modal-register-link">Not an Insider yet? Register here.</div>
+					<div class="modal-forgot-password-link">Forgot your password? Reset it here.</div>
 				</div>
 				<div id="modal-register">
 					<?php echo do_shortcode( '[gravityform id="57" title="false" ajax="true"]' ); ?>
+					<div class="modal-back-to-login-link">Back to login.</div>
 				</div>
 				<div id="modal-forgot-password">
-
+					<div class="modal-back-to-login-link">Back to login.</div>
 				</dvi>
 			</div>
 
