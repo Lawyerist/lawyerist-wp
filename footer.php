@@ -27,7 +27,7 @@
 		}
 
 		#modal-login-container .card {
-			margin: 40% auto;
+			margin: 10rem auto;
 			min-width: 30rem;
 			padding: 2rem;
 			width: 50%;
@@ -45,6 +45,7 @@
 					<?php echo do_shortcode( '[gravityform id="57" title="false" ajax="true"]' ); ?>
 				</div>
 				<div id="modal-forgot-password">
+
 				</dvi>
 			</div>
 
