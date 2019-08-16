@@ -16,7 +16,7 @@
 
 		<style>
 
-		#modal-login-container {
+		#modal-login-screen {
 			background-color: rgb( 0, 0, 0 );
 			background-color: rgb( 0, 0, 0, .4 );
 			height: 100%;
@@ -26,32 +26,32 @@
 				top: 0;
 		}
 
-		#modal-login-container .card {
-			margin: 10rem auto;
+		#modal-login {
 			min-width: 30rem;
 			padding: 2rem;
+			position: absolute;
+				left: 10rem;
+				top: 10rem;
 			width: 50%;
 		}
 
 		</style>
 
-		<div id="modal-login-container">
+		<div id="modal-login-screen"></div>
 
-			<div class="card">
-				<div id="modal-login">
-					<?php wp_login_form(); ?>
-					<div class="modal-register-link">Not an Insider yet? Register here.</div>
-					<div class="modal-forgot-password-link">Forgot your password? Reset it here.</div>
-				</div>
-				<div id="modal-register">
-					<?php echo do_shortcode( '[gravityform id="57" title="false" ajax="true"]' ); ?>
-					<div class="modal-back-to-login-link">Back to login.</div>
-				</div>
-				<div id="modal-forgot-password">
-					<div class="modal-back-to-login-link">Back to login.</div>
-				</dvi>
+		<div id="modal-login" class="card">
+			<div id="login">
+				<?php wp_login_form(); ?>
+				<p>Not an Insider yet? <a href="#register" class="modal-register-link">Register here.</a></p>
+				<p>Forgot your password? <a href="#forgot-password" class="modal-forgot-password-link">Reset it here.</a></p>
 			</div>
-
+			<div id="register">
+				<?php echo do_shortcode( '[gravityform id="57" title="false" ajax="true"]' ); ?>
+				<p><a href="#login" class="modal-back-to-login-link">Back to login.</a></p>
+			</div>
+			<div id="forgot-password">
+				<p><a href="#login" class="modal-back-to-login-link">Back to login.</a></p>
+			</dvi>
 		</div>
 
 	</div>
