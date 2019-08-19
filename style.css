@@ -3107,11 +3107,23 @@ textarea:focus {
 
 select {
   padding: .5rem .4rem;
+  position: relative;
   -webkit-appearance: none;
 }
 
   select::after {
-    
+    content: '\f431';
+    display: inline-block;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font: normal 1.6rem/1.5 Genericons;
+    position: absolute;
+      right: .5rem;
+      top: 0;
+    speak: none;
+    text-align: center;
+    vertical-align: top;
+    width: 1.2em;
   }
 
 label {
