@@ -160,6 +160,8 @@ function lawyerist_loginout( $items, $args ) {
     return;
   }
 
+	/*
+
 	if ( is_user_logged_in() && $args->theme_location == 'header-nav-menu' ) {
 
 		ob_start();
@@ -183,8 +185,94 @@ function lawyerist_loginout( $items, $args ) {
     $items .= $new_items;
 
   } elseif ( !is_user_logged_in() && $args->theme_location == 'header-nav-menu' ) {
-      $items .= '<li class="menu-item menu-item-loginout"><a href="https://lawyerist.com/account/">Log In</a></li>';
+
+		// MODAL LOGIN GOES HERE
+
   }
+
+	*/
+
+
+	// BEGIN MODAL LOGIN TO INSERT ABOVE
+
+	ob_start();
+
+	?>
+
+		<style>
+
+		#modal-login {
+			box-sizing: border-box;
+			padding: 2rem !important;
+		}
+
+		#modal-login > li {
+			background-color: #f9f9f9;
+			margin: 0;
+			padding: 2rem;
+		}
+
+		#modal-login > li:first-child {
+			margin-top: 0;
+		}
+
+		#menu-main-menu #modal-login a {
+			background: unset;
+			color: unset;
+			display: unset;
+			font-face: unset;
+			padding: unset;
+		}
+
+		</style>
+
+		<li class="menu-item menu-item-has-children menu-item-loginout">
+			<a>Log In</a>
+
+			<ul id="modal-login" class="sub-menu">
+				<li id="login" class="show">
+					<h2>Log In</h2>
+					<?php wp_login_form(); ?>
+					<p class="remove_bottom">Not an Insider yet? <a class="modal-register-link">Register here.</a> Forgot your password? <a href="<?php echo esc_url( wp_lostpassword_url( get_permalink() ) ); ?>" alt="<?php esc_attr_e( 'Lost Password', 'textdomain' ); ?>" class="modal-forgot-password-link">Reset it here.</a></p>
+				</li>
+				<li id="register">
+					<h2>Join Lawyerist Insider</h2>
+					<?php echo do_shortcode( '[gravityform id="58" title="false" ajax="true"]' ); ?>
+					<p class="remove_bottom"><a class="modal-back-to-login-link">Back to login.</a></p>
+				</li>
+			</ul>
+
+		</li>
+
+		<script>
+
+		jQuery( document ).ready( function( $ ) {
+
+			$( "#register" ).hide();
+
+		  $( "#modal-login .modal-register-link" ).click( function() {
+		    $( "#login" ).hide( 95 );
+				$( "#register" ).show( 145 );
+		  });
+
+			$( "#modal-login .modal-back-to-login-link" ).click( function() {
+		    $( "#login" ).show( 145 );
+				$( "#register" ).hide( 95 );
+		  });
+
+		});
+
+		</script>
+
+		<!-- End modal login. -->
+
+	<?php
+
+	$new_items = ob_get_clean();
+
+	$items .= $new_items;
+
+	// END MODAL LOGIN TO INSERT ABOVE
 
   return $items;
 

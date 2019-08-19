@@ -2944,10 +2944,6 @@ Content
       margin-bottom: 0;
     }
 
-p.comment-subscription-form input[type="checkbox"] {
-  display: inline;
-}
-
 
 /*------------------------------
 Author Bios
@@ -3092,127 +3088,33 @@ Forms
 ------------------------------*/
 
 input,
-input[type="text"],
-input[type="email"],
-input[type="file"],
-input[type="tel"],
-input[type="url"],
-input[type="number"],
-input[type="password"],
-input[type="search"],
 select,
-textarea,
-#commentform.wp-review-comment-form input,
-#commentform.wp-review-comment-form textarea {
+textarea {
   background-color: #fff;
   border: .1rem solid #bbb;
   border-radius: .2rem;
-  box-shadow: none;
-  box-sizing: border-box;
-  color: #555;
-  display: block;
-  font-size: 1.8rem !important;
-  height: auto;
+  font-size: inherit;
+  line-height: inherit;
   outline: none;
-  line-height: 2.4rem;
-  margin-bottom: .4rem;
-  margin-top: 0 !important;
-  padding: .5rem .4rem;
-  -webkit-appearance: none;
 }
 
-  input::-webkit-input-placeholder {
-    padding-top: 2px;
-  }
-
-input[type="file"],
-input#uploadfiles {
-  border: 0;
-  font-size: 1.2rem !important;
-  line-height: 1;
-  margin-bottom: 2rem;
-  padding: 0;
-}
-
-input[type="search"] {
-  width: 100%;
-}
-
-#sidebar_column input,
-#sidebar_column input[type="text"],
-#sidebar_column input[type="email"],
-#sidebar_column input[type="file"],
-#sidebar_column input[type="tel"],
-#sidebar_column input[type="url"],
-#sidebar_column input[type="number"],
-#sidebar_column input[type="password"],
-#sidebar_column input[type="search"],
-#sidebar_column select,
-#sidebar_column textarea {
-  width: 100%;
-}
-
-input[type="checkbox"],
-input[type="radio"] {
-  margin-left: .1rem;
-}
-
-  input[type="checkbox"] {
-    -webkit-appearance: checkbox;
-  }
-
-  input[type="radio"] {
-    -webkit-appearance: radio;
-  }
-
-input:focus,
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="file"]:focus,
-input[type="tel"]:focus,
-input[type="url"]:focus,
-input[type="number"]:focus,
-input[type="password"]:focus,
-input[type="search"]:focus,
+input:focus
 select:focus,
-textarea:focus,
-#commentform.wp-review-comment-form input:focus,
-#commentform.wp-review-comment-form textarea:focus {
+textarea:focus {
   border-color: #c00;
   color: #333;
 }
 
-label {
-  font-size: 1.6rem;
-  line-height: 1;
-  margin-bottom: 0;
+select {
+  padding: .5rem .4rem;
+  -webkit-appearance: none;
 }
 
-  #lawyerist_content_search label span {
-    display: block;
-    margin-bottom: .25em;
+  select::after {
+    
   }
 
-.post-password-form {
-  background-color: #f9f9f9;
-  border-radius: .2rem;
-  box-shadow:
-    0 0 0 .1rem #ddd,
-    .1rem .1rem .3rem rgba(0, 0, 0, 0.2)
-  ;
-  display: block;
-  margin-bottom: 1rem;
-  max-width: 32rem;
-  padding: 2rem;
-  text-decoration: none;
-}
-
-.post-password-form input[type="password"] {
-  width: 100%;
-}
-
-select {
-  -webkit-appearance: menulist;
+label {
 }
 
 
@@ -3489,16 +3391,8 @@ a.greybutton:active,
 
   .gform_wrapper,
   .gform_confirmation_message {
-    background-color: #f9f9f9;
-    border: .1rem solid #ddd;
-    border-radius: .2rem;
-    box-shadow:
-      .1rem .1rem .3rem rgba(0, 0, 0, 0.2)
-    ;
     display: block;
-    margin: 0 .3rem 1.5em .1rem !important;
-    padding: 2rem;
-    text-align: left;
+    margin-bottom: 3rem;
     text-decoration: none;
   }
 
@@ -3547,35 +3441,25 @@ a.greybutton:active,
   }
 
   /* Small Firm Scorecard styles. */
-  #gform_wrapper_45,
-  #gform_wrapper_47,
-  #gform_confirmation_message_45,
-  #gform_confirmation_message_47 {
-    background-color: unset;
-    border: none;
-    box-shadow: none;
-    padding: 0 0 3rem 0;
+  #gform_wrapper_45 .gsurvey-survey-field,
+  #gform_wrapper_47 .gsurvey-survey-field {
+    margin: 0 0 6rem 0;
   }
 
-    #gform_wrapper_45 .gsurvey-survey-field,
-    #gform_wrapper_47 .gsurvey-survey-field {
-      margin: 0 0 6rem 0;
-    }
+  #gform_wrapper_45 .gsurvey-survey-field:last-child,
+  #gform_wrapper_47 .gsurvey-survey-field:last-child {
+    margin-bottom: 0;
+  }
 
-    #gform_wrapper_45 .gsurvey-survey-field:last-child,
-    #gform_wrapper_47 .gsurvey-survey-field:last-child {
-      margin-bottom: 0;
-    }
+  #gform_wrapper_45 .gfield_label,
+  #gform_wrapper_47 .gfield_label {
+    font-weight: normal;
+  }
 
-    #gform_wrapper_45 .gfield_label,
-    #gform_wrapper_47 .gfield_label {
-      font-weight: normal;
-    }
-
-    #gform_wrapper_45 .gfield_required,
-    #gform_wrapper_47 .gfield_required {
-      display: none;
-    }
+  #gform_wrapper_45 .gfield_required,
+  #gform_wrapper_47 .gfield_required {
+    display: none;
+  }
 
   /*------------------------------
   HubSpot Forms Customizations
