@@ -358,6 +358,7 @@ body {
         		#menu-main-menu #lawyerist-login a:visited {
         			background: unset;
         			color: #c00;
+              cursor: pointer;
         			display: unset;
         			padding: unset;
         		}
@@ -365,7 +366,6 @@ body {
         			#menu-main-menu #lawyerist-login a:hover,
         			#menu-main-menu #lawyerist-login a:focus {
         				color: #a00;
-                cursor: pointer;
         				text-decoration: underline;
         			}
 
@@ -377,8 +377,10 @@ body {
               display: grid;
               grid-template-areas: 'lbuffer modal rbuffer';
               grid-template-columns: minmax( 1rem, 1fr ) minmax( 32rem, 80rem ) minmax( 1rem, 1fr );
+              max-height: 80%;
+              overflow: scroll;
               padding: 0 !important;
-              position: absolute;
+              position: fixed;
                 top: 10%;
               width: 100%;
               z-index: 100;

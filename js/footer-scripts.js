@@ -19,6 +19,42 @@ jQuery( document ).ready( function( $ ) {
 // End Responsive Menu
 
 
+// Lawyerist Login/Register
+jQuery( document ).ready( function( $ ) {
+
+  $( "#lawyerist-login #register" ).hide();
+  $( "#lawyerist-login.modal" ).hide();
+
+  // Controls navigation within #lawyerist-login.
+  $( "#lawyerist-login .register-link" ).click( function() {
+    $( "#lawyerist-login #login" ).hide( 95 );
+    $( "#lawyerist-login #register" ).show( 145 );
+  });
+
+  $( "#lawyerist-login .back-to-login-link" ).click( function() {
+    $( "#lawyerist-login #login" ).show( 145 );
+    $( "#lawyerist-login #register" ).hide( 95 );
+  });
+
+  // Prevents login links from activating.
+  $( ".login-link, a[ href*='wp-login.php']" ).click( function( e ) {
+    e.preventDefault();
+  });
+
+  // Controls the modal pop-up and close actions.
+  $( ".login-link, a[ href*='wp-login.php']" ).click( function() {
+    $( "#lawyerist-login.modal" ).show( 145 );
+    $( "#lawyerist-login-screen" ).show();
+  });
+
+  $( "#lawyerist-login.modal .dismiss-button" ).click( function() {
+    $( "#lawyerist-login.modal" ).hide( 95 );
+    $( "#lawyerist-login-screen" ).hide();
+  });
+
+});
+// End Lawyerist Login/Register
+
 /**
 * Expander
 *

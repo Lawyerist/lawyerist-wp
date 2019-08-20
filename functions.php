@@ -183,14 +183,20 @@ function get_lawyerist_login( $version = null ) {
 
 			<li id="login">
 				<h2>Log In</h2>
+				<p>Not an Insider yet? <a class="register-link">Register here.</a></p>
 				<?php wp_login_form(); ?>
-				<p class="remove_bottom">Not an Insider yet? <a class="register-link">Register here.</a> Forgot your password? <a href="<?php echo esc_url( wp_lostpassword_url( get_permalink() ) ); ?>" alt="<?php esc_attr_e( 'Lost Password', 'textdomain' ); ?>" class="forgot-password-link">Reset it here.</a></p>
+				<p class="remove_bottom">Forgot your password? <a href="<?php echo esc_url( wp_lostpassword_url( get_permalink() ) ); ?>" alt="<?php esc_attr_e( 'Lost Password', 'textdomain' ); ?>" class="forgot-password-link">Reset it here.</a></p>
 			</li>
 
 			<li id="register">
-				<h2>Join Lawyerist Insider</h2>
-				<?php echo do_shortcode( '[gravityform id="' . $gf_id . '" title="false" ajax="true"]' ); ?>
-				<p class="remove_bottom"><a class="back-to-login-link">Back to login.</a></p>
+				<?php if ( !is_user_logged_in() ) { ?>
+					<h2>Join Lawyerist Insider</h2>
+					<?php echo do_shortcode( '[gravityform id="' . $gf_id . '" title="false" ajax="true"]' ); ?>
+					<p class="remove_bottom"><a class="back-to-login-link">Back to login.</a></p>
+				<?php } else { ?>
+					<h2>Welcome to the Lawyerist Community!</h2>
+					<p>Welcome to the Lawyerist Insider community! You can keep doing what you were doing, but don't forget to check out the free resources in the <a href="https://lawyerist.com/community/insider/library/">Insider Library</a>. And if you are a solo or small-firm lawyer in the US or Canada, please <a href="https://www.facebook.com/groups/lawyeristinsiders/">join our private Facebook Group for Insiders</a>.</p>
+				<?php } ?>
 			</li>
 
 		</div>
@@ -263,43 +269,6 @@ function lawyerist_loginout( $items, $args ) {
 				</ul>
 
 			</li>
-
-			<script>
-			jQuery( document ).ready( function( $ ) {
-
-				$( "#lawyerist-login #register" ).hide();
-
-				// This is the menu login.
-			  $( "#lawyerist-login .register-link" ).click( function() {
-			    $( "#lawyerist-login #login" ).hide( 95 );
-			    $( "#lawyerist-login #register" ).show( 145 );
-			  });
-
-			  $( "#lawyerist-login .back-to-login-link" ).click( function() {
-			    $( "#lawyerist-login #login" ).show( 145 );
-			    $( "#lawyerist-login #register" ).hide( 95 );
-			  });
-
-
-				// This is the modal login.
-				$( "#lawyerist-login.modal" ).hide();
-
-				$( ".login-link" ).click( function( e ) {
-			    e.preventDefault();
-			  });
-
-				$( ".login-link" ).click( function() {
-			    $( "#lawyerist-login.modal" ).show( 145 );
-					$( "#lawyerist-login-screen" ).show();
-			  });
-
-				$( "#lawyerist-login.modal .dismiss-button" ).click( function() {
-			    $( "#lawyerist-login.modal" ).hide( 95 );
-					$( "#lawyerist-login-screen" ).hide();
-			  });
-
-			});
-			</script>
 
 		<?php
 
@@ -1892,6 +1861,8 @@ function lawyerist_gf_registration_autologin( $user_id, $user_config, $entry, $p
 			'user_password'	=> $user_password,
 			'remember'			=> true,
     ) );
+
+		header( 'refresh' );
 
 }
 
