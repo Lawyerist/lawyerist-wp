@@ -52,7 +52,9 @@ COMMENTS & REVIEWS
 - Reviews
 
 GRAVITY FORMS
-- Auto-Populate Form Fields
+- Enable CC Field on Form Notifications
+- Populate Form Fields
+- Auto-Login New Users
 
 WOOCOMMERCE
 - WooCommerce Setup
@@ -160,25 +162,31 @@ function lawyerist_loginout( $items, $args ) {
     return;
   }
 
-	/*
-
 	if ( is_user_logged_in() && $args->theme_location == 'header-nav-menu' ) {
 
 		ob_start();
 
-			echo '<li class="menu-item menu-item-loginout menu-item-has-children"><a>Account</a>';
-				echo '<ul class="sub-menu">';
-					echo '<li class="menu-item"><a href="https://lawyerist.com/account/">My Account</a>';
+		?>
 
-					$user_id = get_current_user_id();
+			<li class="menu-item menu-item-loginout menu-item-has-children">
 
-					if ( wc_memberships_is_user_active_member( $user_id, 'lab' ) ) {
-						echo '<li class="menu-item"><a href="https://lawyerist.com/labster-portal/">Member Portal</a></li>';
-					}
+				<a>Account</a>
 
-					echo '<li class="menu-item"><a href="https://lawyerist.com/scorecard/">Update My Scorecard</a></li>';
-				echo '</ul>';
-			echo '</li>';
+				<ul class="sub-menu">
+
+					<li class="menu-item"><a href="https://lawyerist.com/account/">My Account</a>
+
+					<?php if ( wc_memberships_is_user_active_member( get_current_user_id(), 'lab' ) ) { ?>
+						<li class="menu-item"><a href="https://lawyerist.com/labster-portal/">Member Portal</a></li>
+					<?php } ?>
+
+					<li class="menu-item"><a href="https://lawyerist.com/scorecard/">Update My Scorecard</a></li>
+
+				</ul>
+
+			</li>
+
+		<?php
 
 		$new_items = ob_get_clean();
 
@@ -186,93 +194,39 @@ function lawyerist_loginout( $items, $args ) {
 
   } elseif ( !is_user_logged_in() && $args->theme_location == 'header-nav-menu' ) {
 
-		// MODAL LOGIN GOES HERE
+		ob_start();
+
+		?>
+
+			<li class="menu-item menu-item-has-children menu-item-loginout">
+
+				<a>Log In</a>
+
+				<ul id="menu-login" class="sub-menu">
+
+					<li id="login">
+						<h2>Log In</h2>
+						<?php wp_login_form(); ?>
+						<p class="remove_bottom">Not an Insider yet? <a class="register-link">Register here.</a> Forgot your password? <a href="<?php echo esc_url( wp_lostpassword_url( get_permalink() ) ); ?>" alt="<?php esc_attr_e( 'Lost Password', 'textdomain' ); ?>" class="forgot-password-link">Reset it here.</a></p>
+					</li>
+
+					<li id="register">
+						<h2>Join Lawyerist Insider</h2>
+						<?php echo do_shortcode( '[gravityform id="58" title="false" ajax="true"]' ); ?>
+						<p class="remove_bottom"><a class="back-to-login-link">Back to login.</a></p>
+					</li>
+
+				</ul>
+
+			</li>
+
+		<?php
+
+		$new_items = ob_get_clean();
+
+		$items .= $new_items;
 
   }
-
-	*/
-
-
-	// BEGIN MODAL LOGIN TO INSERT ABOVE
-
-	ob_start();
-
-	?>
-
-		<style>
-
-		#menu-login {
-			box-sizing: border-box;
-			padding: 2rem !important;
-		}
-
-		#menu-login > li {
-			background-color: #f9f9f9;
-			margin: 0;
-			padding: 2rem;
-		}
-
-		#menu-login > li:first-child {
-			margin-top: 0;
-		}
-
-		#menu-main-menu #menu-login a {
-			background: unset;
-			color: unset;
-			display: unset;
-			font-face: unset;
-			padding: unset;
-		}
-
-		</style>
-
-		<li class="menu-item menu-item-has-children menu-item-loginout">
-			<a>Log In</a>
-
-			<ul id="menu-login" class="sub-menu">
-				<li id="login" class="show">
-					<h2>Log In</h2>
-					<?php wp_login_form(); ?>
-					<p class="remove_bottom">Not an Insider yet? <a class="register-link">Register here.</a> Forgot your password? <a href="<?php echo esc_url( wp_lostpassword_url( get_permalink() ) ); ?>" alt="<?php esc_attr_e( 'Lost Password', 'textdomain' ); ?>" class="forgot-password-link">Reset it here.</a></p>
-				</li>
-				<li id="register">
-					<h2>Join Lawyerist Insider</h2>
-					<?php echo do_shortcode( '[gravityform id="58" title="false" ajax="true"]' ); ?>
-					<p class="remove_bottom"><a class="back-to-login-link">Back to login.</a></p>
-				</li>
-			</ul>
-
-		</li>
-
-		<script>
-
-		jQuery( document ).ready( function( $ ) {
-
-			$( "#register" ).hide();
-
-		  $( "#menu-login .register-link" ).click( function() {
-		    $( "#login" ).hide( 95 );
-				$( "#register" ).show( 145 );
-		  });
-
-			$( "#menu-login .back-to-login-link" ).click( function() {
-		    $( "#login" ).show( 145 );
-				$( "#register" ).hide( 95 );
-		  });
-
-		});
-
-		</script>
-
-		<!-- End modal login. -->
-
-	<?php
-
-	$new_items = ob_get_clean();
-
-	$items .= $new_items;
-
-	// END MODAL LOGIN TO INSERT ABOVE
 
   return $items;
 
@@ -1841,6 +1795,26 @@ function populate_fields( $value, $field, $name ) {
 }
 
 add_filter( 'gform_field_value', 'populate_fields', 10, 3 );
+
+
+/* Auto-Login New Users */
+function lawyerist_gf_registration_autologin( $user_id, $user_config, $entry, $password ) {
+
+	$user						= get_userdata( $user_id );
+	$user_login			= $user->user_login;
+	$user_password	= $password;
+
+		$user->set_role( get_option( 'default_role', 'subscriber' ) );
+
+    wp_signon( array(
+			'user_login'		=> $user_login,
+			'user_password'	=> $user_password,
+			'remember'			=> true,
+    ) );
+
+}
+
+add_action( 'gform_user_registered', 'lawyerist_gf_registration_autologin',  10, 4 );
 
 
 /* WOOCOMMERCE ****************/

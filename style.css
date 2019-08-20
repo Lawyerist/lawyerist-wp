@@ -333,6 +333,40 @@ body {
               content: '\f304';
             }
 
+            #menu-login {
+        			box-sizing: border-box;
+        			padding: 2rem !important;
+        		}
+
+        		#menu-login > li {
+        			background-color: #f9f9f9;
+        			margin: 0;
+        			padding: 2rem;
+        		}
+
+        		#menu-login > li:first-child {
+        			margin-top: 0;
+        		}
+
+        		#menu-main-menu #menu-login a,
+        		#menu-main-menu #menu-login a:visited {
+        			background: unset;
+        			color: #c00;
+        			display: unset;
+        			padding: unset;
+        		}
+
+        			#menu-main-menu #menu-login a:hover,
+        			#menu-main-menu #menu-login a:focus {
+        				color: #a00;
+        				text-decoration: underline;
+        			}
+
+        		#menu-login .gform_confirmation_message {
+        			margin-bottom: 1.5em;
+        		}
+
+
           /* Sub-Menu Items */
 
           #menu-main-menu .sub-menu {
@@ -623,7 +657,6 @@ button,
 .page-template-product-page .excerpt,
 figcaption,
 #footer,
-form,
 #header,
 input[type="button"],
 input[type="submit"],
@@ -663,6 +696,16 @@ a.wp-block-file__button,
 .wp-caption-text,
 .wp-review-feedback {
   font-family: concourse, sans-serif;
+}
+
+.gform_confirmation_message,
+input[ type="email" ],
+input[ type="password" ],
+input[ type="search" ],
+input[ type="text" ],
+select,
+textarea {
+  font-family: equity, serif !important;
 }
 
 
@@ -2242,22 +2285,6 @@ Content
     }
 
 
-    /* LPMS Main Landing Page */
-
-    .page-id-121024 #tablepress-40-scroll-wrapper {
-      position: relative;
-    }
-
-    .page-id-121024 #tablepress-40-scroll-wrapper .dataTables_scrollBody {
-      position: static !important;
-    }
-
-    .page-id-121024 .lpms-features-table .column-1 {
-      position: absolute;
-        left: 0;
-    }
-
-
     /* LPMS Individual Landing Pages */
 
     .lpms-features-table .column-1 {
@@ -2268,6 +2295,7 @@ Content
     .lpms-features-table tr th {
       min-width: 16rem;
     }
+
 
     /* Lab Curriculum Table */
 
@@ -2294,6 +2322,7 @@ Content
     .memberships-pricing-chart td {
       line-height: 1.2;
     }
+
 
     /* Borders & Background Colors */
 
@@ -3074,12 +3103,28 @@ select,
 textarea {
   background-color: #fff;
   border: .1rem solid #bbb;
-  border-radius: .2rem;
   box-sizing: border-box;
   font-size: inherit;
-  line-height: 1;
+  line-height: inherit;
   outline: none;
 }
+
+  input[ type="email" ],
+  input[ type="password" ],
+  input[ type="search" ],
+  input[ type="text" ],
+  select,
+  textarea {
+    border-radius: .2rem;
+    padding: .5rem .4rem;
+    width: calc(50% - 8px);
+    -webkit-appearance: none;
+  }
+
+  input[ type="checkbox" ],
+  input[ type="radio" ] {
+    /* Just a placeholder. */
+  }
 
   input:focus
   select:focus,
@@ -3088,28 +3133,40 @@ textarea {
     color: #333;
   }
 
-  input[ type="email" ],
-  input[ type="password" ],
-  input[ type="search" ],
-  input[ type="text" ] {
-    padding: .5rem .4rem;
-    width: calc(50% - 8px);
-    -webkit-appearance: none;
-  }
+label {
+  display: block;
+}
 
 select {
-  background: url( 'images/expand-ddd.svg' ) no-repeat right .4rem top 50%, 0 0;
+  background-image: url( 'images/expand-bbb.svg' );
+  background-position: right .4rem top 50%, 0 0;
+  background-repeat: no-repeat;
   padding: .5rem 1.4rem .5rem .4rem !important;
   position: relative;
   -webkit-appearance: none;
 }
 
   select:hover {
-    background-image: url( 'images/expand-bbb.svg' );
+    background-image: url( 'images/expand.svg' );
+    cursor: pointer;
   }
 
-label {
-  display: block;
+@media only screen and ( max-width: 640px ) {
+
+  input[ type="email" ],
+  input[ type="password" ],
+  input[ type="search" ],
+  input[ type="text" ],
+  select,
+  textarea {
+    width: 100%;
+  }
+
+  .gform_wrapper input:not( [ type = radio ] ):not( [ type = checkbox ] ):not( [ type = image ] ):not( [ type = file ] ) {
+    line-height: unset !important;
+    min-height: unset !important;
+  }
+
 }
 
 
@@ -3208,15 +3265,6 @@ a.review-btn,
   .ld-course-list-items .ld_course_grid .thumbnail.course a.btn-primary {
     margin-bottom: 0;
     width: 100%;
-  }
-
-  #sidebar_column button,
-  #sidebar_column .button,
-  #sidebar_column a.button,
-  #sidebar_column input.button,
-  #sidebar_column input[type="button"],
-  #sidebar_column input[type="submit"] {
-    margin-bottom: 0;
   }
 
   .woocommerce-notices-wrapper button,
@@ -3380,72 +3428,31 @@ a.greybutton:active,
 }
 
 
+@media only screen and ( max-width: 640px ) {
+
+  button,
+  .button,
+  a.button,
+  input.button,
+  input[type="button"],
+  input[type="submit"] {
+    width: 100%;
+  }
+
+}
+
+
   /*------------------------------
   Gravity Forms Customizations
   ------------------------------*/
 
-  .gform_wrapper,
-  .gform_confirmation_message {
-    display: block;
-    margin-bottom: 3rem;
-    text-decoration: none;
-  }
-
-  .gform_confirmation_message {
-    padding-top: 2rem;
-  }
-
-  .gform_heading .gform_title:first-child,
-  .gform_heading .gform_description:first-child {
-    margin-top: 2rem;
-  }
-
-  .gform_footer {
-    padding-top: 0 !important;
-  }
-
-  .gform_ajax_spinner {
-    display: inline;
-    line-height: 3.6rem;
-    margin: 0;
-    vertical-align: middle;
-    width: auto;
-  }
-
-  @media only screen and ( max-width: 761px ), ( max-device-width: 1024px ) and ( min-device-width: 768px ) {
-
-    #gform_wrapper_45 ul.gform_fields table.gsurvey-likert td:after,
-    #gform_wrapper_47 ul.gform_fields table.gsurvey-likert td:after {
-      margin-left: 2.5rem;
-    }
-
-  }
-
-  #sidebar_column .gform_wrapper {
-    font-size: 1.8rem;
-  }
-
-  #sidebar_column .gform_wrapper ul.gform_fields li.gfield {
-    padding-right: 0;
-  }
-
-  /* Lawyerist Insider Survival Guide Form */
-  #gform_wrapper_38 .gform_description,
-  #gform_wrapper_38 .gform_body {
-    font-size: 1.8rem;
+  .gform_wrapper.gf_browser_chrome .gfield_checkbox li input,
+  .gform_wrapper.gf_browser_chrome .gfield_checkbox li input[type=checkbox],
+  .gform_wrapper.gf_browser_chrome .gfield_radio li input[type=radio] {
+    margin-top: unset !important;
   }
 
   /* Small Firm Scorecard styles. */
-  #gform_wrapper_45 .gsurvey-survey-field,
-  #gform_wrapper_47 .gsurvey-survey-field {
-    margin: 0 0 6rem 0;
-  }
-
-  #gform_wrapper_45 .gsurvey-survey-field:last-child,
-  #gform_wrapper_47 .gsurvey-survey-field:last-child {
-    margin-bottom: 0;
-  }
-
   #gform_wrapper_45 .gfield_label,
   #gform_wrapper_47 .gfield_label {
     font-weight: normal;
@@ -3455,6 +3462,7 @@ a.greybutton:active,
   #gform_wrapper_47 .gfield_required {
     display: none;
   }
+
 
   /*------------------------------
   HubSpot Forms Customizations
