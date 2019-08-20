@@ -156,6 +156,60 @@ function lawyerist_register_menus() {
 add_action( 'init', 'lawyerist_register_menus' );
 
 
+/**
+* Get Login/Register
+*
+* @param $version. Can be 'menu' or 'modal'.
+*/
+function get_lawyerist_login( $version = null ) {
+
+	ob_start();
+
+	if ( $version == 'menu' ) {
+		$gf_id = 58;
+	} elseif ( $version == 'modal' ) {
+		$gf_id = 59;
+	}
+
+	?>
+
+	<div id="lawyerist-login"<?php if ( $version == 'modal' ) { echo ' class="modal"'; } ?>>
+
+		<div id="lawyerist-login-container"<?php if ( $version == 'modal' ) { echo ' class="card"'; } ?>>
+
+			<?php if ( $version == 'modal' ) { ?>
+				<button class="greybutton dismiss-button"></button>
+			<?php } ?>
+
+			<li id="login">
+				<h2>Log In</h2>
+				<?php wp_login_form(); ?>
+				<p class="remove_bottom">Not an Insider yet? <a class="register-link">Register here.</a> Forgot your password? <a href="<?php echo esc_url( wp_lostpassword_url( get_permalink() ) ); ?>" alt="<?php esc_attr_e( 'Lost Password', 'textdomain' ); ?>" class="forgot-password-link">Reset it here.</a></p>
+			</li>
+
+			<li id="register">
+				<h2>Join Lawyerist Insider</h2>
+				<?php echo do_shortcode( '[gravityform id="' . $gf_id . '" title="false" ajax="true"]' ); ?>
+				<p class="remove_bottom"><a class="back-to-login-link">Back to login.</a></p>
+			</li>
+
+		</div>
+
+	</div>
+
+	<?php if ( $version == 'modal' ) { ?>
+		<div id="lawyerist-login-screen" style="display: none;"></div>
+	<?php } ?>
+
+	<?php
+
+	$lawyerist_login = ob_get_clean();
+
+	return $lawyerist_login;
+
+}
+
+
 function lawyerist_loginout( $items, $args ) {
 
 	if ( !function_exists( 'wc_memberships' ) ) {
@@ -202,23 +256,50 @@ function lawyerist_loginout( $items, $args ) {
 
 				<a>Log In</a>
 
-				<ul id="menu-login" class="sub-menu">
+				<ul class="sub-menu">
 
-					<li id="login">
-						<h2>Log In</h2>
-						<?php wp_login_form(); ?>
-						<p class="remove_bottom">Not an Insider yet? <a class="register-link">Register here.</a> Forgot your password? <a href="<?php echo esc_url( wp_lostpassword_url( get_permalink() ) ); ?>" alt="<?php esc_attr_e( 'Lost Password', 'textdomain' ); ?>" class="forgot-password-link">Reset it here.</a></p>
-					</li>
-
-					<li id="register">
-						<h2>Join Lawyerist Insider</h2>
-						<?php echo do_shortcode( '[gravityform id="58" title="false" ajax="true"]' ); ?>
-						<p class="remove_bottom"><a class="back-to-login-link">Back to login.</a></p>
-					</li>
+					<?php echo get_lawyerist_login( 'menu' ); ?>
 
 				</ul>
 
 			</li>
+
+			<script>
+			jQuery( document ).ready( function( $ ) {
+
+				$( "#lawyerist-login #register" ).hide();
+
+				// This is the menu login.
+			  $( "#lawyerist-login .register-link" ).click( function() {
+			    $( "#lawyerist-login #login" ).hide( 95 );
+			    $( "#lawyerist-login #register" ).show( 145 );
+			  });
+
+			  $( "#lawyerist-login .back-to-login-link" ).click( function() {
+			    $( "#lawyerist-login #login" ).show( 145 );
+			    $( "#lawyerist-login #register" ).hide( 95 );
+			  });
+
+
+				// This is the modal login.
+				$( "#lawyerist-login.modal" ).hide();
+
+				$( ".login-link" ).click( function( e ) {
+			    e.preventDefault();
+			  });
+
+				$( ".login-link" ).click( function() {
+			    $( "#lawyerist-login.modal" ).show( 145 );
+					$( "#lawyerist-login-screen" ).show();
+			  });
+
+				$( "#lawyerist-login.modal .dismiss-button" ).click( function() {
+			    $( "#lawyerist-login.modal" ).hide( 95 );
+					$( "#lawyerist-login-screen" ).hide();
+			  });
+
+			});
+			</script>
 
 		<?php
 
@@ -1511,7 +1592,7 @@ function affinity_notice() {
 			} else {
 
 				$post_title			= the_title( '', '', FALSE );
-				$discount_descr = $post_title . ' offers a discount to ' . $whom . ' through our Affinity Benefits program. The details of this discount are only available to members. <a href="https://lawyerist.com/affinity-benefits/">Learn more about the Affinity Benefits program</a> or <a href="https://lawyerist.com/account/">log in</a> if you are a member of Insider Plus or Lab.';
+				$discount_descr = $post_title . ' offers a discount to ' . $whom . ' through our Affinity Benefits program. The details of this discount are only available to members. <a href="https://lawyerist.com/affinity-benefits/">Learn more about the Affinity Benefits program</a> or <a class="login-link" href="https://lawyerist.com/account/">log in</a> if you are a member of Insider Plus or Lab.';
 
 			}
 

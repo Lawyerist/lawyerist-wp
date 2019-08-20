@@ -218,7 +218,6 @@ body {
     box-shadow: 0 .2rem .3rem rgba( 0, 0, 0, 0.2 );
     display: grid;
     grid-template-columns: minmax( 1rem, 1fr) minmax( 32rem, 102.4rem ) minmax( 1rem, 1fr);
-    margin-bottom: 3rem;
     width: 100%;
   }
 
@@ -333,38 +332,71 @@ body {
               content: '\f304';
             }
 
-            #menu-login {
+            #lawyerist-login {
         			box-sizing: border-box;
+              font-size: 1.6rem;
+              list-style: none;
+              margin: 0;
         			padding: 2rem !important;
         		}
 
-        		#menu-login > li {
-        			background-color: #f9f9f9;
-        			margin: 0;
-        			padding: 2rem;
-        		}
+              #lawyerist-login-container {
+                position: relative;
+              }
 
-        		#menu-login > li:first-child {
-        			margin-top: 0;
-        		}
+            		#lawyerist-login-container > li {
+            			background-color: #f9f9f9;
+            			margin: 0;
+            			padding: 2rem;
+            		}
 
-        		#menu-main-menu #menu-login a,
-        		#menu-main-menu #menu-login a:visited {
+            		#lawyerist-login-container > li:first-child {
+            			margin-top: 0;
+            		}
+
+        		#menu-main-menu #lawyerist-login a,
+        		#menu-main-menu #lawyerist-login a:visited {
         			background: unset;
         			color: #c00;
         			display: unset;
         			padding: unset;
         		}
 
-        			#menu-main-menu #menu-login a:hover,
-        			#menu-main-menu #menu-login a:focus {
+        			#menu-main-menu #lawyerist-login a:hover,
+        			#menu-main-menu #lawyerist-login a:focus {
         				color: #a00;
+                cursor: pointer;
         				text-decoration: underline;
         			}
 
-        		#menu-login .gform_confirmation_message {
+        		#lawyerist-login .gform_confirmation_message {
         			margin-bottom: 1.5em;
         		}
+
+            #lawyerist-login.modal {
+              display: grid;
+              grid-template-areas: 'lbuffer modal rbuffer';
+              grid-template-columns: minmax( 1rem, 1fr ) minmax( 32rem, 80rem ) minmax( 1rem, 1fr );
+              padding: 0 !important;
+              position: absolute;
+                top: 10%;
+              width: 100%;
+              z-index: 100;
+            }
+
+            #lawyerist-login.modal .card {
+              grid-area: modal;
+            }
+
+            #lawyerist-login-screen {
+              background-color: rgb( 0, 0, 0, .4 );
+              height: 100%;
+              position: fixed;
+                left: 0;
+                top: 0;
+              width: 100%;
+              z-index: 99;
+            }
 
 
           /* Sub-Menu Items */
@@ -475,7 +507,7 @@ body {
   grid-column-gap: 3rem;
   grid-template-areas: 'content sidebar';
   grid-template-columns: minmax( 32rem, 100% ) minmax( 30rem, 30rem );
-  margin: 0 auto;
+  margin: 3rem auto 0 auto;
   max-width: 102.4rem;
   min-width: 32rem;
   padding: 0 1rem;
@@ -677,7 +709,7 @@ label,
 #review,
   .rating-breakdown,
   .review-summary-title,
-#sponsored_product_updates,
+#sponsored_product_updates .title,
 .sponsored_testimonial_label,
 p.pullout,
 p.pullquote,
@@ -1597,12 +1629,6 @@ p.dashboard-widget-note {
     padding: 2rem;
     position: relative;
   }
-
-    #big_hero_cta .dismiss-button {
-      position: absolute;
-        top: 2rem;
-        right: 2rem;
-    }
 
     #big_hero_cta a:hover p,
     #big_hero_cta a:focus p,
@@ -3425,6 +3451,12 @@ a.greybutton:active,
 .woocommerce input.button[name="update_cart"]:active {
   background-color: #bbb;
   color: #efefef;
+}
+
+.dismiss-button {
+  position: absolute;
+    top: 2rem;
+    right: 2rem;
 }
 
 
