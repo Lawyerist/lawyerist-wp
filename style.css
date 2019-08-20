@@ -598,16 +598,11 @@ h5,
 h6,
 .headline,
 th,
-.affinity-partners-heading,
-.current_posts_heading,
 #dashboard-title,
-.featured_products_heading,
 .fp-section-header,
 .learndash #lesson_heading,
 #menu-main-menu .sub-menu .menu-item-has-children > a,
-.product-pages-list .title,
-.toc_title,
-.woocommerce-tabs .tabs {
+.title {
   font-family: concourse-headings, sans-serif;
 }
 
@@ -620,7 +615,6 @@ button,
 .drop_cap,
 .card .headline,
 .card-label,
-  .review-summary-title,
 .category_list,
 #cancel-comment-reply-link,
 .comment-author,
@@ -629,6 +623,7 @@ button,
 .page-template-product-page .excerpt,
 figcaption,
 #footer,
+form,
 #header,
 input[type="button"],
 input[type="submit"],
@@ -648,6 +643,7 @@ label,
 .product_meta,
 #review,
   .rating-breakdown,
+  .review-summary-title,
 #sponsored_product_updates,
 .sponsored_testimonial_label,
 p.pullout,
@@ -655,13 +651,13 @@ p.pullquote,
 #scorecard_results #grade_box,
 .scorecard-results-wrapper,
 .tag_list,
-ul.blogroll,
 .user-rating,
 p.woocommerce-result-count,
 .woocommerce a.added_to_cart,
 .woocommerce-account .woocommerce-LostPassword,
 .woocommerce-account .woocommerce-MyAccount-navigation,
 .woocommerce nav.woocommerce-pagination,
+.woocommerce-tabs .tabs,
 a.wp-block-button__link,
 a.wp-block-file__button,
 .wp-caption-text,
@@ -675,20 +671,6 @@ code,
 pre {
   font-family: triplicate, monospace;
 }
-
-/* Font overrides. */
-#description,
-.gfield_checkbox label,
-.gfield_radio label,
-#gform_wrapper_45 .gfield_label,
-#gform_wrapper_47 .gfield_label,
-input,
-select,
-select option,
-textarea {
-  font-family: equity, serif;
-}
-
 
 /* Typography */
 body {
@@ -2622,7 +2604,7 @@ Content
     }
 
     .featured-products-list li.card {
-      min-height: 20rem;
+      min-height: 16rem;
     }
 
       .featured-products-list .image {
@@ -3093,40 +3075,41 @@ textarea {
   background-color: #fff;
   border: .1rem solid #bbb;
   border-radius: .2rem;
+  box-sizing: border-box;
   font-size: inherit;
-  line-height: inherit;
+  line-height: 1;
   outline: none;
 }
 
-input:focus
-select:focus,
-textarea:focus {
-  border-color: #c00;
-  color: #333;
-}
+  input:focus
+  select:focus,
+  textarea:focus {
+    border-color: #c00;
+    color: #333;
+  }
+
+  input[ type="email" ],
+  input[ type="password" ],
+  input[ type="search" ],
+  input[ type="text" ] {
+    padding: .5rem .4rem;
+    width: calc(50% - 8px);
+    -webkit-appearance: none;
+  }
 
 select {
-  padding: .5rem .4rem;
+  background: url( 'images/expand-ddd.svg' ) no-repeat right .4rem top 50%, 0 0;
+  padding: .5rem 1.4rem .5rem .4rem !important;
   position: relative;
   -webkit-appearance: none;
 }
 
-  select::after {
-    content: '\f431';
-    display: inline-block;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
-    font: normal 1.6rem/1.5 Genericons;
-    position: absolute;
-      right: .5rem;
-      top: 0;
-    speak: none;
-    text-align: center;
-    vertical-align: top;
-    width: 1.2em;
+  select:hover {
+    background-image: url( 'images/expand-bbb.svg' );
   }
 
 label {
+  display: block;
 }
 
 
@@ -3165,7 +3148,7 @@ a.review-btn,
   font-weight: normal;
   height: 3.6rem;
   line-height: 3.6rem;
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
   outline: none;
   padding: 0 1em;
   text-decoration: none;

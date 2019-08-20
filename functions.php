@@ -201,22 +201,22 @@ function lawyerist_loginout( $items, $args ) {
 
 		<style>
 
-		#modal-login {
+		#menu-login {
 			box-sizing: border-box;
 			padding: 2rem !important;
 		}
 
-		#modal-login > li {
+		#menu-login > li {
 			background-color: #f9f9f9;
 			margin: 0;
 			padding: 2rem;
 		}
 
-		#modal-login > li:first-child {
+		#menu-login > li:first-child {
 			margin-top: 0;
 		}
 
-		#menu-main-menu #modal-login a {
+		#menu-main-menu #menu-login a {
 			background: unset;
 			color: unset;
 			display: unset;
@@ -229,16 +229,16 @@ function lawyerist_loginout( $items, $args ) {
 		<li class="menu-item menu-item-has-children menu-item-loginout">
 			<a>Log In</a>
 
-			<ul id="modal-login" class="sub-menu">
+			<ul id="menu-login" class="sub-menu">
 				<li id="login" class="show">
 					<h2>Log In</h2>
 					<?php wp_login_form(); ?>
-					<p class="remove_bottom">Not an Insider yet? <a class="modal-register-link">Register here.</a> Forgot your password? <a href="<?php echo esc_url( wp_lostpassword_url( get_permalink() ) ); ?>" alt="<?php esc_attr_e( 'Lost Password', 'textdomain' ); ?>" class="modal-forgot-password-link">Reset it here.</a></p>
+					<p class="remove_bottom">Not an Insider yet? <a class="register-link">Register here.</a> Forgot your password? <a href="<?php echo esc_url( wp_lostpassword_url( get_permalink() ) ); ?>" alt="<?php esc_attr_e( 'Lost Password', 'textdomain' ); ?>" class="forgot-password-link">Reset it here.</a></p>
 				</li>
 				<li id="register">
 					<h2>Join Lawyerist Insider</h2>
 					<?php echo do_shortcode( '[gravityform id="58" title="false" ajax="true"]' ); ?>
-					<p class="remove_bottom"><a class="modal-back-to-login-link">Back to login.</a></p>
+					<p class="remove_bottom"><a class="back-to-login-link">Back to login.</a></p>
 				</li>
 			</ul>
 
@@ -250,12 +250,12 @@ function lawyerist_loginout( $items, $args ) {
 
 			$( "#register" ).hide();
 
-		  $( "#modal-login .modal-register-link" ).click( function() {
+		  $( "#menu-login .register-link" ).click( function() {
 		    $( "#login" ).hide( 95 );
 				$( "#register" ).show( 145 );
 		  });
 
-			$( "#modal-login .modal-back-to-login-link" ).click( function() {
+			$( "#menu-login .back-to-login-link" ).click( function() {
 		    $( "#login" ).show( 145 );
 				$( "#register" ).hide( 95 );
 		  });
@@ -1939,75 +1939,61 @@ function lawyerist_checkout_fields( $fields ) {
 	// Changes field labels.
 	$fields['billing']['billing_postcode']['label'] = 'Zip code';
 
-	// Creates an array of Insider & Lab product IDs.
-	$lab_insider_product_ids = array(
-		208237, // Lawyerist Insider
-		242723, // Lawyerist Insider Plus
-		259298, // Lawyerist Lab
+	// Adds our demographic questions.
+	$fields['order']['firm_size'] = array(
+		'label'				=> __( 'What is the size of your firm?', 'woocommerce' ),
+		'type'				=> 'select',
+		'options'			=> array(
+			''																		=> 'Select one.',
+			'Solo practice'												=> 'Solo practice',
+			'Small firm (2–15 lawyers)'						=> 'Small firm (2–15 lawyers)',
+			'Medium or large firm (16+ lawyers)'	=> 'Medium or large firm (16+ lawyers)',
+			'I don\'t work at a law firm'					=> 'I don\'t work at a law firm',
+		),
+		'placeholder'	=> _x( 'Select one.', 'placeholder', 'woocommerce' ),
+		'required'		=> true,
+		'class'				=> array( 'form-row', 'form-row-wide', 'survey_question' ),
+		'clear'				=> true,
 	);
 
-	foreach ( $lab_insider_product_ids as $val ) {
+	$fields['order']['firm_role'] = array(
+		'label'				=> __( 'What is your role at your firm?', 'woocommerce' ),
+		'type'				=> 'select',
+		'options'				=> array(
+			''																				=> 'Select one.',
+			'Owner/partner'														=> 'Owner/partner',
+			'Lawyer'																	=> 'Lawyer',
+			'Staff'																		=> 'Staff',
+			'Vendor (web designer, consultant, etc.)'	=> 'Vendor (web designer, consultant, etc.)',
+			'I don\'t work at a law firm'							=> 'I don\'t work at a law firm',
+		),
+		'placeholder'	=> _x( 'Select one.', 'placeholder', 'woocommerce' ),
+		'required'		=> true,
+		'class'				=> array( 'form-row', 'form-row-wide', 'survey_question' ),
+		'clear'				=> true,
+	);
 
-		if ( woo_in_cart( $val ) ) {
-
-			$fields['order']['firm_size'] = array(
-				'label'				=> __( 'What is the size of your firm?', 'woocommerce' ),
-				'type'				=> 'select',
-				'options'			=> array(
-					''																		=> 'Select one.',
-					'Solo practice'												=> 'Solo practice',
-					'Small firm (2–15 lawyers)'						=> 'Small firm (2–15 lawyers)',
-					'Medium or large firm (16+ lawyers)'	=> 'Medium or large firm (16+ lawyers)',
-					'I don\'t work at a law firm'					=> 'I don\'t work at a law firm',
-				),
-				'placeholder'	=> _x( 'Select one.', 'placeholder', 'woocommerce' ),
-				'required'		=> true,
-				'class'				=> array( 'form-row', 'form-row-wide', 'survey_question' ),
-				'clear'				=> true,
-			);
-
-			$fields['order']['firm_role'] = array(
-				'label'				=> __( 'What is your role at your firm?', 'woocommerce' ),
-				'type'				=> 'select',
-				'options'				=> array(
-					''																				=> 'Select one.',
-					'Owner/partner'														=> 'Owner/partner',
-					'Lawyer'																	=> 'Lawyer',
-					'Staff'																		=> 'Staff',
-					'Vendor (web designer, consultant, etc.)'	=> 'Vendor (web designer, consultant, etc.)',
-					'I don\'t work at a law firm'							=> 'I don\'t work at a law firm',
-				),
-				'placeholder'	=> _x( 'Select one.', 'placeholder', 'woocommerce' ),
-				'required'		=> true,
-				'class'				=> array( 'form-row', 'form-row-wide', 'survey_question' ),
-				'clear'				=> true,
-			);
-
-			$fields['order']['practice_area'] = array(
-				'label'				=> __( 'What type of law do you practice?', 'woocommerce' ),
-				'type'				=> 'select',
-				'options'			=> array(
-					''																		=> 'Select your primary practice area.',
-					'Civil litigation (non-PI)'						=> 'Civil litigation (non-PI)',
-					'Corporate'														=> 'Corporate',
-					'Criminal'														=> 'Criminal',
-					'Estate planning, probate, or elder'	=> 'Estate planning, probate, or elder',
-					'Family'															=> 'Family',
-					'General practice'										=> 'General practice',
-					'Personal injury'											=> 'Personal injury',
-					'Real estate'													=> 'Real estate',
-					'Other'																=> 'Other',
-					'I don\'t work in law'								=> 'I don\'t work in law',
-				),
-				'placeholder'	=> _x( 'Select your primary practice area.', 'placeholder', 'woocommerce' ),
-				'required'		=> true,
-				'class'				=> array( 'form-row', 'form-row-wide', 'survey_question' ),
-				'clear'				=> true,
-			);
-
-		}
-
-	}
+	$fields['order']['practice_area'] = array(
+		'label'				=> __( 'What type of law do you practice?', 'woocommerce' ),
+		'type'				=> 'select',
+		'options'			=> array(
+			''																		=> 'Select your primary practice area.',
+			'Civil litigation (non-PI)'						=> 'Civil litigation (non-PI)',
+			'Corporate'														=> 'Corporate',
+			'Criminal'														=> 'Criminal',
+			'Estate planning, probate, or elder'	=> 'Estate planning, probate, or elder',
+			'Family'															=> 'Family',
+			'General practice'										=> 'General practice',
+			'Personal injury'											=> 'Personal injury',
+			'Real estate'													=> 'Real estate',
+			'Other'																=> 'Other',
+			'I don\'t work in law'								=> 'I don\'t work in law',
+		),
+		'placeholder'	=> _x( 'Select your primary practice area.', 'placeholder', 'woocommerce' ),
+		'required'		=> true,
+		'class'				=> array( 'form-row', 'form-row-wide', 'survey_question' ),
+		'clear'				=> true,
+	);
 
 	return $fields;
 
