@@ -3,13 +3,15 @@ jQuery( document ).ready( function( $ ) {
 
   $( "#menu-main-menu .sub-menu" ).hide();
 
+  // Expands top-level sub-menus.
   $( "#menu-main-menu > .menu-item-has-children > a" ).click( function() {
     $( this ).toggleClass( "open" ).next( ".sub-menu" ).slideToggle( 145 );
     $( ".open" ).not( this ).toggleClass( "open" ).next( ".sub-menu" ).slideToggle( 95 );
   });
 
+  // Expands second-level+ sub-menus.
   // The .not in this function excludes the Join the Lawyerist Community sub menu.
-  $( "#menu-main-menu > .menu-item-has-children .menu-item-has-children > a" ).not( '#menu-item-270912 > a' ).click( function() {
+  $( "#menu-main-menu > .menu-item-has-children .menu-item-has-children > a" ).not( "#menu-item-270912 > a" ).click( function() {
     $( this ).toggleClass( "open" ).next( ".sub-menu" ).slideToggle( 145 );
   });
 
@@ -17,12 +19,53 @@ jQuery( document ).ready( function( $ ) {
 // End Responsive Menu
 
 
+// Lawyerist Login/Register
+jQuery( document ).ready( function( $ ) {
+
+  $( "#lawyerist-login #register" ).hide();
+  $( "#lawyerist-login.modal" ).hide();
+
+  // Controls navigation within #lawyerist-login.
+  $( "#lawyerist-login .register-link" ).click( function() {
+    $( "#lawyerist-login #login" ).hide( 95 );
+    $( "#lawyerist-login #register" ).show( 145 );
+  });
+
+  $( "#lawyerist-login .back-to-login-link" ).click( function() {
+    $( "#lawyerist-login #login" ).show( 145 );
+    $( "#lawyerist-login #register" ).hide( 95 );
+  });
+
+  // Prevents login links from activating.
+  $( ".login-link, a[ href*='wp-login.php']" ).click( function( e ) {
+    e.preventDefault();
+  });
+
+  // Controls the modal pop-up and close actions.
+  $( ".login-link, a[ href*='wp-login.php']" ).click( function() {
+    $( "#lawyerist-login.modal" ).show( 145 );
+    $( "#lawyerist-login-screen" ).show();
+  });
+
+  $( "#lawyerist-login.modal .dismiss-button" ).click( function() {
+    $( "#lawyerist-login.modal" ).hide( 95 );
+    $( "#lawyerist-login-screen" ).hide();
+  });
+
+  // Changes/removes stuff when the confirmation wrapper is visible.
+  jQuery( document ).on( 'gform_confirmation_loaded', function() {
+    $( "#lawyerist-login.modal #register h2" ).html( "Welcome to the Lawyerist Insider Community!" );
+    $( "#lawyerist-login.modal #register p.remove_bottom" ).hide();
+  });
+
+});
+// End Lawyerist Login/Register
+
 /**
 * Expander
 *
 * Opens and closes things with the .expand-this class.
 */
-
 jQuery( document ).ready( function( $ ) {
 
   if ( $( ".expandthis-hide" ).length > 0 ) {

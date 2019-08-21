@@ -105,4 +105,5 @@
 
   	<div id="red-buffer"></div>
 
-  </div><!-- #header -->
+  </div><!-- #header-grid -->
+  

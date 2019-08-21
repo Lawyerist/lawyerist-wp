@@ -52,7 +52,9 @@ COMMENTS & REVIEWS
 - Reviews
 
 GRAVITY FORMS
-- Auto-Populate Form Fields
+- Enable CC Field on Form Notifications
+- Populate Form Fields
+- Auto-Login New Users
 
 WOOCOMMERCE
 - WooCommerce Setup
@@ -154,6 +156,62 @@ function lawyerist_register_menus() {
 add_action( 'init', 'lawyerist_register_menus' );
 
 
+/**
+* Get Login/Register
+*
+* @param $version. Can be 'menu' or 'modal'.
+*/
+function get_lawyerist_login( $version = null ) {
+
+	ob_start();
+
+	if ( $version == 'menu' ) {
+		$gf_id = 58;
+	} elseif ( $version == 'modal' ) {
+		$gf_id = 59;
+	}
+
+	?>
+
+	<div id="lawyerist-login"<?php if ( $version == 'modal' ) { echo ' class="modal" style="display: none;"'; } ?>>
+
+		<div id="lawyerist-login-container"<?php if ( $version == 'modal' ) { echo ' class="card"'; } ?>>
+
+			<?php if ( $version == 'modal' ) { ?>
+				<button class="greybutton dismiss-button"></button>
+				<img class="l-dot" src="<?php echo get_template_directory_uri(); ?>/images/L-dot-login-large.png" />
+			<?php } ?>
+
+			<li id="login">
+				<h2>Log in to Lawyerist.com</h2>
+				<p>Not an Insider yet? <a class="register-link">Register here.</a> (It's free!)</p>
+				<?php wp_login_form(); ?>
+				<p class="remove_bottom">Forgot your password? <a href="<?php echo esc_url( wp_lostpassword_url( get_permalink() ) ); ?>" alt="<?php esc_attr_e( 'Lost Password', 'textdomain' ); ?>" class="forgot-password-link">Reset it here.</a></p>
+			</li>
+
+			<li id="register">
+				<h2>Join Lawyerist Insider</h2>
+				<?php echo do_shortcode( '[gravityform id="' . $gf_id . '" title="false" ajax="true"]' ); ?>
+				<p class="remove_bottom"><a class="back-to-login-link">Back to login.</a></p>
+			</li>
+
+		</div>
+
+	</div>
+
+	<?php if ( $version == 'modal' ) { ?>
+		<div id="lawyerist-login-screen" style="display: none;"></div>
+	<?php } ?>
+
+	<?php
+
+	$lawyerist_login = ob_get_clean();
+
+	return $lawyerist_login;
+
+}
+
+
 function lawyerist_loginout( $items, $args ) {
 
 	if ( !function_exists( 'wc_memberships' ) ) {
@@ -164,26 +222,56 @@ function lawyerist_loginout( $items, $args ) {
 
 		ob_start();
 
-			echo '<li class="menu-item menu-item-loginout menu-item-has-children"><a>Account</a>';
-				echo '<ul class="sub-menu">';
-					echo '<li class="menu-item"><a href="https://lawyerist.com/account/">My Account</a>';
+		?>
 
-					$user_id = get_current_user_id();
+			<li class="menu-item menu-item-loginout menu-item-has-children">
 
-					if ( wc_memberships_is_user_active_member( $user_id, 'lab' ) ) {
-						echo '<li class="menu-item"><a href="https://lawyerist.com/labster-portal/">Member Portal</a></li>';
-					}
+				<a>Account</a>
 
-					echo '<li class="menu-item"><a href="https://lawyerist.com/scorecard/">Update My Scorecard</a></li>';
-				echo '</ul>';
-			echo '</li>';
+				<ul class="sub-menu">
+
+					<li class="menu-item"><a href="https://lawyerist.com/account/">My Account</a>
+
+					<?php if ( wc_memberships_is_user_active_member( get_current_user_id(), 'lab' ) ) { ?>
+						<li class="menu-item"><a href="https://lawyerist.com/labster-portal/">Member Portal</a></li>
+					<?php } ?>
+
+					<li class="menu-item"><a href="https://lawyerist.com/scorecard/">Update My Scorecard</a></li>
+
+				</ul>
+
+			</li>
+
+		<?php
 
 		$new_items = ob_get_clean();
 
     $items .= $new_items;
 
   } elseif ( !is_user_logged_in() && $args->theme_location == 'header-nav-menu' ) {
-      $items .= '<li class="menu-item menu-item-loginout"><a href="https://lawyerist.com/account/">Log In</a></li>';
+
+		ob_start();
+
+		?>
+
+			<li class="menu-item menu-item-has-children menu-item-loginout">
+
+				<a>Log In</a>
+
+				<ul class="sub-menu">
+
+					<?php echo get_lawyerist_login( 'menu' ); ?>
+
+				</ul>
+
+			</li>
+
+		<?php
+
+		$new_items = ob_get_clean();
+
+		$items .= $new_items;
+
   }
 
   return $items;
@@ -1469,7 +1557,7 @@ function affinity_notice() {
 			} else {
 
 				$post_title			= the_title( '', '', FALSE );
-				$discount_descr = $post_title . ' offers a discount to ' . $whom . ' through our Affinity Benefits program. The details of this discount are only available to members. <a href="https://lawyerist.com/affinity-benefits/">Learn more about the Affinity Benefits program</a> or <a href="https://lawyerist.com/account/">log in</a> if you are a member of Insider Plus or Lab.';
+				$discount_descr = $post_title . ' offers a discount to ' . $whom . ' through our Affinity Benefits program. The details of this discount are only available to members. <a href="https://lawyerist.com/affinity-benefits/">Learn more about the Affinity Benefits program</a> or <a class="login-link" href="https://lawyerist.com/account/">log in</a> if you are a member of Insider Plus or Lab.';
 
 			}
 
@@ -1755,6 +1843,26 @@ function populate_fields( $value, $field, $name ) {
 add_filter( 'gform_field_value', 'populate_fields', 10, 3 );
 
 
+/* Auto-Login New Users */
+function lawyerist_gf_registration_autologin( $user_id, $user_config, $entry, $password ) {
+
+	$user						= get_userdata( $user_id );
+	$user_login			= $user->user_login;
+	$user_password	= $password;
+
+		$user->set_role( get_option( 'default_role', 'subscriber' ) );
+
+    wp_signon( array(
+			'user_login'		=> $user_login,
+			'user_password'	=> $user_password,
+			'remember'			=> true,
+    ) );
+
+}
+
+add_action( 'gform_user_registered', 'lawyerist_gf_registration_autologin',  10, 4 );
+
+
 /* WOOCOMMERCE ****************/
 
 /*------------------------------
@@ -1851,75 +1959,61 @@ function lawyerist_checkout_fields( $fields ) {
 	// Changes field labels.
 	$fields['billing']['billing_postcode']['label'] = 'Zip code';
 
-	// Creates an array of Insider & Lab product IDs.
-	$lab_insider_product_ids = array(
-		208237, // Lawyerist Insider
-		242723, // Lawyerist Insider Plus
-		259298, // Lawyerist Lab
+	// Adds our demographic questions.
+	$fields['order']['firm_size'] = array(
+		'label'				=> __( 'What is the size of your firm?', 'woocommerce' ),
+		'type'				=> 'select',
+		'options'			=> array(
+			''																		=> 'Select one.',
+			'Solo practice'												=> 'Solo practice',
+			'Small firm (2–15 lawyers)'						=> 'Small firm (2–15 lawyers)',
+			'Medium or large firm (16+ lawyers)'	=> 'Medium or large firm (16+ lawyers)',
+			'I don\'t work at a law firm'					=> 'I don\'t work at a law firm',
+		),
+		'placeholder'	=> _x( 'Select one.', 'placeholder', 'woocommerce' ),
+		'required'		=> true,
+		'class'				=> array( 'form-row', 'form-row-wide', 'survey_question' ),
+		'clear'				=> true,
 	);
 
-	foreach ( $lab_insider_product_ids as $val ) {
+	$fields['order']['firm_role'] = array(
+		'label'				=> __( 'What is your role at your firm?', 'woocommerce' ),
+		'type'				=> 'select',
+		'options'				=> array(
+			''																				=> 'Select one.',
+			'Owner/partner'														=> 'Owner/partner',
+			'Lawyer'																	=> 'Lawyer',
+			'Staff'																		=> 'Staff',
+			'Vendor (web designer, consultant, etc.)'	=> 'Vendor (web designer, consultant, etc.)',
+			'I don\'t work at a law firm'							=> 'I don\'t work at a law firm',
+		),
+		'placeholder'	=> _x( 'Select one.', 'placeholder', 'woocommerce' ),
+		'required'		=> true,
+		'class'				=> array( 'form-row', 'form-row-wide', 'survey_question' ),
+		'clear'				=> true,
+	);
 
-		if ( woo_in_cart( $val ) ) {
-
-			$fields['order']['firm_size'] = array(
-				'label'				=> __( 'What is the size of your firm?', 'woocommerce' ),
-				'type'				=> 'select',
-				'options'			=> array(
-					''																		=> 'Select one.',
-					'Solo practice'												=> 'Solo practice',
-					'Small firm (2–15 lawyers)'						=> 'Small firm (2–15 lawyers)',
-					'Medium or large firm (16+ lawyers)'	=> 'Medium or large firm (16+ lawyers)',
-					'I don\'t work at a law firm'					=> 'I don\'t work at a law firm',
-				),
-				'placeholder'	=> _x( 'Select one.', 'placeholder', 'woocommerce' ),
-				'required'		=> true,
-				'class'				=> array( 'form-row', 'form-row-wide', 'survey_question' ),
-				'clear'				=> true,
-			);
-
-			$fields['order']['firm_role'] = array(
-				'label'				=> __( 'What is your role at your firm?', 'woocommerce' ),
-				'type'				=> 'select',
-				'options'				=> array(
-					''																				=> 'Select one.',
-					'Owner/partner'														=> 'Owner/partner',
-					'Lawyer'																	=> 'Lawyer',
-					'Staff'																		=> 'Staff',
-					'Vendor (web designer, consultant, etc.)'	=> 'Vendor (web designer, consultant, etc.)',
-					'I don\'t work at a law firm'							=> 'I don\'t work at a law firm',
-				),
-				'placeholder'	=> _x( 'Select one.', 'placeholder', 'woocommerce' ),
-				'required'		=> true,
-				'class'				=> array( 'form-row', 'form-row-wide', 'survey_question' ),
-				'clear'				=> true,
-			);
-
-			$fields['order']['practice_area'] = array(
-				'label'				=> __( 'What type of law do you practice?', 'woocommerce' ),
-				'type'				=> 'select',
-				'options'			=> array(
-					''																		=> 'Select your primary practice area.',
-					'Civil litigation (non-PI)'						=> 'Civil litigation (non-PI)',
-					'Corporate'														=> 'Corporate',
-					'Criminal'														=> 'Criminal',
-					'Estate planning, probate, or elder'	=> 'Estate planning, probate, or elder',
-					'Family'															=> 'Family',
-					'General practice'										=> 'General practice',
-					'Personal injury'											=> 'Personal injury',
-					'Real estate'													=> 'Real estate',
-					'Other'																=> 'Other',
-					'I don\'t work in law'								=> 'I don\'t work in law',
-				),
-				'placeholder'	=> _x( 'Select your primary practice area.', 'placeholder', 'woocommerce' ),
-				'required'		=> true,
-				'class'				=> array( 'form-row', 'form-row-wide', 'survey_question' ),
-				'clear'				=> true,
-			);
-
-		}
-
-	}
+	$fields['order']['practice_area'] = array(
+		'label'				=> __( 'What type of law do you practice?', 'woocommerce' ),
+		'type'				=> 'select',
+		'options'			=> array(
+			''																		=> 'Select your primary practice area.',
+			'Civil litigation (non-PI)'						=> 'Civil litigation (non-PI)',
+			'Corporate'														=> 'Corporate',
+			'Criminal'														=> 'Criminal',
+			'Estate planning, probate, or elder'	=> 'Estate planning, probate, or elder',
+			'Family'															=> 'Family',
+			'General practice'										=> 'General practice',
+			'Personal injury'											=> 'Personal injury',
+			'Real estate'													=> 'Real estate',
+			'Other'																=> 'Other',
+			'I don\'t work in law'								=> 'I don\'t work in law',
+		),
+		'placeholder'	=> _x( 'Select your primary practice area.', 'placeholder', 'woocommerce' ),
+		'required'		=> true,
+		'class'				=> array( 'form-row', 'form-row-wide', 'survey_question' ),
+		'clear'				=> true,
+	);
 
 	return $fields;
 
