@@ -179,10 +179,11 @@ function get_lawyerist_login( $version = null ) {
 
 			<?php if ( $version == 'modal' ) { ?>
 				<button class="greybutton dismiss-button"></button>
+				<img src="<?php echo get_template_directory_uri(); ?>/images/L-dot-login-large.png" />
 			<?php } ?>
 
 			<li id="login">
-				<h2>Log In</h2>
+				<h2>Log in to Lawyerist.com</h2>
 				<p>Not an Insider yet? <a class="register-link">Register here.</a></p>
 				<?php wp_login_form(); ?>
 				<p class="remove_bottom">Forgot your password? <a href="<?php echo esc_url( wp_lostpassword_url( get_permalink() ) ); ?>" alt="<?php esc_attr_e( 'Lost Password', 'textdomain' ); ?>" class="forgot-password-link">Reset it here.</a></p>
