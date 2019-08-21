@@ -52,6 +52,12 @@ jQuery( document ).ready( function( $ ) {
     $( "#lawyerist-login-screen" ).hide();
   });
 
+  // Changes/removes stuff when the confirmation wrapper is visible.
+  jQuery( document ).on( 'gform_confirmation_loaded', function() {
+    $( "#lawyerist-login.modal #register h2" ).html( "Welcome to the Lawyerist Insider Community!" );
+    $( "#lawyerist-login.modal #register p.remove_bottom" ).hide();
+  });
+
 });
 // End Lawyerist Login/Register
 

@@ -340,6 +340,10 @@ body {
         			padding: 2rem !important;
         		}
 
+            #lawyerist-login a {
+              cursor: pointer;
+            }
+
               #lawyerist-login-container {
                 position: relative;
               }
@@ -358,7 +362,6 @@ body {
         		#menu-main-menu #lawyerist-login a:visited {
         			background: unset;
         			color: #c00;
-              cursor: pointer;
         			display: unset;
         			padding: unset;
         		}
@@ -380,7 +383,7 @@ body {
             #lawyerist-login.modal {
               display: grid;
               grid-template-areas: 'lbuffer modal rbuffer';
-              grid-template-columns: minmax( 1rem, 1fr ) minmax( 32rem, 40rem ) minmax( 1rem, 1fr );
+              grid-template-columns: minmax( 1rem, 1fr ) minmax( 32rem, 48rem ) minmax( 1rem, 1fr );
               max-height: 80%;
               overflow: scroll;
               padding: 0 !important;
@@ -397,20 +400,32 @@ body {
               padding: 2rem;
             }
 
-            #lawyerist-login.modal img {
+            #lawyerist-login.modal img.l-dot {
               display: block;
               height: 10rem;
               margin: 0 auto;
               width: 10rem;
             }
 
+            #lawyerist-login.modal a.button,
             #lawyerist-login.modal input[ type="email" ],
             #lawyerist-login.modal input[ type="password" ],
             #lawyerist-login.modal input[ type="search" ],
             #lawyerist-login.modal input[ type="submit" ],
             #lawyerist-login.modal input[ type="text" ],
-            #lawyerist-login.modal select {
+            #lawyerist-login.modal select,
+            #lawyerist-login.modal .address_state {
               width: 100%;
+            }
+
+            #lawyerist-login.modal a.button {
+              display: block;
+              text-align: center;
+            }
+
+            #lawyerist-login.modal .address_state {
+              margin-right: unset;
+              padding-right: unset;
             }
 
             @media only screen and ( min-width: 641px ) {
@@ -419,6 +434,10 @@ body {
                 padding-right: unset !important;
               }
 
+            }
+
+            #lawyerist-login.modal .gform_confirmation_message {
+              margin-bottom: 0;
             }
 
             #lawyerist-login-screen {

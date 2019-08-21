@@ -173,31 +173,26 @@ function get_lawyerist_login( $version = null ) {
 
 	?>
 
-	<div id="lawyerist-login"<?php if ( $version == 'modal' ) { echo ' class="modal"'; } ?>>
+	<div id="lawyerist-login"<?php if ( $version == 'modal' ) { echo ' class="modal" style="display: none;"'; } ?>>
 
 		<div id="lawyerist-login-container"<?php if ( $version == 'modal' ) { echo ' class="card"'; } ?>>
 
 			<?php if ( $version == 'modal' ) { ?>
 				<button class="greybutton dismiss-button"></button>
-				<img src="<?php echo get_template_directory_uri(); ?>/images/L-dot-login-large.png" />
+				<img class="l-dot" src="<?php echo get_template_directory_uri(); ?>/images/L-dot-login-large.png" />
 			<?php } ?>
 
 			<li id="login">
 				<h2>Log in to Lawyerist.com</h2>
-				<p>Not an Insider yet? <a class="register-link">Register here.</a></p>
+				<p>Not an Insider yet? <a class="register-link">Register here.</a> (It's free!)</p>
 				<?php wp_login_form(); ?>
 				<p class="remove_bottom">Forgot your password? <a href="<?php echo esc_url( wp_lostpassword_url( get_permalink() ) ); ?>" alt="<?php esc_attr_e( 'Lost Password', 'textdomain' ); ?>" class="forgot-password-link">Reset it here.</a></p>
 			</li>
 
 			<li id="register">
-				<?php if ( !is_user_logged_in() ) { ?>
-					<h2>Join Lawyerist Insider</h2>
-					<?php echo do_shortcode( '[gravityform id="' . $gf_id . '" title="false" ajax="true"]' ); ?>
-					<p class="remove_bottom"><a class="back-to-login-link">Back to login.</a></p>
-				<?php } else { ?>
-					<h2>Welcome to the Lawyerist Community!</h2>
-					<p>Welcome to the Lawyerist Insider community! You can keep doing what you were doing, but don't forget to check out the free resources in the <a href="https://lawyerist.com/community/insider/library/">Insider Library</a>. And if you are a solo or small-firm lawyer in the US or Canada, please <a href="https://www.facebook.com/groups/lawyeristinsiders/">join our private Facebook Group for Insiders</a>.</p>
-				<?php } ?>
+				<h2>Join Lawyerist Insider</h2>
+				<?php echo do_shortcode( '[gravityform id="' . $gf_id . '" title="false" ajax="true"]' ); ?>
+				<p class="remove_bottom"><a class="back-to-login-link">Back to login.</a></p>
 			</li>
 
 		</div>
@@ -1862,8 +1857,6 @@ function lawyerist_gf_registration_autologin( $user_id, $user_config, $entry, $p
 			'user_password'	=> $user_password,
 			'remember'			=> true,
     ) );
-
-		header( 'refresh' );
 
 }
 
