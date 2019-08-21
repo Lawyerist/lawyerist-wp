@@ -3,7 +3,7 @@
 <div id="column_container">
 
 	<div id="content_column">
-		
+
 	<?php
 
 		// Checks to see if the front page is set to show blog posts, and if so uses
@@ -83,69 +83,22 @@
 	    // Outputs the front page call to action.
 			if ( !is_user_logged_in() ) {
 
-				// Outputs the Insider (free) call to action.
-				$cta_label				= 'Insider';
-				$cta_button_url 	= 'https://lawyerist.com/insider/';
-				$cta_button_text	=	'Join Now';
-
-				ob_start();
-
-				?>
-
-					<p class="headline">Join Your Tribe.</p>
-					<p>Lawyerist Insider is the community of solo and small firm lawyers building modern, future-oriented law practices.</p>
-					<p class="headline">Grow Your Firm.</p>
-					<p>Our Insider Library is full of checklists, templates, and other resources to help you grow.</p>
-
-				<?php
-
-				$cta_copy = ob_get_clean();
-
-			// Outputs the Insider Plus upsell call to action for logged-in Insiders
-			// who are not yet members of Insider Plus.
-			} elseif ( is_user_logged_in() ) {
-
-				$user_id = get_current_user_id();
-
-				if (	!wc_memberships_is_user_active_member( $user_id, 'insider-plus-affinity' ) && !wc_memberships_is_user_active_member( $user_id, 'lab' ) ) {
-
-					$cta_label				= 'Insider Plus';
-					$cta_button_url	 	= 'https://lawyerist.com/cart/?add-to-cart=242723';
-					$cta_button_text	=	'Upgrade Now';
-
-					ob_start();
-
-					?>
-
-						<p class="headline">Get More.</p>
-						<p>Upgrade to Insider Plus to get access to our Affinity Benefits program. You'll get access to discounts on dozens of carefully selected products and services—including some you already use.</p>
-						<p>Insider Plus is just $89/year, and with so many discounts and premium downloads, your subscription will pay for itself.</p>
-
-					<?php
-
-					$cta_copy = ob_get_clean();
-
-				}
-
-			}
-
-			// Outputs the call to action.
-
-			if ( !empty( $cta_label ) ) {
-
 			?>
 
-				<div id="big_hero_cta" class="card dismissible-notice" data-id="<?php echo esc_attr( md5( $cta_label ) ); ?>">
+				<div id="big_hero_cta" class="card dismissible-notice" data-id="Insider">
 					<div id="big_hero_left">
 						<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/02/L-dot-150x150.png" />
-						<span class="big_hero_label"><?php echo $cta_label; ?></span>
+						<span class="big_hero_label">Insider</span>
 					</div>
 					<div id="big_hero_right">
 						<button class="greybutton dismiss-button"></button>
 						<div id="big_hero_top">
-							<?php echo $cta_copy; ?>
+							<p class="headline">Join Your Tribe.</p>
+							<p>Lawyerist Insider is the community of solo and small firm lawyers building modern, future-oriented law practices.</p>
+							<p class="headline">Grow Your Firm.</p>
+							<p>Our Insider Library is full of checklists, templates, and other resources to help you grow.</p>
 						</div>
-						<a class="button <?php if ( !is_user_logged_in() ) { echo 'free-flag'; } ?>" href="<?php echo $cta_button_url; ?>"><?php echo $cta_button_text; ?></a>
+						<a class="button free-flag register-link" href="https://lawyerist.com/community/insider/">Join Now</a>
 					</div>
 				</div>
 

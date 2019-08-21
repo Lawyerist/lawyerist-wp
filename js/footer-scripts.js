@@ -37,12 +37,20 @@ jQuery( document ).ready( function( $ ) {
   });
 
   // Prevents login links from activating.
-  $( ".login-link, a[ href*='wp-login.php']" ).click( function( e ) {
+  $( ".login-link, a[ href*='wp-login.php'], .register-link" ).click( function( e ) {
     e.preventDefault();
   });
 
   // Controls the modal pop-up and close actions.
   $( ".login-link, a[ href*='wp-login.php']" ).click( function() {
+    $( "#lawyerist-login.modal" ).show( 145 );
+    $( "#lawyerist-login-screen" ).show();
+  });
+
+  // Switches to the registration form for .register-link links.
+  $( ".register-link" ).click( function() {
+    $( "#lawyerist-login.modal #login" ).hide();
+    $( "#lawyerist-login.modal #register" ).show();
     $( "#lawyerist-login.modal" ).show( 145 );
     $( "#lawyerist-login-screen" ).show();
   });
@@ -54,6 +62,7 @@ jQuery( document ).ready( function( $ ) {
 
   // Changes/removes stuff when the confirmation wrapper is visible.
   jQuery( document ).on( 'gform_confirmation_loaded', function() {
+    $( "#lawyerist-login.modal .dismiss-button" ).hide();
     $( "#lawyerist-login.modal #register h2" ).html( "Welcome to the Lawyerist Insider Community!" );
     $( "#lawyerist-login.modal #register p.remove_bottom" ).hide();
   });

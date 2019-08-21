@@ -400,6 +400,10 @@ body {
               padding: 2rem;
             }
 
+            #lawyerist-login.modal #lawyerist-login-container > li {
+              background: unset;
+            }
+
             #lawyerist-login.modal img.l-dot {
               display: block;
               height: 10rem;
@@ -3908,32 +3912,6 @@ WooCommerce
 }
 
 /* WooCommerce Shopping Cart */
-
-a.cart-in-header {
-    background-color: #333;
-    border-radius: .2rem;
-    color: #fff;
-    font-size: 1.6rem;
-    line-height: 3.2rem;
-    padding: .8rem;
-    margin-left: .75em;
-  }
-
-  a.cart-in-header:hover {
-    color: #ddd;
-  }
-
-  .cart-in-header:before {
-    content: '\f447';
-    display: inline-block;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
-    font: normal 2rem/3.2rem Genericons;
-    margin-right: .25em;
-    speak: none;
-    vertical-align: top;
-  }
-
 .woocommerce-cart img {
   margin-bottom: unset;
 }
