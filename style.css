@@ -2588,17 +2588,12 @@ Content
       }
 
       .affinity-discount-card p.card-label,
-      .affinity-discount-card p.discount_descr,
       .affinity-discount-card button {
         margin-left: 0;
       }
 
-      .affinity-discount-card p.card-label {
-        font-size: 3rem;
-      }
-
       .affinity-discount-card p.discount_descr {
-        clear: both;
+        margin-left: 12.09rem;
       }
 
     }
