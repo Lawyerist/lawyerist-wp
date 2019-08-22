@@ -184,7 +184,7 @@ function get_lawyerist_login( $version = null ) {
 
 			<li id="login">
 				<h2>Log in to Lawyerist.com</h2>
-				<p>Not an Insider yet? <a class="register-link">Register here.</a> (It's free!)</p>
+				<p>Not an Insider yet? <a class="link-to-register">Register here.</a> (It's free!)</p>
 				<?php wp_login_form(); ?>
 				<p class="remove_bottom">Forgot your password? <a href="<?php echo esc_url( wp_lostpassword_url( get_permalink() ) ); ?>" alt="<?php esc_attr_e( 'Lost Password', 'textdomain' ); ?>" class="forgot-password-link">Reset it here.</a></p>
 			</li>
@@ -192,7 +192,7 @@ function get_lawyerist_login( $version = null ) {
 			<li id="register">
 				<h2>Join Lawyerist Insider</h2>
 				<?php echo do_shortcode( '[gravityform id="' . $gf_id . '" title="false" ajax="true"]' ); ?>
-				<p class="remove_bottom"><a class="back-to-login-link">Back to login.</a></p>
+				<p class="remove_bottom"><a class="back-to-login">Back to login.</a></p>
 			</li>
 
 		</div>
@@ -366,6 +366,7 @@ function lawyerist_remove_admin_bar_items( $wp_admin_bar ) {
 	$wp_admin_bar->remove_node( 'new-wc_user_membership' );
 	$wp_admin_bar->remove_node( 'new-user' );
 	$wp_admin_bar->remove_node( 'new-tablepress-table' );
+	$wp_admin_bar->remove_node( 'new-elementor_library' );
 
 	// Remove Monster Insights.
 	$wp_admin_bar->remove_node( 'monsterinsights_frontend_button' );

@@ -26,12 +26,12 @@ jQuery( document ).ready( function( $ ) {
   $( "#lawyerist-login.modal" ).hide();
 
   // Controls navigation within #lawyerist-login.
-  $( "#lawyerist-login .register-link" ).click( function() {
+  $( "#lawyerist-login .link-to-register" ).click( function() {
     $( "#lawyerist-login #login" ).hide( 95 );
     $( "#lawyerist-login #register" ).show( 145 );
   });
 
-  $( "#lawyerist-login .back-to-login-link" ).click( function() {
+  $( "#lawyerist-login .back-to-login" ).click( function() {
     $( "#lawyerist-login #login" ).show( 145 );
     $( "#lawyerist-login #register" ).hide( 95 );
   });
