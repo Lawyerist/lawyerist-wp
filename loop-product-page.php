@@ -75,7 +75,11 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
         echo '<div class="clear"></div>';
 
-        echo '</div>'; // Close aggregateRating.
+        if ( !empty( $composite_rating ) ) {
+
+          echo '</div>'; // Close aggregateRating.
+          
+        }
 
       echo '</div>'; // Close .headline_container.
 
@@ -156,8 +160,6 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
         // Byline
         get_template_part( 'postmeta', 'page' );
-
-        echo '<div class="clear"></div>';
 
         // Show page navigation if the post is paginated unless we're displaying
         // the RSS feed.

@@ -1,5 +1,7 @@
 <?php if ( have_comments() ) : ?>
+
 	<h3 id="comments">
+
 		<?php
 			if ( 1 == get_comments_number() ) {
 				printf( __( '1 Comment' ) );
@@ -8,6 +10,7 @@
 				printf( _n( '%s Comment', '%s Comments', get_comments_number() ), number_format_i18n( get_comments_number() ) );
 			}
 		?>
+
 	</h3>
 
 	<div class="navigation">
@@ -16,15 +19,20 @@
 	</div>
 
 	<ol class="commentlist">
-	<?php wp_list_comments( array(
-		'avatar_size'	=> 48,
-	) ); ?>
+	<?php
+
+		wp_list_comments( array(
+			'avatar_size'	=> 48,
+		) );
+
+	?>
 	</ol>
 
 	<div class="navigation">
 		<div class="alignleft"><?php previous_comments_link() ?></div>
 		<div class="alignright"><?php next_comments_link() ?></div>
 	</div>
+
  <?php else : // this is displayed if there are no comments so far ?>
 
 	<?php if ( comments_open() ) : ?>
@@ -35,6 +43,7 @@
 		<p class="nocomments"><?php _e('Comments are closed.'); ?></p>
 
 	<?php endif; ?>
+	
 <?php endif; ?>
 
 <?php

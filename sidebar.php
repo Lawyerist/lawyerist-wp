@@ -12,6 +12,6 @@ echo '<div id="sidebar_column">';
 
 	dynamic_sidebar( 'sidebar' );
 
-echo '</div><!--end #sidebar_column"-->';
+echo '</div>' . "\n" . '<!-- end #sidebar_column -->';
 
 ?>
