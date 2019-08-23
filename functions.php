@@ -1277,7 +1277,7 @@ function lawyerist_list_child_pages_fallback( $content ) {
 
 	$children = get_pages( array( 'child_of' => $post->ID ) );
 
-if ( is_page() && !is_page( 'about' ) && !is_product_portal() && !has_shortcode( $content, 'list-child-pages' ) ) {
+if ( is_page() && !is_page( 'about' ) && !is_page( 'community' ) && !is_product_portal() && !has_shortcode( $content, 'list-child-pages' ) ) {
 
 		ob_start();
 
