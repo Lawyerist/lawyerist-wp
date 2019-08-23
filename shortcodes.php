@@ -229,100 +229,95 @@ function lawyerist_featured_products_list( $atts ) {
         // Start the Loop.
         while ( $featured_products_list_query->have_posts() ) : $featured_products_list_query->the_post();
 
-          $featured_page_ID = get_the_ID();
+          $featured_page_ID     = get_the_ID();
+          $featured_page_title	= the_title( '', '', FALSE );
+          $featured_page_URL		= get_permalink();
 
-          if ( !WPSEO_Meta::get_value( 'meta-robots-noindex', $featured_page_ID ) == 1 ) {
+          $seo_descr  = get_post_meta( $featured_page_ID, '_yoast_wpseo_metadesc', true );
 
-            $featured_page_title	= the_title( '', '', FALSE );
-            $featured_page_URL		= get_permalink();
+          if ( !empty( $seo_descr ) ) {
+            $page_excerpt = $seo_descr;
+          } else {
+            $page_excerpt = get_the_excerpt();
+          }
 
-            $seo_descr  = get_post_meta( $featured_page_ID, '_yoast_wpseo_metadesc', true );
+          // Check for a rating.
+          if ( comments_open() && function_exists( 'wp_review_show_total' ) ) {
 
-            if ( !empty( $seo_descr ) ) {
-              $page_excerpt = $seo_descr;
-            } else {
-              $page_excerpt = get_the_excerpt();
+            $composite_rating = lawyerist_get_composite_rating();
+
+          }
+
+          echo '<li class="card">';
+
+            if ( has_post_thumbnail() ) {
+
+              echo '<a class="image" href="' . $featured_page_URL . '">';
+
+                if ( has_term( 'affinity-partner', 'page_type', $post->ID ) && get_field( 'affinity_active' ) == true ) {
+
+                  $theme_dir = get_template_directory_uri();
+                  echo '<img class="affinity-partner-badge" alt="Lawyerist affinity partner badge." src="' . $theme_dir . '/images/affinity-partner-mini-badge.png" height="64" width="75" />';
+
+                }
+
+                the_post_thumbnail( 'thumbnail' );
+
+              echo '</a>';
+
             }
 
-            // Check for a rating.
-            if ( comments_open() && function_exists( 'wp_review_show_total' ) ) {
+            echo '<div class="title_container">';
 
-              $composite_rating = lawyerist_get_composite_rating();
+              if ( !empty( $composite_rating ) ) {
 
-            }
+                echo '<div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">';
+                echo '<a class="title" href="' . $featured_page_URL . '"><span itemprop="itemReviewed">' . $featured_page_title . '</span></a>';
 
-            echo '<li class="card">';
+              } else {
 
-              if ( has_post_thumbnail() ) {
-
-                echo '<a class="image" href="' . $featured_page_URL . '">';
-
-                  if ( has_term( 'affinity-partner', 'page_type', $post->ID ) && get_field( 'affinity_active' ) == true ) {
-
-                    $theme_dir = get_template_directory_uri();
-                    echo '<img class="affinity-partner-badge" alt="Lawyerist affinity partner badge." src="' . $theme_dir . '/images/affinity-partner-mini-badge.png" height="64" width="75" />';
-
-                  }
-
-                  the_post_thumbnail( 'thumbnail' );
-
-                echo '</a>';
+                echo '<a class="title" href="' . $featured_page_URL . '">' . $featured_page_title . '</a>';
 
               }
 
-              echo '<div class="title_container">';
+              // Rating
+              echo '<div class="user-rating">';
 
                 if ( !empty( $composite_rating ) ) {
 
-                  echo '<div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">';
-                  echo '<a class="title" href="' . $featured_page_URL . '"><span itemprop="itemReviewed">' . $featured_page_title . '</span></a>';
+                  echo '<a href="' . $featured_page_URL . '#rating">';
+
+                    echo lawyerist_product_rating();
+
+                  echo '</a>';
 
                 } else {
 
-                  echo '<a class="title" href="' . $featured_page_URL . '">' . $featured_page_title . '</a>';
+                  echo '<a href="' . $featured_page_URL . '#respond">Leave a review.</a>';
 
                 }
 
-                // Rating
-                echo '<div class="user-rating">';
+              echo '</div>'; // End .user_rating.
 
-                  if ( !empty( $composite_rating ) ) {
-
-                    echo '<a href="' . $featured_page_URL . '#rating">';
-
-                      echo lawyerist_product_rating();
-
-                    echo '</a>';
-
-                  } else {
-
-                    echo '<a href="' . $featured_page_URL . '#respond">Leave a review.</a>';
-
-                  }
-
-                echo '</div>'; // End .user_rating.
-
-                if ( !empty( $composite_rating ) ) {
-                  echo '</div>'; // End aggregateRating schema.
-                }
-
-              echo '</div>'; // End .title_container.
-
-              if ( ( $country == ( 'US' || 'CA' ) ) && has_trial_button( $featured_page_ID ) ) {
-
-                echo '<div class="list-products-trial-button">';
-                  echo  trial_button( $featured_page_ID );
-                echo '</div>';
-
+              if ( !empty( $composite_rating ) ) {
+                echo '</div>'; // End aggregateRating schema.
               }
 
-              echo '<div class="clear"></div>';
+            echo '</div>'; // End .title_container.
 
-              echo '<span class="excerpt">' . $page_excerpt . ' <a href="' . $featured_page_URL . '">Learn more about ' . $featured_page_title . '.</a></span>';
+            if ( ( $country == ( 'US' || 'CA' ) ) && has_trial_button( $featured_page_ID ) ) {
 
-            echo '</li>';
+              echo '<div class="list-products-trial-button">';
+                echo  trial_button( $featured_page_ID );
+              echo '</div>';
 
-          }
+            }
+
+            echo '<div class="clear"></div>';
+
+            echo '<span class="excerpt">' . $page_excerpt . ' <a href="' . $featured_page_URL . '">Learn more about ' . $featured_page_title . '.</a></span>';
+
+          echo '</li>';
 
         endwhile; wp_reset_postdata();
 
@@ -393,107 +388,102 @@ function lawyerist_all_products_list( $atts ) {
   			// Start the Loop.
   			while ( $product_list_query->have_posts() ) : $product_list_query->the_post();
 
-          $product_page_ID = get_the_ID();
+          $product_page_ID    = get_the_ID();
+  				$product_page_title	= the_title( '', '', FALSE );
+  				$product_page_URL		= get_permalink();
 
-          if ( !WPSEO_Meta::get_value( 'meta-robots-noindex', $product_page_ID ) == 1 ) {
+          $seo_descr  = get_post_meta( $product_page_ID, '_yoast_wpseo_metadesc', true );
 
-    				$product_page_title	= the_title( '', '', FALSE );
-    				$product_page_URL		= get_permalink();
+          if ( !empty( $seo_descr ) ) {
+            $page_excerpt = $seo_descr;
+          } else {
+            $page_excerpt = get_the_excerpt();
+          }
 
-            $seo_descr  = get_post_meta( $product_page_ID, '_yoast_wpseo_metadesc', true );
+          // Check for a rating.
+          if ( comments_open() && function_exists( 'wp_review_show_total' ) ) {
 
-            if ( !empty( $seo_descr ) ) {
-              $page_excerpt = $seo_descr;
-            } else {
-              $page_excerpt = get_the_excerpt();
-            }
+          	$composite_rating = lawyerist_get_composite_rating();
 
-            // Check for a rating.
-            if ( comments_open() && function_exists( 'wp_review_show_total' ) ) {
+          }
 
-            	$composite_rating = lawyerist_get_composite_rating();
+  				echo '<li ';
+          post_class( 'card' );
+          echo '>';
 
-            }
+  					if ( has_post_thumbnail() ) {
 
-    				echo '<li ';
-            post_class( 'card' );
-            echo '>';
+  						echo '<a class="image" href="' . $product_page_URL . '">';
 
-    					if ( has_post_thumbnail() ) {
+                if ( has_term( 'affinity-partner', 'page_type', $post->ID ) && get_field( 'affinity_active' ) == true ) {
 
-    						echo '<a class="image" href="' . $product_page_URL . '">';
-
-                  if ( has_term( 'affinity-partner', 'page_type', $post->ID ) && get_field( 'affinity_active' ) == true ) {
-
-                    $theme_dir = get_template_directory_uri();
-                    echo '<img class="affinity-partner-badge" alt="Lawyerist affinity partner badge." src="' . $theme_dir . '/images/affinity-partner-mini-badge.png" height="64" width="75" />';
-
-                  }
-
-      						the_post_thumbnail( 'thumbnail' );
-
-    						echo '</a>';
-
-    					}
-
-              echo '<div class="title_container">';
-
-                if ( !empty( $composite_rating ) ) {
-
-                  echo '<div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">';
-                  echo '<a class="title" href="' . $product_page_URL . '"><span itemprop="itemReviewed">' . $product_page_title . '</span></a>';
-
-                } else {
-
-                  echo '<a class="title" href="' . $product_page_URL . '">' . $product_page_title . '</a>';
+                  $theme_dir = get_template_directory_uri();
+                  echo '<img class="affinity-partner-badge" alt="Lawyerist affinity partner badge." src="' . $theme_dir . '/images/affinity-partner-mini-badge.png" height="64" width="75" />';
 
                 }
 
-                // Rating
-                echo '<div class="user-rating">';
+    						the_post_thumbnail( 'thumbnail' );
 
-                  if ( !empty( $composite_rating ) ) {
+  						echo '</a>';
 
-                    echo '<a href="' . $product_page_URL . '#rating">';
+  					}
 
-                      echo lawyerist_product_rating();
+            echo '<div class="title_container">';
 
-                    echo '</a>';
+              if ( !empty( $composite_rating ) ) {
 
-                  } else {
+                echo '<div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">';
+                echo '<a class="title" href="' . $product_page_URL . '"><span itemprop="itemReviewed">' . $product_page_title . '</span></a>';
 
-                    echo '<a href="' . $product_page_URL . '#respond">Leave a review.</a>';
+              } else {
 
-                  }
-
-                echo '</div>'; // End .user_rating.
-
-                if ( !empty( $composite_rating ) ) {
-                  echo '</div>'; // End aggregateRating schema.
-                }
-
-              echo '</div>'; // End .title_container.
-
-              // Outputs trial button if there is one, except on the all-reviews page.
-              if ( !is_page( '301729' ) ) {
-
-                if ( ( $country == ( 'US' || 'CA' ) ) && has_trial_button( $product_page_ID ) ) {
-
-                  echo '<div class="list-products-trial-button">';
-                    echo  trial_button( $product_page_ID );
-                  echo '</div>';
-
-                }
+                echo '<a class="title" href="' . $product_page_URL . '">' . $product_page_title . '</a>';
 
               }
 
-    					echo '<div class="clear"></div>';
+              // Rating
+              echo '<div class="user-rating">';
 
-    					if ( $atts[ 'show_excerpt' ] == 'true' ) { echo '<span class="excerpt">' . $page_excerpt . ' <a href="' . $product_page_URL . '">Learn more about ' . $product_page_title . '.</a></span>'; }
+                if ( !empty( $composite_rating ) ) {
 
-    				echo '</li>';
+                  echo '<a href="' . $product_page_URL . '#rating">';
 
-          }
+                    echo lawyerist_product_rating();
+
+                  echo '</a>';
+
+                } else {
+
+                  echo '<a href="' . $product_page_URL . '#respond">Leave a review.</a>';
+
+                }
+
+              echo '</div>'; // End .user_rating.
+
+              if ( !empty( $composite_rating ) ) {
+                echo '</div>'; // End aggregateRating schema.
+              }
+
+            echo '</div>'; // End .title_container.
+
+            // Outputs trial button if there is one, except on the all-reviews page.
+            if ( !is_page( '301729' ) ) {
+
+              if ( ( $country == ( 'US' || 'CA' ) ) && has_trial_button( $product_page_ID ) ) {
+
+                echo '<div class="list-products-trial-button">';
+                  echo  trial_button( $product_page_ID );
+                echo '</div>';
+
+              }
+
+            }
+
+  					echo '<div class="clear"></div>';
+
+  					if ( $atts[ 'show_excerpt' ] == 'true' ) { echo '<span class="excerpt">' . $page_excerpt . ' <a href="' . $product_page_URL . '">Learn more about ' . $product_page_title . '.</a></span>'; }
+
+  				echo '</li>';
 
   			endwhile; wp_reset_postdata();
 
