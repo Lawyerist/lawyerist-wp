@@ -3544,6 +3544,7 @@ a.greybutton:active,
   /* Small Firm Scorecard */
   #gform_wrapper_45 .gfield_label,
   #gform_wrapper_47 .gfield_label {
+    font-family: unset;
     font-weight: normal;
   }
 
@@ -3562,17 +3563,21 @@ a.greybutton:active,
 
       #gform_wrapper_45 table.gsurvey-likert td,
       #gform_wrapper_47 table.gsurvey-likert td {
-        background-position: top 6px center !important;
-        padding: 0 3px;
+        background-position: bottom 6px center !important;
+        min-height: 55px;
+        padding: 0;
       }
 
       #gform_wrapper_45 table.gsurvey-likert td::after,
       #gform_wrapper_47 table.gsurvey-likert td::after {
+        background-color: #eee;
+        border-bottom: 1px solid #ccc;
         display: block;
         font-size: 1.6rem;
         font-weight: normal;
         line-height: 13px;
-        margin: 29px 0 6px 0;
+        margin: 0 0 29px 0;
+        padding: 6px;
         text-align: center;
       }
 
