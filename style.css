@@ -44,7 +44,6 @@ Footer
 Forms
 	Buttons
   Gravity Forms Customizations
-  HubSpot Forms Customizations
 WooCommerce
 LearnDash
 Print
@@ -3551,51 +3550,6 @@ a.greybutton:active,
     display: none;
   }
 
-
-  /*------------------------------
-  HubSpot Forms Customizations
-  ------------------------------*/
-
-  .member-logged-in .leadinModal.leadinModal-theme-top {
-    box-shadow: 0 .2rem .3rem rgba(0, 0, 0, 0.2);
-    top: 3.2rem;
-  }
-
-  .hbspt-form fieldset {
-    margin-bottom: .75em !important;
-  }
-
-    .hbspt-form fieldset:last-of-type {
-      margin-bottom: 1em;
-    }
-
-    .hbspt-form .form-columns-2 .hs-form-field input,
-    .hbspt-form .form-columns-2 .hs-form-field select {
-      width: 90%;
-    }
-
-  .hbspt-form label {
-    display: block;
-    line-height: inherit;
-    margin-bottom: .5em;
-  }
-
-  .hbspt-form ul.hs-error-msgs {
-    list-style: none;
-    margin: 0;
-  }
-
-    .hbspt-form ul.hs-error-msgs li label:before {
-      color: #c00;
-      content: '\f456';
-      display: inline-block;
-      -moz-osx-font-smoothing: grayscale;
-      -webkit-font-smoothing: antialiased;
-      font: normal 1.6rem/1 Genericons;
-      margin-right: .25em;
-      speak: none;
-      vertical-align: text-top;
-    }
 
 /*------------------------------
 WooCommerce
