@@ -1608,7 +1608,7 @@ function lawyerist_get_our_rating() {
 	global $post;
 
 	$our_rating_raw	= get_post_meta( $post->ID, 'wp_review_total', true );
-	$our_rating			= round( intval( $our_rating_raw ) / 2, 1 );
+	$our_rating			= round( floatval( $our_rating_raw ) / 2, 1 );
 
 	return $our_rating;
 
