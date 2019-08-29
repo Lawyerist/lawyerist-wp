@@ -1,5 +1,5 @@
 // Responsive Menu
-jQuery( document ).ready( function( $ ) {
+( function( $ ) {
 
   $( "#menu-main-menu .sub-menu" ).hide();
 
@@ -15,12 +15,12 @@ jQuery( document ).ready( function( $ ) {
     $( this ).toggleClass( "open" ).next( ".sub-menu" ).slideToggle( 145 );
   });
 
-});
+})( jQuery );
 // End Responsive Menu
 
 
 // Lawyerist Login/Register
-jQuery( document ).ready( function( $ ) {
+( function( $ ) {
 
   $( "#lawyerist-login #register" ).hide();
   $( "#lawyerist-login.modal" ).hide();
@@ -67,7 +67,7 @@ jQuery( document ).ready( function( $ ) {
     $( "#lawyerist-login.modal #register p.remove_bottom" ).hide();
   });
 
-});
+})( jQuery );
 // End Lawyerist Login/Register
 
 /**
@@ -75,7 +75,7 @@ jQuery( document ).ready( function( $ ) {
 *
 * Opens and closes things with the .expand-this class.
 */
-jQuery( document ).ready( function( $ ) {
+( function( $ ) {
 
   if ( $( ".expandthis-hide" ).length > 0 ) {
 
@@ -88,11 +88,11 @@ jQuery( document ).ready( function( $ ) {
 
   }
 
-});
+})( jQuery );
 
 
 // WooCommerce Select Drop-Downs
-jQuery( document ).ready( function( $ ) {
+( function( $ ) {
 
 	// Frontend Chosen selects
 	if ( $().select2 ) {
@@ -105,7 +105,7 @@ jQuery( document ).ready( function( $ ) {
 		});
 	}
 
-});
+})( jQuery );
 // End WooCommerce Select Drop-Downs
 
 
@@ -133,15 +133,15 @@ function stickySidebarAd( $ ) {
 
 }
 
-jQuery( document ).ready( function( $ ) {
+( function( $ ) {
   $( window ).scroll( stickySidebarAd );
   stickySidebarAd();
-});
+})( jQuery );
 // End Sticky Sidebar Ad
 
 
 // Dismissible Call to Action
-jQuery( document ).ready( function() {
+( function() {
 
     var notice, noticeId, storedNoticeId, dismissButton;
 
@@ -164,5 +164,5 @@ jQuery( document ).ready( function() {
       localStorage.setItem( 'lawyeristNotices', noticeId );
     });
 
-});
+})( jQuery );
 // End Dismissible Call to Action
