@@ -110,32 +110,34 @@
 
 
 // Sticky Sidebar Ad
-function stickySidebarAd( $ ) {
+( function( $ ) {
 
-  // Checks to see if the sidebar ad is present.
-  if ( jQuery( '#lawyerist_display_ad' ).length > 0 ) {
+  function stickySidebarAd() {
 
-    var windowTop       = jQuery( window ).scrollTop();
-    var sidebarTop      = jQuery( '#sidebar_column' ).offset().top;
-    var sidebarAdHeight = jQuery( '#lawyerist_display_ad' ).outerHeight();
-    var sponsorAdHeight = jQuery( '#platinum-sponsors-widget' ).outerHeight();
-    var sidebarBottom   = sidebarTop + sidebarAdHeight + sponsorAdHeight;
+    // Checks to see if the sidebar ad is present.
+    if ( $( '#lawyerist_display_ad' ).length > 0 ) {
 
-    if ( windowTop > sidebarBottom ) {
-      jQuery( '#lawyerist_display_ad' ).addClass( 'stick' );
-    }
+      var windowTop       = $( window ).scrollTop();
+      var sidebarTop      = $( '#sidebar_column' ).offset().top;
+      var sidebarAdHeight = $( '#lawyerist_display_ad' ).outerHeight();
+      var sponsorAdHeight = $( '#platinum-sponsors-widget' ).outerHeight();
+      var sidebarBottom   = sidebarTop + sidebarAdHeight + sponsorAdHeight;
 
-    if ( windowTop < sidebarBottom ) {
-      jQuery( '#lawyerist_display_ad' ).removeClass( 'stick' );
+      if ( windowTop > sidebarBottom ) {
+        $( '#lawyerist_display_ad' ).addClass( 'stick' );
+      }
+
+      if ( windowTop < sidebarBottom ) {
+        $( '#lawyerist_display_ad' ).removeClass( 'stick' );
+      }
+
     }
 
   }
 
-}
-
-( function( $ ) {
   $( window ).scroll( stickySidebarAd );
   stickySidebarAd();
+
 })( jQuery );
 // End Sticky Sidebar Ad
 
