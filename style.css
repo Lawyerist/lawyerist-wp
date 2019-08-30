@@ -81,7 +81,7 @@ Load Fonts
 
 /* Concourse (headings) */
 @font-face {
-  font-display: swap;
+  font-display: block;
   font-family: 'concourse-headings';
   src:  local( 'Concourse T6 Regular' ),
         url( './fonts/concourse/concourse_t6_regular-webfont.woff2' ) format( 'woff2' ),
@@ -91,7 +91,7 @@ Load Fonts
 }
 
 @font-face {
-  font-display: swap;
+  font-display: block;
   font-family: 'concourse-headings';
   src:  local( 'Concourse T6 Italic' ),
         url( './fonts/concourse/concourse_t6_italic-webfont.woff2' ) format( 'woff2' ),
@@ -103,7 +103,7 @@ Load Fonts
 
 /* Concourse (meta) */
 @font-face {
-  font-display: swap;
+  font-display: block;
   font-family: 'concourse';
   src:  local( 'Concourse T4 Regular' ),
         url( './fonts/concourse/concourse_t4_regular-webfont.woff2' ) format( 'woff2' ),
@@ -113,7 +113,7 @@ Load Fonts
 }
 
 @font-face {
-  font-display: swap;
+  font-display: block;
   font-family: 'concourse';
   src:  local( 'Concourse T4 Italic' ),
         url( './fonts/concourse/concourse_t4_italic-webfont.woff2' ) format( 'woff2' ),
@@ -123,7 +123,7 @@ Load Fonts
 }
 
 @font-face {
-  font-display: swap;
+  font-display: block;
   font-family: 'concourse';
   src:  local( 'Concourse T4 Bold' ),
         url( './fonts/concourse/concourse_t4_bold-webfont.woff2' ) format( 'woff2' ),
@@ -133,7 +133,7 @@ Load Fonts
 }
 
 @font-face {
-  font-display: swap;
+  font-display: block;
   font-family: 'concourse';
   src:  local( 'Concourse T4 Bold Italic' ),
         url( './fonts/concourse/concourse_t4_bold_italic-webfont.woff2' ) format( 'woff2' ),
@@ -145,7 +145,7 @@ Load Fonts
 
 /* Equity (body text) */
 @font-face {
-  font-display: swap;
+  font-display: block;
   font-family: 'equity';
   src:  local( 'Equity Text B Regular' ),
         url( './fonts/equity/equity_text_b_regular-webfont.woff2' ) format( 'woff2' ),
@@ -155,7 +155,7 @@ Load Fonts
 }
 
 @font-face {
-  font-display: swap;
+  font-display: block;
   font-family: 'equity';
   src:  local( 'Equity Text B Italic' ),
         url( './fonts/equity/equity_text_b_italic-webfont.woff2' ) format( 'woff2' ),
@@ -165,7 +165,7 @@ Load Fonts
 }
 
 @font-face {
-  font-display: swap;
+  font-display: block;
   font-family: 'equity';
   src:  local( 'Equity Text B Bold' ),
         url( './fonts/equity/equity_text_b_bold-webfont.woff2' ) format( 'woff2' ),
@@ -175,7 +175,7 @@ Load Fonts
 }
 
 @font-face {
-  font-display: swap;
+  font-display: block;
   font-family: 'equity';
   src:  local( 'Equity Text B Bold Italic' ),
         url( './fonts/equity/equity_text_b_bold_italic-webfont.woff2' ) format( 'woff2' ),
