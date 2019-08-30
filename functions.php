@@ -14,6 +14,7 @@ STRUCTURE
 ADMIN
 - Login Form
 - Remove Menu Items
+- Add Elementor Section Templates to ACF Page Options Drop-Down Menu
 
 UTILITY FUNCTIONS
 - Get Country
@@ -385,6 +386,33 @@ function lawyerist_remove_stubborn_admin_bar_items() {
 }
 add_action( 'wp_before_admin_bar_render', 'lawyerist_remove_stubborn_admin_bar_items', 999 );
 
+
+/*------------------------------
+Add Elementor Section Templates to ACF Page Options Drop-Down Menu
+------------------------------*/
+
+function acf_populate_sections() {
+
+	$args = array(
+		'fields'			=> 'ids',
+		'post_type' 	=> 'elementor_library',
+		'meta_key'		=> '_elementor_template_type',
+		'meta_value'	=> 'section',
+	);
+
+	$section_ids = get_posts( $args );
+
+	foreach ( $section_ids as $section_id ) {
+
+	}
+
+	echo '<pre>';
+	var_dump( $section_ids );
+	echo '</pre>';
+
+}
+
+// add_filter( 'acf/load_field/name=select_call_to_action', 'acf_populate_sections' );
 
 
 /* UTILITY FUNCTIONS ********************/
