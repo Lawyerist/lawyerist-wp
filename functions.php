@@ -391,7 +391,9 @@ add_action( 'wp_before_admin_bar_render', 'lawyerist_remove_stubborn_admin_bar_i
 Add Elementor Section Templates to ACF Page Options Drop-Down Menu
 ------------------------------*/
 
-function acf_populate_sections() {
+function acf_populate_sections( $field ) {
+
+	$field[ 'choices' ] = array();
 
 	$args = array(
 		'fields'			=> 'ids',
@@ -404,7 +406,11 @@ function acf_populate_sections() {
 
 	foreach ( $section_ids as $section_id ) {
 
+		$field[ 'choices' ][ $section_id ] = $section_id;
+
 	}
+
+	return $field;
 
 	echo '<pre>';
 	var_dump( $section_ids );
