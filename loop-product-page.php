@@ -78,7 +78,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
         if ( !empty( $composite_rating ) ) {
 
           echo '</div>'; // Close aggregateRating.
-          
+
         }
 
       echo '</div>'; // Close .headline_container.

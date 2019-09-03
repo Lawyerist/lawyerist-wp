@@ -91,6 +91,8 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
   echo '</main>';
 
+  lawyerist_cta();
+
   if ( comments_open() ) {
 
     echo '<div id="comments_container">';

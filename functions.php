@@ -14,6 +14,7 @@ STRUCTURE
 ADMIN
 - Login Form
 - Remove Menu Items
+- Add Elementor Section Templates to ACF Call to Action Drop-Down Menu
 
 UTILITY FUNCTIONS
 - Get Country
@@ -385,6 +386,74 @@ function lawyerist_remove_stubborn_admin_bar_items() {
 }
 add_action( 'wp_before_admin_bar_render', 'lawyerist_remove_stubborn_admin_bar_items', 999 );
 
+
+/*------------------------------
+Add Elementor Section Templates to ACF Call to Action Drop-Down Menu
+------------------------------*/
+
+function acf_populate_sections( $field ) {
+
+	$field[ 'choices' ] = array();
+
+	// Creates a default choice.
+	$field[ 'choices' ][ 'default' ] = 'Default';
+
+	$args = array(
+		'fields'			=> 'ids',
+		'post_type' 	=> 'elementor_library',
+		'meta_key'		=> '_elementor_template_type',
+		'meta_value'	=> 'section',
+	);
+
+	$section_ids = get_posts( $args );
+
+	foreach ( $section_ids as $section_id ) {
+
+		$section_title	= get_the_title( $section_id );
+
+		$field[ 'choices' ][ $section_id ] = $section_title;
+
+	}
+
+	// Adds a "none" choice to the end.
+	$field[ 'choices' ][ 'none' ] = 'None';
+
+	return $field;
+
+}
+
+add_filter( 'acf/load_field/name=select_call_to_action', 'acf_populate_sections' );
+
+
+function lawyerist_cta() {
+
+	$cta_val = get_field( 'select_call_to_action' );
+
+	if ( $cta_val == 'none' ) { return; }
+
+	$cta_obj = get_field_object( 'select_call_to_action' );
+
+	if ( $cta_val == 'default' ) {
+		$cta_val = $cta_obj[ 'default_value' ];
+	}
+
+	$args = array(
+		'p'								=> $cta_val,
+		'post_type'				=> 'elementor_library',
+		'posts_per_page'	=> 1,
+	);
+
+	$cta_query = new WP_Query( $args );
+
+	if ( $cta_query->have_posts() ) : while ( $cta_query->have_posts() ) : $cta_query->the_post();
+
+		echo '<div id="cta">';
+		the_content();
+		echo '</div>';
+
+	endwhile; wp_reset_postdata(); endif;
+
+}
 
 
 /* UTILITY FUNCTIONS ********************/
