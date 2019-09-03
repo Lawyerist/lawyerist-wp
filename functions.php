@@ -14,7 +14,7 @@ STRUCTURE
 ADMIN
 - Login Form
 - Remove Menu Items
-- Add Elementor Section Templates to ACF Page Options Drop-Down Menu
+- Add Elementor Section Templates to ACF Call to Action Drop-Down Menu
 
 UTILITY FUNCTIONS
 - Get Country
@@ -388,12 +388,15 @@ add_action( 'wp_before_admin_bar_render', 'lawyerist_remove_stubborn_admin_bar_i
 
 
 /*------------------------------
-Add Elementor Section Templates to ACF Page Options Drop-Down Menu
+Add Elementor Section Templates to ACF Call to Action Drop-Down Menu
 ------------------------------*/
 
 function acf_populate_sections( $field ) {
 
 	$field[ 'choices' ] = array();
+
+	// Creates a default choice.
+	$field[ 'choices' ][ 'default' ] = 'Default';
 
 	$args = array(
 		'fields'			=> 'ids',
@@ -406,19 +409,20 @@ function acf_populate_sections( $field ) {
 
 	foreach ( $section_ids as $section_id ) {
 
-		$field[ 'choices' ][ $section_id ] = $section_id;
+		$section_title	= get_the_title( $section_id );
+
+		$field[ 'choices' ][ $section_id ] = $section_title;
 
 	}
 
-	return $field;
+	// Adds a "none" choice to the end.
+	$field[ 'choices' ][ 'none' ] = 'None';
 
-	echo '<pre>';
-	var_dump( $section_ids );
-	echo '</pre>';
+	return $field;
 
 }
 
-// add_filter( 'acf/load_field/name=select_call_to_action', 'acf_populate_sections' );
+add_filter( 'acf/load_field/name=select_call_to_action', 'acf_populate_sections' );
 
 
 /* UTILITY FUNCTIONS ********************/
