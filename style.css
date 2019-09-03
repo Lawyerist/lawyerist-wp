@@ -79,29 +79,7 @@ Load Fonts
 }
 
 
-/* Concourse (headings) */
-@font-face {
-  font-display: block;
-  font-family: 'concourse-headings';
-  src:  local( 'Concourse T6 Regular' ),
-        url( './fonts/concourse/concourse_t6_regular-webfont.woff2' ) format( 'woff2' ),
-        url( './fonts/concourse/concourse_t6_regular-webfont.woff' ) format( 'woff' );
-  font-weight: bold;
-  font-style: normal;
-}
-
-@font-face {
-  font-display: block;
-  font-family: 'concourse-headings';
-  src:  local( 'Concourse T6 Italic' ),
-        url( './fonts/concourse/concourse_t6_italic-webfont.woff2' ) format( 'woff2' ),
-        url( './fonts/concourse/concourse_t6_italic-webfont.woff' ) format( 'woff' );
-  font-weight: bold;
-  font-style: italic;
-}
-
-
-/* Concourse (meta) */
+/* Concourse */
 @font-face {
   font-display: block;
   font-family: 'concourse';
@@ -707,26 +685,7 @@ body {
   font-variant-ligatures: common-ligatures;
 }
 
-
-/* Things that use Concourse */
-h1,
-h2,
-.h2,
-h3,
-.h3,
-h4,
-h5,
-h6,
-.headline,
-th,
-#dashboard-title,
-.fp-section-header,
-.learndash #lesson_heading,
-#menu-main-menu .sub-menu .menu-item-has-children > a,
-.title {
-  font-family: concourse-headings, sans-serif;
-}
-
+/* Concourse */
 .affinity-partner-discount,
 aside blockquote,
 .breadcrumbs,
@@ -741,14 +700,26 @@ button,
 .comment-author,
 .comment-meta,
 .comment .reply,
+#dashboard-title,
 figcaption,
 #footer,
+.fp-section-header,
 #gform_wrapper_45 table.gsurvey-likert td::after,
 #gform_wrapper_47 table.gsurvey-likert td::after,
+h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+h5,
+h6,
 #header,
+.headline,
 input[type="button"],
 input[type="submit"],
 label,
+.learndash #lesson_heading,
 .ld_course_grid_price,
 #learndash_course_status,
 .single-sfwd-topic .learndash_topic_dots,
@@ -773,6 +744,8 @@ p.pullquote,
 #scorecard_results #grade_box,
 .scorecard-results-wrapper,
 .tag_list,
+th,
+.title
 .user-rating,
 p.woocommerce-result-count,
 .woocommerce a.added_to_cart,
@@ -787,6 +760,7 @@ a.wp-block-file__button,
   font-family: concourse, sans-serif;
 }
 
+/* Sub-elements of Concourse elements that should be reset to Equity. */
 .gform_confirmation_message,
 input[ type="email" ],
 input[ type="password" ],
@@ -799,7 +773,7 @@ textarea {
 }
 
 
-/* Things that use Triplicate */
+/* Elements that use Triplicate. */
 code,
 pre {
   font-family: triplicate, monospace;
@@ -2476,7 +2450,7 @@ Content
 
     .memberships-pricing-chart .row-1 {
       color: #333;
-      font-family: concourse-headings, sans-serif;
+      font-family: concourse, sans-serif;
       font-size: 2.8rem;
       font-weight: bold;
       line-height: 1.2;
