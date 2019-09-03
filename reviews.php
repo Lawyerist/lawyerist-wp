@@ -2,14 +2,20 @@
 
 	<h2 id="comments">
 
-		<?php
-			if ( 1 == get_comments_number() ) {
-				printf( __( '1 Community Review' )	);
-			} else {
-				/* Translator: %s: number of reviews */
-				printf( _n( '%s Community Review', '%s Community Reviews', get_comments_number() ), number_format_i18n( get_comments_number() ) );
-			}
-		?>
+	<?php
+
+		if ( 1 == get_comments_number() ) {
+
+			printf( __( '1 %s Community Review' ), get_the_title()	);
+
+		} else {
+
+			/* translators: 1: number of comments, 2: post title */
+			printf( _n( '%1$s  %2$s Community Review', '%1$s  %2$s Community Reviews', get_comments_number() ), number_format_i18n( get_comments_number() ), get_the_title() );
+
+		}
+
+	?>
 
 	</h2>
 
@@ -45,7 +51,7 @@
 	<?php else : // comments are closed ?>
 
 		<!-- If comments are closed. -->
-		<p class="nocomments"><?php _e('Comments are closed.'); ?></p>
+		<p class="nocomments"><?php _e( 'Reviews are closed.' ); ?></p>
 
 	<?php endif; ?>
 
