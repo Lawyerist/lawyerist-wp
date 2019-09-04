@@ -32,6 +32,7 @@ CONTENT
 - Show Pages in Author Archives
 - List of Coauthors
 - Custom Default Gravatar
+- Post/Page Footer CTA
 - Get Alternative Products
 - Get Related Podcasts
 - Get Related Posts
@@ -423,38 +424,7 @@ function acf_populate_sections( $field ) {
 
 }
 
-add_filter( 'acf/load_field/name=select_call_to_action', 'acf_populate_sections' );
-
-
-function lawyerist_cta() {
-
-	$cta_val = get_field( 'select_call_to_action' );
-
-	if ( $cta_val == 'none' ) { return; }
-
-	$cta_obj = get_field_object( 'select_call_to_action' );
-
-	if ( $cta_val == 'default' ) {
-		$cta_val = $cta_obj[ 'default_value' ];
-	}
-
-	$args = array(
-		'p'								=> $cta_val,
-		'post_type'				=> 'elementor_library',
-		'posts_per_page'	=> 1,
-	);
-
-	$cta_query = new WP_Query( $args );
-
-	if ( $cta_query->have_posts() ) : while ( $cta_query->have_posts() ) : $cta_query->the_post();
-
-		echo '<div id="cta">';
-		the_content();
-		echo '</div>';
-
-	endwhile; wp_reset_postdata(); endif;
-
-}
+add_filter( 'acf/load_field/name=select_footer_cta', 'acf_populate_sections' );
 
 
 /* UTILITY FUNCTIONS ********************/
@@ -1099,6 +1069,43 @@ function lawyerist_custom_gravatar ( $avatar_defaults ) {
 }
 
 add_filter( 'avatar_defaults', 'lawyerist_custom_gravatar' );
+
+/*------------------------------
+Post/Page Footer CTA
+------------------------------*/
+
+function lawyerist_cta() {
+
+	$cta_val = get_field( 'select_footer_cta' );
+
+	if ( $cta_val == 'none' ) { return; }
+
+	if ( is_null( $cta_val ) || $cta_val == 'default' ) {
+
+		// Sets the footer CTA to the default.
+		update_field( 'select_footer_cta', 326430 );
+
+		$cta_val = get_field( 'select_footer_cta' );
+
+	}
+
+	$args = array(
+		'p'								=> $cta_val,
+		'post_type'				=> 'elementor_library',
+		'posts_per_page'	=> 1,
+	);
+
+	$cta_query = new WP_Query( $args );
+
+	if ( $cta_query->have_posts() ) : while ( $cta_query->have_posts() ) : $cta_query->the_post();
+
+		echo '<div id="footer-cta">';
+		the_content();
+		echo '</div>';
+
+	endwhile; wp_reset_postdata(); endif;
+
+}
 
 
 /*------------------------------
