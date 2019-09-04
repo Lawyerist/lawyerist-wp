@@ -64,6 +64,7 @@ WOOCOMMERCE
 - Checkout Fields
 - Display Price of Free Products As "Free!" Not "$0.00".
 - Remove My Account Navigation Items
+- Remove Membership & Subscription Details from WC Order & Thank-You Pages
 
 LEARNDASH
 - Disable Comments on LearnDash Pages
@@ -2164,6 +2165,15 @@ function lawyerist_remove_my_account_links( $menu_links ){
 }
 
 add_filter ( 'woocommerce_account_menu_items', 'lawyerist_remove_my_account_links' );
+
+/*------------------------------
+Remove Membership & Subscription Details from WC Order & Thank-You Pages
+------------------------------*/
+
+add_filter( 'woocommerce_memberships_thank_you_message', '__return_empty_string' );
+
+remove_action( 'woocommerce_thankyou', 'WC_Subscriptions_Order::subscription_thank_you' );
+remove_action( 'woocommerce_order_details_after_order_table', 'WC_Subscriptions_Order::add_subscriptions_to_view_order_templates', 10, 1 );
 
 
 /*------------------------------
