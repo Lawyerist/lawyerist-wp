@@ -37,7 +37,7 @@
   });
 
   // Prevents login links from activating.
-  $( ".login-link, a[ href*='wp-login.php'], .register-link" ).click( function( e ) {
+  $( ".login-link, a[ href*='wp-login.php' ], .register-link" ).click( function( e ) {
     e.preventDefault();
   });
 

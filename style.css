@@ -17,6 +17,7 @@ Load Fonts
 Layout Elements & Grid Structure
 Layout & Design Elements
   Block Styles
+  Elementor
 Typography
 Images
 Expander
@@ -469,6 +470,10 @@ body {
               color: #ddd;
             }
 
+            #menu-main-menu .sub-menu .menu-item-has-children > a {
+              font-weight: bold;
+            }
+
             #menu-main-menu .sub-menu .menu-item-has-children > a::after {
               content: '\f431';
               display: inline-block;
@@ -672,6 +677,19 @@ Block Styles
 
 .wp-block-video video {
   width: 100%;
+}
+
+
+/*------------------------------
+Elementor
+------------------------------*/
+
+.elementor-template-full-width .elementor {
+  margin-top: 3rem;
+}
+
+body .elementor-column-gap-default > .elementor-row > .elementor-column > .elementor-element-populated {
+  padding: unset;
 }
 
 
@@ -1603,6 +1621,7 @@ Front Page
 
 #dashboard-title {
   color: #555;
+  font-weight: bold;
   line-height: 1;
   margin-bottom: 2rem;
   text-transform: uppercase;
@@ -1768,6 +1787,7 @@ p.dashboard-widget-note {
 
 .fp-section-header {
   color: #555;
+  font-weight: bold;
   line-height: 1;
   margin: 4rem 0 2rem 0;
   text-transform: uppercase;
