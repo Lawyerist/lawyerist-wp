@@ -312,115 +312,81 @@ body {
 
             #lawyerist-login {
         			box-sizing: border-box;
-              font-size: 1.6rem;
-              list-style: none;
-              margin: 0;
-        			padding: 2rem !important;
-        		}
-
-            #lawyerist-login a {
-              cursor: pointer;
-            }
-
-              #lawyerist-login-container {
-                position: relative;
-              }
-
-            		#lawyerist-login-container > li {
-            			background-color: #f9f9f9;
-            			margin: 0;
-            			padding: 2rem;
-            		}
-
-            		#lawyerist-login-container > li:first-child {
-            			margin-top: 0;
-            		}
-
-        		#menu-main-menu #lawyerist-login a,
-        		#menu-main-menu #lawyerist-login a:visited {
-        			background: unset;
-        			color: #c00;
-        			display: unset;
-        			padding: unset;
-        		}
-
-        			#menu-main-menu #lawyerist-login a:hover,
-        			#menu-main-menu #lawyerist-login a:focus {
-        				color: #a00;
-        				text-decoration: underline;
-        			}
-
-              #menu-main-menu #lawyerist-login p {
-                font-face: unset;
-              }
-
-        		#lawyerist-login .gform_confirmation_message {
-        			margin-bottom: 1.5em;
-        		}
-
-            #lawyerist-login.modal {
               display: grid;
+              font-size: 1.6rem;
               grid-template-areas: 'lbuffer modal rbuffer';
               grid-template-columns: minmax( 1rem, 1fr ) minmax( 32rem, 48rem ) minmax( 1rem, 1fr );
+              list-style: none;
+              margin: 0;
               max-height: 80%;
               overflow: scroll;
-              padding: 0 !important;
+              padding: 0;
               position: fixed;
                 top: 10%;
               width: 100%;
               z-index: 100;
-            }
+        		}
 
-            #lawyerist-login.modal .card {
-              border-top: .7rem solid #c00;
-              grid-area: modal;
-              margin: .1rem;
-              padding: 2rem;
-            }
-
-            #lawyerist-login.modal #lawyerist-login-container > li {
-              background: unset;
-            }
-
-            #lawyerist-login.modal img.l-dot {
-              display: block;
-              height: 10rem;
-              margin: 0 auto;
-              width: 10rem;
-            }
-
-            #lawyerist-login.modal a.button,
-            #lawyerist-login.modal input[ type="email" ],
-            #lawyerist-login.modal input[ type="password" ],
-            #lawyerist-login.modal input[ type="search" ],
-            #lawyerist-login.modal input[ type="submit" ],
-            #lawyerist-login.modal input[ type="text" ],
-            #lawyerist-login.modal select,
-            #lawyerist-login.modal .address_state {
-              width: 100%;
-            }
-
-            #lawyerist-login.modal a.button {
-              display: block;
-              text-align: center;
-            }
-
-            #lawyerist-login.modal .address_state {
-              margin-right: unset;
-              padding-right: unset;
-            }
-
-            @media only screen and ( min-width: 641px ) {
-
-              .gform_wrapper ul.gform_fields li.gfield {
-                padding-right: unset !important;
+              #lawyerist-login a {
+                cursor: pointer;
               }
 
-            }
+              #lawyerist-login img.l-dot {
+                display: block;
+                height: 10rem;
+                margin: 0 auto;
+                width: 10rem;
+              }
 
-            #lawyerist-login.modal .gform_confirmation_message {
-              margin-bottom: 0;
-            }
+              #lawyerist-login .card {
+                border-top: .7rem solid #c00;
+                grid-area: modal;
+                margin: .1rem;
+                padding: 2rem;
+                position: relative;
+              }
+
+            		#lawyerist-login .card > li {
+            			margin: 0;
+            			padding: 2rem;
+            		}
+
+            		#lawyerist-login .card > li:first-child {
+            			margin-top: 0;
+            		}
+
+                #lawyerist-login a.button,
+                #lawyerist-login input[ type="email" ],
+                #lawyerist-login input[ type="password" ],
+                #lawyerist-login input[ type="search" ],
+                #lawyerist-login input[ type="submit" ],
+                #lawyerist-login input[ type="text" ],
+                #lawyerist-login select,
+                #lawyerist-login .address_state {
+                  width: 100%;
+                }
+
+                #lawyerist-login a.button {
+                  display: block;
+                  text-align: center;
+                }
+
+                #lawyerist-login .address_state {
+                  margin-right: unset;
+                  padding-right: unset;
+                }
+
+                @media only screen and ( min-width: 641px ) {
+
+                  #lawyerist-login .gform_wrapper ul.gform_fields li.gfield {
+                    padding-right: unset !important;
+                  }
+
+                }
+
+                #lawyerist-login .gform_confirmation_message {
+                  margin-bottom: 0;
+                }
 
             #lawyerist-login-screen {
               background-color: rgb( 0, 0, 0, .4 );
@@ -688,10 +654,6 @@ Elementor
   margin-top: 3rem;
 }
 
-body .elementor-column-gap-default > .elementor-row > .elementor-column > .elementor-element-populated {
-  padding: unset;
-}
-
 
 /*------------------------------
 Typography
@@ -784,7 +746,6 @@ input[ type="email" ],
 input[ type="password" ],
 input[ type="search" ],
 input[ type="text" ],
-#menu-main-menu #lawyerist-login p,
 select,
 textarea {
   font-family: equity, serif !important;
