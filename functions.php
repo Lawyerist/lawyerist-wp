@@ -161,29 +161,19 @@ add_action( 'init', 'lawyerist_register_menus' );
 
 /**
 * Get Login/Register
-*
-* @param $version. Can be 'menu' or 'modal'.
 */
-function get_lawyerist_login( $version = null ) {
+function get_lawyerist_login() {
 
 	ob_start();
 
-	if ( $version == 'menu' ) {
-		$gf_id = 58;
-	} elseif ( $version == 'modal' ) {
-		$gf_id = 59;
-	}
-
 	?>
 
-	<div id="lawyerist-login"<?php if ( $version == 'modal' ) { echo ' class="modal" style="display: none;"'; } ?>>
+	<div id="lawyerist-login" class="modal" style="display: none;">
 
-		<div id="lawyerist-login-container"<?php if ( $version == 'modal' ) { echo ' class="card"'; } ?>>
+		<div class="card">
 
-			<?php if ( $version == 'modal' ) { ?>
-				<button class="greybutton dismiss-button"></button>
-				<img class="l-dot" src="<?php echo get_template_directory_uri(); ?>/images/L-dot-login-large.png" />
-			<?php } ?>
+			<button class="greybutton dismiss-button"></button>
+			<img class="l-dot" src="<?php echo get_template_directory_uri(); ?>/images/L-dot-login-large.png" />
 
 			<li id="login">
 				<h2>Log in to Lawyerist.com</h2>
@@ -192,9 +182,9 @@ function get_lawyerist_login( $version = null ) {
 				<p class="remove_bottom">Forgot your password? <a href="<?php echo esc_url( wp_lostpassword_url( get_permalink() ) ); ?>" alt="<?php esc_attr_e( 'Lost Password', 'textdomain' ); ?>" class="forgot-password-link">Reset it here.</a></p>
 			</li>
 
-			<li id="register">
+			<li id="register" style="display: none;">
 				<h2>Join Lawyerist Insider</h2>
-				<?php echo do_shortcode( '[gravityform id="' . $gf_id . '" title="false" ajax="true"]' ); ?>
+				<?php echo do_shortcode( '[gravityform id=59 title=false ajax=false]' ); ?>
 				<p class="remove_bottom"><a class="back-to-login">Back to login.</a></p>
 			</li>
 
@@ -202,9 +192,7 @@ function get_lawyerist_login( $version = null ) {
 
 	</div>
 
-	<?php if ( $version == 'modal' ) { ?>
-		<div id="lawyerist-login-screen" style="display: none;"></div>
-	<?php } ?>
+	<div id="lawyerist-login-screen" style="display: none;"></div>
 
 	<?php
 
@@ -220,6 +208,8 @@ function lawyerist_loginout( $items, $args ) {
 	if ( !function_exists( 'wc_memberships' ) ) {
     return;
   }
+
+	/*
 
 	if ( is_user_logged_in() && $args->theme_location == 'header-nav-menu' ) {
 
@@ -253,19 +243,15 @@ function lawyerist_loginout( $items, $args ) {
 
   } elseif ( !is_user_logged_in() && $args->theme_location == 'header-nav-menu' ) {
 
+	*/
+
 		ob_start();
 
 		?>
 
 			<li class="menu-item menu-item-has-children menu-item-loginout">
 
-				<a>Log In</a>
-
-				<ul class="sub-menu">
-
-					<?php echo get_lawyerist_login( 'menu' ); ?>
-
-				</ul>
+				<a class="login-link">Log In</a>
 
 			</li>
 
@@ -275,7 +261,9 @@ function lawyerist_loginout( $items, $args ) {
 
 		$items .= $new_items;
 
+	/*
   }
+	*/
 
   return $items;
 

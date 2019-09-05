@@ -14,6 +14,16 @@
   <meta charset="<?php bloginfo( 'charset' ); ?>">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
+  <?php
+  // Enqueue scripts necessary for the #lawyerist-login modal.
+  /*
+  if( !is_user_logged_in() ) {
+    gravity_form_enqueue_scripts( 59, true );
+  }
+  */
+  gravity_form_enqueue_scripts( 59, true );
+  ?>
+
   <?php wp_head(); ?>
 
   <link rel="shortcut icon" href="<?php echo get_bloginfo( 'template_url' ); ?>/images/favicon.ico" type="image/x-icon">

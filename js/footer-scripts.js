@@ -22,9 +22,6 @@
 // Lawyerist Login/Register
 ( function( $ ) {
 
-  $( "#lawyerist-login #register" ).hide();
-  $( "#lawyerist-login.modal" ).hide();
-
   // Controls navigation within #lawyerist-login.
   $( "#lawyerist-login .link-to-register" ).click( function() {
     $( "#lawyerist-login #login" ).hide( 95 );
@@ -43,28 +40,28 @@
 
   // Controls the modal pop-up and close actions.
   $( ".login-link, a[ href*='wp-login.php']" ).click( function() {
-    $( "#lawyerist-login.modal" ).show( 145 );
+    $( "#lawyerist-login" ).show( 145 );
     $( "#lawyerist-login-screen" ).show();
   });
 
   // Switches to the registration form for .register-link links.
   $( ".register-link" ).click( function() {
-    $( "#lawyerist-login.modal #login" ).hide();
-    $( "#lawyerist-login.modal #register" ).show();
-    $( "#lawyerist-login.modal" ).show( 145 );
+    $( "#lawyerist-login #login" ).hide();
+    $( "#lawyerist-login #register" ).show();
+    $( "#lawyerist-login" ).show( 145 );
     $( "#lawyerist-login-screen" ).show();
   });
 
-  $( "#lawyerist-login.modal .dismiss-button" ).click( function() {
-    $( "#lawyerist-login.modal" ).hide( 95 );
+  $( "#lawyerist-login .dismiss-button" ).click( function() {
+    $( "#lawyerist-login" ).hide( 95 );
     $( "#lawyerist-login-screen" ).hide();
   });
 
   // Changes/removes stuff when the confirmation wrapper is visible.
   jQuery( document ).on( 'gform_confirmation_loaded', function() {
-    $( "#lawyerist-login.modal .dismiss-button" ).hide();
-    $( "#lawyerist-login.modal #register h2" ).html( "Welcome to the Lawyerist Insider Community!" );
-    $( "#lawyerist-login.modal #register p.remove_bottom" ).hide();
+    $( "#lawyerist-login .dismiss-button" ).hide();
+    $( "#lawyerist-login #register h2" ).html( "Welcome to the Lawyerist Insider Community!" );
+    $( "#lawyerist-login #register p.remove_bottom" ).hide();
   });
 
 })( jQuery );
