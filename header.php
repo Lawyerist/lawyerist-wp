@@ -15,12 +15,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
   <?php
-
   // Enqueue scripts necessary for the #lawyerist-login modal.
-  if ( !is_user_logged_in() ) {
-    gravity_form_enqueue_scripts( 59, true );
-  }
-
+  gravity_form_enqueue_scripts( 59, true );
   ?>
 
   <?php wp_head(); ?>
@@ -90,11 +86,7 @@
   <!-- End Google Tag Manager (noscript) -->
 
 	<?php
-
-	if ( !is_user_logged_in() ) {
-		echo get_lawyerist_login( 'modal' );
-	}
-
+	echo get_lawyerist_login( 'modal' );
 	?>
 
   <div id="header-grid">

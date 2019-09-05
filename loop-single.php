@@ -61,7 +61,9 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
   echo '</main>';
 
-  lawyerist_cta();
+  if ( !is_user_logged_in() ) {
+    lawyerist_cta();
+  }
 
   lawyerist_get_related_resources();
 

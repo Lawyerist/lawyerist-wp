@@ -23,13 +23,13 @@
 ( function( $ ) {
 
   // Prevents login links from activating.
-  $( ".login-link, a[ href*='wp-login.php' ], .register-link" ).click( function( e ) {
+  $( ".login-link, a[ href*='wp-login.php' ], .register-link, #elementor-register-button" ).click( function( e ) {
     e.preventDefault();
   });
 
 
   // Switches to the registration form for .register-link links.
-  $( ".register-link" ).click( function() {
+  $( ".register-link, #elementor-register-button" ).click( function() {
     $( "#lawyerist-login #login" ).hide();
     $( "#lawyerist-login #register" ).show();
     $( "#lawyerist-login" ).show( 145 );
@@ -38,7 +38,7 @@
 
 
   // Controls the modal pop-up and close actions.
-  $( ".login-link, a[ href*='wp-login.php']" ).click( function() {
+  $( ".login-link, a[ href*='wp-login.php'], #elementor-register-button" ).click( function() {
     $( "#lawyerist-login" ).show( 145 );
     $( "#lawyerist-login-screen" ).show();
   });
