@@ -173,7 +173,7 @@ function get_lawyerist_login() {
 		<div class="card">
 
 			<button class="greybutton dismiss-button"></button>
-			<img class="l-dot" src="<?php echo get_template_directory_uri(); ?>/images/L-dot-login-large.png" />
+			<img class="l-dot" src="<?php echo get_template_directory_uri(); ?>/images/L-dot-login-large.png">
 
 			<li id="login">
 				<h2>Log in to Lawyerist.com</h2>
@@ -209,8 +209,6 @@ function lawyerist_loginout( $items, $args ) {
     return;
   }
 
-	/*
-
 	if ( is_user_logged_in() && $args->theme_location == 'header-nav-menu' ) {
 
 		ob_start();
@@ -243,8 +241,6 @@ function lawyerist_loginout( $items, $args ) {
 
   } elseif ( !is_user_logged_in() && $args->theme_location == 'header-nav-menu' ) {
 
-	*/
-
 		ob_start();
 
 		?>
@@ -261,9 +257,7 @@ function lawyerist_loginout( $items, $args ) {
 
 		$items .= $new_items;
 
-	/*
   }
-	*/
 
   return $items;
 

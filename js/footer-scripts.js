@@ -22,6 +22,33 @@
 // Lawyerist Login/Register
 ( function( $ ) {
 
+  // Prevents login links from activating.
+  $( ".login-link, a[ href*='wp-login.php' ], .register-link" ).click( function( e ) {
+    e.preventDefault();
+  });
+
+
+  // Switches to the registration form for .register-link links.
+  $( ".register-link" ).click( function() {
+    $( "#lawyerist-login #login" ).hide();
+    $( "#lawyerist-login #register" ).show();
+    $( "#lawyerist-login" ).show( 145 );
+    $( "#lawyerist-login-screen" ).show();
+  });
+
+
+  // Controls the modal pop-up and close actions.
+  $( ".login-link, a[ href*='wp-login.php']" ).click( function() {
+    $( "#lawyerist-login" ).show( 145 );
+    $( "#lawyerist-login-screen" ).show();
+  });
+
+  $( "#lawyerist-login .dismiss-button" ).click( function() {
+    $( "#lawyerist-login" ).hide( 95 );
+    $( "#lawyerist-login-screen" ).hide();
+  });
+
+
   // Controls navigation within #lawyerist-login.
   $( "#lawyerist-login .link-to-register" ).click( function() {
     $( "#lawyerist-login #login" ).hide( 95 );
@@ -33,29 +60,6 @@
     $( "#lawyerist-login #register" ).hide( 95 );
   });
 
-  // Prevents login links from activating.
-  $( ".login-link, a[ href*='wp-login.php' ], .register-link" ).click( function( e ) {
-    e.preventDefault();
-  });
-
-  // Controls the modal pop-up and close actions.
-  $( ".login-link, a[ href*='wp-login.php']" ).click( function() {
-    $( "#lawyerist-login" ).show( 145 );
-    $( "#lawyerist-login-screen" ).show();
-  });
-
-  // Switches to the registration form for .register-link links.
-  $( ".register-link" ).click( function() {
-    $( "#lawyerist-login #login" ).hide();
-    $( "#lawyerist-login #register" ).show();
-    $( "#lawyerist-login" ).show( 145 );
-    $( "#lawyerist-login-screen" ).show();
-  });
-
-  $( "#lawyerist-login .dismiss-button" ).click( function() {
-    $( "#lawyerist-login" ).hide( 95 );
-    $( "#lawyerist-login-screen" ).hide();
-  });
 
   // Changes/removes stuff when the confirmation wrapper is visible.
   jQuery( document ).on( 'gform_confirmation_loaded', function() {
