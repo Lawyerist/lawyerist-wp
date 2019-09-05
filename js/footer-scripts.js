@@ -153,7 +153,7 @@
       return;
     }
 
-    dismissButton   = document.querySelector( '.dismiss-button' );
+    dismissButton   = document.querySelector( '#big_hero_cta .dismiss-button' );
     noticeId        = notice.getAttribute( 'data-id' );
     storedNoticeId  = localStorage.getItem( 'lawyeristNotices' );
 
