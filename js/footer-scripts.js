@@ -27,18 +27,20 @@
     e.preventDefault();
   });
 
+  // Switches to the correct form (even while hidden) for the link.
+  $( ".login-link, a[ href*='wp-login.php' ]" ).click( function() {
+    $( "#lawyerist-login #login" ).show();
+    $( "#lawyerist-login #register" ).hide();
+  });
 
-  // Switches to the registration form for .register-link links.
   $( ".register-link, #elementor-register-button" ).click( function() {
     $( "#lawyerist-login #login" ).hide();
     $( "#lawyerist-login #register" ).show();
-    $( "#lawyerist-login" ).show( 145 );
-    $( "#lawyerist-login-screen" ).show();
   });
 
 
   // Controls the modal pop-up and close actions.
-  $( ".login-link, a[ href*='wp-login.php'], #elementor-register-button" ).click( function() {
+  $( ".login-link, a[ href*='wp-login.php'], .register-link, #elementor-register-button" ).click( function() {
     $( "#lawyerist-login" ).show( 145 );
     $( "#lawyerist-login-screen" ).show();
   });

@@ -86,7 +86,7 @@
   <!-- End Google Tag Manager (noscript) -->
 
 	<?php
-	echo get_lawyerist_login( 'modal' );
+	echo get_lawyerist_login();
 	?>
 
   <div id="header-grid">
