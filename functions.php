@@ -184,7 +184,7 @@ function get_lawyerist_login() {
 
 			<li id="register" style="display: none;">
 				<h2>Join Lawyerist Insider</h2>
-				<?php echo do_shortcode( '[gravityform id=59 title=false ajax=false]' ); ?>
+				<?php echo do_shortcode( '[gravityform id=59 title=false ajax=true]' ); ?>
 				<p class="remove_bottom"><a class="back-to-login">Back to login.</a></p>
 			</li>
 
