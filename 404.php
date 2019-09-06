@@ -14,10 +14,6 @@
 
 				<?php get_search_form(); ?>
 
-				<p>Or, maybe you prefer a more serendipitous approach to discovery. Here are our most popular tags:</p>
-
-				<div class="tag_cloud"><?php wp_tag_cloud('exclude=2580,2602'); ?></div>
-
 			</div>
 
 		</div>
