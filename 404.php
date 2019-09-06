@@ -12,9 +12,7 @@
 
 				<p>Sorry, we can't find the page you are looking for. Try searching for it, in case it moved:</p>
 
-				<div id="lawyerist_content_search">
-					<?php get_search_form(); ?>
-				</div>
+				<?php get_search_form(); ?>
 
 				<p>Or, maybe you prefer a more serendipitous approach to discovery. Here are our most popular tags:</p>
 

@@ -1809,35 +1809,11 @@ Content
 	margin-bottom: 1em;
 }
 
-#lawyerist_content_search {
-	margin-bottom: 1em;
-}
-
-  #search-input-container {
-    box-sizing: border-box;
-    padding-right: 9.05rem;
-    width: 100%;
-  }
-
-  #search-field {
-    float: left;
-    width: 100%;
-  }
-
-  .search-form input[type="submit"] {
-    margin-left: .8rem;
-  }
-
-
 #archive_header {
   background-color: #eee;
   margin-bottom: 2rem;
   padding: 2rem;
 }
-
-  body.search #archive_header {
-    margin-bottom: 3rem;
-  }
 
 #archive_header img {
   float:left;
@@ -3159,6 +3135,32 @@ textarea {
     width: calc( 50% - 8px );
     -webkit-appearance: none;
   }
+
+  .search-form {
+    display: grid;
+    grid-column-gap: 1rem;
+    grid-template-areas: 'search-field search-button';
+    grid-template-columns: 1fr 8rem;
+    margin-bottom: 3rem;
+  }
+
+    .search-form label,
+    .search-form #search-input-container {
+      grid-area: search-field;
+    }
+
+    .search-form input[ type="search" ] {
+      box-sizing: border-box;
+      font-size: 2rem;
+      line-height: 1.5;
+      width: 100%;
+    }
+
+    .search-form input[ type="submit" ] {
+      align-self: center;
+      grid-area: search-button;
+      margin: 0;
+    }
 
   input[ type="checkbox" ],
   input[ type="radio" ] {
