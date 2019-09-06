@@ -686,6 +686,8 @@ figcaption,
 .fp-section-header,
 #gform_wrapper_45 table.gsurvey-likert td::after,
 #gform_wrapper_47 table.gsurvey-likert td::after,
+#gform_wrapper_60 table.gsurvey-likert td::after,
+#gform_wrapper_61 table.gsurvey-likert td::after,
 h1,
 h2,
 .h2,
@@ -3499,33 +3501,43 @@ a.greybutton:active,
 
   /* Small Firm Scorecard */
   #gform_wrapper_45 .gfield_label,
-  #gform_wrapper_47 .gfield_label {
+  #gform_wrapper_47 .gfield_label,
+  #gform_wrapper_60 .gfield_label,
+  #gform_wrapper_61 .gfield_label {
     font-family: unset;
     font-weight: normal;
   }
 
   #gform_wrapper_45 .gfield_required,
-  #gform_wrapper_47 .gfield_required {
+  #gform_wrapper_47 .gfield_required,
+  #gform_wrapper_60 .gfield_required,
+  #gform_wrapper_61 .gfield_required {
     display: none;
   }
 
   @media only screen and ( max-width: 761px ), ( max-device-width: 1024px ) and ( min-device-width: 768px ) {
 
     #gform_wrapper_45 table.gsurvey-likert tr,
-    #gform_wrapper_47 table.gsurvey-likert tr {
+    #gform_wrapper_47 table.gsurvey-likert tr,
+    #gform_wrapper_60 table.gsurvey-likert tr,
+    #gform_wrapper_61 table.gsurvey-likert tr {
       display: grid;
       grid-template-columns: repeat( 11, 1fr );
     }
 
       #gform_wrapper_45 table.gsurvey-likert td,
-      #gform_wrapper_47 table.gsurvey-likert td {
+      #gform_wrapper_47 table.gsurvey-likert td,
+      #gform_wrapper_60 table.gsurvey-likert td,
+      #gform_wrapper_61 table.gsurvey-likert td {
         background-position: bottom 6px center !important;
         min-height: 55px;
         padding: 0;
       }
 
       #gform_wrapper_45 table.gsurvey-likert td::after,
-      #gform_wrapper_47 table.gsurvey-likert td::after {
+      #gform_wrapper_47 table.gsurvey-likert td::after,
+      #gform_wrapper_60 table.gsurvey-likert td::after,
+      #gform_wrapper_61 table.gsurvey-likert td::after {
         background-color: #eee;
         border-bottom: 1px solid #ccc;
         display: block;
