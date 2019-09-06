@@ -794,7 +794,7 @@ Get Scorecard Grade
 
 Returns the Scorecard grade for a given score.
 
-Shortcode: [get_grade form_id="{form_id}" raw_score="{survey_total_score}" q1="{score:id=2}" q2="{score:id=4}" q3="{score:id=5}"]
+Shortcode: [get_grade form_id="{form_id}" raw_score="{survey_total_score}" q1="{score:id=101}" q2="{score:id=102}" q3="{score:id=103}"]
 ------------------------------*/
 
 function lawyerist_get_scorecard_grade( $atts ) {
@@ -807,9 +807,9 @@ function lawyerist_get_scorecard_grade( $atts ) {
     'q3'        => null,
   ), $atts );
 
-  $form_id      = $atts['form_id'];
-  $raw_score    = $atts['raw_score'];
-  $goals_score  = $atts['q1'] + $atts['q2'] + $atts['q3'];
+  $form_id      = $atts[ 'form_id' ];
+  $raw_score    = $atts[ 'raw_score' ];
+  $goals_score  = $atts[ 'q1' ] + $atts[ 'q2' ] + $atts[ 'q3' ];
 
   // Checks to see which form was submitted.
   switch ( $form_id ) {
@@ -948,7 +948,7 @@ add_shortcode( 'list-contributors', 'list_contributors_shortcode' );
 
 
 /*------------------------------
-List Authors
+List Labsters
 ------------------------------*/
 
 function list_labsters_shortcode() {
