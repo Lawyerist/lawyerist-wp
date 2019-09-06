@@ -815,12 +815,20 @@ function lawyerist_get_scorecard_grade( $atts ) {
   // Checks to see which form was submitted.
   switch ( $form_id ) {
 
-    case $form_id == '45': // Small Firm Scorecard
+    // Small Firm Scorecard 1.0 & 2.0
+    case $form_id == 45:
+    case $form_id == 60:
       $total = 500;
       break;
 
-    case $form_id == 47: // Solo Practice Scorecard
+    // Solo Practice Scorecard 1.0
+    case $form_id == 47:
       $total = 400;
+      break;
+
+    // Solo Practice Scorecard 2.0
+    case $form_id == 61:
+      $total = 420;
       break;
 
   }
