@@ -148,26 +148,22 @@ function lawyerist_child_pages_list( $atts ) {
 
         echo '<div class="child-pages-list">';
 
-          echo '<h2>More About ' . get_the_title( $current ) . '</h2>';
-
-          echo '<ul>';
+          echo '<div>';
 
     			// Start the Loop.
     			while ( $child_pages_list_query->have_posts() ) : $child_pages_list_query->the_post();
 
-            $post_ID    = get_the_ID();
-            $post_title = get_the_title();
-            $post_url   = get_permalink();
+            $post_ID = get_the_ID();
 
             if ( !WPSEO_Meta::get_value( 'meta-robots-noindex', $post_ID ) == 1 ) {
 
-      				echo '<li><a href="' . $post_url . '" alt="' . $post_title . '" class="title">' . $post_title . '</a>';
+              lawyerist_get_post_card();
 
             }
 
     			endwhile; wp_reset_postdata();
 
-          echo '</ul>';
+          echo '</div>';
 
     		echo '</div>'; // End #child_pages
 
