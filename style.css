@@ -3252,6 +3252,10 @@ a.review-btn,
   width: auto;
 }
 
+  a.button.big-button {
+    margin: 0 auto 3rem 0;
+  }
+
   a.button.big-button,
   a.button.trial-button {
     border-radius: 2.1rem;
@@ -3276,7 +3280,7 @@ a.review-btn,
     font-size: 3.2rem !important;
     height: 6rem;
     line-height: 6rem;
-    margin: 0 auto;
+    margin: 0 auto 3rem 0;
   }
 
   .woocommerce button.button:disabled,
