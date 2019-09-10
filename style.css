@@ -725,7 +725,7 @@ p.pullquote,
 .scorecard-results-wrapper,
 .tag_list,
 th,
-.title
+.title,
 .user-rating,
 p.woocommerce-result-count,
 .woocommerce a.added_to_cart,
@@ -2623,6 +2623,7 @@ Content
         .product-pages-list .title {
           display: inline-block;
           font-size: 2.4rem;
+          font-weight: bold;
           line-height: 1.2;
           margin-bottom: .33em;
           padding: 0;

@@ -19,8 +19,10 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
     post_class();
     echo '>';
 
+      $show_featured_image = get_field( 'show_featured_image' );
+
       // Featured image
-      if ( has_post_thumbnail() ) {
+      if ( ( is_null( $show_featured_image ) || $show_featured_image == true ) && has_post_thumbnail() ) {
         echo '<div id="featured-image">';
           the_post_thumbnail();
         echo '</div>';
