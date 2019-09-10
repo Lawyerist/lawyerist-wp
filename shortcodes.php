@@ -16,7 +16,7 @@ Author URI: http://samglover.net
 - Get Script
 - List Child Pages
 - List Featured Products
-- List Products
+- List All Products
 - Get Portal Card
 - Gravity Forms Conirmation Message Shortcodes
   - Get Affinity Confirmation Message
@@ -114,6 +114,18 @@ function lawyerist_child_pages_list( $atts ) {
 
   // Query variables.
 	$args = array(
+    'meta_query'      => array(
+      'relation'      => 'OR',
+      array(
+        'key'   => '_yoast_wpseo_meta-robots-noindex',
+        'value' => array( 0, 2 ),
+      ),
+      array(
+        'key'     => '_yoast_wpseo_meta-robots-noindex',
+        'value'   => 'nessie', // See https://core.trac.wordpress.org/ticket/23268
+        'compare' => 'NOT EXISTS',
+      ),
+    ),
     'order'           => 'ASC',
     'orderby'         => 'menu_order',
     'post__not_in'    => $atts['exclude'],
@@ -154,13 +166,7 @@ function lawyerist_child_pages_list( $atts ) {
     			// Start the Loop.
     			while ( $child_pages_list_query->have_posts() ) : $child_pages_list_query->the_post();
 
-            $post_ID = get_the_ID();
-
-            if ( !WPSEO_Meta::get_value( 'meta-robots-noindex', $post_ID ) == 1 ) {
-
-              lawyerist_get_post_card();
-
-            }
+            lawyerist_get_post_card();
 
     			endwhile; wp_reset_postdata();
 
@@ -203,6 +209,18 @@ function lawyerist_featured_products_list( $atts ) {
 
   // Query variables.
   $featured_products_list_query_args = array(
+    'meta_query'      => array(
+      'relation'      => 'OR',
+      array(
+        'key'   => '_yoast_wpseo_meta-robots-noindex',
+        'value' => array( 0, 2 ),
+      ),
+      array(
+        'key'     => '_yoast_wpseo_meta-robots-noindex',
+        'value'   => 'nessie', // See https://core.trac.wordpress.org/ticket/23268
+        'compare' => 'NOT EXISTS',
+      ),
+    ),
     'orderby'					=> 'rand',
     'post_parent'			=> $atts['portal'],
     'post_type'				=> 'page',
@@ -356,6 +374,18 @@ function lawyerist_all_products_list( $atts ) {
 
   // Query variables.
 	$product_list_query_args = array(
+    'meta_query'      => array(
+      'relation'      => 'OR',
+      array(
+        'key'   => '_yoast_wpseo_meta-robots-noindex',
+        'value' => array( 0, 2 ),
+      ),
+      array(
+        'key'     => '_yoast_wpseo_meta-robots-noindex',
+        'value'   => 'nessie', // See https://core.trac.wordpress.org/ticket/23268
+        'compare' => 'NOT EXISTS',
+      ),
+    ),
 		'order'						=> 'ASC',
 		'orderby'					=> 'title',
 		'post_parent'			=> $atts[ 'portal' ],
