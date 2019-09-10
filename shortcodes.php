@@ -119,6 +119,7 @@ function lawyerist_child_pages_list( $atts ) {
     'post__not_in'    => $atts['exclude'],
 		'post_parent'			=> $atts['portal'],
     'posts_per_page'  => -1,
+    'post_status'     => 'publish',
 		'post_type'				=> 'page',
 	);
 
