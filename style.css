@@ -310,6 +310,11 @@ body {
               content: '\f304';
             }
 
+
+            #menu-main-menu > .menu-item > a.open:before {
+              content: '\f405';
+            }
+
             #lawyerist-login {
         			box-sizing: border-box;
               display: grid;
