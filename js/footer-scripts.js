@@ -3,16 +3,25 @@
 
   $( "#menu-main-menu .sub-menu" ).hide();
 
-  // Expands top-level sub-menus.
+  // Opens and closes top-level sub-menus.
   $( "#menu-main-menu > .menu-item-has-children > a" ).click( function() {
-    $( this ).toggleClass( "open" ).next( ".sub-menu" ).slideToggle( 145 );
+    $( this ).toggleClass( "open" ).next( ".sub-menu" ).slideToggle( 95 );
     $( ".open" ).not( this ).toggleClass( "open" ).next( ".sub-menu" ).slideToggle( 95 );
   });
 
-  // Expands second-level+ sub-menus.
+  // Opens and closes second-level+ sub-menus.
   // The .not in this function excludes the Join the Lawyerist Community sub menu.
   $( "#menu-main-menu > .menu-item-has-children .menu-item-has-children > a" ).not( "#menu-item-270912 > a" ).click( function() {
-    $( this ).toggleClass( "open" ).next( ".sub-menu" ).slideToggle( 145 );
+    $( this ).toggleClass( "open" ).next( ".sub-menu" ).slideToggle( 95 );
+  });
+
+  // Closes all menus when anything outside the menu is clicked.
+  $( document ).on( "click", function () {
+    $( "#menu-main-menu .menu-item-has-children > a" ).removeClass( "open" ).next( ".sub-menu" ).slideUp( 95 );
+  });
+
+  $( "#menu-main-menu *" ).on( "click", function ( e ) {
+      e.stopPropagation();
   });
 
 })( jQuery );
