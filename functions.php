@@ -1193,9 +1193,6 @@ function lawyerist_get_related_podcasts() {
 
 		$args = array(
 			'category_name'			=> 'lawyerist-podcast',
-			'category__not_in'	=> array(
-				1320, // Excludes sponsored posts.
-			),
 			'post__not_in'		=> $current_id,
 			'posts_per_page'	=> -1,
 			'tag' 						=> $current_slug,
@@ -1241,8 +1238,9 @@ function lawyerist_get_related_posts() {
 
 		$args = array(
 			'category__not_in'	=> array(
-				1320, // Excludes sponsored posts.
-				4183, // Excludes podcast episodes.
+				1320,		// Excludes sponsored posts.
+				4183,		// Excludes podcast episodes.
+				43419,	// Excludes Lab workshops.
 			),
 			'post__not_in'		=> $current_id,
 			'posts_per_page'	=> -1,
@@ -1316,7 +1314,8 @@ function lawyerist_get_related_resources() {
 
 					$args = array(
 						'category__not_in'	=> array(
-							1320, // Sponsored posts.
+							1320,		// Excludes sponsored posts.
+							43419,	// Excludes Lab workshops.
 						),
 						'orderby'						=> 'date',
 						'post__not_in'			=> $current_id,
