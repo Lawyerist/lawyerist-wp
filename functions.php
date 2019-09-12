@@ -6,6 +6,7 @@ SETUP
 - Stylesheets & Scripts
 - Theme Setup
 - Template Files
+- Add Categories to Body Classes
 
 STRUCTURE
 - Nav Menu
@@ -138,6 +139,30 @@ Template Files
 
 require_once( 'shortcodes.php' );
 
+
+/*------------------------------
+Add Categories to Body Classes
+------------------------------*/
+
+function lwyrst_cat_body_class( $classes ) {
+
+	if ( is_single() ) {
+
+		global $post;
+
+		$cats = get_the_category( $post->ID );
+
+		foreach ( $cats as $cat ) {
+      $classes[] = 'category-' . $cat->category_nicename;
+    }
+
+	}
+
+  return $classes;
+
+}
+
+add_filter( 'body_class', 'lwyrst_cat_body_class' );
 
 
 /* STRUCTURE ******************/
