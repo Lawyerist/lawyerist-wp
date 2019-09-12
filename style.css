@@ -522,6 +522,7 @@ body {
   padding: 0 1rem;
 }
 
+body.category-lab-workshops #column_container,
 body.page-template-full-width #column_container,
 body.page-template-product-page #column_container,
 body.single-sfwd-courses #column_container,
@@ -2825,6 +2826,7 @@ Content
   Full Width Template
   ------------------------------*/
 
+  .category-lab-workshops #content_column,
   .page-template-full-width #content_column,
   .page-template-product-page #content_column,
   .single-sfwd-courses #content_column,
@@ -3893,14 +3895,6 @@ WooCommerce
   margin-top: 0;
 }
 
-@media only screen and ( max-width: 768px ) {
-
-  .page-template-full-width ul.products.columns-2 li.product {
-    float: left;
-    width: 48%;
-  }
-
-}
 
 /* WooCommerce Account Pages */
 

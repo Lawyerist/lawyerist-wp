@@ -32,7 +32,13 @@
 	</div>
   <!-- end #content_column -->
 
-	<?php if ( !is_mobile() ) { get_template_part( 'sidebar' ); } ?>
+	<?php
+
+  if ( !is_mobile() && !has_category( 'lab-workshops' ) ) { 
+    get_template_part( 'sidebar' );
+  }
+
+  ?>
 
 </div>
 <!-- end #column_container -->
