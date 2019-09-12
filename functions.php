@@ -6,6 +6,7 @@ SETUP
 - Stylesheets & Scripts
 - Theme Setup
 - Template Files
+- Select Single Post Templates Based on Category
 - Add Categories to Body Classes
 
 STRUCTURE
@@ -139,6 +140,40 @@ Template Files
 
 require_once( 'shortcodes.php' );
 
+/*------------------------------
+Select Single Post Templates Based on Category
+
+Based on: https://halgatewood.com/wordpress-custom-single-templates-by-category
+------------------------------*/
+
+function category_single_templates( $t ) {
+
+	$cats = get_the_category();
+
+  foreach( $cats as $cat ) {
+
+    if ( file_exists( STYLESHEETPATH . "/single-category-' . $cat->slug . '.php") ) {
+			return STYLESHEETPATH . "/single-category-' . $cat->slug . '.php";
+		}
+
+    if( $cat->parent ) {
+
+      $cat = get_the_category_by_ID( $cat->parent );
+
+      if ( file_exists(STYLESHEETPATH . "/single-category-' . $cat->slug . '.php") ) {
+				return STYLESHEETPATH . "/single-cat-' . $cat->slug . '.php";
+			}
+
+    }
+
+  }
+
+  return $t;
+
+}
+
+add_filter( 'single_template', 'category_single_templates' );
+
 
 /*------------------------------
 Add Categories to Body Classes
@@ -153,7 +188,7 @@ function lwyrst_cat_body_class( $classes ) {
 		$cats = get_the_category( $post->ID );
 
 		foreach ( $cats as $cat ) {
-      $classes[] = 'category-' . $cat->category_nicename;
+      $classes[] = 'post-template-single-cat-' . $cat->category_nicename;
     }
 
 	}
