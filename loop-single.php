@@ -8,6 +8,11 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
   // Assign post variables.
   $post_title = the_title( '', '', FALSE );
 
+  // Breadcrumbs
+  if ( function_exists( 'yoast_breadcrumb' ) ) {
+    yoast_breadcrumb( '<div class="breadcrumbs">', '</div>' );
+  }
+
   echo '<main>';
 
     // This is the post container.

@@ -40,7 +40,7 @@ CONTENT
 - List Child Pages Fallback
 - Remove Inline Width from Image Captions
 - Featured Images in RSS Feeds
-- Remove Hidden Products from RSS Feed
+- Remove Lab Workshops from RSS Feed
 - Remove Default Gallery Styles
 - Show Commenter's First Name & Initial
 
@@ -1393,30 +1393,21 @@ add_filter('the_content_feed', 'featuredtoRSS');
 
 
 /*------------------------------
-Remove Hidden Products from RSS Feed
+Remove Lab Workshops from RSS Feed
 ------------------------------*/
 
-function lawyerist_remove_hidden_products_from_feed( $query ) {
+function remove_workshops_from_feed( $query ) {
 
 	if ( $query->is_feed() ) {
-
-		$query->set( 'post_type', array( 'post', 'product' ) );
-		$query->set( 'tax_query', array(
-			array(
-				'taxonomy' => 'product_visibility',
-				'field'    => 'name',
-				'terms'    => 'exclude-from-catalog',
-				'operator' => 'NOT IN',
-			),
-		) );
-
+		$query->set( 'post_type', 'post' );
+		$query->set( 'cat', '-43419' );
 	}
 
 	return $query;
 
 }
 
-add_filter( 'pre_get_posts', 'lawyerist_remove_hidden_products_from_feed' );
+add_filter( 'pre_get_posts', 'remove_workshops_from_feed' );
 
 
 /*------------------------------

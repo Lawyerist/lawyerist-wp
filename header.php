@@ -50,6 +50,7 @@
   <link rel="prefetch" href="<?php echo get_bloginfo( 'template_url' ); ?>/fonts/triplicate/triplicate_t4_code_regular-webfont.woff2" type="font/woff2" crossorigin="anonymous">
 
   <?php
+
   // Noindexes author archives if the author has fewer than 5 posts.
   if ( is_author() ) {
 
@@ -65,6 +66,13 @@
     }
 
   }
+
+  // Noindexes/nofollows Lab Workshop archives and posts.
+  if ( is_category( 'lab-workshops') || has_category( 'lab-workshops') ) {
+    echo '<!-- Showing a Lab Workshops archive or post, so this page is noindexed and nofollowed. -->';
+    echo '<meta name="robots" content="noindex,nofollow">';
+  }
+
   ?>
 
   <!-- Google Ads code for sidebar display ad placement. -->
