@@ -9,40 +9,48 @@
   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
   })(window,document,'script','dataLayer','GTM-WVFM84N');</script>
-  <!-- End Google Tag Manager -->
 
   <meta charset="<?php bloginfo( 'charset' ); ?>">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
   <?php
-  // Enqueue scripts necessary for the #lawyerist-login modal.
+  // Enqueues Gravity Forms scripts necessary for the #lawyerist-login modal.
   gravity_form_enqueue_scripts( 59, true );
   ?>
 
   <?php wp_head(); ?>
 
+  <!-- Gets favicon. -->
   <link rel="shortcut icon" href="<?php echo get_bloginfo( 'template_url' ); ?>/images/favicon.ico" type="image/x-icon">
 
+  <!-- Gets the RSS feed link. -->
   <link rel="alternate" type="application/rss+xml" title="<?php bloginfo( 'name' ); ?> RSS feed" href="http://feeds.feedburner.com/solosmalltech">
 
+  <!-- Preloads/prefetches fonts. -->
+
+  <!-- Adler -->
   <link rel="preload" as="font" href="<?php echo get_bloginfo( 'template_url' ); ?>/fonts/adler/adler-webfont.woff2" type="font/woff2" crossorigin="anonymous">
 
+  <!-- Genericons -->
   <link rel="preload" as="font" href="<?php echo get_bloginfo( 'template_url' ); ?>/fonts/genericons/Genericons.woff2" type="font/woff2" crossorigin="anonymous">
 
+  <!-- Concourse -->
   <link rel="preload" as="font" href="<?php echo get_bloginfo( 'template_url' ); ?>/fonts/concourse/concourse_t4_regular-webfont.woff2" type="font/woff2" crossorigin="anonymous">
   <link rel="preload" as="font" href="<?php echo get_bloginfo( 'template_url' ); ?>/fonts/concourse/concourse_t4_italic-webfont.woff2" type="font/woff2" crossorigin="anonymous">
   <link rel="preload" as="font" href="<?php echo get_bloginfo( 'template_url' ); ?>/fonts/concourse/concourse_t4_bold-webfont.woff2" type="font/woff2" crossorigin="anonymous">
   <link rel="preload" as="font" href="<?php echo get_bloginfo( 'template_url' ); ?>/fonts/concourse/concourse_t4_bold_italic-webfont.woff2" type="font/woff2" crossorigin="anonymous">
 
+  <!-- Equity -->
   <link rel="preload" as="font" href="<?php echo get_bloginfo( 'template_url' ); ?>/fonts/equity/equity_text_b_regular-webfont.woff2" type="font/woff2" crossorigin="anonymous">
   <link rel="preload" as="font" href="<?php echo get_bloginfo( 'template_url' ); ?>/fonts/equity/equity_text_b_italic-webfont.woff2" type="font/woff2" crossorigin="anonymous">
   <link rel="preload" as="font" href="<?php echo get_bloginfo( 'template_url' ); ?>/fonts/equity/equity_text_b_bold-webfont.woff2" type="font/woff2" crossorigin="anonymous">
   <link rel="preload" as="font" href="<?php echo get_bloginfo( 'template_url' ); ?>/fonts/equity/equity_text_b_bold_italic-webfont.woff2" type="font/woff2" crossorigin="anonymous">
 
+  <!-- Triplicate -->
   <link rel="prefetch" href="<?php echo get_bloginfo( 'template_url' ); ?>/fonts/triplicate/triplicate_t4_code_regular-webfont.woff2" type="font/woff2" crossorigin="anonymous">
 
   <?php
-
+  // Noindexes author archives if the author has fewer than 5 posts.
   if ( is_author() ) {
 
     global $wp_query;
@@ -57,9 +65,9 @@
     }
 
   }
-
   ?>
 
+  <!-- Google Ads code for sidebar display ad placement. -->
   <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
   <script>
     window.googletag = window.googletag || {cmd: []};
@@ -85,9 +93,7 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-	<?php
-	echo get_lawyerist_login();
-	?>
+	<?php	echo get_lawyerist_login(); ?>
 
   <div id="header-grid">
 
