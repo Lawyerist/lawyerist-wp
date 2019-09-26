@@ -557,6 +557,18 @@ function lawyerist_get_portal_card( $atts ) {
 
   // Start by getting platinum thumbnails and adding them to $product_logos.
 	$args = array(
+    'meta_query'      => array(
+      'relation'      => 'OR',
+      array(
+        'key'   => '_yoast_wpseo_meta-robots-noindex',
+        'value' => array( 0, 2 ),
+      ),
+      array(
+        'key'     => '_yoast_wpseo_meta-robots-noindex',
+        'value'   => 'nessie', // See https://core.trac.wordpress.org/ticket/23268
+        'compare' => 'NOT EXISTS',
+      ),
+    ),
 		'orderby'					=> 'rand',
 		'post_parent'			=> $atts[ 'portal' ],
     'posts_per_page'  => $logo_total,
@@ -593,6 +605,18 @@ function lawyerist_get_portal_card( $atts ) {
   /* if ( $logo_count < $logo_total ) { */
 
   	$args = array(
+      'meta_query'      => array(
+        'relation'      => 'OR',
+        array(
+          'key'   => '_yoast_wpseo_meta-robots-noindex',
+          'value' => array( 0, 2 ),
+        ),
+        array(
+          'key'     => '_yoast_wpseo_meta-robots-noindex',
+          'value'   => 'nessie', // See https://core.trac.wordpress.org/ticket/23268
+          'compare' => 'NOT EXISTS',
+        ),
+      ),
   		'orderby'					=> 'rand',
   		'post_parent'			=> $atts[ 'portal' ],
       'posts_per_page'  => -1,
@@ -631,6 +655,18 @@ function lawyerist_get_portal_card( $atts ) {
   if ( $logo_count < $logo_total ) { */
 
   	$args = array(
+      'meta_query'      => array(
+        'relation'      => 'OR',
+        array(
+          'key'   => '_yoast_wpseo_meta-robots-noindex',
+          'value' => array( 0, 2 ),
+        ),
+        array(
+          'key'     => '_yoast_wpseo_meta-robots-noindex',
+          'value'   => 'nessie', // See https://core.trac.wordpress.org/ticket/23268
+          'compare' => 'NOT EXISTS',
+        ),
+      ),
   		'orderby'					=> 'rand',
   		'post_parent'			=> $atts[ 'portal' ],
       'posts_per_page'  => -1,
@@ -669,6 +705,18 @@ function lawyerist_get_portal_card( $atts ) {
   if ( $logo_count < $logo_total ) { */
 
   	$args = array(
+      'meta_query'      => array(
+        'relation'      => 'OR',
+        array(
+          'key'   => '_yoast_wpseo_meta-robots-noindex',
+          'value' => array( 0, 2 ),
+        ),
+        array(
+          'key'     => '_yoast_wpseo_meta-robots-noindex',
+          'value'   => 'nessie', // See https://core.trac.wordpress.org/ticket/23268
+          'compare' => 'NOT EXISTS',
+        ),
+      ),
   		'orderby'					=> 'rand',
   		'post_parent'			=> $atts[ 'portal' ],
       'posts_per_page'  => -1,
