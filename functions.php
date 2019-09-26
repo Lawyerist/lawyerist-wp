@@ -1116,18 +1116,16 @@ add_filter( 'avatar_defaults', 'lawyerist_custom_gravatar' );
 Post/Page Footer CTA
 ------------------------------*/
 
-function lawyerist_cta() {
+function lawyerist_cta( $cta_val = 326430 ) {
 
-	$cta_val = get_field( 'select_footer_cta' );
+	$cta_select = get_field( 'select_footer_cta' );
 
-	if ( $cta_val == 'none' ) { return; }
+	if ( $cta_select == 'none' ) { return; }
 
-	if ( is_null( $cta_val ) || $cta_val == 'default' ) {
+	if ( is_null( $cta_select ) || $cta_select == 'default' ) {
 
 		// Sets the footer CTA to the default.
-		update_field( 'select_footer_cta', 326430 );
-
-		$cta_val = get_field( 'select_footer_cta' );
+		update_field( 'select_footer_cta', $cta_val );
 
 	}
 
