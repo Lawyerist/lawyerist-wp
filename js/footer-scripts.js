@@ -10,8 +10,9 @@
   });
 
   // Opens and closes second-level+ sub-menus.
-  // The .not in this function excludes the Join the Lawyerist Community sub menu.
-  $( "#menu-main-menu > .menu-item-has-children .menu-item-has-children > a" ).not( "#menu-item-270912 > a" ).click( function() {
+  // The .not in this function excludes the Products & Services and
+  // Join the Lawyerist Community sub menus.
+  $( "#menu-main-menu > .menu-item-has-children .menu-item-has-children > a" ).not( "#menu-item-305888 > a", "#menu-item-270912 > a" ).click( function() {
     $( this ).toggleClass( "open" ).next( ".sub-menu" ).slideToggle( 95 );
   });
 
