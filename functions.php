@@ -398,6 +398,7 @@ function lawyerist_remove_admin_bar_items( $wp_admin_bar ) {
 	$wp_admin_bar->remove_node( 'new-media' );
 	$wp_admin_bar->remove_node( 'new-product' );
 	$wp_admin_bar->remove_node( 'new-shop_coupon' );
+	$wp_admin_bar->remove_node( 'new-shop_order' );
 	$wp_admin_bar->remove_node( 'new-wc_zapier_feed' );
 	$wp_admin_bar->remove_node( 'new-sfwd-courses' );
 	$wp_admin_bar->remove_node( 'new-sfwd-lessons' );
