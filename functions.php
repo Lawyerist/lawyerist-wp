@@ -1658,7 +1658,7 @@ function affinity_notice() {
 
 			$user_id = get_current_user_id();
 
-			if ( wc_memberships_is_user_active_member( $user_id, 'insider-plus-affinity' ) ) {
+			if ( wc_memberships_is_user_active_member( $user_id, 'insider' ) ) {
 
 				$discount_descr	= get_field( 'affinity_discount_descr' );
 
@@ -1679,7 +1679,7 @@ function affinity_notice() {
 
 					echo '<p class="discount_descr">' . $discount_descr . '</p>';
 
-					if ( wc_memberships_is_user_active_member( $user_id, 'insider-plus-affinity' ) ) {
+					if ( wc_memberships_is_user_active_member( $user_id, 'insider' ) ) {
 
 						echo '<button class="button expandthis-click">Claim Your Discount</button>';
 
