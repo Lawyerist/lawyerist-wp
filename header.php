@@ -51,6 +51,12 @@
 
   <?php
 
+  // Nofollows sponsored posts.
+  if ( has_category( 'sponsored') ) {
+    echo '<!-- Showing a sponsored post, so it is nofollowed. -->';
+    echo '<meta name="robots" content="nofollow">';
+  }
+
   // Noindexes author archives if the author has fewer than 5 posts.
   if ( is_author() ) {
 

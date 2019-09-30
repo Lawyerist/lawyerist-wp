@@ -723,7 +723,6 @@ label,
 #review,
   .rating-breakdown,
   .review-summary-title,
-#sponsored_product_updates .title,
 .sponsored_testimonial_label,
 p.pullout,
 p.pullquote,
@@ -1289,8 +1288,7 @@ Card Styles
 ------------------------------*/
 
 .card,
-.ld-course-list-items .ld_course_grid .thumbnail.course,
-#sponsored_product_updates {
+.ld-course-list-items .ld_course_grid .thumbnail.course {
   background-color: #f9f9f9;
   border-radius: .2rem;
   box-shadow:
@@ -1303,7 +1301,7 @@ Card Styles
   text-decoration: none;
 }
 
-.card .sponsored {
+.card.sponsored {
   border-top: .7rem solid #ffffc7;
 }
 
@@ -1322,8 +1320,7 @@ Card Styles
 .has-card-label,
 .affinity-discount-card,
 .author-bio-box,
-.dashboard-scorecard-widget,
-#sponsored_product_updates {
+.dashboard-scorecard-widget {
   padding: 2rem;
 }
 
@@ -1478,13 +1475,11 @@ Card Styles
     margin-bottom: .5rem;
   }
 
-.card > *:last-child,
-#sponsored_product_updates > *:last-child {
+.card > *:last-child {
   margin-bottom: 0 !important;
 }
 
-  .card > *:last-child > *:last-child,
-  #sponsored_product_updates > *:last-child > *:last-child {
+  .card > *:last-child > *:last-child {
     margin-bottom: 0 !important;
   }
 
@@ -1494,7 +1489,7 @@ Card Styles
   display: grid;
   grid-template-columns: repeat( 2, 1fr );
   grid-gap: 1rem;
-  margin-bottom: 4rem;
+  margin-bottom: 1rem;
 }
 
 .cards-3-columns {
@@ -2055,58 +2050,6 @@ Content
       display: none;
     }
 
-  #sponsored_product_updates {
-    border-top: .7rem solid #ffffc7;
-	}
-
-    .page #sponsored_product_updates {
-      margin-bottom: 3rem;
-    }
-
-    #sponsored_product_updates ul {
-      list-style: none;
-      margin: 0;
-    }
-
-      #sponsored_product_updates li {
-        font-size: 1.8rem;
-        line-height: 1.5;
-        margin-top: 0;
-      }
-
-        #sponsored_product_updates a {
-          color: #c00;
-          text-decoration: none;
-        }
-
-        #sponsored_product_updates a:hover,
-        #sponsored_product_updates a:focus {
-          color: #a00;
-          text-decoration: none;
-        }
-
-    #sponsored_product_updates .product_updates_heading,
-    #sponsored_product_updates h2 {
-      color: #666;
-      font-size: 1.4rem;
-      font-weight: bold;
-      line-height: 1.5;
-      margin-bottom: .5em;
-      text-transform: uppercase;
-    }
-
-    #sponsored_product_updates .product_updates_heading:before,
-    #sponsored_product_updates h2:before {
-      content: '\f420';
-      display: inline-block;
-      -moz-osx-font-smoothing: grayscale;
-      -webkit-font-smoothing: antialiased;
-      font: normal 1.4rem/1.5 Genericons;
-      margin-right: .25em;
-      speak: none;
-      vertical-align: top;
-    }
-
 
 	/*------------------------------
 	Posts
@@ -2380,21 +2323,17 @@ Content
       border-left: 0;
     }
 
-    .memberships-pricing-chart .row-15 .column-1 {
+    .memberships-pricing-chart .row-14 .column-1 {
       background-color: unset;
     }
 
     .memberships-pricing-chart .row-1 .column-2,
-    .memberships-pricing-chart .row-1 .column-3,
-    .memberships-pricing-chart .row-1 .column-4,
-    .memberships-pricing-chart .row-1 .column-5 {
+    .memberships-pricing-chart .row-1 .column-3 {
       background-color: #efefef;
     }
 
     .memberships-pricing-chart .row-2 .column-2,
-    .memberships-pricing-chart .row-2 .column-3,
-    .memberships-pricing-chart .row-2 .column-4,
-    .memberships-pricing-chart .row-2 .column-5 {
+    .memberships-pricing-chart .row-2 .column-3 {
       background-color: #efefef;
       border-top: 0;
     }
@@ -2416,7 +2355,7 @@ Content
     	margin-bottom: .5em;
     }
 
-    .memberships-pricing-chart .row-14 {
+    .memberships-pricing-chart .row-13 {
       font-family: concourse, sans-serif;
     }
 
@@ -2428,9 +2367,7 @@ Content
     }
 
     .memberships-pricing-chart .column-2,
-    .memberships-pricing-chart .column-3,
-    .memberships-pricing-chart .column-4,
-    .memberships-pricing-chart .column-5 {
+    .memberships-pricing-chart .column-3 {
       text-align: center;
       width: 21.25%;
     }
@@ -2442,7 +2379,7 @@ Content
       text-align: left;
     }
 
-    .memberships-pricing-chart .row-15 td .button {
+    .memberships-pricing-chart .row-14 td .button {
       margin-bottom: 0;
       width: 100%;
     }

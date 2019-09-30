@@ -725,8 +725,8 @@ function lawyerist_get_post_card( $post_ID = null, $card_top_label = null, $card
 	$card_classes		= array( 'card' );
 	$card_classes[]	= $post_type . '-card';
 
-	if ( has_category( 'lawyerist-podcast' ) ) { $card_classes[] = 'podcast-card'; }
-	if ( has_tag( 'how-lawyers-work' ) ) { $card_classes[] = 'hlw-card'; }
+	if ( has_category( 'podcast' ) ) { $card_classes[] = 'podcast-card'; }
+	if ( has_category( 'case-studies' ) ) { $card_classes[] = 'hlw-card'; }
 	if ( is_page_template( 'product-page.php' ) ) { $card_classes[] = 'product-page-card'; }
 	if ( !empty( $card_top_label ) || !empty( $card_bottom_label ) ) { $card_classes[] = 'has-card-label'; }
 
@@ -734,7 +734,7 @@ function lawyerist_get_post_card( $post_ID = null, $card_top_label = null, $card
 
 	// Gets the guest image for podcast and How Lawyers Work posts, or the post
 	// thumbnail for everything else.
-	if ( has_category( 'lawyerist-podcast' ) || has_tag( 'how-lawyers-work' ) ) {
+	if ( has_category( 'podcast' ) || has_category( 'case-studies' ) ) {
 
 		$first_image_url = get_first_image_url( $post_ID );
 
@@ -777,7 +777,7 @@ function lawyerist_get_post_card( $post_ID = null, $card_top_label = null, $card
 
 						$post_date = get_the_time( 'F jS, Y', $post_ID );
 
-						if ( has_category( 'lawyerist-podcast' ) ) {
+						if ( has_category( 'podcast' ) ) {
 
 					    echo '<span class="date updated published">' . $post_date . '</span>';
 
@@ -818,7 +818,7 @@ function lawyerist_get_post_card( $post_ID = null, $card_top_label = null, $card
 
 						    echo 'on <span class="date updated published">' . $post_date . '</span>';
 
-						  } elseif ( has_category( 'lawyerist-podcast' ) || is_author() ) {
+						  } elseif ( has_category( 'podcast' ) || is_author() ) {
 
 						    echo '<span class="date updated published">' . $post_date . '</span>';
 
@@ -1271,7 +1271,6 @@ function lawyerist_get_related_posts() {
 
 		$args = array(
 			'category__not_in'	=> array(
-				1320,		// Excludes sponsored posts.
 				4183,		// Excludes podcast episodes.
 				43419,	// Excludes Lab workshops.
 			),

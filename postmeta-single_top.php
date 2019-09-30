@@ -6,7 +6,7 @@ echo '<div class="postmeta">';
   $date = get_the_time( 'F jS, Y' );
 
   // Shows just the date for podcast posts.
-  if ( has_category( 'lawyerist-podcast' ) ) {
+  if ( has_category( 'podcast' ) ) {
 
     echo '<span class="date published">' . $date . '</span> ';
 

@@ -111,7 +111,7 @@
 
 			// Outputs the most recent podcast episode.
 			$args = array(
-				'category_name'				=> 'lawyerist-podcast',
+				'category_name'				=> 'podcast',
 				'post__not_in'				=> get_option( 'sticky_posts' ),
 				'posts_per_page'			=> 1,
 			);
@@ -170,7 +170,39 @@
 			// End of recent pages.
 
 
-			// Outputs the 6 most recent blog posts.
+			// Outputs the 2 most recent product spotlight posts.
+			$args = array(
+				'category__in'				=> array(
+					'1320', // Blog Posts
+				),
+				'post__not_in'				=> get_option( 'sticky_posts' ),
+				'posts_per_page'			=> 2,
+			);
+
+			$current_post_query = new WP_Query( $args );
+
+			if ( $current_post_query->have_posts() ) :
+
+				// Starts the post container.
+				echo '<div id="fp-product-spotlights" class="card has-card-label sponsored">';
+
+					while ( $current_post_query->have_posts() ) : $current_post_query->the_post();
+
+						lawyerist_get_post_card();
+
+					endwhile; wp_reset_postdata();
+
+					$all_spotlights_txt		= 'All Partner Updates';
+					$all_spotlights_url		=	get_category_link( 1320 );
+					echo '<p class="card-label card-bottom-label"><a href="' . $all_spotlights_url . '" title="' . $all_spotlights_txt . '">' . $all_spotlights_txt . '</a></p>';
+
+				echo '</div>';
+
+			endif;
+			// End of blog posts.
+
+
+			// Outputs the 4 most recent blog posts.
 			$args = array(
 				'category__in'				=> array(
 					'555', // Blog Posts

@@ -3,7 +3,7 @@
 /*------------------------------
 Selectors
 
-has_category( 'lawyerist-podcast' )
+has_category( 'podcast' )
 has_term( true, 'sponsor' )
 $post_type == 'product'
 $post_type == 'page'
