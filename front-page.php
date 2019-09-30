@@ -121,7 +121,7 @@
 			if ( $current_podcast_query->have_posts() ) : while ( $current_podcast_query->have_posts() ) : $current_podcast_query->the_post();
 
 				$all_eps_txt		= 'All episodes of The Lawyerist Podcast';
-				$all_eps_url		=	get_permalink( '79318' );
+				$all_eps_url		=	get_category_link( 4183 );
 				$all_eps_label	= '<a href="' . $all_eps_url . '" title="' . $all_eps_txt . '.">' . $all_eps_txt . '</a>';
 
 				lawyerist_get_post_card( '', '', $all_eps_label );
