@@ -34,7 +34,7 @@
 
 	<?php
 
-  if ( !is_mobile() && !has_category( 'lab-workshops' ) ) { 
+  if ( !is_mobile() ) {
     get_template_part( 'sidebar' );
   }
 

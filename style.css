@@ -1331,7 +1331,8 @@ Card Styles
     padding: 2rem;
   }
 
-  .has-card-label a.post {
+  .has-card-label a.post,
+  .category-lab-workshops .cards a.post {
     padding: 0;
   }
 
@@ -1446,6 +1447,15 @@ Card Styles
     }
 
   }
+
+/* Cards with embedded videos (Lab workshops) */
+
+.category-lab-workshops .card .wp-block-embed.is-type-video {
+  border-radius: 0 .2rem .2rem 0;
+  display: block;
+  margin: 0;
+  overflow: hidden;
+}
 
 /* Headline-byline styles. */
 

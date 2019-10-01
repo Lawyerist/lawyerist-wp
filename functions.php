@@ -762,7 +762,24 @@ function lawyerist_get_post_card( $post_ID = null, $card_top_label = null, $card
 		post_class( $post_classes );
 		echo '>';
 
-			echo $thumbnail;
+			if ( is_category( 'lab-workshops' ) && has_block( 'embed' ) ) {
+
+				$blocks = parse_blocks( $post->post_content );
+
+				foreach ( $blocks as $block ) {
+
+					if ( $block[ 'blockName' ] == "core/embed" ) {
+						echo apply_filters( 'the_content', render_block( $block ) );
+						break;
+					}
+
+				}
+
+			} else {
+
+				echo $thumbnail;
+				
+			}
 
 			echo '<div class="headline-byline">';
 
