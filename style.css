@@ -1817,35 +1817,35 @@ Content
     vertical-align: top;
   }
 
-#archive_header {
+#archive-header {
   background-color: #eee;
   margin-bottom: 2rem;
   padding: 2rem;
 }
 
-#archive_header img {
+#archive-header img {
   float:left;
   margin-bottom: 1.5rem;
 }
 
-#archive_header p,
+#archive-header p,
 .woocommerce .term-description p {
   color:#333;
   font-size: 1.8rem;
   line-height: 1.5;
 }
 
-#archive_header p.author_descr {
+#archive-header p.author_descr {
   padding-left: 11.5rem;
   margin-bottom: 0;
 }
 
-#archive_header p:last-child,
+#archive-header *:last-child,
 .woocommerce .term-description p:last-child {
   margin-bottom: 0;
 }
 
-#archive_header li {
+#archive-header li {
   color:#333;
   font-size: 1.8rem;
   line-height: 1.2

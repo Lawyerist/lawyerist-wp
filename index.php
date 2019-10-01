@@ -34,7 +34,7 @@
 
 	<?php
 
-  if ( !is_mobile() && !wc_memberships_is_user_active_member( get_current_user_id(), 'lab' ) ) {
+  if ( !is_mobile() && !has_category( 'lab-workshops' ) ) {
     get_template_part( 'sidebar' );
   }
 

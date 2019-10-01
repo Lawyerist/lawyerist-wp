@@ -848,26 +848,38 @@ function lawyerist_get_archive_header() {
 
 		lawyerist_get_author_bio();
 
-	}
+	} elseif ( is_search() ) {
 
-	// Display the archive header if we're on an archive page (but not on an author page).
-	if ( is_archive() && !is_author() ) {
+		echo '<div id="archive-header"><h1>Search results for "' . get_search_query() . '"</h1></div>';
+		echo '<div id="lawyerist_content_search">';
+			get_search_form();
+		echo '</div>';
 
-		$title = single_term_title( '', FALSE );
-		$descr = term_description();
+	} elseif ( is_category() ) {
 
-		echo '<div id="archive_header"><h1>' . $title . '</h1>' . "\n";
+		$category			= get_queried_object();
+		$cat_image_ID	= get_field( 'cat_featured_image', 'category_' . $category->term_id );
+		$cat_image		= wp_get_attachment_image( $cat_image_ID, 'large' );
+
+		$title				= single_term_title( '', FALSE );
+		$descr				= term_description();
+
+		echo '<div id="archive-header">' . "\n";
+
+		if ( !empty( $cat_image ) ) { echo $cat_image . "\n"; }
+
+		echo '<h1>' . $title . '</h1>' . "\n";
 		echo $descr . "\n";
 		echo '</div>';
 
-	}
+	} else {
 
-	// Display the search header if we're on a search page.
-	if ( is_search() ) {
+		$title			= single_term_title( '', FALSE );
+		$descr			= term_description();
 
-		echo '<div id="archive_header"><h1>Search results for "' . get_search_query() . '"</h1></div>';
-		echo '<div id="lawyerist_content_search">';
-			get_search_form();
+		echo '<div id="archive-header">' . "\n";
+		echo '<h1>' . $title . '</h1>' . "\n";
+		echo $descr . "\n";
 		echo '</div>';
 
 	}
@@ -1169,7 +1181,7 @@ function lawyerist_get_alternative_products() {
 					post_class();
 					echo '>';
 
-					if ( !empty ( $alt_thumbnail ) ) {
+					if ( !empty( $alt_thumbnail ) ) {
 						echo $alt_thumbnail;
 					}
 
