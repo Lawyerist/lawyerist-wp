@@ -778,7 +778,7 @@ function lawyerist_get_post_card( $post_ID = null, $card_top_label = null, $card
 			} else {
 
 				echo $thumbnail;
-				
+
 			}
 
 			echo '<div class="headline-byline">';

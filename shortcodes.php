@@ -543,12 +543,19 @@ function lwyrst_affinity_partners_list() {
 
   // Query variables.
 	$args = array(
+    'meta_key'		    => 'affinity_active',
+  	'meta_value'	    => true,
 		'order'						=> 'ASC',
 		'orderby'					=> 'title',
     'posts_per_page'  => -1,
 		'post_type'				=> 'page',
-    'meta_key'		    => 'affinity_active',
-  	'meta_value'	    => true,
+    'tax_query'       => array(
+      array(
+        'taxonomy'  => 'page_type',
+        'field'     => 'slug',
+        'terms'     => 'affinity-partner',
+      ),
+    ),
 	);
 
 	$affinity_partner_list_query = new WP_Query( $args );
