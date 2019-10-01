@@ -522,6 +522,7 @@ body {
   padding: 0 1rem;
 }
 
+body.category-lab-workshops #column_container,
 body.post-template-single-cat-lab-workshops #column_container,
 body.page-template-full-width #column_container,
 body.page-template-product-page #column_container,

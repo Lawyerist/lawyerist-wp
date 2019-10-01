@@ -726,9 +726,6 @@ function lawyerist_get_post_card( $post_ID = null, $card_top_label = null, $card
 	$card_classes		= array( 'card' );
 	$card_classes[]	= $post_type . '-card';
 
-	if ( has_category( 'podcast' ) ) { $card_classes[] = 'podcast-card'; }
-	if ( has_category( 'case-studies' ) ) { $card_classes[] = 'hlw-card'; }
-	if ( is_page_template( 'product-page.php' ) ) { $card_classes[] = 'product-page-card'; }
 	if ( !empty( $card_top_label ) || !empty( $card_bottom_label ) ) { $card_classes[] = 'has-card-label'; }
 
 	$post_classes = array();
@@ -776,11 +773,11 @@ function lawyerist_get_post_card( $post_ID = null, $card_top_label = null, $card
 
 					echo '<div class="postmeta">';
 
-						$post_date = get_the_time( 'F jS, Y', $post_ID );
+						$date = get_the_time( 'F jS, Y', $post_ID );
 
-						if ( has_category( 'podcast' ) ) {
+						if ( has_category( array( 'case-studies', 'podcast', 'lab-workshops' ) ) || is_author() ) {
 
-					    echo '<span class="date updated published">' . $post_date . '</span>';
+					    echo '<span class="date updated published">' . $date . '</span>';
 
 					  } else {
 
@@ -790,7 +787,7 @@ function lawyerist_get_post_card( $post_ID = null, $card_top_label = null, $card
 								$author = 'the Lawyerist editorial team';
 							}
 
-							if ( has_term( true, 'sponsor' ) || has_category( 'sponsored-posts' ) ) {
+							if ( has_category( 'sponsored' ) ) {
 
 						    $sponsor_IDs = wp_get_post_terms(
 						      $post_ID,
@@ -805,28 +802,33 @@ function lawyerist_get_post_card( $post_ID = null, $card_top_label = null, $card
 						    $sponsor_info = get_term( $sponsor_IDs[0] );
 						    $sponsor      = $sponsor_info->name;
 
-						    // Replaces the author with the sponsor on sponsored product updates and old sponsored posts.
-						    if ( has_category( 'sponsored-posts' ) ) {
+								if ( !empty( $sponsor ) ) {
 
-						      echo '<span class="sponsor">Sponsored by ' . $sponsor . '</span> ';
+									if ( has_tag( 'product-spotlights' ) ) {
 
-						    // Adds "sponsored by" after the author on product spotlights.
-						    } else {
+										// Adds "sponsored by" after the author on product spotlights.
+										echo 'By <span class="vcard author"><cite class="fn">' . $author . '</cite></span>,&nbsp;<span class="sponsor">sponsored by ' . $sponsor . '</span>, ';
 
-						      echo 'By <span class="vcard author"><cite class="fn">' . $author . '</cite></span>,&nbsp;<span class="sponsor">sponsored by ' . $sponsor . '</span>, ';
+									} else {
 
-						    }
+										// Otherwise, replaces the author with the sponsor's name.
+							      echo '<span class="sponsor">Sponsored by ' . $sponsor . '</span> ';
 
-						    echo 'on <span class="date updated published">' . $post_date . '</span>';
+									}
 
-						  } elseif ( has_category( 'podcast' ) || is_author() ) {
+								} else {
 
-						    echo '<span class="date updated published">' . $post_date . '</span>';
+									// Fallback if no sponsor is tagged.
+									echo '<span class="sponsor">Sponsored post</span>, published ';
+
+								}
+
+						    echo 'on <span class="date updated published">' . $date . '</span>';
 
 						  } else {
 
 						    echo 'By <span class="vcard author"><cite class="fn">' . $author . '</cite></span> ';
-						    echo 'on <span class="date updated published">' . $post_date . '</span> ';
+						    echo 'on <span class="date updated published">' . $date . '</span> ';
 
 						  }
 

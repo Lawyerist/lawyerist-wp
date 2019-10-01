@@ -1,15 +1,5 @@
 <?php
 
-/*------------------------------
-Selectors
-
-has_category( 'podcast' )
-has_term( true, 'sponsor' )
-$post_type == 'product'
-$post_type == 'page'
-
-------------------------------*/
-
 $post_num = 1; // Counter for inserting mobile ads and other stuff.
 
 // Start the Loop.
@@ -20,7 +10,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
   lawyerist_get_post_card();
 
   // Insert product updates, and ads on mobile.
-  if ( $post_num == 1 && is_mobile() ) { lawyerist_get_display_ad(); }
+  if ( $post_num == 1 && is_mobile() && !has_category( 'lab-workshops' ) ) { lawyerist_get_display_ad(); }
 
   $post_num++; // Increment counter.
 
