@@ -96,7 +96,7 @@
 							<p class="headline">Join Your Tribe.</p>
 							<p>Lawyerist Insider is the community of solo and small firm lawyers building modern, future-oriented law practices.</p>
 							<p class="headline">Grow Your Firm.</p>
-							<p>Our Insider Library is full of checklists, templates, and other resources to help you grow.</p>
+							<p>With a <em>free</em> Lawyerist Insider membership you'll get checklists, worksheets, discounts, and access to our community of small-firm leaders to help you take your firm to the next level!</p>
 						</div>
 						<a class="button free-flag register-link" href="https://lawyerist.com/community/insider/">Join Now</a>
 					</div>
