@@ -8,16 +8,12 @@
 
     lawyerist_get_archive_header();
 
-    echo '<div class="cards">';
+    // Start the Loop.
+    if ( have_posts() ) : while ( have_posts() ) : the_post();
 
-      // Start the Loop.
-      if ( have_posts() ) : while ( have_posts() ) : the_post();
+      lawyerist_get_post_card();
 
-        lawyerist_get_post_card();
-
-      endwhile;
-
-    echo '</div>';
+    endwhile;
 
     echo '<div class="page_links">';
       echo paginate_links();

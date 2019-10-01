@@ -1331,8 +1331,7 @@ Card Styles
     padding: 2rem;
   }
 
-  .has-card-label a.post,
-  .category-lab-workshops .cards a.post {
+  .has-card-label a.post {
     padding: 0;
   }
 
@@ -1342,6 +1341,21 @@ Card Styles
   .card a.post:focus {
     text-decoration: none;
   }
+
+  .category-lab-workshops .card a.post {
+    padding: 0;
+  }
+
+    .category-lab-workshops .card .wp-block-embed.is-type-video {
+      border-radius: 0 .2rem .2rem 0;
+      display: block;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    .category-lab-workshops .card .headline-byline {
+      padding: 2rem;
+    }
 
 
 /* Card labels. */
@@ -1448,14 +1462,6 @@ Card Styles
 
   }
 
-/* Cards with embedded videos (Lab workshops) */
-
-.category-lab-workshops .card .wp-block-embed.is-type-video {
-  border-radius: 0 .2rem .2rem 0;
-  display: block;
-  margin: 0;
-  overflow: hidden;
-}
 
 /* Headline-byline styles. */
 

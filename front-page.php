@@ -170,7 +170,7 @@
 			// End of recent pages.
 
 
-			// Outputs the 2 most recent product spotlight posts.
+			// Outputs the 2 most recent sponsored posts.
 			$args = array(
 				'category__in'				=> array(
 					'1320', // Blog Posts
@@ -199,7 +199,7 @@
 				echo '</div>';
 
 			endif;
-			// End of blog posts.
+			// End of sponsored posts.
 
 
 			// Outputs the 4 most recent blog posts.
@@ -208,7 +208,7 @@
 					'555', // Blog Posts
 				),
 				'post__not_in'				=> get_option( 'sticky_posts' ),
-				'posts_per_page'			=> 6,
+				'posts_per_page'			=> 4,
 			);
 
 			$current_post_query = new WP_Query( $args );
