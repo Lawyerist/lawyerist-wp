@@ -711,11 +711,7 @@ function lawyerist_get_post_card( $post_ID = null, $card_top_label = null, $card
     $thumbnail_id   = get_post_thumbnail_id( $post_ID );
     $thumbnail      = wp_get_attachment_image( $thumbnail_id, 'medium' );
 
-  } else {
-
-		$thumbnail = '';
-		
-	}
+  }
 
 	// Gets the post title and permalink for the link container.
 	$post_title	= get_the_title( $post_ID );
@@ -744,7 +740,7 @@ function lawyerist_get_post_card( $post_ID = null, $card_top_label = null, $card
 
 				}
 
-			} else {
+			} elseif ( !empty( $thumbnail ) ) {
 
 				echo $thumbnail;
 
