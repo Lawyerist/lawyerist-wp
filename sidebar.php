@@ -2,7 +2,7 @@
 
 echo '<div id="sidebar_column">';
 
-	if ( !is_single() || ( is_single() && !has_tag('no-ads') ) ) {
+	if ( !is_single() || ( is_single() && !has_tag( 'no-ads' ) ) ) {
 
 		lawyerist_get_display_ad();
 

@@ -273,7 +273,7 @@
 
 	</div><!-- end #content_column -->
 
-	<?php if ( !is_mobile() ) { include( 'sidebar.php' ); } ?>
+	<?php if ( !is_mobile() ) { get_template_part( 'sidebar' ); } ?>
 
 <?php
 
