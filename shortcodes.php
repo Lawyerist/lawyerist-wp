@@ -13,7 +13,6 @@ Author URI: http://samglover.net
 - Pullquotes
 - Pullouts
 - Testimonials
-- Get Script
 - List Child Pages
 - List Featured Products
 - List All Products
@@ -66,25 +65,6 @@ function lawyerist_testimonial_shortcode( $atts, $quotation = null ) {
 }
 
 add_shortcode( 'testimonial', 'lawyerist_testimonial_shortcode' );
-
-
-/*--------------------------------------------------
-Get Script
---------------------------------------------------*/
-
-function lawyerist_get_script_shortcode( $atts ) {
-
-    $a = shortcode_atts( array(
-        'file' => '',
-    ), $atts );
-
-    $dir = get_template_directory_uri();
-
-    return '<script type="text/javascript" src="' . $dir . '/js/' . $a['file'] . '"></script>';
-
-}
-
-add_shortcode( 'get-script', 'lawyerist_get_script_shortcode' );
 
 
 /*------------------------------
