@@ -81,6 +81,36 @@
 
   ?>
 
+  <!-- Google global site tag (gtag.js) - Google Ads: 928946623 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-928946623"></script>
+  <script>
+   window.dataLayer = window.dataLayer || [];
+   function gtag(){dataLayer.push(arguments);}
+   gtag('js', new Date());
+   gtag('config', 'AW-928946623');
+  </script>
+  <!-- End Google global site tag. -->
+
+  <!-- DoubleClick Script -->
+  <script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
+  <script>
+    var googletag = googletag || {};
+    googletag.cmd = googletag.cmd || [];
+  </script>
+  <!-- End DoubleClick Script -->
+
+  <!-- DoubleClick Tag for Sidebar Ad-->
+  <script>
+  googletag.cmd.push(function() {
+    googletag.defineSlot('/12659965/lawyerist_300x250_ad_position', [300, 250], 'div-gpt-ad-1565383693580-0').addService(googletag.pubads());
+    googletag.pubads().enableSingleRequest();
+    googletag.pubads().collapseEmptyDivs();
+    googletag.pubads().setTargeting('test', 'refresh');
+    googletag.enableServices();
+  });
+  </script>
+  <!-- End DoubleClick Tag for Sidebar Ad -->
+
   <!-- Google Ads code for sidebar display ad placement. -->
   <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
   <script>
