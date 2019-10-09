@@ -521,140 +521,147 @@ List Affinity Partners
 
 function lwyrst_affinity_partners_list() {
 
-  // Query variables.
-	$args = array(
-    'meta_key'		    => 'affinity_active',
-  	'meta_value'	    => true,
-		'order'						=> 'ASC',
+  // Get a list of product portals.
+  $prod_portal_args = array(
+    'order'						=> 'ASC',
 		'orderby'					=> 'title',
+    'post_parent'     => 301729,
     'posts_per_page'  => -1,
-		'post_type'				=> 'page',
-    'tax_query'       => array(
-      array(
-        'taxonomy'  => 'page_type',
-        'field'     => 'slug',
-        'terms'     => 'affinity-partner',
-      ),
-    ),
-	);
+    'post_type'       => 'page',
+  );
 
-	$affinity_partner_list_query = new WP_Query( $args );
+  $prod_portal_query = new WP_Query( $prod_portal_args );
 
-	if ( $affinity_partner_list_query->post_count > 0 ) :
+  if ( $prod_portal_query->post_count > 0 ) :
 
     ob_start();
 
-      global $post;
+      while ( $prod_portal_query->have_posts() ) : $prod_portal_query->the_post();
 
-  		echo '<ul class="product-pages-list">';
+        $portal_ID = get_the_ID();
 
-  			// Start the Loop.
-  			while ( $affinity_partner_list_query->have_posts() ) : $affinity_partner_list_query->the_post();
+        // Query variables.
+      	$child_args = array(
+          'meta_key'		    => 'affinity_active',
+        	'meta_value'	    => true,
+      		'order'						=> 'ASC',
+      		'orderby'					=> 'title',
+          'post_parent'     => $portal_ID,
+          'posts_per_page'  => -1,
+      		'post_type'				=> 'page',
+          'tax_query'       => array(
+            array(
+              'taxonomy'  => 'page_type',
+              'field'     => 'slug',
+              'terms'     => 'affinity-partner',
+            ),
+          ),
+      	);
 
-          $product_page_ID    = get_the_ID();
-  				$product_page_title	= the_title( '', '', FALSE );
-  				$product_page_URL		= get_permalink();
+      	$affinity_partner_list_query = new WP_Query( $child_args );
 
-          $seo_descr  = get_post_meta( $product_page_ID, '_yoast_wpseo_metadesc', true );
+      	if ( $affinity_partner_list_query->post_count > 0 ) :
 
-          if ( !empty( $seo_descr ) ) {
-            $page_excerpt = $seo_descr;
-          } else {
-            $page_excerpt = get_the_excerpt();
-          }
+          echo '<h3>' . get_the_title( $portal_ID ) . '</h3>';
 
-          // Check for a rating.
-          if ( comments_open() && function_exists( 'wp_review_show_total' ) ) {
+      		echo '<ul class="product-pages-list">';
 
-          	$composite_rating = lawyerist_get_composite_rating();
+      			// Start the Loop.
+      			while ( $affinity_partner_list_query->have_posts() ) : $affinity_partner_list_query->the_post();
 
-          }
+              $product_page_ID    = get_the_ID();
+      				$product_page_title	= the_title( '', '', FALSE );
+      				$product_page_URL		= get_permalink();
 
-  				echo '<li ';
-          post_class( 'card' );
-          echo '>';
+              $seo_descr  = get_post_meta( $product_page_ID, '_yoast_wpseo_metadesc', true );
 
-  					if ( has_post_thumbnail() ) {
-
-  						echo '<a class="image" href="' . $product_page_URL . '">';
-
-                if ( has_term( 'affinity-partner', 'page_type', $post->ID ) && get_field( 'affinity_active' ) == true ) {
-
-                  $theme_dir = get_template_directory_uri();
-                  echo '<img class="affinity-partner-badge" alt="Lawyerist affinity partner badge." src="' . $theme_dir . '/images/affinity-partner-mini-badge.png" height="64" width="75" />';
-
-                }
-
-    						the_post_thumbnail( 'thumbnail' );
-
-  						echo '</a>';
-
-  					}
-
-            echo '<div class="title_container">';
-
-              if ( !empty( $composite_rating ) ) {
-
-                echo '<div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">';
-                echo '<a class="title" href="' . $product_page_URL . '"><span itemprop="itemReviewed">' . $product_page_title . '</span></a>';
-
+              if ( !empty( $seo_descr ) ) {
+                $page_excerpt = $seo_descr;
               } else {
+                $page_excerpt = get_the_excerpt();
+              }
 
-                echo '<a class="title" href="' . $product_page_URL . '">' . $product_page_title . '</a>';
+              // Check for a rating.
+              if ( comments_open() && function_exists( 'wp_review_show_total' ) ) {
+
+              	$composite_rating = lawyerist_get_composite_rating();
 
               }
 
-              // Rating
-              echo '<div class="user-rating">';
+      				echo '<li ';
+              post_class( 'card' );
+              echo '>';
 
-                if ( !empty( $composite_rating ) ) {
+      					if ( has_post_thumbnail() ) {
 
-                  echo '<a href="' . $product_page_URL . '#rating">';
+      						echo '<a class="image" href="' . $product_page_URL . '">';
 
-                    echo lawyerist_product_rating();
+                    if ( has_term( 'affinity-partner', 'page_type', $post->ID ) && get_field( 'affinity_active' ) == true ) {
 
-                  echo '</a>';
+                      $theme_dir = get_template_directory_uri();
+                      echo '<img class="affinity-partner-badge" alt="Lawyerist affinity partner badge." src="' . $theme_dir . '/images/affinity-partner-mini-badge.png" height="64" width="75" />';
 
-                } else {
+                    }
 
-                  echo '<a href="' . $product_page_URL . '#respond">Leave a review.</a>';
+        						the_post_thumbnail( 'thumbnail' );
 
-                }
+      						echo '</a>';
 
-              echo '</div>'; // End .user_rating.
+      					}
 
-              if ( !empty( $composite_rating ) ) {
-                echo '</div>'; // End aggregateRating schema.
-              }
+                echo '<div class="title_container">';
 
-            echo '</div>'; // End .title_container.
+                  if ( !empty( $composite_rating ) ) {
 
-            // Outputs trial button if there is one, except on the all-reviews page.
-            if ( !is_page( '301729' ) ) {
+                    echo '<div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">';
+                    echo '<a class="title" href="' . $product_page_URL . '"><span itemprop="itemReviewed">' . $product_page_title . '</span></a>';
 
-              if ( ( $country == ( 'US' || 'CA' ) ) && has_trial_button( $product_page_ID ) ) {
+                  } else {
 
-                echo '<div class="list-products-trial-button">';
-                  echo  trial_button( $product_page_ID );
-                echo '</div>';
+                    echo '<a class="title" href="' . $product_page_URL . '">' . $product_page_title . '</a>';
 
-              }
+                  }
 
-            }
+                  // Rating
+                  echo '<div class="user-rating">';
 
-  					echo '<div class="clear"></div>';
+                    if ( !empty( $composite_rating ) ) {
 
-  					if ( $atts[ 'show_excerpt' ] == 'true' ) { echo '<span class="excerpt">' . $page_excerpt . ' <a href="' . $product_page_URL . '">Learn more about ' . $product_page_title . '.</a></span>'; }
+                      echo '<a href="' . $product_page_URL . '#rating">';
 
-  				echo '</li>';
+                        echo lawyerist_product_rating();
 
-  			endwhile; wp_reset_postdata();
+                      echo '</a>';
 
-  		echo '</ul>';
+                    } else {
+
+                      echo '<a href="' . $product_page_URL . '#respond">Leave a review.</a>';
+
+                    }
+
+                  echo '</div>'; // End .user_rating.
+
+                  if ( !empty( $composite_rating ) ) {
+                    echo '</div>'; // End aggregateRating schema.
+                  }
+
+                echo '</div>'; // End .title_container.
+
+      					echo '<span class="excerpt">' . $page_excerpt . ' <a href="' . $product_page_URL . '">Learn more about ' . $product_page_title . '.</a></span>';
+
+      				echo '</li>';
+
+      			endwhile; wp_reset_postdata();
+
+      		echo '</ul>';
+
+      	endif; // End product list.
+
+      endwhile; wp_reset_postdata();
 
     $all_partners = ob_get_clean();
 
-	endif; // End product list.
+  endif;
 
   return $all_partners;
 
