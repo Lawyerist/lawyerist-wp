@@ -142,16 +142,12 @@ function lawyerist_child_pages_list( $atts ) {
 
         echo '<div class="child-pages-list">';
 
-          echo '<div>';
-
     			// Start the Loop.
     			while ( $child_pages_list_query->have_posts() ) : $child_pages_list_query->the_post();
 
             lawyerist_get_post_card();
 
     			endwhile; wp_reset_postdata();
-
-          echo '</div>';
 
     		echo '</div>'; // End #child_pages
 
