@@ -1670,25 +1670,25 @@ function affinity_notice() {
 
 			echo '<div class="card affinity-discount-card">';
 
+				$theme_dir = get_template_directory_uri();
+
+				echo '<img alt="Lawyerist affinity partner badge." src="' . $theme_dir . '/images/affinity-partner-badge.png" height="128" width="150" />';
+
 				echo '<p class="card-label">' . $card_label . '</p>';
 
-					$theme_dir = get_template_directory_uri();
+				echo '<p class="discount_descr">' . $discount_descr . '</p>';
 
-					echo '<img alt="Lawyerist affinity partner badge." src="' . $theme_dir . '/images/affinity-partner-badge.png" height="128" width="150" />';
+				if ( wc_memberships_is_user_active_member( $user_id, 'insider' ) ) {
 
-					echo '<p class="discount_descr">' . $discount_descr . '</p>';
+					echo '<button class="button expandthis-click">Claim Your Discount</button>';
 
-					if ( wc_memberships_is_user_active_member( $user_id, 'insider' ) ) {
+					echo '<div class="expandthis-hide">';
 
-						echo '<button class="button expandthis-click">Claim Your Discount</button>';
+						echo do_shortcode( '[gravityform id="55" title="false" ajax="true"]' );
 
-						echo '<div class="expandthis-hide">';
+					echo '</div>';
 
-							echo do_shortcode( '[gravityform id="55" title="false" ajax="true"]' );
-
-						echo '</div>';
-
-					}
+				}
 
 				echo '</div>';
 
