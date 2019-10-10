@@ -1908,6 +1908,8 @@ function populate_fields( $value, $field, $name ) {
 
 	$post_title	= the_title( '', '', FALSE );
 
+	$user_ID						= get_current_user_id();
+
 	$discount_descr			= get_field( 'affinity_discount_descr' );
 	$availability				= get_field( 'affinity_availability' );
 	$workflow						= get_field( 'affinity_workflow' );
@@ -1935,6 +1937,7 @@ function populate_fields( $value, $field, $name ) {
 	}
 
   $values = array(
+		'user-id'											=> $user_ID,
 		'affinity-discount'						=> $discount_descr,
 		'affinity-availability'				=> $whom,
     'affinity-workflow'						=> $workflow,
