@@ -1526,6 +1526,15 @@ Card Styles
 
   }
 
+  @media only screen and ( max-width: 639px ) {
+
+    .cards-3-columns,
+    .cards-4-columns {
+      grid-template-columns: repeat( 2, 1fr );
+    }
+
+  }
+
   .cards .card {
     margin: 0;
   }
@@ -1790,6 +1799,7 @@ p.fp-section-header:first-of-type {
   margin-bottom: 2rem;
 }
 
+#fp-product-spotlights a.has-post-thumbnail img,
 #fp-blog-posts a.has-post-thumbnail img {
   border-radius: unset;
 }
