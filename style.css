@@ -1451,15 +1451,21 @@ Card Styles
 
   .card a.has-guest-avatar img.guest-avatar {
     border-radius: 50%;
-    height: auto;
+    height: 15rem;
     margin: 0;
-    width: 100%;
+    object-fit: cover;
+    width: 15rem;
   }
 
   @media only screen and ( max-width: 639px ) {
 
     .card a.has-post-thumbnail {
-      grid-template-columns: 7.5rem 1fr;
+      grid-template-columns: 10rem 1fr;
+    }
+
+    .card a.has-guest-avatar img.guest-avatar {
+      height: 10rem;
+      width: 10rem;
     }
 
   }
