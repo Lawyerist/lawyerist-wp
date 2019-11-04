@@ -131,17 +131,6 @@
 			// End of podcast episode.
 
 
-			// Embedded Lawyerist Lens playlist.
-			echo '<div id="fp-lens-playlist" class="card has-card-label">';
-
-				echo '<div id="lens-wrapper"><iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLtFJu5URBISmTDaVOF3l-cQl08f2qUMr_" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>';
-
-				echo '<p class="card-label card-bottom-label"><a href="https://www.youtube.com/playlist?list=PLtFJu5URBISmTDaVOF3l-cQl08f2qUMr_" title="Watch all episodes of Lawyerist Lens on YouTube">Watch all episodes of Lawyerist Lens on YouTube</a></p>';
-
-			echo '</div>';
-			// End of embedded Lawyerist Lens playlist.
-
-
 			// Outputs 4 pages with Show in Recent.
 			$args = array(
 				'meta_key'				=> 'show_in_recent',

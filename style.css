@@ -629,7 +629,6 @@ Block Styles
 }
 
 .ld-video,
-#lens-wrapper,
 .wp-block-embed.is-type-video {
   margin-bottom: 3rem;
   position: relative;
@@ -639,7 +638,6 @@ Block Styles
 }
 
   .ld-video iframe,
-  #lens-wrapper iframe,
   .wp-block-embed.is-type-video iframe {
     position: absolute;
     top: 0;
@@ -1794,14 +1792,6 @@ p.fp-section-header:first-of-type {
 }
 
 /* New Content Blocks */
-
-#fp-lens-playlist iframe {
-  margin-bottom: 0 !important;
-}
-
-  #fp-lens-playlist #lens-wrapper {
-    margin-bottom: 0;
-  }
 
 #fp-blog-posts .post {
   margin-bottom: 2rem;
