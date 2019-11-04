@@ -747,6 +747,7 @@ a.wp-block-file__button,
 }
 
 /* Sub-elements of Concourse elements that should be reset to Equity. */
+#feature-chart th .message,
 .gform_confirmation_message,
 input[ type="email" ],
 input[ type="password" ],
@@ -2500,6 +2501,51 @@ Content
         width: 100%;
       }
 
+    }
+
+  /* Feature Chart */
+
+  #feature-chart table {
+    margin-bottom: 6rem;
+    max-width: 80%;
+  }
+
+  #feature-chart tr {
+    border-bottom: .1rem solid #ddd;
+  }
+
+  #feature-chart tr:last-child {
+    border-bottom: 0;
+  }
+
+  #feature-chart th,
+  #feature-chart td {
+    background-color: unset;
+    border: 0;
+    padding: 2rem;
+    vertical-align: top;
+  }
+
+  #feature-chart th .message {
+    font-size: 80%;
+    font-weight: normal;
+  }
+
+  #feature-chart td {
+    white-space: nowrap;
+  }
+
+  #feature-chart td.check {
+    vertical-align: middle;
+  }
+
+  #feature-chart td.list ul {
+    list-style: none;
+    margin: 0;
+  }
+
+    #feature-chart td.list ul li {
+      margin: 0;
     }
 
   .page-template-product-page .headline_container {

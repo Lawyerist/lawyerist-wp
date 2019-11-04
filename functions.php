@@ -1222,7 +1222,7 @@ function lawyerist_get_related_podcasts() {
 	if ( !empty( $current_slug ) ) {
 
 		$args = array(
-			'category_name'			=> 'podcast',
+			'category_name'		=> 'podcast',
 			'post__not_in'		=> $current_id,
 			'posts_per_page'	=> -1,
 			'tag' 						=> $current_slug,

@@ -13,6 +13,7 @@ Author URI: http://samglover.net
 - Pullquotes
 - Pullouts
 - Testimonials
+- Feature Charts
 - List Child Pages
 - List Featured Products
 - List All Products
@@ -65,6 +66,79 @@ function lawyerist_testimonial_shortcode( $atts, $quotation = null ) {
 }
 
 add_shortcode( 'testimonial', 'lawyerist_testimonial_shortcode' );
+
+
+/*--------------------------------------------------
+Feature Charts
+--------------------------------------------------*/
+
+function feature_chart() {
+
+  ob_start();
+
+    echo '<div id="feature-chart">';
+
+      echo '<h2>' . the_title( '', '', FALSE ) . ' Features</h2>';
+
+      $features = get_field_objects();
+
+      echo '<table class="card"><tbody>';
+
+      foreach ( $features as $feature ) {
+
+        if ( substr( $feature[ 'name' ], 0, 3 ) == 'fc_' ) {
+
+          echo '<tr>';
+            echo '<th scope="row" class="label">';
+              echo '<div class="label">' . $feature[ 'label' ] . '</div>';
+              if ( !empty( $feature[ 'message' ] ) )  {
+
+                echo '<div class="message">' . $feature[ 'message' ] . '</div>';
+
+              }
+            echo '</th>';
+
+              switch ( $feature[ 'type' ] ) {
+
+                case 'true_false';
+
+                  if ( $feature[ 'value' ] == true ) {
+                    echo '<td class="value true_false">&check;</td>';
+                  }
+
+                  break;
+
+                case 'checkbox';
+
+                  echo '<td class="value list"><ul>';
+
+                    foreach ( $feature[ 'value' ] as $item ) {
+
+                      echo '<li>' . $item . '</li>';
+
+                    }
+
+                  echo '</ul></td>';
+
+                  break;
+
+              }
+
+          echo '</tr>';
+
+        }
+
+      }
+
+      echo '</tbody></table>';
+
+    echo '</div>';
+
+  return ob_get_clean();
+
+}
+
+add_shortcode( 'feature-chart', 'feature_chart' );
 
 
 /*------------------------------
