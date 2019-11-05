@@ -577,7 +577,7 @@ function get_first_image_url( $post_ID = NULL ) {
 		if ( $first_image_id ) {
 
 			$first_image_1x = wp_get_attachment_image_src( $first_image_id );
-			$first_image_2x = wp_get_attachment_image_src( $first_image_id, 'medium' );
+			$first_image_2x = wp_get_attachment_image_src( $first_image_id, 'retina-thumbnail' );
 
 			$first_image_url[ '1x' ] = $first_image_1x[0];
 			$first_image_url[ '2x' ] = $first_image_2x[0];
@@ -727,7 +727,7 @@ function lawyerist_get_post_card( $post_ID = null, $card_top_label = null, $card
 	} elseif ( has_post_thumbnail() ) {
 
     $thumbnail_id   = get_post_thumbnail_id( $post_ID );
-    $thumbnail      = wp_get_attachment_image( $thumbnail_id, 'retina-thumbnail' );
+    $thumbnail      = wp_get_attachment_image( $thumbnail_id, 'medium' );
 
   }
 
