@@ -19,6 +19,7 @@ ADMIN
 
 UTILITY FUNCTIONS
 - Get Country
+- Retina Thumbnail
 - Get First Image URL
 - Is This a Product Portal?
 - Get Active Labsters
@@ -127,6 +128,8 @@ function lawyerist_theme_setup() {
 	add_theme_support( 'responsive-embeds' );
 	add_theme_support( 'title-tag' );
 	add_theme_support( 'wp-block-styles' );
+
+	add_image_size( 'retina-thumbnail', 300, 300, true );
 
 }
 
@@ -562,18 +565,27 @@ function get_first_image_url( $post_ID = NULL ) {
 		$post = get_post( $post_ID );
 	}
 
-	$first_image_url = '';
+	$first_image_url = array();
 
-	$output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
+	preg_match_all( '/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches );
 
 	if ( !empty( $matches[1][0] ) ) {
 
-		$first_image_url	= filter_var( $matches[1][0], FILTER_SANITIZE_URL );
-		$first_image_id		= attachment_url_to_postid( $first_image_url );
+		$first_image_url[ '1x' ]	= filter_var( $matches[1][0], FILTER_SANITIZE_URL );
+		$first_image_id						= attachment_url_to_postid( $first_image_url[ '1x' ] );
 
 		if ( $first_image_id ) {
-			$first_image_src = wp_get_attachment_image_src( $first_image_id );
-			$first_image_url = $first_image_src[0];
+
+			$first_image_1x = wp_get_attachment_image_src( $first_image_id );
+			$first_image_2x = wp_get_attachment_image_src( $first_image_id, 'medium' );
+
+			$first_image_url[ '1x' ] = $first_image_1x[0];
+			$first_image_url[ '2x' ] = $first_image_2x[0];
+
+		} else {
+
+			$first_image_url[ '2x' ] = $first_image_url[ '1x' ];
+
 		}
 
 		return $first_image_url;
@@ -708,14 +720,14 @@ function lawyerist_get_post_card( $post_ID = null, $card_top_label = null, $card
 		$first_image_url = get_first_image_url( $post_ID );
 
 		if ( !empty( $first_image_url ) ) {
-			$thumbnail			= '<img class="guest-avatar" src="' . $first_image_url . '" />';
+			$thumbnail			= '<img class="guest-avatar" srcset="' . $first_image_url[ '1x' ] . ' 1x, ' . $first_image_url[ '2x' ] . ' 2x" src="' . $first_image_url[ '1x' ] . '" />';
 			$post_classes[]	= 'has-guest-avatar';
 		}
 
 	} elseif ( has_post_thumbnail() ) {
 
     $thumbnail_id   = get_post_thumbnail_id( $post_ID );
-    $thumbnail      = wp_get_attachment_image( $thumbnail_id, 'medium' );
+    $thumbnail      = wp_get_attachment_image( $thumbnail_id, 'retina-thumbnail' );
 
   }
 
