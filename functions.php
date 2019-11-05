@@ -568,7 +568,13 @@ function get_first_image_url( $post_ID = NULL ) {
 
 	if ( !empty( $matches[1][0] ) ) {
 
-		$first_image_url = filter_var( $matches[1][0], FILTER_SANITIZE_URL );
+		$first_image_url	= filter_var( $matches[1][0], FILTER_SANITIZE_URL );
+		$first_image_id		= attachment_url_to_postid( $first_image_url );
+
+		if ( $first_image_id ) {
+			$first_image_src = wp_get_attachment_image_src( $first_image_id );
+			$first_image_url = $first_image_src[0];
+		}
 
 		return $first_image_url;
 
@@ -1222,7 +1228,7 @@ function lawyerist_get_related_podcasts() {
 	if ( !empty( $current_slug ) ) {
 
 		$args = array(
-			'category_name'		=> 'podcast',
+			'category_name'			=> 'lawyerist-podcast',
 			'post__not_in'		=> $current_id,
 			'posts_per_page'	=> -1,
 			'tag' 						=> $current_slug,
