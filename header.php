@@ -11,13 +11,9 @@
   gravity_form_enqueue_scripts( 59, true );
   ?>
 
-  <?php wp_head(); ?>
-
-  <!-- Gets favicon. -->
-  <link rel="shortcut icon" href="<?php echo get_bloginfo( 'template_url' ); ?>/images/favicon.ico" type="image/x-icon">
-
-  <!-- Gets the RSS feed link. -->
-  <link rel="alternate" type="application/rss+xml" title="<?php bloginfo( 'name' ); ?> RSS feed" href="http://feeds.feedburner.com/solosmalltech">
+  <!-- Prefetch WPMU Dev Hummingbird & Smush CDN domains. -->
+  <link rel="dns-prefetch" href="//hb.wpmucdn.com">
+  <link rel="dns-prefetch" href="//367667.smushcdn.com">
 
   <!-- Preloads/prefetches fonts. -->
 
@@ -41,6 +37,16 @@
 
   <!-- Triplicate -->
   <link rel="prefetch" href="<?php echo get_bloginfo( 'template_url' ); ?>/fonts/triplicate/triplicate_t4_code_regular-webfont.woff2" type="font/woff2" crossorigin="anonymous">
+
+
+  <?php wp_head(); ?>
+
+
+  <!-- Gets favicon. -->
+  <link rel="shortcut icon" href="<?php echo get_bloginfo( 'template_url' ); ?>/images/favicon.ico" type="image/x-icon">
+
+  <!-- Gets the RSS feed link. -->
+  <link rel="alternate" type="application/rss+xml" title="<?php bloginfo( 'name' ); ?> RSS feed" href="http://feeds.feedburner.com/solosmalltech">
 
   <?php
 

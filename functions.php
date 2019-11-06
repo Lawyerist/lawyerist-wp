@@ -1551,7 +1551,7 @@ Mobile Display Ad
 
 function lawyerist_mobile_display_ad( $content ) {
 
-	if ( is_mobile() && ( is_single() || is_page() ) && is_main_query() && !is_page_template( 'product-page.php' ) ) {
+	if ( wp_is_mobile() && ( is_single() || is_page() ) && is_main_query() && !is_page_template( 'product-page.php' ) ) {
 
 		$p_close		= '</p>';
 		$paragraphs = explode( $p_close, $content );

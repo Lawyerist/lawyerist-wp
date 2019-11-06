@@ -64,7 +64,7 @@
 
 	</div>
 
-	<?php if ( !is_mobile() ) { get_template_part( 'sidebar' ); } ?>
+	<?php get_template_part( 'sidebar' ); ?>
 
 </div>
 
