@@ -11,10 +11,6 @@
   gravity_form_enqueue_scripts( 59, true );
   ?>
 
-  <!-- Prefetch WPMU Dev Hummingbird & Smush CDN domains. -->
-  <link rel="dns-prefetch" href="//hb.wpmucdn.com">
-  <link rel="dns-prefetch" href="//367667.smushcdn.com">
-
   <!-- Preloads/prefetches fonts. -->
 
   <!-- Adler -->
