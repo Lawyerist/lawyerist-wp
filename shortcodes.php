@@ -78,51 +78,86 @@ function feature_chart() {
 
     echo '<div id="feature-chart">';
 
-      echo '<h2>' . the_title( '', '', FALSE ) . ' Features</h2>';
-
       $features = get_field_objects();
 
-      echo '<table class="card"><tbody>';
+      usort( $features, function( $a, $b ) {
+  			return $a[ 'menu_order' ] <=> $b[ 'menu_order' ];
+  		});
+
+      echo '<table><tbody>';
 
       foreach ( $features as $feature ) {
 
         if ( substr( $feature[ 'name' ], 0, 3 ) == 'fc_' ) {
 
           echo '<tr>';
+
             echo '<th scope="row" class="label">';
+
               echo '<div class="label">' . $feature[ 'label' ] . '</div>';
+
               if ( !empty( $feature[ 'message' ] ) )  {
 
                 echo '<div class="message">' . $feature[ 'message' ] . '</div>';
 
               }
+
             echo '</th>';
 
-              switch ( $feature[ 'type' ] ) {
+            switch ( $feature[ 'type' ] ) {
 
-                case 'true_false';
+              case 'url' :
+
+                $url_parsed = parse_url( $feature[ 'value' ] );
+                $url_host  	= $url_parsed[ 'host' ];
+
+                echo '<td class="value url"><a href="' . $feature[ 'value' ] . '?utm_source=lawyerist&utm_medium=free-resources-page-link">' . $url_host . '</a></td>';
+
+                break;
+
+              case 'text' :
+
+                echo '<td class="value text">' . $feature[ 'value' ] . '</td>';
+
+                break;
+
+              case 'true_false' :
+
+                echo '<td class="value true_false">';
 
                   if ( $feature[ 'value' ] == true ) {
-                    echo '<td class="value true_false">&check;</td>';
+
+                    echo '<div class="check">&check;</div>';
+
+                  } else {
+
+                    echo '';
+
                   }
 
-                  break;
+                echo '</td>';
 
-                case 'checkbox';
+                break;
 
-                  echo '<td class="value list"><ul>';
+              case 'checkbox' :
 
-                    foreach ( $feature[ 'value' ] as $item ) {
+                echo '<td class="value list"><ul>';
 
-                      echo '<li>' . $item . '</li>';
+                  foreach ( $feature[ 'value' ] as $item ) {
 
-                    }
+                    echo '<li>' . $item . '</li>';
 
-                  echo '</ul></td>';
+                  }
 
-                  break;
+                echo '</ul></td>';
 
-              }
+                break;
+
+              default :
+
+                echo '<td></td>';
+
+            }
 
           echo '</tr>';
 

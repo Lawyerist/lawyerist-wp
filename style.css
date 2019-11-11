@@ -686,6 +686,7 @@ button,
 .comment-meta,
 .comment .reply,
 #dashboard-title,
+#feature-chart td.value,
 figcaption,
 #footer,
 .fp-section-header,
@@ -2505,13 +2506,15 @@ Content
 
   /* Feature Chart */
 
-  #feature-chart table {
-    margin-bottom: 6rem;
+  #feature-chart {
+    margin: 0 auto 6rem auto;
     max-width: 80%;
   }
 
-  #feature-chart tr {
-    border-bottom: .1rem solid #ddd;
+  #feature-chart table,
+  #feature-chart th,
+  #feature-chart td {
+    border: .1rem solid #ddd;
   }
 
   #feature-chart tr:last-child {
@@ -2521,7 +2524,6 @@ Content
   #feature-chart th,
   #feature-chart td {
     background-color: unset;
-    border: 0;
     padding: 2rem;
     vertical-align: top;
   }
@@ -2532,12 +2534,19 @@ Content
   }
 
   #feature-chart td {
+    text-align: center;
     white-space: nowrap;
   }
 
-  #feature-chart td.check {
+  #feature-chart td.true_false {
     vertical-align: middle;
   }
+
+    #feature-chart .check {
+      font-size: 3rem;
+      font-weight: bold;
+      padding: 0 2rem;
+    }
 
   #feature-chart td.list ul {
     list-style: none;
@@ -2545,8 +2554,14 @@ Content
   }
 
     #feature-chart td.list ul li {
+      font-size: 80%;
       margin: 0;
     }
+
+  #feature-chart td.text,
+  #feature-chart td.url {
+    font-size: 80%;
+  }
 
   .page-template-product-page .headline_container {
     margin-bottom: 3rem;
