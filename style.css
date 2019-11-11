@@ -1229,6 +1229,11 @@ img.inline {
   margin: 0 0 3rem 0;
 }
 
+.wp-block-gallery .blocks-gallery-image,
+.wp-block-gallery .blocks-gallery-item {
+  flex-grow: unset;
+}
+
 /* Fix for overflowing image captions in block galleries. */
 .wp-block-gallery .blocks-gallery-image figcaption,
 .wp-block-gallery .blocks-gallery-item figcaption {
