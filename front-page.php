@@ -35,24 +35,24 @@
 
 					if ( is_sticky() ) {
 
-							$num_sticky_posts++;
+						$num_sticky_posts++;
 
-							$sticky_post_title	= the_title( '', '', FALSE );
-							$sticky_post_url		= get_permalink();
+						$sticky_post_title	= the_title( '', '', FALSE );
+						$sticky_post_url		= get_permalink();
 
-							// Starts the post container.
-							echo '<div ';
-							post_class( 'front_page_sticky_post card' );
-							echo '>';
+						// Starts the post container.
+						echo '<div ';
+						post_class( 'front_page_sticky_post card' );
+						echo '>';
 
-								// Starts the link container. Makes for big click targets!
-								echo '<a href="' . $sticky_post_url . '" title="' . $sticky_post_title . '">';
+							// Starts the link container. Makes for big click targets!
+							echo '<a href="' . $sticky_post_url . '" title="' . $sticky_post_title . '">';
 
-									echo '<h2 class="headline">' . $sticky_post_title . '</h2>';
+								echo '<h2 class="headline">' . $sticky_post_title . '</h2>';
 
-								echo '</a>';
+							echo '</a>';
 
-							echo '</div>';
+						echo '</div>';
 
 					}
 
@@ -77,32 +77,30 @@
 
 				echo '</div>';
 
-			}
+			} else {
 
+				// Outputs the front page call to action.
 
-	    // Outputs the front page call to action.
-			if ( !is_user_logged_in() ) {
+				?>
 
-			?>
-
-				<div id="big_hero_cta" class="card dismissible-notice" data-id="Insider">
-					<div id="big_hero_left">
-						<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/02/L-dot-150x150.png" />
-						<span class="big_hero_label">Insider</span>
-					</div>
-					<div id="big_hero_right">
-						<button class="greybutton dismiss-button"></button>
-						<div id="big_hero_top">
-							<p class="headline">Join Your Tribe.</p>
-							<p>Lawyerist Insider is the community of solo and small firm lawyers building modern, future-oriented law practices.</p>
-							<p class="headline">Grow Your Firm.</p>
-							<p>With a <em>free</em> Lawyerist Insider membership you'll get checklists, worksheets, discounts, and access to our community of small-firm leaders to help you take your firm to the next level!</p>
+					<div id="big_hero_cta" class="card dismissible-notice" data-id="Insider">
+						<div id="big_hero_left">
+							<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/02/L-dot-150x150.png" />
+							<span class="big_hero_label">Insider</span>
 						</div>
-						<a class="button free-flag register-link" href="https://lawyerist.com/community/insider/">Join Now</a>
+						<div id="big_hero_right">
+							<button class="greybutton dismiss-button"></button>
+							<div id="big_hero_top">
+								<p class="headline">Join Your Tribe.</p>
+								<p>Lawyerist Insider is the community of solo and small firm lawyers building modern, future-oriented law practices.</p>
+								<p class="headline">Grow Your Firm.</p>
+								<p>With a <em>free</em> Lawyerist Insider membership you'll get checklists, worksheets, discounts, and access to our community of small-firm leaders to help you take your firm to the next level!</p>
+							</div>
+							<a class="button free-flag register-link" href="https://lawyerist.com/community/insider/">Join Now</a>
+						</div>
 					</div>
-				</div>
 
-			<?php
+				<?php
 
 			}
 
@@ -193,11 +191,11 @@
 
 			// Outputs the 4 most recent blog posts.
 			$args = array(
-				'category__in'				=> array(
+				'category__in'		=> array(
 					'555', // Blog Posts
 				),
-				'post__not_in'				=> get_option( 'sticky_posts' ),
-				'posts_per_page'			=> 4,
+				'post__not_in'		=> get_option( 'sticky_posts' ),
+				'posts_per_page'	=> 4,
 			);
 
 			$current_post_query = new WP_Query( $args );
@@ -213,8 +211,9 @@
 
 					endwhile; wp_reset_postdata();
 
-					$all_posts_txt		= 'All Blog Posts';
-					$all_posts_url		=	get_category_link( 555 );
+					$all_posts_txt	= 'All Blog Posts';
+					$all_posts_url	=	get_category_link( 555 );
+
 					echo '<p class="card-label card-bottom-label"><a href="' . $all_posts_url . '" title="' . $all_posts_txt . '">' . $all_posts_txt . '</a></p>';
 
 				echo '</div>';
