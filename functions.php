@@ -608,15 +608,17 @@ function is_product_portal() {
 	global $post;
 
 	$get_children_args = array(
-		'child_of'	=> $post->ID,
-		'exclude_tree' => array(
+		'post_parent'	=> $post->ID,
+		'post__not_in' => array(
 			245317, // Insider
 			220087, // Lab
 			128819, // LabCon
 		),
+		'fields'		=> 'ids',
+		'post_type'	=> 'page',
 	);
 
-	$children = get_pages( $get_children_args );
+	$children = get_posts( $get_children_args );
 
 	if ( is_page() && is_page_template( 'product-page.php' ) && ( count( $children ) > 0 ) ) {
 
@@ -1395,8 +1397,8 @@ List Child Pages Fallback
 
 Outputs child pages if all of the following are true:
 
-1. The page has children.
-2. The page is not one of several listed.
+1. It's a page.
+2. It has children.
 3. The page is not a product portal.
 4. The [list-child-pages] shortcode is not used anywhere on the page.
 ------------------------------*/
@@ -1405,9 +1407,20 @@ function lawyerist_list_child_pages_fallback( $content ) {
 
 	global $post;
 
-	$children = get_pages( array( 'child_of' => $post->ID ) );
+	$get_children_args = array(
+		'post_parent'	=> $post->ID,
+		'post__not_in' => array(
+			3379, 	// About
+			245258, // Community
+			128819, // LabCon
+		),
+		'fields'		=> 'ids',
+		'post_type'	=> 'page',
+	);
 
-if ( is_page() && !is_page( 'about' ) && !is_page( 'community' ) && !is_product_portal() && !has_shortcode( $content, 'list-child-pages' ) ) {
+	$children = get_posts( $get_children_args );
+
+if ( !is_home() && is_page() && ( count( $children ) > 0 ) && !is_product_portal() && !has_shortcode( $content, 'list-child-pages' ) ) {
 
 		ob_start();
 
