@@ -2508,7 +2508,6 @@ Content
 
   #feature-chart {
     margin: 0 auto 6rem auto;
-    max-width: 80%;
   }
 
   #feature-chart table,
@@ -2534,18 +2533,24 @@ Content
   }
 
   #feature-chart td {
+    font-size: 80%;
     text-align: center;
     white-space: nowrap;
   }
 
-  #feature-chart td.true_false {
+  #feature-chart td.true-false {
     vertical-align: middle;
   }
 
-    #feature-chart .check {
+    #feature-chart .true,
+    #feature-chart .false {
       font-size: 3rem;
       font-weight: bold;
       padding: 0 2rem;
+    }
+
+    #feature-chart .false {
+      color: #777;
     }
 
   #feature-chart td.list ul {
@@ -2554,14 +2559,8 @@ Content
   }
 
     #feature-chart td.list ul li {
-      font-size: 80%;
       margin: 0;
     }
-
-  #feature-chart td.text,
-  #feature-chart td.url {
-    font-size: 80%;
-  }
 
   .page-template-product-page .headline_container {
     margin-bottom: 3rem;

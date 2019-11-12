@@ -1408,14 +1408,14 @@ function lawyerist_list_child_pages_fallback( $content ) {
 	global $post;
 
 	$get_children_args = array(
-		'post_parent'	=> $post->ID,
-		'post__not_in' => array(
+		'post_parent'		=> $post->ID,
+		'post__not_in'	=> array(
 			3379, 	// About
 			245258, // Community
 			128819, // LabCon
 		),
-		'fields'		=> 'ids',
-		'post_type'	=> 'page',
+		'fields'			=> 'ids',
+		'post_type'		=> 'page',
 	);
 
 	$children = get_posts( $get_children_args );

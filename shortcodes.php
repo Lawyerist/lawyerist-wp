@@ -123,15 +123,15 @@ function feature_chart() {
 
               case 'true_false' :
 
-                echo '<td class="value true_false">';
+                echo '<td class="value true-false">';
 
                   if ( $feature[ 'value' ] == true ) {
 
-                    echo '<div class="check">&check;</div>';
+                    echo '<div class="true">&check;</div>';
 
                   } else {
 
-                    echo '';
+                    echo '<div class="false">&cross;</div>';
 
                   }
 
@@ -174,6 +174,51 @@ function feature_chart() {
 }
 
 add_shortcode( 'feature-chart', 'feature_chart' );
+
+
+function feature_comparison_chart( $atts ) {
+
+  $portal_id = get_the_ID();
+
+  // Shortcode attributes.
+	$atts = shortcode_atts( array(
+    'portal'  => $portal_id,
+  ), $atts );
+
+  // Quit if this isn't a product portal.
+  if ( !is_product_portal( $atts[ 'portal' ] ) ) {
+    return;
+  }
+
+  ob_start();
+
+    $get_product_pages_args = array(
+  		'post_parent'	=> $atts[ 'portal' ],
+  		'fields'		  => 'ids',
+  		'post_type'	  => 'page',
+  	);
+
+  	$product_page_ids = get_posts( $get_product_pages_args );
+
+    echo '<pre>';
+    var_dump( $product_page_ids );
+    echo '</pre>';
+
+    foreach ( $product_page_ids as $product_page_id ) {
+
+      $features[ $product_page_id ][] = get_field_objects( $product_page_id );
+
+    }
+
+    echo '<pre>';
+    var_dump( $features );
+    echo '</pre>';
+
+  return ob_get_clean();
+
+}
+
+add_shortcode( 'feature-comparison-chart', 'feature_comparison_chart' );
 
 
 /*------------------------------
