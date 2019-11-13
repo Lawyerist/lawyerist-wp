@@ -78,86 +78,51 @@ function feature_chart() {
 
     echo '<div id="feature-chart">';
 
+      echo '<h2>' . the_title( '', '', FALSE ) . ' Features</h2>';
+
       $features = get_field_objects();
 
-      usort( $features, function( $a, $b ) {
-  			return $a[ 'menu_order' ] <=> $b[ 'menu_order' ];
-  		});
-
-      echo '<table><tbody>';
+      echo '<table class="card"><tbody>';
 
       foreach ( $features as $feature ) {
 
         if ( substr( $feature[ 'name' ], 0, 3 ) == 'fc_' ) {
 
           echo '<tr>';
-
             echo '<th scope="row" class="label">';
-
               echo '<div class="label">' . $feature[ 'label' ] . '</div>';
-
               if ( !empty( $feature[ 'message' ] ) )  {
 
                 echo '<div class="message">' . $feature[ 'message' ] . '</div>';
 
               }
-
             echo '</th>';
 
-            switch ( $feature[ 'type' ] ) {
+              switch ( $feature[ 'type' ] ) {
 
-              case 'url' :
-
-                $url_parsed = parse_url( $feature[ 'value' ] );
-                $url_host  	= $url_parsed[ 'host' ];
-
-                echo '<td class="value url"><a href="' . $feature[ 'value' ] . '?utm_source=lawyerist&utm_medium=free-resources-page-link">' . $url_host . '</a></td>';
-
-                break;
-
-              case 'text' :
-
-                echo '<td class="value text">' . $feature[ 'value' ] . '</td>';
-
-                break;
-
-              case 'true_false' :
-
-                echo '<td class="value true-false">';
+                case 'true_false';
 
                   if ( $feature[ 'value' ] == true ) {
-
-                    echo '<div class="true">&check;</div>';
-
-                  } else {
-
-                    echo '<div class="false">&cross;</div>';
-
+                    echo '<td class="value true_false">&check;</td>';
                   }
 
-                echo '</td>';
+                  break;
 
-                break;
+                case 'checkbox';
 
-              case 'checkbox' :
+                  echo '<td class="value list"><ul>';
 
-                echo '<td class="value list"><ul>';
+                    foreach ( $feature[ 'value' ] as $item ) {
 
-                  foreach ( $feature[ 'value' ] as $item ) {
+                      echo '<li>' . $item . '</li>';
 
-                    echo '<li>' . $item . '</li>';
+                    }
 
-                  }
+                  echo '</ul></td>';
 
-                echo '</ul></td>';
+                  break;
 
-                break;
-
-              default :
-
-                echo '<td></td>';
-
-            }
+              }
 
           echo '</tr>';
 
@@ -174,51 +139,6 @@ function feature_chart() {
 }
 
 add_shortcode( 'feature-chart', 'feature_chart' );
-
-
-function feature_comparison_chart( $atts ) {
-
-  $portal_id = get_the_ID();
-
-  // Shortcode attributes.
-	$atts = shortcode_atts( array(
-    'portal'  => $portal_id,
-  ), $atts );
-
-  // Quit if this isn't a product portal.
-  if ( !is_product_portal( $atts[ 'portal' ] ) ) {
-    return;
-  }
-
-  ob_start();
-
-    $get_product_pages_args = array(
-  		'post_parent'	=> $atts[ 'portal' ],
-  		'fields'		  => 'ids',
-  		'post_type'	  => 'page',
-  	);
-
-  	$product_page_ids = get_posts( $get_product_pages_args );
-
-    echo '<pre>';
-    var_dump( $product_page_ids );
-    echo '</pre>';
-
-    foreach ( $product_page_ids as $product_page_id ) {
-
-      $features[ $product_page_id ][] = get_field_objects( $product_page_id );
-
-    }
-
-    echo '<pre>';
-    var_dump( $features );
-    echo '</pre>';
-
-  return ob_get_clean();
-
-}
-
-add_shortcode( 'feature-comparison-chart', 'feature_comparison_chart' );
 
 
 /*------------------------------
@@ -504,7 +424,7 @@ function lawyerist_all_products_list( $atts ) {
   ), $atts );
 
   // Query variables.
-	$product_list_query_args = array(
+	$args = array(
     'meta_query'      => array(
       'relation'      => 'OR',
       array(
@@ -532,7 +452,7 @@ function lawyerist_all_products_list( $atts ) {
 		),
 	);
 
-	$product_list_query = new WP_Query( $product_list_query_args );
+	$product_list_query = new WP_Query( $args );
 
 	if ( $product_list_query->post_count > 0 ) :
 
@@ -553,11 +473,11 @@ function lawyerist_all_products_list( $atts ) {
   			// Start the Loop.
   			while ( $product_list_query->have_posts() ) : $product_list_query->the_post();
 
-          $product_page_ID    = get_the_ID();
+          $product_page_id    = get_the_ID();
   				$product_page_title	= the_title( '', '', FALSE );
   				$product_page_URL		= get_permalink();
 
-          $seo_descr  = get_post_meta( $product_page_ID, '_yoast_wpseo_metadesc', true );
+          $seo_descr  = get_post_meta( $product_page_id, '_yoast_wpseo_metadesc', true );
 
           if ( !empty( $seo_descr ) ) {
             $page_excerpt = $seo_descr;
@@ -567,9 +487,7 @@ function lawyerist_all_products_list( $atts ) {
 
           // Check for a rating.
           if ( comments_open() && function_exists( 'wp_review_show_total' ) ) {
-
           	$composite_rating = lawyerist_get_composite_rating();
-
           }
 
   				echo '<li ';
@@ -634,10 +552,10 @@ function lawyerist_all_products_list( $atts ) {
             // Outputs trial button if there is one, except on the all-reviews page.
             if ( !is_page( '301729' ) ) {
 
-              if ( ( $country == ( 'US' || 'CA' ) ) && has_trial_button( $product_page_ID ) ) {
+              if ( ( $country == ( 'US' || 'CA' ) ) && has_trial_button( $product_page_id ) ) {
 
                 echo '<div class="list-products-trial-button">';
-                  echo  trial_button( $product_page_ID );
+                  echo  trial_button( $product_page_id );
                 echo '</div>';
 
               }
@@ -719,11 +637,11 @@ function lwyrst_affinity_partners_list() {
       			// Start the Loop.
       			while ( $affinity_partner_list_query->have_posts() ) : $affinity_partner_list_query->the_post();
 
-              $product_page_ID    = get_the_ID();
+              $product_page_id    = get_the_ID();
       				$product_page_title	= the_title( '', '', FALSE );
       				$product_page_URL		= get_permalink();
 
-              $seo_descr  = get_post_meta( $product_page_ID, '_yoast_wpseo_metadesc', true );
+              $seo_descr  = get_post_meta( $product_page_id, '_yoast_wpseo_metadesc', true );
 
               if ( !empty( $seo_descr ) ) {
                 $page_excerpt = $seo_descr;
