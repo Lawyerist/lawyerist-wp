@@ -178,9 +178,9 @@ add_shortcode( 'feature-chart', 'feature_chart' );
 
 function feature_comparison_chart( $atts ) {
 
-  // Connects feature chart field group ids to portals.
-  $fc_field_group_ids = array(
-    306077 = ''
+  // Connects portal IDs to ACF field group.
+  $acf_group_ids = array(
+    306077 => 'group_5da5c6cc850d5', // Reputation Management
   );
 
   $portal_id = get_the_ID();
@@ -197,6 +197,8 @@ function feature_comparison_chart( $atts ) {
 
   ob_start();
 
+    // Get all labels from the ACF field group.
+
     $get_product_pages_args = array(
   		'post_parent'	=> $atts[ 'portal' ],
   		'fields'		  => 'ids',
@@ -205,19 +207,11 @@ function feature_comparison_chart( $atts ) {
 
   	$product_page_ids = get_posts( $get_product_pages_args );
 
-    echo '<pre>';
-    var_dump( $product_page_ids );
-    echo '</pre>';
-
     foreach ( $product_page_ids as $product_page_id ) {
 
       $features[ $product_page_id ][] = get_field_objects( $product_page_id );
 
     }
-
-    echo '<pre>';
-    var_dump( $features );
-    echo '</pre>';
 
   return ob_get_clean();
 
