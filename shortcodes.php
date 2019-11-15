@@ -501,6 +501,8 @@ function lawyerist_all_products_list( $atts ) {
     ob_start();
 
       global $post;
+      
+      $fields = array();
 
       if ( $atts[ 'show_heading' ] == 'true' ) {
         echo '<h2>' . get_the_title( $post->ID ) . ' (Alphabetical List)</h2>';
@@ -524,10 +526,14 @@ function lawyerist_all_products_list( $atts ) {
 
           echo '<a class="show-all">Show All</a>';
 
-          foreach ( $fields as $field ) {
+          if ( !empty( $fields ) ) {
 
-            if ( $field['type'] == 'true_false' ) {
-              echo '<a class="filter" data-acf_label="' . $field[ 'name' ] . '">' . $field['label'] . '</a>';
+            foreach ( $fields as $field ) {
+
+              if ( $field['type'] == 'true_false' ) {
+                echo '<a class="filter" data-acf_label="' . $field[ 'name' ] . '">' . $field['label'] . '</a>';
+              }
+
             }
 
           }

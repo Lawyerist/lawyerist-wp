@@ -1845,9 +1845,9 @@ function lawyerist_product_rating( $rating_type = '' ) {
 		$our_rating		= lawyerist_get_our_rating();
 
 		if ( !empty( $our_rating ) ) {
-			$rating_count	=	lawyerist_get_community_review_count() + 1;
+			$rating_count	=	intval( lawyerist_get_community_review_count() ) + 1;
 		} else {
-			$rating_count	=	lawyerist_get_community_review_count();
+			$rating_count	=	intval( lawyerist_get_community_review_count() );
 		}
 
 	}
