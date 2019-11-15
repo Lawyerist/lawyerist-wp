@@ -459,6 +459,7 @@ function lawyerist_all_products_list( $atts ) {
     'portal'        => $parent,
     'show_heading'  => 'true',
     'show_excerpt'  => 'true',
+    'show_features' => 'true',
   ), $atts );
 
   // Quit if this isn't a product portal.
@@ -662,6 +663,20 @@ function lawyerist_all_products_list( $atts ) {
   		echo '</ul>';
 
       echo '<p id="no-results-placeholder" style="display: none;">Sorry, no results based on your choices.</p>';
+
+      if ( $atts[ 'show_features' ] == 'true' ) {
+
+        echo '<h2>' . get_the_title( $post->ID ) . ' Feature Descriptions</h2>';
+
+        foreach ( $fields as $field ) {
+
+          if ( !empty( $field[ 'message' ] ) )  {
+            echo '<p><strong>' . $field[ 'label' ] . '.</strong> ' . $field[ 'message' ] . '</p>';
+          }
+
+        }
+
+      }
 
     $all_products = ob_get_clean();
 
