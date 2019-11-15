@@ -721,6 +721,7 @@ label,
 .page_links,
 .postmeta,
 .price_tag,
+.product-filters,
 .product_meta,
 #review,
   .rating-breakdown,
@@ -2590,12 +2591,50 @@ Content
       padding-left: 11.5rem;
     }
 
-
   .list-products-trial-button {
     position: absolute;
       right: 2rem;
       top: 2rem;
   }
+
+  .product-filters {
+    margin-bottom: 3rem;
+  }
+
+    .product-filters .filter,
+    .product-filters .show-all {
+      background-color: #bbb;
+      color: #fff;
+      cursor: pointer;
+      display: inline-block;
+      font-size: 1.2rem;
+      margin: 0 .4rem .4rem 0;
+      padding: .4rem .8rem;
+      text-transform: uppercase;
+    }
+
+      .product-filters .filter:hover,
+      .product-filters .show-all:hover {
+        background-color: #c5c5c5;
+        color: #fff;
+        text-decoration: none;
+      }
+
+      .product-filters .filter:active,
+      .product-filters .show-all:active {
+        background-color: #a7a7a7;
+        color: #eee;
+      }
+
+      .product-filters .on,
+      .product-filters .on:hover {
+        background-color: #a7a7a7;
+        color: #fff;
+      }
+
+      .product-filters .on:active {
+        color: #eee;
+      }
 
   .product-pages-list {
     list-style: none;

@@ -1,3 +1,75 @@
+( function( $ ) {
+
+  if ( $( '.product-filters' ).length > 0 ) {
+
+    var filterLabels = [];
+    var featureClass = [];
+
+    $( ".product-filters .show-all" ).click( function() {
+      $( ".product-filters .filter" ).removeClass( "on" );
+      $( ".product-pages-list li" ).removeClass( "show" ).show();
+      filterLabels = [];
+    });
+
+    $( ".product-filters .filter" ).click( function() {
+
+      featureClass = $( this ).data( "acf_label" );
+
+      if ( $( this ).hasClass( "on" ) ) {
+
+        $( this ).removeClass( "on" );
+
+        var index = filterLabels.indexOf( featureClass );
+        if ( index > -1 ) {
+          filterLabels.splice( index, 1 );
+        }
+
+      } else {
+
+        $( this ).addClass( "on" );
+
+        filterLabels.push( featureClass );
+
+      }
+
+      products = document.getElementsByClassName( "product-card" );
+      let productCount = products.length;
+
+      Array.prototype.forEach.call( products, function( product ) {
+
+        let classList = product.className.split( ' ' );
+        let match = true;
+
+        filterLabels.forEach( function( label ) {
+
+          if ( classList.indexOf( label ) == -1 ) {
+            match = false;
+          }
+
+        });
+
+        if ( match == false ) {
+          $( product ).removeClass( "show" ).hide();
+          productCount--;
+        } else {
+          $( product ).addClass( "show" ).show();
+        }
+
+        if ( productCount == 0 ) {
+          $( "#no-results-placeholder" ).show();
+        } else {
+          $( "#no-results-placeholder" ).hide();
+        }
+
+      });
+
+    });
+
+  }
+
+})( jQuery );
+
+
 // Responsive Menu
 ( function( $ ) {
 
@@ -17,11 +89,11 @@
   });
 
   // Closes all menus when anything outside the menu is clicked.
-  $( document ).on( "click", function () {
+  $( document ).on( "click", function() {
     $( "#menu-main-menu .menu-item-has-children > a" ).removeClass( "open" ).next( ".sub-menu" ).slideUp( 95 );
   });
 
-  $( "#menu-main-menu *" ).on( "click", function ( e ) {
+  $( "#menu-main-menu *" ).on( "click", function( e ) {
       e.stopPropagation();
   });
 
@@ -174,7 +246,7 @@
   		notice.style.display = 'block';
   	}
 
-    dismissButton.addEventListener( 'click', function () {
+    dismissButton.addEventListener( 'click', function() {
   		notice.style.display = 'none';
       localStorage.setItem( 'lawyeristNotices', noticeId );
     });

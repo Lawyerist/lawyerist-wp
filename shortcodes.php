@@ -176,50 +176,6 @@ function feature_chart() {
 add_shortcode( 'feature-chart', 'feature_chart' );
 
 
-function feature_comparison_chart( $atts ) {
-
-  // Connects portal IDs to ACF field group.
-  $acf_group_ids = array(
-    306077 => 'group_5da5c6cc850d5', // Reputation Management
-  );
-
-  $portal_id = get_the_ID();
-
-  // Shortcode attributes.
-	$atts = shortcode_atts( array(
-    'portal'  => $portal_id,
-  ), $atts );
-
-  // Quit if this isn't a product portal.
-  if ( !is_product_portal( $atts[ 'portal' ] ) ) {
-    return;
-  }
-
-  ob_start();
-
-    // Get all labels from the ACF field group.
-
-    $get_product_pages_args = array(
-  		'post_parent'	=> $atts[ 'portal' ],
-  		'fields'		  => 'ids',
-  		'post_type'	  => 'page',
-  	);
-
-  	$product_page_ids = get_posts( $get_product_pages_args );
-
-    foreach ( $product_page_ids as $product_page_id ) {
-
-      $features[ $product_page_id ][] = get_field_objects( $product_page_id );
-
-    }
-
-  return ob_get_clean();
-
-}
-
-add_shortcode( 'feature-comparison-chart', 'feature_comparison_chart' );
-
-
 /*------------------------------
 List Child Pages
 ------------------------------*/
@@ -337,6 +293,11 @@ function lawyerist_featured_products_list( $atts ) {
     'portal'  => $parent,
   ), $atts );
 
+  // Quit if this isn't a product portal.
+  if ( !is_product_portal( $atts[ '[portal]' ] ) ) {
+    return;
+  }
+
   // Query variables.
   $featured_products_list_query_args = array(
     'meta_query'      => array(
@@ -372,20 +333,18 @@ function lawyerist_featured_products_list( $atts ) {
 
       global $post;
 
-      $portal_title = get_the_title( $post->ID );
-
-      echo '<h2>Featured ' . $portal_title . '</h2>';
+      echo '<h2>Featured ' . get_the_title( $post->ID ) . '</h2>';
 
       echo '<ul class="product-pages-list featured-products-list">';
 
         // Start the Loop.
         while ( $featured_products_list_query->have_posts() ) : $featured_products_list_query->the_post();
 
-          $featured_page_ID     = get_the_ID();
+          $featured_page_id     = get_the_ID();
           $featured_page_title	= the_title( '', '', FALSE );
           $featured_page_URL		= get_permalink();
 
-          $seo_descr  = get_post_meta( $featured_page_ID, '_yoast_wpseo_metadesc', true );
+          $seo_descr  = get_post_meta( $featured_page_id, '_yoast_wpseo_metadesc', true );
 
           if ( !empty( $seo_descr ) ) {
             $page_excerpt = $seo_descr;
@@ -457,10 +416,10 @@ function lawyerist_featured_products_list( $atts ) {
 
             echo '</div>'; // End .title_container.
 
-            if ( ( $country == ( 'US' || 'CA' ) ) && has_trial_button( $featured_page_ID ) ) {
+            if ( ( $country == ( 'US' || 'CA' ) ) && has_trial_button( $featured_page_id ) ) {
 
               echo '<div class="list-products-trial-button">';
-                echo  trial_button( $featured_page_ID );
+                echo  trial_button( $featured_page_id );
               echo '</div>';
 
             }
@@ -502,6 +461,11 @@ function lawyerist_all_products_list( $atts ) {
     'show_excerpt'  => 'true',
   ), $atts );
 
+  // Quit if this isn't a product portal.
+  if ( !is_product_portal( $atts[ '[portal]' ] ) ) {
+    return;
+  }
+
   // Query variables.
 	$args = array(
     'meta_query'      => array(
@@ -540,10 +504,36 @@ function lawyerist_all_products_list( $atts ) {
       global $post;
 
       if ( $atts[ 'show_heading' ] == 'true' ) {
+        echo '<h2>' . get_the_title( $post->ID ) . ' (Alphabetical List)</h2>';
+      }
 
-        $portal_title = get_the_title( $post->ID );
+      // Connects portal IDs to the ACF field group ID so we can show filters
+      // for this product list.
+      // Portal ID => Group ID
+      $acf_group_ids = array(
+        306077 => 333571, // Reputation Management
+      );
 
-        echo '<h2>' . $portal_title . ' (Alphabetical List)</h2>';
+      if ( array_key_exists( $parent, $acf_group_ids) ) {
+
+        // Get filters.
+        $fields = acf_get_fields( $acf_group_ids[ $atts[ 'portal' ] ] );
+
+        echo '<div class="product-filters">';
+
+          echo '<p class="card-label">Filter by Feature</p>';
+
+          echo '<a class="show-all">Show All</a>';
+
+          foreach ( $fields as $field ) {
+
+            if ( $field['type'] == 'true_false' ) {
+              echo '<a class="filter" data-acf_label="' . $field[ 'name' ] . '">' . $field['label'] . '</a>';
+            }
+
+          }
+
+        echo '</div>';
 
       }
 
@@ -569,8 +559,24 @@ function lawyerist_all_products_list( $atts ) {
           	$composite_rating = lawyerist_get_composite_rating();
           }
 
+          $classes = array( 'card product-card' );
+
+          foreach ( $fields as $field ) {
+
+            if ( $field['type'] == 'true_false' ) {
+
+              $field_val = get_field( $field[ 'name' ], $post->ID );
+
+              if ( $field_val == true ) {
+                $classes[] = $field[ 'name' ];
+              }
+
+            }
+
+          }
+
   				echo '<li ';
-          post_class( 'card' );
+          post_class( $classes );
           echo '>';
 
   					if ( has_post_thumbnail() ) {
@@ -647,9 +653,13 @@ function lawyerist_all_products_list( $atts ) {
 
   				echo '</li>';
 
+          unset( $classes );
+
   			endwhile; wp_reset_postdata();
 
   		echo '</ul>';
+
+      echo '<p id="no-results-placeholder" style="display: none;">Sorry, no results based on your choices.</p>';
 
     $all_products = ob_get_clean();
 
