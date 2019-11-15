@@ -8,6 +8,7 @@
     $( ".product-filters .show-all" ).click( function() {
       $( ".product-filters .filter" ).removeClass( "on" );
       $( ".product-pages-list li" ).removeClass( "show" ).show();
+      $( "#no-results-placeholder" ).hide();
       filterLabels = [];
     });
 
