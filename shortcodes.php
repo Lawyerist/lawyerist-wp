@@ -519,9 +519,9 @@ function lawyerist_all_products_list( $atts ) {
         // Get filters.
         $fields = acf_get_fields( $acf_group_ids[ $atts[ 'portal' ] ] );
 
-        echo '<div class="product-filters">';
+        echo '<p class="card-label">Filter by Feature</p>';
 
-          echo '<p class="card-label">Filter by Feature</p>';
+        echo '<div class="product-filters">';
 
           echo '<a class="show-all">Show All</a>';
 
@@ -532,6 +532,8 @@ function lawyerist_all_products_list( $atts ) {
             }
 
           }
+
+          echo '<div class="clear"></div>';
 
         echo '</div>';
 
