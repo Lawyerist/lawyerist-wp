@@ -294,7 +294,7 @@ function lawyerist_featured_products_list( $atts ) {
   ), $atts );
 
   // Quit if this isn't a product portal.
-  if ( !is_product_portal( $atts[ '[portal]' ] ) ) {
+  if ( !is_product_portal( $atts[ 'portal' ] ) ) {
     return;
   }
 
@@ -327,9 +327,9 @@ function lawyerist_featured_products_list( $atts ) {
 
   $featured_products_list_query = new WP_Query( $featured_products_list_query_args );
 
-  if ( $featured_products_list_query->have_posts() ) :
+  ob_start();
 
-    ob_start();
+    if ( $featured_products_list_query->have_posts() ) :
 
       global $post;
 
@@ -432,13 +432,11 @@ function lawyerist_featured_products_list( $atts ) {
 
         endwhile; wp_reset_postdata();
 
-  		echo '</ul>';
+  		 echo '</ul>';
 
-    $featured_products = ob_get_clean();
+    endif; // End product list.
 
-	endif; // End product list.
-
-  return $featured_products;
+  return ob_get_clean();
 
 }
 
@@ -463,7 +461,7 @@ function lawyerist_all_products_list( $atts ) {
   ), $atts );
 
   // Quit if this isn't a product portal.
-  if ( !is_product_portal( $atts[ '[portal]' ] ) ) {
+  if ( !is_product_portal( $atts[ 'portal' ] ) ) {
     return;
   }
 
