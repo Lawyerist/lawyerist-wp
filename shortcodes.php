@@ -16,6 +16,7 @@ Author URI: http://samglover.net
 - Feature Charts
 - List Child Pages
 - List Featured Products
+- Recommender for Marketing & SEO Portal
 - List All Products
 - List Affinity Partners
 - Get Portal Card
@@ -444,6 +445,64 @@ add_shortcode( 'list-featured-products', 'lawyerist_featured_products_list' );
 
 
 /*------------------------------
+Recommender for Marketing & SEO Portal
+------------------------------*/
+
+function recommender_mktg_seo() {
+
+  $fields = acf_get_fields( 342181 );
+
+  echo '<pre>';
+  var_dump( $fields );
+  echo '</pre>';
+
+  echo '<form id="recommender_mktg_seo" class="recommender">';
+
+  foreach ( $fields as $field ) {
+
+    echo '<label for="' . $field[ 'name' ] . '">' . $field[ 'label' ] . '</label>';
+    echo '<select id="' . $field[ 'name' ] . '" required>';
+
+      echo '<option value="" selected>Select one …</option>';
+
+      foreach ( $field[ 'choices' ] as $value => $option ) {
+
+        echo '<option value="' . $value . '">' . $option . '</option>';
+
+      }
+
+    echo '</select>';
+
+  }
+
+  echo '</form>';
+
+  ?>
+
+  <script type="text/javascript">
+
+    ( function( $ ) {
+
+      // Create an array for the select fields. Whenever a value changes, add
+      // it to the array or change the value. Then use it to filter the products.
+
+      $( ".recommender select" ).change( function() {
+        var choice = $( this ).options[ this.selectedIndex ].value;
+        console.log( choice );
+      });
+
+    })( jQuery );
+
+  </script>
+
+  <?php
+
+}
+
+// add_shortcode( 'recommender-mktg-seo', 'recommender_mktg_seo' );
+
+
+/*------------------------------
 List All Products
 ------------------------------*/
 
@@ -501,7 +560,7 @@ function lawyerist_all_products_list( $atts ) {
     ob_start();
 
       global $post;
-      
+
       $fields = array();
 
       if ( $atts[ 'show_heading' ] == 'true' ) {
