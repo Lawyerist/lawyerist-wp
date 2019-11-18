@@ -452,9 +452,15 @@ function recommender_mktg_seo() {
 
   $fields = acf_get_fields( 342181 );
 
+  /*
   echo '<pre>';
   var_dump( $fields );
   echo '</pre>';
+  */
+
+  echo '<h2>Find the Best Option for Your Law Firm</h2>';
+
+  echo '<p>Just want a recommendation? We can help! Just answer a few questions to help us understand your needs and we will recommend one of our affinity partners.</p>';
 
   echo '<form id="recommender_mktg_seo" class="recommender">';
 
@@ -483,12 +489,15 @@ function recommender_mktg_seo() {
 
     ( function( $ ) {
 
+      let options = [];
+
       // Create an array for the select fields. Whenever a value changes, add
       // it to the array or change the value. Then use it to filter the products.
 
       $( ".recommender select" ).change( function() {
-        var choice = $( this ).options[ this.selectedIndex ].value;
-        console.log( choice );
+        let choice = $( this ).find( ":selected" ).val();
+        options[ $( this ).attr( "id" ) ] = choice;
+        console.log( options );
       });
 
     })( jQuery );
@@ -499,7 +508,7 @@ function recommender_mktg_seo() {
 
 }
 
-// add_shortcode( 'recommender-mktg-seo', 'recommender_mktg_seo' );
+add_shortcode( 'recommender-mktg-seo', 'recommender_mktg_seo' );
 
 
 /*------------------------------
