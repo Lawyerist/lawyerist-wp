@@ -1,3 +1,60 @@
+// Signup Wall
+( function( $ ) {
+
+  notice = document.querySelector( '#article-counter' );
+
+  if ( !notice ) {
+    return;
+  }
+
+  let date, thisMonth, thisArticle, articlesRead, articlesCount;
+
+  date          = new Date();
+  thisMonth     = date.getMonth();
+  thisArticle   = $( '#article-counter' ).data( "post_id" );
+
+  articlesRead = JSON.parse( localStorage.getItem( 'lawyeristArticlesRead' ) );
+
+  if ( articlesRead == null || articlesRead[ 'month' ] != thisMonth ) {
+    articlesRead = {
+      'month': thisMonth,
+      'articles': [],
+    };
+    articleCount = 0;
+  } else {
+    articleCount = articlesRead[ 'articles' ].length;
+  }
+
+  // Adds the current page ID to the array of articles if there are fewer than 6.
+  if ( articleCount < 6 && articlesRead[ 'articles' ].indexOf( thisArticle ) == -1 ) {
+    articlesRead[ 'articles' ].push( thisArticle );
+  }
+
+  // Reset the article count.
+  articleCount = articlesRead[ 'articles' ].length;
+
+  // Output the current article count, a notice that the viewer has read all
+  // their alotted articles, or block the page by replacing the post content.
+  if ( articleCount == 1 ) {
+    $( "#article-counter" ).html( "This is your first of five free articles this month! We'd love to unlock more for free. All you have to do is <a class=\"login-link\" href=\"/account/\">log in or register</a>." );
+  } else if ( articleCount < 5 ) {
+    $( "#article-counter" ).html( "You have viewed " + articleCount + " of 5 free articles this month. We'd love to unlock more for free. All you have to do is <a class=\"login-link\" href=\"/account/\">log in or register</a>." );
+  } else if ( articleCount == 5 ) {
+    $( "#article-counter" ).html( "This is the last of your five free articles this month. To keep reading, <a class=\"login-link\" href=\"/account/\">log in or register</a>." );
+  } else {
+    $( ".post_body" ).html( "<p class=\"article-counter-login-notice\">You have read all five of your free articles this month. To read this article, <a class=\"login-link\" href=\"/account/\">log in or register</a>.</p>" );
+    $( "#article-counter" ).hide();
+    $( "#lawyerist-login" ).show( 145 );
+    $( "#lawyerist-login-screen" ).show();
+  }
+
+  localStorage.setItem( 'lawyeristArticlesRead', JSON.stringify( articlesRead ) );
+
+})( jQuery );
+// End Signup Wall
+
+
+// Product Filters
 ( function( $ ) {
 
   if ( $( '.product-filters' ).length > 0 ) {
@@ -69,6 +126,7 @@
   }
 
 })( jQuery );
+// End Product Filters
 
 
 // Responsive Menu

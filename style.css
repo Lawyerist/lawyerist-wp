@@ -19,6 +19,7 @@ Layout & Design Elements
   Block Styles
   Elementor
 Typography
+Signup Wall
 Images
 Expander
 Card Styles
@@ -672,6 +673,7 @@ body {
 
 /* Concourse */
 .affinity-partner-discount,
+#article-counter,
 aside blockquote,
 .breadcrumbs,
 .btn,
@@ -1136,6 +1138,34 @@ li:first-child {
   .woocommerce ul.order_details li:first-child {
     margin-top: unset;
   }
+
+
+/*------------------------------
+Signup Wall
+------------------------------*/
+
+#article-counter-container {
+  background: #eee;
+  box-shadow: 0 -.2rem .3rem rgba( 0, 0, 0, 0.2 );
+  display: grid;
+  grid-template-areas: 'lbuffer center rbuffer';
+  grid-template-columns: minmax( 1rem, 1fr) minmax( 32rem, 102.4rem ) minmax( 1rem, 1fr);
+  position: fixed;
+    bottom: 0;
+    left: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+  #article-counter {
+    grid-area: center;
+    padding: 2rem 0;
+  }
+
+.article-counter-login-notice {
+  font-size: 150%;
+  margin: 12rem 10%;
+}
 
 
 /*------------------------------
