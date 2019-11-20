@@ -2,20 +2,16 @@
 
 	<h2 id="comments">
 
-	<?php
+		<?php
 
-		if ( 1 == get_comments_number() ) {
+			if ( 1 == get_comments_number() ) {
+				printf( __( '1 %s Community Review' ), get_the_title()	);
+			} else {
+				/* Translators: 1: number of comments, 2: post title */
+				printf( _n( '%1$s  %2$s Community Review', '%1$s  %2$s Community Reviews', get_comments_number() ), number_format_i18n( get_comments_number() ), get_the_title() );
+			}
 
-			printf( __( '1 %s Community Review' ), get_the_title()	);
-
-		} else {
-
-			/* translators: 1: number of comments, 2: post title */
-			printf( _n( '%1$s  %2$s Community Review', '%1$s  %2$s Community Reviews', get_comments_number() ), number_format_i18n( get_comments_number() ), get_the_title() );
-
-		}
-
-	?>
+		?>
 
 	</h2>
 

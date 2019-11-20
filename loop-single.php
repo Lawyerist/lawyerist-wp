@@ -72,6 +72,10 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
   lawyerist_get_related_resources();
 
+  if ( !has_category( 'sponsored' ) ) {
+
+  }
+
   echo '<div id="comments_container">';
   comments_template( '/comments.php' );
   echo '</div>';

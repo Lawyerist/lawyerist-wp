@@ -38,7 +38,7 @@ CONTENT
 - Get Alternative Products
 - Get Related Podcasts
 - Get Related Posts
-- Get Related Pages
+- Get Related Resources
 - List Child Pages Fallback
 - Remove Inline Width from Image Captions
 - Featured Images in RSS Feeds
@@ -851,6 +851,8 @@ function lawyerist_get_post_card( $post_ID = null, $card_top_label = null, $card
 	echo '</div>'; // Close .card.
 
 	unset( $thumbnail );
+
+	wp_reset_postdata();
 
 }
 

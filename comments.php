@@ -1,17 +1,19 @@
 <?php if ( have_comments() ) : ?>
 
-	<h3 id="comments">
+	<h2 id="comments">
 
 		<?php
+
 			if ( 1 == get_comments_number() ) {
 				printf( __( '1 Comment' ) );
 			} else {
 				/* Translator: %s: number of comments */
 				printf( _n( '%s Comment', '%s Comments', get_comments_number() ), number_format_i18n( get_comments_number() ) );
 			}
+
 		?>
 
-	</h3>
+	</h2>
 
 	<div class="navigation">
 		<div class="alignleft"><?php previous_comments_link() ?></div>
@@ -43,7 +45,7 @@
 		<p class="nocomments"><?php _e('Comments are closed.'); ?></p>
 
 	<?php endif; ?>
-	
+
 <?php endif; ?>
 
 <?php
