@@ -454,7 +454,7 @@ function populate_gf_recommender_mktg_seo( $form ) {
   foreach ( $form['fields'] as &$field ) {
 
     // Only populate field ID 2
-    if( $field['id'] == 2 ) {
+    if( $field['id'] == 2 || 7 ) {
 
       $acf_field_key  = "field_5dd6acd728b05"; // ACF field key
       $acf_field      = get_field_object( $acf_field_key ); // Object Field of selected field
