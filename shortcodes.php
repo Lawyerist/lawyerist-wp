@@ -16,7 +16,7 @@ Author URI: http://samglover.net
 - Feature Charts
 - List Child Pages
 - List Featured Products
-- Recommender for Marketing & SEO Portal
+- Marketing & SEO Portal Feature Chart/Recommender
 - List All Products
 - List Affinity Partners
 - Get Portal Card
@@ -445,62 +445,135 @@ add_shortcode( 'list-featured-products', 'lawyerist_featured_products_list' );
 
 
 /*------------------------------
-Recommender for Marketing & SEO Portal
+Marketing & SEO Portal Feature Chart/Recommender
 ------------------------------*/
 
-function recommender_mktg_seo() {
+// Update Gravity Form 62 with choices from the ACF features.
+function populate_gf_recommender_mktg_seo( $form ) {
 
-  $fields = acf_get_fields( 342181 );
+  foreach ( $form['fields'] as &$field ) {
 
-  echo '<h2>Find the Best Option for Your Law Firm</h2>';
+    // Only populate field ID 2
+    if( $field['id'] == 2 ) {
 
-  echo '<p>Just want a recommendation? We can help! Just answer a few questions to help us understand your needs and we will recommend one of our affinity partners.</p>';
+      $acf_field_key  = "field_5dd6acd728b05"; // ACF field key
+      $acf_field      = get_field_object( $acf_field_key ); // Object Field of selected field
+      $choices        = array(); // Set up blank array
 
-  echo '<form id="recommender_mktg_seo" class="recommender">';
-
-  foreach ( $fields as $field ) {
-
-    echo '<label for="' . $field[ 'name' ] . '">' . $field[ 'label' ] . '</label>';
-    echo '<select id="' . $field[ 'name' ] . '" required>';
-
-      echo '<option value="" selected>Select one …</option>';
-
-      foreach ( $field[ 'choices' ] as $value => $option ) {
-
-        echo '<option value="' . $value . '">' . $option . '</option>';
-
+      if( $acf_field ) {
+        // loop over each select item at add value/option to $choices array
+        foreach( $acf_field['choices'] as $k => $v ) {
+          $choices[] = array( 'text' => $v, 'value' => $k );
+        }
       }
 
-    echo '</select>';
+      // Set choices from array of ACF values
+      $field->choices = $choices;
+
+    }
 
   }
 
-  echo '<input type="submit">';
-
-  echo '</form>';
-
-  ?>
-
-  <script type="text/javascript">
-
-    ( function( $ ) {
-
-      let options = [];
-
-      $( ".recommender select" ).change( function() {
-        let choice = $( this ).find( ":selected" ).val();
-        options[ $( this ).attr( "id" ) ] = choice;
-      });
-
-    })( jQuery );
-
-  </script>
-
-  <?php
+  return $form;
 
 }
 
-add_shortcode( 'recommender-mktg-seo', 'recommender_mktg_seo' );
+add_filter( 'gform_pre_render_62', 'populate_gf_recommender_mktg_seo' );
+add_filter( 'gform_pre_validation_62', 'populate_gf_recommender_mktg_seo' );
+add_filter( 'gform_pre_submission_filter_62', 'populate_gf_recommender_mktg_seo' );
+add_filter( 'gform_admin_pre_render_62', 'populate_gf_recommender_mktg_seo' );
+
+
+// Also populate ACF Service Focus field.
+function populate_fc_service_focus_mktg_seo( $field ) {
+
+	$field[ 'choices' ] = array();
+
+  $services = acf_get_field( 'fc_mktgseo_services' );
+
+	foreach ( $services[ 'choices' ] as $value => $option ) {
+
+		$field[ 'choices' ][ $value ] = $option;
+
+	}
+
+	return $field;
+
+}
+
+add_filter( 'acf/load_field/name=fc_mktgseo_service_focus', 'populate_fc_service_focus_mktg_seo' );
+
+
+function mktg_seo_recommender_results( $atts ) {
+
+  $atts = shortcode_atts( array(
+    'form_id'   => 62,
+    'entry_id'  => null,
+  ), $atts );
+
+  if ( is_null( $atts[ 'entry_id' ] ) ) {
+    return;
+  }
+
+  ob_start();
+
+    $entry = GFAPI::get_entry( $atts[ 'entry_id' ] );
+
+    // Get services and budgets as arrays.
+
+    $services_field_id  = 2;
+    $services_field_obj = RGFormsModel::get_field( $atts[ 'form_id' ], $services_field_id );
+    $services           = explode( ', ', $services_field_obj->get_value_export( $entry ) );
+
+    $up_front_budget  = explode( '-', $entry[ 5 ] );
+    $monthly_budget   = explode( '-', $entry[ 6 ] );
+
+    // Get affinity partner page IDs.
+
+  	$args = array(
+      'fields'		  => 'ids',
+      'meta_key'		=> 'affinity_active',
+      'meta_value'	=> true,
+  		'post_parent'	=> 226192,
+  		'post_type'	  => 'page',
+      'tax_query'   => array(
+        array(
+          'taxonomy'  => 'page_type',
+          'field'     => 'slug',
+          'terms'     => 'affinity-partner',
+        ),
+      ),
+  	);
+
+  	$partners = get_posts( $args );
+
+    foreach ( $partners as $partner ) {
+
+    }
+
+    echo '<pre>';
+    var_dump( $services );
+    echo '</pre>';
+
+    echo '<pre>';
+    var_dump( $up_front_budget );
+    echo '</pre>';
+
+    echo '<pre>';
+    var_dump( $monthly_budget );
+    echo '</pre>';
+
+    echo '<pre>';
+    var_dump( $partners );
+    echo '</pre>';
+
+  $recommender_results = ob_get_clean();
+
+  return $recommender_results;
+
+}
+
+add_shortcode( 'mktg-seo-recommender', 'mktg_seo_recommender_results' );
 
 
 /*------------------------------
