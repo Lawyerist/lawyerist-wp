@@ -453,8 +453,8 @@ function populate_gf_recommender_mktg_seo( $form ) {
 
   foreach ( $form['fields'] as &$field ) {
 
-    // Only populate field ID 2
-    if( $field['id'] == 2 || 7 ) {
+    // Only populate field IDs 2 & 7.
+    if( $field['id'] == 2 || $field['id'] == 7 ) {
 
       $acf_field_key  = "field_5dd6acd728b05"; // ACF field key
       $acf_field      = get_field_object( $acf_field_key ); // Object Field of selected field
@@ -507,29 +507,30 @@ add_filter( 'acf/load_field/name=fc_mktgseo_service_focus', 'populate_fc_service
 function mktg_seo_recommender_results( $atts ) {
 
   $atts = shortcode_atts( array(
-    'form_id'   => 62,
+    'form_id'   => null,
     'entry_id'  => null,
   ), $atts );
 
-  if ( is_null( $atts[ 'entry_id' ] ) ) {
-    return;
+  if ( is_null( $atts[ 'entry_id' ] ) || is_null( $atts[ 'form_id' ] ) ) {
+    return '<p>Either the entry ID or the form ID is missing.</p>';
   }
 
   ob_start();
 
-    $entry = GFAPI::get_entry( $atts[ 'entry_id' ] );
-
-    // Get services and budgets as arrays.
-
+    $entry              = GFAPI::get_entry( $atts[ 'entry_id' ] );
     $services_field_id  = 2;
     $services_field_obj = RGFormsModel::get_field( $atts[ 'form_id' ], $services_field_id );
-    $services           = explode( ', ', $services_field_obj->get_value_export( $entry ) );
 
-    $up_front_budget  = explode( '-', $entry[ 5 ] );
-    $monthly_budget   = explode( '-', $entry[ 6 ] );
+    // These variables contain the visitors' choices.
+    $services           = explode( ', ', $services_field_obj->get_value_export( $entry ) );
+    $service_focus      = $entry[ 7 ];
+    $up_front_budget    = explode( '-', $entry[ 5 ] );
+    $monthly_budget     = explode( '-', $entry[ 6 ] );
+
+    // Counts the number of criteria.
+    $total_criteria     = count( $services ) + ( $service_focus ? 1 : 0 ) + ( $up_front_budget[ 0 ] != 'NA' ? 1 : 0 ) + ( $monthly_budget[ 0 ] != 'NA' ? 1 : 0 );
 
     // Get affinity partner page IDs.
-
   	$args = array(
       'fields'		  => 'ids',
       'meta_key'		=> 'affinity_active',
@@ -549,10 +550,43 @@ function mktg_seo_recommender_results( $atts ) {
 
     foreach ( $partners as $partner ) {
 
+      // Checks for services match and increases the partner rating for every match.
+      // This could be weighted, but for now it's just +1 for each match.
+
+      $partner_services = get_field( 'fc_mktgseo_services' );
+
+      foreach ( $services as $service ) {
+        if ( in_array( $service, $partner_services ) ) {
+          $partner_rating++;
+        }
+      }
+
+      // Checks for service focus match and increases the partner rating if it matches.
+      if ( $service_focus = get_field( 'fc_mktgseo_service_focus' ) ) {
+        $partner_rating++;
+      }
+
+      // Checks for an up-front budget and compares it to partners' target spend range.
+      if ( $up_front_budget[ 0 ] != 'NA' ) {
+        $up_front_target[ 'min' ] = get_field( 'fc_mktgseo_target_upfront_spend_min' );
+        $up_front_target[ 'max' ] = get_field( 'fc_mktgseo_target_upfront_spend_max' );
+      }
+
+      // Checks for a monthly budget and compares it to partners' target spend range.
+      if ( $monthly_budget[ 0 ] != 'NA' ) {
+
+      }
+
     }
+
+    echo '<p>Total criteria: ' . $total_criteria . '</p>';
 
     echo '<pre>';
     var_dump( $services );
+    echo '</pre>';
+
+    echo '<pre>';
+    var_dump( $service_focus );
     echo '</pre>';
 
     echo '<pre>';
