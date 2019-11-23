@@ -453,24 +453,42 @@ function populate_gf_recommender_mktg_seo( $form ) {
 
   foreach ( $form['fields'] as &$field ) {
 
-    // Only populate field IDs 2 & 7.
-    if( $field['id'] == 2 || $field['id'] == 7 ) {
+    $gf_field_id = intval( $field['id'] );
 
-      $acf_field_key  = "field_5dd6acd728b05"; // ACF field key
-      $acf_field      = get_field_object( $acf_field_key ); // Object Field of selected field
-      $choices        = array(); // Set up blank array
+    switch ( $gf_field_id ) {
 
-      if( $acf_field ) {
-        // loop over each select item at add value/option to $choices array
-        foreach( $acf_field['choices'] as $k => $v ) {
-          $choices[] = array( 'text' => $v, 'value' => $k );
-        }
-      }
+      case 2 :
+      case 7 :
 
-      // Set choices from array of ACF values
-      $field->choices = $choices;
+        $acf_field_key = 'field_5dd6acd728b05'; // ACF field key.
+        break;
+
+      case 8 :
+
+        $acf_field_key = 'field_5dd6c763bab71'; // ACF field key.
+        break;
+
+      case 6 :
+
+        $acf_field_key = 'field_5dd6c851cfe08'; // ACF field key.
+        break;
 
     }
+
+    $acf_field = get_field_object( $acf_field_key );
+    $choices   = array();
+
+    if( $acf_field ) {
+
+      // Loops over each choise and add value/option to $choices array.
+      foreach( $acf_field['choices'] as $k => $v ) {
+        $choices[] = array( 'text' => $v, 'value' => $k );
+      }
+
+    }
+
+    // Set choices from array of ACF values.
+    $field->choices = $choices;
 
   }
 
@@ -524,11 +542,12 @@ function mktg_seo_recommender_results( $atts ) {
     // These variables contain the visitors' choices.
     $services           = explode( ', ', $services_field_obj->get_value_export( $entry ) );
     $service_focus      = $entry[ 7 ];
-    $up_front_budget    = explode( '-', $entry[ 5 ] );
-    $monthly_budget     = explode( '-', $entry[ 6 ] );
+    $up_front_budget    = $entry[ 8 ];
+    $monthly_budget     = $entry[ 6 ];
 
     // Counts the number of criteria.
-    $total_criteria     = count( $services ) + ( $service_focus ? 1 : 0 ) + ( $up_front_budget[ 0 ] != 'NA' ? 1 : 0 ) + ( $monthly_budget[ 0 ] != 'NA' ? 1 : 0 );
+    $high_score = count( $services ) + ( $service_focus ? 1 : 0 ) + ( $up_front_budget[ 0 ] != 'NA' ? 1 : 0 ) + ( $monthly_budget[ 0 ] != 'NA' ? 1 : 0 );
+    echo '<p>High score: ' . $high_score . '</p>';
 
     // Get affinity partner page IDs.
   	$args = array(
@@ -546,64 +565,93 @@ function mktg_seo_recommender_results( $atts ) {
       ),
   	);
 
-  	$partners = get_posts( $args );
+  	$partners         = get_posts( $args );
+    $recommendations  = array();
 
     foreach ( $partners as $partner ) {
 
-      // Checks for services match and increases the partner rating for every match.
-      // This could be weighted, but for now it's just +1 for each match.
+      $score = 0;
 
-      $partner_services = get_field( 'fc_mktgseo_services' );
+      $recommendations[ $partner ][ 'post_id' ]           = $partner;
+      $recommendations[ $partner ][ 'services_matched' ]  = array();
+      $recommendations[ $partner ][ 'services_missing' ]  = array();
+
+      // Checks for services match and increases the partner rating for every match.
+      $partner_services = get_field( 'fc_mktgseo_services', $partner );
 
       foreach ( $services as $service ) {
+
         if ( in_array( $service, $partner_services ) ) {
-          $partner_rating++;
+          $recommendations[ $partner ][ 'services_matched' ][] = $service;
+          $score++;
+        } else {
+          $recommendations[ $partner ][ 'services_missing' ][] = $service;
         }
+
       }
 
       // Checks for service focus match and increases the partner rating if it matches.
-      if ( $service_focus = get_field( 'fc_mktgseo_service_focus' ) ) {
-        $partner_rating++;
+      if ( $service_focus == get_field( 'fc_mktgseo_service_focus', $partner ) ) {
+        $recommendations[ $partner ][ 'focus' ] = true;
+        $score++;
+      } else {
+        $recommendations[ $partner ][ 'focus' ] = false;
       }
 
       // Checks for an up-front budget and compares it to partners' target spend range.
-      if ( $up_front_budget[ 0 ] != 'NA' ) {
-        $up_front_target[ 'min' ] = get_field( 'fc_mktgseo_target_upfront_spend_min' );
-        $up_front_target[ 'max' ] = get_field( 'fc_mktgseo_target_upfront_spend_max' );
+      if ( $up_front_budget == get_field( 'fc_mktgseo_target_upfront_spend', $partner ) ) {
+        $recommendations[ $partner ][ 'up_front_budget' ] = true;
+        $score++;
+      } else {
+        $recommendations[ $partner ][ 'up_front_budget' ] = false;
       }
 
       // Checks for a monthly budget and compares it to partners' target spend range.
-      if ( $monthly_budget[ 0 ] != 'NA' ) {
+      if ( $monthly_budget == get_field( 'fc_mktgseo_target_monthly_spend', $partner ) ) {
+        $recommendations[ $partner ][ 'monthly_budget' ] = true;
+        $score++;
+      } else {
+        $recommendations[ $partner ][ 'monthly_budget' ] = false;
+      }
 
+      if ( $score == 0 ) {
+        unset( $recommendations[ $partner ] );
+      } else {
+        $recommendations[ $partner ][ 'score' ] = $score;
       }
 
     }
 
-    echo '<p>Total criteria: ' . $total_criteria . '</p>';
+    // Sorts the results from high to low.
+    usort( $recommendations, function( $a, $b ) {
+      return $b[ 'score' ] <=> $a[ 'score' ];
+    });
+
+    $matches = count( $recommendations );
+
+    if ( $matches > 3 ) {
+
+      $i_matches = 0;
+
+      foreach ( $recommendations as $recommendation ) {
+
+        if ( $recommendations[ 'score' ] == $high_score ) {
+          $i_matches++;
+        }
+
+      }
+
+      while ( $matches > $perfect_matches ) {
+        array_pop(0)
+      }
+
+    }
 
     echo '<pre>';
-    var_dump( $services );
+    var_dump( $recommendations );
     echo '</pre>';
 
-    echo '<pre>';
-    var_dump( $service_focus );
-    echo '</pre>';
-
-    echo '<pre>';
-    var_dump( $up_front_budget );
-    echo '</pre>';
-
-    echo '<pre>';
-    var_dump( $monthly_budget );
-    echo '</pre>';
-
-    echo '<pre>';
-    var_dump( $partners );
-    echo '</pre>';
-
-  $recommender_results = ob_get_clean();
-
-  return $recommender_results;
+  return ob_get_clean();
 
 }
 
