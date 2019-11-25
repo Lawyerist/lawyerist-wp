@@ -120,7 +120,7 @@
 
   ?>
 
-	<?php	echo get_lawyerist_login(); ?>
+	<?php echo get_lawyerist_login(); ?>
 
   <div id="header-grid">
 
