@@ -8,6 +8,7 @@
 - Feature Charts
 - List Child Pages
 - List Featured Products
+- Marketing & SEO Portal Feature Chart/Recommender
 - List All Products
 - List Affinity Partners
 - Get Portal Card
@@ -653,6 +654,220 @@ function lawyerist_featured_products_list( $atts ) {
 }
 
 add_shortcode( 'list-featured-products', 'lawyerist_featured_products_list' );
+
+
+/*------------------------------
+Marketing & SEO Portal Feature Chart/Recommender
+------------------------------*/
+
+// Update Gravity Form 62 with choices from the ACF features.
+function populate_gf_recommender_mktg_seo( $form ) {
+
+  foreach ( $form['fields'] as &$field ) {
+
+    $gf_field_id = intval( $field['id'] );
+
+    switch ( $gf_field_id ) {
+
+      case 2 :
+      case 7 :
+
+        $acf_field_key = 'field_5dd6acd728b05'; // ACF field key.
+        break;
+
+      case 8 :
+
+        $acf_field_key = 'field_5dd6c763bab71'; // ACF field key.
+        break;
+
+      case 6 :
+
+        $acf_field_key = 'field_5dd6c851cfe08'; // ACF field key.
+        break;
+
+    }
+
+    $acf_field = get_field_object( $acf_field_key );
+    $choices   = array();
+
+    if( $acf_field ) {
+
+      // Loops over each choise and add value/option to $choices array.
+      foreach( $acf_field['choices'] as $k => $v ) {
+        $choices[] = array( 'text' => $v, 'value' => $k );
+      }
+
+    }
+
+    // Set choices from array of ACF values.
+    $field->choices = $choices;
+
+  }
+
+  return $form;
+
+}
+
+add_filter( 'gform_pre_render_62', 'populate_gf_recommender_mktg_seo' );
+add_filter( 'gform_pre_validation_62', 'populate_gf_recommender_mktg_seo' );
+add_filter( 'gform_pre_submission_filter_62', 'populate_gf_recommender_mktg_seo' );
+add_filter( 'gform_admin_pre_render_62', 'populate_gf_recommender_mktg_seo' );
+
+
+// Also populate ACF Service Focus field.
+function populate_fc_service_focus_mktg_seo( $field ) {
+
+	$field[ 'choices' ] = array();
+
+  $services = acf_get_field( 'fc_mktgseo_services' );
+
+	foreach ( $services[ 'choices' ] as $value => $option ) {
+
+		$field[ 'choices' ][ $value ] = $option;
+
+	}
+
+	return $field;
+
+}
+
+add_filter( 'acf/load_field/name=fc_mktgseo_service_focus', 'populate_fc_service_focus_mktg_seo' );
+
+
+function mktg_seo_recommender_results( $atts ) {
+
+  $atts = shortcode_atts( array(
+    'form_id'   => null,
+    'entry_id'  => null,
+  ), $atts );
+
+  if ( is_null( $atts[ 'entry_id' ] ) || is_null( $atts[ 'form_id' ] ) ) {
+    return '<p>Either the entry ID or the form ID is missing.</p>';
+  }
+
+  ob_start();
+
+    $entry              = GFAPI::get_entry( $atts[ 'entry_id' ] );
+    $services_field_id  = 2;
+    $services_field_obj = RGFormsModel::get_field( $atts[ 'form_id' ], $services_field_id );
+
+    // These variables contain the visitors' choices.
+    $services           = explode( ', ', $services_field_obj->get_value_export( $entry ) );
+    $service_focus      = $entry[ 7 ];
+    $up_front_budget    = $entry[ 8 ];
+    $monthly_budget     = $entry[ 6 ];
+
+    // Counts the number of criteria.
+    $high_score = count( $services ) + ( $service_focus ? 1 : 0 ) + ( $up_front_budget[ 0 ] != 'NA' ? 1 : 0 ) + ( $monthly_budget[ 0 ] != 'NA' ? 1 : 0 );
+    echo '<p>High score: ' . $high_score . '</p>';
+
+    // Get affinity partner page IDs.
+  	$args = array(
+      'fields'		  => 'ids',
+      'meta_key'		=> 'affinity_active',
+      'meta_value'	=> true,
+  		'post_parent'	=> 226192,
+  		'post_type'	  => 'page',
+      'tax_query'   => array(
+        array(
+          'taxonomy'  => 'page_type',
+          'field'     => 'slug',
+          'terms'     => 'affinity-partner',
+        ),
+      ),
+  	);
+
+  	$partners         = get_posts( $args );
+    $recommendations  = array();
+
+    foreach ( $partners as $partner ) {
+
+      $score = 0;
+
+      $recommendations[ $partner ][ 'post_id' ]           = $partner;
+      $recommendations[ $partner ][ 'services_matched' ]  = array();
+      $recommendations[ $partner ][ 'services_missing' ]  = array();
+
+      // Checks for services match and increases the partner rating for every match.
+      $partner_services = get_field( 'fc_mktgseo_services', $partner );
+
+      foreach ( $services as $service ) {
+
+        if ( in_array( $service, $partner_services ) ) {
+          $recommendations[ $partner ][ 'services_matched' ][] = $service;
+          $score++;
+        } else {
+          $recommendations[ $partner ][ 'services_missing' ][] = $service;
+        }
+
+      }
+
+      // Checks for service focus match and increases the partner rating if it matches.
+      if ( $service_focus == get_field( 'fc_mktgseo_service_focus', $partner ) ) {
+        $recommendations[ $partner ][ 'focus' ] = true;
+        $score++;
+      } else {
+        $recommendations[ $partner ][ 'focus' ] = false;
+      }
+
+      // Checks for an up-front budget and compares it to partners' target spend range.
+      if ( $up_front_budget == get_field( 'fc_mktgseo_target_upfront_spend', $partner ) ) {
+        $recommendations[ $partner ][ 'up_front_budget' ] = true;
+        $score++;
+      } else {
+        $recommendations[ $partner ][ 'up_front_budget' ] = false;
+      }
+
+      // Checks for a monthly budget and compares it to partners' target spend range.
+      if ( $monthly_budget == get_field( 'fc_mktgseo_target_monthly_spend', $partner ) ) {
+        $recommendations[ $partner ][ 'monthly_budget' ] = true;
+        $score++;
+      } else {
+        $recommendations[ $partner ][ 'monthly_budget' ] = false;
+      }
+
+      if ( $score == 0 ) {
+        unset( $recommendations[ $partner ] );
+      } else {
+        $recommendations[ $partner ][ 'score' ] = $score;
+      }
+
+    }
+
+    // Sorts the results from high to low.
+    usort( $recommendations, function( $a, $b ) {
+      return $b[ 'score' ] <=> $a[ 'score' ];
+    });
+
+    $matches = count( $recommendations );
+
+    if ( $matches > 3 ) {
+
+      $i_matches = 0;
+
+      foreach ( $recommendations as $recommendation ) {
+
+        if ( $recommendations[ 'score' ] == $high_score ) {
+          $i_matches++;
+        }
+
+      }
+
+      while ( $matches > $perfect_matches ) {
+        array_pop(0)
+      }
+
+    }
+
+    echo '<pre>';
+    var_dump( $recommendations );
+    echo '</pre>';
+
+  return ob_get_clean();
+
+}
+
+add_shortcode( 'mktg-seo-recommender', 'mktg_seo_recommender_results' );
 
 
 /*------------------------------
