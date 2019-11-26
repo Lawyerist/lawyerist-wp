@@ -56,7 +56,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
           }
 
           if ( !has_shortcode( $post->post_content, 'list-products' ) ) {
-            echo do_shortcode( '[list-products]' );
+            echo do_shortcode( '[list-products show_features="false"]' );
           }
 
         }
