@@ -115,6 +115,12 @@ function feature_chart() {
 
                 break;
 
+              case 'select' :
+
+                echo '<td class="value select">' . $feature[ 'value' ] . '</td>';
+
+                break;
+
               case 'text' :
 
                 echo '<td class="value text">' . $feature[ 'value' ] . '</td>';
@@ -140,6 +146,10 @@ function feature_chart() {
                 break;
 
               case 'checkbox' :
+
+                usort( $feature[ 'value' ], function( $a, $b ) {
+            			return $a <=> $b;
+            		});
 
                 echo '<td class="value list"><ul>';
 
@@ -513,6 +523,7 @@ function lawyerist_all_products_list( $atts ) {
       // Portal ID => Group ID
       $acf_group_ids = array(
         306077 => 333571, // Reputation Management
+        121024 => 471015, // Law Practice Management Software
       );
 
       if ( array_key_exists( $parent, $acf_group_ids) ) {
