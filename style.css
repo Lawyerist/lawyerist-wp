@@ -2114,16 +2114,6 @@ Content
 	Posts
 	------------------------------*/
 
-	.comments:before {
-		content: '\f300';
-		display: inline-block;
-		-webkit-font-smoothing: antialiased;
-		font: normal 1.6rem/1 'Genericons';
-		margin-right: .1em;
-    speak: none;
-    vertical-align: text-top;
-	}
-
   .post_body {
     margin-bottom: 4rem;
   }
@@ -2566,8 +2556,8 @@ Content
 
   #feature-chart td {
     font-size: 80%;
+    width: 30%;
     text-align: center;
-    white-space: nowrap;
   }
 
   #feature-chart td.true-false {
@@ -2591,7 +2581,7 @@ Content
   }
 
     #feature-chart td.list ul li {
-      margin: 0;
+      margin: 0 0 .5em 0;
     }
 
   .page-template-product-page .headline_container {
@@ -2989,7 +2979,6 @@ Content
     }
 
     .comment-author {
-
     }
 
       .comment-author .avatar {
@@ -3021,7 +3010,6 @@ Content
   }
 
   #commentform {
-
   }
 
     #respond {

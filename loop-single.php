@@ -76,8 +76,4 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
   }
 
-  echo '<div id="comments_container">';
-  comments_template( '/comments.php' );
-  echo '</div>';
-
 endwhile; endif; // Close the Loop.

@@ -70,11 +70,4 @@ echo '<div class="postmeta">';
 
   }
 
-  // Comments
-  $num_comments	= get_comments_number();
-
-  if ( $num_comments > 10 ) {
-    echo '<span class="comment_link"><a href="#comments">' . $num_comments . ' comments</a></span>';
-  }
-
 echo '</div>'; // Close .postmeta.
