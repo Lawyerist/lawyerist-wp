@@ -230,13 +230,16 @@
 */
 ( function( $ ) {
 
-  if ( $( ".expandthis-hide" ).length > 0 ) {
+  let hideStuff = $( '.expandthis-hide' );
+  let showStuff = $( '.expandthis-click' );
 
-    $( ".expandthis-hide" ).hide();
+  if ( hideStuff.length > 0 ) {
 
-    $( ".expandthis-click" ).click( function() {
-      $( this ).toggleClass( "open" ).next( ".expandthis-hide" ).slideToggle( 145 );
-      $( ".open" ).not( this ).toggleClass( "open" ).next( ".expandthis-hide" ).slideToggle( 95 );
+    hideStuff.hide();
+
+    showStuff.click( function() {
+      $( this ).toggleClass( 'open' ).next( '.expandthis-hide' ).slideToggle( 145 );
+      $( '.open' ).not( this ).toggleClass( 'open' ).next( '.expandthis-hide' ).slideToggle( 95 );
     });
 
   }
