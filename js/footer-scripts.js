@@ -163,50 +163,59 @@
 // Lawyerist Login/Register
 ( function( $ ) {
 
+  let allLoginRegisterLinks = $( '.login-link, a[ href*="wp-login.php" ], .register-link, #elementor-register-button' );
+  let loginModal            = $( '#lawyerist-login' );
+  let loginScreen           = $( '#lawyerist-login-screen' );
+  let loginLinks            = $( '.login-link, a[ href*="wp-login.php" ]' );
+  let loginForm             = $( '#lawyerist-login #login' );
+  let registerLinks         = $( '.register-link, #elementor-register-button' );
+  let registerForm          = $( '#lawyerist-login #register' );
+  let dismissButton         = $( '#lawyerist-login .dismiss-button' );
+
   // Prevents login links from activating.
-  $( ".login-link, a[ href*='wp-login.php' ], .register-link, #elementor-register-button" ).click( function( e ) {
+  allLoginRegisterLinks.click( function( e ) {
     e.preventDefault();
   });
 
   // Switches to the correct form (even while hidden) for the link.
-  $( ".login-link, a[ href*='wp-login.php' ]" ).click( function() {
-    $( "#lawyerist-login #login" ).show();
-    $( "#lawyerist-login #register" ).hide();
+  loginLinks.click( function() {
+    loginForm.show();
+    registerForm.hide();
   });
 
-  $( ".register-link, #elementor-register-button" ).click( function() {
-    $( "#lawyerist-login #login" ).hide();
-    $( "#lawyerist-login #register" ).show();
+  registerLinks.click( function() {
+    loginForm.hide();
+    registerForm.show();
   });
 
 
   // Controls the modal pop-up and close actions.
-  $( ".login-link, a[ href*='wp-login.php'], .register-link, #elementor-register-button" ).click( function() {
-    $( "#lawyerist-login" ).show( 145 );
-    $( "#lawyerist-login-screen" ).show();
+  allLoginRegisterLinks.click( function() {
+    loginModal.show( 145 );
+    loginScreen.show();
   });
 
-  $( "#lawyerist-login .dismiss-button" ).click( function() {
-    $( "#lawyerist-login" ).hide( 95 );
-    $( "#lawyerist-login-screen" ).hide();
+  dismissButton.click( function() {
+    loginModal.hide( 95 );
+    loginScreen.hide();
   });
 
 
   // Controls navigation within #lawyerist-login.
   $( "#lawyerist-login .link-to-register" ).click( function() {
-    $( "#lawyerist-login #login" ).hide( 95 );
-    $( "#lawyerist-login #register" ).show( 145 );
+    loginForm.hide( 95 );
+    registerForm.show( 145 );
   });
 
   $( "#lawyerist-login .back-to-login" ).click( function() {
-    $( "#lawyerist-login #login" ).show( 145 );
-    $( "#lawyerist-login #register" ).hide( 95 );
+    loginForm.show( 145 );
+    registerForm.hide( 95 );
   });
 
 
   // Changes/removes stuff when the confirmation wrapper is visible.
-  jQuery( document ).on( 'gform_confirmation_loaded', function() {
-    $( "#lawyerist-login .dismiss-button" ).hide();
+  $( document ).on( 'gform_confirmation_loaded', function() {
+    dismissButton.hide();
     $( "#lawyerist-login #register h2" ).html( "Welcome to the Lawyerist Insider Community!" );
     $( "#lawyerist-login #register p.remove_bottom" ).hide();
   });
