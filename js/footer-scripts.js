@@ -69,23 +69,26 @@
 
   if ( $( '.product-filters' ).length > 0 ) {
 
-    var filterLabels = [];
-    var featureClass = [];
+    let filter        = $( '.product-filters .filter' );
+    let filterLabels  = [];
+    let featureClass  = [];
+    let noResults     = $( '#no-results-placeholder' );
+    let productList   = $( '.product-pages-list li' );
 
-    $( ".product-filters .show-all" ).click( function() {
-      $( ".product-filters .filter" ).removeClass( "on" );
-      $( ".product-pages-list li" ).removeClass( "show" ).show();
-      $( "#no-results-placeholder" ).hide();
+    $( '.product-filters .show-all' ).click( function() {
+      filter.removeClass( 'on' );
+      productList.removeClass( 'show' ).show();
+      noResults.hide();
       filterLabels = [];
     });
 
-    $( ".product-filters .filter" ).click( function() {
+    filter.click( function() {
 
-      featureClass = $( this ).data( "acf_label" );
+      featureClass = $( this ).data( 'acf_label' );
 
-      if ( $( this ).hasClass( "on" ) ) {
+      if ( $( this ).hasClass( 'on' ) ) {
 
-        $( this ).removeClass( "on" );
+        $( this ).removeClass( 'on' );
 
         var index = filterLabels.indexOf( featureClass );
         if ( index > -1 ) {
@@ -94,13 +97,13 @@
 
       } else {
 
-        $( this ).addClass( "on" );
+        $( this ).addClass( 'on' );
 
         filterLabels.push( featureClass );
 
       }
 
-      products = document.getElementsByClassName( "product-card" );
+      products = document.getElementsByClassName( 'product-card' );
       let productCount = products.length;
 
       Array.prototype.forEach.call( products, function( product ) {
@@ -117,16 +120,16 @@
         });
 
         if ( match == false ) {
-          $( product ).removeClass( "show" ).hide();
+          $( product ).removeClass( 'show' ).hide();
           productCount--;
         } else {
-          $( product ).addClass( "show" ).show();
+          $( product ).addClass( 'show' ).show();
         }
 
         if ( productCount == 0 ) {
-          $( "#no-results-placeholder" ).show();
+          noResults.show();
         } else {
-          $( "#no-results-placeholder" ).hide();
+          noResults.hide();
         }
 
       });
