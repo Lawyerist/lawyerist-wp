@@ -7,11 +7,13 @@
     return;
   }
 
-  let date, thisMonth, thisArticle, articlesRead, articlesCount;
+  let date, thisMonth, thisArticle, articlesRead, articlesCount, articleCounter;
+
+  articleCounter  = $( '#article-counter' );
 
   date          = new Date();
   thisMonth     = date.getMonth();
-  thisArticle   = $( '#article-counter' ).data( "post_id" );
+  thisArticle   = articleCounter.data( 'post_id' );
 
   articlesRead = JSON.parse( localStorage.getItem( 'lawyeristArticlesRead' ) );
 
@@ -36,16 +38,24 @@
   // Output the current article count, a notice that the viewer has read all
   // their alotted articles, or block the page by replacing the post content.
   if ( articleCount == 1 ) {
-    $( "#article-counter" ).html( "This is your first of five free articles this month! We'd love to unlock more for free. All you have to do is <a class=\"login-link\" href=\"/account/\">log in or register</a>." );
+
+    articleCounter.html( 'This is your first of five free articles this month! We\'d love to unlock more for free. All you have to do is <a class="login-link" href="/account/">log in or register</a>.' );
+
   } else if ( articleCount < 5 ) {
-    $( "#article-counter" ).html( "You have viewed " + articleCount + " of 5 free articles this month. We'd love to unlock more for free. All you have to do is <a class=\"login-link\" href=\"/account/\">log in or register</a>." );
+
+    articleCounter.html( 'You have viewed ' + articleCount + ' of 5 free articles this month. We\'d love to unlock more for free. All you have to do is <a class="login-link" href="/account/">log in or register</a>.' );
+
   } else if ( articleCount == 5 ) {
-    $( "#article-counter" ).html( "This is the last of your five free articles this month. To keep reading, <a class=\"login-link\" href=\"/account/\">log in or register</a>." );
+
+    articleCounter.html( 'This is the last of your five free articles this month. To keep reading, <a class="login-link" href="/account/">log in or register</a>.' );
+
   } else {
-    $( ".post_body" ).html( "<p class=\"article-counter-login-notice\">You have read all five of your free articles this month. To read this article, <a class=\"login-link\" href=\"/account/\">log in or register</a>.</p>" );
-    $( "#article-counter" ).hide();
-    $( "#lawyerist-login" ).show( 145 );
-    $( "#lawyerist-login-screen" ).show();
+
+    $( '.post_body' ).html( '<p class="article-counter-login-notice">You have read all five of your free articles this month. To read this article, <a class="login-link" href="/account/">log in or register</a>.</p>' );
+    articleCounter.hide();
+    $( '#lawyerist-login' ).show( 145 );
+    $( '#lawyerist-login-screen' ).show();
+
   }
 
   localStorage.setItem( 'lawyeristArticlesRead', JSON.stringify( articlesRead ) );
@@ -132,27 +142,27 @@
 // Responsive Menu
 ( function( $ ) {
 
-  $( "#menu-main-menu .sub-menu" ).hide();
+  $( '#menu-main-menu .sub-menu' ).hide();
 
   // Opens and closes top-level sub-menus.
-  $( "#menu-main-menu > .menu-item-has-children > a" ).click( function() {
-    $( this ).toggleClass( "open" ).next( ".sub-menu" ).slideToggle( 95 );
-    $( ".open" ).not( this ).toggleClass( "open" ).next( ".sub-menu" ).slideToggle( 95 );
+  $( '#menu-main-menu > .menu-item-has-children > a' ).click( function() {
+    $( this ).toggleClass( 'open' ).next( '.sub-menu' ).slideToggle( 95 );
+    $( '.open' ).not( this ).toggleClass( 'open' ).next( '.sub-menu' ).slideToggle( 95 );
   });
 
   // Opens and closes second-level+ sub-menus.
   // The .not in this function excludes the Products & Services and
   // Join the Lawyerist Community sub menus.
-  $( "#menu-main-menu > .menu-item-has-children .menu-item-has-children > a" ).not( "#menu-item-305888 > a, #menu-item-270912 > a" ).click( function() {
-    $( this ).toggleClass( "open" ).next( ".sub-menu" ).slideToggle( 95 );
+  $( '#menu-main-menu > .menu-item-has-children .menu-item-has-children > a' ).not( '#menu-item-305888 > a, #menu-item-270912 > a' ).click( function() {
+    $( this ).toggleClass( 'open' ).next( '.sub-menu' ).slideToggle( 95 );
   });
 
   // Closes all menus when anything outside the menu is clicked.
-  $( document ).on( "click", function() {
-    $( "#menu-main-menu .menu-item-has-children > a" ).removeClass( "open" ).next( ".sub-menu" ).slideUp( 95 );
+  $( document ).on( 'click', function() {
+    $( '#menu-main-menu .menu-item-has-children > a' ).removeClass( 'open' ).next( '.sub-menu' ).slideUp( 95 );
   });
 
-  $( "#menu-main-menu *" ).on( "click", function( e ) {
+  $( '#menu-main-menu *' ).on( 'click', function( e ) {
       e.stopPropagation();
   });
 
@@ -202,12 +212,12 @@
 
 
   // Controls navigation within #lawyerist-login.
-  $( "#lawyerist-login .link-to-register" ).click( function() {
+  $( '#lawyerist-login .link-to-register' ).click( function() {
     loginForm.hide( 95 );
     registerForm.show( 145 );
   });
 
-  $( "#lawyerist-login .back-to-login" ).click( function() {
+  $( '#lawyerist-login .back-to-login' ).click( function() {
     loginForm.show( 145 );
     registerForm.hide( 95 );
   });
@@ -216,8 +226,8 @@
   // Changes/removes stuff when the confirmation wrapper is visible.
   $( document ).on( 'gform_confirmation_loaded', function() {
     dismissButton.hide();
-    $( "#lawyerist-login #register h2" ).html( "Welcome to the Lawyerist Insider Community!" );
-    $( "#lawyerist-login #register p.remove_bottom" ).hide();
+    $( '#lawyerist-login #register h2' ).html( 'Welcome to the Lawyerist Insider Community!' );
+    $( '#lawyerist-login #register p.remove_bottom' ).hide();
   });
 
 })( jQuery );
