@@ -189,14 +189,6 @@ function feature_chart() {
 
                 }
 
-                // fc_process_feature_value( $feature );
-
-                /*
-                echo '<pre style="text-align:left;">';
-                var_dump( $feature );
-                echo '</pre>';
-                */
-
             } else {
 
               echo '<td class="value ' . $feature[ 'type' ] . '">';
@@ -560,6 +552,7 @@ function lawyerist_all_products_list( $atts ) {
       $acf_group_ids = array(
         306077 => 333571, // Reputation Management
         121024 => 471015, // Law Practice Management Software
+        212684 => 480121, // Law Practice Management Software
       );
 
       if ( array_key_exists( $parent, $acf_group_ids) ) {
