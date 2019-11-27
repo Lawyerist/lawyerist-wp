@@ -2549,6 +2549,19 @@ Content
     vertical-align: top;
   }
 
+  #feature-chart tr.sub_feature th {
+    font-weight: normal;
+    vertical-align: middle;
+  }
+
+    #feature-chart tr.sub_feature th .label {
+      margin-left: 2rem;
+    }
+
+    #feature-chart tr.sub_feature td.true-false {
+      font-size: unset;
+    }
+
   #feature-chart th .message {
     font-size: 80%;
     font-weight: normal;
@@ -2575,12 +2588,12 @@ Content
       color: #c00;
     }
 
-  #feature-chart td.list ul {
+  #feature-chart td.checkbox ul {
     list-style: none;
     margin: 0;
   }
 
-    #feature-chart td.list ul li {
+    #feature-chart td.checkbox ul li {
       margin: 0 0 .5em 0;
     }
 

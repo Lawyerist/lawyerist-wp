@@ -72,6 +72,62 @@ add_shortcode( 'testimonial', 'lawyerist_testimonial_shortcode' );
 Feature Charts
 --------------------------------------------------*/
 
+function fc_process_feature_value( $feature ) {
+
+    switch ( $feature[ 'type' ] ) {
+
+      case 'checkbox' :
+
+        usort( $feature[ 'value' ], function( $a, $b ) {
+          return $a <=> $b;
+        });
+
+        echo '<ul>';
+
+          foreach ( $feature[ 'value' ] as $item ) {
+            echo '<li>' . $item . '</li>';
+          }
+
+        echo '</ul>';
+
+        break;
+
+      case 'select' :
+      case 'text' :
+
+        echo $feature[ 'value' ];
+
+        break;
+
+      case 'true_false' :
+
+          if ( $feature[ 'value' ] == true ) {
+            echo '<div class="true">&check;</div>';
+          } else {
+            echo '<div class="false">&cross;</div>';
+          }
+
+        break;
+
+      case 'url' :
+
+        $url_parsed = parse_url( $feature[ 'value' ] );
+        $url_host  	= $url_parsed[ 'host' ];
+
+        echo '<a href="' . $feature[ 'value' ] . '?utm_source=lawyerist&utm_medium=free-resources-page-link">' . $url_host . '</a>';
+
+        break;
+
+      default :
+
+        echo $feature[ 'value' ];
+
+    }
+
+  echo '</tr>';
+
+}
+
 function feature_chart() {
 
   ob_start();
@@ -92,80 +148,60 @@ function feature_chart() {
 
           echo '<tr>';
 
-            echo '<th scope="row" class="label">';
+            $colspan = '';
+
+            if ( $feature[ 'type' ] == 'group' ) {
+              $colspan = ' colspan="2"';
+            }
+
+            echo '<th scope="row" class="label"' . $colspan . '>';
 
               echo '<div class="label">' . $feature[ 'label' ] . '</div>';
 
               if ( !empty( $feature[ 'message' ] ) )  {
-
                 echo '<div class="message">' . $feature[ 'message' ] . '</div>';
-
               }
 
             echo '</th>';
 
-            switch ( $feature[ 'type' ] ) {
+            if ( $feature[ 'type' ] == 'group' ) {
 
-              case 'url' :
+                echo '</tr>';
 
-                $url_parsed = parse_url( $feature[ 'value' ] );
-                $url_host  	= $url_parsed[ 'host' ];
+                foreach ( $feature[ 'sub_fields' ] as $sub_field ) {
 
-                echo '<td class="value url"><a href="' . $feature[ 'value' ] . '?utm_source=lawyerist&utm_medium=free-resources-page-link">' . $url_host . '</a></td>';
+                  $sub_feature = array(
+                    'type'    => $sub_field[ 'type' ],
+                    'value'   => $feature[ 'value' ][ $sub_field[ 'name' ] ],
+                  );
 
-                break;
+                  echo '<tr class="sub_feature">';
 
-              case 'select' :
+                    echo '<th scope="row" class="label sub_feature">';
+                      echo '<div class="label">' . $sub_field[ 'label' ] . '</div>';
+                    echo '</th>';
 
-                echo '<td class="value select">' . $feature[ 'value' ] . '</td>';
+                    echo '<td class="value ' . $sub_field[ 'type' ] . '">';
+                      fc_process_feature_value( $sub_feature );
+                    echo '</td>';
 
-                break;
+                  echo '</tr>';
 
-              case 'text' :
+                }
 
-                echo '<td class="value text">' . $feature[ 'value' ] . '</td>';
+                // fc_process_feature_value( $feature );
 
-                break;
+                /*
+                echo '<pre style="text-align:left;">';
+                var_dump( $feature );
+                echo '</pre>';
+                */
 
-              case 'true_false' :
+            } else {
 
-                echo '<td class="value true-false">';
-
-                  if ( $feature[ 'value' ] == true ) {
-
-                    echo '<div class="true">&check;</div>';
-
-                  } else {
-
-                    echo '<div class="false">&cross;</div>';
-
-                  }
-
-                echo '</td>';
-
-                break;
-
-              case 'checkbox' :
-
-                usort( $feature[ 'value' ], function( $a, $b ) {
-            			return $a <=> $b;
-            		});
-
-                echo '<td class="value list"><ul>';
-
-                  foreach ( $feature[ 'value' ] as $item ) {
-
-                    echo '<li>' . $item . '</li>';
-
-                  }
-
-                echo '</ul></td>';
-
-                break;
-
-              default :
-
-                echo '<td></td>';
+              echo '<td class="value ' . $feature[ 'type' ] . '">';
+                fc_process_feature_value( $feature );
+              echo '</td>';
 
             }
 
