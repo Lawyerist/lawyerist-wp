@@ -72,6 +72,24 @@ add_shortcode( 'testimonial', 'lawyerist_testimonial_shortcode' );
 Feature Charts
 --------------------------------------------------*/
 
+function get_feature_chart_ids() {
+
+  // Connects portal IDs to the ACF field group ID so we can show filters
+  // for this product list.
+  // Portal ID => Group ID
+  $feature_chart_ids = array(
+    306077 => 333571, // Reputation Management
+    121024 => 471015, // Law Practice Management Software
+    212684 => 480121, // Legal Research
+    254718 => 510758, // eDiscovery Software
+    200884 => 511008, // Credit Card Processing
+  );
+
+  return $feature_chart_ids;
+
+}
+
+
 function fc_process_feature_value( $feature ) {
 
     switch ( $feature[ 'type' ] ) {
@@ -128,84 +146,113 @@ function fc_process_feature_value( $feature ) {
 
 }
 
-function feature_chart() {
+function feature_chart( $post ) {
 
   ob_start();
 
-    echo '<div id="feature-chart">';
+    $post_id  = $post->ID;
+    $parent   = wp_get_post_parent_id( $post_id );
+    $fc_ids   = get_feature_chart_ids();
 
-      $features = get_field_objects();
+    if ( array_key_exists( $parent, $fc_ids ) ) {
 
-      usort( $features, function( $a, $b ) {
-  			return $a[ 'menu_order' ] <=> $b[ 'menu_order' ];
-  		});
+      echo '<div id="feature-chart">';
 
-      echo '<table><tbody>';
+        echo '<table><tbody>';
 
-      foreach ( $features as $feature ) {
+          $fields = acf_get_fields( $fc_ids[ $parent ] );
 
-        if ( substr( $feature[ 'name' ], 0, 3 ) == 'fc_' ) {
+          foreach ( $fields as $field ) {
 
-          echo '<tr>';
+            $feature =  array(
+              'type'    => $field[ 'type' ],
+              'name'    => $field[ 'name' ],
+              'label'   => $field[ 'label' ],
+              'message' => $field[ 'message' ],
+              'value'   => get_field( $field[ 'name' ] ),
+            );
 
-            $colspan = '';
+            echo '<tr>';
 
-            if ( $feature[ 'type' ] == 'group' ) {
-              $colspan = ' colspan="2"';
-            }
+              $colspan = '';
 
-            echo '<th scope="row" class="label"' . $colspan . '>';
-
-              echo '<div class="label">' . $feature[ 'label' ] . '</div>';
-
-              if ( !empty( $feature[ 'message' ] ) )  {
-                echo '<div class="message">' . $feature[ 'message' ] . '</div>';
+              if ( $feature[ 'type' ] == 'group' || $feature[ 'type' ] == 'message' ) {
+                $colspan = ' colspan="2"';
               }
 
-            echo '</th>';
+              echo '<th scope="row" class="label"' . $colspan . '>';
 
-            if ( $feature[ 'type' ] == 'group' ) {
+                echo '<div class="label">' . $feature[ 'label' ] . '</div>';
+
+                if ( !empty( $feature[ 'message' ] ) )  {
+                  echo '<div class="message">' . $feature[ 'message' ] . '</div>';
+                }
+
+              echo '</th>';
+
+              if ( $feature[ 'type' ] == 'group' ) {
 
                 echo '</tr>';
 
-                foreach ( $feature[ 'sub_fields' ] as $sub_field ) {
-
-                  $sub_feature = array(
-                    'type'    => $sub_field[ 'type' ],
-                    'value'   => $feature[ 'value' ][ $sub_field[ 'name' ] ],
-                  );
+                if ( have_rows( $feature[ 'name' ] ) ):
 
                   echo '<tr class="sub_feature">';
 
-                    echo '<th scope="row" class="label sub_feature">';
-                      echo '<div class="label">' . $sub_field[ 'label' ] . '</div>';
-                    echo '</th>';
+                    while ( have_rows( $feature[ 'name' ] ) ) : the_row();
 
-                    echo '<td class="value ' . $sub_field[ 'type' ] . '">';
-                      fc_process_feature_value( $sub_feature );
-                    echo '</td>';
+                      $rows = get_row();
+
+                      foreach ( $rows as $row_key => $row_val ) {
+
+                        $sub_field  = get_sub_field_object( $row_key );
+
+                        $sub_feature = array(
+                          'type'    => $sub_field[ 'type' ],
+                          'label'   => $sub_field[ 'label' ],
+                          'value'   => get_sub_field( $row_key ),
+                        );
+
+                        echo '<tr class="sub_feature">';
+
+                          echo '<th scope="row" class="label sub_feature">';
+                            echo '<div class="label">' . $sub_feature[ 'label' ] . '</div>';
+                          echo '</th>';
+
+                          echo '<td class="value ' . $sub_feature[ 'type' ] . '">';
+                            fc_process_feature_value( $sub_feature );
+                          echo '</td>';
+
+                        echo '</tr>';
+
+                      }
+
+                      endwhile;
 
                   echo '</tr>';
 
-                }
+                endif;
 
-            } else {
+              } elseif ( $feature[ 'type' ] == 'message' ) {
 
-              echo '<td class="value ' . $feature[ 'type' ] . '">';
-                fc_process_feature_value( $feature );
-              echo '</td>';
+                continue;
 
-            }
+              } else {
 
-          echo '</tr>';
+                echo '<td class="value ' . $feature[ 'type' ] . '">';
+                  fc_process_feature_value( $feature );
+                echo '</td>';
 
-        }
+              }
 
-      }
+            echo '</tr>';
 
-      echo '</tbody></table>';
+          }
 
-    echo '</div>';
+        echo '</tbody></table>';
+
+      echo '</div>';
+
+    }
 
   return ob_get_clean();
 
@@ -546,14 +593,7 @@ function lawyerist_all_products_list( $atts ) {
         echo '<h2>' . get_the_title( $post->ID ) . ' (Alphabetical List)</h2>';
       }
 
-      // Connects portal IDs to the ACF field group ID so we can show filters
-      // for this product list.
-      // Portal ID => Group ID
-      $acf_group_ids = array(
-        306077 => 333571, // Reputation Management
-        121024 => 471015, // Law Practice Management Software
-        212684 => 480121, // Law Practice Management Software
-      );
+      $acf_group_ids = get_feature_chart_ids();
 
       if ( array_key_exists( $parent, $acf_group_ids) ) {
 
