@@ -83,6 +83,7 @@ function get_feature_chart_ids() {
     212684 => 480121, // Legal Research
     254718 => 510758, // eDiscovery Software
     200884 => 511008, // Credit Card Processing
+    158523 => 513265, // Accounting Software
   );
 
   return $feature_chart_ids;
