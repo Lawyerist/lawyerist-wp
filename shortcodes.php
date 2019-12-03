@@ -93,53 +93,49 @@ function get_feature_chart_ids() {
 
 function fc_process_feature_value( $feature ) {
 
-    switch ( $feature[ 'type' ] ) {
+    if ( $feature[ 'type' ] == 'url' ) {
 
-      case 'checkbox' :
+      $url_parsed = parse_url( $feature[ 'value' ] );
+      $url_host  	= $url_parsed[ 'host' ];
 
-        usort( $feature[ 'value' ], function( $a, $b ) {
-          return $a <=> $b;
-        });
+      echo '<a href="' . $feature[ 'value' ] . '?utm_source=lawyerist&utm_medium=free-resources-page-link">' . $url_host . '</a>';
 
-        echo '<ul>';
+    } else {
 
-          foreach ( $feature[ 'value' ] as $item ) {
-            echo '<li>' . $item . '</li>';
-          }
+      switch ( gettype( $feature[ 'value' ] ) ) {
 
-        echo '</ul>';
+        case 'array' :
 
-        break;
+          usort( $feature[ 'value' ], function( $a, $b ) {
+            return $a <=> $b;
+          });
 
-      case 'select' :
-      case 'text' :
+          echo '<ul>';
 
-        echo $feature[ 'value' ];
+            foreach ( $feature[ 'value' ] as $item ) {
+              echo '<li>' . $item . '</li>';
+            }
 
-        break;
+          echo '</ul>';
 
-      case 'true_false' :
+          break;
 
-          if ( $feature[ 'value' ] == true ) {
-            echo '<div class="true">&check;</div>';
-          } else {
-            echo '<div class="false">&cross;</div>';
-          }
+        case 'boolean' :
 
-        break;
+            if ( $feature[ 'value' ] == true ) {
+              echo '<div class="true">&check;</div>';
+            } else {
+              echo '<div class="false">&cross;</div>';
+            }
 
-      case 'url' :
+          break;
 
-        $url_parsed = parse_url( $feature[ 'value' ] );
-        $url_host  	= $url_parsed[ 'host' ];
+        case 'string' :
+        default :
 
-        echo '<a href="' . $feature[ 'value' ] . '?utm_source=lawyerist&utm_medium=free-resources-page-link">' . $url_host . '</a>';
+          echo $feature[ 'value' ];
 
-        break;
-
-      default :
-
-        echo $feature[ 'value' ];
+      }
 
     }
 
