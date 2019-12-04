@@ -110,7 +110,7 @@
 
   global $post;
 
-  if  ( !is_user_logged_in() && ( is_single() || is_page() ) && !( is_front_page() || is_product_portal() || is_page_template( 'product-page.php' ) || is_page( 245258 /* Community */ ) || $post->post_parent == 245258 || is_page( 3379 /* About */ ) || $post->post_parent == 3379 || has_category( 'sponsored' ) ) ) {
+  if  ( !is_user_logged_in() && ( is_single() || is_page() ) && !( is_front_page() || is_product() || is_product_portal() || is_page_template( 'product-page.php' ) || is_page( 245258 /* Community */ ) || $post->post_parent == 245258 || is_page( 3379 /* About */ ) || $post->post_parent == 3379 || has_category( 'sponsored' ) ) ) {
 
     echo '<div id="article-counter-container">';
       echo '<div id="article-counter" data-post_id="' . $post->ID . '"></div>';
