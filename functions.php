@@ -36,7 +36,6 @@ CONTENT
 - Custom Default Gravatar
 - Post/Page Footer CTA
 - Get Alternative Products
-- Get Related Podcasts
 - Get Related Posts
 - Get Related Resources
 - List Child Pages Fallback
@@ -710,9 +709,8 @@ function lawyerist_get_post_card( $post_ID = null, $card_top_label = null, $card
 
 	$post_classes = array();
 
-	// Gets the guest image for podcast and How Lawyers Work posts, or the post
-	// thumbnail for everything else.
-	if ( has_category( 'podcast' ) || has_category( 'case-studies' ) ) {
+	// Gets the guest image for case studies, or the post thumbnail for everything else.
+	if ( has_category( 'case-studies' ) ) {
 
 		$first_image_url = get_first_image_url( $post_ID );
 
@@ -772,7 +770,7 @@ function lawyerist_get_post_card( $post_ID = null, $card_top_label = null, $card
 
 						$date = get_the_time( 'F jS, Y', $post_ID );
 
-						if ( has_category( array( 'case-studies', 'podcast', 'lab-workshops' ) ) || is_author() ) {
+						if ( has_category( array( 'case-studies', 'lab-workshops' ) ) || is_author() ) {
 
 					    echo '<span class="date updated published">' . $date . '</span>';
 
@@ -1224,50 +1222,6 @@ function lawyerist_get_alternative_products() {
 
 }
 
-/*------------------------------
-Get Related Podcasts
-------------------------------*/
-
-function lawyerist_get_related_podcasts() {
-
-	global $post;
-
-	$current_id[]		= $post->ID;
-	$current_slug		= $post->post_name;
-	$current_title	= $post->post_title;
-
-	if ( !empty( $current_slug ) ) {
-
-		$args = array(
-			'category_name'			=> 'lawyerist-podcast',
-			'post__not_in'		=> $current_id,
-			'posts_per_page'	=> -1,
-			'tag' 						=> $current_slug,
-		);
-
-		$lawyerist_related_podcasts_query = new WP_Query( $args );
-
-		if ( $lawyerist_related_podcasts_query->have_posts() ) :
-
-			echo '<h2>Podcasts About ' . $current_title . '</h2>';
-
-			echo '<div id="related-podcasts">';
-
-				// Start the Loop.
-				while ( $lawyerist_related_podcasts_query->have_posts() ) : $lawyerist_related_podcasts_query->the_post();
-
-					lawyerist_get_post_card();
-
-				endwhile; wp_reset_postdata();
-
-			echo '</div>';
-
-		endif;
-
-	}
-
-}
-
 
 /*------------------------------
 Get Related Posts
@@ -1285,7 +1239,6 @@ function lawyerist_get_related_posts() {
 
 		$args = array(
 			'category__not_in'	=> array(
-				4183,		// Excludes podcast episodes.
 				43419,	// Excludes Lab workshops.
 			),
 			'post__not_in'		=> $current_id,

@@ -4,7 +4,7 @@ echo '<div class="postmeta">';
 
   $date = get_the_time( 'F jS, Y' );
 
-  if ( has_category( array( 'case-studies', 'podcast', 'lab-workshops' ) ) || is_author() ) {
+  if ( has_category( array( 'case-studies', 'lab-workshops' ) ) || is_author() ) {
 
     echo '<span class="date published">' . $date . '</span>';
 

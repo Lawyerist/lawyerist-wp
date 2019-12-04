@@ -108,23 +108,24 @@
 			echo '<p class="fp-section-header">Recent Updates</p>';
 
 			// Outputs the most recent podcast episode.
-			$args = array(
-				'category_name'				=> 'podcast',
-				'post__not_in'				=> get_option( 'sticky_posts' ),
-				'posts_per_page'			=> 1,
-			);
 
-			$current_podcast_query = new WP_Query( $args );
+			$podcast_feed			= fetch_feed( 'https://lawyerist.libsyn.com/' );
+			$current_episode	= $podcast_feed->get_item( 0 );
 
-			if ( $current_podcast_query->have_posts() ) : while ( $current_podcast_query->have_posts() ) : $current_podcast_query->the_post();
+			$show_img_url			= 'https://lawyerist.com/lawyerist/wp-content/uploads/2015/01/podcast-logo-post-image.png';
+			$ep_title					= $current_episode->get_title();
+			$ep_date					= $current_episode->get_date( 'F jS, Y' );
 
-				$all_eps_txt		= 'All episodes of The Lawyerist Podcast';
-				$all_eps_url		=	get_category_link( 4183 );
-				$all_eps_label	= '<a href="' . $all_eps_url . '" title="' . $all_eps_txt . '.">' . $all_eps_txt . '</a>';
-
-				lawyerist_get_post_card( '', '', $all_eps_label );
-
-			endwhile; wp_reset_postdata(); endif;
+			echo '<div class="card post-card has-card-label">';
+				echo '<a href="https://lawyerist.com/podcast/" title="The Lawyerist Podcast" class="has-guest-avatar post has-post-thumbnail">';
+					echo '<img class="guest-avatar" srcset="' . $show_img_url . '" />';
+					echo '<div class="headline-byline">';
+						echo '<h2 class="headline" title="' . $ep_title . '">' . $ep_title . '</h2>';
+						echo '<div class="postmeta"><span class="date updated published">' . $ep_date . '</span></div>';
+					echo '</div>';
+				echo '</a>';
+				echo '<p class="card-label card-bottom-label"><a href="https://lawyerist.com/podcast/" title="All episodes of The Lawyerist Podcast.">All episodes of The Lawyerist Podcast</a></p>';
+			echo '</div>';
 
 			// End of podcast episode.
 
