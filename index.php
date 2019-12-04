@@ -6,8 +6,8 @@
 
     <?php
 
-    // Gets the archive header for archive, author, and search pages.
-    if ( is_archive() || is_author() || is_search() ) {
+    // Gets the archive header for archives and search pages.
+    if ( is_archive() || is_search() ) {
 
       lawyerist_get_archive_header();
 

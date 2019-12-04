@@ -3086,7 +3086,7 @@ Author Bios
 .author-bio-box {
   display: grid;
   grid-template-columns: 15rem 1fr;
-  grid-gap: 1.5rem;
+  grid-gap: 2rem;
   margin-bottom: 4rem;
 }
 

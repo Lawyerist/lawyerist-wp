@@ -52,22 +52,6 @@
     echo '<meta name="robots" content="nofollow">';
   }
 
-  // Noindexes author archives if the author has fewer than 5 posts.
-  if ( is_author() ) {
-
-    global $wp_query;
-
-    $author_ID          = $wp_query->queried_object->data->ID;
-    $author_name        = $wp_query->queried_object->data->display_name;
-    $author_post_count  = count_user_posts( $author_ID );
-
-    if ( $author_post_count < 5 ) {
-      echo '<!-- ' . $author_name . ' has ' . sprintf ( _n( '%s post', '%s posts', $author_post_count ), $author_post_count ). ', so this page is noindexed. -->';
-      echo '<meta name="robots" content="noindex">';
-    }
-
-  }
-
   // Noindexes/nofollows Lab Workshop archives and posts.
   if ( is_category( 'lab-workshops') || has_category( 'lab-workshops') ) {
     echo '<!-- Showing a Lab Workshops archive or post, so this page is noindexed and nofollowed. -->';

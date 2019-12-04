@@ -57,7 +57,6 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
         }
 
-        // Show date modified if it's different than the date published.
         get_template_part( 'postmeta', 'single_bottom' );
 
       echo '</div>'; // Close .post_body.

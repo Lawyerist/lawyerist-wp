@@ -1,7 +1,7 @@
 <?php // This must be used within the Loop.
 
 // Show author bio box unless the author is Guest (26).
-if ( !get_the_author_meta( 'ID' ) == 26 ) {
+if ( get_the_author_meta( 'ID' ) != 26 ) {
 
   lawyerist_get_author_bio();
 
@@ -19,7 +19,7 @@ if ( $date != $updated_date ) {
   echo '<div class="postmeta">';
 
     echo 'Last updated <span class="date updated">' . $updated_date . '</span>.';
-    
+
   echo '</div>'; // Close .postmeta.
 
 }

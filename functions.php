@@ -31,7 +31,6 @@ CONTENT
 - Archive Headers
 - Yoast SEO Breadcrumbs
 - Author Bios
-- Show Pages in Author Archives
 - List of Coauthors
 - Custom Default Gravatar
 - Post/Page Footer CTA
@@ -72,7 +71,7 @@ LEARNDASH
 - Disable Comments on LearnDash Pages
 
 TAXONOMY
-- Disable Tag Archives
+- Disable Tag & Author Archives
 - Page Type Custom Taxonomy
 - Sponsors Custom Taxonomy
 
@@ -770,7 +769,7 @@ function lawyerist_get_post_card( $post_ID = null, $card_top_label = null, $card
 
 						$date = get_the_time( 'F jS, Y', $post_ID );
 
-						if ( has_category( array( 'case-studies', 'lab-workshops' ) ) || is_author() ) {
+						if ( has_category( array( 'case-studies', 'lab-workshops' ) ) ) {
 
 					    echo '<span class="date updated published">' . $date . '</span>';
 
@@ -858,12 +857,7 @@ Archive Headers
 
 function lawyerist_get_archive_header() {
 
-	// Display the author header if we're on an author page.
-	if ( is_author() ) {
-
-		lawyerist_get_author_bio();
-
-	} elseif ( is_search() ) {
+	if ( is_search() ) {
 
 		echo '<div id="archive-header"><h1>Search results for "' . get_search_query() . '"</h1></div>';
 		echo '<div id="lawyerist_content_search">';
@@ -1000,10 +994,6 @@ function lawyerist_get_author_bio() {
 
 	echo '<div class="author-bio-box card">' . "\n";
 
-		if ( is_author() ) {
-			echo '<h1>' . $author_name . '</h1>' . "\n";
-		}
-
 		echo $author_avatar;
 
 		echo '<div class="author-bio-connect">';
@@ -1035,23 +1025,6 @@ function lawyerist_get_author_bio() {
 
 
 /*------------------------------
-Show Pages in Author Archives
-------------------------------*/
-
-function lawyerist_show_authors_pages( $query ) {
-
-  if ( !is_admin() && $query->is_author() && $query->is_main_query() ) {
-
-    $query->set( 'post_type', array( 'post', 'page' ) );
-
-  }
-
-}
-
-add_action( 'pre_get_posts', 'lawyerist_show_authors_pages' );
-
-
-/*------------------------------
 List of Coauthors
 ------------------------------*/
 
@@ -1070,13 +1043,9 @@ function lawyerist_get_coauthors() {
 
     foreach ( $coauthors as $coauthor ) {
 
-      if ( count_user_posts( $coauthor->data->ID ) >= 5 ) {
+			$profile_page_url = get_field( 'profile_page', 'user_' . $coauthor->data->ID );
 
-        $profile_page_url = get_field( 'profile_page', 'user_' . $coauthor->data->ID );
-
-        if ( empty( $profile_page_url ) ) {
-          $profile_page_url = get_author_posts_url( $coauthor->data->ID );
-        }
+      if ( count_user_posts( $coauthor->data->ID ) >= 5 && !empty( $profile_page_url ) ) {
 
         $coauthor_list[] = '<span class="vcard author"><cite class="fn"><a href="' . $profile_page_url . '">' . $coauthor->data->display_name . '</a></cite></span>';
 
@@ -2263,23 +2232,23 @@ add_filter( 'init', 'lawyerist_ld_disable_comments' );
 /* TAXONOMY *******************/
 
 /*------------------------------
-Disable Tag Archives
+Disable Tag & Author Archives
 ------------------------------*/
 
-function lawyerist_disable_tag_archives() {
+function lawyerist_disable_archives() {
 
 	if ( is_admin() ) {
 		return;
 	}
 
-  if ( is_tag() ) {
+  if ( is_tag() || is_author() ) {
 		global $wp_query;
     $wp_query->set_404();
   }
 
 }
 
-add_action( 'pre_get_posts', 'lawyerist_disable_tag_archives' );
+add_action( 'pre_get_posts', 'lawyerist_disable_archives' );
 
 
 /*------------------------------

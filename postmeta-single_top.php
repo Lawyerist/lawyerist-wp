@@ -4,7 +4,7 @@ echo '<div class="postmeta">';
 
   $date = get_the_time( 'F jS, Y' );
 
-  if ( has_category( array( 'case-studies', 'lab-workshops' ) ) || is_author() ) {
+  if ( has_category( array( 'case-studies', 'lab-workshops' ) ) ) {
 
     echo '<span class="date published">' . $date . '</span>';
 
@@ -47,14 +47,9 @@ echo '<div class="postmeta">';
 
       $author_ID          = get_the_author_meta( 'ID' );
       $author_post_count  = count_user_posts( $author_ID );
+      $profile_page_url   = get_field( 'profile_page', 'user_' . $author_ID );
 
-      if ( $author_post_count >= 5 ) {
-
-        $profile_page_url = get_field( 'profile_page', 'user_' . $author_ID );
-
-        if ( empty( $profile_page_url ) ) {
-          $profile_page_url = get_author_posts_url( $author_ID );
-        }
+      if ( $author_post_count >= 5 && !empty( $profile_page_url ) ) {
 
         echo 'By <span class="vcard author"><cite class="fn"><a href="' . $profile_page_url . '" class="url">' . $author . '</a></cite></span> ';
 

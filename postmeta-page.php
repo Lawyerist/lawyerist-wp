@@ -9,14 +9,17 @@ if ( $author == 'Lawyerist' ) {
   $author = 'the Lawyerist editorial team';
 }
 
-if ( empty( $profile_page_url ) ) {
-  $profile_page_url = get_author_posts_url( $author_ID );
-}
-
-
 echo '<div class="postmeta">';
 
-  echo 'Page edited by <span class="vcard author"><cite class="fn"><a href="' . $profile_page_url . '" class="url">' . $author . '</a></cite></span>. ';
+  if ( !empty( $profile_page_url ) ) {
+
+    echo 'Page edited by <span class="vcard author"><cite class="fn"><a href="' . $profile_page_url . '" class="url">' . $author . '</a></cite></span>. ';
+
+  } else {
+
+    echo 'Page edited by <span class="vcard author"><cite class="fn">' . $author . '</cite></span>. ';
+    
+  }
 
   $coauthors  = get_coauthors();
 
