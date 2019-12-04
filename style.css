@@ -1458,8 +1458,12 @@ Card Styles
     width: 100%;
   }
 
-  .card a.has-post-thumbnail img {
-    border-radius: .2rem 0 0 .2rem;
+.card a.has-post-thumbnail img {
+  border-radius: .2rem 0 0 .2rem;
+}
+
+  .podcast-card a.has-post-thumbnail {
+    grid-template-columns: 10rem 1fr;
   }
 
   @media only screen and (max-width:639px) {
@@ -1469,9 +1473,17 @@ Card Styles
     }
 
     .card a.has-post-thumbnail img {
-      border-radius: 0 .2rem .2rem 0;
-      display: block;
+        border-radius: 0 .2rem .2rem 0;
+        display: block;
+      }
+
+    .podcast-card a.has-post-thumbnail {
+      display: grid;
     }
+
+      .podcast-card a.has-post-thumbnail img {
+        border-radius: unset;
+      }
 
   }
 
@@ -1507,9 +1519,6 @@ Card Styles
 
   }
 
-.podcast-card a.has-post-thumbnail {
-  grid-template-columns: 10rem 1fr;
-}
 
 /* Headline-byline styles. */
 
