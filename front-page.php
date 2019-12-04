@@ -112,13 +112,13 @@
 			$podcast_feed			= fetch_feed( 'https://lawyerist.libsyn.com/' );
 			$current_episode	= $podcast_feed->get_item( 0 );
 
-			$show_img_url			= 'https://lawyerist.com/lawyerist/wp-content/uploads/2015/01/podcast-logo-post-image.png';
+			$show_img_url			= 'https://lawyerist.com/lawyerist/wp-content/uploads/2019/12/podcast-mic.png';
 			$ep_title					= $current_episode->get_title();
 			$ep_date					= $current_episode->get_date( 'F jS, Y' );
 
-			echo '<div class="card post-card has-card-label">';
-				echo '<a href="https://lawyerist.com/podcast/" title="The Lawyerist Podcast" class="has-guest-avatar post has-post-thumbnail">';
-					echo '<img class="guest-avatar" srcset="' . $show_img_url . '" />';
+			echo '<div class="card post-card podcast-card has-card-label">';
+				echo '<a href="https://lawyerist.com/podcast/" title="The Lawyerist Podcast" class="post has-post-thumbnail">';
+					echo '<img srcset="' . $show_img_url . '" />';
 					echo '<div class="headline-byline">';
 						echo '<h2 class="headline" title="' . $ep_title . '">' . $ep_title . '</h2>';
 						echo '<div class="postmeta"><span class="date updated published">' . $ep_date . '</span></div>';
