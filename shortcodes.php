@@ -85,6 +85,7 @@ function get_feature_chart_ids() {
     200884 => 511008, // Credit Card Processing
     158523 => 513265, // Accounting Software
     238035 => 519846, // Intake & CRM
+    200847 => 545853, // Timekeeping & Billing Software
   );
 
   return $feature_chart_ids;
