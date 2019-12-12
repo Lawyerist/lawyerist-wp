@@ -164,87 +164,91 @@ function feature_chart( $post ) {
 
           foreach ( $fields as $field ) {
 
-            $feature =  array(
-              'type'    => $field[ 'type' ],
-              'name'    => $field[ 'name' ],
-              'label'   => $field[ 'label' ],
-              'message' => $field[ 'message' ],
-              'value'   => get_field( $field[ 'name' ] ),
-            );
+            if ( !is_null( get_field( $field[ 'name' ] ) ) ) {
 
-            echo '<tr>';
+              $feature =  array(
+                'type'    => $field[ 'type' ],
+                'name'    => $field[ 'name' ],
+                'label'   => $field[ 'label' ],
+                'message' => $field[ 'message' ],
+                'value'   => get_field( $field[ 'name' ] ),
+              );
 
-              $colspan = '';
+              echo '<tr>';
 
-              if ( $feature[ 'type' ] == 'group' || $feature[ 'type' ] == 'message' ) {
-                $colspan = ' colspan="2"';
-              }
+                $colspan = '';
 
-              echo '<th scope="row" class="label"' . $colspan . '>';
-
-                echo '<div class="label">' . $feature[ 'label' ] . '</div>';
-
-                if ( !empty( $feature[ 'message' ] ) )  {
-                  echo '<div class="message">' . $feature[ 'message' ] . '</div>';
+                if ( $feature[ 'type' ] == 'group' || $feature[ 'type' ] == 'message' ) {
+                  $colspan = ' colspan="2"';
                 }
 
-              echo '</th>';
+                echo '<th scope="row" class="label"' . $colspan . '>';
 
-              if ( $feature[ 'type' ] == 'group' ) {
+                  echo '<div class="label">' . $feature[ 'label' ] . '</div>';
 
-                echo '</tr>';
+                  if ( !empty( $feature[ 'message' ] ) )  {
+                    echo '<div class="message">' . $feature[ 'message' ] . '</div>';
+                  }
 
-                if ( have_rows( $feature[ 'name' ] ) ):
+                echo '</th>';
 
-                  echo '<tr class="sub_feature">';
-
-                    while ( have_rows( $feature[ 'name' ] ) ) : the_row();
-
-                      $rows = get_row();
-
-                      foreach ( $rows as $row_key => $row_val ) {
-
-                        $sub_field  = get_sub_field_object( $row_key );
-
-                        $sub_feature = array(
-                          'type'    => $sub_field[ 'type' ],
-                          'label'   => $sub_field[ 'label' ],
-                          'value'   => get_sub_field( $row_key ),
-                        );
-
-                        echo '<tr class="sub_feature">';
-
-                          echo '<th scope="row" class="label sub_feature">';
-                            echo '<div class="label">' . $sub_feature[ 'label' ] . '</div>';
-                          echo '</th>';
-
-                          echo '<td class="value ' . $sub_feature[ 'type' ] . '">';
-                            fc_process_feature_value( $sub_feature );
-                          echo '</td>';
-
-                        echo '</tr>';
-
-                      }
-
-                      endwhile;
+                if ( $feature[ 'type' ] == 'group' ) {
 
                   echo '</tr>';
 
-                endif;
+                  if ( have_rows( $feature[ 'name' ] ) ):
 
-              } elseif ( $feature[ 'type' ] == 'message' ) {
+                    echo '<tr class="sub_feature">';
 
-                continue;
+                      while ( have_rows( $feature[ 'name' ] ) ) : the_row();
 
-              } else {
+                        $rows = get_row();
 
-                echo '<td class="value ' . $feature[ 'type' ] . '">';
-                  fc_process_feature_value( $feature );
-                echo '</td>';
+                        foreach ( $rows as $row_key => $row_val ) {
 
-              }
+                          $sub_field  = get_sub_field_object( $row_key );
 
-            echo '</tr>';
+                          $sub_feature = array(
+                            'type'    => $sub_field[ 'type' ],
+                            'label'   => $sub_field[ 'label' ],
+                            'value'   => get_sub_field( $row_key ),
+                          );
+
+                          echo '<tr class="sub_feature">';
+
+                            echo '<th scope="row" class="label sub_feature">';
+                              echo '<div class="label">' . $sub_feature[ 'label' ] . '</div>';
+                            echo '</th>';
+
+                            echo '<td class="value ' . $sub_feature[ 'type' ] . '">';
+                              fc_process_feature_value( $sub_feature );
+                            echo '</td>';
+
+                          echo '</tr>';
+
+                        }
+
+                        endwhile;
+
+                    echo '</tr>';
+
+                  endif;
+
+                } elseif ( $feature[ 'type' ] == 'message' ) {
+
+                  continue;
+
+                } else {
+
+                  echo '<td class="value ' . $feature[ 'type' ] . '">';
+                    fc_process_feature_value( $feature );
+                  echo '</td>';
+
+                }
+
+              echo '</tr>';
+
+            }
 
           }
 
