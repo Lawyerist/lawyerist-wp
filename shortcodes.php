@@ -172,6 +172,10 @@ function feature_chart( $post ) {
               'value'   => get_field( $field[ 'name' ] ),
             );
 
+            if ( $field[ 'conditional_logic' ] && !$feature[ 'value' ] ) {
+              continue;
+            }
+
             echo '<tr>';
 
               $colspan = '';
