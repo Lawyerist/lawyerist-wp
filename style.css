@@ -2562,12 +2562,9 @@ Content
 
   #feature-chart tr.sub_feature th {
     font-weight: normal;
+    padding-left: 4rem;
     vertical-align: middle;
   }
-
-    #feature-chart tr.sub_feature th .label {
-      margin-left: 2rem;
-    }
 
     #feature-chart tr.sub_feature td.true-false {
       font-size: unset;

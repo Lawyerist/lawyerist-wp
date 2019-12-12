@@ -172,7 +172,7 @@ function feature_chart( $post ) {
               'value'   => get_field( $field[ 'name' ] ),
             );
 
-            if ( $field[ 'conditional_logic' ] && !$feature[ 'value' ] ) {
+            if ( $field[ 'conditional_logic' ] && !$feature[ 'value' ] && $feature[ 'type' ] != 'message' ) {
               continue;
             }
 
@@ -213,18 +213,35 @@ function feature_chart( $post ) {
                         $sub_feature = array(
                           'type'    => $sub_field[ 'type' ],
                           'label'   => $sub_field[ 'label' ],
+                          'message' => $sub_field[ 'message' ],
                           'value'   => get_sub_field( $row_key ),
                         );
 
+                        $colspan = '';
+
+                        if ( $sub_feature[ 'type' ] == 'group' || $sub_feature[ 'type' ] == 'message' ) {
+                          $colspan = ' colspan="2"';
+                        }
+
                         echo '<tr class="sub_feature">';
 
-                          echo '<th scope="row" class="label sub_feature">';
+                          echo '<th scope="row" class="label sub_feature"' . $colspan . '>';
+
                             echo '<div class="label">' . $sub_feature[ 'label' ] . '</div>';
+
+                            if ( !empty( $sub_feature[ 'message' ] ) )  {
+                              echo '<div class="message">' . $sub_feature[ 'message' ] . '</div>';
+                            }
+
                           echo '</th>';
 
-                          echo '<td class="value ' . $sub_feature[ 'type' ] . '">';
-                            fc_process_feature_value( $sub_feature );
-                          echo '</td>';
+                          if ( $sub_feature[ 'type' ] != 'message' ) {
+
+                            echo '<td class="value ' . $sub_feature[ 'type' ] . '">';
+                              fc_process_feature_value( $sub_feature );
+                            echo '</td>';
+
+                          }
 
                         echo '</tr>';
 
