@@ -96,22 +96,24 @@ function get_feature_chart_ids() {
 
 function fc_process_feature_value( $feature ) {
 
-    if ( $feature[ 'type' ] == 'url' ) {
+    switch ( $feature[ 'type' ] ) {
 
-      $url_parsed = parse_url( $feature[ 'value' ] );
-      $url_host  	= $url_parsed[ 'host' ];
+      case 'url' :
 
-      echo '<a href="' . $feature[ 'value' ] . '?utm_source=lawyerist&utm_medium=free-resources-page-link">' . $url_host . '</a>';
+        $url_parsed = parse_url( $feature[ 'value' ] );
+        $url_host  	= $url_parsed[ 'host' ];
 
-    } else {
+        echo '<a href="' . $feature[ 'value' ] . '?utm_source=lawyerist&utm_medium=free-resources-page-link">' . $url_host . '</a>';
 
-      switch ( gettype( $feature[ 'value' ] ) ) {
+        break;
 
-        case 'array' :
+      case 'checkbox' :
 
-          usort( $feature[ 'value' ], function( $a, $b ) {
-            return $a <=> $b;
-          });
+        usort( $feature[ 'value' ], function( $a, $b ) {
+          return $a <=> $b;
+        });
+
+        if ( $feature[ 'value' ] ) {
 
           echo '<ul>';
 
@@ -121,24 +123,32 @@ function fc_process_feature_value( $feature ) {
 
           echo '</ul>';
 
-          break;
+        } else {
 
-        case 'boolean' :
+          echo '&mdash;';
 
-            if ( $feature[ 'value' ] == true ) {
-              echo '<div class="true">&check;</div>';
-            } else {
-              echo '<div class="false">&cross;</div>';
-            }
+        }
 
-          break;
+        break;
 
-        case 'string' :
-        default :
+      case 'true_false' :
 
+        if ( $feature[ 'value' ] == true ) {
+          echo '<div class="true">&check;</div>';
+        } else {
+          echo '<div class="false">&cross;</div>';
+        }
+
+        break;
+
+      case 'string' :
+      default :
+
+        if ( $feature[ 'value' ] ) {
           echo $feature[ 'value' ];
-
-      }
+        } else {
+          echo '&mdash;';
+        }
 
     }
 
@@ -172,11 +182,7 @@ function feature_chart( $post ) {
               'value'   => get_field( $field[ 'name' ] ),
             );
 
-            if ( $field[ 'conditional_logic' ] && !$feature[ 'value' ] && $feature[ 'type' ] != 'message' ) {
-              continue;
-            }
-
-            echo '<tr>';
+            echo '<tr class="' . $feature[ 'type' ] . '">';
 
               $colspan = '';
 
@@ -184,7 +190,7 @@ function feature_chart( $post ) {
                 $colspan = ' colspan="2"';
               }
 
-              echo '<th scope="row" class="label"' . $colspan . '>';
+              echo '<th scope="row"' . $colspan . '>';
 
                 echo '<div class="label">' . $feature[ 'label' ] . '</div>';
 
@@ -225,7 +231,7 @@ function feature_chart( $post ) {
 
                         echo '<tr class="sub_feature">';
 
-                          echo '<th scope="row" class="label sub_feature"' . $colspan . '>';
+                          echo '<th scope="row" class="sub_feature"' . $colspan . '>';
 
                             echo '<div class="label">' . $sub_feature[ 'label' ] . '</div>';
 
@@ -237,7 +243,7 @@ function feature_chart( $post ) {
 
                           if ( $sub_feature[ 'type' ] != 'message' ) {
 
-                            echo '<td class="value ' . $sub_feature[ 'type' ] . '">';
+                            echo '<td class="value">';
                               fc_process_feature_value( $sub_feature );
                             echo '</td>';
 
@@ -259,7 +265,7 @@ function feature_chart( $post ) {
 
               } else {
 
-                echo '<td class="value ' . $feature[ 'type' ] . '">';
+                echo '<td class="value">';
                   fc_process_feature_value( $feature );
                 echo '</td>';
 

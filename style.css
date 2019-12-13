@@ -2553,6 +2553,10 @@ Content
     border-bottom: 0;
   }
 
+  #feature-chart tr.message {
+    background-color: #efefef;
+  }
+
   #feature-chart th,
   #feature-chart td {
     background-color: unset;
@@ -2560,13 +2564,13 @@ Content
     vertical-align: top;
   }
 
-  #feature-chart tr.sub_feature th {
+  #feature-chart .sub_feature th {
     font-weight: normal;
     padding-left: 4rem;
     vertical-align: middle;
   }
 
-    #feature-chart tr.sub_feature td.true-false {
+    #feature-chart .sub_feature.true-false td {
       font-size: unset;
     }
 
@@ -2581,7 +2585,7 @@ Content
     text-align: center;
   }
 
-  #feature-chart td.true-false {
+  #feature-chart .true-false td {
     vertical-align: middle;
   }
 
@@ -2596,12 +2600,12 @@ Content
       color: #c00;
     }
 
-  #feature-chart td.checkbox ul {
+  #feature-chart ul {
     list-style: none;
     margin: 0;
   }
 
-    #feature-chart td.checkbox ul li {
+    #feature-chart ul li {
       margin: 0 0 .5em 0;
     }
 
