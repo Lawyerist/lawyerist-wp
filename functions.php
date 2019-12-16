@@ -49,6 +49,7 @@ PARTNERSHIPS
 - Mobile Display Ad
 - Platinum Sidebar Widget
 - Affinity Benefit Notice
+- Add Sponsor to Post Meta
 
 COMMENTS & REVIEWS
 - Reviews
@@ -1649,6 +1650,34 @@ function affinity_notice() {
 	return $affinity_notice;
 
 }
+
+
+/*Add Sponsor to Post Meta */
+
+function lwyrst_sponsor_order_meta( $post_id ) {
+
+	if ( has_category( 'sponsored' ) ) {
+
+		$sponsor_IDs = wp_get_post_terms(
+			$post_id,
+			'sponsor',
+			array(
+				'fields' 	=> 'ids',
+				'orderby' => 'count',
+				'order' 	=> 'DESC',
+			)
+		);
+
+		$sponsor_info = get_term( $sponsor_IDs[0] );
+		$sponsor      = $sponsor_info->name;
+
+		update_post_meta( $post_id, 'sponsor', sanitize_text_field( $sponsor ) );
+
+	}
+
+}
+
+add_action( 'save_post', 'lwyrst_sponsor_order_meta' );
 
 
 /* COMMENTS & REVIEWS *********/
