@@ -87,6 +87,7 @@ function get_feature_chart_ids() {
     238035 => 519846, // Intake & CRM
     200847 => 545853, // Timekeeping & Billing Software
     195769 => 566001, // Virtual Receptionists & Chat
+    306014 => 627369, // Document Management & Automation
   );
 
   return $feature_chart_ids;
