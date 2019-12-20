@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 // Start the Loop.
 if ( have_posts() ) : while ( have_posts() ) : the_post();
@@ -46,6 +46,8 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
           echo '</div>';
         }
 
+        echo '<div id="product_name">';
+
         // Headline
         if ( !empty( $composite_rating ) ) {
 
@@ -58,28 +60,13 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
         }
 
-        // Output the excerpt.
-        $seo_descr = get_post_meta( $page_ID, '_yoast_wpseo_metadesc', true );
-
-        if ( !empty( $seo_descr ) ) {
-
-          $page_excerpt = $seo_descr;
-
-        } else {
-
-          $page_excerpt = get_the_excerpt();
-
-        }
-
-        echo '<p class="excerpt">' . $page_excerpt . '</p>';
-
-        echo '<div class="clear"></div>';
-
         if ( !empty( $composite_rating ) ) {
 
           echo '</div>'; // Close aggregateRating.
 
         }
+
+        echo '</div>';  // Close #product_name.
 
       echo '</div>'; // Close .headline_container.
 
