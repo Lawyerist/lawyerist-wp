@@ -1145,7 +1145,7 @@ function lawyerist_get_alternative_products() {
 
 		echo '<h2>Alternatives to ' . $page_title . '</h2>';
 
-		echo '<div id="alternative-products" class="cards cards-3-columns">';
+		echo '<div id="alternative-products" class="cards cards-4-columns">';
 
 			foreach ( $alternatives as $alternative ) {
 
