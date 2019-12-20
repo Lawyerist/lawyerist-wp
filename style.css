@@ -2633,13 +2633,13 @@ Content
         width: auto;
       }
 
-    #product_name {
+    #product_page_title {
       align-self: center;
     }
 
-    #product_name .headline {
-      margin-bottom: 0;
-    }
+      #product_page_title .headline {
+        margin-bottom: 0;
+      }
 
   .list-products-trial-button {
     position: absolute;
@@ -2809,8 +2809,8 @@ Content
         }
 
           .product-pages-list img.affinity-partner-badge {
-              top: -.5rem;
-              left: -.5rem;
+            top: -.5rem;
+            left: -.5rem;
           }
 
           .product-pages-list .image img.wp-post-image {

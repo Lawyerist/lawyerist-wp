@@ -46,7 +46,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
           echo '</div>';
         }
 
-        echo '<div id="product_name">';
+        echo '<div id="product_page_title">';
 
         // Headline
         if ( !empty( $composite_rating ) ) {
@@ -66,7 +66,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
         }
 
-        echo '</div>';  // Close #product_name.
+        echo '</div>';  // Close #product_page_title.
 
       echo '</div>'; // Close .headline_container.
 
