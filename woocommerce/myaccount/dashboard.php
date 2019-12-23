@@ -35,7 +35,7 @@ if ( is_plugin_active( 'scorecard-helper/scorecard-helper.php' ) ) {
 	  $logout_link = '<a href="'. esc_url( wc_logout_url( wc_get_page_permalink( 'myaccount' ) ) ) . '">Log Out</a>';
 
 	  $current_user = wp_get_current_user();
-	  echo '<p id="dashboard-title">' . $current_user->user_firstname . ' ' . $current_user->user_lastname . '\'s Dashboard <span class="logout-link">' . $logout_link . '</span?></p>';
+	  echo '<p id="dashboard-title">' . $current_user->user_firstname . ' ' . $current_user->user_lastname . '\'s Small Firm Dashboard <span class="logout-link">' . $logout_link . '</span?></p>';
 
 	  echo scorecard_results_graph();
 
