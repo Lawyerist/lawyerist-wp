@@ -54,9 +54,7 @@
 
 				<p class="fp-section-header">Join your tribe. Grow your firm.</p>
 
-				<?php if ( !is_user_logged_in() ) {
-			    lawyerist_cta();
-			  } ?>
+				<?php echo lawyerist_cta(); ?>
 
 			</div>
 

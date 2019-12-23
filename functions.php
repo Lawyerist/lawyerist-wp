@@ -15,7 +15,6 @@ STRUCTURE
 ADMIN
 - Login Form
 - Remove Menu Items
-- Add Elementor Section Templates to ACF Call to Action Drop-Down Menu
 
 UTILITY FUNCTIONS
 - Get Country
@@ -392,44 +391,6 @@ function lawyerist_remove_stubborn_admin_bar_items() {
 
 }
 add_action( 'wp_before_admin_bar_render', 'lawyerist_remove_stubborn_admin_bar_items', 999 );
-
-
-/*------------------------------
-Add Elementor Section Templates to ACF Call to Action Drop-Down Menu
-------------------------------*/
-
-function acf_populate_sections( $field ) {
-
-	$field[ 'choices' ] = array();
-
-	// Creates a default choice.
-	$field[ 'choices' ][ 'default' ] = 'Default';
-
-	$args = array(
-		'fields'			=> 'ids',
-		'post_type' 	=> 'elementor_library',
-		'meta_key'		=> '_elementor_template_type',
-		'meta_value'	=> 'section',
-	);
-
-	$section_ids = get_posts( $args );
-
-	foreach ( $section_ids as $section_id ) {
-
-		$section_title	= get_the_title( $section_id );
-
-		$field[ 'choices' ][ $section_id ] = $section_title;
-
-	}
-
-	// Adds a "none" choice to the end.
-	$field[ 'choices' ][ 'none' ] = 'None';
-
-	return $field;
-
-}
-
-add_filter( 'acf/load_field/name=select_footer_cta', 'acf_populate_sections' );
 
 
 /* UTILITY FUNCTIONS ********************/
@@ -1098,36 +1059,101 @@ add_filter( 'avatar_defaults', 'lawyerist_custom_gravatar' );
 Post/Page Footer CTA
 ------------------------------*/
 
-function lawyerist_cta( $cta_val = 326430 ) {
+function lawyerist_cta() {
 
-	$cta_select = get_field( 'select_footer_cta' );
+	if ( is_user_logged_in() ) {
 
-	if ( $cta_select == 'none' ) { return; }
+		ob_start();
 
-	if ( is_null( $cta_select ) || $cta_select == 'default' ) {
+			?>
 
-		// Sets the footer CTA to the default.
-		update_field( 'select_footer_cta', $cta_val );
+			<h2>Start Reading for Free</h2>
+			<p>OK, you're probably wondering <em>what next?</em> We've got you covered with our survival guide to the future of your law practice.</p>
+			<p>As an Insider, you can get the first chapter of our book plus additional resources for free.</p>
+
+			<?php
+
+		$copy = ob_get_clean();
+
+		ob_start();
+
+			?>
+
+			<center>
+				<span class="hs-cta-wrapper" id="hs-cta-wrapper-9366b998-d7ac-4496-9b7d-68c2c0fa9e8c">
+					<span class="hs-cta-node hs-cta-9366b998-d7ac-4496-9b7d-68c2c0fa9e8c" id="hs-cta-9366b998-d7ac-4496-9b7d-68c2c0fa9e8c">
+						<!--[if lte IE 8]><div id="hs-cta-ie-element"></div><![endif]-->
+						<a href="https://cta-redirect.hubspot.com/cta/redirect/2910598/9366b998-d7ac-4496-9b7d-68c2c0fa9e8c" target="_blank">
+							<img class="hs-cta-img" id="hs-cta-img-9366b998-d7ac-4496-9b7d-68c2c0fa9e8c" style="border-width: 0px;" src="https://no-cache.hubspot.com/cta/default/2910598/9366b998-d7ac-4496-9b7d-68c2c0fa9e8c.png" alt="Download Chapter One">
+						</a>
+					</span>
+					<script charset="utf-8" src="https://js.hscta.net/cta/current.js"></script>
+					<script type="text/javascript">
+						hbspt.cta.load( 2910598, '9366b998-d7ac-4496-9b7d-68c2c0fa9e8c', {} );
+					</script>
+				</span>
+			</center>
+
+			<?php
+
+		$button = ob_get_clean();
+
+	} else {
+
+		ob_start();
+
+			?>
+
+			<h2>Start Reading for Free</h2>
+			<p>OK, you're probably wondering <em>what next?</em> We've got you covered with our survival guide to the future of your law practice.</p>
+			<p>Join our free Insider community now to get the first chapter of our book <em>plus</em> access to a community of other innovative and entrepreneurial small-firm lawyers and even more law practice resources—all for free.</p>
+
+			<?php
+
+		$copy		= ob_get_clean();
+		$button	= '<a class="button free-flag register-link" href="https://lawyerist.com/community/insider/">Join Now to Read</a>';
 
 	}
 
-	$args = array(
-		'p'								=> $cta_val,
-		'post_type'				=> 'elementor_library',
-		'posts_per_page'	=> 1,
-	);
+	ob_start();
 
-	$cta_query = new WP_Query( $args );
+		?>
 
-	if ( $cta_query->have_posts() ) : while ( $cta_query->have_posts() ) : $cta_query->the_post();
+		<div id="book_cta" class="card<?php if ( is_front_page() ) { echo ' dismissible-notice'; } ?>" data-id="book_cta">
 
-		echo '<div id="footer-cta">';
-		the_content();
-		echo '</div>';
+			<?php if ( is_front_page() ) { echo '<button class="greybutton dismiss-button"></button>'; } ?>
 
-	endwhile; wp_reset_postdata(); endif;
+			<div class="book_cta_grid_row">
+
+				<div id="book_cta_img">
+					<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2019/09/small-firm-roadmap-featured-image.jpg" alt="The Small Firm Roadmap book cover">
+				</div>
+
+				<div id="book_cta_copy">
+					<?php echo $copy; ?>
+					<?php if ( is_user_logged_in() ) { echo $button; } ?>
+				</div>
+
+			</div>
+
+			<?php if ( !is_user_logged_in() ) { echo $button; } ?>
+
+		</div>
+
+		<?php
+
+	return ob_get_clean();
 
 }
+
+
+function lawyerist_cta_shortcode() {
+
+	return lawyerist_cta();
+
+}
+
+add_shortcode( 'book-cta', 'lawyerist_cta_shortcode' );
 
 
 /*------------------------------

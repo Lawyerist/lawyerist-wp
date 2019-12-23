@@ -77,32 +77,10 @@
 
 				echo '</div>';
 
-			} else {
-
-				// Outputs the front page call to action.
-
-				?>
-
-					<div id="big_hero_cta" class="card dismissible-notice" data-id="Insider">
-						<div id="big_hero_left">
-							<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2018/02/L-dot-150x150.png" />
-							<span class="big_hero_label">Insider</span>
-						</div>
-						<div id="big_hero_right">
-							<button class="greybutton dismiss-button"></button>
-							<div id="big_hero_top">
-								<p class="headline">Join Your Tribe.</p>
-								<p>Lawyerist Insider is the community of solo and small firm lawyers building modern, future-oriented law practices.</p>
-								<p class="headline">Grow Your Firm.</p>
-								<p>With a <em>free</em> Lawyerist Insider membership you'll get checklists, worksheets, discounts, and access to our community of small-firm leaders to help you take your firm to the next level!</p>
-							</div>
-							<a class="button free-flag register-link" href="https://lawyerist.com/community/insider/">Join Now</a>
-						</div>
-					</div>
-
-				<?php
-
 			}
+
+
+			echo lawyerist_cta();
 
 
 			echo '<p class="fp-section-header">Recent Updates</p>';
