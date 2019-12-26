@@ -3,10 +3,10 @@
 // Show author bio box unless the author is Guest (26).
 if ( get_the_author_meta( 'ID' ) != 26 ) {
 
-  lawyerist_get_author_bio();
+  get_author_bio();
 
   echo '<p class="coauthors"><em>';
-  lawyerist_get_coauthors();
+  get_coauthors();
   echo '</em></p>';
 
 }

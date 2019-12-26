@@ -7,8 +7,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
   <?php
+
   // Enqueues Gravity Forms scripts necessary for the #lawyerist-login modal.
   gravity_form_enqueue_scripts( 59, true );
+
   ?>
 
   <!-- Preloads/prefetches fonts. -->
@@ -92,6 +94,13 @@
 
   <?php
 
+  // Displays the signup wall notice, which also triggers the signup wall script
+  // to record a pageview. (The script will only record pageviews when the notice
+  // is present.)
+  // The notice is displayed only if (1) the user is not logged in AND (2) viewing 
+  // a single post or page, and (3) that post or page is not one of the listed
+  // exceptions.
+
   global $post;
 
   $exclude_from_signup_wall = array(
@@ -100,7 +109,19 @@
     245258, // Community
   );
 
-  if  ( !is_user_logged_in() && ( is_single() || is_page() ) && !( is_front_page() || is_product() || is_product_portal() || is_page_template( 'product-page.php' ) || is_page( $exclude_from_signup_wall ) || $post->post_parent == 245258 || $post->post_parent == 3379 || has_category( 'sponsored' ) ) ) {
+  if  (
+    !is_user_logged_in() && ( is_single() || is_page() ) &&
+      !(
+        is_front_page() ||
+        is_product() || // WooCommerce products.
+        is_product_portal() ||
+        is_page_template( 'product-page.php' ) || // Product pages.
+        is_page( $exclude_from_signup_wall ) ||
+        $post->post_parent == 245258 || // Community pages.
+        $post->post_parent == 3379 || // About pages.
+        has_category( 'sponsored' )
+      )
+  ) {
 
     echo '<div id="article-counter-container">';
       echo '<div id="article-counter" data-post_id="' . $post->ID . '"></div>';

@@ -31,7 +31,6 @@ CONTENT
 - Yoast SEO Breadcrumbs
 - Author Bios
 - List of Coauthors
-- Custom Default Gravatar
 - Post/Page Footer CTA
 - Get Alternative Products
 - Get Related Posts
@@ -41,7 +40,6 @@ CONTENT
 - Featured Images in RSS Feeds
 - Remove Lab Workshops from RSS Feed
 - Remove Default Gallery Styles
-- Show Commenter's First Name & Initial
 
 PARTNERSHIPS
 - Display Ad
@@ -51,6 +49,8 @@ PARTNERSHIPS
 - Add Sponsor to Post Meta
 
 COMMENTS & REVIEWS
+- Custom Default Gravatar
+- Show Commenter's First Name & Initial
 - Reviews
 
 GRAVITY FORMS
@@ -61,7 +61,6 @@ GRAVITY FORMS
 WOOCOMMERCE
 - WooCommerce Setup
 - Check to See if Page is Really a WooCommerce Page
-- Check to See if a Product ID is in the Cart
 - Checkout Fields
 - Display Price of Free Products As "Free!" Not "$0.00".
 - Remove My Account Navigation Items
@@ -90,19 +89,16 @@ function lawyerist_stylesheets_scripts() {
 	wp_register_style( 'normalize-css', get_template_directory_uri() . '/css/normalize.min.css' );
 	wp_enqueue_style( 'normalize-css' );
 
-	// Load the main stylesheet, with a cachebuster.
-	$cacheBusterCSS = filemtime( get_stylesheet_directory() . '/style.css' );
-	wp_register_style( 'stylesheet', get_template_directory_uri() . '/style.css', array(), $cacheBusterCSS, 'all' );
+	// Load the main stylesheet.
+	wp_register_style( 'stylesheet', get_template_directory_uri() . '/style.css' );
 	wp_enqueue_style( 'stylesheet' );
 
 	// Load consolidated scripts in the header. NOT CURRENTLY IN USE.
-	// $cacheBusterMC = filemtime( get_stylesheet_directory() . '/js/header-scripts.js' );
-	// wp_register_script( 'header-scripts', get_template_directory_uri() . '/js/header-scripts.js', '', $cacheBusterMC );
+	// wp_register_script( 'header-scripts', get_template_directory_uri() . '/js/header-scripts.js' );
 	// wp_enqueue_script( 'header-scripts' );
 
 	// Load consolidated scripts in the footer.
-	$cacheBusterMC = filemtime( get_stylesheet_directory() . '/js/footer-scripts.js' );
-	wp_register_script( 'footer-scripts', get_template_directory_uri() . '/js/footer-scripts.js',  array( 'jquery' ), $cacheBusterMC, true );
+	wp_register_script( 'footer-scripts', get_template_directory_uri() . '/js/footer-scripts.js' , '', '', true );
 	wp_enqueue_script( 'footer-scripts' );
 
 }
@@ -116,7 +112,6 @@ Theme Setup
 
 function lawyerist_theme_setup() {
 
-	add_theme_support( 'html5', array( 'search-form' ) );
 	add_theme_support( 'post-thumbnails' );
 	add_theme_support( 'responsive-embeds' );
 	add_theme_support( 'title-tag' );
@@ -149,7 +144,7 @@ function lwyrst_cat_body_class( $classes ) {
 		$cats = get_the_category( $post->ID );
 
 		foreach ( $cats as $cat ) {
-      $classes[] = 'post-template-single-cat-' . $cat->category_nicename;
+      $classes[] = 'single-cat-' . $cat->category_nicename;
     }
 
 	}
@@ -296,7 +291,7 @@ function lawyerist_register_sidebars()  {
 	$sidebar_args = array(
 		'id'            => 'sidebar',
 		'name'          => 'Sidebar',
-		'description'   => 'Widgets start below the ads. Not visible on mobile.',
+		'description'   => 'Not visible on mobile.',
 		'class'         => 'sidebar',
 		'before_title'  => '<h3>',
 		'after_title'   => '</h3>',
@@ -318,8 +313,9 @@ function lawyerist_login_logo() { ?>
 
 	<style type="text/css">
 
-		#login h1 a, .login h1 a {
-			background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/images/L-dot-login.png);
+		#login h1 a,
+		.login h1 a {
+			background-image: url( <?php echo get_stylesheet_directory_uri(); ?>/images/L-dot-login.png );
 		}
 
 	</style>
@@ -372,7 +368,6 @@ function lawyerist_remove_admin_bar_items( $wp_admin_bar ) {
 	$wp_admin_bar->remove_node( 'new-wc_membership_plan' );
 	$wp_admin_bar->remove_node( 'new-wc_user_membership' );
 	$wp_admin_bar->remove_node( 'new-user' );
-	$wp_admin_bar->remove_node( 'new-tablepress-table' );
 	$wp_admin_bar->remove_node( 'new-elementor_library' );
 
 	// Remove Monster Insights.
@@ -1041,21 +1036,6 @@ function lawyerist_get_coauthors() {
 
 
 /*------------------------------
-Custom Default Gravatar
-------------------------------*/
-
-function lawyerist_custom_gravatar ( $avatar_defaults ) {
-
-	$lawyerist_avatar = get_bloginfo( 'template_directory' ) . '/images/lawyerist-default-gravatar.png';
-	$avatar_defaults[ $lawyerist_avatar ] = "Lawyerist.com Logo";
-
-	return $avatar_defaults;
-
-}
-
-add_filter( 'avatar_defaults', 'lawyerist_custom_gravatar' );
-
-/*------------------------------
 Post/Page Footer CTA
 ------------------------------*/
 
@@ -1418,8 +1398,8 @@ function featuredtoRSS( $content ) {
 
 }
 
-add_filter('the_excerpt_rss', 'featuredtoRSS');
-add_filter('the_content_feed', 'featuredtoRSS');
+add_filter( 'the_excerpt_rss', 'featuredtoRSS' );
+add_filter( 'the_content_feed', 'featuredtoRSS' );
 
 
 /*------------------------------
@@ -1445,38 +1425,6 @@ Remove Default Gallery Styles
 ------------------------------*/
 
 add_filter( 'use_default_gallery_style', '__return_false' );
-
-
-/*------------------------------
-Show Commenter's First Name & Initial
-------------------------------*/
-function lawyerist_comment_author_name( $author = '' ) {
-
-	$comment = get_comment( $comment_ID );
-
-	if ( !empty( $comment->comment_author ) ) {
-
-		if ( !empty( $comment->user_id ) ) {
-
-			$user		= get_userdata( $comment->user_id );
-			$author	= $user->first_name . ' ' . substr( $user->last_name, 0, 1 ) . '.';
-
-		} else {
-
-			$author	= $comment->comment_author;
-
-		}
-
-	} else {
-
-		$author = __('Anonymous');
-
-	}
-
-	return $author;
-}
-
-add_filter( 'get_comment_author', 'lawyerist_comment_author_name', 10, 1 );
 
 
 /* PARTNERSHIPS	***************/
@@ -1709,6 +1657,54 @@ add_action( 'save_post', 'lwyrst_sponsor_order_meta' );
 /* COMMENTS & REVIEWS *********/
 
 /*------------------------------
+Custom Default Gravatar
+------------------------------*/
+
+function lawyerist_custom_gravatar ( $avatar_defaults ) {
+
+	$lawyerist_avatar = get_bloginfo( 'template_directory' ) . '/images/lawyerist-default-avatar.png';
+	$avatar_defaults[ $lawyerist_avatar ] = "Lawyerist Insider";
+
+	return $avatar_defaults;
+
+}
+
+add_filter( 'avatar_defaults', 'lawyerist_custom_gravatar' );
+
+
+/*------------------------------
+Show Commenter's First Name & Initial
+------------------------------*/
+function lawyerist_comment_author_name( $author = '' ) {
+
+	$comment = get_comment( $comment_ID );
+
+	if ( !empty( $comment->comment_author ) ) {
+
+		if ( !empty( $comment->user_id ) ) {
+
+			$user		= get_userdata( $comment->user_id );
+			$author	= $user->first_name . ' ' . substr( $user->last_name, 0, 1 ) . '.';
+
+		} else {
+
+			$author	= $comment->comment_author;
+
+		}
+
+	} else {
+
+		$author = __('Anonymous');
+
+	}
+
+	return $author;
+}
+
+add_filter( 'get_comment_author', 'lawyerist_comment_author_name', 10, 1 );
+
+
+/*------------------------------
 Reviews
 ------------------------------*/
 
@@ -1895,13 +1891,16 @@ function lawyerist_star_rating( $rating = '' ) {
 
 /* GRAVITY FORMS **************/
 
-/* Enable CC Field on Form Notifications. */
+/*------------------------------
+Enable CC Field on Form Notifications.
+------------------------------*/
 
 function gf_enable_cc( $enable, $notification, $form ){
   return true;
 }
 
 add_filter( 'gform_notification_enable_cc', 'gf_enable_cc', 10, 3 );
+
 
 /*------------------------------
 Populate Form Fields
@@ -1958,7 +1957,10 @@ function populate_fields( $value, $field, $name ) {
 add_filter( 'gform_field_value', 'populate_fields', 10, 3 );
 
 
-/* Auto-Login New Users */
+/*------------------------------
+Auto-Login New Users
+------------------------------*/
+
 function lawyerist_gf_registration_autologin( $user_id, $user_config, $entry, $password ) {
 
 	$user						= get_userdata( $user_id );
@@ -2033,27 +2035,6 @@ function is_really_a_woocommerce_page() {
 
 }
 
-
-/*------------------------------
-Check to See if a Product ID is in the Cart
-------------------------------*/
-
-// To check, call the function as woo_in_cart( $product_id ). Returns true or false.
-function woo_in_cart( $product_id ) {
-
-	foreach( WC()->cart->get_cart() as $key => $val ) {
-
-		$products_in_cart = $val['data'];
-
-		if( $product_id == $products_in_cart->id ) {
-			return true;
-		}
-
-	}
-
-	return false;
-
-}
 
 /*------------------------------
 Checkout Fields
@@ -2141,16 +2122,16 @@ add_filter( 'woocommerce_checkout_fields' , 'lawyerist_checkout_fields' );
 
 function lawyerist_checkout_fields_update_order_meta( $order_id ) {
 
-	if ( !empty( $_POST['firm_size'] ) ) {
-		update_post_meta( $order_id, 'firm_size', sanitize_text_field( $_POST['firm_size'] ) );
+	if ( !empty( $_POST[ 'firm_size' ] ) ) {
+		update_post_meta( $order_id, 'firm_size', sanitize_text_field( $_POST[ 'firm_size' ] ) );
 	}
 
-	if ( !empty( $_POST['firm_role'] ) ) {
-		update_post_meta( $order_id, 'firm_role', sanitize_text_field( $_POST['firm_role'] ) );
+	if ( !empty( $_POST[ 'firm_role' ] ) ) {
+		update_post_meta( $order_id, 'firm_role', sanitize_text_field( $_POST[ 'firm_role' ] ) );
 	}
 
-	if ( !empty( $_POST['practice_area'] ) ) {
-		update_post_meta( $order_id, 'practice_area', sanitize_text_field( $_POST['practice_area'] ) );
+	if ( !empty( $_POST[ 'practice_area' ] ) ) {
+		update_post_meta( $order_id, 'practice_area', sanitize_text_field( $_POST[ 'practice_area' ] ) );
 	}
 
 }
@@ -2186,6 +2167,7 @@ function lawyerist_wc_free_products( $price, $product ) {
 
 add_filter( 'woocommerce_get_price_html', 'lawyerist_wc_free_products', 10, 2 );
 
+
 /*------------------------------
 Remove My Account Navigation Items
 ------------------------------*/
@@ -2210,6 +2192,7 @@ function lawyerist_remove_my_account_links( $menu_links ){
 
 add_filter ( 'woocommerce_account_menu_items', 'lawyerist_remove_my_account_links' );
 
+
 /*------------------------------
 Remove Membership & Subscription Details from WC Order & Thank-You Pages
 ------------------------------*/
@@ -2225,43 +2208,43 @@ Hide Product Categories & Tags
 ------------------------------*/
 
 // Overwrites product_tag taxonomy properties to hide it from the WP admin.
-add_action('init', function() {
-    register_taxonomy('product_tag', 'product', [
-        'public'            => false,
-        'show_ui'           => false,
-        'show_admin_column' => false,
-        'show_in_nav_menus' => false,
-        'show_tagcloud'     => false,
-    ]);
-}, 100);
+add_action( 'init', function() {
+  register_taxonomy( 'product_tag', 'product', [
+    'public'            => false,
+    'show_ui'           => false,
+    'show_admin_column' => false,
+    'show_in_nav_menus' => false,
+    'show_tagcloud'     => false,
+  ]);
+}, 100 );
 
 
 // And remove tags from the Products table.
 add_action( 'admin_init' , function() {
-    add_filter('manage_product_posts_columns', function($columns) {
-        unset($columns['product_tag']);
-        return $columns;
-    }, 100);
+  add_filter( 'manage_product_posts_columns', function( $columns ) {
+    unset( $columns[ 'product_tag' ] );
+    return $columns;
+  }, 100 );
 });
 
 
 // Overwrites product_cat taxonomy properties to hide it from the WP admin.
-add_action('init', function() {
-    register_taxonomy('product_cat', 'product', [
+add_action( 'init', function() {
+    register_taxonomy( 'product_cat', 'product', [
         'public'            => false,
         'show_ui'           => false,
         'show_admin_column' => false,
         'show_in_nav_menus' => false,
         'show_tagcloud'     => false,
     ]);
-}, 100);
+}, 100 );
 
 // And remove categories from the Products table.
 add_action( 'admin_init' , function() {
-    add_filter('manage_product_posts_columns', function($columns) {
-        unset($columns['product_cat']);
+    add_filter( 'manage_product_posts_columns', function( $columns ) {
+        unset( $columns[ 'product_cat' ] );
         return $columns;
-    }, 100);
+    }, 100 );
 });
 
 

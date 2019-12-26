@@ -3,7 +3,6 @@ Theme Name:   lawyerist-wp
 Theme URI:    https://lawyerist.com
 Description:  A theme for Lawyerist.com
 Author:       Sam Glover
-Author URI:   http://samglover.net
 Version:      [see https://github.com/Lawyerist/lawyerist-wp for version history]
 
 License:      Copyright Lawyerist Media, LLC
@@ -524,7 +523,7 @@ body {
 }
 
 body.category-lab-workshops #column_container,
-body.post-template-single-cat-lab-workshops #column_container,
+body.single-cat-lab-workshops #column_container,
 body.page-template-full-width #column_container,
 body.page-template-product-page #column_container,
 body.single-sfwd-courses #column_container,
@@ -2895,7 +2894,7 @@ Content
   Full Width Template
   ------------------------------*/
 
-  .post-template-single-cat-lab-workshops #content_column,
+  .single-cat-lab-workshops #content_column,
   .page-template-full-width #content_column,
   .page-template-product-page #content_column,
   .single-sfwd-courses #content_column,
