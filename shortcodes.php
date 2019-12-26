@@ -1,15 +1,7 @@
 <?php
 
-/*
-Plugin Name: Lawyerist Shortcodes
-Plugin URI: http://lawyerist.com
-Description: A plugin with shortcodes for Lawyerist.com.
-Author: Sam Glover
-Version: [See README.md for changelog]
-Author URI: http://samglover.net
-*/
-
 /* INDEX
+
 - Pullquotes
 - Pullouts
 - Testimonials
@@ -24,6 +16,7 @@ Author URI: http://samglover.net
   - Get Scorecard Grade
 - List Contributors
 - List Labsters
+
 */
 
 
@@ -1358,21 +1351,21 @@ function lawyerist_get_scorecard_grade( $atts ) {
 
   ob_start();
 
-    ?>
+  ?>
 
-      <div id="scorecard_results">
-        <div id="grade_box">
-          <div class="grade_label">Your Firm's Score</div>
-          <div class="grade"><?php echo $grade; ?></div>
-          <div class="score"><?php echo $raw_score; ?>/<?php echo $total; ?></div>
-        </div>
-        <div id="get_results">
-          <a class="button" href="#interpret_results">Interpret Your Results</a>
-        </div>
-        <div class="clear"></div>
+    <div id="scorecard_results">
+      <div id="grade_box">
+        <div class="grade_label">Your Firm's Score</div>
+        <div class="grade"><?php echo $grade; ?></div>
+        <div class="score"><?php echo $raw_score; ?>/<?php echo $total; ?></div>
       </div>
+      <div id="get_results">
+        <a class="button" href="#interpret_results">Interpret Your Results</a>
+      </div>
+      <div class="clear"></div>
+    </div>
 
-    <?php
+  <?php
 
     if ( $goals_score <= 15 ) {
 
