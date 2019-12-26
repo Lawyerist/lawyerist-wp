@@ -1675,6 +1675,7 @@ add_filter( 'avatar_defaults', 'lawyerist_custom_gravatar' );
 /*------------------------------
 Show Commenter's First Name & Initial
 ------------------------------*/
+
 function lawyerist_comment_author_name( $author = '' ) {
 
 	$comment = get_comment( $comment_ID );
