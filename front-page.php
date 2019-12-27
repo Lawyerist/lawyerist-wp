@@ -145,7 +145,8 @@
 				'category__in'				=> array(
 					'1320', // Blog Posts
 				),
-				'meta_query' => array(
+				'meta_key'						=> 'sponsored_post_start_date',
+				'meta_query'					=> array(
 					array(
 						'key'     => 'sponsored_post_start_date',
 						'compare' => '<=',
@@ -157,6 +158,7 @@
 						'value'   => $today,
 					),
 				),
+				'orderby'							=> 'meta_value_num',
 				'post__not_in'				=> get_option( 'sticky_posts' ),
 				'posts_per_page'			=> -1,
 			);
