@@ -97,16 +97,18 @@
   // Displays the signup wall notice, which also triggers the signup wall script
   // to record a pageview. (The script will only record pageviews when the notice
   // is present.)
-  // The notice is displayed only if (1) the user is not logged in AND (2) viewing 
-  // a single post or page, and (3) that post or page is not one of the listed
-  // exceptions.
+  //
+  // The notice is displayed only if (1) the user is not logged in AND (2) viewing
+  // a single post or page, AND (3) that post or page is NOT one of the listed
+  // exceptions in $exclude.
 
   global $post;
 
-  $exclude_from_signup_wall = array(
+  $exclude = array(
     3379,   // About
-    220087, // Lab
     245258, // Community
+    220087, // Lab
+    519270, // Podcast
   );
 
   if  (
@@ -116,7 +118,7 @@
         is_product() || // WooCommerce products.
         is_product_portal() ||
         is_page_template( 'product-page.php' ) || // Product pages.
-        is_page( $exclude_from_signup_wall ) ||
+        is_page( $exclude ) ||
         $post->post_parent == 245258 || // Community pages.
         $post->post_parent == 3379 || // About pages.
         has_category( 'sponsored' )
