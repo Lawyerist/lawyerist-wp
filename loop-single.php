@@ -23,7 +23,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
       // Featured image
       if ( has_post_thumbnail() ) {
         echo '<div id="featured-image">';
-          the_post_thumbnail();
+          the_post_thumbnail( 'featured-image' );
         echo '</div>';
       }
 

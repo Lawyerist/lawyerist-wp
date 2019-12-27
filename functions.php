@@ -117,6 +117,7 @@ function lawyerist_theme_setup() {
 	add_theme_support( 'title-tag' );
 	add_theme_support( 'wp-block-styles' );
 
+	add_image_size( 'featured-image', 1024 );
 	add_image_size( 'retina-thumbnail', 300, 300, true );
 
 }
