@@ -307,7 +307,7 @@
   stickySidebarAd();
 
 })( jQuery );
-// End Sticky Sidebar Ad
+// End Sticky Platinum Sponsors Widget
 
 
 // Dismissible Call to Action
