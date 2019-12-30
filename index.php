@@ -25,11 +25,12 @@
     } else {
 
       get_template_part( 'loop', 'index' );
+
     }
 
     ?>
 
-	</div>
+  </div>
   <!-- end #content_column -->
 
   <?php if ( !has_category( 'lab-workshops' ) ) { get_template_part( 'sidebar' ); } ?>

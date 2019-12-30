@@ -57,7 +57,7 @@
   // Noindexes/nofollows Lab Workshop archives and posts.
   if ( is_category( 'lab-workshops') || has_category( 'lab-workshops') ) {
     echo '<!-- Showing a Lab Workshops archive or post, so this page is noindexed and nofollowed. -->';
-    echo '<meta name="robots" content="noindex,nofollow">';
+    echo '<meta name="robots" content="noindex, nofollow">';
   }
 
   ?>
@@ -81,7 +81,7 @@
   // The notice is displayed only if (1) the user is not logged in AND (2) viewing
   // a single post or page, AND (3) that post or page is NOT one of the listed
   // exceptions in $exclude.
-  
+
   global $post;
 
   $exclude = array(
@@ -102,7 +102,7 @@
         $post->post_parent == 245258 || // Community pages.
         $post->post_parent == 3379 || // About pages.
         has_category( 'sponsored' )
-      )
+      ) 
   ) {
 
     echo '<div id="article-counter-container">';
