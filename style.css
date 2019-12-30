@@ -1857,210 +1857,205 @@ Content
   line-height: 1.2
 }
 
-#lawyerist_display_ad {
-  margin: 0 auto 3rem auto;
-  width: 30rem;
-}
+  /* WP Review Pro styles */
 
-    /* WP Review Pro styles */
+  /* The header user rating. */
+  .user-rating {
+    margin-bottom: .5em;
+  }
 
-    /* The header user rating. */
-    .user-rating {
-      margin-bottom: .5em;
+    .user-rating a:hover {
+      text-decoration: none;
     }
 
-      .user-rating a:hover {
-        text-decoration: none;
-      }
+    .user-rating .review-star {
+      color: #bbb;
+    }
 
-      .user-rating .review-star {
-        color: #bbb;
-      }
+    .user-rating .review-total-only {
+      background: transparent;
+    }
 
-      .user-rating .review-total-only {
-        background: transparent;
-      }
+  /* Our star rating (as opposed to WP Review Pro's) */
+  .lawyerist-star-rating {
+    display: inline-block;
+    margin-right: .5rem;
+    position: relative;
+  }
 
-    /* Our star rating (as opposed to WP Review Pro's) */
-    .lawyerist-star-rating {
+    .lawyerist-star-rating-wrapper {
       display: inline-block;
-      margin-right: .5rem;
-      position: relative;
+      white-space: nowrap;
     }
 
-      .lawyerist-star-rating-wrapper {
+      .lawyerist-star-rating .rating-star {
         display: inline-block;
+        padding-right: .4rem;
+      }
+
+        .lawyerist-star-rating .rating-star:last-child {
+          padding: 0;
+        }
+
+      .lawyerist-star-rating .rating-star:before {
+        color: #bbb;
+        content: '\f005';
+    		display: inline-block;
+    		-webkit-font-smoothing: antialiased;
+        font-family: FontAwesome;
+        font-size: inherit;
+        line-height: inherit;
+        speak: none;
+        vertical-align: top;
+      }
+
+      .lawyerist-star-rating-result {
+        overflow: hidden;
+        position: absolute;
+          left: 0;
+          top: 0;
         white-space: nowrap;
       }
 
-        .lawyerist-star-rating .rating-star {
-          display: inline-block;
-          padding-right: .4rem;
+        .lawyerist-star-rating-result .rating-star:before {
+          color: #c00;
         }
 
-          .lawyerist-star-rating .rating-star:last-child {
-            padding: 0;
-          }
+  /* Displays the author review. */
+  .rating-box {
+    margin-bottom: 4rem;
+    padding: 2rem;
+  }
 
-        .lawyerist-star-rating .rating-star:before {
-          color: #bbb;
-          content: '\f005';
-      		display: inline-block;
-      		-webkit-font-smoothing: antialiased;
-          font-family: FontAwesome;
-          font-size: inherit;
-          line-height: inherit;
-          speak: none;
-          vertical-align: top;
-        }
-
-        .lawyerist-star-rating-result {
-          overflow: hidden;
-          position: absolute;
-            left: 0;
-            top: 0;
-          white-space: nowrap;
-        }
-
-          .lawyerist-star-rating-result .rating-star:before {
-            color: #c00;
-          }
-
-    /* Displays the author review. */
-    .rating-box {
-      margin-bottom: 4rem;
-      padding: 2rem;
-    }
-
-      #review {
-        background: unset;
-        border: 0;
-        margin: 0;
-        padding: 0;
-      }
-
-      #review .review-list {
-        margin-bottom: 2rem;
-      }
-
-      #review .review-list li {
-        background: unset;
-        border-bottom: 0;
-        margin-bottom: 1rem;
-        padding: 0;
-      }
-
-      #review .review-list li:nth-child(2n) {
-        background: unset;
-      }
-
-        #review .review-list li span {
-          font-size: 1.6rem;
-        }
-
-      #review .review-desc {
-        margin-bottom: 2rem;
-        padding: 0;
-      }
-
-      #review .comments-review-area {
-        display: none;
-      }
-
-      .rating-breakdown {
-        margin-bottom: 1em;
-      }
-
-        .rating {
-          margin-bottom: 0;
-        }
-
-        .composite-rating {
-          border-top: .1rem dotted #bbb;
-          padding-top: 1rem;
-        }
-
-        .rating-breakdown small {
-          color: #777;
-          font-family: equity, serif;
-        }
-
-      .review-total-wrapper {
-        display: none;
-      }
-
-    .review-total-only,
-    .review-star {
+    #review {
+      background: unset;
+      border: 0;
       margin: 0;
       padding: 0;
     }
 
-    .review-total-only {
-      padding: 0 .25em 0 0 !important;
+    #review .review-list {
+      margin-bottom: 2rem;
     }
 
-    .review-star .review-result-wrapper {
-      color: #bbb;
+    #review .review-list li {
+      background: unset;
+      border-bottom: 0;
+      margin-bottom: 1rem;
+      padding: 0;
     }
 
-    .review-point .review-result-wrapper {
-      background-color: #bbb !important;
+    #review .review-list li:nth-child(2n) {
+      background: unset;
     }
 
-    .review-point .review-result-wrapper .review-result {
-      background-color: #c00 !important;
+      #review .review-list li span {
+        font-size: 1.6rem;
+      }
+
+    #review .review-desc {
+      margin-bottom: 2rem;
+      padding: 0;
     }
 
-    .wp-review-feedback {
-      color: #777;
-      font-size: 1.4rem;
-      line-height: 1.5;
+    #review .comments-review-area {
+      display: none;
     }
 
-    .wp-review-feedback a.review-btn {
-      background: #bbb;
-      border: none;
-      border-radius: .2rem;
-      color: #fff;
-      height: auto;
-      line-height: 2.1rem;
-      margin-bottom: 0;
-      padding: 0 .8rem;
-    }
-
-    .wp-review-feedback a.review-btn[data-value="yes"]:hover,
-    .wp-review-feedback a.review-btn[data-value="no"]:hover {
-      background: #ccc;
-    }
-
-    .wp-review-feedback a.review-btn[data-value="yes"]:active,
-    .wp-review-feedback a.review-btn[data-value="no"]:active {
-      background: #aaa;
-      color: #e9e9e9;
-    }
-
-    form.wp-review-comment-form > div,
-    #commentform.wp-review-comment-form > div {
-      width: 100%;
-      margin-bottom: 0;
-      float: none;
-    }
-
-    #commentform.wp-review-comment-form .wp-review-comment-form-rating {
-      margin-bottom: .4rem;
-    }
-
-    #commentform.wp-review-comment-form .wp-review-comment-form-rating label {
-      line-height: 1.5;
-    }
-
-    #commentform.wp-review-comment-form .wp-review-comment-form-email {
+    .rating-breakdown {
       margin-bottom: 1em;
     }
 
-    #commentform.wp-review-comment-form .wp-review-comment-form-url {
+      .rating {
+        margin-bottom: 0;
+      }
+
+      .composite-rating {
+        border-top: .1rem dotted #bbb;
+        padding-top: 1rem;
+      }
+
+      .rating-breakdown small {
+        color: #777;
+        font-family: equity, serif;
+      }
+
+    .review-total-wrapper {
       display: none;
     }
+
+  .review-total-only,
+  .review-star {
+    margin: 0;
+    padding: 0;
+  }
+
+  .review-total-only {
+    padding: 0 .25em 0 0 !important;
+  }
+
+  .review-star .review-result-wrapper {
+    color: #bbb;
+  }
+
+  .review-point .review-result-wrapper {
+    background-color: #bbb !important;
+  }
+
+  .review-point .review-result-wrapper .review-result {
+    background-color: #c00 !important;
+  }
+
+  .wp-review-feedback {
+    color: #777;
+    font-size: 1.4rem;
+    line-height: 1.5;
+  }
+
+  .wp-review-feedback a.review-btn {
+    background: #bbb;
+    border: none;
+    border-radius: .2rem;
+    color: #fff;
+    height: auto;
+    line-height: 2.1rem;
+    margin-bottom: 0;
+    padding: 0 .8rem;
+  }
+
+  .wp-review-feedback a.review-btn[data-value="yes"]:hover,
+  .wp-review-feedback a.review-btn[data-value="no"]:hover {
+    background: #ccc;
+  }
+
+  .wp-review-feedback a.review-btn[data-value="yes"]:active,
+  .wp-review-feedback a.review-btn[data-value="no"]:active {
+    background: #aaa;
+    color: #e9e9e9;
+  }
+
+  form.wp-review-comment-form > div,
+  #commentform.wp-review-comment-form > div {
+    width: 100%;
+    margin-bottom: 0;
+    float: none;
+  }
+
+  #commentform.wp-review-comment-form .wp-review-comment-form-rating {
+    margin-bottom: .4rem;
+  }
+
+  #commentform.wp-review-comment-form .wp-review-comment-form-rating label {
+    line-height: 1.5;
+  }
+
+  #commentform.wp-review-comment-form .wp-review-comment-form-email {
+    margin-bottom: 1em;
+  }
+
+  #commentform.wp-review-comment-form .wp-review-comment-form-url {
+    display: none;
+  }
 
 
 	/*------------------------------
@@ -3133,20 +3128,7 @@ Sidebar
 
 #sidebar_column > li {
   list-style: none;
-  margin-bottom: 4rem;
-}
-
-#lawyerist_display_ad {
-  margin-bottom: 4rem;
-}
-
-#lawyerist_display_ad.stick {
-  position: fixed;
-  top: 3rem;
-}
-
-.admin-bar #lawyerist_display_ad.stick {
-  top: 6.2rem;
+  margin: 0 0 4rem 0;
 }
 
 
@@ -3159,6 +3141,15 @@ Sidebar
 
 #platinum-sponsors-widget a {
   margin-bottom: .1rem;
+}
+
+#platinum-sponsors-widget.stick {
+  position: fixed;
+  top: 3rem;
+}
+
+.admin-bar #platinum-sponsors-widget.stick {
+  top: 6.2rem;
 }
 
 ul.blogroll {
@@ -4177,7 +4168,6 @@ Print
   #categories_tags,
   #respond,
   #comments_container,
-  #mobile_ad,
   #sidebar_column {
     display: none !important;
   }

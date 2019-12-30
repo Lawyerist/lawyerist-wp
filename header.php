@@ -62,26 +62,6 @@
 
   ?>
 
-  <!-- DoubleClick Script -->
-  <script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
-  <script>
-    var googletag = googletag || {};
-    googletag.cmd = googletag.cmd || [];
-  </script>
-  <!-- End DoubleClick Script -->
-
-  <!-- DoubleClick Tag for Sidebar Ad-->
-  <script>
-  googletag.cmd.push(function() {
-    googletag.defineSlot('/12659965/lawyerist_300x250_ad_position', [300, 250], 'div-gpt-ad-1565383693580-0').addService(googletag.pubads());
-    googletag.pubads().enableSingleRequest();
-    googletag.pubads().collapseEmptyDivs();
-    googletag.pubads().setTargeting('test', 'refresh');
-    googletag.enableServices();
-  });
-  </script>
-  <!-- End DoubleClick Tag for Sidebar Ad -->
-
   <!-- Google Webmaster Tools site verification tag for Sam -->
   <meta name="google-site-verification" content="GwbQ-BLG3G-tXV4-uG-_kZIaxXxm_Wqmzg5wFSBa9hI" />
 
@@ -101,7 +81,7 @@
   // The notice is displayed only if (1) the user is not logged in AND (2) viewing
   // a single post or page, AND (3) that post or page is NOT one of the listed
   // exceptions in $exclude.
-
+  
   global $post;
 
   $exclude = array(

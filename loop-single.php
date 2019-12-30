@@ -65,14 +65,8 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
   echo '</main>';
 
-
   echo lawyerist_cta();
 
-
   lawyerist_get_related_resources();
-
-  if ( !has_category( 'sponsored' ) ) {
-
-  }
 
 endwhile; endif; // Close the Loop.

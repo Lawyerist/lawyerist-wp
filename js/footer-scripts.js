@@ -278,26 +278,25 @@
 // End WooCommerce Select Drop-Downs
 
 
-// Sticky Sidebar Ad
+// Sticky Platinum Sponsors Widget
 ( function( $ ) {
 
   function stickySidebarAd() {
 
     // Checks to see if the sidebar ad is present.
-    if ( $( '#lawyerist_display_ad' ).length > 0 ) {
+    if ( $( '#platinum-sponsors-widget' ).length > 0 ) {
 
-      var windowTop       = $( window ).scrollTop();
-      var sidebarTop      = $( '#sidebar_column' ).offset().top;
-      var sidebarAdHeight = $( '#lawyerist_display_ad' ).outerHeight();
-      var sponsorAdHeight = $( '#platinum-sponsors-widget' ).outerHeight();
-      var sidebarBottom   = sidebarTop + sidebarAdHeight + sponsorAdHeight;
+      var windowTop     = $( window ).scrollTop();
+      var sidebarTop    = $( '#sidebar_column' ).offset().top;
+      var widgetHeight  = $( '#platinum-sponsors-widget' ).outerHeight();
+      var sidebarBottom = sidebarTop + widgetHeight;
 
       if ( windowTop > sidebarBottom ) {
-        $( '#lawyerist_display_ad' ).addClass( 'stick' );
+        $( '#platinum-sponsors-widget' ).addClass( 'stick' );
       }
 
       if ( windowTop < sidebarBottom ) {
-        $( '#lawyerist_display_ad' ).removeClass( 'stick' );
+        $( '#platinum-sponsors-widget' ).removeClass( 'stick' );
       }
 
     }

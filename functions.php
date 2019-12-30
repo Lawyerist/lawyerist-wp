@@ -42,8 +42,6 @@ CONTENT
 - Remove Default Gallery Styles
 
 PARTNERSHIPS
-- Display Ad
-- Mobile Display Ad
 - Platinum Sidebar Widget
 - Affinity Benefit Notice
 - Add Sponsor to Post Meta
@@ -1430,72 +1428,6 @@ add_filter( 'use_default_gallery_style', '__return_false' );
 
 
 /* PARTNERSHIPS	***************/
-
-/*------------------------------
-Display Ad
-------------------------------*/
-
-function lawyerist_get_display_ad() { ?>
-
-	<div id="lawyerist_display_ad" class="lawyerist_display_ad_in_sidebar">
-		<!-- /12659965/lawyerist_300x250_ad_position -->
-		<div id='div-gpt-ad-1565383693580-0' style='width: 300px; height: 250px;'>
-		  <script>
-		    googletag.cmd.push(function() { googletag.display('div-gpt-ad-1565383693580-0'); });
-
-				// Set timer to refresh the display ad slot every 30 seconds.
-				setInterval(function(){googletag.pubads().refresh();}, 30000);
-		  </script>
-		</div>
-	</div>
-
-<?php }
-
-
-/*------------------------------
-Mobile Display Ad
-------------------------------*/
-
-// Inserts the mobile ad on single posts and pages.
-
-function lawyerist_mobile_display_ad( $content ) {
-
-	if ( wp_is_mobile() && ( is_single() || is_page() ) && is_main_query() && !is_page_template( 'product-page.php' ) ) {
-
-		$p_close		= '</p>';
-		$paragraphs = explode( $p_close, $content );
-
-		ob_start();
-			echo lawyerist_get_display_ad();
-		$display_ad = ob_get_clean();
-
-		foreach ( $paragraphs as $p_num => $paragraph ) {
-
-			// Only add closing tag to non-empty paragraphs
-			if ( trim( $paragraph ) ) {
-				// Adding closing markup now, rather than at implode, means insertion
-				// is outside of the paragraph markup, and not just inside of it.
-				$paragraphs[$p_num] .= $p_close;
-			}
-
-			// Insert DFP code after 3rd paragraph
-			// (0 is paragraph #1 in the $paragraphs array)
-			if ( ( count( $paragraphs ) > 3 ) && $p_num == 2 ) {
-				$paragraphs[$p_num] .= $display_ad;
-			}
-
-		}
-
-		$content = implode( '', $paragraphs );
-
-	}
-
-	return $content;
-
-}
-
-add_filter( 'the_content', 'lawyerist_mobile_display_ad' );
-
 
 /*------------------------------
 Platinum Sidebar Widget
