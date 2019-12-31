@@ -34,7 +34,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
       // Output the post.
       echo '<div class="post_body" itemprop="articleBody">';
 
-        if ( is_product_portal() && !is_page( '301729' ) ) {
+        if ( is_product_portal() && !is_page( 'reviews' ) ) {
 
           if ( !has_shortcode( $post->post_content, 'list-featured-products' ) ) {
             echo do_shortcode( '[list-featured-products]' );

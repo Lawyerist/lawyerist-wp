@@ -33,7 +33,7 @@
   </div>
   <!-- end #content_column -->
 
-  <?php if ( !has_category( 'lab-workshops' ) ) { get_template_part( 'sidebar' ); } ?>
+  <?php get_template_part( 'sidebar' ); ?>
 
 </div>
 <!-- end #column_container -->
