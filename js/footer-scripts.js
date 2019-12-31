@@ -176,12 +176,12 @@
 // Lawyerist Login/Register
 ( function( $ ) {
 
-  let allLoginRegisterLinks = $( '.login-link, a[ href*="wp-login.php" ], .register-link, #elementor-register-button' );
+  let allLoginRegisterLinks = $( '.login-link, a[ href*="wp-login.php" ], .register-link' );
   let loginModal            = $( '#lawyerist-login' );
   let loginScreen           = $( '#lawyerist-login-screen' );
   let loginLinks            = $( '.login-link, a[ href*="wp-login.php" ]' );
   let loginForm             = $( '#lawyerist-login #login' );
-  let registerLinks         = $( '.register-link, #elementor-register-button' );
+  let registerLinks         = $( '.register-link' );
   let registerForm          = $( '#lawyerist-login #register' );
   let dismissButton         = $( '#lawyerist-login .dismiss-button' );
 

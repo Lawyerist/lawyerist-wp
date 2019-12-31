@@ -16,7 +16,6 @@ Load Fonts
 Layout Elements & Grid Structure
 Layout & Design Elements
   Block Styles
-  Elementor
 Typography
 Signup Wall
 Images
@@ -648,15 +647,6 @@ Block Styles
 
 .wp-block-video video {
   width: 100%;
-}
-
-
-/*------------------------------
-Elementor
-------------------------------*/
-
-.elementor-template-full-width .elementor {
-  margin-top: 3rem;
 }
 
 

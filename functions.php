@@ -368,7 +368,6 @@ function lawyerist_remove_admin_bar_items( $wp_admin_bar ) {
 	$wp_admin_bar->remove_node( 'new-wc_user_membership' );
 	$wp_admin_bar->remove_node( 'new-user' );
 	$wp_admin_bar->remove_node( 'new-tablepress-table' );
-	$wp_admin_bar->remove_node( 'new-elementor_library' );
 
 	// Remove Monster Insights.
 	$wp_admin_bar->remove_node( 'monsterinsights_frontend_button' );
