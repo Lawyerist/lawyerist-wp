@@ -1249,57 +1249,6 @@ function lawyerist_get_related_resources() {
 
 
 /*------------------------------
-List Child Pages Fallback
-
-Outputs child pages if all of the following are true:
-
-1. It's a page.
-2. It has children.
-3. The page is not a product portal.
-4. The [list-child-pages] shortcode is not used anywhere on the page.
-------------------------------*/
-
-function lawyerist_list_child_pages_fallback( $content ) {
-
-	global $post;
-
-	$get_children_args = array(
-		'post_parent'		=> $post->ID,
-		'post__not_in'	=> array(
-			3379, 	// About
-			245258, // Community
-			128819, // LabCon
-		),
-		'fields'			=> 'ids',
-		'post_type'		=> 'page',
-	);
-
-	$children = get_posts( $get_children_args );
-
-if ( !is_home() && is_page() && ( count( $children ) > 0 ) && !is_product_portal() && !has_shortcode( $content, 'list-child-pages' ) ) {
-
-		ob_start();
-
-			echo do_shortcode( '[list-child-pages]' );
-
-		$child_pages = ob_get_clean();
-
-		$content .= $child_pages;
-
-		return $content;
-
-	} else {
-
-		return $content;
-
-	}
-
-}
-
-add_action( 'the_content', 'lawyerist_list_child_pages_fallback' );
-
-
-/*------------------------------
 Remove Inline Width from Image Captions
 ------------------------------*/
 
@@ -2140,9 +2089,7 @@ Disable Tag & Author Archives
 
 function lawyerist_disable_archives() {
 
-	if ( is_admin() ) {
-		return;
-	}
+	if ( is_admin() ) { return; }
 
   if ( is_tag() || is_author() ) {
 		global $wp_query;

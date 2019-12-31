@@ -4,8 +4,7 @@
 if ( have_posts() ) : while ( have_posts() ) : the_post();
 
   // Assign post variables.
-  $page_title   = the_title( '', '', FALSE );
-  $page_ID      = $post->ID;
+  $page_title = the_title( '', '', FALSE );
 
   // Breadcrumbs
   if ( function_exists( 'yoast_breadcrumb' ) ) {
@@ -78,18 +77,15 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
   echo '</main>';
 
-
   echo lawyerist_cta();
 
-
-  if ( comments_open() ) {
+  // Shows review template if comments are open and reviews are enabled. The only
+  // reason this is present on plain pages is that we're using the regular page
+  // template for a few specific pages like Lab and LabCon.
+  if ( comments_open() && function_exists( 'wp_review_show_total' ) ) {
 
     echo '<div id="comments_container">';
-
-    if ( function_exists( 'wp_review_show_total' ) ) {
       comments_template( '/reviews.php' );
-    }
-
     echo '</div>';
 
   }

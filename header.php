@@ -72,6 +72,8 @@
 
 <body <?php body_class(); ?>>
 
+  <?php wp_body_open(); ?>
+
   <?php
 
   // Displays the signup wall notice, which also triggers the signup wall script
@@ -102,7 +104,7 @@
         $post->post_parent == 245258 || // Community pages.
         $post->post_parent == 3379 || // About pages.
         has_category( 'sponsored' )
-      ) 
+      )
   ) {
 
     echo '<div id="article-counter-container">';

@@ -21,11 +21,8 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
-?>
 
-<!-- Default greeting and logout link removed. -->
-
-<?php
+// Default greeting and logout link removed.
 
 if ( is_plugin_active( 'scorecard-helper/scorecard-helper.php' ) ) {
 
@@ -41,54 +38,7 @@ if ( is_plugin_active( 'scorecard-helper/scorecard-helper.php' ) ) {
 
 	echo '</div>';
 
-	/* Ready for when we have an actual link to
-	$scorecard_results = get_scorecard_results();
-
-	if ( !empty( $scorecard_results ) ) {
-
-		echo '<h2>Scorecard History</h2>';
-
-		echo '<table class="widefat">';
-			echo '<thead>';
-				echo '<tr>';
-					echo '<th>Grade</th>';
-					echo '<th>Date</th>';
-					echo '<th>Version</th>';
-					echo '<th>More</th>';
-				echo '</tr>';
-			echo '</thead>';
-			echo '<tbody>';
-
-				foreach ( $scorecard_results as $scorecard_result ) {
-
-					$scorecard_id				= $scorecard_result[ 'entry_id' ];
-					$form_id						= $scorecard_result[ 'form_id' ];
-					$scorecard_grade		= $scorecard_result[ 'grade' ];
-					$scorecard_score		= $scorecard_result[ 'percentage' ];
-					$scorecard_date			= date_format( date_create( $scorecard_result[ 'date' ] ), 'M. j, Y' );
-					$scorecard_version	= $scorecard_result[ 'version' ];
-
-					// I don't think this actually works?
-					$account_page				= woocommerce_my_account();
-
-					echo '<tr>';
-						echo '<td><strong>' . $scorecard_grade . '</strong> (' . round( $scorecard_score ) . '%)</td>';
-						echo '<td>' . $scorecard_date . '</td>';
-						echo '<td>' . $scorecard_version . '</td>';
-						echo '<td><a href="' . $account_page. '&scorecard_id=' . $scorecard_id . '">See Scorecard</a></td>';
-					echo '</tr>';
-
-				}
-
-			echo '<tbody>';
-		echo '</table>';
-
-	}
-	*/
-
-
 }
-
 
 	/**
 	 * My Account dashboard.

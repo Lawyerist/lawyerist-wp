@@ -3,8 +3,6 @@
 // Start the Loop.
 if ( have_posts() ) : while ( have_posts() ) : the_post();
 
-  $this_post[] = $post->ID; // We use this to exclude the current post from things.
-
   lawyerist_get_post_card();
 
   endwhile;

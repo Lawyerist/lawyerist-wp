@@ -15,10 +15,12 @@
 
 		?>
 
-	</div><!-- end #content_column -->
+	</div>
+	<!-- end #content_column -->
 
 	<?php get_template_part( 'sidebar' ); ?>
 
-</div><!--end #column_container-->
+</div>
+<!--end #column_container-->
 
 <?php get_footer(); ?>

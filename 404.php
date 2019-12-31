@@ -14,7 +14,6 @@
 
 				<?php get_search_form(); ?>
 
-
 				<p class="fp-section-header">Featured Resources</p>
 
 				<?php

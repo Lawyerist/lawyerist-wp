@@ -174,9 +174,12 @@ function feature_chart( $post ) {
               'type'    => $field[ 'type' ],
               'name'    => $field[ 'name' ],
               'label'   => $field[ 'label' ],
-              'message' => $field[ 'message' ],
               'value'   => get_field( $field[ 'name' ] ),
             );
+
+            if ( !empty( $field[ 'message' ] ) ) {
+              $feature[ 'message' ] = $field[ 'message' ];
+            }
 
             echo '<tr class="' . $feature[ 'type' ] . '">';
 
@@ -385,6 +388,57 @@ function lawyerist_child_pages_list( $atts ) {
 }
 
 add_shortcode( 'list-child-pages', 'lawyerist_child_pages_list' );
+
+
+/*------------------------------
+List Child Pages Fallback
+
+Outputs child pages if all of the following are true:
+
+1. It's a page.
+2. It has children.
+3. The page is not a product portal.
+4. The [list-child-pages] shortcode is not used anywhere on the page.
+------------------------------*/
+
+function lawyerist_list_child_pages_fallback( $content ) {
+
+	global $post;
+
+	$get_children_args = array(
+		'post_parent'		=> $post->ID,
+		'post__not_in'	=> array(
+			3379, 	// About
+			245258, // Community
+			128819, // LabCon
+		),
+		'fields'			=> 'ids',
+		'post_type'		=> 'page',
+	);
+
+	$children = get_posts( $get_children_args );
+
+if ( !is_home() && is_page() && ( count( $children ) > 0 ) && !is_product_portal() && !has_shortcode( $content, 'list-child-pages' ) ) {
+
+		ob_start();
+
+			echo do_shortcode( '[list-child-pages]' );
+
+		$child_pages = ob_get_clean();
+
+		$content .= $child_pages;
+
+		return $content;
+
+	} else {
+
+		return $content;
+
+	}
+
+}
+
+add_action( 'the_content', 'lawyerist_list_child_pages_fallback' );
 
 
 /*------------------------------
@@ -618,7 +672,7 @@ function lawyerist_all_products_list( $atts ) {
 
       $acf_group_ids = get_feature_chart_ids();
 
-      if ( array_key_exists( $parent, $acf_group_ids) ) {
+      if ( array_key_exists( $parent, $acf_group_ids ) ) {
 
         // Get filters.
         $fields = acf_get_fields( $acf_group_ids[ $atts[ 'portal' ] ] );

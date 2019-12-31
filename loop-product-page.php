@@ -1,11 +1,10 @@
- <?php
+<?php
 
 // Start the Loop.
 if ( have_posts() ) : while ( have_posts() ) : the_post();
 
   // Assign post variables.
-  $page_title   = the_title( '', '', FALSE );
-  $page_ID      = $post->ID;
+  $page_title = the_title( '', '', FALSE );
 
   // Checks for a rating, then assigns variables if they will be needed.
   if ( comments_open() && function_exists( 'wp_review_show_total' ) ) {
@@ -137,54 +136,5 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
         }
 
         the_content();
-
-        // Trial button
-        if ( !empty( $trial_button ) ) {
-          echo '<p align="center">' . $trial_button . '</p>';
-        }
-
-        lawyerist_get_alternative_products();
-
-        // Byline
-        get_template_part( 'postmeta', 'page' );
-
-        // Show page navigation if the post is paginated unless we're displaying
-        // the RSS feed.
-        if ( !is_feed() ) {
-
-          $wp_link_pages_args = array(
-            'before'            => '<p class="page_links">',
-            'after'             => '</p>',
-            'link_before'       => '<span class="page_number">',
-            'link_after'        => '</span>',
-            'next_or_number'    => 'next',
-            'nextpagelink'      => 'Next Page &raquo;',
-            'previouspagelink'  => '&laquo; Previous Page',
-            'separator'         => '|',
-          );
-
-          wp_link_pages( $wp_link_pages_args );
-
-        }
-
-      echo '</div>'; // Close .post_body.
-
-    echo '</div>'; // Close .post.
-
-  echo '</main>';
-
-  if ( comments_open() ) {
-
-    echo '<div id="comments_container">';
-
-    if ( function_exists( 'wp_review_show_total' ) ) {
-      comments_template( '/reviews.php' );
-    }
-
-    echo '</div>';
-
-  }
-
-  lawyerist_get_related_posts();
 
 endwhile; endif; // Close the Loop.
