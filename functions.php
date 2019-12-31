@@ -20,7 +20,6 @@ UTILITY FUNCTIONS
 - Retina Thumbnail
 - Get First Image URL
 - Is This a Product Portal?
-- Get Active Labsters
 
 CARDS
 - Post Cards
@@ -122,7 +121,11 @@ add_action( 'after_setup_theme', 'lawyerist_theme_setup' );
 Template Files
 ------------------------------*/
 
-require_once( 'shortcodes.php' );
+if ( !is_admin() ) {
+
+  require_once( 'shortcodes.php' );
+
+}
 
 
 /*------------------------------
@@ -552,52 +555,6 @@ function is_product_portal() {
 		return false;
 
 	}
-
-}
-
-
-/*------------------------------
-Get Active Labsters
-------------------------------*/
-
-function get_active_labsters() {
-
-	$labster_query_args = array(
-		'post_type'				=> 'wc_user_membership',
-		'post_status'			=> 'wcm-active',
-		'post_parent'			=> 223685,
-		'posts_per_page'	=> -1,
-	);
-
-	$labster_query = new WP_Query( $labster_query_args );
-
-	if ( $labster_query->have_posts() ) :
-
-		$labsters	= array();
-
-		while ( $labster_query->have_posts() ) : $labster_query->the_post();
-
-			array_push( $labsters, array(
-				'labster_id'	=> get_the_ID(),
-				'email'				=> get_the_author_meta( 'user_email' ),
-				'first_name'	=> get_the_author_meta( 'user_firstname' ),
-				'last_name'		=> get_the_author_meta( 'user_lastname' ),
-			) );
-
-		endwhile; wp_reset_postdata();
-
-		// Sorts $labsters[] by last name.
-		usort( $labsters, function( $a, $b ) {
-			return $a[ 'last_name' ] <=> $b[ 'last_name' ];
-		});
-
-		return $labsters;
-
-	else :
-
-		return;
-
-	endif;
 
 }
 

@@ -154,6 +154,8 @@ function feature_chart( $post ) {
 
   ob_start();
 
+    global $post;
+
     $post_id  = $post->ID;
     $parent   = wp_get_post_parent_id( $post_id );
     $fc_ids   = get_feature_chart_ids();
@@ -1440,6 +1442,49 @@ add_shortcode( 'list-contributors', 'list_contributors_shortcode' );
 /*------------------------------
 List Labsters
 ------------------------------*/
+
+// Get Active Labsters
+function get_active_labsters() {
+
+	$labster_query_args = array(
+		'post_type'				=> 'wc_user_membership',
+		'post_status'			=> 'wcm-active',
+		'post_parent'			=> 223685,
+		'posts_per_page'	=> -1,
+	);
+
+	$labster_query = new WP_Query( $labster_query_args );
+
+	if ( $labster_query->have_posts() ) :
+
+		$labsters	= array();
+
+		while ( $labster_query->have_posts() ) : $labster_query->the_post();
+
+			array_push( $labsters, array(
+				'labster_id'	=> get_the_ID(),
+				'email'				=> get_the_author_meta( 'user_email' ),
+				'first_name'	=> get_the_author_meta( 'user_firstname' ),
+				'last_name'		=> get_the_author_meta( 'user_lastname' ),
+			) );
+
+		endwhile; wp_reset_postdata();
+
+		// Sorts $labsters[] by last name.
+		usort( $labsters, function( $a, $b ) {
+			return $a[ 'last_name' ] <=> $b[ 'last_name' ];
+		});
+
+		return $labsters;
+
+	else :
+
+		return;
+
+	endif;
+
+}
+
 
 function list_labsters_shortcode() {
 
