@@ -10,7 +10,6 @@ SETUP
 
 STRUCTURE
 - Nav Menu
-- Sidebar
 
 ADMIN
 - Login Form
@@ -279,27 +278,6 @@ function lawyerist_loginout( $items, $args ) {
 }
 
 add_filter( 'wp_nav_menu_items', 'lawyerist_loginout', 10, 2 );
-
-
-/*------------------------------
-Sidebar
-------------------------------*/
-
-function lawyerist_register_sidebars()  {
-
-	$sidebar_args = array(
-		'id'            => 'sidebar',
-		'name'          => 'Sidebar',
-		'description'   => 'Not visible on mobile.',
-		'class'         => 'sidebar',
-		'before_title'  => '<h3>',
-		'after_title'   => '</h3>',
-	);
-	register_sidebar( $sidebar_args );
-
-}
-
-add_action( 'widgets_init', 'lawyerist_register_sidebars' );
 
 
 /* ADMIN ********************/
@@ -1453,7 +1431,7 @@ function lawyerist_platinum_sponsors_widget() {
 
 	if ( $platinum_sponsors_query->have_posts() ) :
 
-		echo '<li id="platinum-sponsors-widget" class="widget">' . "\n" . '<div class="textwidget custom-html-widget">';
+		echo '<div id="platinum-sponsors-widget">';
 
 			echo '<h3>Platinum Sponsors</h3>';
 
@@ -1469,7 +1447,7 @@ function lawyerist_platinum_sponsors_widget() {
 
 			endwhile; wp_reset_postdata();
 
-		echo '</div>' . "\n" . '</li>';
+		echo '</div>';
 
 	endif;
 

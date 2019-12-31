@@ -3115,19 +3115,17 @@ Author Bios
 Sidebar
 ------------------------------*/
 
-#sidebar_column h3 {
+/* Platinum Sponsors widget. */
+#platinum-sponsors-widget h3 {
   color: #888;
   font-size: 1.8rem;
   text-transform: uppercase;
 }
 
-#sidebar_column > li {
-  list-style: none;
+#platinum-sponsors-widget {
   margin: 0 0 4rem 0;
 }
 
-
-/* Platinum Sponsors widget. */
 #platinum-sponsors-widget a,
 #platinum-sponsors-widget img {
   display: block;
@@ -3145,13 +3143,6 @@ Sidebar
 
 .admin-bar #platinum-sponsors-widget.stick {
   top: 6.2rem;
-}
-
-ul.blogroll {
-  font-size: 1.8rem;
-  line-height: 1.5;
-  list-style: none;
-  margin: 0 0 1.5em 0;
 }
 
 
