@@ -9,7 +9,7 @@
 		<?php
 
 		// Get the Loop.
-    get_template_part( 'loop', 'profile-page' );
+    get_template_part( 'template-parts/loop', 'profile-page' );
 
 		?>
 

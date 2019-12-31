@@ -16,15 +16,15 @@
     // Gets the appropriate Loop.
     if ( is_single() ) {
 
-      get_template_part( 'loop', 'single' );
+      get_template_part( 'template-parts/loop', 'single' );
 
     } elseif ( is_page() ) {
 
-      get_template_part( 'loop', 'page' );
+      get_template_part( 'template-parts/loop', 'page' );
 
     } else {
 
-      get_template_part( 'loop', 'index' );
+      get_template_part( 'template-parts/loop', 'index' );
 
     }
 
