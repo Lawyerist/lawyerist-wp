@@ -111,7 +111,7 @@ function fc_process_feature_value( $feature ) {
 
       case 'checkbox' :
 
-        if ( $feature[ 'value' ] && !is_null( $feature[ 'value' ] ) ) {
+        if ( $feature[ 'value' ] ) {
 
           usort( $feature[ 'value' ], function( $a, $b ) {
             return $a <=> $b;
@@ -605,8 +605,6 @@ function lawyerist_featured_products_list( $atts ) {
 
             }
 
-            echo '<div class="clear"></div>';
-
             echo '<span class="excerpt">' . $page_excerpt . ' <a href="' . $featured_page_URL . '">Learn more about ' . $featured_page_title . '.</a></span>';
 
           echo '</li>';
@@ -829,8 +827,6 @@ function lawyerist_all_products_list( $atts ) {
               }
 
             }
-
-  					echo '<div class="clear"></div>';
 
   					if ( $atts[ 'show_excerpt' ] == 'true' ) { echo '<span class="excerpt">' . $page_excerpt . ' <a href="' . $product_page_URL . '">Learn more about ' . $product_page_title . '.</a></span>'; }
 

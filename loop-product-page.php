@@ -142,10 +142,10 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
           echo '<p align="center">' . $trial_button . '</p>';
         }
 
-        lawyerist_get_alternative_products();
-
         // Byline
         get_template_part( 'postmeta', 'page' );
+
+        lawyerist_get_alternative_products();
 
         // Show page navigation if the post is paginated unless we're displaying
         // the RSS feed.

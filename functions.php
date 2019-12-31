@@ -1098,9 +1098,7 @@ function lawyerist_get_alternative_products() {
 				echo '<div class="card">';
 
 					// Starts the link container. Makes for big click targets!
-					echo '<a href="' . $alt_url . '" title="' . $alt_title . '"';
-					post_class();
-					echo '>';
+					echo '<a href="' . $alt_url . '" title="' . $alt_title . '" class="has-post-thumbnail">';
 
 					if ( !empty( $alt_thumbnail ) ) {
 						echo $alt_thumbnail;

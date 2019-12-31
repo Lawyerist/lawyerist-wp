@@ -1024,11 +1024,6 @@ p.pullout {
   padding: 0 1rem 1rem 1rem;
 }
 
-.page .excerpt,
-.single .postmeta {
-  margin-bottom: 4rem;
-}
-
 .postmeta,
 .product_meta,
 .user-rating,
@@ -1040,11 +1035,8 @@ p.pullout {
   line-height: 1.4;
 }
 
-.postmeta,
-.product_meta,
-.user-rating,
-.page-template-product-page .excerpt {
-  margin-bottom: 1em;
+.postmeta {
+  margin-bottom: 4rem;
 }
 
   .postmeta cite {
@@ -1055,20 +1047,10 @@ p.pullout {
     background-color: #ffffc7;
   }
 
-  .comment_link:before {
-    content: '\f300';
-    display: inline-block;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
-    font: normal 1.6rem/1 'Genericons';
-    speak: none;
-    -webkit-transform: scale(-1, 1);
-  	-moz-transform: scale(-1, 1);
-  	-ms-transform: scale(-1, 1);
-  	-o-transform: scale(-1, 1);
-  	transform: scale(-1, 1);
-    vertical-align: top;
-  }
+.product_meta,
+.user-rating {
+  margin-bottom: 1em;
+}
 
 pre {
 	color: #555;
@@ -2630,7 +2612,7 @@ Content
 
     .product-pages-list li.card {
       background-color: #f9f9f9;
-      min-height: 11rem;
+      min-height: 15rem;
       overflow: hidden;
       padding: 2rem;
       position: relative;
@@ -2705,7 +2687,7 @@ Content
     }
 
     .featured-products-list li.card {
-      min-height: 16rem;
+      min-height: 20rem;
     }
 
       .featured-products-list .image {
