@@ -18,10 +18,11 @@ echo '<div class="postmeta">';
   } else {
 
     echo 'Page edited by <span class="vcard author"><cite class="fn">' . $author . '</cite></span>. ';
-    
+
   }
 
-  $coauthors  = get_coauthors();
+
+  $coauthors = get_coauthors();
 
 	if ( count( $coauthors ) > 1 ) {
 

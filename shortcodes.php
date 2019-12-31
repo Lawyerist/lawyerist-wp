@@ -71,16 +71,16 @@ function get_feature_chart_ids() {
   // for this product list.
   // Portal ID => Group ID
   $feature_chart_ids = array(
-    306077 => 333571, // Reputation Management
-    121024 => 471015, // Law Practice Management Software
-    212684 => 480121, // Legal Research
-    254718 => 510758, // eDiscovery Software
-    200884 => 511008, // Credit Card Processing
-    158523 => 513265, // Accounting Software
-    238035 => 519846, // Intake & CRM
-    200847 => 545853, // Timekeeping & Billing Software
-    195769 => 566001, // Virtual Receptionists & Chat
-    306014 => 627369, // Document Management & Automation
+    '306077' => 333571, // Reputation Management
+    '121024' => 471015, // Law Practice Management Software
+    '212684' => 480121, // Legal Research
+    '254718' => 510758, // eDiscovery Software
+    '200884' => 511008, // Credit Card Processing
+    '158523' => 513265, // Accounting Software
+    '238035' => 519846, // Intake & CRM
+    '200847' => 545853, // Timekeeping & Billing Software
+    '195769' => 566001, // Virtual Receptionists & Chat
+    '306014' => 627369, // Document Management & Automation
   );
 
   return $feature_chart_ids;
@@ -94,20 +94,28 @@ function fc_process_feature_value( $feature ) {
 
       case 'url' :
 
-        $url_parsed = parse_url( $feature[ 'value' ] );
-        $url_host  	= $url_parsed[ 'host' ];
+        if ( $feature[ 'value' ] ) {
 
-        echo '<a href="' . $feature[ 'value' ] . '?utm_source=lawyerist&utm_medium=free-resources-page-link">' . $url_host . '</a>';
+          $url_parsed = parse_url( $feature[ 'value' ] );
+          $url_host  	= $url_parsed[ 'host' ];
+
+          echo '<a href="' . $feature[ 'value' ] . '?utm_source=lawyerist&utm_medium=free-resources-page-link">' . $url_host . '</a>';
+
+        } else {
+
+          echo '&mdash;';
+
+        }
 
         break;
 
       case 'checkbox' :
 
-        usort( $feature[ 'value' ], function( $a, $b ) {
-          return $a <=> $b;
-        });
+        if ( $feature[ 'value' ] && !is_null( $feature[ 'value' ] ) ) {
 
-        if ( $feature[ 'value' ] ) {
+          usort( $feature[ 'value' ], function( $a, $b ) {
+            return $a <=> $b;
+          });
 
           echo '<ul>';
 
@@ -128,9 +136,13 @@ function fc_process_feature_value( $feature ) {
       case 'true_false' :
 
         if ( $feature[ 'value' ] == true ) {
+
           echo '<div class="true">&check;</div>';
+
         } else {
+
           echo '<div class="false">&cross;</div>';
+
         }
 
         break;
@@ -139,9 +151,13 @@ function fc_process_feature_value( $feature ) {
       default :
 
         if ( $feature[ 'value' ] ) {
+
           echo $feature[ 'value' ];
+
         } else {
+
           echo '&mdash;';
+
         }
 
     }
@@ -218,9 +234,12 @@ function feature_chart( $post ) {
                         $sub_feature = array(
                           'type'    => $sub_field[ 'type' ],
                           'label'   => $sub_field[ 'label' ],
-                          'message' => $sub_field[ 'message' ],
                           'value'   => get_sub_field( $row_key ),
                         );
+
+                        if ( !empty( $sub_field[ 'message' ] ) ) {
+                          $sub_feature[ 'message' ] = $sub_field[ 'message' ];
+                        }
 
                         $colspan = '';
 
@@ -931,7 +950,7 @@ function lwyrst_affinity_partners_list() {
 
       						echo '<a class="image" href="' . $product_page_URL . '">';
 
-                    if ( has_term( 'affinity-partner', 'page_type', $post->ID ) && get_field( 'affinity_active' ) == true ) {
+                    if ( has_term( 'affinity-partner', 'page_type', $product_page_id ) && get_field( 'affinity_active' ) == true ) {
 
                       $theme_dir = get_template_directory_uri();
                       echo '<img class="affinity-partner-badge" alt="Lawyerist affinity partner badge." src="' . $theme_dir . '/images/affinity-partner-mini-badge.png" height="64" width="75" />';

@@ -919,7 +919,7 @@ function lawyerist_get_coauthors() {
 
 	global $wp_query;
 
-	$coauthors  = get_coauthors();
+	$coauthors = get_coauthors();
 
 	if ( count( $coauthors ) > 1 ) {
 
@@ -2088,6 +2088,8 @@ Disable Tag & Author Archives
 ------------------------------*/
 
 function lawyerist_disable_archives() {
+
+	global $wp_query;
 
 	if ( is_admin() ) { return; }
 
