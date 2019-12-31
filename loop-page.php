@@ -88,8 +88,6 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
     if ( function_exists( 'wp_review_show_total' ) ) {
       comments_template( '/reviews.php' );
-    } else {
-      comments_template( '/comments.php' );
     }
 
     echo '</div>';
