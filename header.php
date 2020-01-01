@@ -6,47 +6,32 @@
   <meta charset="<?php bloginfo( 'charset' ); ?>">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
+  <?php $template_url = get_bloginfo( 'template_url' ); ?>
+
+  <link rel="preload" as="font" href="<?php echo $template_url; ?>/fonts/adler/adler-webfont.woff2" type="font/woff2" crossorigin="anonymous">
+
+  <link rel="preload" as="font" href="<?php echo $template_url; ?>/fonts/genericons/Genericons.woff2" type="font/woff2" crossorigin="anonymous">
+
+  <link rel="preload" as="font" href="<?php echo $template_url; ?>/fonts/concourse/concourse_t4_regular-webfont.woff2" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="<?php echo $template_url; ?>/fonts/concourse/concourse_t4_italic-webfont.woff2" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="<?php echo $template_url; ?>/fonts/concourse/concourse_t4_bold-webfont.woff2" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="<?php echo $template_url; ?>/fonts/concourse/concourse_t4_bold_italic-webfont.woff2" type="font/woff2" crossorigin="anonymous">
+
+  <link rel="preload" as="font" href="<?php echo $template_url; ?>/fonts/equity/equity_text_b_regular-webfont.woff2" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="<?php echo $template_url; ?>/fonts/equity/equity_text_b_italic-webfont.woff2" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="<?php echo $template_url; ?>/fonts/equity/equity_text_b_bold-webfont.woff2" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="<?php echo $template_url; ?>/fonts/equity/equity_text_b_bold_italic-webfont.woff2" type="font/woff2" crossorigin="anonymous">
+
+  <link rel="prefetch" href="<?php echo $template_url; ?>/fonts/triplicate/triplicate_t4_code_regular-webfont.woff2" type="font/woff2" crossorigin="anonymous">
+
+  <link rel="shortcut icon" href="<?php echo $template_url; ?>/images/favicon.ico" type="image/x-icon">
+
   <?php
 
   // Enqueues Gravity Forms scripts necessary for the #lawyerist-login modal.
   gravity_form_enqueue_scripts( 59, true );
 
-  ?>
-
-  <!-- Preloads/prefetches fonts. -->
-
-  <!-- Adler -->
-  <link rel="preload" as="font" href="<?php echo get_bloginfo( 'template_url' ); ?>/fonts/adler/adler-webfont.woff2" type="font/woff2" crossorigin="anonymous">
-
-  <!-- Genericons -->
-  <link rel="preload" as="font" href="<?php echo get_bloginfo( 'template_url' ); ?>/fonts/genericons/Genericons.woff2" type="font/woff2" crossorigin="anonymous">
-
-  <!-- Concourse -->
-  <link rel="preload" as="font" href="<?php echo get_bloginfo( 'template_url' ); ?>/fonts/concourse/concourse_t4_regular-webfont.woff2" type="font/woff2" crossorigin="anonymous">
-  <link rel="preload" as="font" href="<?php echo get_bloginfo( 'template_url' ); ?>/fonts/concourse/concourse_t4_italic-webfont.woff2" type="font/woff2" crossorigin="anonymous">
-  <link rel="preload" as="font" href="<?php echo get_bloginfo( 'template_url' ); ?>/fonts/concourse/concourse_t4_bold-webfont.woff2" type="font/woff2" crossorigin="anonymous">
-  <link rel="preload" as="font" href="<?php echo get_bloginfo( 'template_url' ); ?>/fonts/concourse/concourse_t4_bold_italic-webfont.woff2" type="font/woff2" crossorigin="anonymous">
-
-  <!-- Equity -->
-  <link rel="preload" as="font" href="<?php echo get_bloginfo( 'template_url' ); ?>/fonts/equity/equity_text_b_regular-webfont.woff2" type="font/woff2" crossorigin="anonymous">
-  <link rel="preload" as="font" href="<?php echo get_bloginfo( 'template_url' ); ?>/fonts/equity/equity_text_b_italic-webfont.woff2" type="font/woff2" crossorigin="anonymous">
-  <link rel="preload" as="font" href="<?php echo get_bloginfo( 'template_url' ); ?>/fonts/equity/equity_text_b_bold-webfont.woff2" type="font/woff2" crossorigin="anonymous">
-  <link rel="preload" as="font" href="<?php echo get_bloginfo( 'template_url' ); ?>/fonts/equity/equity_text_b_bold_italic-webfont.woff2" type="font/woff2" crossorigin="anonymous">
-
-  <!-- Triplicate -->
-  <link rel="prefetch" href="<?php echo get_bloginfo( 'template_url' ); ?>/fonts/triplicate/triplicate_t4_code_regular-webfont.woff2" type="font/woff2" crossorigin="anonymous">
-
-
-  <?php wp_head(); ?>
-
-
-  <!-- Gets favicon. -->
-  <link rel="shortcut icon" href="<?php echo get_bloginfo( 'template_url' ); ?>/images/favicon.ico" type="image/x-icon">
-
-  <!-- Gets the RSS feed link. -->
-  <link rel="alternate" type="application/rss+xml" title="<?php bloginfo( 'name' ); ?> RSS feed" href="http://feeds.feedburner.com/solosmalltech">
-
-  <?php
+  wp_head();
 
   // Nofollows sponsored posts.
   if ( has_category( 'sponsored') ) {
@@ -72,9 +57,9 @@
 
 <body <?php body_class(); ?>>
 
-  <?php wp_body_open(); ?>
-
   <?php
+
+  wp_body_open();
 
   // Displays the signup wall notice, which also triggers the signup wall script
   // to record a pageview. (The script will only record pageviews when the notice
@@ -113,9 +98,9 @@
 
   }
 
-  ?>
+  echo get_lawyerist_login();
 
-	<?php echo get_lawyerist_login(); ?>
+  ?>
 
   <div id="header-grid">
 
@@ -139,4 +124,5 @@
 
   	<div id="red-buffer"></div>
 
-  </div><!-- #header-grid -->
+  </div>
+  <!-- end #header-grid -->

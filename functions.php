@@ -85,12 +85,16 @@ function lawyerist_stylesheets_scripts() {
 	wp_register_style( 'normalize-css', get_template_directory_uri() . '/css/normalize.min.css' );
 	wp_enqueue_style( 'normalize-css' );
 
+	$template_dir_uri = get_template_directory_uri();
+
 	// Load the main stylesheet.
-	wp_register_style( 'stylesheet', get_template_directory_uri() . '/style.css' );
+	$cacheBusterCSS = filemtime( get_stylesheet_directory() . '/style.css' );
+	wp_register_style( 'stylesheet', $template_dir_uri . '/style.css', array(), $cacheBusterCSS, 'all' );
 	wp_enqueue_style( 'stylesheet' );
 
 	// Load consolidated scripts in the footer.
-	wp_register_script( 'footer-scripts', get_template_directory_uri() . '/js/footer-scripts.js' , '', '', true );
+	$cacheBusterFS = filemtime( get_stylesheet_directory() . '/js/footer-scripts.js' );
+	wp_register_script( 'footer-scripts', $template_dir_uri . '/js/footer-scripts.js',  array( 'jquery' ), $cacheBusterFS, true );
 	wp_enqueue_script( 'footer-scripts' );
 
 }
@@ -2086,8 +2090,6 @@ Disable Tag & Author Archives
 ------------------------------*/
 
 function lawyerist_disable_archives() {
-
-	global $wp_query;
 
 	if ( is_admin() ) { return; }
 
