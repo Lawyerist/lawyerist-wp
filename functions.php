@@ -2093,11 +2093,9 @@ add_filter( 'init', 'lawyerist_ld_disable_comments' );
 Disable Tag & Author Archives
 ------------------------------*/
 
-function lawyerist_disable_archives() {
+function lawyerist_disable_archives( $query ) {
 
-	if ( is_admin() ) { return; }
-
-  if ( is_tag() || is_author() ) {
+  if ( $query->is_tag() || $query->is_author() ) {
 		global $wp_query;
     $wp_query->set_404();
   }
