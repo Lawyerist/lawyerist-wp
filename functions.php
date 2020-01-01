@@ -1441,14 +1441,14 @@ function affinity_notice() {
 }
 
 
-/*Add Sponsor to Post Meta */
+/* Add Sponsor to Post Meta */
 
-function lwyrst_sponsor_order_meta( $post_id ) {
+function add_sponsor_to_post_meta( $post_ID, $post, $update ) {
 
 	if ( has_category( 'sponsored' ) ) {
 
 		$sponsor_IDs = wp_get_post_terms(
-			$post_id,
+			$post_ID,
 			'sponsor',
 			array(
 				'fields' 	=> 'ids',
@@ -1460,13 +1460,17 @@ function lwyrst_sponsor_order_meta( $post_id ) {
 		$sponsor_info = get_term( $sponsor_IDs[0] );
 		$sponsor      = $sponsor_info->name;
 
-		update_post_meta( $post_id, 'sponsor', sanitize_text_field( $sponsor ) );
+		update_post_meta( $post_ID, 'sponsor', sanitize_text_field( $sponsor ) );
+
+	} else {
+
+		return;
 
 	}
 
 }
 
-add_action( 'save_post', 'lwyrst_sponsor_order_meta' );
+add_action( 'save_post_post', 'add_sponsor_to_post_meta', 10, 3 );
 
 
 /* COMMENTS & REVIEWS *********/
