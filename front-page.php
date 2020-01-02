@@ -186,13 +186,13 @@
 			// End of sponsored posts.
 
 
-			// Outputs the 4 most recent blog posts.
+			// Outputs the 3 most recent blog posts.
 			$args = array(
 				'category__in'		=> array(
 					'555', // Blog Posts
 				),
 				'post__not_in'		=> get_option( 'sticky_posts' ),
-				'posts_per_page'	=> 4,
+				'posts_per_page'	=> 3,
 			);
 
 			$current_post_query = new WP_Query( $args );
@@ -217,6 +217,39 @@
 
 			endif;
 			// End of blog posts.
+
+
+			// Outputs the 3 most recent case studies.
+			$args = array(
+				'category__in'		=> array(
+					'4406', // Blog Posts
+				),
+				'post__not_in'		=> get_option( 'sticky_posts' ),
+				'posts_per_page'	=> 3,
+			);
+
+			$current_post_query = new WP_Query( $args );
+
+			if ( $current_post_query->have_posts() ) :
+
+				// Starts the post container.
+				echo '<div id="fp-case-studies" class="card has-card-label">';
+
+					while ( $current_post_query->have_posts() ) : $current_post_query->the_post();
+
+						lawyerist_get_post_card();
+
+					endwhile; wp_reset_postdata();
+
+					$all_posts_txt	= 'All Small Firm Roadmap Stories';
+					$all_posts_url	=	get_category_link( 4406 );
+
+					echo '<p class="card-label card-bottom-label"><a href="' . $all_posts_url . '" title="' . $all_posts_txt . '">' . $all_posts_txt . '</a></p>';
+
+				echo '</div>';
+
+			endif;
+			// End of case studies.
 
 
 			echo '<p class="fp-section-header">Featured Resources</p>';
