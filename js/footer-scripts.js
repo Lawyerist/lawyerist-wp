@@ -281,21 +281,19 @@
 // Sticky Platinum Sponsors Widget
 ( function( $ ) {
 
-  function stickySidebarAd() {
+  function stickySidebar() {
 
     // Checks to see if the sidebar ad is present.
     if ( $( '#platinum-sponsors-widget' ).length > 0 ) {
 
-      var windowTop     = $( window ).scrollTop();
-      var sidebarTop    = $( '#sidebar_column' ).offset().top;
-      var widgetHeight  = $( '#platinum-sponsors-widget' ).outerHeight();
-      var sidebarBottom = sidebarTop + widgetHeight;
+      var windowTop     = $( window ).scrollTop() + $( '#wpadminbar' ).outerHeight();
+      var contentTop    = $( '#column_container' ).offset().top - 30;
 
-      if ( windowTop > sidebarBottom ) {
+      if ( windowTop > contentTop ) {
         $( '#platinum-sponsors-widget' ).addClass( 'stick' );
       }
 
-      if ( windowTop < sidebarBottom ) {
+      if ( windowTop < contentTop ) {
         $( '#platinum-sponsors-widget' ).removeClass( 'stick' );
       }
 
@@ -303,8 +301,8 @@
 
   }
 
-  $( window ).scroll( stickySidebarAd );
-  stickySidebarAd();
+  $( window ).scroll( stickySidebar );
+  stickySidebar();
 
 })( jQuery );
 // End Sticky Platinum Sponsors Widget
