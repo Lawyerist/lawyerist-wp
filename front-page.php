@@ -13,7 +13,7 @@
 			if ( is_archive() || is_search() ) { lawyerist_get_archive_header(); }
 
 	    // Get the Loop.
-	    get_template_part( 'loop', 'index' );
+	    get_template_part( 'template-parts/loop', 'index' );
 
 		else :
 
@@ -291,7 +291,7 @@
 
 	</div><!-- end #content_column -->
 
-	<?php get_template_part( 'sidebar' ); ?>
+	<?php get_template_part( 'template-parts/sidebar' ); ?>
 
 <?php
 

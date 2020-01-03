@@ -61,7 +61,7 @@
 
 	</div>
 
-	<?php get_template_part( 'sidebar' ); ?>
+	<?php get_template_part( 'template-parts/sidebar' ); ?>
 
 </div>
 

@@ -49,7 +49,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
         // Byline
         if ( !is_really_a_woocommerce_page() ) {
-          get_template_part( 'postmeta', 'page' );
+          get_template_part( './template-parts/postmeta', 'page' );
         }
 
         // Show page navigation if the post is paginated unless we're displaying

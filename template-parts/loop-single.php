@@ -28,7 +28,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
       // Headline
       echo '<h1 class="headline entry-title">' . $post_title . '</h1>';
 
-      get_template_part( 'postmeta', 'single_top' );
+      get_template_part( './template-parts/postmeta', 'single_top' );
 
 
       // Output the post.
@@ -55,7 +55,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
         }
 
-        get_template_part( 'postmeta', 'single_bottom' );
+        get_template_part( './template-parts/postmeta', 'single_bottom' );
 
       echo '</div>'; // Close .post_body.
 

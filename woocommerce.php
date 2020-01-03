@@ -18,7 +18,7 @@
 	</div>
 	<!-- end #content_column -->
 
-	<?php get_template_part( 'sidebar' ); ?>
+	<?php get_template_part( 'template-parts/sidebar' ); ?>
 
 </div>
 <!--end #column_container-->
