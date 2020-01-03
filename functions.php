@@ -228,6 +228,8 @@ function lawyerist_loginout( $items, $args ) {
 
 	if ( is_user_logged_in() && $args->theme_location == 'header-nav-menu' ) {
 
+		$user_ID = get_current_user_id();
+
 		ob_start();
 
 		?>
@@ -240,8 +242,12 @@ function lawyerist_loginout( $items, $args ) {
 
 					<li class="menu-item"><a href="https://lawyerist.com/account/">My Account</a>
 
-					<?php if ( wc_memberships_is_user_active_member( get_current_user_id(), 'lab' ) ) { ?>
+					<?php if ( wc_memberships_is_user_active_member( $user_ID, 'lab' ) ) { ?>
 						<li class="menu-item"><a href="https://lawyerist.com/labster-portal/">Member Portal</a></li>
+					<?php } ?>
+
+					<?php if ( wc_memberships_is_user_active_member( $user_ID, 'accelerator' ) ) { ?>
+						<li class="menu-item"><a href="https://lawyerist.com/courses/accelerator/">Accelerator</a></li>
 					<?php } ?>
 
 					<li class="menu-item"><a href="https://lawyerist.com/scorecard/">Update My Scorecard</a></li>
@@ -2050,21 +2056,21 @@ add_action( 'admin_init' , function() {
 
 // Overwrites product_cat taxonomy properties to hide it from the WP admin.
 add_action( 'init', function() {
-    register_taxonomy( 'product_cat', 'product', [
-        'public'            => false,
-        'show_ui'           => false,
-        'show_admin_column' => false,
-        'show_in_nav_menus' => false,
-        'show_tagcloud'     => false,
-    ]);
+  register_taxonomy( 'product_cat', 'product', [
+    'public'            => false,
+    'show_ui'           => false,
+    'show_admin_column' => false,
+    'show_in_nav_menus' => false,
+    'show_tagcloud'     => false,
+  ]);
 }, 100 );
 
 // And remove categories from the Products table.
 add_action( 'admin_init' , function() {
-    add_filter( 'manage_product_posts_columns', function( $columns ) {
-        unset( $columns[ 'product_cat' ] );
-        return $columns;
-    }, 100 );
+  add_filter( 'manage_product_posts_columns', function( $columns ) {
+    unset( $columns[ 'product_cat' ] );
+    return $columns;
+  }, 100 );
 });
 
 
@@ -2094,6 +2100,8 @@ Disable Tag & Author Archives
 ------------------------------*/
 
 function lawyerist_disable_archives( $query ) {
+
+
 
   if ( $query->is_tag() || $query->is_author() ) {
 		global $wp_query;
