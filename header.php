@@ -33,12 +33,6 @@
 
   wp_head();
 
-  // Nofollows sponsored posts.
-  if ( has_category( 'sponsored') ) {
-    echo '<!-- Showing a sponsored post, so it is nofollowed. -->';
-    echo '<meta name="robots" content="nofollow">';
-  }
-
   // Noindexes/nofollows Lab Workshop archives and posts.
   if ( is_category( 'lab-workshops') || has_category( 'lab-workshops') ) {
     echo '<!-- Showing a Lab Workshops archive or post, so this page is noindexed and nofollowed. -->';
