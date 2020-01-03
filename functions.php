@@ -79,7 +79,7 @@ TAXONOMY
 Stylesheets & Scripts
 ------------------------------*/
 
-function lawyerist_stylesheets_scripts() {
+function stylesheets_scripts() {
 
 	// Normalize the default styles. From https://github.com/necolas/normalize.css/
 	wp_register_style( 'normalize-css', get_template_directory_uri() . '/css/normalize.min.css' );
@@ -99,14 +99,14 @@ function lawyerist_stylesheets_scripts() {
 
 }
 
-add_action( 'wp_enqueue_scripts', 'lawyerist_stylesheets_scripts' );
+add_action( 'wp_enqueue_scripts', 'stylesheets_scripts' );
 
 
 /*------------------------------
 Theme Setup
 ------------------------------*/
 
-function lawyerist_theme_setup() {
+function theme_setup() {
 
 	add_theme_support( 'post-thumbnails' );
 	add_theme_support( 'responsive-embeds' );
@@ -118,7 +118,7 @@ function lawyerist_theme_setup() {
 
 }
 
-add_action( 'after_setup_theme', 'lawyerist_theme_setup' );
+add_action( 'after_setup_theme', 'theme_setup' );
 
 
 /*------------------------------
@@ -163,7 +163,7 @@ add_filter( 'body_class', 'single_cat_body_class' );
 Nav Menu
 ------------------------------*/
 
-function lawyerist_register_menus() {
+function register_menus() {
 
 	register_nav_menus(
 		array(
@@ -173,7 +173,7 @@ function lawyerist_register_menus() {
 
 }
 
-add_action( 'init', 'lawyerist_register_menus' );
+add_action( 'init', 'register_menus' );
 
 
 /**
@@ -334,7 +334,7 @@ add_filter( 'login_message', 'lawyerist_login_message' );
 Remove Menu Items
 ------------------------------*/
 
-function lawyerist_remove_admin_bar_items( $wp_admin_bar ) {
+function remove_admin_bar_items( $wp_admin_bar ) {
 
 	// Remove from the +New menu.
 	$wp_admin_bar->remove_node( 'new-link' );
@@ -360,17 +360,17 @@ function lawyerist_remove_admin_bar_items( $wp_admin_bar ) {
 	$wp_admin_bar->remove_node( 'monsterinsights_frontend_button' );
 
 }
-add_action( 'admin_bar_menu', 'lawyerist_remove_admin_bar_items', 999 );
+add_action( 'admin_bar_menu', 'remove_admin_bar_items', 999 );
 
 
-function lawyerist_remove_stubborn_admin_bar_items() {
+function remove_stubborn_admin_bar_items() {
 
 	global $wp_admin_bar;
 
 	$wp_admin_bar->remove_menu( 'gravityforms-new-form' );
 
 }
-add_action( 'wp_before_admin_bar_render', 'lawyerist_remove_stubborn_admin_bar_items', 999 );
+add_action( 'wp_before_admin_bar_render', 'remove_stubborn_admin_bar_items', 999 );
 
 
 /* UTILITY FUNCTIONS ********************/
@@ -2079,7 +2079,7 @@ add_action( 'admin_init' , function() {
 Disable Comments on LearnDash Pages
 ------------------------------*/
 
-function lawyerist_ld_disable_comments() {
+function ld_disable_comments() {
 
 	remove_post_type_support( 'sfwd-courses', 'comments' );
 	remove_post_type_support( 'sfwd-lessons', 'comments' );
@@ -2089,7 +2089,7 @@ function lawyerist_ld_disable_comments() {
 
 }
 
-add_filter( 'init', 'lawyerist_ld_disable_comments' );
+add_filter( 'init', 'ld_disable_comments' );
 
 
 /* TAXONOMY *******************/
@@ -2098,18 +2098,18 @@ add_filter( 'init', 'lawyerist_ld_disable_comments' );
 Disable Tag & Author Archives
 ------------------------------*/
 
-function lawyerist_disable_archives( $query ) {
+function disable_archives() {
 
+	if ( is_admin() ) { return; }
 
-
-  if ( $query->is_tag() || $query->is_author() ) {
+  if ( is_tag() || is_author() ) {
 		global $wp_query;
     $wp_query->set_404();
   }
 
 }
 
-add_action( 'pre_get_posts', 'lawyerist_disable_archives' );
+add_action( 'pre_get_posts', 'disable_archives' );
 
 
 /*------------------------------
