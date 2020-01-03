@@ -136,7 +136,7 @@ if ( !is_admin() ) {
 Add Categories to Body Classes
 ------------------------------*/
 
-function lwyrst_cat_body_class( $classes ) {
+function single_cat_body_class( $classes ) {
 
 	if ( is_single() ) {
 
@@ -154,7 +154,7 @@ function lwyrst_cat_body_class( $classes ) {
 
 }
 
-add_filter( 'body_class', 'lwyrst_cat_body_class' );
+add_filter( 'body_class', 'single_cat_body_class' );
 
 
 /* STRUCTURE ******************/
@@ -367,7 +367,6 @@ function lawyerist_remove_stubborn_admin_bar_items() {
 
 	global $wp_admin_bar;
 
-	// replace 'updraft_admin_node' with your node id
 	$wp_admin_bar->remove_menu( 'gravityforms-new-form' );
 
 }
