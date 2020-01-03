@@ -777,6 +777,16 @@ function lawyerist_get_archive_header() {
 		echo $descr . "\n";
 		echo '</div>';
 
+	} elseif ( is_post_type_archive( array( 'sfwd-lessons', 'sfwd-topic' ) ) ) {
+
+		$course_id 		= learndash_get_course_id( get_the_ID( $post->$post_parent ) );
+		$course_title	= get_the_title( $course_id );
+		$archive_title = post_type_archive_title( '', FALSE );
+
+		echo '<div id="archive-header">' . "\n";
+			echo '<h1>' . $course_title . ' ' . $archive_title . '</h1>' . "\n";
+		echo '</div>';
+
 	} else {
 
 		$title			= single_term_title( '', FALSE );

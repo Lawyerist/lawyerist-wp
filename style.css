@@ -696,14 +696,11 @@ h6,
 input[type="button"],
 input[type="submit"],
 label,
-.ld-content-actions,
 .ld_course_grid,
+.ld-item-list,
 .ld-course-status,
 .ld-lesson-status,
 .ld-topic-status,
-.ld-item-list-items,
-.ld-table-list,
-.ld-text,
 .logged-in-as, /* Logged-in message on comment form. */
 #menu-main-menu,
 .onsale,
@@ -3253,8 +3250,6 @@ input[type="button"],
 input[type="submit"],
 a.review-btn,
 #commentform.wp-review-comment-form input[type="submit"],
-.ld-course-list-items .ld_course_grid .thumbnail.course a.btn-primary,
-.learndash_join_button input#btn-join,
 .woocommerce #respond input#submit,
 .woocommerce a.button,
 .woocommerce button.button,
@@ -3337,11 +3332,6 @@ a.review-btn,
     margin: .5rem .5rem .5rem 0;
   }
 
-  .ld-course-list-items .ld_course_grid .thumbnail.course a.btn-primary {
-    margin-bottom: 0;
-    width: 100%;
-  }
-
   .woocommerce-notices-wrapper button,
   .woocommerce-notices-wrapper a.button,
   .woocommerce input.button {
@@ -3387,8 +3377,6 @@ input[type="button"]:focus,
 input[type="submit"]:focus,
 a.review-btn:focus,
 #commentform.wp-review-comment-form input[type="submit"]:focus,
-.ld-course-list-items .ld_course_grid .thumbnail.course a.btn-primary:focus,
-.learndash_join_button input#btn-join:focus,
 .woocommerce #respond input#submit:focus,
 .woocommerce a.button:focus,
 .woocommerce button.button:focus,
@@ -3412,8 +3400,6 @@ input[type="button"]:hover,
 input[type="submit"]:hover,
 a.review-btn:hover,
 #commentform.wp-review-comment-form input[type="submit"]:hover,
-.ld-course-list-items .ld_course_grid .thumbnail.course a.btn-primary:hover,
-.learndash_join_button input#btn-join:hover,
 .woocommerce #respond input#submit:hover,
 .woocommerce a.button:hover,
 .woocommerce button.button:hover,
@@ -3438,8 +3424,6 @@ input[type="button"]:active,
 input[type="submit"]:active,
 a.review-btn:active,
 #commentform.wp-review-comment-form input[type="submit"]:active,
-.ld-course-list-items .ld_course_grid .thumbnail.course a.btn-primary:active,
-.learndash_join_button input#btn-join:active,
 .woocommerce #respond input#submit:active,
 .woocommerce a.button:active,
 .woocommerce button.button:active,
@@ -4024,105 +4008,31 @@ body.woocommerce-cart .actions button  {
 LearnDash
 ------------------------------*/
 
-.post-type-archive-sfwd-courses #courses-list {
-  display: grid;
-  grid-template-columns: repeat( 2, 1fr );
-  grid-gap: 1rem;
-}
-
-  .post-type-archive-sfwd-courses #courses-list .card {
-    margin: 0;
-  }
-
-  .post-type-archive-sfwd-courses #courses-list .card h2 {
-    margin-bottom: 0;
-  }
+/* Course Grid */
 
 .ld-course-list-items .ld_course_grid .thumbnail.course {
   border: 0;
 }
 
-  .ld-course-list-items .ld_course_grid .thumbnail .ld_course_grid_price.free {
-    display: none;
-  }
-
-  .ld-course-list-items .ld_course_grid .thumbnail .ld_course_grid_price.ribbon-enrolled {
+  .ld-course-list-items .ld_course_grid_price.ribbon-enrolled {
     background-color: #888 !important;
     font-weight: normal !important;
     text-transform: uppercase;
   }
 
-  .ld-course-list-items .ld_course_grid .thumbnail .ld_course_grid_price.ribbon-enrolled::before {
+  .ld-course-list-items .ld_course_grid_price.ribbon-enrolled::before {
     border-top-color: #666 !important;
     border-right-color: #666 !important;
   }
 
-  .ld-course-list-items .ld_course_grid .thumbnail img {
-    margin: 0;
-  }
-
   .ld-course-list-items .ld_course_grid .thumbnail .caption {
-    padding: 2rem !important;
+    padding: 2rem;
   }
 
-.single-sfwd-courses #learndash_course_status,
-.single-sfwd-topic .learndash_topic_dots {
-  color: #444;
-  font-size: 1.4rem;
-  text-transform: uppercase;
+.sfwd-lessons-card,
+.sfwd-topic-card {
+  padding: 2rem;
 }
-
-.single-sfwd-courses #learndash_course_content_title {
-  margin-bottom: .5em;
-}
-
-.single-sfwd-courses #lesson_heading,
-.single-sfwd-lessons #learndash_lesson_topics_list strong:first-of-type {
-  font-size: 1.4rem;
-  font-weight: bold;
-  text-transform: uppercase;
-}
-
-.single-sfwd-courses #learndash_lessons,
-.single-sfwd-courses #learndash_lessons h4,
-.single-sfwd-courses #learndash_lessons a,
-.single-sfwd-lessons #learndash_lesson_topics_list .topic_item a,
-.single-sfwd-lessons #learndash_lesson_topics_list .topic_item a > span {
-  color: unset;
-  font-family: unset;
-  font-size: 2rem;
-}
-
-#learndash_upload_assignment {
-  margin-bottom: 4rem;
-}
-
-  #learndash_upload_assignment td {
-    border: 0;
-  }
-
-#learndash_next_prev_link {
-  display: grid;
-  grid-gap: 2rem;
-  grid-template-columns: repeat( 2, 1fr );
-}
-
-  #learndash_next_prev_link a {
-    float: unset;
-  }
-
-    #learndash_next_prev_link a:hover .meta-nav {
-      text-decoration: none;
-    }
-
-  #learndash_next_prev_link .prev-link {
-    grid-column: 1/1;
-  }
-
-  #learndash_next_prev_link .next-link {
-    grid-column: 2/2;
-    text-align: right;
-  }
 
 
 /*------------------------------
