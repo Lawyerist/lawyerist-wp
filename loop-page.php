@@ -4,7 +4,7 @@
 if ( have_posts() ) : while ( have_posts() ) : the_post();
 
   // Assign post variables.
-  $post_title = the_title( '', '', FALSE );
+  $page_title = the_title( '', '', FALSE );
 
   // Breadcrumbs
   if ( function_exists( 'yoast_breadcrumb' ) ) {
@@ -18,23 +18,39 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
     post_class();
     echo '>';
 
+      $show_featured_image = get_field( 'show_featured_image' );
+
       // Featured image
-      if ( has_post_thumbnail() ) {
+      if ( ( is_null( $show_featured_image ) || $show_featured_image == true ) && has_post_thumbnail() ) {
         echo '<div id="featured-image">';
           the_post_thumbnail( 'featured-image' );
         echo '</div>';
       }
 
       // Headline
-      echo '<h1 class="headline entry-title">' . $post_title . '</h1>';
-
-      get_template_part( 'template-parts/postmeta', 'single_top' );
-
+      echo '<h1 class="headline entry-title">' . $page_title . '</h1>';
 
       // Output the post.
       echo '<div class="post_body" itemprop="articleBody">';
 
+        if ( is_product_portal() && !is_page( 'reviews' ) ) {
+
+          if ( !has_shortcode( $post->post_content, 'list-featured-products' ) ) {
+            echo do_shortcode( '[list-featured-products]' );
+          }
+
+          if ( !has_shortcode( $post->post_content, 'list-products' ) ) {
+            echo do_shortcode( '[list-products show_features="false"]' );
+          }
+
+        }
+
         the_content();
+
+        // Byline
+        if ( !is_really_a_woocommerce_page() ) {
+          get_template_part( 'postmeta', 'page' );
+        }
 
         // Show page navigation if the post is paginated unless we're displaying
         // the RSS feed.
@@ -55,8 +71,6 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
         }
 
-        get_template_part( 'template-parts/postmeta', 'single_bottom' );
-
       echo '</div>'; // Close .post_body.
 
     echo '</div>'; // Close .post.
@@ -65,6 +79,17 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
   echo lawyerist_cta();
 
-  lawyerist_get_related_resources();
+  // Shows review template if comments are open and reviews are enabled. The only
+  // reason this is present on plain pages is that we're using the regular page
+  // template for a few specific pages like Lab and LabCon.
+  if ( comments_open() && function_exists( 'wp_review_show_total' ) ) {
+
+    echo '<div id="comments_container">';
+      comments_template( '/reviews.php' );
+    echo '</div>';
+
+  }
+
+  lawyerist_get_related_posts();
 
 endwhile; endif; // Close the Loop.

@@ -143,7 +143,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
         }
 
         // Byline
-        get_template_part( 'template-parts/postmeta', 'page' );
+        get_template_part( 'postmeta', 'page' );
 
         lawyerist_get_alternative_products();
 

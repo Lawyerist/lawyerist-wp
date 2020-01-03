@@ -11,11 +11,11 @@
 		// Get the Loop.
 		if ( is_product_portal() ) {
 
-			get_template_part( 'template-parts/loop', 'page' );
+			get_template_part( 'loop', 'page' );
 
 		} else {
 
-			get_template_part( 'template-parts/loop', 'product-page' );
+			get_template_part( 'loop', 'product-page' );
 
 		}
 

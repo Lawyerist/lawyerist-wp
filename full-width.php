@@ -9,7 +9,7 @@
 		<?php
 
 		// Get the Loop.
-    get_template_part( 'template-parts/loop', 'page' );
+    get_template_part( 'loop', 'page' );
 
 		?>
 
