@@ -278,34 +278,77 @@
 // End WooCommerce Select Drop-Downs
 
 
-// Sticky Platinum Sponsors Widget
+// Platinum Sponsors Widget
 ( function( $ ) {
 
-  function stickySidebar() {
+  let sidebar = $( '#sidebar_column');
+  let widget  = $( '#platinum-sponsors-widget' );
 
-    // Checks to see if the sidebar ad is present.
-    if ( $( '#platinum-sponsors-widget' ).length > 0 ) {
+  function stickyWidget() {
+
+    // Checks to see if #sidebar_column is visible.
+    if ( sidebar.is( ':visible' ) && widget.length > 0 ) {
 
       var windowTop     = $( window ).scrollTop() + $( '#wpadminbar' ).outerHeight();
       var contentTop    = $( '#column_container' ).offset().top - 30;
 
       if ( windowTop > contentTop ) {
-        $( '#platinum-sponsors-widget' ).addClass( 'stick' );
+        widget.addClass( 'stick' );
       }
 
       if ( windowTop < contentTop ) {
-        $( '#platinum-sponsors-widget' ).removeClass( 'stick' );
+        widget.removeClass( 'stick' );
       }
 
     }
 
   }
 
-  $( window ).scroll( stickySidebar );
-  stickySidebar();
+  $( window ).scroll( stickyWidget );
+  stickyWidget();
+
+
+  function noSidebar() {
+
+    let showPlatInContent = $( 'body.show-plat-in-content' );
+
+    if ( sidebar.is( ':hidden' ) && widget.length > 0 && showPlatInContent.length > 0 ) {
+
+      let children = $( '.post_body' ).children().length;
+
+      widget.removeClass( 'stick' );
+      widget.addClass( 'card' );
+
+      if ( children > 6 ) {
+
+        let insertionPoint = Math.round( children / 3 );
+
+        widget.insertAfter( 'main .post_body *:nth-child( ' + insertionPoint + ' )' );
+
+      } else if ( $( '.child-pages-list' ).length > 0 ) {
+
+        widget.insertBefore( 'main .post_body .child-pages-list' );
+
+      } else {
+
+        widget.insertBefore( 'main .post_body .postmeta' );
+
+      }
+
+    } else {
+
+      widget.removeClass( 'card' );
+      widget.appendTo( sidebar );
+
+    }
+
+  }
+
+  $( window ).resize( noSidebar );
+  noSidebar();
 
 })( jQuery );
-// End Sticky Platinum Sponsors Widget
+// End Platinum Sponsors Widget
 
 
 // Dismissible Call to Action
