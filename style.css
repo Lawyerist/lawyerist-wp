@@ -3088,6 +3088,46 @@ Platinum Sponsors Widget
   margin: 0 0 4rem 0;
 }
 
+#platinum-sponsors {
+  display: grid;
+  grid-gap: .2rem;
+}
+
+@media only screen and ( max-width: 301px ) {
+
+  #platinum-sponsors {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+@media only screen and ( max-width: 601px ) {
+
+  #platinum-sponsors {
+    display: grid;
+    grid-template-columns: repeat( 2, 1fr );
+  }
+
+}
+
+@media only screen and ( max-width: 901px ) {
+
+  #platinum-sponsors {
+    display: grid;
+    grid-template-columns: repeat( 3, 1fr );
+  }
+
+}
+
+@media only screen and ( max-width: 1201px ) {
+
+  #platinum-sponsors {
+    display: grid;
+    grid-template-columns: repeat( 4, 1fr );
+  }
+
+}
+
 #platinum-sponsors-widget h3 {
   color: #888;
   font-size: 1.8rem;
@@ -3098,10 +3138,6 @@ Platinum Sponsors Widget
 #platinum-sponsors-widget img {
   display: block;
   margin: 0;
-}
-
-#platinum-sponsors-widget a {
-  margin-bottom: .1rem;
 }
 
 #platinum-sponsors-widget.stick {

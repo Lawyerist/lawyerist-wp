@@ -40,7 +40,7 @@ CONTENT
 - Remove Default Gallery Styles
 
 PARTNERSHIPS
-- Platinum Sidebar Widget
+- Platinum Sponsors Widget
 - Affinity Benefit Notice
 - Add Sponsor to Post Meta
 
@@ -1326,7 +1326,7 @@ add_filter( 'use_default_gallery_style', '__return_false' );
 /* PARTNERSHIPS	***************/
 
 /*------------------------------
-Platinum Sidebar Widget
+Platinum Sponsors Widget
 ------------------------------*/
 
 function lawyerist_platinum_sponsors_widget() {
@@ -1354,17 +1354,21 @@ function lawyerist_platinum_sponsors_widget() {
 
 			echo '<h3>Platinum Sponsors</h3>';
 
-			while ( $platinum_sponsors_query->have_posts() ) : $platinum_sponsors_query->the_post();
+			echo '<div id="platinum-sponsors">';
 
-					$product_page_title			= the_title( '', '', FALSE );
-					$product_page_url				= get_permalink();
-					$platinum_sidebar_image	= get_field( 'platinum_sidebar_image' );
+				while ( $platinum_sponsors_query->have_posts() ) : $platinum_sponsors_query->the_post();
 
-					echo '<a href="' . $product_page_url . '?utm_source=lawyerist&amp;utm_medium=platinum_sidebar_widget">';
-						echo wp_get_attachment_image( $platinum_sidebar_image, 'large' );
-					echo '</a>';
+						$product_page_title			= the_title( '', '', FALSE );
+						$product_page_url				= get_permalink();
+						$platinum_sidebar_image	= get_field( 'platinum_sidebar_image' );
 
-			endwhile; wp_reset_postdata();
+						echo '<a href="' . $product_page_url . '?utm_source=lawyerist&amp;utm_medium=platinum_sidebar_widget">';
+							echo wp_get_attachment_image( $platinum_sidebar_image, 'large' );
+						echo '</a>';
+
+				endwhile; wp_reset_postdata();
+
+			echo '</div>';
 
 		echo '</div>';
 
