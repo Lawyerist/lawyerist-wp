@@ -36,10 +36,9 @@ Content
   Team Profiles
   Labster Directory
   Full Width Template
-  No Sidebar Template
 	Comments
 Author Bios
-Sidebar
+Platinum Sponsors Widget
 Footer
 Forms
 	Buttons
@@ -2876,16 +2875,6 @@ Content
   }
 
 
-  /*------------------------------
-  No Sidebar Template
-  ------------------------------*/
-
-  .no-sidebar #content_column {
-    float: none;
-    margin: 0 auto;
-  }
-
-
 	/*------------------------------
 	Comments
 	------------------------------*/
@@ -3092,18 +3081,17 @@ Author Bios
 
 
 /*------------------------------
-Sidebar
+Platinum Sponsors Widget
 ------------------------------*/
 
-/* Platinum Sponsors widget. */
+#platinum-sponsors-widget {
+  margin: 0 0 4rem 0;
+}
+
 #platinum-sponsors-widget h3 {
   color: #888;
   font-size: 1.8rem;
   text-transform: uppercase;
-}
-
-#platinum-sponsors-widget {
-  margin: 0 0 4rem 0;
 }
 
 #platinum-sponsors-widget a,
