@@ -51,7 +51,7 @@
 
 <?php
 
-if ( !is_front_page() && !is_page_template( 'product-page.php' ) && !is_page_template( 'full-width.php' ) && !is_product() ) {
+if ( !is_page_template( 'product-page.php' ) && !is_page_template( 'full-width.php' ) && !is_product() ) {
   $classes[] = 'show-plat-in-content';
 }
 

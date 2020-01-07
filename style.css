@@ -3088,6 +3088,10 @@ Platinum Sponsors Widget
   margin: 0 0 4rem 0;
 }
 
+body.home #platinum-sponsors-widget {
+  margin: 0 0 1rem 0;
+}
+
 #platinum-sponsors-widget.card {
   margin: 4rem auto;
   padding: 2rem;

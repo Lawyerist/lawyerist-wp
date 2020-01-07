@@ -307,20 +307,22 @@
   $( window ).scroll( stickyWidget );
   stickyWidget();
 
-  /*
-
   function noSidebar() {
 
     let showPlatInContent = $( 'body.show-plat-in-content' );
 
-    if ( sidebar.is( ':hidden' ) && widget.length > 0 && showPlatInContent.length > 0 ) {
+    if ( sidebar.is( ':hidden' ) && $( '.post_body' ).not( widget ) && showPlatInContent.length > 0 ) {
 
       let children = $( '.post_body' ).children().length;
 
       widget.removeClass( 'stick' );
       widget.addClass( 'card' );
 
-      if ( children > 6 ) {
+      if ( $( 'body.home' ).length > 0 ) {
+
+        widget.insertAfter( '#fp-recent-pages' );
+
+      } else if ( children > 6 ) {
 
         let insertionPoint = Math.round( children / 3 );
 
@@ -347,8 +349,6 @@
 
   $( window ).resize( noSidebar );
   noSidebar();
-
-  */
 
 })( jQuery );
 // End Platinum Sponsors Widget
