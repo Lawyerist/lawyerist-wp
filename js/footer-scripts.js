@@ -326,7 +326,7 @@
 
         let insertionPoint = Math.round( children / 3 );
 
-        widget.insertAfter( 'main .post_body *:nth-child( ' + insertionPoint + ' )' );
+        widget.insertAfter( 'main .post_body > *:nth-child( ' + insertionPoint + ' )' );
 
       } else if ( $( '.child-pages-list' ).length > 0 ) {
 
