@@ -307,6 +307,7 @@
   $( window ).scroll( stickyWidget );
   stickyWidget();
 
+  /*
 
   function noSidebar() {
 
@@ -346,6 +347,8 @@
 
   $( window ).resize( noSidebar );
   noSidebar();
+
+  */
 
 })( jQuery );
 // End Platinum Sponsors Widget
