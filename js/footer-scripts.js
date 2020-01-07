@@ -313,7 +313,8 @@
 
     if ( sidebar.is( ':hidden' ) && $( '.post_body' ).not( widget ) && showPlatInContent.length > 0 ) {
 
-      let children = $( '.post_body' ).children().length;
+      let postBodyChildren    = $( '.post_body' ).children().length;
+      let contentColChildren  = $( '#content_column' ).children().length;
 
       widget.removeClass( 'stick' );
       widget.addClass( 'card' );
@@ -322,19 +323,25 @@
 
         widget.insertAfter( '#fp-recent-pages' );
 
-      } else if ( children > 6 ) {
+      } else if ( $( 'body.archive' ).length > 0 && contentColChildren > 6 ) {
 
-        let insertionPoint = Math.round( children / 3 );
+        let insertionPoint = Math.round( contentColChildren / 3 );
+
+        widget.insertAfter( '#content_column > *:nth-child( ' + insertionPoint + ' )' );
+
+      } else if ( postBodyChildren > 6 ) {
+
+        let insertionPoint = Math.round( postBodyChildren / 3 );
 
         widget.insertAfter( 'main .post_body > *:nth-child( ' + insertionPoint + ' )' );
 
-      } else if ( $( '.child-pages-list' ).length > 0 ) {
+      } else if ( $( '.post_body .postmeta' ).length > 0 ) {
 
-        widget.insertBefore( 'main .post_body .child-pages-list' );
+        widget.insertBefore( 'main .post_body .postmeta' );
 
       } else {
 
-        widget.insertBefore( 'main .post_body .postmeta' );
+        widget.insertAfter( '#content_column > *:last-child' );
 
       }
 

@@ -3088,7 +3088,8 @@ Platinum Sponsors Widget
   margin: 0 0 4rem 0;
 }
 
-body.home #platinum-sponsors-widget {
+body.home #platinum-sponsors-widget,
+body.archive #platinum-sponsors-widget {
   margin: 0 0 1rem 0;
 }
 
