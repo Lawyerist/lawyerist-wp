@@ -465,9 +465,10 @@ function get_sponsor_link() {
 
 		$sponsor_info = get_term( $sponsor_IDs[0] );
 		$sponsor      = $sponsor_info->name;
-		$sponsor_url  = filter_var( $sponsor_info->description, FILTER_SANITIZE_URL );
+		$prod_page_id	= get_field( 'sponsor_product_page_id', 'sponsor_' . $sponsor_info->term_id );
+		$sponsor_url  = get_permalink( $prod_page_id );
 
-		if ( !empty( $sponsor_url ) ) {
+		if ( !is_null( $prod_page_id ) ) {
 
 			$sponsor_link = '<a href="' . $sponsor_url . '">' . $sponsor . '</a>';
 
