@@ -2200,11 +2200,13 @@ function sponsor_tax() {
 		'search_items'               => 'Search Sponsors',
 		'not_found'                  => 'Sponsor Not Found',
 	);
+
 	$rewrite = array(
 		'slug'                       => 'sponsor',
 		'with_front'                 => true,
 		'hierarchical'               => false,
 	);
+
 	$args = array(
 		'labels'                     => $labels,
 		'hierarchical'               => false,
@@ -2216,6 +2218,7 @@ function sponsor_tax() {
 		'show_tagcloud'              => false,
 		'rewrite'                    => $rewrite,
 	);
+
 	register_taxonomy( 'sponsor', array( 'post' ), $args );
 
 }
