@@ -2548,8 +2548,17 @@ Content
     }
 
       #product_page_title .headline {
+        font-size: 6.3rem;
         margin-bottom: 0;
       }
+
+        @media only screen and (max-width:500px) {
+
+          #product_page_title .headline {
+            font-size: 4.2rem;
+          }
+
+        }
 
   .list-products-trial-button {
     position: absolute;
