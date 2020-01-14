@@ -113,7 +113,10 @@ function theme_setup() {
 	add_theme_support( 'title-tag' );
 	add_theme_support( 'wp-block-styles' );
 
-	add_image_size( 'featured-image', 1024 );
+	add_image_size( 'featured-image-2048', 2048 );
+	add_image_size( 'featured-image-1388', 1388 );
+	add_image_size( 'featured-image-1024', 1024 );
+	add_image_size( 'featured-image-694', 694 );
 	add_image_size( 'retina-thumbnail', 300, 300, true );
 
 }
@@ -1056,7 +1059,7 @@ function lawyerist_cta() {
 			<div class="book_cta_grid_row">
 
 				<div id="book_cta_img">
-					<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2019/09/small-firm-roadmap-featured-image.jpg" alt="The Small Firm Roadmap book cover">
+					<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2019/09/small-firm-roadmap-featured-image-694.jpg" alt="The Small Firm Roadmap book cover">
 				</div>
 
 				<div id="book_cta_copy">

@@ -20,9 +20,16 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
       // Featured image
       if ( has_post_thumbnail() ) {
+
         echo '<div id="featured-image">';
-          the_post_thumbnail( 'featured-image' );
+
+          $featured_img_url_1x = get_the_post_thumbnail_url( $post->ID, 'featured-image-694' );
+          $featured_img_url_2x = get_the_post_thumbnail_url( $post->ID, 'featured-image-1388' );
+
+          echo '<img class="featured-image" srcset="' . $featured_img_url_1x . ' 1x, ' . $featured_img_url_2x . ' 2x" src="' . $featured_img_url_1x . '" />';
+
         echo '</div>';
+
       }
 
       // Headline

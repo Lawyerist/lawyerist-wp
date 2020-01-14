@@ -22,9 +22,25 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
       // Featured image
       if ( ( is_null( $show_featured_image ) || $show_featured_image == true ) && has_post_thumbnail() ) {
+
         echo '<div id="featured-image">';
-          the_post_thumbnail( 'featured-image' );
+
+          if ( is_page_template( 'product-page.php' ) || is_page_template( 'full-width.php' ) ) {
+
+            $featured_img_url_1x = get_the_post_thumbnail_url( $post->ID, 'featured-image-1024' );
+            $featured_img_url_2x = get_the_post_thumbnail_url( $post->ID, 'featured-image-2048' );
+
+          } else {
+
+            $featured_img_url_1x = get_the_post_thumbnail_url( $post->ID, 'featured-image-694' );
+            $featured_img_url_2x = get_the_post_thumbnail_url( $post->ID, 'featured-image-1388' );
+
+          }
+
+          echo '<img class="featured-image" srcset="' . $featured_img_url_1x . ' 1x, ' . $featured_img_url_2x . ' 2x" src="' . $featured_img_url_1x . '" />';
+
         echo '</div>';
+
       }
 
       // Headline
