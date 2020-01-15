@@ -47,6 +47,11 @@
   <!-- Google Webmaster Tools site verification tag for Aaron -->
   <meta name="google-site-verification" content="d_OrAi2nt_o3Y3uQ-dicRpRYaxZSynFLUhHY15cnJUY" />
 
+  <script type="text/javascript">
+    // Disables Wistia's third-party performance tracking script.
+    window.wistiaDisableMux = true
+  </script>
+
 </head>
 
 <?php
