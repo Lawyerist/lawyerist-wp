@@ -2552,7 +2552,7 @@ Content
         margin-bottom: 0;
       }
 
-        @media only screen and (max-width:500px) {
+        @media only screen and ( max-width: 499px ) {
 
           #product_page_title .headline {
             font-size: 4.2rem;
@@ -3846,7 +3846,7 @@ WooCommerce
     margin: 0 0 0 20rem;
   }
 
-@media only screen and (max-width: 500px) {
+@media only screen and ( max-width: 499px ) {
 
   .tax-product_cat ul.products li.product a img {
     margin: 0 0 1.5rem 0;
