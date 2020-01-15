@@ -27,13 +27,13 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
           if ( is_page_template( 'product-page.php' ) || is_page_template( 'full-width.php' ) ) {
 
-            $featured_img_url_1x = get_the_post_thumbnail_url( $post->ID, 'featured-image-1024' );
-            $featured_img_url_2x = get_the_post_thumbnail_url( $post->ID, 'featured-image-2048' );
+            $featured_img_url_1x = get_the_post_thumbnail_url( $post->ID, 'featured_image' );
+            $featured_img_url_2x = get_the_post_thumbnail_url( $post->ID, 'featured_image_2x' );
 
           } else {
 
-            $featured_img_url_1x = get_the_post_thumbnail_url( $post->ID, 'featured-image-694' );
-            $featured_img_url_2x = get_the_post_thumbnail_url( $post->ID, 'featured-image-1388' );
+            $featured_img_url_1x = get_the_post_thumbnail_url( $post->ID, 'large' );
+            $featured_img_url_2x = get_the_post_thumbnail_url( $post->ID, 'large_2x' );
 
           }
 
