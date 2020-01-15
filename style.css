@@ -3152,6 +3152,11 @@ body.archive #platinum-sponsors-widget {
   text-transform: uppercase;
 }
 
+#content_column #platinum-sponsors-widget h3 {
+  line-height: 1.2;
+  margin-bottom: .5em;
+}
+
 #platinum-sponsors-widget a,
 #platinum-sponsors-widget img {
   display: block;
