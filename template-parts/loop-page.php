@@ -37,7 +37,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
           }
 
-          echo '<img class="featured-image" srcset="' . $featured_img_url_1x . ' 1x, ' . $featured_img_url_2x . ' 2x" src="' . $featured_img_url_1x . '" />';
+          echo '<img class="wp-post-image size-large" srcset="' . $featured_img_url_1x . ' 1x, ' . $featured_img_url_2x . ' 2x" src="' . $featured_img_url_1x . '" />';
 
         echo '</div>';
 
