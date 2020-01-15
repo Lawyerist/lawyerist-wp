@@ -1668,8 +1668,8 @@ p.dashboard-widget-note {
 
   .book_cta_grid_row {
     display: grid;
-    grid-column-gap: 2rem;
-    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 4rem;
+    grid-template-columns: 30rem 1fr;
   }
 
     #book_cta_img img {

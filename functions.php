@@ -136,15 +136,17 @@ function remove_image_sizes() {
 add_action( 'init', 'remove_image_sizes' );
 
 
-function deactivate_medium_large_image_size( $sizes ){
+function remove_image_size_options( $possible_sizes ) {
 
-	return array_filter( $sizes, function( $val ) {
-    return 'medium_large' !== $val; // Filter out 'medium_large'
-  } );
+	unset( $possible_sizes[ 'wp_review_small' ] );
+	unset( $possible_sizes[ 'wp_review_large' ] );
+
+	return $possible_sizes;
 
 }
 
-add_filter( 'intermediate_image_sizes', 'deactivate_medium_large_image_size' );
+add_filter( 'image_size_names_choose', 'remove_image_size_options' );
+
 
 
 /*------------------------------
@@ -1082,7 +1084,7 @@ function lawyerist_cta() {
 			<div class="book_cta_grid_row">
 
 				<div id="book_cta_img">
-					<img src="https://lawyerist.com/lawyerist/wp-content/uploads/2019/09/small-firm-roadmap-featured-image.jpg" alt="The Small Firm Roadmap book cover">
+					<?php echo wp_get_attachment_image( 325237, 'medium' ); ?>
 				</div>
 
 				<div id="book_cta_copy">

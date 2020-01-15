@@ -23,10 +23,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
         echo '<div id="featured-image">';
 
-        $featured_img_url_1x = get_the_post_thumbnail_url( $post->ID, 'large' );
-        $featured_img_url_2x = get_the_post_thumbnail_url( $post->ID, 'large_2x' );
-
-          echo '<img class="wp-post-image size-large" srcset="' . $featured_img_url_1x . ' 1x, ' . $featured_img_url_2x . ' 2x" src="' . $featured_img_url_1x . '" />';
+          the_post_thumbnail();
 
         echo '</div>';
 

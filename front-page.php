@@ -99,7 +99,7 @@
 
 			echo '<div class="card post-card podcast-card has-card-label">';
 				echo '<a href="https://lawyerist.com/podcast/" title="The Lawyerist Podcast" class="post has-post-thumbnail">';
-					echo '<img srcset="' . $show_img_url[ '1x' ] . ' 1x, ' . $show_img_url[ '2x' ] . ' 2x" src="' . $show_img_url[ '1x' ] . '" />';
+					echo wp_get_attachment_image( 529989, array( 100, 201 ) );
 					echo '<div class="headline-byline">';
 						echo '<h2 class="headline" title="' . $ep_title . '">' . $ep_title . '</h2>';
 						echo '<div class="postmeta"><span class="date updated published">' . $ep_date . '</span></div>';
