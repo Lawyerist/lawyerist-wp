@@ -80,6 +80,7 @@ if ( !is_page_template( 'product-page.php' ) && !is_page_template( 'full-width.p
 
   $exclude = array(
     3379,   // About
+    207963, // Account
     245258, // Community
     220087, // Lab
     519270, // Podcast
