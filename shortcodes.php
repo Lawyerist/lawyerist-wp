@@ -613,6 +613,12 @@ function lawyerist_featured_products_list( $atts ) {
 
   		 echo '</ul>';
 
+       if ( is_product_portal() && !is_page( 'reviews' ) ) {
+
+         echo '<p><a href="#all-products" class="button greybutton">See All</a></p>';
+
+       }
+
     endif; // End product list.
 
   return ob_get_clean();
@@ -636,7 +642,6 @@ function lawyerist_all_products_list( $atts ) {
     'portal'        => $parent,
     'show_heading'  => 'true',
     'show_excerpt'  => 'true',
-    'show_features' => 'true',
   ), $atts );
 
   // Quit if this isn't a product portal.
@@ -682,6 +687,8 @@ function lawyerist_all_products_list( $atts ) {
       global $post;
 
       $fields = array();
+
+      echo '<div id="all-products" class="target"></div>';
 
       if ( $atts[ 'show_heading' ] == 'true' ) {
         echo '<h2>' . get_the_title( $post->ID ) . ' (Alphabetical List)</h2>';
@@ -840,20 +847,6 @@ function lawyerist_all_products_list( $atts ) {
 
       echo '<p id="no-results-placeholder" style="display: none;">Sorry, no results based on your choices.</p>';
 
-      if ( $atts[ 'show_features' ] == 'true' ) {
-
-        echo '<h2>' . get_the_title( $post->ID ) . ' Feature Descriptions</h2>';
-
-        foreach ( $fields as $field ) {
-
-          if ( !empty( $field[ 'message' ] ) )  {
-            echo '<p><strong>' . $field[ 'label' ] . '.</strong> ' . $field[ 'message' ] . '</p>';
-          }
-
-        }
-
-      }
-
     $all_products = ob_get_clean();
 
 	endif; // End product list.
@@ -863,6 +856,42 @@ function lawyerist_all_products_list( $atts ) {
 }
 
 add_shortcode( 'list-products', 'lawyerist_all_products_list' );
+
+
+function product_features_list( $atts ) {
+
+  $portal = get_the_ID();
+
+  // Shortcode attributes.
+  $atts = shortcode_atts( array(
+    'portal' => $portal,
+  ), $atts );
+
+  // Quit if this isn't a product portal.
+  if ( !is_product_portal( $atts[ 'portal' ] ) ) {
+    return;
+  }
+
+  ob_start();
+
+    echo '<h2>' . get_the_title( $atts[ 'portal' ] ) . ' Feature Descriptions</h2>';
+
+    $acf_group_ids  = get_feature_chart_ids();
+    $fields         = acf_get_fields( $acf_group_ids[ $atts[ 'portal' ] ] );
+
+    foreach ( $fields as $field ) {
+
+      if ( !empty( $field[ 'message' ] ) )  {
+        echo '<p><strong>' . $field[ 'label' ] . '.</strong> ' . $field[ 'message' ] . '</p>';
+      }
+
+    }
+
+  return ob_get_clean();
+
+}
+
+add_shortcode( 'list-product-features', 'product_features_list' );
 
 
 /*------------------------------

@@ -43,13 +43,21 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
             echo do_shortcode( '[list-featured-products]' );
           }
 
-          if ( !has_shortcode( $post->post_content, 'list-products' ) ) {
-            echo do_shortcode( '[list-products show_features="false"]' );
-          }
-
         }
 
         the_content();
+
+        if ( is_product_portal() && !is_page( 'reviews' ) ) {
+
+          if ( !has_shortcode( $post->post_content, 'list-products' ) ) {
+            echo do_shortcode( '[list-products]' );
+          }
+
+          if ( !has_shortcode( $post->post_content, 'list-product-features' ) ) {
+            echo do_shortcode( '[list-product-features]' );
+          }
+
+        }
 
         // Byline
         if ( !is_really_a_woocommerce_page() ) {

@@ -1980,6 +1980,14 @@ Content
     background-color: #c00 !important;
   }
 
+  :target::before,
+  .target::before {
+    content: '';
+    display: block;
+    height: 40px; /* fixed header height*/
+    margin: -40px 0 0; /* negative fixed header height */
+  }
+
   .wp-review-feedback {
     color: #777;
     font-size: 1.4rem;
