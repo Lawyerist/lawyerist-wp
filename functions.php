@@ -571,20 +571,21 @@ function is_product_portal() {
 
 	global $post;
 
-	$get_children_args = array(
+	$args = array(
 		'post_parent'	=> $post->ID,
-		'post__not_in' => array(
-			245317, // Insider
-			220087, // Lab
-			128819, // LabCon
-		),
 		'fields'		=> 'ids',
 		'post_type'	=> 'page',
 	);
 
-	$children = get_posts( $get_children_args );
+	$exclude = array(
+		245317, // Insider
+		220087, // Lab
+		128819, // LabCon
+	);
 
-	if ( is_page() && is_page_template( 'product-page.php' ) && ( count( $children ) > 0 ) ) {
+	$children = get_posts( $args );
+
+	if ( is_page() && !in_array( $post->ID, $exclude ) && is_page_template( 'product-page.php' ) && ( count( $children ) > 0 ) ) {
 
 		return true;
 
