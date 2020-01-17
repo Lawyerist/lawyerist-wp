@@ -874,16 +874,24 @@ function product_features_list( $atts ) {
 
   ob_start();
 
-    echo '<h2>' . get_the_title( $atts[ 'portal' ] ) . ' Feature Descriptions</h2>';
-
     $acf_group_ids  = get_feature_chart_ids();
     $fields         = acf_get_fields( $acf_group_ids[ $atts[ 'portal' ] ] );
 
-    foreach ( $fields as $field ) {
+    if ( !empty( $fields ) ) {
 
-      if ( !empty( $field[ 'message' ] ) )  {
-        echo '<p><strong>' . $field[ 'label' ] . '.</strong> ' . $field[ 'message' ] . '</p>';
+      echo '<h2>' . get_the_title( $atts[ 'portal' ] ) . ' Feature Descriptions</h2>';
+
+      foreach ( $fields as $field ) {
+
+        if ( !empty( $field[ 'message' ] ) )  {
+          echo '<p><strong>' . $field[ 'label' ] . '.</strong> ' . $field[ 'message' ] . '</p>';
+        }
+
       }
+
+    } else {
+
+      $return;
 
     }
 
