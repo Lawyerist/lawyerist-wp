@@ -613,7 +613,7 @@ function lawyerist_featured_products_list( $atts ) {
 
   		 echo '</ul>';
 
-       if ( is_product_portal() && !is_page( 'reviews' ) ) {
+       if ( has_shortcode( $post->post_content, 'list-products' ) ) {
 
          echo '<p><a href="#all-products" class="button greybutton">See All</a></p>';
 
