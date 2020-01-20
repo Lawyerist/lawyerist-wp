@@ -36,6 +36,7 @@ CONTENT
 - List Child Pages Fallback
 - Remove Inline Width from Image Captions
 - Featured Images in RSS Feeds
+- Remove Lab Workshops from Sitemap
 - Remove Lab Workshops from RSS Feed
 - Remove Default Gallery Styles
 
@@ -1326,6 +1327,26 @@ function featuredtoRSS( $content ) {
 
 add_filter( 'the_excerpt_rss', 'featuredtoRSS' );
 add_filter( 'the_content_feed', 'featuredtoRSS' );
+
+
+/*------------------------------
+Remove Lab Workshops from Sitemap
+------------------------------*/
+
+function remove_workshops_from_sitemap( $excluded_posts_ids ) {
+	
+	$args = array(
+		'fields'					=> 'ids',
+		'post_type'				=> 'post',
+		'category_name'		=> 'lab-workshops',
+		'posts_per_page'	=> -1,
+	);
+
+	return array_merge( $excluded_posts_ids, get_posts( $args ) );
+
+}
+
+add_filter( 'wpseo_exclude_from_sitemap_by_post_ids', 'remove_workshops_from_sitemap' );
 
 
 /*------------------------------
