@@ -1334,7 +1334,7 @@ Remove Lab Workshops from Sitemap
 ------------------------------*/
 
 function remove_workshops_from_sitemap( $excluded_posts_ids ) {
-	
+
 	$args = array(
 		'fields'					=> 'ids',
 		'post_type'				=> 'post',
