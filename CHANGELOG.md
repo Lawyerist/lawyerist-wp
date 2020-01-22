@@ -7,6 +7,9 @@ All notable changes to this project will be documented in this file. The format 
 
 ## [Unreleased]
 
+### [Fixed]
+- Define $classes in header.php before using it.
+
 ## [5.0.0] - 2020-01-21
 
 ### [Changed]
