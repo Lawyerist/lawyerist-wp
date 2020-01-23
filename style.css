@@ -1117,7 +1117,7 @@ Signup Wall
   box-shadow: 0 -.2rem .3rem rgba( 0, 0, 0, 0.2 );
   display: grid;
   grid-template-areas: 'lbuffer center rbuffer';
-  grid-template-columns: minmax( 2rem, 1fr) minmax( 28rem, 102.4rem ) minmax( 2rem, 1fr);
+  grid-template-columns: minmax( 2rem, 1fr ) minmax( 28rem, 102.4rem ) minmax( 2rem, 1fr);
   position: fixed;
     bottom: 0;
     left: 0;
