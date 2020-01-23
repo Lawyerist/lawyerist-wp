@@ -1439,7 +1439,7 @@ Card Styles
     grid-template-columns: 10rem 1fr;
   }
 
-  @media only screen and (max-width:639px) {
+  @media only screen and ( max-width: 639px ) {
 
     .card a.has-post-thumbnail {
       display: block;
