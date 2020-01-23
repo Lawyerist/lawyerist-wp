@@ -9,6 +9,7 @@ All notable changes to this project will be documented in this file. The format 
 
 ### [Fixed]
 - Define $classes in header.php before using it.
+- Update thumbnail size function on product pages.
 
 ## [5.0.0] - 2020-01-21
 
