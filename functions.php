@@ -67,7 +67,6 @@ LEARNDASH
 - Disable Comments on LearnDash Pages
 
 TAXONOMY
-- Disable Tag & Author Archives
 - Page Type Custom Taxonomy
 - Sponsors Custom Taxonomy
 
@@ -2158,17 +2157,6 @@ add_filter( 'init', 'ld_disable_comments' );
 
 
 /* TAXONOMY *******************/
-
-/*------------------------------
-Disable Tag & Author Archives
-------------------------------*/
-
-function disable_archives() {
-
-	if ( is_admin() ) { return; }
-
-add_action( 'pre_get_posts', 'disable_archives' );
-
 
 /*------------------------------
 Page Type Custom Taxonomy
