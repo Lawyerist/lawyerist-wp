@@ -2167,13 +2167,6 @@ function disable_archives() {
 
 	if ( is_admin() ) { return; }
 
-  if ( is_tag() || is_author() ) {
-		global $wp_query;
-    $wp_query->set_404();
-  }
-
-}
-
 add_action( 'pre_get_posts', 'disable_archives' );
 
 
