@@ -1599,11 +1599,14 @@ Reviews
 
 // Gets the author rating ("our" rating) from WP Review Pro, and converts it
 // from a 10-point scale to a 5-point scale. Rounds to one decimal point.
-function lawyerist_get_our_rating() {
+function lawyerist_get_our_rating( $product_id = '' ) {
 
-	global $post;
+	if ( empty( $product_id ) ) {
+		global $post;
+		$product_id = $post->ID;
+	}
 
-	$our_rating_raw	= get_post_meta( $post->ID, 'wp_review_total', true );
+	$our_rating_raw	= get_post_meta( $product_id, 'wp_review_total', true );
 	$our_rating			= round( floatval( $our_rating_raw ) / 2, 1 );
 
 	return $our_rating;
@@ -1612,22 +1615,28 @@ function lawyerist_get_our_rating() {
 
 // Gets the comments rating ("community" rating) from WP Review Pro. Rounds to
 // one decimal point.
-function lawyerist_get_community_rating() {
+function lawyerist_get_community_rating( $product_id = '' ) {
 
-	global $post;
+	if ( empty( $product_id ) ) {
+		global $post;
+		$product_id = $post->ID;
+	}
 
-	$community_rating = round( get_post_meta( $post->ID, 'wp_review_comments_rating_value', true ), 1 );
+	$community_rating = round( get_post_meta( $product_id, 'wp_review_comments_rating_value', true ), 1 );
 
 	return $community_rating;
 
 }
 
 // Gets the numnber of comment reviews ("community" reviews) from WP Review Pro.
-function lawyerist_get_community_review_count() {
+function lawyerist_get_community_review_count( $product_id = '' ) {
 
-	global $post;
+	if ( empty( $product_id ) ) {
+		global $post;
+		$product_id = $post->ID;
+	}
 
-	$community_review_count	= get_post_meta( $post->ID, 'wp_review_comments_rating_count', true );
+	$community_review_count	= get_post_meta( $product_id, 'wp_review_comments_rating_count', true );
 
 	return $community_review_count;
 
@@ -1636,11 +1645,16 @@ function lawyerist_get_community_review_count() {
 // Calculates the composite rating. If only one rating exists, that rating is
 // returned. If both ratings exist, it combines them. The output is rounded to
 // one decimal point.
-function lawyerist_get_composite_rating() {
+function lawyerist_get_composite_rating( $product_id = '' ) {
 
-	$our_rating							= lawyerist_get_our_rating();
-	$community_rating				= lawyerist_get_community_rating();
-	$community_review_count	= lawyerist_get_community_review_count();
+	if ( empty( $product_id ) ) {
+		global $post;
+		$product_id = $post->ID;
+	}
+
+	$our_rating							= lawyerist_get_our_rating( $product_id );
+	$community_rating				= lawyerist_get_community_rating( $product_id );
+	$community_review_count	= lawyerist_get_community_review_count( $product_id );
 
 	if ( !empty( $our_rating ) && !empty( $community_rating ) ) {
 
