@@ -6,6 +6,7 @@ All notable changes to this project will be documented in this file. The format 
 - Vendor recommender for product portals.
 
 ## [Unreleased]
+- Updates to product rating functions so they work better with a plugin in development.
 
 ### [Fixed]
 - Define $classes in header.php before using it.
