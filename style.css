@@ -3520,21 +3520,27 @@ button.dismiss-button {
     vertical-align: top;
   }
 
+button.graybutton,
 button.greybutton,
+a.graybutton,
 a.greybutton,
 .woocommerce input.button[name="update_cart"] {
   background-color: #ccc;
   color: #fff;
 }
 
+button.graybutton:hover,
 button.greybutton:hover,
+a.graybutton:hover,
 a.greybutton:hover,
 .woocommerce input.button[name="update_cart"]:hover {
   background-color: #ddd;
   color: #fff;
 }
 
+button.graybutton:active,
 button.greybutton:active,
+a.graybutton:active,
 a.greybutton:active,
 .woocommerce input.button[name="update_cart"]:active {
   background-color: #bbb;
