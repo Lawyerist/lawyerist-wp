@@ -599,6 +599,15 @@ Layout & Design Elements
   display: none;
 }
 
+.hidden {
+  position: absolute;
+    left: -10000px;
+    top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 .remove_bottom {
 	margin-bottom: 0 !important;
 }
