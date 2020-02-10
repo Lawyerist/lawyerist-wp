@@ -6,6 +6,7 @@ All notable changes to this project will be documented in this file. The format 
 - Vendor recommender for product portals.
 
 ## [Unreleased]
+- Update the platinum sidebar code so it pulls from Partners instead of product pages.
 
 ## [5.0.1] - 2020-01-30
 

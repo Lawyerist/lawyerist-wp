@@ -1385,15 +1385,8 @@ function lawyerist_platinum_sponsors_widget() {
 		'meta_key'				=> 'show_in_platinum_sidebar_widget',
 		'meta_value'			=> true,
 		'orderby'					=> 'rand',
-		'post_type'				=> 'page',
+		'post_type'				=> 'partner',
 		'posts_per_page'	=> -1,
-		'tax_query' => array(
-      array(
-        'taxonomy' => 'page_type',
-        'field'    => 'slug',
-        'terms'    => array( 'platinum-sponsor' ),
-      ),
-    ),
 	);
 
 	$platinum_sponsors_query = new WP_Query( $args );
@@ -1408,13 +1401,15 @@ function lawyerist_platinum_sponsors_widget() {
 
 				while ( $platinum_sponsors_query->have_posts() ) : $platinum_sponsors_query->the_post();
 
-						$product_page_title			= the_title( '', '', FALSE );
-						$product_page_url				= get_permalink();
-						$platinum_sidebar_image	= get_field( 'platinum_sidebar_image' );
+					$product_page = get_post( get_field( 'product_page', $post->ID ) );
 
-						echo '<a href="' . $product_page_url . '?utm_source=lawyerist&amp;utm_medium=platinum_sidebar_widget">';
-							echo wp_get_attachment_image( $platinum_sidebar_image, 'large' );
-						echo '</a>';
+					$product_page_title			= $product_page->post_title;
+					$product_page_url				= get_permalink( $product_page->ID );
+					$platinum_sidebar_image	= get_field( 'platinum_sidebar_image', $post->ID );
+
+					echo '<a href="' . $product_page_url . '?utm_source=lawyerist&amp;utm_medium=platinum_sidebar_widget">';
+						echo wp_get_attachment_image( $platinum_sidebar_image, 'large' );
+					echo '</a>';
 
 				endwhile; wp_reset_postdata();
 
