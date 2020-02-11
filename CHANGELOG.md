@@ -6,6 +6,13 @@ All notable changes to this project will be documented in this file. The format 
 - Vendor recommender for product portals.
 
 ## [Unreleased]
+
+## [5.1.0] - 2020-02-11
+
+### [Added]
+- Configure theme for new partner dashboards.
+
+### [Changed]
 - Update the platinum sidebar code so it pulls from Partners instead of product pages.
 
 ## [5.0.1] - 2020-01-30
