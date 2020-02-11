@@ -1382,16 +1382,16 @@ Platinum Sponsors Widget
 function lawyerist_platinum_sponsors_widget() {
 
 	$args = array(
-		'meta_key'				=> 'show_in_platinum_sidebar_widget',
+		'meta_key'				=> 'premium_product_page',
 		'meta_value'			=> true,
 		'orderby'					=> 'rand',
 		'post_type'				=> 'partner',
 		'posts_per_page'	=> -1,
 	);
 
-	$platinum_sponsors_query = new WP_Query( $args );
+	$premium_product_page_query = new WP_Query( $args );
 
-	if ( $platinum_sponsors_query->have_posts() ) :
+	if ( $premium_product_page_query->have_posts() ) :
 
 		echo '<div id="platinum-sponsors-widget">';
 
@@ -1399,17 +1399,26 @@ function lawyerist_platinum_sponsors_widget() {
 
 			echo '<div id="platinum-sponsors">';
 
-				while ( $platinum_sponsors_query->have_posts() ) : $platinum_sponsors_query->the_post();
+				while ( $premium_product_page_query->have_posts() ) : $premium_product_page_query->the_post();
 
-					$product_page = get_post( get_field( 'product_page', $post->ID ) );
+					if( have_rows( 'premium_product_page_details', $post->ID ) ) : while ( have_rows( 'premium_product_page_details' ) ) : the_row();
 
-					$product_page_title			= $product_page->post_title;
-					$product_page_url				= get_permalink( $product_page->ID );
-					$platinum_sidebar_image	= get_field( 'platinum_sidebar_image', $post->ID );
+						$premium_level					= get_sub_field( 'premium_page_level' );
+						$platinum_sidebar_image = get_sub_field( 'platinum_sidebar_image' );
 
-					echo '<a href="' . $product_page_url . '?utm_source=lawyerist&amp;utm_medium=platinum_sidebar_widget">';
-						echo wp_get_attachment_image( $platinum_sidebar_image, 'large' );
-					echo '</a>';
+					endwhile; endif;
+
+					if ( $premium_level == 'Platinum' && !empty( $platinum_sidebar_image ) ) {
+
+						$product_page				= get_post( get_field( 'product_page', $post->ID ) );
+						$product_page_title	= $product_page->post_title;
+						$product_page_url		= get_permalink( $product_page->ID );
+
+						echo '<a href="' . $product_page_url . '?utm_source=lawyerist&amp;utm_medium=platinum_sidebar_widget">';
+							echo wp_get_attachment_image( $platinum_sidebar_image, 'large' );
+						echo '</a>';
+
+					}
 
 				endwhile; wp_reset_postdata();
 
