@@ -1363,7 +1363,7 @@ function lawyerist_platinum_sponsors_widget() {
 						$platinum_sidebar_image = get_sub_field( 'premium_page_platinum_sidebar_image' );
 
 					endwhile; endif;
-
+  
 					if ( $premium_level == 'Platinum' && !empty( $platinum_sidebar_image ) ) {
 
 						$product_page				= get_post( get_field( 'product_page', $post->ID ) );

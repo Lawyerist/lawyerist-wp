@@ -7,7 +7,6 @@ All notable changes to this project will be documented in this file. The format 
 
 ## [Unreleased]
 
-
 ## [5.2.0] - 2020-02-11
 
 ### [Changed]
