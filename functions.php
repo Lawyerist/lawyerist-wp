@@ -67,7 +67,6 @@ LEARNDASH
 - Disable Comments on LearnDash Pages
 
 TAXONOMY
-- Disable Tag & Author Archives
 - Page Type Custom Taxonomy
 - Sponsors Custom Taxonomy
 
@@ -1383,23 +1382,16 @@ Platinum Sponsors Widget
 function lawyerist_platinum_sponsors_widget() {
 
 	$args = array(
-		'meta_key'				=> 'show_in_platinum_sidebar_widget',
+		'meta_key'				=> 'premium_product_page',
 		'meta_value'			=> true,
 		'orderby'					=> 'rand',
-		'post_type'				=> 'page',
+		'post_type'				=> 'partner',
 		'posts_per_page'	=> -1,
-		'tax_query' => array(
-      array(
-        'taxonomy' => 'page_type',
-        'field'    => 'slug',
-        'terms'    => array( 'platinum-sponsor' ),
-      ),
-    ),
 	);
 
-	$platinum_sponsors_query = new WP_Query( $args );
+	$premium_product_page_query = new WP_Query( $args );
 
-	if ( $platinum_sponsors_query->have_posts() ) :
+	if ( $premium_product_page_query->have_posts() ) :
 
 		echo '<div id="platinum-sponsors-widget">';
 
@@ -1407,15 +1399,26 @@ function lawyerist_platinum_sponsors_widget() {
 
 			echo '<div id="platinum-sponsors">';
 
-				while ( $platinum_sponsors_query->have_posts() ) : $platinum_sponsors_query->the_post();
+				while ( $premium_product_page_query->have_posts() ) : $premium_product_page_query->the_post();
 
-						$product_page_title			= the_title( '', '', FALSE );
-						$product_page_url				= get_permalink();
-						$platinum_sidebar_image	= get_field( 'platinum_sidebar_image' );
+					if( have_rows( 'premium_product_page_details', $post->ID ) ) : while ( have_rows( 'premium_product_page_details' ) ) : the_row();
+
+						$premium_level					= get_sub_field( 'premium_page_level' );
+						$platinum_sidebar_image = get_sub_field( 'premium_page_platinum_sidebar_image' );
+
+					endwhile; endif;
+
+					if ( $premium_level == 'Platinum' && !empty( $platinum_sidebar_image ) ) {
+
+						$product_page				= get_post( get_field( 'product_page', $post->ID ) );
+						$product_page_title	= $product_page->post_title;
+						$product_page_url		= get_permalink( $product_page->ID );
 
 						echo '<a href="' . $product_page_url . '?utm_source=lawyerist&amp;utm_medium=platinum_sidebar_widget">';
 							echo wp_get_attachment_image( $platinum_sidebar_image, 'large' );
 						echo '</a>';
+
+					}
 
 				endwhile; wp_reset_postdata();
 
@@ -1600,11 +1603,14 @@ Reviews
 
 // Gets the author rating ("our" rating) from WP Review Pro, and converts it
 // from a 10-point scale to a 5-point scale. Rounds to one decimal point.
-function lawyerist_get_our_rating() {
+function lawyerist_get_our_rating( $product_id = '' ) {
 
-	global $post;
+	if ( empty( $product_id ) ) {
+		global $post;
+		$product_id = $post->ID;
+	}
 
-	$our_rating_raw	= get_post_meta( $post->ID, 'wp_review_total', true );
+	$our_rating_raw	= get_post_meta( $product_id, 'wp_review_total', true );
 	$our_rating			= round( floatval( $our_rating_raw ) / 2, 1 );
 
 	return $our_rating;
@@ -1613,22 +1619,28 @@ function lawyerist_get_our_rating() {
 
 // Gets the comments rating ("community" rating) from WP Review Pro. Rounds to
 // one decimal point.
-function lawyerist_get_community_rating() {
+function lawyerist_get_community_rating( $product_id = '' ) {
 
-	global $post;
+	if ( empty( $product_id ) ) {
+		global $post;
+		$product_id = $post->ID;
+	}
 
-	$community_rating = round( get_post_meta( $post->ID, 'wp_review_comments_rating_value', true ), 1 );
+	$community_rating = round( get_post_meta( $product_id, 'wp_review_comments_rating_value', true ), 1 );
 
 	return $community_rating;
 
 }
 
 // Gets the numnber of comment reviews ("community" reviews) from WP Review Pro.
-function lawyerist_get_community_review_count() {
+function lawyerist_get_community_review_count( $product_id = '' ) {
 
-	global $post;
+	if ( empty( $product_id ) ) {
+		global $post;
+		$product_id = $post->ID;
+	}
 
-	$community_review_count	= get_post_meta( $post->ID, 'wp_review_comments_rating_count', true );
+	$community_review_count	= get_post_meta( $product_id, 'wp_review_comments_rating_count', true );
 
 	return $community_review_count;
 
@@ -1637,11 +1649,16 @@ function lawyerist_get_community_review_count() {
 // Calculates the composite rating. If only one rating exists, that rating is
 // returned. If both ratings exist, it combines them. The output is rounded to
 // one decimal point.
-function lawyerist_get_composite_rating() {
+function lawyerist_get_composite_rating( $product_id = '' ) {
 
-	$our_rating							= lawyerist_get_our_rating();
-	$community_rating				= lawyerist_get_community_rating();
-	$community_review_count	= lawyerist_get_community_review_count();
+	if ( empty( $product_id ) ) {
+		global $post;
+		$product_id = $post->ID;
+	}
+
+	$our_rating							= lawyerist_get_our_rating( $product_id );
+	$community_rating				= lawyerist_get_community_rating( $product_id );
+	$community_review_count	= lawyerist_get_community_review_count( $product_id );
 
 	if ( !empty( $our_rating ) && !empty( $community_rating ) ) {
 
@@ -2158,24 +2175,6 @@ add_filter( 'init', 'ld_disable_comments' );
 
 
 /* TAXONOMY *******************/
-
-/*------------------------------
-Disable Tag & Author Archives
-------------------------------*/
-
-function disable_archives() {
-
-	if ( is_admin() ) { return; }
-
-  if ( is_tag() || is_author() ) {
-		global $wp_query;
-    $wp_query->set_404();
-  }
-
-}
-
-add_action( 'pre_get_posts', 'disable_archives' );
-
 
 /*------------------------------
 Page Type Custom Taxonomy

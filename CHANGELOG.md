@@ -7,6 +7,28 @@ All notable changes to this project will be documented in this file. The format 
 
 ## [Unreleased]
 
+## [5.1.0] - 2020-02-11
+
+### [Added]
+- Configure theme for new partner dashboards.
+
+### [Changed]
+- Update the platinum sidebar code so it pulls from Partners instead of product pages.
+
+## [5.0.1] - 2020-01-30
+
+### [Added]
+- Add a .hidden class consistent accessibility best practices.
+
+### [Changed]
+- Updates to product rating functions so they work better with a plugin in development.
+- Allow .greybutton to be spelled .graybutton so I don't have to check the spelling in the stylesheet every time I want to make a grey/gray button.
+
+### [Fixed]
+- Define $classes in header.php before using it.
+- Update thumbnail size function on product pages.
+- Fix select field padding so there is enough room for the down arrow.
+
 ## [5.0.0] - 2020-01-21
 
 ### [Changed]
