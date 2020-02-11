@@ -43,7 +43,6 @@ CONTENT
 PARTNERSHIPS
 - Platinum Sponsors Widget
 - Affinity Benefit Notice
-- Add Sponsor to Post Meta
 
 COMMENTS & REVIEWS
 - Custom Default Gravatar
@@ -68,7 +67,6 @@ LEARNDASH
 
 TAXONOMY
 - Page Type Custom Taxonomy
-- Sponsors Custom Taxonomy
 
 */
 
@@ -475,42 +473,20 @@ function get_sponsor() {
 }
 
 
-function get_sponsor_link() {
+function get_sponsor_link( $post_id ) {
 
-	global $post;
+	if ( !has_category( 'sponsored', $post_id ) ) { return; }
 
-	if ( has_term( true, 'sponsor' ) ) {
+	$sponsor					= get_post( get_field( 'sponsored_post_partner', $post_id ) );
+	$product_page_id	= get_field( 'product_page', $sponsor->ID ) ? get_post( get_field( 'product_page', $sponsor->ID ) ) : null;
 
-		$sponsor_IDs = wp_get_post_terms(
-			$post->ID,
-			'sponsor',
-			array(
-				'fields' 	=> 'ids',
-				'orderby' => 'count',
-				'order' 	=> 'DESC',
-			),
-		);
+	if ( $product_page_id && get_post_status( $product_page_id ) == 'publish' ) {
 
-		$sponsor_info = get_term( $sponsor_IDs[0] );
-		$sponsor      = $sponsor_info->name;
-		$prod_page_id	= get_field( 'sponsor_product_page_id', 'sponsor_' . $sponsor_info->term_id );
-		$sponsor_url  = get_permalink( $prod_page_id );
-
-		if ( !is_null( $prod_page_id ) ) {
-
-			$sponsor_link = '<a href="' . $sponsor_url . '">' . $sponsor . '</a>';
-
-			return $sponsor_link;
-
-		} else {
-
-			return $sponsor;
-
-		}
+		return '<a href="' . get_permalink( $product_page_id ) . '">' . $sponsor->post_title . '</a>';
 
 	} else {
 
-		return;
+		return $sponsor->post_title;
 
 	}
 
@@ -707,45 +683,25 @@ function lawyerist_get_post_card( $post_ID = null, $card_top_label = null, $card
 								$author = 'the Lawyerist editorial team';
 							}
 
-							if ( has_category( 'sponsored' ) ) {
+							if ( has_category( 'sponsored') ) {
 
-						    $sponsor_IDs = wp_get_post_terms(
-						      $post_ID,
-						      'sponsor',
-						      array(
-						        'fields' 	=> 'ids',
-						        'orderby' => 'count',
-						        'order' 	=> 'DESC',
-						      )
-						    );
+								$sponsor_name = get_the_title( get_field( 'sponsored_post_partner' ) );
 
-						    $sponsor_info = get_term( $sponsor_IDs[0] );
-						    $sponsor      = $sponsor_info->name;
+								if ( has_tag( 'product-spotlights' ) ) {
 
-								if ( !empty( $sponsor ) ) {
-
-									if ( has_tag( 'product-spotlights' ) ) {
-
-										// Adds "sponsored by" after the author on product spotlights.
-										echo 'By <span class="vcard author"><cite class="fn">' . $author . '</cite></span>,&nbsp;<span class="sponsor">sponsored by ' . $sponsor . '</span>, ';
-
-									} else {
-
-										// Otherwise, replaces the author with the sponsor's name.
-							      echo '<span class="sponsor">Sponsored by ' . $sponsor . '</span> ';
-
-									}
+									// Adds "sponsored by" after the author on product spotlights.
+									echo 'By <span class="vcard author"><cite class="fn">' . $author . '</cite></span>,&nbsp;<span class="sponsor">sponsored by ' . $sponsor_name . '</span>, ';
 
 								} else {
 
-									// Fallback if no sponsor is tagged.
-									echo '<span class="sponsor">Sponsored post</span>, published ';
+									// Otherwise, replaces the author with the sponsor's name.
+						      echo '<span class="sponsor">Sponsored by ' . $sponsor_name . '</span> ';
 
 								}
 
 						    echo 'on <span class="date updated published">' . $date . '</span>';
 
-						  } else {
+							} else {
 
 						    echo 'By <span class="vcard author"><cite class="fn">' . $author . '</cite></span> ';
 						    echo 'on <span class="date updated published">' . $date . '</span> ';
@@ -1514,38 +1470,6 @@ function affinity_notice() {
 }
 
 
-/* Add Sponsor to Post Meta */
-
-function add_sponsor_to_post_meta( $post_ID, $post, $update ) {
-
-	if ( has_category( 'sponsored' ) ) {
-
-		$sponsor_IDs = wp_get_post_terms(
-			$post_ID,
-			'sponsor',
-			array(
-				'fields' 	=> 'ids',
-				'orderby' => 'count',
-				'order' 	=> 'DESC',
-			)
-		);
-
-		$sponsor_info = get_term( $sponsor_IDs[0] );
-		$sponsor      = $sponsor_info->name;
-
-		update_post_meta( $post_ID, 'sponsor', sanitize_text_field( $sponsor ) );
-
-	} else {
-
-		return;
-
-	}
-
-}
-
-add_action( 'save_post_post', 'add_sponsor_to_post_meta', 10, 3 );
-
-
 /* COMMENTS & REVIEWS *********/
 
 /*------------------------------
@@ -2222,56 +2146,3 @@ function page_type_tax() {
 }
 
 add_action( 'init', 'page_type_tax', 0 );
-
-
-/*------------------------------
-Sponsors Custom Taxonomy
-------------------------------*/
-
-// Register Custom Taxonomy
-function sponsor_tax() {
-
-	$labels = array(
-		'name'                       => 'Sponsors',
-		'singular_name'              => 'Sponsor',
-		'menu_name'                  => 'Sponsors',
-		'all_items'                  => 'All Sponsors',
-		'parent_item'                => 'Parent Sponsor',
-		'parent_item_colon'          => 'Parent Sponsor:',
-		'new_item_name'              => 'New Sponsor',
-		'add_new_item'               => 'Add New Sponsor',
-		'edit_item'                  => 'Edit Sponsor',
-		'update_item'                => 'Update Sponsor',
-		'view_item'                  => 'View Sponsor',
-		'separate_items_with_commas' => 'Posts can have only one sponsor',
-		'add_or_remove_items'        => 'Add or remove sponsors',
-		'choose_from_most_used'      => 'Choose from the most used sponsors',
-		'popular_items'              => 'Popular Sponsors',
-		'search_items'               => 'Search Sponsors',
-		'not_found'                  => 'Sponsor Not Found',
-	);
-
-	$rewrite = array(
-		'slug'                       => 'sponsor',
-		'with_front'                 => true,
-		'hierarchical'               => false,
-	);
-
-	$args = array(
-		'labels'                     => $labels,
-		'hierarchical'               => false,
-		'public'                     => true,
-		'show_ui'                    => true,
-		'show_admin_column'          => true,
-		'show_in_nav_menus'          => true,
-		'show_in_rest'							 => true,
-		'show_tagcloud'              => false,
-		'rewrite'                    => $rewrite,
-	);
-
-	register_taxonomy( 'sponsor', array( 'post' ), $args );
-
-}
-
-// Hook into the 'init' action
-add_action( 'init', 'sponsor_tax', 0 );

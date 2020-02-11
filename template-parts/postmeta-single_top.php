@@ -18,7 +18,7 @@ echo '<div class="postmeta">';
 
     if ( has_category( 'sponsored' ) ) {
 
-      $sponsor = get_sponsor_link();
+      $sponsor = get_sponsor_link( $post->ID );
 
       if ( !empty( $sponsor ) ) {
 

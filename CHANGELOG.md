@@ -7,10 +7,19 @@ All notable changes to this project will be documented in this file. The format 
 
 ## [Unreleased]
 
+
+## [5.2.0] - 2020-02-11
+
+### [Changed]
+- Sponsored posts are now associated with Partners rather than the (removed) Sponsors custom taxonomy.
+
+### [Removed]
+- Removed Sponsors custom taxonomy (replaced by Partners custom post type).
+
 ## [5.1.0] - 2020-02-11
 
 ### [Added]
-- Configure theme for new partner dashboards.
+- Configure premium product page details for new partner dashboards.
 
 ### [Changed]
 - Update the platinum sidebar code so it pulls from Partners instead of product pages.
