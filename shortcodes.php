@@ -81,6 +81,7 @@ function get_feature_chart_ids() {
     '200847' => 545853, // Timekeeping & Billing Software
     '195769' => 566001, // Virtual Receptionists & Chat
     '306014' => 627369, // Document Management & Automation
+    '226192' => 761359, // SEO & Marketing
   );
 
   return $feature_chart_ids;
