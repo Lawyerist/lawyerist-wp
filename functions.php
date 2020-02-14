@@ -1335,19 +1335,24 @@ add_filter( 'use_default_gallery_style', '__return_false' );
 Platinum Sponsors Widget
 ------------------------------*/
 
-function lawyerist_platinum_sponsors_widget() {
+function lwyrst_plat_sponsors_widget() {
 
 	$args = array(
-		'meta_key'				=> 'premium_product_page',
-		'meta_value'			=> true,
 		'orderby'					=> 'rand',
-		'post_type'				=> 'partner',
+		'post_type'				=> 'page',
 		'posts_per_page'	=> -1,
+		'tax_query' => array(
+      array(
+				'taxonomy' => 'page_type',
+				'field'    => 'slug',
+				'terms'    => 'platinum-sponsor',
+			),
+		),
 	);
 
-	$premium_product_page_query = new WP_Query( $args );
+	$plat_sponsors_query = new WP_Query( $args );
 
-	if ( $premium_product_page_query->have_posts() ) :
+	if ( $plat_sponsors_query->have_posts() ) :
 
 		echo '<div id="platinum-sponsors-widget">';
 
@@ -1355,23 +1360,16 @@ function lawyerist_platinum_sponsors_widget() {
 
 			echo '<div id="platinum-sponsors">';
 
-				while ( $premium_product_page_query->have_posts() ) : $premium_product_page_query->the_post();
+				while ( $plat_sponsors_query->have_posts() ) : $plat_sponsors_query->the_post();
 
-					if( have_rows( 'premium_product_page_details', $post->ID ) ) : while ( have_rows( 'premium_product_page_details' ) ) : the_row();
+					if ( get_field( 'platinum_sidebar_image' ) ) {
 
-						$premium_level					= get_sub_field( 'premium_page_level' );
-						$platinum_sidebar_image = get_sub_field( 'premium_page_platinum_sidebar_image' );
-
-					endwhile; endif;
-  
-					if ( $premium_level == 'Platinum' && !empty( $platinum_sidebar_image ) ) {
-
-						$product_page				= get_post( get_field( 'product_page', $post->ID ) );
-						$product_page_title	= $product_page->post_title;
-						$product_page_url		= get_permalink( $product_page->ID );
+						$product_page_title	= the_title( '', '', FALSE );
+						$product_page_url		= get_permalink();
+						$plat_sidebar_img		= get_field( 'platinum_sidebar_image' );
 
 						echo '<a href="' . $product_page_url . '?utm_source=lawyerist&amp;utm_medium=platinum_sidebar_widget">';
-							echo wp_get_attachment_image( $platinum_sidebar_image, 'large' );
+							echo wp_get_attachment_image( $plat_sidebar_img, 'large' );
 						echo '</a>';
 
 					}
