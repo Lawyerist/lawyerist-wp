@@ -6,7 +6,13 @@ All notable changes to this project will be documented in this file. The format 
 - Vendor recommender for product portals.
 
 ## [Unreleased]
+
+
+## [5.2.1] - 2020-02-14
+
+### [Changed]
 - Revert platinum sidebar code so it pulls from product pages, not Partners.
+
 
 ## [5.2.0] - 2020-02-11
 
@@ -16,6 +22,7 @@ All notable changes to this project will be documented in this file. The format 
 ### [Removed]
 - Removed Sponsors custom taxonomy (replaced by Partners custom post type).
 
+
 ## [5.1.0] - 2020-02-11
 
 ### [Added]
@@ -23,6 +30,7 @@ All notable changes to this project will be documented in this file. The format 
 
 ### [Changed]
 - Update the platinum sidebar code so it pulls from Partners instead of product pages.
+
 
 ## [5.0.1] - 2020-01-30
 
@@ -37,6 +45,7 @@ All notable changes to this project will be documented in this file. The format 
 - Define $classes in header.php before using it.
 - Update thumbnail size function on product pages.
 - Fix select field padding so there is enough room for the down arrow.
+
 
 ## [5.0.0] - 2020-01-21
 
