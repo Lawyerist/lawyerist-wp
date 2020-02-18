@@ -6,6 +6,7 @@ All notable changes to this project will be documented in this file. The format 
 - Vendor recommender for product portals.
 
 ## [Unreleased]
+- Remove partner dashboard page from signup wall.
 
 
 ## [5.2.1] - 2020-02-14

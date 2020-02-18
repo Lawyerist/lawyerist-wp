@@ -88,6 +88,7 @@ if ( !is_page_template( 'product-page.php' ) && !is_page_template( 'full-width.p
     245258, // Community
     220087, // Lab
     519270, // Podcast
+    947872, // Partner Dashboard
   );
 
   if  (
@@ -104,9 +105,13 @@ if ( !is_page_template( 'product-page.php' ) && !is_page_template( 'full-width.p
       )
   ) {
 
-    echo '<div id="article-counter-container">';
-      echo '<div id="article-counter" data-post_id="' . $post->ID . '"></div>';
-    echo '</div>';
+    ?>
+
+    <div id="article-counter-container">
+      <div id="article-counter" data-post_id="<?php echo $post->ID; ?>"></div>
+    </div>
+
+    <?php
 
   }
 
@@ -136,5 +141,4 @@ if ( !is_page_template( 'product-page.php' ) && !is_page_template( 'full-width.p
 
   	<div id="red-buffer"></div>
 
-  </div>
-  <!-- end #header-grid -->
+  </div><!-- end #header-grid -->
