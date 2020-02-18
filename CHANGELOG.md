@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file. The format 
 
 ## [Unreleased]
 - Remove partner dashboard page from signup wall.
+- Don't show call to action on WooCommerce pages.
 
 
 ## [5.2.1] - 2020-02-14
