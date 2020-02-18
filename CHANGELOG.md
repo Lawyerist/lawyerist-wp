@@ -5,6 +5,7 @@ All notable changes to this project will be documented in this file. The format 
 ## [In Development]
 - Vendor recommender for product portals.
 
+
 ## [Unreleased]
 - Remove partner dashboard page from signup wall.
 - Don't show call to action on WooCommerce pages.
