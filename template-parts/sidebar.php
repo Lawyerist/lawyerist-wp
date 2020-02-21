@@ -1,9 +1,5 @@
-<?php
+<div id="sidebar_column">
 
-echo '<div id="sidebar_column">';
+	<?php lwyrst_plat_sponsors_widget(); ?>
 
-	lwyrst_plat_sponsors_widget();
-
-echo '</div>' . "\n" . '<!-- end #sidebar_column -->';
-
-?>
+</div>

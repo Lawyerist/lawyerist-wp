@@ -7,12 +7,18 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
   endwhile;
 
-  echo '<div class="page_links">';
-    echo paginate_links();
-  echo '</div>';
+  ?>
+
+  <div class="page_links"><?php echo paginate_links(); ?></div>
+
+  <?php
 
 else :
 
-  echo '<p class="post">No posts match your query.</p>';
+  ?>
+
+  <p class="post">No posts match your query.</p>
+
+  <?php 
 
 endif; // Close the Loop.

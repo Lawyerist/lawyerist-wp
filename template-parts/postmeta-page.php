@@ -9,29 +9,32 @@ if ( $author == 'Lawyerist' ) {
   $author = 'the Lawyerist editorial team';
 }
 
-echo '<div class="postmeta">';
+if ( !empty( $profile_page_url ) ) {
+  $byline = 'Page edited by <span class="vcard author"><cite class="fn"><a href="' . $profile_page_url . '" class="url">' . $author . '</a></cite></span>. ';
+} else {
+  $byline = 'Page edited by <span class="vcard author"><cite class="fn">' . $author . '</cite></span>. ';
+}
 
-  if ( !empty( $profile_page_url ) ) {
+$coauthors = get_coauthors();
 
-    echo 'Page edited by <span class="vcard author"><cite class="fn"><a href="' . $profile_page_url . '" class="url">' . $author . '</a></cite></span>. ';
+if ( count( $coauthors ) > 1 ) {
 
-  } else {
-
-    echo 'Page edited by <span class="vcard author"><cite class="fn">' . $author . '</cite></span>. ';
-
-  }
-
-
-  $coauthors = get_coauthors();
-
-	if ( count( $coauthors ) > 1 ) {
+  ob_start();
 
     echo '<span class="coauthors">';
     lawyerist_get_coauthors();
     echo '</span> ';
 
-  }
+  $coauthors_byline = ob_get_clean();
 
-  echo 'Last updated <span class="date updated published">' . $updated_date . '</span>.';
+} else {
 
-echo '</div>'; // Close .postmeta.
+  $coauthors_byline = '';
+
+}
+
+$date = 'Last updated <span class="date updated published">' . $updated_date . '</span>.';
+
+?>
+
+<div class="postmeta"><?php echo $byline . $coauthors_byline . $date; ?></div>

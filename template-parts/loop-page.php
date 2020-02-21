@@ -11,31 +11,34 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
     yoast_breadcrumb( '<div class="breadcrumbs">', '</div>' );
   }
 
-  echo '<main>';
+  ?>
 
-    // This is the post container.
-    echo '<div ';
-    post_class();
-    echo '>';
+  <main>
 
-      $show_featured_image = get_field( 'show_featured_image' );
+    <div <?php post_class(); ?>>
+
+      <?php
 
       // Featured image
+      $show_featured_image = get_field( 'show_featured_image' );
+
       if ( ( is_null( $show_featured_image ) || $show_featured_image == true ) && has_post_thumbnail() ) {
 
-        echo '<div id="featured-image">';
+        ?>
 
-          the_post_thumbnail();
+        <div id="featured-image"><?php echo the_post_thumbnail(); ?></div>
 
-        echo '</div>';
+        <?php
 
       }
 
-      // Headline
-      echo '<h1 class="headline entry-title">' . $page_title . '</h1>';
+      ?>
 
-      // Output the post.
-      echo '<div class="post_body" itemprop="articleBody">';
+      <h1 class="headline entry-title"><?php echo $page_title; ?></h1>
+
+      <div class="post_body" itemprop="articleBody">
+
+        <?php
 
         if ( is_product_portal() && !is_page( 'reviews' ) ) {
 
@@ -83,11 +86,15 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
         }
 
-      echo '</div>'; // Close .post_body.
+        ?>
 
-    echo '</div>'; // Close .post.
+      </div>
 
-  echo '</main>';
+    </div>
+
+  </main>
+
+  <?php
 
   if ( !is_really_a_woocommerce_page() ) {
     echo lawyerist_cta();
@@ -98,9 +105,11 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
   // template for a few specific pages like Lab and LabCon.
   if ( comments_open() && function_exists( 'wp_review_show_total' ) ) {
 
-    echo '<div id="comments_container">';
-      comments_template( '/reviews.php' );
-    echo '</div>';
+    ?>
+
+    <div id="comments_container"><?php comments_template( '/reviews.php' ); ?></div>
+
+    <?php
 
   }
 
