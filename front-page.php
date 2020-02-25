@@ -12,14 +12,10 @@ if ( is_user_logged_in() ) {
 	<div id="small-firm-dashboard-container">
 		<p id="dashboard-title"><?php echo $current_user->user_firstname . ' ' . $current_user->user_lastname; ?>'s Small Firm Dashboard</p>
 		<div id="small-firm-dashboard">
-
 			<?php
-
 			echo scorecard_results_graph();
 			// echo financial_scorecard_graph();
-
 			?>
-
 		</div>
 	</div>
 
@@ -33,15 +29,16 @@ if ( is_user_logged_in() ) {
 
 	<div id="content_column">
 
-	<?php
+		<?php
 
 		// Checks to see if the front page is set to show blog posts, and if so uses
 		// the same code as index.php.
 		if ( 'posts' == get_option( 'show_on_front' ) ) :
 
-			if ( is_archive() || is_search() ) { lawyerist_get_archive_header(); }
+			if ( is_archive() || is_search() ) {
+				lawyerist_get_archive_header();
+			}
 
-	    // Get the Loop.
 	    get_template_part( 'template-parts/loop', 'index' );
 
 		else :
@@ -58,43 +55,46 @@ if ( is_user_logged_in() ) {
 
 			if ( $sticky_post_query->have_posts() ) :
 
-				while ( $sticky_post_query->have_posts() ) : $sticky_post_query->the_post();
-
-					$num_sticky_posts = 0;
-
-					if ( is_sticky() ) {
-
-						$num_sticky_posts++;
-
-						$sticky_post_title	= the_title( '', '', FALSE );
-						$sticky_post_url		= get_permalink();
-
-						?>
-
-						<div <?php post_class( 'front_page_sticky_post card' ); ?>>
-							<a href="<?php echo $sticky_post_url; ?>" title="<?php echo $sticky_post_title; ?>">
-								<h2 class="headline"><?php echo $sticky_post_title; ?></h2>
-							</a>
-						</div>
-
-						<?php
-
-					}
-
-				endwhile; wp_reset_postdata();
-
-			endif;
-
-			if ( $num_sticky_posts > 0 ) {
-
 				?>
 
-				<div class="separator_3rem"></div>
+				<div id="fp-sticky-posts">
+
+					<?php
+
+					while ( $sticky_post_query->have_posts() ) : $sticky_post_query->the_post();
+
+						$num_sticky_posts = 0;
+
+						if ( is_sticky() ) {
+
+							$num_sticky_posts++;
+
+							$sticky_post_title	= the_title( '', '', FALSE );
+							$sticky_post_url		= get_permalink();
+
+							?>
+
+							<div <?php post_class( 'front_page_sticky_post card' ); ?>>
+								<a href="<?php echo $sticky_post_url; ?>" title="<?php echo $sticky_post_title; ?>">
+									<h2 class="headline"><?php echo $sticky_post_title; ?></h2>
+								</a>
+							</div>
+
+							<?php
+
+						}
+
+					endwhile; wp_reset_postdata();
+
+					?>
+
+				</div>
 
 				<?php
 
-			}
+			endif;
 
+			// Outputs the call to action.
 			echo lawyerist_cta();
 
 			?>
@@ -344,7 +344,7 @@ if ( is_user_logged_in() ) {
 
 			endif;
 
-		?>
+			?>
 
 	</div><!-- end #content_column -->
 
