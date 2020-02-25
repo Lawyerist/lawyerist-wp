@@ -12,10 +12,14 @@ if ( is_user_logged_in() ) {
 	<div id="small-firm-dashboard-container">
 		<p id="dashboard-title"><?php echo $current_user->user_firstname . ' ' . $current_user->user_lastname; ?>'s Small Firm Dashboard</p>
 		<div id="small-firm-dashboard">
+
 			<?php
+
 			echo scorecard_results_graph();
-			echo financial_scorecard_graph(); 
+			// echo financial_scorecard_graph();
+
 			?>
+
 		</div>
 	</div>
 
@@ -164,17 +168,16 @@ if ( is_user_logged_in() ) {
 			// Outputs sponsored posts in the current range (today minus 7 days) using
 			// the Sponsored Post Options start and end dates.
 
-			$today	= date( 'Ymd' );
+			$today			= date( 'Ymd' );
+			$a_week_ago = date( 'Ymd', strtotime( '-7 days' ) );
+
 			$args		= array(
-				'category__in'				=> array(
-					'1320', // Blog Posts
-				),
-				'meta_key'						=> 'sponsored_post_start_date',
-				'meta_query'					=> array(
+				'cat'					=> 1320,
+				'meta_query'	=> array(
 					array(
 						'key'     => 'sponsored_post_start_date',
-						'compare' => '<=',
-						'value'   => $today - 7,
+						'compare' => '>=',
+						'value'   => $a_week_ago,
 					),
 					array(
 						'key'     => 'sponsored_post_end_date',
@@ -184,7 +187,7 @@ if ( is_user_logged_in() ) {
 				),
 				'orderby'							=> 'meta_value_num',
 				'post__not_in'				=> get_option( 'sticky_posts' ),
-				'posts_per_page'			=> -1,
+				'posts_per_page'			=> 5,
 			);
 
 			$current_post_query = new WP_Query( $args );

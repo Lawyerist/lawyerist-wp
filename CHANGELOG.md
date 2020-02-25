@@ -10,6 +10,7 @@ All notable changes to this project will be documented in this file. The format 
 - Remove partner dashboard page from signup wall.
 - Don't show call to action on WooCommerce pages.
 - Un-echo HTML in template parts.
+- Fix sponsored posts not displaying.
 
 
 ## [5.2.1] - 2020-02-14
