@@ -46,53 +46,53 @@ if ( is_user_logged_in() ) {
 			// Outputs the most recent sticky post.
 			$sticky_posts = get_option( 'sticky_posts' );
 
-			$sticky_post_query_args = array(
-				'post__in'						=> $sticky_posts,
-				'posts_per_page'			=> 1,
-			);
+			if ( $sticky_posts ) {
 
-			$sticky_post_query = new WP_Query( $sticky_post_query_args );
+				$args = array(
+					'post__in'						=> $sticky_posts,
+					'posts_per_page'			=> 1,
+				);
 
-			if ( $sticky_post_query->have_posts() ) :
+				$sticky_post_query = new WP_Query( $args );
 
-				?>
-
-				<div id="fp-sticky-posts">
-
-					<?php
-
-					while ( $sticky_post_query->have_posts() ) : $sticky_post_query->the_post();
-
-						$num_sticky_posts = 0;
-
-						if ( is_sticky() ) {
-
-							$num_sticky_posts++;
-
-							$sticky_post_title	= the_title( '', '', FALSE );
-							$sticky_post_url		= get_permalink();
-
-							?>
-
-							<div <?php post_class( 'front_page_sticky_post card' ); ?>>
-								<a href="<?php echo $sticky_post_url; ?>" title="<?php echo $sticky_post_title; ?>">
-									<h2 class="headline"><?php echo $sticky_post_title; ?></h2>
-								</a>
-							</div>
-
-							<?php
-
-						}
-
-					endwhile; wp_reset_postdata();
+				if ( $sticky_post_query->have_posts() ) :
 
 					?>
 
-				</div>
+					<div id="fp-sticky-posts">
 
-				<?php
+						<?php
 
-			endif;
+						while ( $sticky_post_query->have_posts() ) : $sticky_post_query->the_post();
+
+							if ( is_sticky() ) {
+
+								$sticky_post_title	= the_title( '', '', FALSE );
+								$sticky_post_url		= get_permalink();
+
+								?>
+
+								<div <?php post_class( 'front_page_sticky_post card' ); ?>>
+									<a href="<?php echo $sticky_post_url; ?>" title="<?php echo $sticky_post_title; ?>">
+										<h2 class="headline"><?php echo $sticky_post_title; ?></h2>
+									</a>
+								</div>
+
+								<?php
+
+							}
+
+						endwhile; wp_reset_postdata();
+
+						?>
+
+					</div>
+
+					<?php
+
+				endif;
+
+			}
 
 			// Outputs the call to action.
 			echo lawyerist_cta();

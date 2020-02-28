@@ -11,6 +11,7 @@ All notable changes to this project will be documented in this file. The format 
 - Don't show call to action on WooCommerce pages.
 - Un-echo HTML in template parts.
 - Fix sponsored posts not displaying.
+- Fix bug that was displaying the sticky post container when there weren't any.
 
 
 ## [5.2.1] - 2020-02-14
