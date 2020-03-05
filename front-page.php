@@ -14,7 +14,7 @@ if ( is_user_logged_in() ) {
 		<div id="small-firm-dashboard">
 			<?php
 			echo scorecard_results_graph();
-			// echo financial_scorecard_graph();
+			echo financial_scorecard_graph();
 			?>
 		</div>
 	</div>
