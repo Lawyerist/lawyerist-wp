@@ -88,7 +88,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
             <div class="card rating-box">
 
-              <h2><?php echo $page_title; ?> Rating: <?php echo lawyerist_star_rating() . $composite_rating; ?> /5</h2>
+              <h2><?php echo $page_title; ?> Rating: <?php echo lawyerist_star_rating() . $composite_rating; ?>/5</h2>
 
               <?php if ( !empty( $our_rating ) ) { ?>
 
