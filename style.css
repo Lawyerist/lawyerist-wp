@@ -1658,7 +1658,7 @@ Front Page
 #small-firm-dashboard {
   display: grid;
   grid-gap: 1rem;
-  grid-template-columns: repeat( 2, 1fr );
+  grid-template-columns: 1fr;
 }
 */
 
