@@ -16,6 +16,7 @@
   - Get Scorecard Grade
 - List Contributors
 - List Labsters
+- Praise Cards
 
 */
 
@@ -1671,3 +1672,15 @@ function list_labsters_shortcode() {
 }
 
 add_shortcode( 'list-labsters', 'list_labsters_shortcode' );
+
+
+/*------------------------------
+Praise Cards
+------------------------------*/
+function praise_cards_shortcode() {
+
+  if ( comments_open() ) { comments_template( '/praise-cards.php' ); }
+
+}
+
+add_shortcode( 'praise-cards', 'praise_cards_shortcode' );
