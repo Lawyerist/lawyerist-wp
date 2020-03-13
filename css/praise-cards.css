@@ -58,6 +58,7 @@ body #column_container {
 }
 
 #praise-cards li.comment {
+  align-self: start;
   background-color: #fff;
   box-shadow:
     0 0 0 .1rem #ddd,
