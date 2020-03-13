@@ -84,6 +84,14 @@ body #column_container {
   width: 3rem;
 }
 
+#praise-cards li.comment:nth-child( odd ):before {
+  transform: rotate( 2.5deg );
+}
+
+#praise-cards li.comment:nth-child( even ):before {
+  transform: rotate( -1.5deg );
+}
+
 #praise-cards li.comment .comment-body {
   display: grid;
   grid-gap: 1rem;
