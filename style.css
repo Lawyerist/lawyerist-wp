@@ -34,7 +34,6 @@ Content
   Product Pages
   All-Reviews Page
   Team Profiles
-  Labster Directory
   Full Width Template
 	Comments
 Author Bios
@@ -738,6 +737,7 @@ p.pullquote,
 .tag_list,
 th,
 .title,
+ul.user-list,
 .user-rating,
 p.woocommerce-result-count,
 .woocommerce a.added_to_cart,
@@ -2747,7 +2747,7 @@ Content
       }
 
       /* When the width reaches 700px. */
-      @media only screen and (max-width:699px) {
+      @media only screen and ( max-width:699px ) {
 
         .product-pages-list li.card {
           padding: 1rem;
@@ -2900,6 +2900,49 @@ Content
         border-radius: 0 .2rem 0 0;
       }
 
+    ul.user-list {
+      display: grid;
+      font-size: 1.6rem;
+      grid-column-gap: 2rem;
+      grid-row-gap: 4rem;
+      grid-template-columns: repeat( 4, 1fr );
+      list-style: none;
+      margin: 0 0 3rem 0;
+    }
+
+    @media only screen and ( max-width: 860px ) {
+
+      ul.user-list {
+        grid-template-columns: repeat( 3, 1fr );
+      }
+
+    }
+
+    @media only screen and ( max-width: 640px ) {
+
+      ul.user-list {
+        grid-template-columns: repeat( 2, 1fr );
+      }
+
+    }
+
+    ul.user-list > * {
+      margin: 0;
+      text-align: center;
+    }
+
+    .user-list li img {
+      display: block;
+      margin: 0 auto 1.5rem auto;
+    }
+
+    .user-list li .firm-name,
+    .user-list li .address,
+    .user-list li .email {
+      color: #777;
+      font-size: 1.4rem;
+      line-height: 1.2;
+    }
 
   /*------------------------------
   Full Width Template

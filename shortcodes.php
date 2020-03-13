@@ -15,7 +15,7 @@
   - Get Affinity Confirmation Message
   - Get Scorecard Grade
 - List Contributors
-- List Labsters
+- List Users
 - Praise Cards
 
 */
@@ -1590,93 +1590,134 @@ add_shortcode( 'list-contributors', 'list_contributors_shortcode' );
 
 
 /*------------------------------
-List Labsters
+List Users
 ------------------------------*/
 
-// Get Active Labsters
-function get_active_labsters() {
+function list_users_shortcode( $atts ) {
 
-	$labster_query_args = array(
-		'post_type'				=> 'wc_user_membership',
-		'post_status'			=> 'wcm-active',
-		'post_parent'			=> 223685,
-		'posts_per_page'	=> -1,
-	);
+  $atts = shortcode_atts( array(
+    'membership'  => null,
+    'product'     => null,
+  ), $atts );
 
-	$labster_query = new WP_Query( $labster_query_args );
+  $users = array();
 
-	if ( $labster_query->have_posts() ) :
+  if ( $atts[ 'membership' ] ) {
 
-		$labsters	= array();
+    $args = array(
+      'post_type'				=> 'wc_user_membership',
+      'post_status'			=> 'wcm-active',
+      'post_parent'			=> $atts[ 'membership' ],
+      'posts_per_page'	=> -1,
+    );
 
-		while ( $labster_query->have_posts() ) : $labster_query->the_post();
+    $user_query = new WP_Query( $args );
 
-			array_push( $labsters, array(
-				'labster_id'	=> get_the_ID(),
-				'email'				=> get_the_author_meta( 'user_email' ),
-				'first_name'	=> get_the_author_meta( 'user_firstname' ),
-				'last_name'		=> get_the_author_meta( 'user_lastname' ),
-			) );
+    if ( $user_query->have_posts() ) :
 
-		endwhile; wp_reset_postdata();
+      while ( $user_query->have_posts() ) : $user_query->the_post();
 
-		// Sorts $labsters[] by last name.
-		usort( $labsters, function( $a, $b ) {
-			return $a[ 'last_name' ] <=> $b[ 'last_name' ];
-		});
+        array_push( $users, array(
+          'user_id'     => get_the_ID(),
+          'email'				=> get_the_author_meta( 'user_email' ),
+          'first_name'	=> get_the_author_meta( 'user_firstname' ),
+          'last_name'		=> get_the_author_meta( 'user_lastname' ),
+          'firm_name'   => get_field( 'firm_name', 'user_' . get_the_ID() ),
+          'city'        => get_user_meta( get_the_ID(), 'billing_city', true ),
+          'state'       => get_user_meta( get_the_ID(), 'billing_state', true ),
+        ) );
 
-		return $labsters;
+      endwhile; wp_reset_postdata();
 
-	else :
+    endif;
 
-		return;
+  }
 
-	endif;
+  if ( $atts[ 'product' ] ) {
 
-}
+    $product_id = intval( $atts[ 'product' ] );
 
+    $args = array(
+      'fields'  => 'ID',
+      'role'    => 'customer',
+    );
 
-function list_labsters_shortcode() {
+    $customer_query = new WP_User_Query( $args );
+    $customers      = $customer_query->get_results();
 
-  $labsters = get_active_labsters();
+    if ( !empty( $customers ) ) {
 
-  if ( !empty( $labsters ) ) {
+      foreach ( $customers as $customer ) {
 
-    ob_start();
+        if ( wc_customer_bought_product( '', $customer, $product_id ) ) {
 
-      echo '<ul id="labsters">';
+          $customer_data = get_userdata( $customer );
 
-        foreach ( $labsters as $labster ) {
-
-          echo '<li class="labster">';
-
-            // echo get_avatar( $labster[ 'email' ], 100 );
-            echo '<span class="labster-name">' . $labster[ 'last_name' ] . ', ' . $labster[ 'first_name' ] . '</span> <span class="labster-email">(' . $labster[ 'email' ] . ')</span>';
-
-          echo '</li>';
+          array_push( $users, array(
+            'user_id'     => $customer,
+            'email'				=> $customer_data->user_email,
+            'first_name'	=> $customer_data->first_name,
+            'last_name'		=> $customer_data->last_name,
+            'firm_name'   => get_field( 'firm_name', 'user_' . $customer ),
+            'city'        => get_user_meta( $customer, 'billing_city', true ),
+            'state'       => get_user_meta( $customer, 'billing_state', true ),
+          ) );
 
         }
 
-      echo '</ul>';
+      }
 
-    $labsters_list = ob_get_clean();
+    }
 
-    return $labsters_list;
+  }
+
+  if ( !empty( $users ) ) {
+
+    usort( $users, function( $a, $b ) {
+      return $a[ 'last_name' ] <=> $b[ 'last_name' ];
+    });
+
+    ob_start();
+
+      ?>
+
+      <ul class="user-list">
+
+        <?php foreach ( $users as $user ) { ?>
+
+          <li>
+
+            <?php echo get_avatar( $user[ 'email' ], 100 ); ?>
+            <span class="name"><?php echo $user[ 'first_name' ] . ' ' . $user[ 'last_name' ]; ?></span><br />
+            <?php if ( $user[ 'firm_name' ] ) { ?><span class="firm-name"><?php echo $user[ 'firm_name' ]; ?></span><br /><?php } ?>
+            <?php if ( $user[ 'city' ] && $user[ 'state' ] ) { ?><span class="address"><?php echo $user[ 'city' ]  . ', ' . $user[ 'state' ]; ?></span><br /><?php } ?>
+            <span class="email"><?php echo $user[ 'email' ]; ?></span>
+
+          </li>
+
+        <?php } ?>
+
+      </ul>
+
+      <?php
+
+    return ob_get_clean();
 
   } else {
 
-    return '<p>No Labsters found!</p>';
+    return '<p>No users found!</p>';
 
   }
 
 }
 
-add_shortcode( 'list-labsters', 'list_labsters_shortcode' );
+add_shortcode( 'list-users', 'list_users_shortcode' );
 
 
 /*------------------------------
 Praise Cards
 ------------------------------*/
+
 function praise_cards_shortcode() {
 
   if ( comments_open() ) { comments_template( '/praise-cards.php' ); }
