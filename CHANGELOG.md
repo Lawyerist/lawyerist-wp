@@ -12,6 +12,7 @@ All notable changes to this project will be documented in this file. The format 
 - Un-echo HTML in template parts.
 - Fix sponsored posts not displaying.
 - Fix bug that was displaying the sticky post container when there weren't any.
+- Add LabCon Materials template and praise cards.
 
 
 ## [5.2.1] - 2020-02-14

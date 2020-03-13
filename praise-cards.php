@@ -17,7 +17,7 @@
 
 		?>
 
-		<ul class="praise-card-list">
+		<ul id="praise-card-list">
 
 			<?php
 
@@ -30,6 +30,20 @@
 			?>
 
 		</ul>
+
+		<script type='text/javascript'>
+
+			let praiseCardList	= document.getElementById( 'praise-card-list' );
+			let praiseCards			= praiseCardList.getElementsByClassName( 'comment' );
+
+			Array.prototype.forEach.call( praiseCards, function( card ) {
+
+				let rotation = Math.random() * ( 2 - -2) + -2;
+				card.style.transform = 'rotate( ' + rotation + 'deg )';
+
+			});
+
+		</script>
 
 		<?php
 

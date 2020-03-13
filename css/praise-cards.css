@@ -42,7 +42,7 @@ body #column_container {
 }
 
 
-#praise-cards ul.praise-card-list {
+#praise-cards ul#praise-card-list {
   display: grid;
   grid-gap: 2rem;
   grid-template-columns: repeat( 3, 1fr );
@@ -51,7 +51,7 @@ body #column_container {
 
 @media only screen and ( max-width: 750px ) {
 
-  #praise-cards ul.praise-card-list {
+  #praise-cards ul#praise-card-list {
     grid-template-columns: repeat( 2, 1fr );
   }
 
@@ -82,30 +82,6 @@ body #column_container {
     left: 50%;
     top: -1.2rem;
   width: 3rem;
-}
-
-#praise-cards li.comment:nth-child( odd ):before {
-  transform: rotate( 2.5deg );
-}
-
-#praise-cards li.comment:nth-child( even ):before {
-  transform: rotate( -1.5deg );
-}
-
-#praise-cards li.comment:nth-child( odd ) {
-  transform: rotate( -.5deg );
-}
-
-#praise-cards li.comment:nth-child( even ) {
-  transform: rotate( .8deg );
-}
-
-#praise-cards li.comment:nth-child( 3n+4 ) {
-  transform: rotate( -3deg );
-}
-
-#praise-cards li.comment:nth-child( 2n+3 ) {
-  transform: rotate( 1.5deg );
 }
 
 #praise-cards li.comment .comment-body {
