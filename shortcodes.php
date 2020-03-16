@@ -1720,7 +1720,11 @@ Praise Cards
 
 function praise_cards_shortcode() {
 
+  ob_start();
+
   if ( comments_open() ) { comments_template( '/praise-cards.php' ); }
+
+  return ob_get_clean();
 
 }
 
