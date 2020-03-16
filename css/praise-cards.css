@@ -102,14 +102,22 @@ body #column_container {
 }
 
 #praise-cards li.comment .comment-body {
-  display: grid;
-  grid-gap: 1rem;
-  grid-template-columns: 3.2rem 1fr;
   font-family: 'Permanent Marker', cursive !important;
   margin: 0;
 }
 
-#praise-cards li.comment .comment-author cite,
+#praise-cards li.comment .comment-author {
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: 3.2rem 1fr;
+}
+
+#praise-cards li.comment .comment-author cite {
+  color: #777;
+  font-size: 1.4rem;
+  line-height: 3.2rem;
+}
+
 #praise-cards li.comment .comment-author span,
 #praise-cards li.comment .comment-meta {
   display: none;
