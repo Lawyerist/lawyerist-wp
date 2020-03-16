@@ -22,12 +22,12 @@
 			<?php
 
 			$comments = get_comments( array( 'post_id' => get_the_ID() ) );
-			shuffle( $comments );
+			// shuffle( $comments );
 
 			wp_list_comments( array(
 				'max_depth'					=> 1,
 				'per_page'					=> -1,
-				'reverse_top_level'	=> true,
+				// 'reverse_top_level'	=> true,
 			), $comments );
 
 			?>
