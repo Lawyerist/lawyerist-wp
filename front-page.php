@@ -1,18 +1,48 @@
-<?php get_header(); ?>
+<?php
+
+get_header();
+
+// Outputes the Scorecard Report Card widget.
+if ( is_user_logged_in() ) {
+
+	$current_user = wp_get_current_user();
+
+	?>
+
+	<div id="small-firm-dashboard-container">
+		<p id="dashboard-title"><?php echo $current_user->user_firstname . ' ' . $current_user->user_lastname; ?>'s Small Firm Dashboard</p>
+		<div id="small-firm-dashboard">
+			<?php
+			echo scorecard_results_graph();
+
+			if ( wc_customer_bought_product( '', get_current_user_id(), 321206 ) ) {
+				echo financial_scorecard_graph();
+			}
+
+			?>
+		</div>
+	</div>
+
+	<?php
+
+}
+
+?>
 
 <div id="column_container">
 
 	<div id="content_column">
 
-	<?php
+		<?php
 
 		// Checks to see if the front page is set to show blog posts, and if so uses
 		// the same code as index.php.
 		if ( 'posts' == get_option( 'show_on_front' ) ) :
 
-			if ( is_archive() || is_search() ) { lawyerist_get_archive_header(); }
+			if ( is_archive() || is_search() ) {
+				lawyerist_get_archive_header();
+			}
 
-	    // Get the Loop.
 	    get_template_part( 'template-parts/loop', 'index' );
 
 		else :
@@ -20,70 +50,62 @@
 			// Outputs the most recent sticky post.
 			$sticky_posts = get_option( 'sticky_posts' );
 
-			$sticky_post_query_args = array(
-				'post__in'						=> $sticky_posts,
-				'posts_per_page'			=> 1,
-			);
+			if ( $sticky_posts ) {
 
-			$sticky_post_query = new WP_Query( $sticky_post_query_args );
+				$args = array(
+					'post__in'						=> $sticky_posts,
+					'posts_per_page'			=> 1,
+				);
 
-			if ( $sticky_post_query->have_posts() ) :
+				$sticky_post_query = new WP_Query( $args );
 
-				while ( $sticky_post_query->have_posts() ) : $sticky_post_query->the_post();
+				if ( $sticky_post_query->have_posts() ) :
 
-					$num_sticky_posts = 0;
+					?>
 
-					if ( is_sticky() ) {
+					<div id="fp-sticky-posts">
 
-						$num_sticky_posts++;
+						<?php
 
-						$sticky_post_title	= the_title( '', '', FALSE );
-						$sticky_post_url		= get_permalink();
+						while ( $sticky_post_query->have_posts() ) : $sticky_post_query->the_post();
 
-						// Starts the post container.
-						echo '<div ';
-						post_class( 'front_page_sticky_post card' );
-						echo '>';
+							if ( is_sticky() ) {
 
-							// Starts the link container. Makes for big click targets!
-							echo '<a href="' . $sticky_post_url . '" title="' . $sticky_post_title . '">';
+								$sticky_post_title	= the_title( '', '', FALSE );
+								$sticky_post_url		= get_permalink();
 
-								echo '<h2 class="headline">' . $sticky_post_title . '</h2>';
+								?>
 
-							echo '</a>';
+								<div <?php post_class( 'front_page_sticky_post card' ); ?>>
+									<a href="<?php echo $sticky_post_url; ?>" title="<?php echo $sticky_post_title; ?>">
+										<h2 class="headline"><?php echo $sticky_post_title; ?></h2>
+									</a>
+								</div>
 
-						echo '</div>';
+								<?php
 
-					}
+							}
 
-				endwhile; wp_reset_postdata();
+						endwhile; wp_reset_postdata();
 
-			endif;
+						?>
 
-			if ( $num_sticky_posts > 0 ) {
-				echo '<div class="separator_3rem"></div>';
-			}
+					</div>
 
+					<?php
 
-			// Outputes the Scorecard Report Card widget.
-			if ( is_user_logged_in() ) {
-
-				echo '<div id="insider-dashboard">';
-
-					$current_user = wp_get_current_user();
-					echo '<p id="dashboard-title">' . $current_user->user_firstname . ' ' . $current_user->user_lastname . '\'s Small Firm Dashboard</p>';
-
-					echo scorecard_results_graph();
-
-				echo '</div>';
+				endif;
 
 			}
 
-
+			// Outputs the call to action.
 			echo lawyerist_cta();
 
+			?>
 
-			echo '<p class="fp-section-header">Recent Updates</p>';
+			<p class="fp-section-header">Recent Updates</p>
+
+			<?php
 
 			// Outputs the most recent podcast episode.
 
@@ -97,21 +119,23 @@
 			$ep_title					= $current_episode->get_title();
 			$ep_date					= $current_episode->get_date( 'F jS, Y' );
 
-			echo '<div class="card post-card podcast-card has-card-label">';
-				echo '<a href="https://lawyerist.com/podcast/" title="The Lawyerist Podcast" class="post has-post-thumbnail">';
-					echo wp_get_attachment_image( 529989, array( 100, 201 ) );
-					echo '<div class="headline-byline">';
-						echo '<h2 class="headline" title="' . $ep_title . '">' . $ep_title . '</h2>';
-						echo '<div class="postmeta"><span class="date updated published">' . $ep_date . '</span></div>';
-					echo '</div>';
-				echo '</a>';
-				echo '<p class="card-label card-bottom-label"><a href="https://lawyerist.com/podcast/" title="All episodes of The Lawyerist Podcast.">All episodes of The Lawyerist Podcast</a></p>';
-			echo '</div>';
+			?>
 
-			// End of podcast episode.
+			<div class="card post-card podcast-card has-card-label">
+				<a href="https://lawyerist.com/podcast/" title="The Lawyerist Podcast" class="post has-post-thumbnail">
+					<?php echo wp_get_attachment_image( 529989, array( 100, 201 ) ); ?>
+					<div class="headline-byline">
+						<h2 class="headline" title="<?php echo $ep_title; ?>"><?php echo $ep_title; ?></h2>
+						<div class="postmeta"><span class="date updated published"><?php echo $ep_date; ?></span></div>
+					</div>
+				</a>
+				<p class="card-label card-bottom-label"><a href="https://lawyerist.com/podcast/" title="All episodes of The Lawyerist Podcast.">All episodes of The Lawyerist Podcast</a></p>
+			</div>
 
+			<?php
 
 			// Outputs 4 pages with Show in Recent.
+
 			$args = array(
 				'meta_key'				=> 'show_in_recent',
 				'meta_value'			=> true,
@@ -124,8 +148,11 @@
 
 			if ( $recent_pages_query->have_posts() ) :
 
-				// Starts the post container.
-				echo '<div id="fp-recent-pages" class="cards">';
+				?>
+
+				<div id="fp-recent-pages" class="cards">
+
+					<?php
 
 					while ( $recent_pages_query->have_posts() ) : $recent_pages_query->the_post();
 
@@ -133,24 +160,28 @@
 
 					endwhile; wp_reset_postdata();
 
-				echo '</div>';
+					?>
+
+				</div>
+
+				<?php
 
 			endif;
-			// End of recent pages.
+
 
 			// Outputs sponsored posts in the current range (today minus 7 days) using
 			// the Sponsored Post Options start and end dates.
-			$today	= date( 'Ymd' );
+
+			$today			= date( 'Ymd' );
+			$a_week_ago = date( 'Ymd', strtotime( '-7 days' ) );
+
 			$args		= array(
-				'category__in'				=> array(
-					'1320', // Blog Posts
-				),
-				'meta_key'						=> 'sponsored_post_start_date',
-				'meta_query'					=> array(
+				'cat'					=> 1320,
+				'meta_query'	=> array(
 					array(
 						'key'     => 'sponsored_post_start_date',
-						'compare' => '<=',
-						'value'   => $today - 7,
+						'compare' => '>=',
+						'value'   => $a_week_ago,
 					),
 					array(
 						'key'     => 'sponsored_post_end_date',
@@ -160,15 +191,18 @@
 				),
 				'orderby'							=> 'meta_value_num',
 				'post__not_in'				=> get_option( 'sticky_posts' ),
-				'posts_per_page'			=> -1,
+				'posts_per_page'			=> 5,
 			);
 
 			$current_post_query = new WP_Query( $args );
 
 			if ( $current_post_query->have_posts() ) :
 
-				// Starts the post container.
-				echo '<div id="fp-product-spotlights" class="card has-card-label sponsored">';
+				?>
+
+				<div id="fp-product-spotlights" class="card has-card-label sponsored">
+
+					<?php
 
 					while ( $current_post_query->have_posts() ) : $current_post_query->the_post();
 
@@ -178,15 +212,20 @@
 
 					$all_spotlights_txt		= 'All Partner Updates';
 					$all_spotlights_url		=	get_category_link( 1320 );
+
 					echo '<p class="card-label card-bottom-label"><a href="' . $all_spotlights_url . '" title="' . $all_spotlights_txt . '">' . $all_spotlights_txt . '</a></p>';
 
-				echo '</div>';
+					?>
+
+				</div>
+
+				<?php
 
 			endif;
-			// End of sponsored posts.
 
 
 			// Outputs the 3 most recent blog posts.
+
 			$args = array(
 				'category__in'		=> array(
 					'555', // Blog Posts
@@ -199,8 +238,11 @@
 
 			if ( $current_post_query->have_posts() ) :
 
-				// Starts the post container.
-				echo '<div id="fp-blog-posts" class="card has-card-label">';
+				?>
+
+				<div id="fp-blog-posts" class="card has-card-label">
+
+					<?php
 
 					while ( $current_post_query->have_posts() ) : $current_post_query->the_post();
 
@@ -213,13 +255,17 @@
 
 					echo '<p class="card-label card-bottom-label"><a href="' . $all_posts_url . '" title="' . $all_posts_txt . '">' . $all_posts_txt . '</a></p>';
 
-				echo '</div>';
+					?>
+
+				</div>
+
+				<?php
 
 			endif;
-			// End of blog posts.
 
 
 			// Outputs the 3 most recent case studies.
+
 			$args = array(
 				'category__in'		=> array(
 					'4406', // Blog Posts
@@ -232,8 +278,11 @@
 
 			if ( $current_post_query->have_posts() ) :
 
-				// Starts the post container.
-				echo '<div id="fp-case-studies" class="card has-card-label">';
+				?>
+
+				<div id="fp-case-studies" class="card has-card-label">
+
+					<?php
 
 					while ( $current_post_query->have_posts() ) : $current_post_query->the_post();
 
@@ -246,13 +295,19 @@
 
 					echo '<p class="card-label card-bottom-label"><a href="' . $all_posts_url . '" title="' . $all_posts_txt . '">' . $all_posts_txt . '</a></p>';
 
-				echo '</div>';
+					?>
+
+				</div>
+
+				<?php
 
 			endif;
-			// End of case studies.
 
+			?>
 
-			echo '<p class="fp-section-header">Featured Resources</p>';
+			<p class="fp-section-header">Featured Resources</p>
+
+			<?php
 
 			// Outputs up to 12 pages with Show in Featured.
 			$args = array(
@@ -273,8 +328,11 @@
 
 			if ( $featured_pages_query->have_posts() ) :
 
-				// Starts the post container.
-				echo '<div id="fp-recent-pages" class="cards">';
+				?>
+
+				<div id="fp-recent-pages" class="cards">
+
+					<?php
 
 					while ( $featured_pages_query->have_posts() ) : $featured_pages_query->the_post();
 
@@ -282,12 +340,15 @@
 
 					endwhile; wp_reset_postdata();
 
-				echo '</div>';
+					?>
+
+				</div>
+
+				<?php
 
 			endif;
-			// End of featured pages.
 
-		?>
+			?>
 
 	</div><!-- end #content_column -->
 

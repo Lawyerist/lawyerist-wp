@@ -27,16 +27,28 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( is_plugin_active( 'scorecard-helper/scorecard-helper.php' ) ) {
 
 	// Outputes the Scorecard Report Card widget.
-	echo '<div id="insider-dashboard">';
 
-	  $logout_link = '<a href="'. esc_url( wc_logout_url( wc_get_page_permalink( 'myaccount' ) ) ) . '">Log Out</a>';
+	$logout_link = '<a href="'. esc_url( wc_logout_url( wc_get_page_permalink( 'myaccount' ) ) ) . '">Log Out</a>';
 
-	  $current_user = wp_get_current_user();
-	  echo '<p id="dashboard-title">' . $current_user->user_firstname . ' ' . $current_user->user_lastname . '\'s Small Firm Dashboard <span class="logout-link">' . $logout_link . '</span?></p>';
+	$current_user = wp_get_current_user();
 
-	  echo scorecard_results_graph();
+	?>
 
-	echo '</div>';
+	<div id="small-firm-dashboard-container">
+		<p id="dashboard-title"><?php echo $current_user->user_firstname . ' ' . $current_user->user_lastname; ?>'s Small Firm Dashboard</p>
+		<div id="small-firm-dashboard">
+			<?php
+			echo scorecard_results_graph();
+
+			if ( wc_customer_bought_product( '', get_current_user_id(), 321206 ) ) {
+				echo financial_scorecard_graph();
+			}
+
+			?>
+		</div>
+	</div>
+
+	<?php 
 
 }
 

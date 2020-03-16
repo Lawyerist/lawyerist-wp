@@ -11,34 +11,36 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
     yoast_breadcrumb( '<div class="breadcrumbs">', '</div>' );
   }
 
-  echo '<main>';
+  ?>
 
-    // This is the post container.
-    echo '<div ';
-    post_class();
-    echo '>';
+  <main>
+
+    <div <?php post_class(); ?>>
+
+      <?php
 
       // Featured image
       if ( has_post_thumbnail() ) {
 
-        echo '<div id="featured-image">';
+        ?>
 
-          the_post_thumbnail();
+        <div id="featured-image"><?php the_post_thumbnail(); ?></div>
 
-        echo '</div>';
+        <?php
 
       }
 
-      // Headline
-      echo '<h1 class="headline entry-title">' . $post_title . '</h1>';
+      ?>
 
-      get_template_part( './template-parts/postmeta', 'single_top' );
+      <h1 class="headline entry-title"><?php echo $post_title; ?></h1>
 
+      <?php get_template_part( './template-parts/postmeta', 'single_top' ); ?>
 
-      // Output the post.
-      echo '<div class="post_body" itemprop="articleBody">';
+      <div class="post_body" itemprop="articleBody">
 
-        the_content();
+        <?php the_content(); ?>
+
+        <?php
 
         // Show page navigation if the post is paginated unless we're displaying
         // the RSS feed.
@@ -61,11 +63,15 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
         get_template_part( './template-parts/postmeta', 'single_bottom' );
 
-      echo '</div>'; // Close .post_body.
+        ?>
 
-    echo '</div>'; // Close .post.
+      </div>
 
-  echo '</main>';
+    </div>
+
+  </main>
+
+  <?php
 
   echo lawyerist_cta();
 

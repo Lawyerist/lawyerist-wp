@@ -1,0 +1,108 @@
+body #column_container {
+  grid-template-areas:
+    'content'
+  ;
+  grid-template-columns: minmax( 32rem, 100% );
+}
+
+#praise-cards #respond {
+  background-color: #fff;
+  border-radius: unset;
+  margin: 0 auto 4rem auto !important;
+  max-width: 90%;
+}
+
+#praise-cards #respond h3#reply-title {
+  font-size: 5rem;
+  line-height: 1;
+  margin-bottom: .5rem;
+  text-transform: uppercase;
+}
+
+#praise-cards #respond label[ for='comment' ] {
+  height: .1rem;
+  position: absolute;
+  text-indent: -1000rem;
+  width: .1rem;
+}
+
+@font-face {
+  font-family: 'Permanent Marker';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local( 'Permanent Marker Regular' ), local( 'PermanentMarker-Regular' ), url( https://fonts.gstatic.com/s/permanentmarker/v9/Fh4uPib9Iyv2ucM6pGQMWimMp004La2Cf5b6jlg.woff2 ) format( 'woff2' );
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+#praise-cards .comment-form textarea {
+  border: none;
+  font-family: 'Permanent Marker', cursive !important;
+  font-size: 4rem;
+}
+
+
+#praise-cards ul#praise-card-list {
+  display: grid;
+  grid-gap: 2rem;
+  grid-template-columns: repeat( 3, 1fr );
+  margin: 0 0 4rem 0;
+}
+
+@media only screen and ( max-width: 750px ) {
+
+  #praise-cards ul#praise-card-list {
+    grid-template-columns: repeat( 2, 1fr );
+  }
+
+}
+
+#praise-cards li.comment {
+  align-self: start;
+  background-color: #fff;
+  box-shadow:
+    0 0 0 .1rem #ddd,
+    .1rem .1rem .3rem rgba(0, 0, 0, 0.2)
+  ;
+  box-sizing: border-box;
+  display: block;
+  margin: 0;
+  padding: 1.5rem;
+  position: relative;
+}
+
+#praise-cards li.comment:before {
+  background-color: #c00;
+  box-shadow:
+    .1rem .1rem .2rem rgba(0, 0, 0, 0.2)
+  ;
+  content: '';
+  height: 1.75rem;
+  margin: 0 0 0 -1.5rem;
+  position: absolute;
+    left: 50%;
+    top: -1.2rem;
+  width: 3rem;
+}
+
+#praise-cards li.comment:nth-child( odd ):before {
+  transform: rotate( 2.5deg );
+}
+
+#praise-cards li.comment:nth-child( even ):before {
+  transform: rotate( -1.5deg );
+}
+
+#praise-cards li.comment .comment-body {
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: 3.2rem 1fr;
+  font-family: 'Permanent Marker', cursive !important;
+  margin: 0;
+}
+
+#praise-cards li.comment .comment-author cite,
+#praise-cards li.comment .comment-author span,
+#praise-cards li.comment .comment-meta {
+  display: none;
+}

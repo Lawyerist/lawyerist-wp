@@ -3,7 +3,7 @@ Theme Name:   lawyerist-wp
 Theme URI:    https://lawyerist.com
 Description:  A theme for Lawyerist.com
 Author:       Sam Glover
-Version:      5.0.0
+Version:      5.3.0
 
 License:      Copyright Lawyerist Media, LLC
 ------------------------------*/
@@ -34,7 +34,6 @@ Content
   Product Pages
   All-Reviews Page
   Team Profiles
-  Labster Directory
   Full Width Template
 	Comments
 Author Bios
@@ -509,6 +508,13 @@ body {
 
   }
 
+#small-firm-dashboard-container {
+  margin: 3rem auto 0 auto;
+  max-width: 102.4rem;
+  min-width: 32rem;
+  padding: 0 1rem;
+}
+
 #column_container {
   display: grid;
   grid-column-gap: 3rem;
@@ -684,7 +690,8 @@ button,
 .comment-author,
 .comment-meta,
 .comment .reply,
-#dashboard-title,
+#small-firm-dashboard,
+#small-firm-dashboard-container,
 #feature-chart td.value,
 figcaption,
 #footer,
@@ -731,6 +738,7 @@ p.pullquote,
 .tag_list,
 th,
 .title,
+ul.user-list,
 .user-rating,
 p.woocommerce-result-count,
 .woocommerce a.added_to_cart,
@@ -753,6 +761,7 @@ input[ type="password" ],
 input[ type="search" ],
 input[ type="text" ],
 select,
+#small-firm-dashboard p,
 textarea {
   font-family: equity, serif !important;
 }
@@ -1598,6 +1607,10 @@ Front Page
 
 /* Sticky Post */
 
+#fp-sticky-posts {
+  margin-bottom: 3rem;
+}
+
 .front_page_sticky_post {
   margin-bottom: 1rem;
   padding: 1rem 2rem;
@@ -1631,19 +1644,21 @@ Front Page
     width: 2.4rem;
   }
 
-  .front_page_sticky_post:last-child {
-    margin-bottom: 6rem;
-  }
 
+/* Small Firm Dashboard */
 
-/* Insider Dashboard */
-
-#insider-dashboard {
+#small-firm-dashboard-container {
   background-color: #eee;
   border-radius: .2rem;
   box-sizing: border-box;
   margin-bottom: 3rem;
   padding: 2rem;
+}
+
+#small-firm-dashboard {
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: 1fr;
 }
 
 #dashboard-title {
@@ -1654,7 +1669,7 @@ Front Page
   text-transform: uppercase;
 }
 
-#insider-dashboard .logout-link {
+#small-firm-dashboard .logout-link {
   float: right;
   font-size: 80%;
 }
@@ -2731,7 +2746,7 @@ Content
       }
 
       /* When the width reaches 700px. */
-      @media only screen and (max-width:699px) {
+      @media only screen and ( max-width:699px ) {
 
         .product-pages-list li.card {
           padding: 1rem;
@@ -2884,6 +2899,49 @@ Content
         border-radius: 0 .2rem 0 0;
       }
 
+    ul.user-list {
+      display: grid;
+      font-size: 1.6rem;
+      grid-column-gap: 2rem;
+      grid-row-gap: 4rem;
+      grid-template-columns: repeat( 4, 1fr );
+      list-style: none;
+      margin: 0 0 3rem 0;
+    }
+
+    @media only screen and ( max-width: 860px ) {
+
+      ul.user-list {
+        grid-template-columns: repeat( 3, 1fr );
+      }
+
+    }
+
+    @media only screen and ( max-width: 640px ) {
+
+      ul.user-list {
+        grid-template-columns: repeat( 2, 1fr );
+      }
+
+    }
+
+    ul.user-list > * {
+      margin: 0;
+      text-align: center;
+    }
+
+    .user-list li img {
+      display: block;
+      margin: 0 auto 1.5rem auto;
+    }
+
+    .user-list li .firm-name,
+    .user-list li .address,
+    .user-list li .email {
+      color: #777;
+      font-size: 1.4rem;
+      line-height: 1.2;
+    }
 
   /*------------------------------
   Full Width Template
@@ -3277,6 +3335,12 @@ select {
   position: relative;
   -webkit-appearance: none;
 }
+
+  .ui-datepicker-title select {
+    color: #666;
+    font-family: concourse, sans-serif !important;
+    width: unset;
+  }
 
   select:hover {
     background-image: url( 'images/expand.svg' );

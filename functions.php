@@ -631,15 +631,21 @@ function lawyerist_get_post_card( $post_ID = null, $card_top_label = null, $card
 	$post_title	= get_the_title( $post_ID );
 	$post_url		= get_permalink( $post_ID );
 
-	echo '<div class="' . implode( ' ', $card_classes ) . '">';
+	?>
+
+	<div class="<?php echo implode( ' ', $card_classes ); ?>">
+
+		<?php
 
 		if ( !empty( $card_top_label ) ) {
 			echo '<p class="card-label card-top-label">' . $card_top_label . '</p>';
 		}
 
-		echo '<a href="' . $post_url . '" title="' . $post_title . '" ';
-		post_class( $post_classes );
-		echo '>';
+		?>
+
+		<a href="<?php echo $post_url; ?>" title="<?php echo $post_title; ?>" <?php post_class( $post_classes ); ?>>
+
+			<?php
 
 			if ( is_category( 'lab-workshops' ) && has_block( 'embed' ) ) {
 
@@ -660,14 +666,17 @@ function lawyerist_get_post_card( $post_ID = null, $card_top_label = null, $card
 
 			}
 
-			echo '<div class="headline-byline">';
+			?>
 
-				echo '<h2 class="headline" title="' . $post_title . '">' . $post_title . '</h2>';
+			<div class="headline-byline">
 
-				// Outputs the byline, with exceptions.
-        if ( $post_type == 'post' && $title_only == false ) {
+				<h2 class="headline" title="<?php echo $post_title; ?>"><?php echo $post_title; ?></h2>
 
-					echo '<div class="postmeta">';
+				<?php if ( $post_type == 'post' && $title_only == false ) { ?>
+
+					<div class="postmeta">
+
+						<?php
 
 						$date = get_the_time( 'F jS, Y', $post_ID );
 
@@ -710,19 +719,27 @@ function lawyerist_get_post_card( $post_ID = null, $card_top_label = null, $card
 
 						}
 
-					echo '</div>';
+						?>
 
-        }
+					</div>
 
-			echo '</div>'; // Close .headline-byline.
+        <?php } ?>
 
-		echo '</a>'; // Close the post container.
+			</div>
+
+		</a>
+
+		<?php
 
 		if ( !empty( $card_bottom_label ) ) {
 			echo '<p class="card-label card-bottom-label">' . $card_bottom_label . '</p>';
 		}
 
-	echo '</div>'; // Close .card.
+		?>
+
+	</div>
+
+	<?php
 
 	unset( $thumbnail );
 

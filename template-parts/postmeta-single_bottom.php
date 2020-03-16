@@ -5,9 +5,11 @@ if ( get_the_author_meta( 'ID' ) != 26 ) {
 
   lawyerist_get_author_bio();
 
-  echo '<p class="coauthors"><em>';
-  get_coauthors();
-  echo '</em></p>';
+  ?>
+
+  <p class="coauthors"><em><?php get_coauthors(); ?></em></p>
+
+  <?php
 
 }
 
@@ -16,10 +18,10 @@ $updated_date = get_the_modified_date( 'F jS, Y' );
 
 if ( $date != $updated_date ) {
 
-  echo '<div class="postmeta">';
+  ?>
 
-    echo 'Last updated <span class="date updated">' . $updated_date . '</span>.';
+  <div class="postmeta">Last updated <span class="date updated"><?php echo $updated_date; ?></span>.</div>
 
-  echo '</div>'; // Close .postmeta.
+  <?php
 
 }

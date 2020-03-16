@@ -12,27 +12,21 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
     yoast_breadcrumb( '<div class="breadcrumbs">', '</div>' );
   }
 
-  echo '<main>';
+  ?>
 
-    // This is the post container.
-    echo '<div ';
-    post_class();
-    echo '>';
+  <main>
 
-      echo '<div class="headline_postmeta">';
+    <div <?php post_class(); ?>>
 
-        // Headline
-        echo '<h1 class="headline entry-title">' . $post_title . '</h1>';
+      <div class="headline_postmeta">
+        <h1 class="headline entry-title"><?php echo $post_title; ?></h1>
+      </div>
 
-      echo '</div>'; // Close .headline_postmeta.
+      <?php if ( has_post_thumbnail() ) { the_post_thumbnail(); } ?>
 
-      // Featured image
-      if ( has_post_thumbnail() ) {
-          the_post_thumbnail();
-      }
+      <div class="post_body" itemprop="articleBody">
 
-      // Output the post.
-      echo '<div class="post_body" itemprop="articleBody">';
+        <?php
 
         the_content();
 
@@ -55,8 +49,12 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
         }
 
-      echo '</div>'; // Close .post_body.
+        ?>
 
-    echo '</div>'; // Close .post.
+      </div>
+
+    </div>
+
+    <?php 
 
 endwhile; endif; // Close the Loop.

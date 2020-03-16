@@ -15,7 +15,8 @@
   - Get Affinity Confirmation Message
   - Get Scorecard Grade
 - List Contributors
-- List Labsters
+- List Users
+- Praise Cards
 
 */
 
@@ -481,7 +482,7 @@ function lawyerist_featured_products_list( $atts ) {
   }
 
   // Query variables.
-  $featured_products_list_query_args = array(
+  $args = array(
     'meta_query'      => array(
       'relation'      => 'OR',
       array(
@@ -507,26 +508,32 @@ function lawyerist_featured_products_list( $atts ) {
     ),
   );
 
-  $featured_products_list_query = new WP_Query( $featured_products_list_query_args );
+  $featured_products_list_query = new WP_Query( $args );
 
-  ob_start();
+  if ( $featured_products_list_query->have_posts() ) :
 
-    if ( $featured_products_list_query->have_posts() ) :
+    global $post;
 
-      global $post;
+    $portal_title = get_the_title( $post->ID );
 
-      echo '<h2>Featured ' . get_the_title( $post->ID ) . '</h2>';
+    ob_start();
 
-      echo '<ul class="product-pages-list featured-products-list">';
+      ?>
+
+      <h2>Featured <?php echo $portal_title; ?></h2>
+
+      <ul class="product-pages-list featured-products-list">
+
+        <?php
 
         // Start the Loop.
         while ( $featured_products_list_query->have_posts() ) : $featured_products_list_query->the_post();
 
-          $featured_page_id     = get_the_ID();
-          $featured_page_title	= the_title( '', '', FALSE );
-          $featured_page_URL		= get_permalink();
+          $product_page_id    = get_the_ID();
+          $product_page_title = the_title( '', '', FALSE );
+          $product_page_url		= get_permalink();
 
-          $seo_descr  = get_post_meta( $featured_page_id, '_yoast_wpseo_metadesc', true );
+          $seo_descr  = get_post_meta( $product_page_id, '_yoast_wpseo_metadesc', true );
 
           if ( !empty( $seo_descr ) ) {
             $page_excerpt = $seo_descr;
@@ -536,93 +543,95 @@ function lawyerist_featured_products_list( $atts ) {
 
           // Check for a rating.
           if ( comments_open() && function_exists( 'wp_review_show_total' ) ) {
-
             $composite_rating = lawyerist_get_composite_rating();
-
           }
 
-          echo '<li class="card">';
+          ?>
 
-            if ( has_post_thumbnail() ) {
+          <li class="card">
 
-              echo '<a class="image" href="' . $featured_page_URL . '">';
+            <?php if ( has_post_thumbnail() ) { ?>
 
-                if ( has_term( 'affinity-partner', 'page_type', $post->ID ) && get_field( 'affinity_active' ) == true ) {
+              <a class="image" href="<?php echo $product_page_url; ?>">
 
-                  $theme_dir = get_template_directory_uri();
-                  echo '<img class="affinity-partner-badge" alt="Lawyerist affinity partner badge." src="' . $theme_dir . '/images/affinity-partner-mini-badge.png" height="64" width="75" />';
+                <?php if ( has_term( 'affinity-partner', 'page_type', $post->ID ) && get_field( 'affinity_active' ) == true ) { ?>
 
-                }
+                  <?php $theme_dir = get_template_directory_uri(); ?>
 
-                the_post_thumbnail( 'thumbnail' );
+                  <img class="affinity-partner-badge" alt="Lawyerist affinity partner badge." src="<?php echo $theme_dir; ?>/images/affinity-partner-mini-badge.png" height="64" width="75" />
 
-              echo '</a>';
+                <?php } ?>
 
-            }
+                <?php the_post_thumbnail( 'thumbnail' ); ?>
 
-            echo '<div class="title_container">';
+              </a>
 
-              if ( !empty( $composite_rating ) ) {
+            <?php } ?>
 
-                echo '<div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">';
-                echo '<a class="title" href="' . $featured_page_URL . '"><span itemprop="itemReviewed">' . $featured_page_title . '</span></a>';
+            <div class="title_container">
 
-              } else {
+              <?php if ( !empty( $composite_rating ) ) { ?>
 
-                echo '<a class="title" href="' . $featured_page_URL . '">' . $featured_page_title . '</a>';
+                <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+                <a class="title" href="<?php echo $product_page_url; ?>"><span itemprop="itemReviewed"><?php echo $product_page_title; ?></span></a>
 
-              }
+              <?php } else { ?>
 
-              // Rating
-              echo '<div class="user-rating">';
+                <a class="title" href="<?php echo $product_page_url; ?>"><?php echo $product_page_title; ?></a>
 
-                if ( !empty( $composite_rating ) ) {
+              <?php } ?>
 
-                  echo '<a href="' . $featured_page_URL . '#rating">';
+              <div class="user-rating">
 
-                    echo lawyerist_product_rating();
+                <?php if ( !empty( $composite_rating ) ) { ?>
 
-                  echo '</a>';
+                  <a href="<?php echo $product_page_url; ?>#rating">
+                    <?php echo lawyerist_product_rating(); ?>
+                  </a>
 
-                } else {
+                <?php } else { ?>
 
-                  echo '<a href="' . $featured_page_URL . '#respond">Leave a review.</a>';
+                  <a href="<?php echo $product_page_url; ?>#respond">Leave a review.</a>
 
-                }
+                <?php } ?>
 
-              echo '</div>'; // End .user_rating.
+              </div>
 
-              if ( !empty( $composite_rating ) ) {
-                echo '</div>'; // End aggregateRating schema.
-              }
+              <?php if ( !empty( $composite_rating ) ) { ?>
+                </div>
+              <?php } ?>
 
-            echo '</div>'; // End .title_container.
+            </div>
 
-            if ( ( $country == ( 'US' || 'CA' ) ) && has_trial_button( $featured_page_id ) ) {
+            <?php if ( ( $country == ( 'US' || 'CA' ) ) && has_trial_button( $product_page_id ) ) { ?>
 
-              echo '<div class="list-products-trial-button">';
-                echo  trial_button( $featured_page_id );
-              echo '</div>';
+              <div class="list-products-trial-button">
+                <?php echo trial_button( $product_page_id ); ?>
+              </div>
 
-            }
+            <?php } ?>
 
-            echo '<span class="excerpt">' . $page_excerpt . ' <a href="' . $featured_page_URL . '">Learn more about ' . $featured_page_title . '.</a></span>';
+            <span class="excerpt"><?php echo $page_excerpt; ?> <a href="<?php echo $product_page_url; ?>">Learn more about <?php echo $product_page_title; ?></a></span>
 
-          echo '</li>';
+          </li>
+
+          <?php
 
         endwhile; wp_reset_postdata();
 
-  		 echo '</ul>';
+        ?>
 
-       if ( has_shortcode( $post->post_content, 'list-products' ) ) {
+      </ul>
 
-         echo '<p><a href="#all-products" class="button greybutton">See All</a></p>';
+      <?php if ( has_shortcode( $post->post_content, 'list-products' ) ) { ?>
 
-       }
+        <p><a href="#all-products" class="button greybutton">See All</a></p>
 
-    endif; // End product list.
+      <?php }
 
-  return ob_get_clean();
+    return ob_get_clean();
+
+  endif; // End product list.
 
 }
 
@@ -683,57 +692,77 @@ function lawyerist_all_products_list( $atts ) {
 
 	if ( $product_list_query->post_count > 0 ) :
 
+    global $post;
+
+    $fields       = array();
+    $portal_title = get_the_title( $post->ID );
+
     ob_start();
 
-      global $post;
+      ?>
 
-      $fields = array();
+      <div id="all-products" class="target"></div>
 
-      echo '<div id="all-products" class="target"></div>';
+      <?php if ( $atts[ 'show_heading' ] == 'true' ) { ?>
+        <h2><?php echo $portal_title; ?> (Alphabetical List)</h2>
+      <?php } ?>
 
-      if ( $atts[ 'show_heading' ] == 'true' ) {
-        echo '<h2>' . get_the_title( $post->ID ) . ' (Alphabetical List)</h2>';
-      }
-
-      $acf_group_ids = get_feature_chart_ids();
+      <?php $acf_group_ids = get_feature_chart_ids();
 
       if ( array_key_exists( $parent, $acf_group_ids ) ) {
 
         // Get filters.
         $fields = acf_get_fields( $acf_group_ids[ $atts[ 'portal' ] ] );
 
-        echo '<p class="card-label">Filter by Feature</p>';
+        ?>
 
-        echo '<div class="product-filters">';
+        <p class="card-label">Filter by Feature</p>
 
-          echo '<a class="show-all">Show All</a>';
+        <div class="product-filters">
+          <a class="show-all">Show All</a>
+
+          <?php
 
           if ( !empty( $fields ) ) {
 
             foreach ( $fields as $field ) {
 
               if ( $field['type'] == 'true_false' ) {
-                echo '<a class="filter" data-acf_label="' . $field[ 'name' ] . '">' . $field['label'] . '</a>';
+
+                ?>
+
+                <a class="filter" data-acf_label="<?php echo $field[ 'name' ]; ?>"><?php echo $field['label']; ?></a>
+
+                <?php
+
               }
 
             }
 
           }
 
-          echo '<div class="clear"></div>';
+          ?>
 
-        echo '</div>';
+          <div class="clear"></div>
+
+        </div>
+
+        <?php
 
       }
 
-  		echo '<ul class="product-pages-list">';
+      ?>
+
+  		<ul class="product-pages-list">
+
+        <?php
 
   			// Start the Loop.
   			while ( $product_list_query->have_posts() ) : $product_list_query->the_post();
 
           $product_page_id    = get_the_ID();
   				$product_page_title	= the_title( '', '', FALSE );
-  				$product_page_URL		= get_permalink();
+  				$product_page_url		= get_permalink();
 
           $seo_descr  = get_post_meta( $product_page_id, '_yoast_wpseo_metadesc', true );
 
@@ -764,95 +793,109 @@ function lawyerist_all_products_list( $atts ) {
 
           }
 
-  				echo '<li ';
-          post_class( $classes );
-          echo '>';
+          ?>
 
-  					if ( has_post_thumbnail() ) {
+  				<li <?php post_class( $classes ); ?>>
 
-  						echo '<a class="image" href="' . $product_page_URL . '">';
+  					<?php if ( has_post_thumbnail() ) { ?>
 
-                if ( has_term( 'affinity-partner', 'page_type', $post->ID ) && get_field( 'affinity_active' ) == true ) {
+  						<a class="image" href="<?php echo $product_page_url; ?>">
 
-                  $theme_dir = get_template_directory_uri();
-                  echo '<img class="affinity-partner-badge" alt="Lawyerist affinity partner badge." src="' . $theme_dir . '/images/affinity-partner-mini-badge.png" height="64" width="75" />';
+                <?php if ( has_term( 'affinity-partner', 'page_type', $post->ID ) && get_field( 'affinity_active' ) == true ) { ?>
 
-                }
+                  <?php $theme_dir = get_template_directory_uri(); ?>
 
-    						the_post_thumbnail( 'thumbnail' );
+                  <img class="affinity-partner-badge" alt="Lawyerist affinity partner badge." src="<?php echo $theme_dir; ?>/images/affinity-partner-mini-badge.png" height="64" width="75" />
 
-  						echo '</a>';
+                <?php } ?>
 
-  					}
+    						<?php the_post_thumbnail( 'thumbnail' ); ?>
 
-            echo '<div class="title_container">';
+  						</a>
+
+  					<?php } ?>
+
+            <div class="title_container">
+
+              <?php
 
               if ( !empty( $composite_rating ) ) {
 
                 echo '<div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">';
-                echo '<a class="title" href="' . $product_page_URL . '"><span itemprop="itemReviewed">' . $product_page_title . '</span></a>';
+                echo '<a class="title" href="' . $product_page_url . '"><span itemprop="itemReviewed">' . $product_page_title . '</span></a>';
 
               } else {
 
-                echo '<a class="title" href="' . $product_page_URL . '">' . $product_page_title . '</a>';
+                echo '<a class="title" href="' . $product_page_url . '">' . $product_page_title . '</a>';
 
               }
 
-              // Rating
-              echo '<div class="user-rating">';
+              ?>
 
-                if ( !empty( $composite_rating ) ) {
+              <div class="user-rating">
 
-                  echo '<a href="' . $product_page_URL . '#rating">';
+                <?php if ( !empty( $composite_rating ) ) { ?>
 
-                    echo lawyerist_product_rating();
+                  <a href="<?php echo $product_page_url; ?>#rating">
+                    <?php echo lawyerist_product_rating(); ?>
+                  </a>
 
-                  echo '</a>';
+                <?php } else { ?>
 
-                } else {
+                  <a href="<?php echo $product_page_url; ?>#respond">Leave a review.</a>
 
-                  echo '<a href="' . $product_page_URL . '#respond">Leave a review.</a>';
+                <?php } ?>
 
-                }
+              </div>
 
-              echo '</div>'; // End .user_rating.
+              <?php if ( !empty( $composite_rating ) ) { ?></div><?php } ?>
 
-              if ( !empty( $composite_rating ) ) {
-                echo '</div>'; // End aggregateRating schema.
-              }
+            </div>
 
-            echo '</div>'; // End .title_container.
+            <?php
 
             // Outputs trial button if there is one, except on the all-reviews page.
             if ( !is_page( '301729' ) ) {
 
               if ( ( $country == ( 'US' || 'CA' ) ) && has_trial_button( $product_page_id ) ) {
 
-                echo '<div class="list-products-trial-button">';
-                  echo  trial_button( $product_page_id );
-                echo '</div>';
+                ?>
+
+                <div class="list-products-trial-button">
+                  <?php echo trial_button( $product_page_id ); ?>
+                </div>
+
+                <?php
 
               }
 
             }
 
-  					if ( $atts[ 'show_excerpt' ] == 'true' ) { echo '<span class="excerpt">' . $page_excerpt . ' <a href="' . $product_page_URL . '">Learn more about ' . $product_page_title . '.</a></span>'; }
+            ?>
 
-  				echo '</li>';
+  					<?php if ( $atts[ 'show_excerpt' ] == 'true' ) { ?>
+              <span class="excerpt"><?php echo $page_excerpt; ?> <a href="<?php echo $product_page_url; ?>">Learn more about <?php echo $product_page_title; ?>.</a></span>
+            <?php } ?>
+
+  				</li>
+
+          <?php
 
           unset( $classes );
 
   			endwhile; wp_reset_postdata();
 
-  		echo '</ul>';
+        ?>
 
-      echo '<p id="no-results-placeholder" style="display: none;">Sorry, no results based on your choices.</p>';
+  		</ul>
 
-    $all_products = ob_get_clean();
+      <p id="no-results-placeholder" style="display: none;">Sorry, no results based on your choices.</p>
+
+      <?php
+
+    return ob_get_clean();
 
 	endif; // End product list.
-
-  return $all_products;
 
 }
 
@@ -959,7 +1002,7 @@ function lwyrst_affinity_partners_list() {
 
               $product_page_id    = get_the_ID();
       				$product_page_title	= the_title( '', '', FALSE );
-      				$product_page_URL		= get_permalink();
+      				$product_page_url		= get_permalink();
 
               $seo_descr  = get_post_meta( $product_page_id, '_yoast_wpseo_metadesc', true );
 
@@ -982,7 +1025,7 @@ function lwyrst_affinity_partners_list() {
 
       					if ( has_post_thumbnail() ) {
 
-      						echo '<a class="image" href="' . $product_page_URL . '">';
+      						echo '<a class="image" href="' . $product_page_url . '">';
 
                     if ( has_term( 'affinity-partner', 'page_type', $product_page_id ) && get_field( 'affinity_active' ) == true ) {
 
@@ -1002,11 +1045,11 @@ function lwyrst_affinity_partners_list() {
                   if ( !empty( $composite_rating ) ) {
 
                     echo '<div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">';
-                    echo '<a class="title" href="' . $product_page_URL . '"><span itemprop="itemReviewed">' . $product_page_title . '</span></a>';
+                    echo '<a class="title" href="' . $product_page_url . '"><span itemprop="itemReviewed">' . $product_page_title . '</span></a>';
 
                   } else {
 
-                    echo '<a class="title" href="' . $product_page_URL . '">' . $product_page_title . '</a>';
+                    echo '<a class="title" href="' . $product_page_url . '">' . $product_page_title . '</a>';
 
                   }
 
@@ -1015,7 +1058,7 @@ function lwyrst_affinity_partners_list() {
 
                     if ( !empty( $composite_rating ) ) {
 
-                      echo '<a href="' . $product_page_URL . '#rating">';
+                      echo '<a href="' . $product_page_url . '#rating">';
 
                         echo lawyerist_product_rating();
 
@@ -1023,7 +1066,7 @@ function lwyrst_affinity_partners_list() {
 
                     } else {
 
-                      echo '<a href="' . $product_page_URL . '#respond">Leave a review.</a>';
+                      echo '<a href="' . $product_page_url . '#respond">Leave a review.</a>';
 
                     }
 
@@ -1035,7 +1078,7 @@ function lwyrst_affinity_partners_list() {
 
                 echo '</div>'; // End .title_container.
 
-      					echo '<span class="excerpt">' . $page_excerpt . ' <a href="' . $product_page_URL . '">Learn more about ' . $product_page_title . '.</a></span>';
+      					echo '<span class="excerpt">' . $page_excerpt . ' <a href="' . $product_page_url . '">Learn more about ' . $product_page_title . '.</a></span>';
 
       				echo '</li>';
 
@@ -1547,85 +1590,138 @@ add_shortcode( 'list-contributors', 'list_contributors_shortcode' );
 
 
 /*------------------------------
-List Labsters
+List Users
 ------------------------------*/
 
-// Get Active Labsters
-function get_active_labsters() {
+function list_users_shortcode( $atts ) {
 
-	$labster_query_args = array(
-		'post_type'				=> 'wc_user_membership',
-		'post_status'			=> 'wcm-active',
-		'post_parent'			=> 223685,
-		'posts_per_page'	=> -1,
-	);
+  $atts = shortcode_atts( array(
+    'membership'  => null,
+    'product'     => null,
+  ), $atts );
 
-	$labster_query = new WP_Query( $labster_query_args );
+  $users = array();
 
-	if ( $labster_query->have_posts() ) :
+  if ( $atts[ 'membership' ] ) {
 
-		$labsters	= array();
+    $args = array(
+      'post_type'				=> 'wc_user_membership',
+      'post_status'			=> 'wcm-active',
+      'post_parent'			=> $atts[ 'membership' ],
+      'posts_per_page'	=> -1,
+    );
 
-		while ( $labster_query->have_posts() ) : $labster_query->the_post();
+    $user_query = new WP_Query( $args );
 
-			array_push( $labsters, array(
-				'labster_id'	=> get_the_ID(),
-				'email'				=> get_the_author_meta( 'user_email' ),
-				'first_name'	=> get_the_author_meta( 'user_firstname' ),
-				'last_name'		=> get_the_author_meta( 'user_lastname' ),
-			) );
+    if ( $user_query->have_posts() ) :
 
-		endwhile; wp_reset_postdata();
+      while ( $user_query->have_posts() ) : $user_query->the_post();
 
-		// Sorts $labsters[] by last name.
-		usort( $labsters, function( $a, $b ) {
-			return $a[ 'last_name' ] <=> $b[ 'last_name' ];
-		});
+        array_push( $users, array(
+          'user_id'     => get_the_ID(),
+          'email'				=> get_the_author_meta( 'user_email' ),
+          'first_name'	=> get_the_author_meta( 'user_firstname' ),
+          'last_name'		=> get_the_author_meta( 'user_lastname' ),
+          'firm_name'   => get_field( 'firm_name', 'user_' . get_the_ID() ),
+          'city'        => get_user_meta( get_the_ID(), 'billing_city', true ),
+          'state'       => get_user_meta( get_the_ID(), 'billing_state', true ),
+        ) );
 
-		return $labsters;
+      endwhile; wp_reset_postdata();
 
-	else :
+    endif;
 
-		return;
+  }
 
-	endif;
+  if ( $atts[ 'product' ] ) {
 
-}
+    $product_id = intval( $atts[ 'product' ] );
 
+    $args = array(
+      'fields'  => 'ID',
+      'role'    => 'customer',
+    );
 
-function list_labsters_shortcode() {
+    $customer_query = new WP_User_Query( $args );
+    $customers      = $customer_query->get_results();
 
-  $labsters = get_active_labsters();
+    if ( !empty( $customers ) ) {
 
-  if ( !empty( $labsters ) ) {
+      foreach ( $customers as $customer ) {
 
-    ob_start();
+        if ( wc_customer_bought_product( '', $customer, $product_id ) ) {
 
-      echo '<ul id="labsters">';
+          $customer_data = get_userdata( $customer );
 
-        foreach ( $labsters as $labster ) {
-
-          echo '<li class="labster">';
-
-            // echo get_avatar( $labster[ 'email' ], 100 );
-            echo '<span class="labster-name">' . $labster[ 'last_name' ] . ', ' . $labster[ 'first_name' ] . '</span> <span class="labster-email">(' . $labster[ 'email' ] . ')</span>';
-
-          echo '</li>';
+          array_push( $users, array(
+            'user_id'     => $customer,
+            'email'				=> $customer_data->user_email,
+            'first_name'	=> $customer_data->first_name,
+            'last_name'		=> $customer_data->last_name,
+            'firm_name'   => get_field( 'firm_name', 'user_' . $customer ),
+            'city'        => get_user_meta( $customer, 'billing_city', true ),
+            'state'       => get_user_meta( $customer, 'billing_state', true ),
+          ) );
 
         }
 
-      echo '</ul>';
+      }
 
-    $labsters_list = ob_get_clean();
+    }
 
-    return $labsters_list;
+  }
+
+  if ( !empty( $users ) ) {
+
+    usort( $users, function( $a, $b ) {
+      return $a[ 'last_name' ] <=> $b[ 'last_name' ];
+    });
+
+    ob_start();
+
+      ?>
+
+      <ul class="user-list">
+
+        <?php foreach ( $users as $user ) { ?>
+
+          <li>
+
+            <?php echo get_avatar( $user[ 'email' ], 100 ); ?>
+            <span class="name"><?php echo $user[ 'first_name' ] . ' ' . $user[ 'last_name' ]; ?></span><br />
+            <?php if ( $user[ 'firm_name' ] ) { ?><span class="firm-name"><?php echo $user[ 'firm_name' ]; ?></span><br /><?php } ?>
+            <?php if ( $user[ 'city' ] && $user[ 'state' ] ) { ?><span class="address"><?php echo $user[ 'city' ]  . ', ' . $user[ 'state' ]; ?></span><br /><?php } ?>
+            <span class="email"><?php echo $user[ 'email' ]; ?></span>
+
+          </li>
+
+        <?php } ?>
+
+      </ul>
+
+      <?php
+
+    return ob_get_clean();
 
   } else {
 
-    return '<p>No Labsters found!</p>';
+    return '<p>No users found!</p>';
 
   }
 
 }
 
-add_shortcode( 'list-labsters', 'list_labsters_shortcode' );
+add_shortcode( 'list-users', 'list_users_shortcode' );
+
+
+/*------------------------------
+Praise Cards
+------------------------------*/
+
+function praise_cards_shortcode() {
+
+  if ( comments_open() ) { comments_template( '/praise-cards.php' ); }
+
+}
+
+add_shortcode( 'praise-cards', 'praise_cards_shortcode' );
