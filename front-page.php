@@ -14,7 +14,11 @@ if ( is_user_logged_in() ) {
 		<div id="small-firm-dashboard">
 			<?php
 			echo scorecard_results_graph();
-			// echo financial_scorecard_graph();
+
+			if ( wc_customer_bought_product( '', get_current_user_id(), 321206 ) ) {
+				echo financial_scorecard_graph();
+			}
+
 			?>
 		</div>
 	</div>
