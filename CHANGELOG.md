@@ -29,6 +29,22 @@ All notable changes to this project will be documented in this file. The format 
 - Fix bug that was displaying the sticky post container when there weren't any.
 
 
+## [5.3.0] - 2020-03-15
+
+### [Added]
+- Added the Small Firm Financial Scorecard to the Small Firm Dashboard.
+- Add LabCon Materials template and praise cards.
+
+### [Changed]
+- Un-echo HTML in template parts.
+- Remove partner dashboard page from signup wall.
+- Don't show call to action on WooCommerce pages.
+
+### [Fixed]
+- Fix sponsored posts not displaying.
+- Fix bug that was displaying the sticky post container when there weren't any.
+
+
 ## [5.2.1] - 2020-02-14
 
 ### [Changed]

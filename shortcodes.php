@@ -837,7 +837,9 @@ function lawyerist_all_products_list( $atts ) {
                 <?php if ( !empty( $composite_rating ) ) { ?>
 
                   <a href="<?php echo $product_page_url; ?>#rating">
+
                     <?php echo lwyrst_product_rating(); ?>
+
                   </a>
 
                 <?php } else { ?>
@@ -1700,7 +1702,7 @@ function list_users_shortcode( $atts ) {
       </ul>
 
       <?php
-
+    
     return ob_get_clean();
 
   } else {
