@@ -1549,6 +1549,7 @@ function lwyrst_wp_review_pro_schema( $output, $review ) {
 	$schema_obj->reviewRating->ratingValue  = lwyrst_get_our_rating();
 	$schema_obj->reviewRating->bestRating   = 5;
 
+	$schema_obj->aggregateRating = new stdClass();
 	$schema_obj->aggregateRating->{ '@type' } = 'AggregateRating';
 	$schema_obj->aggregateRating->ratingValue = lwyrst_get_community_rating();
 	$schema_obj->aggregateRating->bestRating  = 5;
