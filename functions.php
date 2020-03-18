@@ -1540,11 +1540,45 @@ add_filter( 'get_comment_author', 'lawyerist_comment_author_name', 10, 1 );
 Reviews
 ------------------------------*/
 
+// Modify WP Review Pro JSON schema output.
+function lwyrst_wp_review_pro_schema( $output, $review ) {
+
+	$schema_json	= strip_tags( $output );
+	$schema_obj   = json_decode( $schema_json );
+
+	$schema_obj->reviewRating->ratingValue  = lwyrst_get_our_rating();
+	$schema_obj->reviewRating->bestRating   = 5;
+
+	$schema_obj->aggregateRating->{ '@type' } = 'AggregateRating';
+	$schema_obj->aggregateRating->ratingValue = lwyrst_get_community_rating();
+	$schema_obj->aggregateRating->bestRating  = 5;
+	$schema_obj->aggregateRating->ratingCount = lwyrst_get_community_review_count();
+
+	$schema_obj->author->{ '@type' } = 'Organization';
+
+	$schema_obj->reviewBody = get_the_excerpt();
+
+	if ( version_compare( phpversion(), '7.1', '>=' ) ) {
+    ini_set( 'serialize_precision', -1 );
+	}
+
+	$output  = '<script type="application/ld+json">' . PHP_EOL;
+	$output .= wp_json_encode( $schema_obj, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT ) . PHP_EOL;
+	$output .= '</script>' . PHP_EOL;
+
+	return $output;
+
+}
+
+add_filter( 'wp_review_get_schema', 'lwyrst_wp_review_pro_schema', 10, 2 );
+
+
+
 // Gets the author rating ("our" rating) from WP Review Pro, and converts it
 // from a 10-point scale to a 5-point scale. Rounds to one decimal point.
-function lawyerist_get_our_rating( $product_id = '' ) {
+function lwyrst_get_our_rating( $product_id = null ) {
 
-	if ( empty( $product_id ) ) {
+	if ( ! $product_id ) {
 		global $post;
 		$product_id = $post->ID;
 	}
@@ -1558,9 +1592,9 @@ function lawyerist_get_our_rating( $product_id = '' ) {
 
 // Gets the comments rating ("community" rating) from WP Review Pro. Rounds to
 // one decimal point.
-function lawyerist_get_community_rating( $product_id = '' ) {
+function lwyrst_get_community_rating( $product_id = null ) {
 
-	if ( empty( $product_id ) ) {
+	if ( ! $product_id ) {
 		global $post;
 		$product_id = $post->ID;
 	}
@@ -1571,10 +1605,10 @@ function lawyerist_get_community_rating( $product_id = '' ) {
 
 }
 
-// Gets the numnber of comment reviews ("community" reviews) from WP Review Pro.
-function lawyerist_get_community_review_count( $product_id = '' ) {
+// Gets the number of comment reviews ("community" reviews) from WP Review Pro.
+function lwyrst_get_community_review_count( $product_id = null ) {
 
-	if ( empty( $product_id ) ) {
+	if ( ! $product_id ) {
 		global $post;
 		$product_id = $post->ID;
 	}
@@ -1588,16 +1622,16 @@ function lawyerist_get_community_review_count( $product_id = '' ) {
 // Calculates the composite rating. If only one rating exists, that rating is
 // returned. If both ratings exist, it combines them. The output is rounded to
 // one decimal point.
-function lawyerist_get_composite_rating( $product_id = '' ) {
+function lwyrst_get_composite_rating( $product_id = null ) {
 
-	if ( empty( $product_id ) ) {
+	if ( ! $product_id ) {
 		global $post;
 		$product_id = $post->ID;
 	}
 
-	$our_rating							= lawyerist_get_our_rating( $product_id );
-	$community_rating				= lawyerist_get_community_rating( $product_id );
-	$community_review_count	= lawyerist_get_community_review_count( $product_id );
+	$our_rating							= lwyrst_get_our_rating( $product_id );
+	$community_rating				= lwyrst_get_community_rating( $product_id );
+	$community_review_count	= lwyrst_get_community_review_count( $product_id );
 
 	if ( !empty( $our_rating ) && !empty( $community_rating ) ) {
 
@@ -1643,40 +1677,48 @@ function lawyerist_get_composite_rating( $product_id = '' ) {
 * @param string $rating_type Optional. Accepts 'our_rating' and
 * 'community_rating'.
 */
-function lawyerist_product_rating( $rating_type = '' ) {
+function lwyrst_product_rating( $rating_type = null ) {
 
-	if ( $rating_type == 'our_rating' ) {
+	switch ( $rating_type ) {
 
-		$rating				= lawyerist_get_our_rating();
-		$rating_count	=	1;
+		case 'our_rating':
 
-	} elseif ( $rating_type == 'community_rating' ) {
+			$rating				= lwyrst_get_our_rating();
+			$rating_count	=	1;
+			break;
 
-		$rating				= lawyerist_get_community_rating();
-		$rating_count	=	lawyerist_get_community_review_count();
+		case 'community_rating':
 
-	} else {
+			$rating				= lwyrst_get_community_rating();
+			$rating_count	=	lwyrst_get_community_review_count();
+			break;
 
-		$rating				= lawyerist_get_composite_rating();
-		$our_rating		= lawyerist_get_our_rating();
+		default:
 
-		if ( !empty( $our_rating ) ) {
-			$rating_count	=	intval( lawyerist_get_community_review_count() ) + 1;
-		} else {
-			$rating_count	=	intval( lawyerist_get_community_review_count() );
-		}
+			$rating				= lwyrst_get_composite_rating();
+			$our_rating		= lwyrst_get_our_rating();
+
+			if ( !empty( $our_rating ) ) {
+				$rating_count	=	intval( lwyrst_get_community_review_count() ) + 1;
+			} else {
+				$rating_count	=	intval( lwyrst_get_community_review_count() );
+			}
+
+			break;
 
 	}
 
 	ob_start();
 
-		echo lawyerist_star_rating( $rating );
+		echo lwyrst_star_rating( $rating );
 
-		echo '<span class="review_count"><span itemprop="ratingValue">' . $rating . '</span>/5 (based on <span itemprop="reviewCount">' . $rating_count . '</span> ' . _n( 'rating', 'ratings', $rating_count ) . ')</span>';
+		?>
 
-	$lawyerist_product_rating = ob_get_clean();
+		<span><?php echo $rating; ?>/5 (based on <?php echo $rating_count; ?> <?php echo _n( 'rating', 'ratings', $rating_count ); ?></span>
 
-	return $lawyerist_product_rating;
+		<?php
+
+	return ob_get_clean();
 
 }
 
@@ -1686,10 +1728,10 @@ function lawyerist_product_rating( $rating_type = '' ) {
 *
 * @param int $rating Optional. Defaults to composite rating.
 */
-function lawyerist_star_rating( $rating = '' ) {
+function lwyrst_star_rating( $rating = null ) {
 
-	if ( empty( $rating ) ) {
-		$rating	= lawyerist_get_composite_rating();
+	if ( ! $rating ) {
+		$rating	= lwyrst_get_composite_rating();
 	}
 
 	$star_rating_width = ( $rating / 5 ) * 100;
@@ -1728,9 +1770,9 @@ function lawyerist_star_rating( $rating = '' ) {
 
 		echo '</div>';
 
-	$lawyerist_star_rating = ob_get_clean();
+	$lwyrst_star_rating = ob_get_clean();
 
-	return $lawyerist_star_rating;
+	return $lwyrst_star_rating;
 
 }
 

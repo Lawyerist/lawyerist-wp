@@ -101,7 +101,6 @@ body #column_container {
   margin: 0;
 }
 
-#praise-cards li.comment .comment-author cite,
 #praise-cards li.comment .comment-author span,
 #praise-cards li.comment .comment-meta {
   display: none;

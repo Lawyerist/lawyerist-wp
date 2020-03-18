@@ -9,10 +9,10 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
   // Checks for a rating, then assigns variables if they will be needed.
   if ( comments_open() && function_exists( 'wp_review_show_total' ) ) {
 
-    $our_rating             = lawyerist_get_our_rating();
-    $community_rating       = lawyerist_get_community_rating();
-    $community_review_count = lawyerist_get_community_review_count();
-    $composite_rating       = lawyerist_get_composite_rating();
+    $our_rating             = lwyrst_get_our_rating();
+    $community_rating       = lwyrst_get_community_rating();
+    $community_review_count = lwyrst_get_community_review_count();
+    $composite_rating       = lwyrst_get_composite_rating();
 
   }
 
@@ -36,40 +36,12 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
       <div class="headline_container">
 
-        <?php
-
-        // Show featured image if there is one.
-        if ( has_post_thumbnail() ) {
-
-          ?>
-
+        <?php if ( has_post_thumbnail() ) { ?>
           <div itemprop="image"><?php the_post_thumbnail( 'thumbnail' ); ?></div>
-
-          <?php
-
-        }
-
-        ?>
+        <?php } ?>
 
         <div id="product_page_title">
-
-          <?php if ( !empty( $composite_rating ) ) { ?>
-
-            <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
-            <h1 class="headline entry-title" itemprop="itemReviewed"><?php echo $page_title; ?></h1>
-
-          <?php } else { ?>
-
-            <h1 class="headline entry-title"><?php echo $page_title; ?></h1>
-
-          <?php } ?>
-
-          <?php if ( !empty( $composite_rating ) ) { ?>
-
-            </div>
-
-          <?php } ?>
-
+          <h1 class="headline entry-title"><?php echo $page_title; ?></h1>
         </div>
 
       </div>
@@ -88,7 +60,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
             <div class="card rating-box">
 
-              <h2><?php echo $page_title; ?> Rating: <?php echo lawyerist_star_rating() . $composite_rating; ?>/5</h2>
+              <h2><?php echo $page_title; ?> Rating: <?php echo lwyrst_star_rating() . $composite_rating; ?>/5</h2>
 
               <?php if ( !empty( $our_rating ) ) { ?>
 

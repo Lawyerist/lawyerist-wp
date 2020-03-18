@@ -50,7 +50,7 @@
 
                 ?>
 
-                <p>These materials are only for LabCon attendees. Please <a href="{login_url}" class="login-link">log in</a> so we can check your attendance.</p>
+                <p>These materials are only for LabCon attendees. Please <a class="login-link">log in</a> so we can check your attendance.</p>
 
                 <?php
 
