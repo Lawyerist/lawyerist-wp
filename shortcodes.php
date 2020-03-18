@@ -543,7 +543,7 @@ function lawyerist_featured_products_list( $atts ) {
 
           // Check for a rating.
           if ( comments_open() && function_exists( 'wp_review_show_total' ) ) {
-            $composite_rating = lawyerist_get_composite_rating();
+            $composite_rating = lwyrst_get_composite_rating();
           }
 
           ?>
@@ -586,7 +586,7 @@ function lawyerist_featured_products_list( $atts ) {
                 <?php if ( !empty( $composite_rating ) ) { ?>
 
                   <a href="<?php echo $product_page_url; ?>#rating">
-                    <?php echo lawyerist_product_rating(); ?>
+                    <?php echo lwyrst_product_rating(); ?>
                   </a>
 
                 <?php } else { ?>
@@ -774,7 +774,7 @@ function lawyerist_all_products_list( $atts ) {
 
           // Check for a rating.
           if ( comments_open() && function_exists( 'wp_review_show_total' ) ) {
-          	$composite_rating = lawyerist_get_composite_rating();
+          	$composite_rating = lwyrst_get_composite_rating();
           }
 
           $classes = array( 'card product-card' );
@@ -837,7 +837,7 @@ function lawyerist_all_products_list( $atts ) {
                 <?php if ( !empty( $composite_rating ) ) { ?>
 
                   <a href="<?php echo $product_page_url; ?>#rating">
-                    <?php echo lawyerist_product_rating(); ?>
+                    <?php echo lwyrst_product_rating(); ?>
                   </a>
 
                 <?php } else { ?>
@@ -1015,7 +1015,7 @@ function lwyrst_affinity_partners_list() {
               // Check for a rating.
               if ( comments_open() && function_exists( 'wp_review_show_total' ) ) {
 
-              	$composite_rating = lawyerist_get_composite_rating();
+              	$composite_rating = lwyrst_get_composite_rating();
 
               }
 
@@ -1060,7 +1060,7 @@ function lwyrst_affinity_partners_list() {
 
                       echo '<a href="' . $product_page_url . '#rating">';
 
-                        echo lawyerist_product_rating();
+                        echo lwyrst_product_rating();
 
                       echo '</a>';
 
