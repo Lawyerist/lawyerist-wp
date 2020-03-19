@@ -99,9 +99,29 @@ if ( is_user_logged_in() ) {
 			}
 
 			// Outputs the call to action.
-			echo lawyerist_cta();
+			// echo lawyerist_cta();
 
 			?>
+
+			<div id="book_cta" class="card">
+
+				<div class="book_cta_grid_row">
+
+					<div id="book_cta_img">
+						<?php echo wp_get_attachment_image( 1091579, 'medium' ); ?>
+					</div>
+
+					<div id="book_cta_copy">
+						<h2>9 Tips to Run Your Law Practice from Home NOW</h2>
+						<p>Are you suddenly & unexpectedly running your business from home?</p>
+						<p>In this webinar, you'll learn the essential steps to make sure your business stays up and running during social distancing.</p>
+					</div>
+
+				</div>
+
+				<a class="button free-flag" href="http://go.lawyerist.com/9tipstorunyourlawpracticefromhome">Register Now</a>
+
+			</div>
 
 			<p class="fp-section-header">Recent Updates</p>
 
