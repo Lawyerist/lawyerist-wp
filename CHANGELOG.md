@@ -8,6 +8,12 @@ All notable changes to this project will be documented in this file. The format 
 
 ## [Unreleased]
 
+## [5.3.2] - 2020-03-18
+
+### [Fixed]
+- Schema output.
+
+
 ## [5.3.1] - 2020-03-18
 
 ### [Changed]
