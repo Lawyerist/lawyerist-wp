@@ -19,6 +19,7 @@ All notable changes to this project will be documented in this file. The format 
 ### [Changed]
 - Modified the WP Review Pro JSON schema output to be more accurate and complete.
 
+
 ## [5.3.0] - 2020-03-15
 
 ### [Added]
