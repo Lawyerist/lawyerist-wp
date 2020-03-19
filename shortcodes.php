@@ -570,16 +570,7 @@ function lawyerist_featured_products_list( $atts ) {
 
             <div class="title_container">
 
-              <?php if ( !empty( $composite_rating ) ) { ?>
-
-                <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
-                <a class="title" href="<?php echo $product_page_url; ?>"><span itemprop="itemReviewed"><?php echo $product_page_title; ?></span></a>
-
-              <?php } else { ?>
-
-                <a class="title" href="<?php echo $product_page_url; ?>"><?php echo $product_page_title; ?></a>
-
-              <?php } ?>
+              <a class="title" href="<?php echo $product_page_url; ?>"><?php echo $product_page_title; ?></a>
 
               <div class="user-rating">
 
@@ -596,10 +587,6 @@ function lawyerist_featured_products_list( $atts ) {
                 <?php } ?>
 
               </div>
-
-              <?php if ( !empty( $composite_rating ) ) { ?>
-                </div>
-              <?php } ?>
 
             </div>
 
@@ -817,20 +804,7 @@ function lawyerist_all_products_list( $atts ) {
 
             <div class="title_container">
 
-              <?php
-
-              if ( !empty( $composite_rating ) ) {
-
-                echo '<div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">';
-                echo '<a class="title" href="' . $product_page_url . '"><span itemprop="itemReviewed">' . $product_page_title . '</span></a>';
-
-              } else {
-
-                echo '<a class="title" href="' . $product_page_url . '">' . $product_page_title . '</a>';
-
-              }
-
-              ?>
+              <a class="title" href="<?php echo $product_page_url; ?>"><?php echo $product_page_title; ?></a>
 
               <div class="user-rating">
 
@@ -849,8 +823,6 @@ function lawyerist_all_products_list( $atts ) {
                 <?php } ?>
 
               </div>
-
-              <?php if ( !empty( $composite_rating ) ) { ?></div><?php } ?>
 
             </div>
 
@@ -995,12 +967,15 @@ function lwyrst_affinity_partners_list() {
 
       	if ( $affinity_partner_list_query->post_count > 0 ) :
 
-          echo '<h3>' . get_the_title( $portal_ID ) . '</h3>';
+          ?>
 
-      		echo '<ul class="product-pages-list">';
+          <h3><?php echo get_the_title( $portal_ID ); ?></h3>
 
-      			// Start the Loop.
-      			while ( $affinity_partner_list_query->have_posts() ) : $affinity_partner_list_query->the_post();
+      		<ul class="product-pages-list">
+
+      			<?php while ( $affinity_partner_list_query->have_posts() ) : $affinity_partner_list_query->the_post(); ?>
+
+              <?php
 
               $product_page_id    = get_the_ID();
       				$product_page_title	= the_title( '', '', FALSE );
@@ -1021,72 +996,57 @@ function lwyrst_affinity_partners_list() {
 
               }
 
-      				echo '<li ';
-              post_class( 'card' );
-              echo '>';
+              ?>
 
-      					if ( has_post_thumbnail() ) {
+      				<li <?php post_class( 'card' ); ?>>
 
-      						echo '<a class="image" href="' . $product_page_url . '">';
+      					<?php if ( has_post_thumbnail() ) { ?>
 
-                    if ( has_term( 'affinity-partner', 'page_type', $product_page_id ) && get_field( 'affinity_active' ) == true ) {
+      						<a class="image" href="<?php echo $product_page_url; ?>">
 
-                      $theme_dir = get_template_directory_uri();
-                      echo '<img class="affinity-partner-badge" alt="Lawyerist affinity partner badge." src="' . $theme_dir . '/images/affinity-partner-mini-badge.png" height="64" width="75" />';
+                    <?php if ( has_term( 'affinity-partner', 'page_type', $product_page_id ) && get_field( 'affinity_active' ) == true ) { ?>
 
-                    }
+                      <?php $theme_dir = get_template_directory_uri(); ?>
 
-        						the_post_thumbnail( 'thumbnail' );
+                      <img class="affinity-partner-badge" alt="Lawyerist affinity partner badge." src="<?php echo $theme_dir; ?>/images/affinity-partner-mini-badge.png" height="64" width="75" />
 
-      						echo '</a>';
+                    <?php } ?>
 
-      					}
+        						<?php the_post_thumbnail( 'thumbnail' ); ?>
 
-                echo '<div class="title_container">';
+      						</a>
 
-                  if ( !empty( $composite_rating ) ) {
+      					<?php } ?>
 
-                    echo '<div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">';
-                    echo '<a class="title" href="' . $product_page_url . '"><span itemprop="itemReviewed">' . $product_page_title . '</span></a>';
+                <div class="title_container">
 
-                  } else {
+                  <a class="title" href="<?php echo $product_page_url; ?>"><?php echo $product_page_title; ?></a>
 
-                    echo '<a class="title" href="' . $product_page_url . '">' . $product_page_title . '</a>';
+                  <div class="user-rating">
 
-                  }
+                    <?php if ( !empty( $composite_rating ) ) { ?>
 
-                  // Rating
-                  echo '<div class="user-rating">';
+                      <a href="<?php echo $product_page_url; ?>#rating"><?php  echo lwyrst_product_rating(); ?></a>
 
-                    if ( !empty( $composite_rating ) ) {
+                    <?php } else { ?>
 
-                      echo '<a href="' . $product_page_url . '#rating">';
+                      <a href="<?php echo $product_page_url; ?>#respond">Leave a review.</a>
 
-                        echo lwyrst_product_rating();
+                    <?php } ?>
 
-                      echo '</a>';
+                  </div>
 
-                    } else {
+                </div>
 
-                      echo '<a href="' . $product_page_url . '#respond">Leave a review.</a>';
+      					<span class="excerpt"><?php echo $page_excerpt; ?> <a href="<?php echo $product_page_url; ?>">Learn more about <?php echo $product_page_title; ?>.</a></span>
 
-                    }
+      				</li>
 
-                  echo '</div>'; // End .user_rating.
+      			<?php endwhile; wp_reset_postdata(); ?>
 
-                  if ( !empty( $composite_rating ) ) {
-                    echo '</div>'; // End aggregateRating schema.
-                  }
+      		</ul>
 
-                echo '</div>'; // End .title_container.
-
-      					echo '<span class="excerpt">' . $page_excerpt . ' <a href="' . $product_page_url . '">Learn more about ' . $product_page_title . '.</a></span>';
-
-      				echo '</li>';
-
-      			endwhile; wp_reset_postdata();
-
-      		echo '</ul>';
+          <?
 
       	endif; // End product list.
 
@@ -1702,7 +1662,7 @@ function list_users_shortcode( $atts ) {
       </ul>
 
       <?php
-    
+
     return ob_get_clean();
 
   } else {

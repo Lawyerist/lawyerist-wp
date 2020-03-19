@@ -1543,31 +1543,80 @@ Reviews
 // Modify WP Review Pro JSON schema output.
 function lwyrst_wp_review_pro_schema( $output, $review ) {
 
-	$schema_json	= strip_tags( $output );
-	$schema_obj   = json_decode( $schema_json );
+	if ( ( is_single() || is_page() ) && !is_product_portal() ) {
 
-	$schema_obj->reviewRating->ratingValue  = lwyrst_get_our_rating();
-	$schema_obj->reviewRating->bestRating   = 5;
+		$schema_json							= strip_tags( $output );
+		$schema_obj   						= json_decode( $schema_json );
 
-	$schema_obj->aggregateRating = new stdClass();
-	$schema_obj->aggregateRating->{ '@type' } = 'AggregateRating';
-	$schema_obj->aggregateRating->ratingValue = lwyrst_get_community_rating();
-	$schema_obj->aggregateRating->bestRating  = 5;
-	$schema_obj->aggregateRating->ratingCount = lwyrst_get_community_review_count();
+		$schema_obj->{ '@type' }	= $schema_obj->itemReviewed->{ '@type' };
+		$schema_obj->name					= get_the_title();
 
-	$schema_obj->author->{ '@type' } = 'Organization';
+		$post_id		= get_the_ID();
+		$parent_id	= wp_get_post_parent_id( $post_id );
 
-	$schema_obj->reviewBody = get_the_excerpt();
+		$schema_obj->description	= get_the_title( $parent_id );
 
-	if ( version_compare( phpversion(), '7.1', '>=' ) ) {
-    ini_set( 'serialize_precision', -1 );
+		$schema_obj->review 							= new StdClass();
+		$schema_obj->review->{ '@type' } 	= 'Review';
+
+		$schema_obj->review->author				= new StdClass();
+		$schema_obj->review->author->{ '@type' } = get_the_author_meta( 'display_name' ) == 'Lawyerist' ? 'Organization' : 'Person';
+		$schema_obj->review->author->name	= get_the_author_meta( 'display_name' );
+
+		switch ( $schema_obj->{ '@type' } ) {
+
+			case 'SoftwareApplication':
+
+				$post_id		= get_the_ID();
+				$parent_id	= wp_get_post_parent_id( $post_id );
+
+				$schema_obj->applicationCategory = get_the_title( $parent_id );
+
+				unset( $schema_obj->reviewBody );
+
+				break;
+
+			case 'Product':
+
+				$schema_obj->review->reviewBody 	= get_the_excerpt();
+
+				break;
+
+		}
+
+
+		$our_rating		= lwyrst_get_our_rating();
+		$rating_count	= lwyrst_get_community_review_count();
+
+		if ( !empty( $our_rating ) ) {
+			$rating_count++;
+		}
+
+		$schema_obj->aggregateRating 							= new stdClass();
+		$schema_obj->aggregateRating->{ '@type' } = 'AggregateRating';
+		$schema_obj->aggregateRating->ratingValue = lwyrst_get_composite_rating();
+		$schema_obj->aggregateRating->bestRating  = 5;
+		$schema_obj->aggregateRating->ratingCount = $rating_count;
+
+		unset( $schema_obj->author );
+		unset( $schema_obj->reviewRating );
+		unset( $schema_obj->itemReviewed );
+
+		if ( version_compare( phpversion(), '7.1', '>=' ) ) {
+	    ini_set( 'serialize_precision', -1 );
+		}
+
+		$output  = '<script type="application/ld+json">' . PHP_EOL;
+		$output .= wp_json_encode( $schema_obj, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT ) . PHP_EOL;
+		$output .= '</script>' . PHP_EOL;
+
+		return $output;
+
+	} else {
+
+		return false;
+
 	}
-
-	$output  = '<script type="application/ld+json">' . PHP_EOL;
-	$output .= wp_json_encode( $schema_obj, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT ) . PHP_EOL;
-	$output .= '</script>' . PHP_EOL;
-
-	return $output;
 
 }
 
@@ -1616,7 +1665,7 @@ function lwyrst_get_community_review_count( $product_id = null ) {
 
 	$community_review_count	= get_post_meta( $product_id, 'wp_review_comments_rating_count', true );
 
-	return $community_review_count;
+	return intval( $community_review_count );
 
 }
 
