@@ -109,6 +109,7 @@ if ( is_user_logged_in() ) {
 
 					<div id="book_cta_img">
 						<?php echo wp_get_attachment_image( 1091579, 'medium' ); ?>
+						<p align="center" class="card-label">Friday, March 27th @ 3:30pm EST</p>
 					</div>
 
 					<div id="book_cta_copy">
@@ -119,7 +120,7 @@ if ( is_user_logged_in() ) {
 
 				</div>
 
-				<a class="button free-flag" href="http://go.lawyerist.com/9tipstorunyourlawpracticefromhome">Register Now</a>
+				<a class="button free-flag" href="http://go.lawyerist.com/9tipstorunyourlawpracticefromhome-0">Register Now</a>
 
 			</div>
 
