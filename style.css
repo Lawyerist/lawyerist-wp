@@ -3432,7 +3432,8 @@ a.review-btn,
       vertical-align: text-top;
     }
 
-  a.button.really-big-button {
+  a.button.really-big-button,
+  .really-big-button a.wp-block-button__link {
     border-radius: 3rem;
     font-size: 3.2rem !important;
     height: 6rem;
