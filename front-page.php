@@ -113,7 +113,7 @@ if ( is_user_logged_in() ) {
 
 					<div id="book_cta_copy">
 						<h2>9 Tips to Run Your Law Practice from Home NOW</h2>
-						<p class="card-label">Friday, March 27th @ 3:30pm EST</p>
+						<p class="card-label">Friday, March 27th, at 3pm EST</p>
 						<p>Are you suddenly & unexpectedly running your business from home?</p>
 						<p>In this webinar, you'll learn the essential steps to make sure your business stays up and running during social distancing.</p>
 					</div>
