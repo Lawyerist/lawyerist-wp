@@ -3,7 +3,7 @@
   if ( !get_field( 'fp_show_announcement' ) ) { return; }
 
   $announcement[ 'headline' ]	= get_field( 'fp_announcement_headline' );
-  $announcement[ 'content' ]		= get_field( 'fp_announcement_content' );
+  $announcement[ 'content' ]	= get_field( 'fp_announcement_content' );
 
 ?>
 

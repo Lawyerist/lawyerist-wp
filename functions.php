@@ -205,6 +205,30 @@ function register_acf_block_types() {
 	    )
 		);
 
+		// Partner Updates
+    acf_register_block_type(
+			array(
+        'name'              => 'partner-updates',
+        'title'             => __( 'Partner Updates' ),
+        'render_template'   => 'template-parts/acf-blocks/partner-updates.php',
+        'category'          => 'common',
+				'icon'							=> 'excerpt-view',
+        'keywords'          => array( 'partner updates', 'product spotlights', 'sponsored' ),
+	    )
+		);
+
+		// Recent Blog Posts
+    acf_register_block_type(
+			array(
+        'name'              => 'recent-blog-posts',
+        'title'             => __( 'Recent Blog Posts' ),
+        'render_template'   => 'template-parts/acf-blocks/recent-blog-posts.php',
+        'category'          => 'common',
+				'icon'							=> 'excerpt-view',
+        'keywords'          => array( 'blog posts', 'recent' ),
+	    )
+		);
+
 }
 
 // Check if function exists and hook into setup.
