@@ -96,10 +96,6 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
   <?php
 
-  if ( !is_really_a_woocommerce_page() ) {
-    echo lawyerist_cta();
-  }
-
   // Shows review template if comments are open and reviews are enabled. The only
   // reason this is present on plain pages is that we're using the regular page
   // template for a few specific pages like Lab and LabCon.

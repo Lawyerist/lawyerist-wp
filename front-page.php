@@ -1,6 +1,25 @@
+<?php get_header(); ?>
+
 <?php
 
-get_header();
+if ( get_field( 'fp_show_announcement' ) ) {
+
+	$announcement[ 'headline' ]	= get_field( 'fp_announcement_headline' );
+  $announcement[ 'content' ]		= get_field( 'fp_announcement_content' );
+
+	?>
+
+	<div id="fp_announcement" class="card">
+
+	  <h2><?php echo $announcement[ 'headline' ]; ?></h2>
+	  <?php echo $announcement[ 'content' ]; ?>
+
+	</div>
+
+	<?php
+
+}
+
 
 // Outputes the Scorecard Report Card widget.
 if ( is_user_logged_in() ) {
@@ -46,6 +65,10 @@ if ( is_user_logged_in() ) {
 	    get_template_part( 'template-parts/loop', 'index' );
 
 		else :
+
+		?>
+
+			<?php
 
 			// Outputs the most recent sticky post.
 			$sticky_posts = get_option( 'sticky_posts' );
@@ -98,62 +121,24 @@ if ( is_user_logged_in() ) {
 
 			}
 
-			// Outputs the call to action.
-			// echo lawyerist_cta();
+			if ( have_posts() ) : while ( have_posts() ) : the_post();
 
-			?>
+				?>
 
-			<div id="book_cta" class="card">
+				<main>
 
-				<div class="book_cta_grid_row">
+					<div <?php post_class(); ?>>
 
-					<div id="book_cta_img">
-						<?php echo wp_get_attachment_image( 1091579, 'medium' ); ?>
+						<?php the_content(); ?>
+
 					</div>
 
-					<div id="book_cta_copy">
-						<h2>9 Tips to Run Your Law Practice from Home NOW</h2>
-						<p class="card-label">Friday, March 27th, at 3pm EST</p>
-						<p>Are you suddenly & unexpectedly running your business from home?</p>
-						<p>In this webinar, you'll learn the essential steps to make sure your business stays up and running during social distancing.</p>
-					</div>
+				</main>
 
-				</div>
+				<?php
 
-				<a class="button free-flag" href="http://go.lawyerist.com/9tipstorunyourlawpracticefromhome-0">Register Now</a>
+			endwhile; endif;
 
-			</div>
-
-			<p class="fp-section-header">Recent Updates</p>
-
-			<?php
-
-			// Outputs the most recent podcast episode.
-
-			$podcast_feed			= fetch_feed( 'https://lawyerist.libsyn.com/' );
-			$current_episode	= $podcast_feed->get_item( 0 );
-
-			$show_img_url			= array(
-				'1x' => 'https://lawyerist.com/lawyerist/wp-content/uploads/2019/12/podcast-mic_1x.png',
-				'2x' => 'https://lawyerist.com/lawyerist/wp-content/uploads/2019/12/podcast-mic_2x.png',
-			);
-			$ep_title					= $current_episode->get_title();
-			$ep_date					= $current_episode->get_date( 'F jS, Y' );
-
-			?>
-
-			<div class="card post-card podcast-card has-card-label">
-				<a href="https://lawyerist.com/podcast/" title="The Lawyerist Podcast" class="post has-post-thumbnail">
-					<?php echo wp_get_attachment_image( 529989, array( 100, 201 ) ); ?>
-					<div class="headline-byline">
-						<h2 class="headline" title="<?php echo $ep_title; ?>"><?php echo $ep_title; ?></h2>
-						<div class="postmeta"><span class="date updated published"><?php echo $ep_date; ?></span></div>
-					</div>
-				</a>
-				<p class="card-label card-bottom-label"><a href="https://lawyerist.com/podcast/" title="All episodes of The Lawyerist Podcast.">All episodes of The Lawyerist Podcast</a></p>
-			</div>
-
-			<?php
 
 			// Outputs 4 pages with Show in Recent.
 
@@ -221,6 +206,8 @@ if ( is_user_logged_in() ) {
 
 				?>
 
+				<p class="section-header">Partner Updates</p>
+
 				<div id="fp-product-spotlights" class="card has-card-label sponsored">
 
 					<?php
@@ -284,53 +271,7 @@ if ( is_user_logged_in() ) {
 
 			endif;
 
-
-			// Outputs the 3 most recent case studies.
-
-			$args = array(
-				'category__in'		=> array(
-					'4406', // Blog Posts
-				),
-				'post__not_in'		=> get_option( 'sticky_posts' ),
-				'posts_per_page'	=> 3,
-			);
-
-			$current_post_query = new WP_Query( $args );
-
-			if ( $current_post_query->have_posts() ) :
-
-				?>
-
-				<div id="fp-case-studies" class="card has-card-label">
-
-					<?php
-
-					while ( $current_post_query->have_posts() ) : $current_post_query->the_post();
-
-						lawyerist_get_post_card();
-
-					endwhile; wp_reset_postdata();
-
-					$all_posts_txt	= 'All Small Firm Roadmap Stories';
-					$all_posts_url	=	get_category_link( 4406 );
-
-					echo '<p class="card-label card-bottom-label"><a href="' . $all_posts_url . '" title="' . $all_posts_txt . '">' . $all_posts_txt . '</a></p>';
-
-					?>
-
-				</div>
-
-				<?php
-
-			endif;
-
-			?>
-
-			<p class="fp-section-header">Featured Resources</p>
-
-			<?php
-
-			// Outputs up to 12 pages with Show in Featured.
+			// Outputs the Rest of the Featured Pages
 			$args = array(
 				'meta_key'		=> 'order_in_featured',
 				'meta_query'	=> array(
@@ -342,7 +283,7 @@ if ( is_user_logged_in() ) {
 				'order'						=> 'ASC',
 				'orderby'					=> 'meta_value_num',
 				'post_type'				=> 'page',
-				'posts_per_page'	=> 12,
+				'posts_per_page'	=> -1,
 			);
 
 			$featured_pages_query = new WP_Query( $args );

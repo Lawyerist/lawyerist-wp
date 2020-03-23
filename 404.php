@@ -14,7 +14,7 @@
 
 				<?php get_search_form(); ?>
 
-				<p class="fp-section-header">Featured Resources</p>
+				<p class="section-header">Featured Resources</p>
 
 				<?php
 				// Outputs up to 12 pages with Show in Featured.
@@ -51,7 +51,7 @@
 				// End of featured pages.
 				?>
 
-				<p class="fp-section-header">Join your tribe. Grow your firm.</p>
+				<p class="section-header">Join your tribe. Grow your firm.</p>
 
 				<?php echo lawyerist_cta(); ?>
 

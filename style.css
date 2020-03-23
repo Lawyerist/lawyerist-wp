@@ -508,6 +508,14 @@ body {
 
   }
 
+#fp_announcement {
+  border-top: .7rem solid #c00;
+  margin: 3rem auto;
+  max-width: 102.4rem;
+  min-width: 32rem;
+  padding: 2rem;
+}
+
 #small-firm-dashboard-container {
   margin: 3rem auto 0 auto;
   max-width: 102.4rem;
@@ -695,7 +703,7 @@ button,
 #feature-chart td.value,
 figcaption,
 #footer,
-.fp-section-header,
+.section-header,
 #gform_wrapper_60 table.gsurvey-likert td::after,
 #gform_wrapper_61 table.gsurvey-likert td::after,
 h1,
@@ -1683,30 +1691,30 @@ p.dashboard-widget-note {
 
 /* Call to Action */
 
-#book_cta {
+#cta {
   box-sizing: border-box;
   margin: 0 auto 4rem auto;
   max-width: 69.4rem;
   padding: 4rem;
 }
 
-  .book_cta_grid_row {
+  .cta_grid_row {
     display: grid;
     grid-column-gap: 4rem;
     grid-template-columns: 30rem 1fr;
   }
 
-    #book_cta_img img {
+    #cta_img img {
       box-shadow: .1rem .1rem .3rem rgba(0, 0, 0, 0.2);
       height: auto;
       width: 100%;
     }
 
-    #book_cta_copy {
+    #cta_copy {
       align-self: center;
     }
 
-  #book_cta .button {
+  #cta .button {
     border-radius: 3.3rem;
     display: block;
     font-size: 3.2rem !important;
@@ -1717,7 +1725,7 @@ p.dashboard-widget-note {
     text-align: center;
   }
 
-    #book_cta .button.free-flag:after {
+    #cta .button.free-flag:after {
       background-color: #fff;
       border: .3rem solid #b00;
       border-radius: 50%;
@@ -1736,40 +1744,40 @@ p.dashboard-widget-note {
       width: 6rem;
     }
 
-    #book_cta .button:hover:after,
-    #book_cta .button:focus:after {
+    #cta .button:hover:after,
+    #cta .button:focus:after {
       border-color: #c00;
       box-shadow: .1rem .1rem .3rem rgba(0, 0, 0, 0.4);
       color: #c00;
     }
 
-    #book_cta .button:active:after {
+    #cta .button:active:after {
       border-color: #a00;
       box-shadow: none;
       color: #a00;
     }
 
-    #book_cta .button:focus:after {
+    #cta .button:focus:after {
       box-shadow: none;
     }
 
   @media only screen and ( max-width: 599px ) {
 
-    #book_cta {
+    #cta {
       padding: 3rem;
     }
 
-      .book_cta_grid_row {
+      .cta_grid_row {
         display: block;
       }
 
-        #book_cta_img img {
+        #cta_img img {
           margin-bottom: 2rem;
         }
 
   }
 
-.fp-section-header {
+.section-header {
   color: #555;
   font-weight: bold;
   line-height: 1;
@@ -1777,7 +1785,7 @@ p.dashboard-widget-note {
   text-transform: uppercase;
 }
 
-p.fp-section-header:first-of-type {
+.home .section-header:first-of-type {
   margin-top: 0;
 }
 

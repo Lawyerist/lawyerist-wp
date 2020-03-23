@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file. The format 
 
 
 ## [Unreleased]
+- Add front page announcement options.
+- Add Call to Action block.
+- Add Current Podcast block.
+- Add Block Defaults settings page.
+- Remove case studies from the front page.
+
 
 ## [5.3.2] - 2020-03-18
 
