@@ -10,6 +10,9 @@ All notable changes to this project will be documented in this file. The format 
 - Add front page announcement options.
 - Add Call to Action block.
 - Add Current Podcast block.
+- Add Recent Blog Posts block.
+- Add Partner Updates block.
+- Add Featured Pages block.
 - Add Block Defaults settings page.
 - Remove case studies from the front page.
 

@@ -229,6 +229,18 @@ function register_acf_block_types() {
 	    )
 		);
 
+		// Featured Pages
+    acf_register_block_type(
+			array(
+        'name'              => 'featured-pages',
+        'title'             => __( 'Featured Pages' ),
+        'render_template'   => 'template-parts/acf-blocks/featured-pages.php',
+        'category'          => 'common',
+				'icon'							=> 'screenoptions',
+        'keywords'          => array( 'blog posts', 'recent' ),
+	    )
+		);
+
 }
 
 // Check if function exists and hook into setup.
