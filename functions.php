@@ -78,11 +78,11 @@ Stylesheets & Scripts
 
 function stylesheets_scripts() {
 
-	// Normalize the default styles. From https://github.com/necolas/normalize.css/
-	wp_register_style( 'normalize-css', get_template_directory_uri() . '/css/normalize.min.css' );
-	wp_enqueue_style( 'normalize-css' );
-
 	$template_dir_uri = get_template_directory_uri();
+
+	// Normalize the default styles. From https://github.com/necolas/normalize.css/
+	wp_register_style( 'normalize-css', $template_dir_uri . '/css/normalize.min.css' );
+	wp_enqueue_style( 'normalize-css' );
 
 	// Load the main stylesheet.
 	$cacheBusterCSS = filemtime( get_stylesheet_directory() . '/style.css' );
@@ -105,6 +105,7 @@ Theme Setup
 
 function theme_setup() {
 
+	add_theme_support( 'editor-styles' );
 	add_theme_support( 'post-thumbnails' );
 	add_theme_support( 'responsive-embeds' );
 	add_theme_support( 'title-tag' );
@@ -114,6 +115,8 @@ function theme_setup() {
 	add_image_size( 'featured_image_2x', 2048 );
 	add_image_size( 'large_2x', 1388 );
 	add_image_size( 'thumbnail_2x', 300, 300, true );
+
+	add_editor_style( 'template-parts/acf-blocks/acf-block-styles.css' );
 
 }
 

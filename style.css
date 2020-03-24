@@ -3,7 +3,7 @@ Theme Name:   lawyerist-wp
 Theme URI:    https://lawyerist.com
 Description:  A theme for Lawyerist.com
 Author:       Sam Glover
-Version:      5.3.2
+Version:      5.4.0
 
 License:      Copyright Lawyerist Media, LLC
 ------------------------------*/
@@ -81,7 +81,7 @@ Load Fonts
 @font-face {
   font-display: block;
   font-family: 'concourse';
-  src:  local( 'Concourse T4 Regular' ),
+  src:  local( 'Concourse T4' ),
         url( './fonts/concourse/concourse_t4_regular-webfont.woff2' ) format( 'woff2' ),
         url( './fonts/concourse/concourse_t4_regular-webfont.woff' ) format( 'woff' );
   font-weight: normal;
@@ -123,7 +123,7 @@ Load Fonts
 @font-face {
   font-display: block;
   font-family: 'equity';
-  src:  local( 'Equity Text B Regular' ),
+  src:  local( 'Equity Text B' ),
         url( './fonts/equity/equity_text_b_regular-webfont.woff2' ) format( 'woff2' ),
         url( './fonts/equity/equity_text_b_regular-webfont.woff' ) format( 'woff' );
   font-weight: normal;
@@ -1102,22 +1102,12 @@ sup {
   vertical-align: super;
 }
 
-.syntaxhighlighter {
-	font-size: 1.4rem;
-	margin-bottom: 3rem;
-}
-
 ol,
 ul {
 	margin-bottom: 1.5em;
 	margin-left: 3rem;
   -webkit-margin-before: 0;
   padding: 0;
-}
-
-ol.footnotes li {
-  font-size: 1.8rem;
-  margin-bottom: 1em;
 }
 
 li {

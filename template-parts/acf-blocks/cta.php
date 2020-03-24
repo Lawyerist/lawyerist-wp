@@ -31,6 +31,6 @@ $cta[ 'free' ]				= get_field( 'cta_show_free_dot' ) ?: get_field( 'cta_show_fre
 
   </div>
 
-  <a class="button register-link<?php if ( $cta[ 'free' ] ) { echo ' free-flag'; } ?>" href="<?php echo $cta[ 'button_url' ]; ?>"><?php echo $cta[ 'button_text' ]; ?></a>
+  <a class="button<?php if ( $cta[ 'free' ] ) { echo ' free-flag'; } ?>" href="<?php echo $cta[ 'button_url' ]; ?>"><?php echo $cta[ 'button_text' ]; ?></a>
 
 </div>
