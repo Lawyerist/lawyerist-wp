@@ -13,7 +13,7 @@
 				<p>Sorry, we can't find the page you are looking for. Try searching for it, in case it moved:</p>
 
 				<?php get_search_form(); ?>
-        
+
 			</div>
 
 		</div>
