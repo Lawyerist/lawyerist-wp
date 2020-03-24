@@ -8,7 +8,7 @@
 		'title_reply'						=> __( 'Praise.' ),
 		'comment_notes_before'	=> null,
 		'comment_field'					=> '<p class="comment-form-comment"><label for="comment">' . _x( 'Comment', 'noun' ) . '</label><textarea placeholder="Write something …" id="comment" name="comment" cols="45" rows="5" aria-required="true">' . '</textarea></p>',
-		'must_log_in'						=> '<p class="must-log-in">' .  sprintf( __( 'You must be <a rel="nofollow" href="%s">logged in</a>.' ), wp_login_url( apply_filters( 'the_permalink', get_permalink( ) ) ) ) . '</p>',
+		'must_log_in'						=> '<p class="must-log-in">' .  sprintf( __( 'You must be <a href="%s">logged in</a>.' ), wp_login_url( apply_filters( 'the_permalink', get_permalink( ) ) ) ) . '</p>',
 		'label_submit'					=> 'Post',
 		)
 	);
