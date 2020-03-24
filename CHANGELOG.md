@@ -9,6 +9,12 @@ All notable changes to this project will be documented in this file. The format 
 ## [Unreleased]
 
 
+## [5.4.4] - 2020-03-24
+
+### [Changed]
+- Update front-page announcement style.
+
+
 ## [5.4.3] - 2020-03-24
 
 ### [Removed]
