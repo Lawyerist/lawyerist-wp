@@ -9,6 +9,12 @@ All notable changes to this project will be documented in this file. The format 
 ## [Unreleased]
 
 
+## [5.4.2] - 2020-03-24
+
+### [Changed]
+- Make financial scorecard available to Labsters (in addition to LabCon attendees).
+
+
 ## [5.4.1] - 2020-03-24
 
 ### [Removed]

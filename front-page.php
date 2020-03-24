@@ -25,20 +25,24 @@ if ( get_field( 'fp_show_announcement' ) ) {
 if ( is_user_logged_in() ) {
 
 	$current_user = wp_get_current_user();
+	$user_id			= get_current_user_id()
 
 	?>
 
 	<div id="small-firm-dashboard-container">
 		<p id="dashboard-title"><?php echo $current_user->user_firstname . ' ' . $current_user->user_lastname; ?>'s Small Firm Dashboard</p>
 		<div id="small-firm-dashboard">
+
 			<?php
+
 			echo scorecard_results_graph();
 
-			if ( wc_customer_bought_product( '', get_current_user_id(), 321206 ) ) {
+			if ( wc_customer_bought_product( '', $user_id, 321206 ) || wc_memberships_is_user_active_member( $user_id, 'lab' ) ) {
 				echo financial_scorecard_graph();
 			}
 
 			?>
+
 		</div>
 	</div>
 
@@ -126,13 +130,9 @@ if ( is_user_logged_in() ) {
 				?>
 
 				<main>
-
 					<div <?php post_class(); ?>>
-
 						<?php the_content(); ?>
-
 					</div>
-
 				</main>
 
 				<?php
