@@ -1,0 +1,347 @@
+/**
+* Section Header
+*/
+
+.section-header {
+  color: #555;
+  font-family: concourse, 'Concourse T4', sans-serif;
+  font-size: 20px !important;
+  font-weight: bold;
+  line-height: 1 !important;
+  margin: 40px 0 20px 0;
+  text-transform: uppercase;
+}
+
+
+/**
+* Cards
+*/
+
+.card {
+  border: 0;
+  border-radius: 2px;
+  box-shadow:
+    0 0 0 1px #ddd,
+    1px 1px 3px rgba( 0, 0, 0, 0.2 )
+  ;
+  box-sizing: border-box;
+  display: block;
+  font-family: concourse, 'Concourse T4', sans-serif;
+  margin: 0 0 10px 0;
+  max-width: unset;
+  padding: 0;
+  position: relative;
+  text-decoration: none;
+  width: 100%;
+}
+
+.card.padded-card {
+  padding: 20px;
+}
+
+.card.sponsored {
+  border-top: 7px solid #ffffc7;
+}
+
+.card .card {
+  border-radius: unset;
+  box-shadow: unset;
+  margin-bottom: 20px;
+}
+
+.has-card-label {
+  padding: 20px;
+}
+
+  .card a {
+    text-decoration: none;
+  }
+
+  .card a.page,
+  .card a.post {
+    display: block;
+    padding: 20px;
+  }
+
+  .has-card-label a.post {
+    padding: 0;
+  }
+
+  .card a.page:hover,
+  .card a.page:focus,
+  .card a.post:hover,
+  .card a.post:focus {
+    text-decoration: none;
+  }
+
+
+/* Card labels. */
+
+.card-label {
+  color: #666;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1.5;
+  margin-bottom: .5em;
+  text-transform: uppercase;
+}
+
+  .card-bottom-label {
+    margin-top: 1em;
+  }
+
+    .card-bottom-label > a:before {
+      content: '\f505';
+      display: inline-block;
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-font-smoothing: antialiased;
+      font: normal 14px/1.5 Genericons;
+      margin-right: .25em;
+      speak: none;
+      vertical-align: top;
+    }
+
+  .card-label a,
+  .card-label a:visited {
+    color: #666;
+    text-decoration: none;
+  }
+
+  .card-label a:hover,
+  .card-label a:focus {
+    color: #a00;
+  }
+
+
+/* Card thumbnails. */
+
+.card img {
+  max-width: 100%;
+}
+
+.card a.has-post-thumbnail {
+  display: grid;
+  grid-template-columns: 40% 1fr;
+  grid-gap: 0;
+  padding: 0;
+}
+
+  .card a.has-post-thumbnail > * {
+    align-self: center;
+  }
+
+  .card a.has-post-thumbnail img {
+    display: block;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+
+.card a.has-post-thumbnail img {
+  border-radius: 2px 0 0 2px;
+}
+
+  .podcast-card a.has-post-thumbnail {
+    grid-template-columns: 100px 1fr;
+  }
+
+  @media only screen and ( max-width: 639px ) {
+
+    .card a.has-post-thumbnail {
+      display: block;
+    }
+
+    .card a.has-post-thumbnail img {
+        border-radius: 0 2px 2px 0;
+        display: block;
+      }
+
+    .podcast-card a.has-post-thumbnail {
+      display: grid;
+    }
+
+      .podcast-card a.has-post-thumbnail img {
+        border-radius: unset;
+      }
+
+  }
+
+  @media only screen and ( max-width: 639px ) {
+
+    .card a.has-post-thumbnail {
+      grid-template-columns: 100px 1fr;
+    }
+
+  }
+
+
+/* Headline-byline styles. */
+
+.card .headline-byline *:last-child {
+  margin-bottom: 0;
+}
+
+.card a.has-guest-avatar .headline-byline,
+.card a.has-post-thumbnail .headline-byline {
+  padding: 20px;
+}
+
+  .card a.has-guest-avatar .headline-byline > *:last-child,
+  .card a.has-post-thumbnail .headline-byline > *:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Headline styles. */
+
+  .card h2.headline {
+    color: #333;
+    font-size: 18px;
+    font-weight: normal;
+    margin: 0 0 5px 0;
+  }
+
+  .card .postmeta {
+    color: #777;
+    font-size: 14px;
+    font-style: normal;
+    margin-bottom: 5px;
+  }
+
+.card > *:last-child {
+  margin-bottom: 0 !important;
+}
+
+  .card > *:last-child > *:last-child {
+    margin-bottom: 0 !important;
+  }
+
+/* Card groups. Default is two columns. */
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat( 2, 1fr );
+  grid-gap: 10px;
+  margin-bottom: 10px;
+}
+
+  .cards .card {
+    margin: 0;
+  }
+
+    .cards .card a.has-post-thumbnail {
+      display: block;
+      padding: 0;
+    }
+
+    .cards .card a.has-post-thumbnail img {
+      border-radius: 2px 2px 0 0;
+    }
+
+    .cards .card .headline-byline {
+      padding: 20px;
+    }
+
+
+/**
+* Call to Action
+*/
+
+#cta {
+  padding: 40px;
+}
+
+  #cta .cta_grid_row {
+    display: grid;
+    grid-column-gap: 40px;
+    grid-template-columns: minmax( 50% 300px ) 1fr;
+  }
+
+    #cta #cta_img img {
+      box-shadow: 1px 1px 3px rgba( 0, 0, 0, 0.2 );
+      height: auto;
+      width: 100%;
+    }
+
+    #cta #cta_copy *:not( h2 ):not( .card-label ) {
+      align-self: center;
+      font-family: equity, 'Equity Text B', serif;
+      font-size: 20px;
+      line-height: 1.5;
+    }
+
+  #cta .button {
+    background-color: #b00;
+    border: 0;
+    border-radius: 33px;
+    box-shadow: none;
+    box-sizing: border-box;
+    color: #fff;
+    display: block;
+    font-size: 32px;
+    font-weight: normal;
+    height: auto;
+    line-height: 1;
+    margin: 20px 0 0 0;
+    outline: none;
+    padding: 15px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    -webkit-appearance: none;
+    transition: background-color .2s, color .2s, box-shadow .2s;
+    width: auto;
+  }
+
+    #cta .button.free-flag:after {
+      background-color: #fff;
+      border: 3px solid #b00;
+      border-radius: 50%;
+      box-sizing: border-box;
+      color: #b00;
+      content: 'Free!';
+      font-size: 18px;
+      line-height: 54px;
+      position: absolute;
+        right: -10px;
+        top: -20px;
+      height: 60px;
+      text-align: center;
+      text-transform: uppercase;
+      transition: color .2s, box-shadow .2s;
+      width: 60px;
+    }
+
+    #cta .button:hover:after,
+    #cta .button:focus:after {
+      border-color: #c00;
+      box-shadow: 1px 1px 3px rgba( 0, 0, 0, 0.4 );
+      color: #c00;
+    }
+
+    #cta .button:active:after {
+      border-color: #a00;
+      box-shadow: none;
+      color: #a00;
+    }
+
+    #cta .button:focus:after {
+      box-shadow: none;
+    }
+
+  @media only screen and ( max-width: 599px ) {
+
+    #cta {
+      padding: 30px;
+    }
+
+      #cta .cta_grid_row {
+        display: block;
+      }
+
+        #cta #cta_img img {
+          margin-bottom: 20px;
+        }
+
+  }

@@ -29,7 +29,6 @@ CONTENT
 - Yoast SEO Breadcrumbs
 - Author Bios
 - List of Coauthors
-- Post/Page Footer CTA
 - Get Alternative Products
 - Get Related Posts
 - Get Related Resources
@@ -79,11 +78,11 @@ Stylesheets & Scripts
 
 function stylesheets_scripts() {
 
-	// Normalize the default styles. From https://github.com/necolas/normalize.css/
-	wp_register_style( 'normalize-css', get_template_directory_uri() . '/css/normalize.min.css' );
-	wp_enqueue_style( 'normalize-css' );
-
 	$template_dir_uri = get_template_directory_uri();
+
+	// Normalize the default styles. From https://github.com/necolas/normalize.css/
+	wp_register_style( 'normalize-css', $template_dir_uri . '/css/normalize.min.css' );
+	wp_enqueue_style( 'normalize-css' );
 
 	// Load the main stylesheet.
 	$cacheBusterCSS = filemtime( get_stylesheet_directory() . '/style.css' );
@@ -106,6 +105,7 @@ Theme Setup
 
 function theme_setup() {
 
+	add_theme_support( 'editor-styles' );
 	add_theme_support( 'post-thumbnails' );
 	add_theme_support( 'responsive-embeds' );
 	add_theme_support( 'title-tag' );
@@ -115,6 +115,8 @@ function theme_setup() {
 	add_image_size( 'featured_image_2x', 2048 );
 	add_image_size( 'large_2x', 1388 );
 	add_image_size( 'thumbnail_2x', 300, 300, true );
+
+	add_editor_style( 'template-parts/acf-blocks/acf-block-styles.css' );
 
 }
 
@@ -145,6 +147,109 @@ function remove_image_size_options( $possible_sizes ) {
 
 add_filter( 'image_size_names_choose', 'remove_image_size_options' );
 
+
+/**
+* Adds an options page.
+*/
+function front_page_options_acf_op_init() {
+
+  // Check function exists.
+  if( function_exists( 'acf_add_options_sub_page' ) ) {
+
+    acf_add_options_sub_page( array(
+      'page_title'  => __( 'Block Defaults' ),
+      'menu_title'  => __( 'Block Defaults' ),
+      'parent_slug' => __( 'options-general.php' ),
+    ) );
+
+  }
+
+}
+
+add_action( 'acf/init', 'front_page_options_acf_op_init' );
+
+
+function register_acf_block_types() {
+
+		// Message
+		acf_register_block_type(
+			array(
+				'name'              => 'message',
+				'title'             => __( 'Message' ),
+				'render_template'   => 'template-parts/acf-blocks/message.php',
+				'category'          => 'common',
+				'icon'							=> 'format-quote',
+				'keywords'          => array( 'message' ),
+			)
+		);
+
+    // Call to Action
+    acf_register_block_type(
+			array(
+        'name'              => 'cta',
+        'title'             => __( 'Call to Action' ),
+        'render_template'   => 'template-parts/acf-blocks/cta.php',
+        'category'          => 'common',
+				'icon'							=> 'button',
+        'keywords'          => array( 'call to action', 'cta' ),
+
+	    )
+		);
+
+		// Current Podcast
+    acf_register_block_type(
+			array(
+        'name'              => 'podcast',
+        'title'             => __( 'Current Podcast' ),
+        'render_template'   => 'template-parts/acf-blocks/current-podcast.php',
+        'category'          => 'common',
+				'icon'							=> 'microphone',
+        'keywords'          => array( 'podcast' ),
+	    )
+		);
+
+		// Partner Updates
+    acf_register_block_type(
+			array(
+        'name'              => 'partner-updates',
+        'title'             => __( 'Partner Updates' ),
+        'render_template'   => 'template-parts/acf-blocks/partner-updates.php',
+        'category'          => 'common',
+				'icon'							=> 'excerpt-view',
+        'keywords'          => array( 'partner updates', 'product spotlights', 'sponsored' ),
+	    )
+		);
+
+		// Recent Blog Posts
+    acf_register_block_type(
+			array(
+        'name'              => 'recent-blog-posts',
+        'title'             => __( 'Recent Blog Posts' ),
+        'render_template'   => 'template-parts/acf-blocks/recent-blog-posts.php',
+        'category'          => 'common',
+				'icon'							=> 'excerpt-view',
+        'keywords'          => array( 'blog posts', 'recent' ),
+	    )
+		);
+
+		// Featured Pages
+    acf_register_block_type(
+			array(
+        'name'              => 'featured-pages',
+        'title'             => __( 'Featured Pages' ),
+        'render_template'   => 'template-parts/acf-blocks/featured-pages.php',
+        'category'          => 'common',
+				'icon'							=> 'screenoptions',
+        'keywords'          => array( 'blog posts', 'recent' ),
+	    )
+		);
+
+}
+
+// Check if function exists and hook into setup.
+if( function_exists( 'acf_register_block_type' ) ) {
+    add_action( 'acf/init', 'register_acf_block_types' );
+}
 
 
 /*------------------------------
@@ -590,17 +695,13 @@ function lawyerist_get_post_card( $post_ID = null, $card_top_label = null, $card
 
 	// Gets the post object.
 	if ( empty( $post_ID ) ) {
-
 		global $post;
-		$post_ID = $post->ID;
-
 	} else {
-
 		$post = get_post( $post_ID );
-
 	}
 
-	$post_type = get_post_type( $post_ID );
+	$post_ID		= $post->ID;
+	$post_type	= get_post_type( $post_ID );
 
 	// Assigns card classes based on post type and a couple of special cases.
 	$card_classes		= array( 'card' );
@@ -620,10 +721,11 @@ function lawyerist_get_post_card( $post_ID = null, $card_top_label = null, $card
 			$post_classes[]	= 'has-guest-avatar';
 		}
 
-	} elseif ( has_post_thumbnail() ) {
+	} elseif ( has_post_thumbnail( $post_ID ) ) {
 
     $thumbnail_id   = get_post_thumbnail_id( $post_ID );
     $thumbnail      = wp_get_attachment_image( $thumbnail_id, 'medium' );
+		$post_classes[]	= 'has-post-thumbnail';
 
   }
 
@@ -985,107 +1087,6 @@ function lawyerist_get_coauthors() {
 	}
 
 }
-
-
-/*------------------------------
-Post/Page Footer CTA
-------------------------------*/
-
-function lawyerist_cta() {
-
-	if ( is_user_logged_in() ) {
-
-		ob_start();
-
-			?>
-
-			<h2>Start Reading for Free</h2>
-			<p>OK, you're probably wondering <em>what next?</em> We've got you covered with our survival guide to the future of your law practice.</p>
-			<p>As an Insider, you can get the first chapter of our book plus additional resources for free.</p>
-
-			<?php
-
-		$copy = ob_get_clean();
-
-		ob_start();
-
-			?>
-
-			<center>
-				<span class="hs-cta-wrapper" id="hs-cta-wrapper-9366b998-d7ac-4496-9b7d-68c2c0fa9e8c">
-					<span class="hs-cta-node hs-cta-9366b998-d7ac-4496-9b7d-68c2c0fa9e8c" id="hs-cta-9366b998-d7ac-4496-9b7d-68c2c0fa9e8c">
-						<!--[if lte IE 8]><div id="hs-cta-ie-element"></div><![endif]-->
-						<a href="https://cta-redirect.hubspot.com/cta/redirect/2910598/9366b998-d7ac-4496-9b7d-68c2c0fa9e8c" target="_blank">
-							<img class="hs-cta-img" id="hs-cta-img-9366b998-d7ac-4496-9b7d-68c2c0fa9e8c" style="border-width: 0px;" src="https://no-cache.hubspot.com/cta/default/2910598/9366b998-d7ac-4496-9b7d-68c2c0fa9e8c.png" alt="Download Chapter One">
-						</a>
-					</span>
-					<script charset="utf-8" src="https://js.hscta.net/cta/current.js"></script>
-					<script type="text/javascript">
-						hbspt.cta.load( 2910598, '9366b998-d7ac-4496-9b7d-68c2c0fa9e8c', {} );
-					</script>
-				</span>
-			</center>
-
-			<?php
-
-		$button = ob_get_clean();
-
-	} else {
-
-		ob_start();
-
-			?>
-
-			<h2>Start Reading for Free</h2>
-			<p>OK, you're probably wondering <em>what next?</em> We've got you covered with our survival guide to the future of your law practice.</p>
-			<p>Join our free Insider community now to get the first chapter of our book <em>plus</em> access to a community of other innovative and entrepreneurial small-firm lawyers and even more law practice resources—all for free.</p>
-
-			<?php
-
-		$copy		= ob_get_clean();
-		$button	= '<a class="button free-flag register-link" href="https://lawyerist.com/community/insider/">Join Now to Read</a>';
-
-	}
-
-	ob_start();
-
-		?>
-
-		<div id="book_cta" class="card<?php if ( is_front_page() ) { echo ' dismissible-notice'; } ?>" data-id="book_cta">
-
-			<?php if ( is_front_page() ) { echo '<button class="greybutton dismiss-button"></button>'; } ?>
-
-			<div class="book_cta_grid_row">
-
-				<div id="book_cta_img">
-					<?php echo wp_get_attachment_image( 325237, 'medium' ); ?>
-				</div>
-
-				<div id="book_cta_copy">
-					<?php echo $copy; ?>
-					<?php if ( is_user_logged_in() ) { echo $button; } ?>
-				</div>
-
-			</div>
-
-			<?php if ( !is_user_logged_in() ) { echo $button; } ?>
-
-		</div>
-
-		<?php
-
-	return ob_get_clean();
-
-}
-
-
-function lawyerist_cta_shortcode() {
-
-	return lawyerist_cta();
-
-}
-
-add_shortcode( 'book-cta', 'lawyerist_cta_shortcode' );
 
 
 /*------------------------------

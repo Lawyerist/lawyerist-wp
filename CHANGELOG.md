@@ -8,6 +8,22 @@ All notable changes to this project will be documented in this file. The format 
 
 ## [Unreleased]
 
+
+## [5.4.0] - 2020-03-24
+
+### [Added]
+- Added front page announcement options.
+- Added Call to Action block.
+- Added Current Podcast block.
+- Added Recent Blog Posts block.
+- Added Partner Updates block.
+- Added Featured Pages block.
+- Added Block Defaults settings page.
+- Added editor styles for section headers, CTA, and cards.
+
+### [Removed]
+- Removed case studies from the front page.
+
 ## [5.3.2] - 2020-03-18
 
 ### [Fixed]
