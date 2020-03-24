@@ -9,6 +9,12 @@ All notable changes to this project will be documented in this file. The format 
 ## [Unreleased]
 
 
+## [5.4.1] - 2020-03-24
+
+### [Removed]
+- Remove deprecated functions from 404 page template.
+
+
 ## [5.4.0] - 2020-03-24
 
 ### [Added]
