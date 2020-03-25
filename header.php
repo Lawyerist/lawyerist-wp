@@ -85,11 +85,11 @@ if ( !is_page_template( 'product-page.php' ) && !is_page_template( 'full-width.p
   if  (
     !is_user_logged_in() && ( is_single() || is_page() ) &&
       !(
-        is_product() || // WooCommerce products.
-        is_product_portal() ||
-        is_page_template( 'product-page.php' ) || // Product pages.
-        get_field( 'exclude_from_signup_wall' ) ||
-        has_category( 'sponsored' )
+        is_product() ||                             // WooCommerce products
+        is_product_portal() ||                      // Product portals
+        is_page_template( 'product-page.php' ) ||   // Product pages
+        get_field( 'exclude_from_signup_wall' ) ||  // Option on posts and pages
+        has_category( 'sponsored' )                 // Sponsored posts
       )
   ) {
 
@@ -102,8 +102,6 @@ if ( !is_page_template( 'product-page.php' ) && !is_page_template( 'full-width.p
     <?php
 
   }
-
-  var_dump( get_field( 'exclude_from_signup_wall' ) );
 
   echo get_lawyerist_login();
 

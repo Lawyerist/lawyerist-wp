@@ -1,12 +1,22 @@
 # Changelog for Lawyerist.com
 
-All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
+All notable changes to this project will be documented in this file. The format
+is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [In Development]
 - Vendor recommender for product portals.
 
 
 ## [Unreleased]
+
+
+## [5.4.6] - 2020-03-25
+
+### [Changed]
+- Improve feature chart display for products with numerous software integrations.
+
+### [Removed]
+- Removed a var_dump that I was using for checking that was showing on the front end. :/
 
 
 ## [5.4.5] - 2020-03-25

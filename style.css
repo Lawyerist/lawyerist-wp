@@ -3,7 +3,7 @@ Theme Name:   lawyerist-wp
 Theme URI:    https://lawyerist.com
 Description:  A theme for Lawyerist.com
 Author:       Sam Glover
-Version:      5.4.5
+Version:      5.4.6
 
 License:      Copyright Lawyerist Media, LLC
 ------------------------------*/
@@ -2557,6 +2557,10 @@ Content
       color: #c00;
     }
 
+    #feature-chart .checkbox .columns {
+      column-count: 3;
+    }
+
   #feature-chart ul {
     list-style: none;
     margin: 0;
@@ -2603,6 +2607,10 @@ Content
 
           #product_page_title .headline {
             font-size: 4.2rem;
+          }
+
+          #feature-chart .checkbox .columns {
+            column-count: 2;
           }
 
         }
