@@ -9,11 +9,11 @@ if ( get_field( 'fp_show_announcement' ) ) {
 
 	?>
 
-	<div id="fp_announcement" class="card">
-
-	  <h2><?php echo $announcement[ 'headline' ]; ?></h2>
-	  <?php echo $announcement[ 'content' ]; ?>
-
+	<div id="fp-announcement-container">
+		<div id="fp-announcement" class="card">
+		  <h2><?php echo $announcement[ 'headline' ]; ?></h2>
+		  <?php echo $announcement[ 'content' ]; ?>
+		</div>
 	</div>
 
 	<?php
