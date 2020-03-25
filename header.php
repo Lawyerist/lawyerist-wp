@@ -103,8 +103,6 @@ if ( !is_page_template( 'product-page.php' ) && !is_page_template( 'full-width.p
 
   }
 
-  var_dump( get_field( 'exclude_from_signup_wall' ) );
-
   echo get_lawyerist_login();
 
   ?>
