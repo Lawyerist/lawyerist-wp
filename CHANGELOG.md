@@ -7,7 +7,7 @@ All notable changes to this project will be documented in this file. The format 
 
 
 ## [Unreleased]
-
+- Remove a var_dump that I was using for checking that was showing on the front end. :/
 
 ## [5.4.5] - 2020-03-25
 
