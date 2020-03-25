@@ -9,6 +9,15 @@ All notable changes to this project will be documented in this file. The format 
 ## [Unreleased]
 
 
+## [5.4.5] - 2020-03-25
+
+### [Added]
+- Added the option to exclude specific posts and pages from the signup wall.
+
+### [Changed]
+- Further tweaks to front-page announcement style.
+
+
 ## [5.4.4] - 2020-03-24
 
 ### [Changed]
