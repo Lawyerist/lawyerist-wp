@@ -1113,7 +1113,7 @@ function lawyerist_get_alternative_products() {
 				if ( has_post_thumbnail() ) {
 
 					$alt_thumbnail_id   = get_post_thumbnail_id( $alternative );
-					$alt_thumbnail      = wp_get_attachment_image( $alt_thumbnail_id, 'medium' );
+					$alt_thumbnail      = wp_get_attachment_image( $alt_thumbnail_id, 'thumbnail' );
 
 				}
 
