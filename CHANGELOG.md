@@ -16,6 +16,7 @@ is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Increased the size of product thumbnails on product pages, and decreased the
 site of alternative product thumbnails.
 
+
 ## [5.4.7] - 2020-03-26
 
 ### [Fixed]
