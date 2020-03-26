@@ -39,7 +39,7 @@ if ( $current_post_query->have_posts() ) :
 
     while ( $current_post_query->have_posts() ) : $current_post_query->the_post();
 
-      lawyerist_get_post_card();
+      lawyerist_get_post_card( get_the_ID() );
 
     endwhile; wp_reset_postdata();
 

@@ -578,14 +578,14 @@ function get_sponsor() {
 }
 
 
-function get_sponsor_link( $post_id ) {
+function get_sponsor_link( $post_id = null ) {
 
-	if ( !has_category( 'sponsored', $post_id ) ) { return; }
+	if ( !$post_id || !has_category( 'sponsored', $post_id ) ) { return; }
 
 	$sponsor					= get_post( get_field( 'sponsored_post_partner', $post_id ) );
 	$product_page_id	= get_field( 'product_page', $sponsor->ID ) ? get_post( get_field( 'product_page', $sponsor->ID ) ) : null;
 
-	if ( $product_page_id && get_post_status( $product_page_id ) == 'publish' ) {
+	if ( is_single() && $product_page_id && get_post_status( $product_page_id ) == 'publish' ) {
 
 		return '<a href="' . get_permalink( $product_page_id ) . '">' . $sponsor->post_title . '</a>';
 
@@ -602,12 +602,12 @@ function get_sponsor_link( $post_id ) {
 Get First Image URL
 ------------------------------*/
 
-function get_first_image_url( $post_ID = NULL ) {
+function get_first_image_url( $post_id = NULL ) {
 
-	if ( empty( $post_ID ) ) {
+	if ( empty( $post_id ) ) {
 		global $post;
 	} else {
-		$post = get_post( $post_ID );
+		$post = get_post( $post_id );
 	}
 
 	$first_image_url = array();
@@ -684,24 +684,19 @@ function is_product_portal() {
 /**
 * Post Cards
 *
-* @param int $post_ID Optional. Accepts a valid post ID.
+* @param int $post_id Optional. Accepts a valid post ID.
 * @param string $card_top_label Optional.
 * @param string $card_bottom_label Optional.
 * @param bool $title_only. Whether to show the title by itself, or include the
 * byline. Defaults to false (i.e., does show the byline).
 */
 
-function lawyerist_get_post_card( $post_ID = null, $card_top_label = null, $card_bottom_label = null, $title_only = false ) {
+function lawyerist_get_post_card( $post_id = null, $card_top_label = null, $card_bottom_label = null, $title_only = false ) {
 
 	// Gets the post object.
-	if ( empty( $post_ID ) ) {
-		global $post;
-	} else {
-		$post = get_post( $post_ID );
-	}
+	if ( !$post_id ) { global $post; }
 
-	$post_ID		= $post->ID;
-	$post_type	= get_post_type( $post_ID );
+	$post_type = get_post_type( $post_id );
 
 	// Assigns card classes based on post type and a couple of special cases.
 	$card_classes		= array( 'card' );
@@ -714,24 +709,24 @@ function lawyerist_get_post_card( $post_ID = null, $card_top_label = null, $card
 	// Gets the guest image for case studies, or the post thumbnail for everything else.
 	if ( has_category( 'case-studies' ) ) {
 
-		$first_image_url = get_first_image_url( $post_ID );
+		$first_image_url = get_first_image_url( $post_id );
 
 		if ( !empty( $first_image_url ) ) {
 			$thumbnail			= '<img class="guest-avatar" srcset="' . $first_image_url[ '1x' ] . ' 1x, ' . $first_image_url[ '2x' ] . ' 2x" src="' . $first_image_url[ '1x' ] . '" />';
 			$post_classes[]	= 'has-guest-avatar';
 		}
 
-	} elseif ( has_post_thumbnail( $post_ID ) ) {
+	} elseif ( has_post_thumbnail( $post_id ) ) {
 
-    $thumbnail_id   = get_post_thumbnail_id( $post_ID );
+    $thumbnail_id   = get_post_thumbnail_id( $post_id );
     $thumbnail      = wp_get_attachment_image( $thumbnail_id, 'medium' );
 		$post_classes[]	= 'has-post-thumbnail';
 
   }
 
 	// Gets the post title and permalink for the link container.
-	$post_title	= get_the_title( $post_ID );
-	$post_url		= get_permalink( $post_ID );
+	$post_title	= get_the_title( $post_id );
+	$post_url		= get_permalink( $post_id );
 
 	?>
 
@@ -780,7 +775,7 @@ function lawyerist_get_post_card( $post_ID = null, $card_top_label = null, $card
 
 						<?php
 
-						$date = get_the_time( 'F jS, Y', $post_ID );
+						$date = get_the_time( 'F jS, Y', $post_id );
 
 						if ( has_category( array( 'case-studies', 'lab-workshops' ) ) ) {
 
@@ -796,17 +791,17 @@ function lawyerist_get_post_card( $post_ID = null, $card_top_label = null, $card
 
 							if ( has_category( 'sponsored') ) {
 
-								$sponsor_name = get_the_title( get_field( 'sponsored_post_partner' ) );
+								$sponsor = get_sponsor_link( $post_id );
 
 								if ( has_tag( 'product-spotlights' ) ) {
 
 									// Adds "sponsored by" after the author on product spotlights.
-									echo 'By <span class="vcard author"><cite class="fn">' . $author . '</cite></span>,&nbsp;<span class="sponsor">sponsored by ' . $sponsor_name . '</span>, ';
+									echo 'By <span class="vcard author"><cite class="fn">' . $author . '</cite></span>,&nbsp;<span class="sponsor">sponsored by ' . $sponsor . '</span>, ';
 
 								} else {
 
 									// Otherwise, replaces the author with the sponsor's name.
-						      echo '<span class="sponsor">Sponsored by ' . $sponsor_name . '</span> ';
+						      echo '<span class="sponsor">Sponsored by ' . $sponsor . '</span> ';
 
 								}
 
