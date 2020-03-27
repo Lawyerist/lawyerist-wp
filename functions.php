@@ -1016,9 +1016,13 @@ function lawyerist_get_alternative_products() {
 
 	if ( !empty( $alternatives ) ) {
 
-		echo '<h2>Alternatives to ' . $page_title . '</h2>';
+		?>
 
-		echo '<div id="alternative-products" class="cards cards-4-columns">';
+		<h2>Alternatives to <?php echo $page_title; ?></h2>
+
+		<div id="alternative-products" class="cards cards-6-columns">
+
+			<?php
 
 			foreach ( $alternatives as $alternative ) {
 
@@ -1028,36 +1032,32 @@ function lawyerist_get_alternative_products() {
 				if ( has_post_thumbnail() ) {
 
 					$alt_thumbnail_id   = get_post_thumbnail_id( $alternative );
-					$alt_thumbnail      = wp_get_attachment_image( $alt_thumbnail_id, 'medium' );
+					$alt_thumbnail      = wp_get_attachment_image( $alt_thumbnail_id, 'thumbnail' );
 
 				}
 
-				echo '<div class="card">';
+				?>
 
-					// Starts the link container. Makes for big click targets!
-					echo '<a href="' . $alt_url . '" title="' . $alt_title . '" class="has-post-thumbnail">';
+				<div class="card">
+					<a href="<?php echo $alt_url; ?>" title="<?php echo $alt_title; ?>" class="has-post-thumbnail">
+						<?php if ( !empty( $alt_thumbnail ) ) { echo $alt_thumbnail; } ?>
+						<div class="headline-byline">
+								<h2 class="headline"><?php echo $alt_title; ?></h2>
+						</div>
+					</a>
+				</div>
 
-					if ( !empty( $alt_thumbnail ) ) {
-						echo $alt_thumbnail;
-					}
-
-						// Now we get the headline and excerpt (except for certain kinds of posts).
-						echo '<div class="headline-byline">';
-
-							// Headline
-							echo '<h2 class="headline">' . $alt_title . '</h2>';
-
-						echo '</div>'; // Close .headline-byline.
-
-					echo '</a>'; // This closes the post link container (.post).
-
-				echo '</div>';
+				<?php
 
 				unset( $alt_thumbnail );
 
 			}
 
-		echo '</div>';
+			?>
+
+		</div>
+
+		<?php
 
 	}
 

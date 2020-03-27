@@ -3,7 +3,7 @@ Theme Name:   lawyerist-wp
 Theme URI:    https://lawyerist.com
 Description:  A theme for Lawyerist.com
 Author:       Sam Glover
-Version:      5.4.7
+Version:      5.4.8
 
 License:      Copyright Lawyerist Media, LLC
 ------------------------------*/
@@ -1580,6 +1580,14 @@ Card Styles
   grid-template-columns: repeat( 4, 1fr );
 }
 
+.cards-5-columns {
+  grid-template-columns: repeat( 5, 1fr );
+}
+
+.cards-6-columns {
+  grid-template-columns: repeat( 6, 1fr );
+}
+
   @media only screen and ( max-width: 639px ) {
 
     .cards-3-columns,
@@ -1587,9 +1595,19 @@ Card Styles
       grid-template-columns: repeat( 2, 1fr );
     }
 
+    .cards-5-columns,
+    .cards-6-columns {
+      grid-template-columns: repeat( 4, 1fr );
+    }
+
   }
 
   @media only screen and ( max-width: 639px ) {
+
+    .cards-5-columns,
+    .cards-6-columns {
+      grid-template-columns: repeat( 3, 1fr );
+    }
 
     .cards-3-columns,
     .cards-4-columns {
@@ -1613,6 +1631,11 @@ Card Styles
 
     .cards .card .headline-byline {
       padding: 2rem;
+    }
+
+    .cards.cards-5-columns .card .headline-byline,
+    .cards.cards-6-columns .card .headline-byline {
+      padding: 1.5rem;
     }
 
 
@@ -2572,7 +2595,7 @@ Content
 
   .page-template-product-page .headline_container {
     display: grid;
-    grid-template-columns: 10rem auto;
+    grid-template-columns: 16rem auto;
     grid-column-gap: 1rem;
     margin-bottom: 3rem;
   }
@@ -2581,10 +2604,10 @@ Content
       background-color: #ddd;
       border-radius: .2rem;
       box-sizing: border-box;
-      height: 10rem;
+      height: 15rem;
       margin: 0 1rem 0 0;
       padding: .5rem;
-      width: 10rem;
+      width: 15rem;
     }
 
       .page-template-product-page .headline_container img.wp-post-image {
