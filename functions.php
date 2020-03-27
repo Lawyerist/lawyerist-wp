@@ -51,6 +51,7 @@ COMMENTS & REVIEWS
 GRAVITY FORMS
 - Enable CC Field on Form Notifications
 - Populate Form Fields
+- Populate Vendor Recommender Forms
 - Auto-Login New Users
 
 WOOCOMMERCE
@@ -1808,6 +1809,65 @@ function populate_fields( $value, $field, $name ) {
 }
 
 add_filter( 'gform_field_value', 'populate_fields', 10, 3 );
+
+
+/*------------------------------
+Populate Vendor Recommender Forms
+------------------------------*/
+function mktg_seo_populate_form_fields( $form ) {
+
+  foreach ( $form[ 'fields' ] as &$field ) {
+
+    switch ( intval( $field[ 'id' ] ) ) {
+
+			// Services Offered
+      case 10:
+      case 20:
+        $acf_field_key = 'field_5e1799f17d8ec';
+        break;
+
+			case 30:
+				$acf_field_key = 'field_5e7e13be1a35d';
+				break;
+
+			case 40:
+				$acf_field_key = 'field_5e7e14ae62faa';
+				break;
+
+			default;
+				$acf_field_key = null;
+
+    }
+
+    $acf_field = get_field_object( $acf_field_key );
+
+    if ( $acf_field ) {
+
+			$choices = array();
+
+      // Loops over each choice and add value/option to $choices array.
+      foreach( $acf_field[ 'choices' ] as $k => $v ) {
+        $choices[] = array( 'text' => $v, 'value' => $k );
+      }
+
+			if ( intval( $field[ 'id' ] == ( 1 || 3 ) ) ) {
+				$field->placeholder = 'Select your budget …';
+			}
+
+			$field->choices = $choices;
+
+    }
+
+  }
+
+  return $form;
+
+}
+
+add_filter( 'gform_pre_render_65', 'mktg_seo_populate_form_fields' );
+add_filter( 'gform_pre_validation_65', 'mktg_seo_populate_form_fields' );
+add_filter( 'gform_pre_submission_filter_65', 'mktg_seo_populate_form_fields' );
+add_filter( 'gform_admin_pre_render_65', 'mktg_seo_populate_form_fields' );
 
 
 /*------------------------------
