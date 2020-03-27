@@ -8,13 +8,14 @@ is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 
 ## [Unreleased]
-
+- Move ACF blocks to their own file.
 
 ## [5.4.7] - 2020-03-26
 
 ### [Fixed]
 - Fixed a bug introduced when the front page was converted to blocks that broke
 bylines on sponsored posts.
+
 
 ## [5.4.6] - 2020-03-25
 
