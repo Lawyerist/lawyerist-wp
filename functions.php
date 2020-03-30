@@ -1827,11 +1827,11 @@ function mktg_seo_populate_form_fields( $form ) {
         break;
 
 			case 30:
-				$acf_field_key = 'field_5e7e13be1a35d';
+				$acf_field_key = 'field_5e8247b1b26a5';
 				break;
 
 			case 40:
-				$acf_field_key = 'field_5e7e14ae62faa';
+				$acf_field_key = 'field_5e8247d7b26a6';
 				break;
 
 			default;

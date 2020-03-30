@@ -362,31 +362,119 @@ function mktg_seo_recommender_results( $atts ) {
   $submission[ 'up_front_budget' ]  = $entry[ 30 ];
   $submission[ 'ongoing_budget' ]   = $entry[ 40 ];
 
-  // var_dump( $submission );
+  $meta_query_args = array(
+    'relation'  => 'OR',
+    array(
+      'key'     => 'fc_seo_target_up_front_budget',
+      'value'   => $submission[ 'up_front_budget' ],
+    ),
+    array(
+      'key'     => 'fc_seo_target_ongoing_budget',
+      'value'   => $submission[ 'ongoing_budget' ],
+    ),
+  );
 
-  /*
-  Okay, next I need to figure out how to generate a query of posts with any of
-  the above criteria, sort them by relevance, and then match them up with the
-  submission.
+  foreach ( $submission[ 'services' ] as $service ) {
 
-  Probably a big meta query.
-  */
+    $meta_query_args[] = array(
+      'key'           => 'fc_seo_services_offered',
+      'value'         => $submission[ 'up_front_budget' ],
+      'meta_compare'  => 'IN',
+    );
+
+  }
 
   $args = array(
-    'meta_query'      => array(
-      'relation'      => 'OR',
-      array(
-        'key'     => 'fc_seo_target_up_front_budget',
-        'value'   => $submission[ 'up_front_budget' ],
-      ),
-      array(
-        'key'     => 'fc_seo_target_ongoing_budget',
-        'value'   => $submission[ 'ongoing_budget' ],
-      ),
-    ),
+    'meta_query'      => $meta_query_args,
     'posts_per_page'  => -1,
     'post_status'     => 'publish',
+    'post_type'       => 'page',
 	);
+
+  $products = new WP_Query( $args );
+
+  if ( $products->have_posts() ):
+
+    ?>
+
+    <p>We found <?php echo $products->post_count . _n( ' product', ' products', $rating_count ); ?> you should consider:</p>
+
+    <?php
+
+    while ( $products->have_posts() ): $products->the_post();
+
+      $product_page_id    = get_the_ID();
+      $product_page_title = the_title( '', '', FALSE );
+      $product_page_url		= get_permalink();
+
+      // Check for a rating.
+      if ( comments_open() && function_exists( 'wp_review_show_total' ) ) {
+        $composite_rating = lwyrst_get_composite_rating();
+      }
+
+      ?>
+
+      <div class="recommender-result">
+
+        <?php if ( has_post_thumbnail() ) { ?>
+
+          <a class="image" href="<?php echo $product_page_url; ?>">
+
+            <?php if ( has_term( 'affinity-partner', 'page_type', $post->ID ) && get_field( 'affinity_active' ) == true ) { ?>
+
+              <?php $theme_dir = get_template_directory_uri(); ?>
+
+              <img class="affinity-partner-badge" alt="Lawyerist affinity partner badge." src="<?php echo $theme_dir; ?>/images/affinity-partner-mini-badge.png" height="64" width="75" />
+
+            <?php } ?>
+
+            <?php the_post_thumbnail( 'thumbnail' ); ?>
+
+          </a>
+
+        <?php } ?>
+
+        <div class="title_container">
+
+          <a class="title" href="<?php echo $product_page_url; ?>"><?php echo $product_page_title; ?></a>
+
+          <div class="user-rating">
+
+            <?php if ( !empty( $composite_rating ) ) { ?>
+
+              <a href="<?php echo $product_page_url; ?>#rating">
+                <?php echo lwyrst_product_rating(); ?>
+              </a>
+
+            <?php } ?>
+
+          </div>
+
+        </div>
+
+        <?php if ( ( $country == ( 'US' || 'CA' ) ) && has_trial_button( $product_page_id ) ) { ?>
+
+          <div class="list-products-trial-button">
+            <?php echo trial_button( $product_page_id ); ?>
+          </div>
+
+        <?php } ?>
+
+      </div>
+
+      <?php
+
+    endwhile;
+
+  else:
+
+    ?>
+
+    <p>There are no products that meet your requirements. Try using the product filters to narrow down the options.</p>
+
+    <?php
+
+  endif;
 
 }
 
