@@ -1442,7 +1442,7 @@ function lawyerist_comment_author_name( $author = '' ) {
 
 	} else {
 
-		$author = __('Anonymous');
+		$author = __( 'Anonymous');
 
 	}
 
@@ -1546,7 +1546,7 @@ function lwyrst_get_our_rating( $product_id = null ) {
 
 	if ( ! $product_id ) {
 		global $post;
-		$product_id = $post->ID;
+		$product_id = get_the_ID();
 	}
 
 	$our_rating_raw	= get_post_meta( $product_id, 'wp_review_total', true );
@@ -1562,7 +1562,7 @@ function lwyrst_get_community_rating( $product_id = null ) {
 
 	if ( ! $product_id ) {
 		global $post;
-		$product_id = $post->ID;
+		$product_id = get_the_ID();
 	}
 
 	$community_rating = round( get_post_meta( $product_id, 'wp_review_comments_rating_value', true ), 1 );
@@ -1576,7 +1576,7 @@ function lwyrst_get_community_review_count( $product_id = null ) {
 
 	if ( ! $product_id ) {
 		global $post;
-		$product_id = $post->ID;
+		$product_id = get_the_ID();
 	}
 
 	$community_review_count	= get_post_meta( $product_id, 'wp_review_comments_rating_count', true );
@@ -1680,7 +1680,7 @@ function lwyrst_product_rating( $rating_type = null ) {
 
 		?>
 
-		<span><?php echo $rating; ?>/5 (based on <?php echo $rating_count; ?> <?php echo _n( 'rating', 'ratings', $rating_count ); ?></span>
+		<span><?php echo $rating; ?>/5 (based on <?php echo $rating_count; ?> <?php echo _n( 'rating', 'ratings', $rating_count ); ?>)</span>
 
 		<?php
 
