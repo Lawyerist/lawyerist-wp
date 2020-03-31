@@ -82,7 +82,7 @@ function stylesheets_scripts() {
 	$template_dir_uri = get_template_directory_uri();
 
 	// Normalize the default styles. From https://github.com/necolas/normalize.css/
-	wp_register_style( 'normalize-css', $template_dir_uri . '/css/normalize.min.css' );
+	wp_register_style( 'normalize-css', $template_dir_uri . '/css/normalize.css' );
 	wp_enqueue_style( 'normalize-css' );
 
 	// Load the main stylesheet.

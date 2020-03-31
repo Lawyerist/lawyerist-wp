@@ -397,7 +397,9 @@ function mktg_seo_recommender_results( $atts ) {
 
     ?>
 
-    <p>We found <?php echo $products->post_count . _n( ' product', ' products', $rating_count ); ?> you should consider:</p>
+    <p>We found <?php echo $products->post_count . _n( ' product', ' products', $rating_count ); ?> you should consider.</p>
+
+    <p>Open all in tabs.</p>
 
     <?php
 
