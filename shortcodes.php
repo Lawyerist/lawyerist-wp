@@ -342,6 +342,7 @@ add_shortcode( 'feature-chart', 'feature_chart' );
 /*------------------------------
 Vendor Recommender Results
 ------------------------------*/
+
 function mktg_seo_recommender_results( $atts ) {
 
   $atts = shortcode_atts( array(
@@ -358,9 +359,10 @@ function mktg_seo_recommender_results( $atts ) {
   $services_field_obj = RGFormsModel::get_field( $atts[ 'form_id' ], $services_field_id );
 
   $submission[ 'services' ]         = explode( ', ', $services_field_obj->get_value_export( $entry ) );
-  $submission[ 'service_focus' ]    = $entry[ 20 ];
   $submission[ 'up_front_budget' ]  = $entry[ 30 ];
   $submission[ 'ongoing_budget' ]   = $entry[ 40 ];
+
+  $total_choices  = count( $submission[ 'services' ] ) + 2;
 
   $meta_query_args = array(
     'relation'  => 'OR',
@@ -385,6 +387,7 @@ function mktg_seo_recommender_results( $atts ) {
   }
 
   $args = array(
+    'fields'          => 'ids',
     'meta_query'      => $meta_query_args,
     'posts_per_page'  => -1,
     'post_status'     => 'publish',
@@ -395,88 +398,154 @@ function mktg_seo_recommender_results( $atts ) {
 
   if ( $products->have_posts() ):
 
-    ?>
-
-    <p>We found <?php echo $products->post_count . _n( ' product', ' products', $rating_count ); ?> you should consider.</p>
-
-    <p>Open all in tabs.</p>
-
-    <?php
+    $results = array();
 
     while ( $products->have_posts() ): $products->the_post();
 
-      $product_page_id    = get_the_ID();
-      $product_page_title = the_title( '', '', FALSE );
-      $product_page_url		= get_permalink();
+      $product_id = get_the_ID();
+      $services   = get_field( 'fc_seo_services_offered', $product_id );
 
-      // Check for a rating.
-      if ( comments_open() && function_exists( 'wp_review_show_total' ) ) {
-        $composite_rating = lwyrst_get_composite_rating();
+      foreach ( $submission[ 'services' ] as $service ) {
+
+        if ( in_array( $service, $services ) ) {
+          $matches++;
+        }
+
       }
 
-      ?>
+      if ( $submission[ 'up_front_budget'] == get_field( 'fc_seo_target_up_front_budget', $product->ID ) ) { $matches++; }
+      if ( $submission[ 'ongoing_budget'] == get_field( 'fc_seo_target_ongoing_budget', $product->ID ) ) { $matches++; }
 
-      <div class="recommender-result">
+      if ( has_term( 'affinity-partner', 'page_type', $product_id ) && get_field( 'affinity_active' ) == true ) {
+        $affinity_partner = true;
+      } else {
+        $affinity_partner = false;
+      }
 
-        <?php if ( has_post_thumbnail() ) { ?>
+      $results[] = array(
+        'id'                => $product_id,
+        'title'             => the_title( '', '', FALSE ),
+        'url'               => get_permalink(),
+        'affinity_partner'  => $affinity_partner,
+        'rating'            => lwyrst_get_composite_rating(),
+        'match_score'       => round( $match_score / $total_choices * 100 ),
+      );
 
-          <a class="image" href="<?php echo $product_page_url; ?>">
+    endwhile;
 
-            <?php if ( has_term( 'affinity-partner', 'page_type', $post->ID ) && get_field( 'affinity_active' ) == true ) { ?>
+    usort( $results, function( $a, $b ) {
+      return $a[ 'match_score' ] <=> $b[ 'match_score' ];
+    });
 
-              <?php $theme_dir = get_template_directory_uri(); ?>
+    ?>
 
-              <img class="affinity-partner-badge" alt="Lawyerist affinity partner badge." src="<?php echo $theme_dir; ?>/images/affinity-partner-mini-badge.png" height="64" width="75" />
+    <p>We found <?php echo count( $results ) . _n( ' product', ' products', $results ); ?> you should consider.</p>
 
-            <?php } ?>
+      <?php foreach ( $results as $result ) { ?>
 
-            <?php the_post_thumbnail( 'thumbnail' ); ?>
+        <div class="recommender-result">
 
-          </a>
+          <div class="title_container">
 
-        <?php } ?>
+            <a class="title" href="<?php echo $result['url']; ?>"><?php echo $result['title']; ?></a>
+            <div class="match-percentage"><?php echo $product_match_score; ?>% match</div>
+            <div class="user-rating">
 
-        <div class="title_container">
+              <?php if ( !empty( $composite_rating ) ) { ?>
 
-          <a class="title" href="<?php echo $product_page_url; ?>"><?php echo $product_page_title; ?></a>
+                <a href="<?php echo $product_page_url; ?>#rating">
+                  <?php echo lwyrst_product_rating(); ?>
+                </a>
 
-          <div class="user-rating">
+              <?php } ?>
 
-            <?php if ( !empty( $composite_rating ) ) { ?>
+            </div>
 
-              <a href="<?php echo $product_page_url; ?>#rating">
-                <?php echo lwyrst_product_rating(); ?>
+          </div>
+
+          <div class="result-row">
+
+            <?php if ( has_post_thumbnail() ) { ?>
+
+              <a class="image" href="<?php echo $product_page_url; ?>">
+
+                <?php if ( has_term( 'affinity-partner', 'page_type', $post->ID ) && get_field( 'affinity_active' ) == true ) { ?>
+
+                  <?php $theme_dir = get_template_directory_uri(); ?>
+
+                  <img class="affinity-partner-badge" alt="Lawyerist affinity partner badge." src="<?php echo $theme_dir; ?>/images/affinity-partner-mini-badge.png" height="64" width="75" />
+
+                <?php } ?>
+
+                <?php the_post_thumbnail( 'thumbnail' ); ?>
+
               </a>
 
             <?php } ?>
+
+            <table>
+              <tbody>
+                <tr>
+                  <th colspan="3">Services</th>
+                </tr>
+
+                  <?php foreach ( $submission[ 'services' ] as $service ) { ?>
+
+                    <tr>
+                      <th class="sub-feature" colspan="2">
+                        <?php echo $service; ?>
+                      </th>
+                      <td>
+                        <?php if ( in_array( $service, $services ) ) { ?>
+                          <div class="true">&check;</div>
+                        <?php } else { ?>
+                          <div class="false">&cross;</div>
+                        <?php } ?>
+                      </td>
+                    </tr>
+
+                  <?php } ?>
+
+                <tr>
+                  <th colspan="3">Budget</th>
+                </tr>
+                <tr>
+                  <th class="sub-feature">Up-Front</th>
+                  <td><?php echo $submission[ 'up_front_budget']; ?></td>
+                  <td>
+                    <?php if ( $submission[ 'up_front_budget'] == get_field( 'fc_seo_target_up_front_budget' ) ) { ?>
+                      <div class="true">&check;</div>
+                    <?php } else { ?>
+                      <div class="false">&cross;</div>
+                    <?php } ?>
+                  </td>
+                </tr>
+                <tr>
+                  <th class="sub-feature">Monthly</th>
+                  <td><?php echo $submission[ 'ongoing_budget']; ?></td>
+                  <td>
+                    <?php if ( $submission[ 'ongoing_budget'] == get_field( 'fc_seo_target_ongoing_budget' ) ) { ?>
+                      <div class="true">&check;</div>
+                    <?php } else { ?>
+                      <div class="false">&cross;</div>
+                    <?php } ?>
+                  </td>
+                </tr>
+
+              </tbody>
+            </table>
 
           </div>
 
         </div>
 
-        <?php if ( ( $country == ( 'US' || 'CA' ) ) && has_trial_button( $product_page_id ) ) { ?>
+      <?php } ?>
 
-          <div class="list-products-trial-button">
-            <?php echo trial_button( $product_page_id ); ?>
-          </div>
-
-        <?php } ?>
-
-      </div>
-
-      <?php
-
-    endwhile;
-
-  else:
-
-    ?>
+  <?php else: ?>
 
     <p>There are no products that meet your requirements. Try using the product filters to narrow down the options.</p>
 
-    <?php
-
-  endif;
+  <?php endif;
 
 }
 
