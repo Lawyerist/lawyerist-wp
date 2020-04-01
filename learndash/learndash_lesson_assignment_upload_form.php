@@ -19,24 +19,24 @@ if ( ( isset( $course_step_post ) ) && ( $course_step_post instanceof WP_Post ) 
 
 	$post_settings = learndash_get_setting( $course_step_post );
 
-	$php_max_upload = ini_get( 'upload_max_filesize');
+	$php_max_upload = ini_get( 'upload_max_filesize' );
 
-	if ( ( isset( $post_settings['assignment_upload_limit_size'] ) ) && ( !empty( $post_settings['assignment_upload_limit_size'] ) ) ) {
-		if ( ( learndash_return_bytes_from_shorthand( $post_settings['assignment_upload_limit_size'] ) < learndash_return_bytes_from_shorthand( $php_max_upload ) ) ) {
-			$php_max_upload = $post_settings['assignment_upload_limit_size'];
+	if ( ( isset( $post_settings[ 'assignment_upload_limit_size' ] ) ) && ( !empty( $post_settings[ 'assignment_upload_limit_size' ] ) ) ) {
+		if ( ( learndash_return_bytes_from_shorthand( $post_settings[ 'assignment_upload_limit_size' ] ) < learndash_return_bytes_from_shorthand( $php_max_upload ) ) ) {
+			$php_max_upload = $post_settings[ 'assignment_upload_limit_size' ];
 		}
 	}
 	$upload_message = sprintf( esc_html_x( 'Maximum upload file size: %s', 'placeholder: PHP file upload size', 'learndash' ),  $php_max_upload );
 
-	if ( ( isset( $post_settings['assignment_upload_limit_extensions'] ) ) && ( !empty( $post_settings['assignment_upload_limit_extensions'] ) ) ) {
-		$limit_file_exts = learndash_validate_extensions( $post_settings['assignment_upload_limit_extensions'] );
+	if ( ( isset( $post_settings[ 'assignment_upload_limit_extensions' ] ) ) && ( !empty( $post_settings[ 'assignment_upload_limit_extensions' ] ) ) ) {
+		$limit_file_exts = learndash_validate_extensions( $post_settings[ 'assignment_upload_limit_extensions' ] );
 		if ( !empty( $limit_file_exts ) ) {
 			$upload_message .= ' '. sprintf( esc_html_x( 'Allowed file types: %s', 'placeholder: comma list of file extentions', 'learndash' ), implode( ', ', $limit_file_exts ) );
 		}
 	}
 
-	if ( isset( $post_settings['assignment_upload_limit_count'] ) ) {
-		$assignment_upload_limit_count = intval( $post_settings['assignment_upload_limit_count'] );
+	if ( isset( $post_settings[ 'assignment_upload_limit_count' ] ) ) {
+		$assignment_upload_limit_count = intval( $post_settings[ 'assignment_upload_limit_count' ] );
 		if ( $assignment_upload_limit_count > 0 ) {
 			$assignments = learndash_get_user_assignments( $course_step_post->ID, $user_id );
 			if ( ( !empty( $assignments ) ) && ( count( $assignments ) >= $assignment_upload_limit_count ) ) {

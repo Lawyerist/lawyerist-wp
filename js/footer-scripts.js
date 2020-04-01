@@ -281,7 +281,7 @@
 // Platinum Sponsors Widget
 ( function( $ ) {
 
-  let sidebar = $( '#sidebar_column');
+  let sidebar = $( '#sidebar_column' );
   let widget  = $( '#platinum-sponsors-widget' );
 
   function stickyWidget() {

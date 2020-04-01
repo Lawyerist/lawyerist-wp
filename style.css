@@ -58,9 +58,9 @@ Load Fonts
 @font-face {
   font-display: block;
   font-family: 'adler';
-  src:  local( 'Adler'),
-        url( './fonts/adler/adler-webfont.woff2') format( 'woff2'),
-        url( './fonts/adler/adler-webfont.woff') format( 'woff');
+  src:  local( 'Adler' ),
+        url( './fonts/adler/adler-webfont.woff2' ) format( 'woff2' ),
+        url( './fonts/adler/adler-webfont.woff' ) format( 'woff' );
   font-weight: normal;
   font-style: normal;
 }
@@ -70,9 +70,9 @@ Load Fonts
 @font-face {
   font-display: block;
   font-family: 'Genericons';
-  src:  local( 'Genericons'),
-        url( './fonts/genericons/Genericons.woff2') format( 'woff2'),
-        url( './fonts/genericons/Genericons.woff') format( 'woff');
+  src:  local( 'Genericons' ),
+        url( './fonts/genericons/Genericons.woff2' ) format( 'woff2' ),
+        url( './fonts/genericons/Genericons.woff' ) format( 'woff' );
   font-weight: normal;
   font-style: normal;
 }
@@ -82,9 +82,9 @@ Load Fonts
 @font-face {
   font-display: block;
   font-family: 'concourse';
-  src:  local( 'Concourse T4'),
-        url( './fonts/concourse/concourse_t4_regular-webfont.woff2') format( 'woff2'),
-        url( './fonts/concourse/concourse_t4_regular-webfont.woff') format( 'woff');
+  src:  local( 'Concourse T4' ),
+        url( './fonts/concourse/concourse_t4_regular-webfont.woff2' ) format( 'woff2' ),
+        url( './fonts/concourse/concourse_t4_regular-webfont.woff' ) format( 'woff' );
   font-weight: normal;
   font-style: normal;
 }
@@ -92,9 +92,9 @@ Load Fonts
 @font-face {
   font-display: block;
   font-family: 'concourse';
-  src:  local( 'Concourse T4 Italic'),
-        url( './fonts/concourse/concourse_t4_italic-webfont.woff2') format( 'woff2'),
-        url( './fonts/concourse/concourse_t4_italic-webfont.woff') format( 'woff');
+  src:  local( 'Concourse T4 Italic' ),
+        url( './fonts/concourse/concourse_t4_italic-webfont.woff2' ) format( 'woff2' ),
+        url( './fonts/concourse/concourse_t4_italic-webfont.woff' ) format( 'woff' );
   font-weight: normal;
   font-style: italic;
 }
@@ -102,9 +102,9 @@ Load Fonts
 @font-face {
   font-display: block;
   font-family: 'concourse';
-  src:  local( 'Concourse T4 Bold'),
-        url( './fonts/concourse/concourse_t4_bold-webfont.woff2') format( 'woff2'),
-        url( './fonts/concourse/concourse_t4_bold-webfont.woff') format( 'woff');
+  src:  local( 'Concourse T4 Bold' ),
+        url( './fonts/concourse/concourse_t4_bold-webfont.woff2' ) format( 'woff2' ),
+        url( './fonts/concourse/concourse_t4_bold-webfont.woff' ) format( 'woff' );
   font-weight: bold;
   font-style: normal;
 }
@@ -112,9 +112,9 @@ Load Fonts
 @font-face {
   font-display: block;
   font-family: 'concourse';
-  src:  local( 'Concourse T4 Bold Italic'),
-        url( './fonts/concourse/concourse_t4_bold_italic-webfont.woff2') format( 'woff2'),
-        url( './fonts/concourse/concourse_t4_bold_italic-webfont.woff') format( 'woff');
+  src:  local( 'Concourse T4 Bold Italic' ),
+        url( './fonts/concourse/concourse_t4_bold_italic-webfont.woff2' ) format( 'woff2' ),
+        url( './fonts/concourse/concourse_t4_bold_italic-webfont.woff' ) format( 'woff' );
   font-weight: bold;
   font-style: italic;
 }
@@ -124,9 +124,9 @@ Load Fonts
 @font-face {
   font-display: block;
   font-family: 'equity';
-  src:  local( 'Equity Text B'),
-        url( './fonts/equity/equity_text_b_regular-webfont.woff2') format( 'woff2'),
-        url( './fonts/equity/equity_text_b_regular-webfont.woff') format( 'woff');
+  src:  local( 'Equity Text B' ),
+        url( './fonts/equity/equity_text_b_regular-webfont.woff2' ) format( 'woff2' ),
+        url( './fonts/equity/equity_text_b_regular-webfont.woff' ) format( 'woff' );
   font-weight: normal;
   font-style: normal;
 }
@@ -134,9 +134,9 @@ Load Fonts
 @font-face {
   font-display: block;
   font-family: 'equity';
-  src:  local( 'Equity Text B Italic'),
-        url( './fonts/equity/equity_text_b_italic-webfont.woff2') format( 'woff2'),
-        url( './fonts/equity/equity_text_b_italic-webfont.woff') format( 'woff');
+  src:  local( 'Equity Text B Italic' ),
+        url( './fonts/equity/equity_text_b_italic-webfont.woff2' ) format( 'woff2' ),
+        url( './fonts/equity/equity_text_b_italic-webfont.woff' ) format( 'woff' );
   font-weight: normal;
   font-style: italic;
 }
@@ -144,9 +144,9 @@ Load Fonts
 @font-face {
   font-display: block;
   font-family: 'equity';
-  src:  local( 'Equity Text B Bold'),
-        url( './fonts/equity/equity_text_b_bold-webfont.woff2') format( 'woff2'),
-        url( './fonts/equity/equity_text_b_bold-webfont.woff') format( 'woff');
+  src:  local( 'Equity Text B Bold' ),
+        url( './fonts/equity/equity_text_b_bold-webfont.woff2' ) format( 'woff2' ),
+        url( './fonts/equity/equity_text_b_bold-webfont.woff' ) format( 'woff' );
   font-weight: bold;
   font-style: normal;
 }
@@ -154,9 +154,9 @@ Load Fonts
 @font-face {
   font-display: block;
   font-family: 'equity';
-  src:  local( 'Equity Text B Bold Italic'),
-        url( './fonts/equity/equity_text_b_bold_italic-webfont.woff2') format( 'woff2'),
-        url( './fonts/equity/equity_text_b_bold_italic-webfont.woff') format( 'woff');
+  src:  local( 'Equity Text B Bold Italic' ),
+        url( './fonts/equity/equity_text_b_bold_italic-webfont.woff2' ) format( 'woff2' ),
+        url( './fonts/equity/equity_text_b_bold_italic-webfont.woff' ) format( 'woff' );
   font-weight: bold;
   font-style: italic;
 }
@@ -166,9 +166,9 @@ Load Fonts
 @font-face {
   font-display: swap;
   font-family: 'triplicate';
-  src:  local( 'Triplicate T4 Regular'),
-        url( './fonts/triplicate/triplicate_t4_code_regular-webfont.woff2') format( 'woff2'),
-        url( './fonts/triplicate/triplicate_t4_code_regular-webfont.woff') format( 'woff');
+  src:  local( 'Triplicate T4 Regular' ),
+        url( './fonts/triplicate/triplicate_t4_code_regular-webfont.woff2' ) format( 'woff2' ),
+        url( './fonts/triplicate/triplicate_t4_code_regular-webfont.woff' ) format( 'woff' );
   font-weight: normal;
   font-style: normal;
 }
@@ -3463,7 +3463,7 @@ label {
 }
 
 select {
-  background-image: url( 'images/expand-bbb.svg');
+  background-image: url( 'images/expand-bbb.svg' );
   background-position: right .4rem top 50%, 0 0;
   background-repeat: no-repeat;
   padding: .5rem 2.4rem .5rem .4rem !important;
@@ -3478,7 +3478,7 @@ select {
   }
 
   select:hover {
-    background-image: url( 'images/expand.svg');
+    background-image: url( 'images/expand.svg' );
     cursor: pointer;
   }
 

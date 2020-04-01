@@ -439,7 +439,7 @@ function get_country() {
 
 		// Get user's geographic location by IP address.
 		// Set IP address and API access key.
-		$ip = $_SERVER['REMOTE_ADDR'];
+		$ip = $_SERVER[ 'REMOTE_ADDR' ];
 		$access_key = '55e08636154002dca5b45f0920143108';
 
 		// Initialize CURL.
@@ -709,7 +709,7 @@ function lawyerist_get_post_card( $post_id = null, $card_top_label = null, $card
 								$author = 'the Lawyerist editorial team';
 							}
 
-							if ( has_category( 'sponsored') ) {
+							if ( has_category( 'sponsored' ) ) {
 
 								$sponsor = get_sponsor_link( $post_id );
 
@@ -828,7 +828,7 @@ Yoast SEO Breadcrumbs
 
 function lawyerist_remove_products_breadcrumb( $link_output, $link ) {
 
-	if ( is_really_a_woocommerce_page() && $link['text'] == 'Products' ) {
+	if ( is_really_a_woocommerce_page() && $link[ 'text' ] == 'Products' ) {
 		$link_output = '';
 	}
 
@@ -1119,7 +1119,7 @@ function lawyerist_get_related_resources() {
 
 	global $post;
 
-	if ( is_singular( 'post') ) {
+	if ( is_singular( 'post' ) ) {
 
 		$current_id[]				= $post->ID;
 		$current_tags				= get_the_tags( $post->ID );
@@ -1442,7 +1442,7 @@ function lawyerist_comment_author_name( $author = '' ) {
 
 	} else {
 
-		$author = __( 'Anonymous');
+		$author = __( 'Anonymous' );
 
 	}
 
@@ -1956,20 +1956,20 @@ Checkout Fields
 function lawyerist_checkout_fields( $fields ) {
 
 	// Disables all billing fields except the name, email address, and country.
-	unset( $fields['billing']['billing_company'] );
-	unset( $fields['billing']['billing_address_1'] );
-	unset( $fields['billing']['billing_address_2'] );
-	unset( $fields['billing']['billing_city'] );
-	unset( $fields['billing']['billing_phone'] );
+	unset( $fields[ 'billing' ][ 'billing_company' ] );
+	unset( $fields[ 'billing' ][ 'billing_address_1' ] );
+	unset( $fields[ 'billing' ][ 'billing_address_2' ] );
+	unset( $fields[ 'billing' ][ 'billing_city' ] );
+	unset( $fields[ 'billing' ][ 'billing_phone' ] );
 
 	// Disables the order comments/notes field.
-	unset( $fields['order']['order_comments'] );
+	unset( $fields[ 'order' ][ 'order_comments' ] );
 
 	// Changes field labels.
-	$fields['billing']['billing_postcode']['label'] = 'Zip code';
+	$fields[ 'billing' ][ 'billing_postcode' ][ 'label' ] = 'Zip code';
 
 	// Adds our demographic questions.
-	$fields['order']['firm_size'] = array(
+	$fields[ 'order' ][ 'firm_size' ] = array(
 		'label'				=> __( 'What is the size of your firm?', 'woocommerce' ),
 		'type'				=> 'select',
 		'options'			=> array(
@@ -1985,7 +1985,7 @@ function lawyerist_checkout_fields( $fields ) {
 		'clear'				=> true,
 	);
 
-	$fields['order']['firm_role'] = array(
+	$fields[ 'order' ][ 'firm_role' ] = array(
 		'label'				=> __( 'What is your role at your firm?', 'woocommerce' ),
 		'type'				=> 'select',
 		'options'				=> array(
@@ -2002,7 +2002,7 @@ function lawyerist_checkout_fields( $fields ) {
 		'clear'				=> true,
 	);
 
-	$fields['order']['practice_area'] = array(
+	$fields[ 'order' ][ 'practice_area' ] = array(
 		'label'				=> __( 'What type of law do you practice?', 'woocommerce' ),
 		'type'				=> 'select',
 		'options'			=> array(

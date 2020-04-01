@@ -2,7 +2,7 @@
 
 		<div id="footer">
 
-			<p>The original content within this website is &copy; <?php echo date( 'Y') ?>.</p>
+			<p>The original content within this website is &copy; <?php echo date( 'Y' ) ?>.</p>
 
 			<p>Lawyerist, Lawyerist Lab, TBD Law, Small Firm Dashboard, and The Small Firm Scorecard are trademarks registered by Lawyerist Media, LLC.</p>
 
