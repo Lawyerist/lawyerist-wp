@@ -1,14 +1,27 @@
 # Changelog for Lawyerist.com
 
 All notable changes to this project will be documented in this file. The format
-is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
+is based on [Keep a Changelog](https://keepachangelog.com).
 
 ## [In Development]
 - Vendor recommender for product portals.
 
 
 ## [Unreleased]
+
+
+## [5.5.0] - 2020-04-01
+
+### [Changed]
 - Move ACF blocks to their own file.
+- Normalize.css updated.
+- Various minor updates in the course of developing the vendor recommender.
+- Some probably-unnecessary updates related to spacing around parentheses.
+
+### [Fixed]
+- Missing parentheses in the product list shortcode was found and returned to its
+place.
+
 
 ## [5.4.8] - 2020-03-26
 

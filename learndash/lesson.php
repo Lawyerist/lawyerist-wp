@@ -39,18 +39,18 @@
 		if ( ( !empty( $previous_item ) ) && ( $previous_item instanceof WP_Post ) ) {
 			if ( $previous_item->post_type == 'sfwd-quiz') {
 				echo sprintf( esc_html_x( 'Please go back and complete the previous %s.', 'placeholders: quiz URL', 'learndash' ),
-				'<a class="learndash-link-previous-incomplete" href="'. learndash_get_step_permalink( $previous_item->ID, $course_id ) .'">'. LearnDash_Custom_Label::label_to_lower('quiz') .'</a>' );
+				'<a class="learndash-link-previous-incomplete" href="'. learndash_get_step_permalink( $previous_item->ID, $course_id ) .'">'. LearnDash_Custom_Label::label_to_lower( 'quiz') .'</a>' );
 
 			} else if ( $previous_item->post_type == 'sfwd-topic') {
 				echo sprintf( esc_html_x( 'Please go back and complete the previous %s.', 'placeholders: topic URL, topic label', 'learndash' ),
-				'<a class="learndash-link-previous-incomplete" href="'. learndash_get_step_permalink( $previous_item->ID, $course_id ) .'">'. LearnDash_Custom_Label::label_to_lower('topic') .'</a>' );
+				'<a class="learndash-link-previous-incomplete" href="'. learndash_get_step_permalink( $previous_item->ID, $course_id ) .'">'. LearnDash_Custom_Label::label_to_lower( 'topic') .'</a>' );
 			} else {
 				echo sprintf( esc_html_x( 'Please go back and complete the previous %s.', 'placeholders: lesson URL, lesson label', 'learndash' ),
-				'<a class="learndash-link-previous-incomplete" href="'. learndash_get_step_permalink( $previous_item->ID, $course_id ) .'">'. LearnDash_Custom_Label::label_to_lower('lesson') .'</a>' );
+				'<a class="learndash-link-previous-incomplete" href="'. learndash_get_step_permalink( $previous_item->ID, $course_id ) .'">'. LearnDash_Custom_Label::label_to_lower( 'lesson') .'</a>' );
 			}
 
 		} else {
-			echo sprintf( esc_html_x( 'Please go back and complete the previous %s.', 'placeholder lesson', 'learndash' ), LearnDash_Custom_Label::label_to_lower('lesson') );
+			echo sprintf( esc_html_x( 'Please go back and complete the previous %s.', 'placeholder lesson', 'learndash' ), LearnDash_Custom_Label::label_to_lower( 'lesson') );
 		}
 	?>
 	</span><br />
