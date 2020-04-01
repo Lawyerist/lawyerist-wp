@@ -19,7 +19,7 @@ if ( ( isset( $course_step_post ) ) && ( $course_step_post instanceof WP_Post ) 
 
 	$post_settings = learndash_get_setting( $course_step_post );
 
-	$php_max_upload = ini_get('upload_max_filesize');
+	$php_max_upload = ini_get( 'upload_max_filesize');
 
 	if ( ( isset( $post_settings['assignment_upload_limit_size'] ) ) && ( !empty( $post_settings['assignment_upload_limit_size'] ) ) ) {
 		if ( ( learndash_return_bytes_from_shorthand( $post_settings['assignment_upload_limit_size'] ) < learndash_return_bytes_from_shorthand( $php_max_upload ) ) ) {
@@ -31,7 +31,7 @@ if ( ( isset( $course_step_post ) ) && ( $course_step_post instanceof WP_Post ) 
 	if ( ( isset( $post_settings['assignment_upload_limit_extensions'] ) ) && ( !empty( $post_settings['assignment_upload_limit_extensions'] ) ) ) {
 		$limit_file_exts = learndash_validate_extensions( $post_settings['assignment_upload_limit_extensions'] );
 		if ( !empty( $limit_file_exts ) ) {
-			$upload_message .= ' '. sprintf( esc_html_x('Allowed file types: %s', 'placeholder: comma list of file extentions', 'learndash' ), implode(', ', $limit_file_exts ) );
+			$upload_message .= ' '. sprintf( esc_html_x( 'Allowed file types: %s', 'placeholder: comma list of file extentions', 'learndash' ), implode( ', ', $limit_file_exts ) );
 		}
 	}
 

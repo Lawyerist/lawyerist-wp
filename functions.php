@@ -51,6 +51,7 @@ COMMENTS & REVIEWS
 GRAVITY FORMS
 - Enable CC Field on Form Notifications
 - Populate Form Fields
+- Populate Vendor Recommender Forms
 - Auto-Login New Users
 
 WOOCOMMERCE
@@ -81,7 +82,7 @@ function stylesheets_scripts() {
 	$template_dir_uri = get_template_directory_uri();
 
 	// Normalize the default styles. From https://github.com/necolas/normalize.css/
-	wp_register_style( 'normalize-css', $template_dir_uri . '/css/normalize.min.css' );
+	wp_register_style( 'normalize-css', $template_dir_uri . '/css/normalize.css' );
 	wp_enqueue_style( 'normalize-css' );
 
 	// Load the main stylesheet.
@@ -1441,7 +1442,7 @@ function lawyerist_comment_author_name( $author = '' ) {
 
 	} else {
 
-		$author = __('Anonymous');
+		$author = __( 'Anonymous');
 
 	}
 
@@ -1545,7 +1546,7 @@ function lwyrst_get_our_rating( $product_id = null ) {
 
 	if ( ! $product_id ) {
 		global $post;
-		$product_id = $post->ID;
+		$product_id = get_the_ID();
 	}
 
 	$our_rating_raw	= get_post_meta( $product_id, 'wp_review_total', true );
@@ -1561,7 +1562,7 @@ function lwyrst_get_community_rating( $product_id = null ) {
 
 	if ( ! $product_id ) {
 		global $post;
-		$product_id = $post->ID;
+		$product_id = get_the_ID();
 	}
 
 	$community_rating = round( get_post_meta( $product_id, 'wp_review_comments_rating_value', true ), 1 );
@@ -1575,7 +1576,7 @@ function lwyrst_get_community_review_count( $product_id = null ) {
 
 	if ( ! $product_id ) {
 		global $post;
-		$product_id = $post->ID;
+		$product_id = get_the_ID();
 	}
 
 	$community_review_count	= get_post_meta( $product_id, 'wp_review_comments_rating_count', true );
@@ -1679,7 +1680,7 @@ function lwyrst_product_rating( $rating_type = null ) {
 
 		?>
 
-		<span><?php echo $rating; ?>/5 (based on <?php echo $rating_count; ?> <?php echo _n( 'rating', 'ratings', $rating_count ); ?></span>
+		<span><?php echo $rating; ?>/5 (based on <?php echo $rating_count; ?> <?php echo _n( 'rating', 'ratings', $rating_count ); ?>)</span>
 
 		<?php
 
@@ -1808,6 +1809,65 @@ function populate_fields( $value, $field, $name ) {
 }
 
 add_filter( 'gform_field_value', 'populate_fields', 10, 3 );
+
+
+/*------------------------------
+Populate Vendor Recommender Forms
+------------------------------*/
+function mktg_seo_populate_form_fields( $form ) {
+
+  foreach ( $form[ 'fields' ] as &$field ) {
+
+    switch ( intval( $field[ 'id' ] ) ) {
+
+			// Services Offered
+      case 10:
+      case 20:
+        $acf_field_key = 'field_5e1799f17d8ec';
+        break;
+
+			case 30:
+				$acf_field_key = 'field_5e8247b1b26a5';
+				break;
+
+			case 40:
+				$acf_field_key = 'field_5e8247d7b26a6';
+				break;
+
+			default;
+				$acf_field_key = null;
+
+    }
+
+    $acf_field = get_field_object( $acf_field_key );
+
+    if ( $acf_field ) {
+
+			$choices = array();
+
+      // Loops over each choice and add value/option to $choices array.
+      foreach( $acf_field[ 'choices' ] as $k => $v ) {
+        $choices[] = array( 'text' => $v, 'value' => $k );
+      }
+
+			if ( intval( $field[ 'id' ] == ( 1 || 3 ) ) ) {
+				$field->placeholder = 'Select your budget …';
+			}
+
+			$field->choices = $choices;
+
+    }
+
+  }
+
+  return $form;
+
+}
+
+add_filter( 'gform_pre_render_65', 'mktg_seo_populate_form_fields' );
+add_filter( 'gform_pre_validation_65', 'mktg_seo_populate_form_fields' );
+add_filter( 'gform_pre_submission_filter_65', 'mktg_seo_populate_form_fields' );
+add_filter( 'gform_admin_pre_render_65', 'mktg_seo_populate_form_fields' );
 
 
 /*------------------------------

@@ -6,6 +6,7 @@
 - Pullouts
 - Testimonials
 - Feature Charts
+- Vendor Recommender Results
 - List Child Pages
 - List Featured Products
 - List All Products
@@ -29,7 +30,7 @@ function lawyerist_pullquote_shortcode( $atts, $content = null ) {
   return '<aside><blockquote class="pullquote" markdown="1">' . $content . '</blockquote></aside>';
 }
 
-add_shortcode( 'pullquote', 'lawyerist_pullquote_shortcode' );
+add_shortcode( 'pullquote', 'lawyerist_pullquote_shortcode');
 
 
 /*--------------------------------------------------
@@ -40,7 +41,7 @@ function lawyerist_pullout_shortcode( $atts, $content = null ) {
   return '<aside class="pullout"><p class="pullout" markdown="1"><span class="pullout_label">Related </span>' . $content . '</p></aside>';
 }
 
-add_shortcode( 'pullout', 'lawyerist_pullout_shortcode' );
+add_shortcode( 'pullout', 'lawyerist_pullout_shortcode');
 
 
 /*--------------------------------------------------
@@ -59,7 +60,7 @@ function lawyerist_testimonial_shortcode( $atts, $quotation = null ) {
 
 }
 
-add_shortcode( 'testimonial', 'lawyerist_testimonial_shortcode' );
+add_shortcode( 'testimonial', 'lawyerist_testimonial_shortcode');
 
 
 /*--------------------------------------------------
@@ -92,16 +93,16 @@ function get_feature_chart_ids() {
 
 function fc_process_feature_value( $feature ) {
 
-    switch ( $feature[ 'type' ] ) {
+    switch ( $feature['type'] ) {
 
       case 'url' :
 
-        if ( $feature[ 'value' ] ) {
+        if ( $feature['value'] ) {
 
-          $url_parsed = parse_url( $feature[ 'value' ] );
-          $url_host  	= $url_parsed[ 'host' ];
+          $url_parsed = parse_url( $feature['value'] );
+          $url_host  	= $url_parsed['host'];
 
-          echo '<a href="' . $feature[ 'value' ] . '?utm_source=lawyerist&utm_medium=free-resources-page-link">' . $url_host . '</a>';
+          echo '<a href="' . $feature['value'] . '?utm_source=lawyerist&utm_medium=free-resources-page-link">' . $url_host . '</a>';
 
         } else {
 
@@ -113,15 +114,15 @@ function fc_process_feature_value( $feature ) {
 
       case 'checkbox' :
 
-        if ( $feature[ 'value' ] ) {
+        if ( $feature['value'] ) {
 
-          usort( $feature[ 'value' ], function( $a, $b ) {
+          usort( $feature['value'], function( $a, $b ) {
             return strtoupper( $a ) <=> strtoupper( $b );
           });
 
           echo '<ul>';
 
-            foreach ( $feature[ 'value' ] as $item ) {
+            foreach ( $feature['value'] as $item ) {
               echo '<li>' . $item . '</li>';
             }
 
@@ -137,7 +138,7 @@ function fc_process_feature_value( $feature ) {
 
       case 'true_false' :
 
-        if ( $feature[ 'value' ] == true ) {
+        if ( $feature['value'] == true ) {
 
           echo '<div class="true">&check;</div>';
 
@@ -152,9 +153,9 @@ function fc_process_feature_value( $feature ) {
       case 'string' :
       default :
 
-        if ( $feature[ 'value' ] ) {
+        if ( $feature['value'] ) {
 
-          echo $feature[ 'value' ];
+          echo $feature['value'];
 
         } else {
 
@@ -193,28 +194,28 @@ function feature_chart( $post ) {
               <?php
 
               $feature =  array(
-                'type'    => $field[ 'type' ],
-                'name'    => $field[ 'name' ],
-                'label'   => $field[ 'label' ],
-                'value'   => get_field( $field[ 'name' ] ),
+                'type'    => $field['type'],
+                'name'    => $field['name'],
+                'label'   => $field['label'],
+                'value'   => get_field( $field['name'] ),
               );
 
-              if ( !empty( $field[ 'message' ] ) ) {
-                $feature[ 'message' ] = $field[ 'message' ];
+              if ( !empty( $field['message'] ) ) {
+                $feature['message'] = $field['message'];
               }
 
               ?>
 
-              <tr class="<?php echo $feature[ 'type' ]; ?>">
+              <tr class="<?php echo $feature['type']; ?>">
 
                 <?php
 
                 $colspan = '';
 
                 if (
-                  $feature[ 'type' ] == 'group' ||
-                  $feature[ 'type' ] == 'message' ||
-                  ( $feature[ 'type' ] == 'checkbox' && count( $feature[ 'value' ] ) > 5 )
+                  $feature['type'] == 'group' ||
+                  $feature['type'] == 'message' ||
+                  ( $feature['type'] == 'checkbox' && count( $feature['value'] ) > 5 )
                 ) {
                   $colspan = ' colspan="2"';
                 }
@@ -223,23 +224,23 @@ function feature_chart( $post ) {
 
                 <th scope="row"<?php echo $colspan; ?>>
 
-                  <div class="label"><?php echo  $feature[ 'label' ]; ?></div>
+                  <div class="label"><?php echo  $feature['label']; ?></div>
 
-                  <?php if ( !empty( $feature[ 'message' ] ) )  { ?>
-                    <div class="message"><?php echo $feature[ 'message' ]; ?></div>
+                  <?php if ( !empty( $feature['message'] ) )  { ?>
+                    <div class="message"><?php echo $feature['message']; ?></div>
                   <?php } ?>
 
                 </th>
 
-                <?php if ( $feature[ 'type' ] == 'group' ) { ?>
+                <?php if ( $feature['type'] == 'group') { ?>
 
                   </tr>
 
-                  <?php if ( have_rows( $feature[ 'name' ] ) ): ?>
+                  <?php if ( have_rows( $feature['name'] ) ): ?>
 
                     <tr class="sub_feature">
 
-                      <?php while ( have_rows( $feature[ 'name' ] ) ) : the_row(); ?>
+                      <?php while ( have_rows( $feature['name'] ) ) : the_row(); ?>
 
                         <?php
 
@@ -250,18 +251,18 @@ function feature_chart( $post ) {
                           $sub_field  = get_sub_field_object( $row_key );
 
                           $sub_feature = array(
-                            'type'    => $sub_field[ 'type' ],
-                            'label'   => $sub_field[ 'label' ],
+                            'type'    => $sub_field['type'],
+                            'label'   => $sub_field['label'],
                             'value'   => get_sub_field( $row_key ),
                           );
 
-                          if ( !empty( $sub_field[ 'message' ] ) ) {
-                            $sub_feature[ 'message' ] = $sub_field[ 'message' ];
+                          if ( !empty( $sub_field['message'] ) ) {
+                            $sub_feature['message'] = $sub_field['message'];
                           }
 
                           $colspan = '';
 
-                          if ( $sub_feature[ 'type' ] == 'group' || $sub_feature[ 'type' ] == 'message' ) {
+                          if ( $sub_feature['type'] == 'group' || $sub_feature['type'] == 'message') {
                             $colspan = ' colspan="2"';
                           }
 
@@ -271,15 +272,15 @@ function feature_chart( $post ) {
 
                             <th scope="row" class="sub_feature"<?php echo $colspan; ?>>
 
-                              <div class="label"><?php echo $sub_feature[ 'label' ]; ?></div>
+                              <div class="label"><?php echo $sub_feature['label']; ?></div>
 
-                              <?php if ( !empty( $sub_feature[ 'message' ] ) )  { ?>
-                                <div class="message"><?php echo $sub_feature[ 'message' ]; ?></div>
+                              <?php if ( !empty( $sub_feature['message'] ) )  { ?>
+                                <div class="message"><?php echo $sub_feature['message']; ?></div>
                               <?php } ?>
 
                             </th>
 
-                            <?php if ( $sub_feature[ 'type' ] != 'message' ) { ?>
+                            <?php if ( $sub_feature['type'] != 'message') { ?>
 
                               <td class="value">
                                 <?php fc_process_feature_value( $sub_feature ); ?>
@@ -297,17 +298,17 @@ function feature_chart( $post ) {
 
                   <?php endif; ?>
 
-                <?php } elseif ( $feature[ 'type' ] == 'checkbox' && count( $feature[ 'value' ] ) > 5 ) { ?>
+                <?php } elseif ( $feature['type'] == 'checkbox' && count( $feature['value'] ) > 5 ) { ?>
 
                   </tr>
 
-                  <tr class="<?php echo $feature[ 'type' ]; ?>">
+                  <tr class="<?php echo $feature['type']; ?>">
 
                     <td scope="row" class="value columns"<?php echo $colspan; ?>>
                       <?php fc_process_feature_value( $feature ); ?>
                     </td>
 
-                <?php } elseif ( $feature[ 'type' ] == 'message' ) { ?>
+                <?php } elseif ( $feature['type'] == 'message') { ?>
 
                   <?php continue; ?>
 
@@ -335,17 +336,242 @@ function feature_chart( $post ) {
 
 }
 
-add_shortcode( 'feature-chart', 'feature_chart' );
+add_shortcode( 'feature-chart', 'feature_chart');
+
+
+/*------------------------------
+Vendor Recommender Results
+------------------------------*/
+
+function mktg_seo_recommender_results( $atts ) {
+
+  $atts = shortcode_atts( array(
+    'form_id'   => null,
+    'entry_id'  => null,
+  ), $atts );
+
+  if ( !$atts['entry_id'] || !$atts['form_id'] ) {
+    return '<p>Either the entry ID or the form ID is missing.</p>';
+  }
+
+  $entry = GFAPI::get_entry( $atts['entry_id'] );
+  $services_field_id  = 10;
+  $services_field_obj = RGFormsModel::get_field( $atts['form_id'], $services_field_id );
+
+  $submission['services']         = explode( ', ', $services_field_obj->get_value_export( $entry ) );
+  $submission['up_front_budget']  = $entry[ 30 ];
+  $submission['monthly_budget']   = $entry[ 40 ];
+
+  $total_choices  = count( $submission['services'] ) + 2;
+
+  $meta_query_args = array(
+    'relation'  => 'OR',
+    array(
+      'key'     => 'fc_seo_target_up_front_budget',
+      'value'   => $submission['up_front_budget'],
+    ),
+    array(
+      'key'     => 'fc_seo_target_ongoing_budget',
+      'value'   => $submission['monthly_budget'],
+    ),
+  );
+
+  foreach ( $submission['services'] as $service ) {
+
+    $meta_query_args[] = array(
+      'key'           => 'fc_seo_services_offered',
+      'value'         => $submission['up_front_budget'],
+      'meta_compare'  => 'IN',
+    );
+
+  }
+
+  $args = array(
+    'fields'          => 'ids',
+    'meta_query'      => $meta_query_args,
+    'posts_per_page'  => -1,
+    'post_status'     => 'publish',
+    'post_type'       => 'page',
+	);
+
+  $products = new WP_Query( $args );
+
+  if ( $products->have_posts() ):
+
+    $results = array();
+
+    while ( $products->have_posts() ): $products->the_post();
+
+      $product_id = get_the_ID();
+      $services   = get_field( 'fc_seo_services_offered', $product_id );
+      $matches    = 0;
+
+      foreach ( $submission['services'] as $service ) {
+
+        if ( in_array( $service, $services ) ) {
+          $matches++;
+        }
+
+      }
+
+      if ( $submission['up_front_budget'] == get_field( 'fc_seo_target_up_front_budget', $product_id ) ) {
+        $matches++;
+      }
+
+      if ( $submission['monthly_budget'] == get_field( 'fc_seo_target_ongoing_budget', $product_id ) ) {
+        $matches++;
+      }
+
+      $match_score = intval( round( $matches / $total_choices * 100 ) );
+
+      if ( $match_score >= 50 ) {
+
+        if ( has_term( 'affinity-partner', 'page_type', $product_id ) && get_field( 'affinity_active') == true ) {
+          $affinity_partner = true;
+        } else {
+          $affinity_partner = false;
+        }
+
+        // Check for a rating.
+        if ( comments_open() && function_exists( 'wp_review_show_total') ) {
+          $rating = lwyrst_product_rating();
+        } else {
+          $rating = false;
+        }
+
+        $results[] = array(
+          'id'                => $product_id,
+          'title'             => the_title( '', '', FALSE ),
+          'url'               => get_permalink(),
+          'affinity_partner'  => $affinity_partner,
+          'services'          => $services,
+          'up_front_budget'   => $submission['up_front_budget'] == get_field( 'fc_seo_target_up_front_budget', $product_id ) ? true : false,
+          'monthly_budget'    => $submission['monthly_budget'] == get_field( 'fc_seo_target_ongoing_budget', $product_id ) ? true : false,
+          'rating'            => $rating,
+          'match_score'       => $match_score,
+        );
+
+      }
+
+    endwhile;
+
+    usort( $results, function( $a, $b ) {
+      return $b['match_score'] <=> $a['match_score'];
+    });
+
+    ?>
+
+    <p>We found <?php echo count( $results ) . _n( ' product', ' products', $results ); ?> that match at least half of your choices:</p>
+
+      <?php foreach ( $results as $result ) { ?>
+
+        <div class="recommender-result">
+
+          <div class="title_container">
+            <a class="title" href="<?php echo $result['url']; ?>"><?php echo $result['title']; ?></a>
+            <?php if ( $result['rating'] ) { ?><div class="user-rating"><?php echo $result['rating']; ?></div><?php } ?>
+            <p class="match-percentage card-label"><?php echo $result['match_score']; ?>% match</p>
+          </div>
+
+          <div class="result-row">
+
+            <div class="col">
+
+              <?php if ( has_post_thumbnail( $result['id'] ) ) { ?>
+
+                <a class="image" href="<?php echo $result['url']; ?>">
+
+                  <?php if ( $result['affinity_partner'] ) { ?>
+                    <img class="affinity-partner-badge" alt="Lawyerist affinity partner badge." src="<?php echo get_template_directory_uri(); ?>/images/affinity-partner-mini-badge.png" height="64" width="75" />
+                  <?php } ?>
+
+                  <?php echo get_the_post_thumbnail($result['id'], 'thumbnail'); ?>
+
+                  <a class="button" href="<?php echo $result['url']; ?>">Product Page</a>
+
+                </a>
+
+              <?php } ?>
+
+            </div>
+
+            <table>
+              <tbody>
+                <tr>
+                  <th colspan="3">Services</th>
+                </tr>
+
+                  <?php foreach ( $submission['services'] as $service ) { ?>
+
+                    <tr>
+                      <th class="sub-feature" colspan="2">
+                        <?php echo $service; ?>
+                      </th>
+                      <td>
+                        <?php if ( in_array( $service, $result['services'] ) ) { ?>
+                          <div class="true">&check;</div>
+                        <?php } else { ?>
+                          <div class="false">&cross;</div>
+                        <?php } ?>
+                      </td>
+                    </tr>
+
+                  <?php } ?>
+
+                <tr>
+                  <th colspan="3">Budget</th>
+                </tr>
+                <tr>
+                  <th class="sub-feature">Up-Front</th>
+                  <td><?php echo $submission['up_front_budget']; ?></td>
+                  <td>
+                    <?php if ( $result['up_front_budget'] ) { ?>
+                      <div class="true">&check;</div>
+                    <?php } else { ?>
+                      <div class="false">&cross;</div>
+                    <?php } ?>
+                  </td>
+                </tr>
+                <tr>
+                  <th class="sub-feature">Monthly</th>
+                  <td><?php echo $submission['monthly_budget']; ?></td>
+                  <td>
+                    <?php if ( $result['monthly_budget'] ) { ?>
+                      <div class="true">&check;</div>
+                    <?php } else { ?>
+                      <div class="false">&cross;</div>
+                    <?php } ?>
+                  </td>
+                </tr>
+
+              </tbody>
+            </table>
+
+          </div>
+
+        </div>
+
+      <?php } ?>
+
+  <?php else: ?>
+
+    <p>There are no products that meet your requirements. Try using the product filters to narrow down the options.</p>
+
+  <?php endif;
+
+}
+
+add_shortcode( 'mktg-seo-recommender-results', 'mktg_seo_recommender_results');
 
 
 /*------------------------------
 List Child Pages
 ------------------------------*/
 
-// Explodes a comma-separated list (',' and ', ').
+// Explodes a comma-separated list ( ',' and ', ').
 // Nabbed from the excellent Display Posts Shortcode plugin.
 // https://wordpress.org/plugins/display-posts-shortcode/
-function explode_csv( $string = '' ) {
+function explode_csv( $string = '') {
   $string = str_replace( ', ', ',', $string );
   return explode( ',', $string );
 }
@@ -438,7 +664,7 @@ function lawyerist_child_pages_list( $atts ) {
 
 }
 
-add_shortcode( 'list-child-pages', 'lawyerist_child_pages_list' );
+add_shortcode( 'list-child-pages', 'lawyerist_child_pages_list');
 
 
 /*------------------------------
@@ -469,11 +695,11 @@ function lawyerist_list_child_pages_fallback( $content ) {
 
 	$children = get_posts( $get_children_args );
 
-if ( !is_home() && is_page() && ( count( $children ) > 0 ) && !is_product_portal() && !has_shortcode( $content, 'list-child-pages' ) ) {
+if ( !is_home() && is_page() && ( count( $children ) > 0 ) && !is_product_portal() && !has_shortcode( $content, 'list-child-pages') ) {
 
 		ob_start();
 
-			echo do_shortcode( '[list-child-pages]' );
+			echo do_shortcode( '[list-child-pages]');
 
 		$child_pages = ob_get_clean();
 
@@ -489,7 +715,7 @@ if ( !is_home() && is_page() && ( count( $children ) > 0 ) && !is_product_portal
 
 }
 
-add_action( 'the_content', 'lawyerist_list_child_pages_fallback' );
+add_action( 'the_content', 'lawyerist_list_child_pages_fallback');
 
 
 /*------------------------------
@@ -507,7 +733,7 @@ function lawyerist_featured_products_list( $atts ) {
   ), $atts );
 
   // Quit if this isn't a product portal.
-  if ( !is_product_portal( $atts[ 'portal' ] ) ) {
+  if ( !is_product_portal( $atts['portal'] ) ) {
     return;
   }
 
@@ -533,7 +759,7 @@ function lawyerist_featured_products_list( $atts ) {
       array(
         'taxonomy' => 'page_type',
         'field'    => 'slug',
-        'terms'    => array( 'platinum-sponsor', 'gold-sponsor' ),
+        'terms'    => array( 'platinum-sponsor', 'gold-sponsor'),
       ),
     ),
   );
@@ -572,7 +798,7 @@ function lawyerist_featured_products_list( $atts ) {
           }
 
           // Check for a rating.
-          if ( comments_open() && function_exists( 'wp_review_show_total' ) ) {
+          if ( comments_open() && function_exists( 'wp_review_show_total') ) {
             $composite_rating = lwyrst_get_composite_rating();
           }
 
@@ -584,7 +810,7 @@ function lawyerist_featured_products_list( $atts ) {
 
               <a class="image" href="<?php echo $product_page_url; ?>">
 
-                <?php if ( has_term( 'affinity-partner', 'page_type', $post->ID ) && get_field( 'affinity_active' ) == true ) { ?>
+                <?php if ( has_term( 'affinity-partner', 'page_type', $post->ID ) && get_field( 'affinity_active') == true ) { ?>
 
                   <?php $theme_dir = get_template_directory_uri(); ?>
 
@@ -592,7 +818,7 @@ function lawyerist_featured_products_list( $atts ) {
 
                 <?php } ?>
 
-                <?php the_post_thumbnail( 'thumbnail' ); ?>
+                <?php the_post_thumbnail( 'thumbnail'); ?>
 
               </a>
 
@@ -620,7 +846,7 @@ function lawyerist_featured_products_list( $atts ) {
 
             </div>
 
-            <?php if ( ( $country == ( 'US' || 'CA' ) ) && has_trial_button( $product_page_id ) ) { ?>
+            <?php if ( ( $country == ( 'US' || 'CA') ) && has_trial_button( $product_page_id ) ) { ?>
 
               <div class="list-products-trial-button">
                 <?php echo trial_button( $product_page_id ); ?>
@@ -640,7 +866,7 @@ function lawyerist_featured_products_list( $atts ) {
 
       </ul>
 
-      <?php if ( has_shortcode( $post->post_content, 'list-products' ) ) { ?>
+      <?php if ( has_shortcode( $post->post_content, 'list-products') ) { ?>
 
         <p><a href="#all-products" class="button greybutton">See All</a></p>
 
@@ -652,7 +878,7 @@ function lawyerist_featured_products_list( $atts ) {
 
 }
 
-add_shortcode( 'list-featured-products', 'lawyerist_featured_products_list' );
+add_shortcode( 'list-featured-products', 'lawyerist_featured_products_list');
 
 
 /*------------------------------
@@ -672,7 +898,7 @@ function lawyerist_all_products_list( $atts ) {
   ), $atts );
 
   // Quit if this isn't a product portal.
-  if ( !is_product_portal( $atts[ 'portal' ] ) ) {
+  if ( !is_product_portal( $atts['portal'] ) ) {
     return;
   }
 
@@ -692,7 +918,7 @@ function lawyerist_all_products_list( $atts ) {
     ),
 		'order'						=> 'ASC',
 		'orderby'					=> 'title',
-		'post_parent'			=> $atts[ 'portal' ],
+		'post_parent'			=> $atts['portal'],
     'posts_per_page'  => -1,
 		'post_type'				=> 'page',
     'tax_query' => array(
@@ -720,7 +946,7 @@ function lawyerist_all_products_list( $atts ) {
 
       <div id="all-products" class="target"></div>
 
-      <?php if ( $atts[ 'show_heading' ] == 'true' ) { ?>
+      <?php if ( $atts['show_heading'] == 'true') { ?>
         <h2><?php echo $portal_title; ?> (Alphabetical List)</h2>
       <?php } ?>
 
@@ -729,7 +955,7 @@ function lawyerist_all_products_list( $atts ) {
       if ( array_key_exists( $parent, $acf_group_ids ) ) {
 
         // Get filters.
-        $fields = acf_get_fields( $acf_group_ids[ $atts[ 'portal' ] ] );
+        $fields = acf_get_fields( $acf_group_ids[ $atts['portal'] ] );
 
         ?>
 
@@ -744,11 +970,11 @@ function lawyerist_all_products_list( $atts ) {
 
             foreach ( $fields as $field ) {
 
-              if ( $field['type'] == 'true_false' ) {
+              if ( $field['type'] == 'true_false') {
 
                 ?>
 
-                <a class="filter" data-acf_label="<?php echo $field[ 'name' ]; ?>"><?php echo $field['label']; ?></a>
+                <a class="filter" data-acf_label="<?php echo $field['name']; ?>"><?php echo $field['label']; ?></a>
 
                 <?php
 
@@ -790,20 +1016,20 @@ function lawyerist_all_products_list( $atts ) {
           }
 
           // Check for a rating.
-          if ( comments_open() && function_exists( 'wp_review_show_total' ) ) {
+          if ( comments_open() && function_exists( 'wp_review_show_total') ) {
           	$composite_rating = lwyrst_get_composite_rating();
           }
 
-          $classes = array( 'card product-card' );
+          $classes = array( 'card product-card');
 
           foreach ( $fields as $field ) {
 
-            if ( $field['type'] == 'true_false' ) {
+            if ( $field['type'] == 'true_false') {
 
-              $field_val = get_field( $field[ 'name' ], $post->ID );
+              $field_val = get_field( $field['name'], $post->ID );
 
               if ( $field_val == true ) {
-                $classes[] = $field[ 'name' ];
+                $classes[] = $field['name'];
               }
 
             }
@@ -818,7 +1044,7 @@ function lawyerist_all_products_list( $atts ) {
 
   						<a class="image" href="<?php echo $product_page_url; ?>">
 
-                <?php if ( has_term( 'affinity-partner', 'page_type', $post->ID ) && get_field( 'affinity_active' ) == true ) { ?>
+                <?php if ( has_term( 'affinity-partner', 'page_type', $post->ID ) && get_field( 'affinity_active') == true ) { ?>
 
                   <?php $theme_dir = get_template_directory_uri(); ?>
 
@@ -826,7 +1052,7 @@ function lawyerist_all_products_list( $atts ) {
 
                 <?php } ?>
 
-    						<?php the_post_thumbnail( 'thumbnail' ); ?>
+    						<?php the_post_thumbnail( 'thumbnail'); ?>
 
   						</a>
 
@@ -859,9 +1085,9 @@ function lawyerist_all_products_list( $atts ) {
             <?php
 
             // Outputs trial button if there is one, except on the all-reviews page.
-            if ( !is_page( '301729' ) ) {
+            if ( !is_page( '301729') ) {
 
-              if ( ( $country == ( 'US' || 'CA' ) ) && has_trial_button( $product_page_id ) ) {
+              if ( ( $country == ( 'US' || 'CA') ) && has_trial_button( $product_page_id ) ) {
 
                 ?>
 
@@ -877,7 +1103,7 @@ function lawyerist_all_products_list( $atts ) {
 
             ?>
 
-  					<?php if ( $atts[ 'show_excerpt' ] == 'true' ) { ?>
+  					<?php if ( $atts['show_excerpt'] == 'true') { ?>
               <span class="excerpt"><?php echo $page_excerpt; ?> <a href="<?php echo $product_page_url; ?>">Learn more about <?php echo $product_page_title; ?>.</a></span>
             <?php } ?>
 
@@ -903,7 +1129,7 @@ function lawyerist_all_products_list( $atts ) {
 
 }
 
-add_shortcode( 'list-products', 'lawyerist_all_products_list' );
+add_shortcode( 'list-products', 'lawyerist_all_products_list');
 
 
 function product_features_list( $atts ) {
@@ -916,23 +1142,23 @@ function product_features_list( $atts ) {
   ), $atts );
 
   // Quit if this isn't a product portal.
-  if ( !is_product_portal( $atts[ 'portal' ] ) ) {
+  if ( !is_product_portal( $atts['portal'] ) ) {
     return;
   }
 
   ob_start();
 
     $acf_group_ids  = get_feature_chart_ids();
-    $fields         = acf_get_fields( $acf_group_ids[ $atts[ 'portal' ] ] );
+    $fields         = acf_get_fields( $acf_group_ids[ $atts['portal'] ] );
 
     if ( !empty( $fields ) ) {
 
-      echo '<h2>' . get_the_title( $atts[ 'portal' ] ) . ' Feature Descriptions</h2>';
+      echo '<h2>' . get_the_title( $atts['portal'] ) . ' Feature Descriptions</h2>';
 
       foreach ( $fields as $field ) {
 
-        if ( !empty( $field[ 'message' ] ) )  {
-          echo '<p><strong>' . $field[ 'label' ] . '.</strong> ' . $field[ 'message' ] . '</p>';
+        if ( !empty( $field['message'] ) )  {
+          echo '<p><strong>' . $field['label'] . '.</strong> ' . $field['message'] . '</p>';
         }
 
       }
@@ -947,7 +1173,7 @@ function product_features_list( $atts ) {
 
 }
 
-add_shortcode( 'list-product-features', 'product_features_list' );
+add_shortcode( 'list-product-features', 'product_features_list');
 
 
 /*------------------------------
@@ -1020,7 +1246,7 @@ function lwyrst_affinity_partners_list() {
               }
 
               // Check for a rating.
-              if ( comments_open() && function_exists( 'wp_review_show_total' ) ) {
+              if ( comments_open() && function_exists( 'wp_review_show_total') ) {
 
               	$composite_rating = lwyrst_get_composite_rating();
 
@@ -1028,13 +1254,13 @@ function lwyrst_affinity_partners_list() {
 
               ?>
 
-      				<li <?php post_class( 'card' ); ?>>
+      				<li <?php post_class( 'card'); ?>>
 
       					<?php if ( has_post_thumbnail() ) { ?>
 
       						<a class="image" href="<?php echo $product_page_url; ?>">
 
-                    <?php if ( has_term( 'affinity-partner', 'page_type', $product_page_id ) && get_field( 'affinity_active' ) == true ) { ?>
+                    <?php if ( has_term( 'affinity-partner', 'page_type', $product_page_id ) && get_field( 'affinity_active') == true ) { ?>
 
                       <?php $theme_dir = get_template_directory_uri(); ?>
 
@@ -1042,7 +1268,7 @@ function lwyrst_affinity_partners_list() {
 
                     <?php } ?>
 
-        						<?php the_post_thumbnail( 'thumbnail' ); ?>
+        						<?php the_post_thumbnail( 'thumbnail'); ?>
 
       						</a>
 
@@ -1090,7 +1316,7 @@ function lwyrst_affinity_partners_list() {
 
 }
 
-add_shortcode( 'list-affinity-partners', 'lwyrst_affinity_partners_list' );
+add_shortcode( 'list-affinity-partners', 'lwyrst_affinity_partners_list');
 
 
 /*------------------------------
@@ -1104,12 +1330,12 @@ function lawyerist_get_portal_card( $atts ) {
     'portal'  => '',
   ), $atts );
 
-  if ( empty( $atts[ 'portal' ] ) ) {
+  if ( empty( $atts['portal'] ) ) {
     return;
   }
 
-  $portal_url     = get_permalink( $atts[ 'portal' ] );
-  $portal_title   = get_the_title( $atts[ 'portal' ] );
+  $portal_url     = get_permalink( $atts['portal'] );
+  $portal_title   = get_the_title( $atts['portal'] );
   $product_logos  = array();
   $logo_total     = 12;
   $logo_count     = 0;
@@ -1129,7 +1355,7 @@ function lawyerist_get_portal_card( $atts ) {
       ),
     ),
 		'orderby'					=> 'rand',
-		'post_parent'			=> $atts[ 'portal' ],
+		'post_parent'			=> $atts['portal'],
     'posts_per_page'  => $logo_total,
 		'post_type'				=> 'page',
     'tax_query' => array(
@@ -1151,7 +1377,7 @@ function lawyerist_get_portal_card( $atts ) {
     while ( $platinum_query->have_posts() ) : $platinum_query->the_post();
 
       $post_ID  = get_the_ID();
-      $url      = get_the_post_thumbnail_url( $post_ID, 'thumbnail' );
+      $url      = get_the_post_thumbnail_url( $post_ID, 'thumbnail');
       $alt      = get_the_title();
 
       $product_logos[] = '<img src="' . $url . '" alt="' . $alt . '" />';
@@ -1177,7 +1403,7 @@ function lawyerist_get_portal_card( $atts ) {
         ),
       ),
   		'orderby'					=> 'rand',
-  		'post_parent'			=> $atts[ 'portal' ],
+  		'post_parent'			=> $atts['portal'],
       'posts_per_page'  => -1,
   		'post_type'				=> 'page',
       'tax_query' => array(
@@ -1199,7 +1425,7 @@ function lawyerist_get_portal_card( $atts ) {
       while ( $gold_query->have_posts() ) : $gold_query->the_post();
 
         $post_ID  = get_the_ID();
-        $url      = get_the_post_thumbnail_url( $post_ID, 'thumbnail' );
+        $url      = get_the_post_thumbnail_url( $post_ID, 'thumbnail');
         $alt      = get_the_title();
 
         $product_logos[] = '<img src="' . $url . '" alt="' . $alt . '" />';
@@ -1227,7 +1453,7 @@ function lawyerist_get_portal_card( $atts ) {
         ),
       ),
   		'orderby'					=> 'rand',
-  		'post_parent'			=> $atts[ 'portal' ],
+  		'post_parent'			=> $atts['portal'],
       'posts_per_page'  => -1,
   		'post_type'				=> 'page',
       'tax_query' => array(
@@ -1249,7 +1475,7 @@ function lawyerist_get_portal_card( $atts ) {
       while ( $silver_query->have_posts() ) : $silver_query->the_post();
 
         $post_ID  = get_the_ID();
-        $url      = get_the_post_thumbnail_url( $post_ID, 'thumbnail' );
+        $url      = get_the_post_thumbnail_url( $post_ID, 'thumbnail');
         $alt      = get_the_title();
 
         $product_logos[] = '<img src="' . $url . '" alt="' . $alt . '" />';
@@ -1277,7 +1503,7 @@ function lawyerist_get_portal_card( $atts ) {
         ),
       ),
   		'orderby'					=> 'rand',
-  		'post_parent'			=> $atts[ 'portal' ],
+  		'post_parent'			=> $atts['portal'],
       'posts_per_page'  => -1,
   		'post_type'				=> 'page',
       'tax_query' => array(
@@ -1303,7 +1529,7 @@ function lawyerist_get_portal_card( $atts ) {
       while ( $remainder_query->have_posts() ) : $remainder_query->the_post();
 
         $post_ID  = get_the_ID();
-        $url      = get_the_post_thumbnail_url( $post_ID, 'thumbnail' );
+        $url      = get_the_post_thumbnail_url( $post_ID, 'thumbnail');
         $alt      = get_the_title();
 
         $product_logos[] = '<img src="' . $url . '" alt="' . $alt . '" />';
@@ -1343,7 +1569,7 @@ function lawyerist_get_portal_card( $atts ) {
 
 }
 
-add_shortcode( 'get-portal-card', 'lawyerist_get_portal_card' );
+add_shortcode( 'get-portal-card', 'lawyerist_get_portal_card');
 
 
 /*------------------------------
@@ -1420,7 +1646,7 @@ function lawyerist_get_affinity_confirmation_message( $atts ) {
 
 }
 
-add_shortcode( 'affinity-confirmation', 'lawyerist_get_affinity_confirmation_message' );
+add_shortcode( 'affinity-confirmation', 'lawyerist_get_affinity_confirmation_message');
 
 
 /*------------------------------
@@ -1441,9 +1667,9 @@ function lawyerist_get_scorecard_grade( $atts ) {
     'q3'        => null,
   ), $atts );
 
-  $form_id      = $atts[ 'form_id' ];
-  $raw_score    = $atts[ 'raw_score' ];
-  $goals_score  = $atts[ 'q1' ] + $atts[ 'q2' ] + $atts[ 'q3' ];
+  $form_id      = $atts['form_id'];
+  $raw_score    = $atts['raw_score'];
+  $goals_score  = $atts['q1'] + $atts['q2'] + $atts['q3'];
 
   // Checks to see which form was submitted.
   switch ( $form_id ) {
@@ -1525,7 +1751,7 @@ function lawyerist_get_scorecard_grade( $atts ) {
 
 }
 
-add_shortcode( 'get_grade', 'lawyerist_get_scorecard_grade' );
+add_shortcode( 'get_grade', 'lawyerist_get_scorecard_grade');
 
 
 /*------------------------------
@@ -1537,10 +1763,10 @@ function list_contributors_shortcode() {
   global $wpdb;
 
   $args = array(
-    'has_published_posts' => array( 'post', 'page' ),
+    'has_published_posts' => array( 'post', 'page'),
     'exclude'             => array( 26, 32, 37 ), // Excludes Lawyerist, guest, and sponsor.
     'orderby'             => 'display_name',
-    'role__in'            => array( 'Contributor' ),
+    'role__in'            => array( 'Contributor'),
   );
 
   $contributors = new WP_User_Query( $args );
@@ -1578,7 +1804,7 @@ function list_contributors_shortcode() {
 
 }
 
-add_shortcode( 'list-contributors', 'list_contributors_shortcode' );
+add_shortcode( 'list-contributors', 'list_contributors_shortcode');
 
 
 /*------------------------------
@@ -1594,12 +1820,12 @@ function list_users_shortcode( $atts ) {
 
   $users = array();
 
-  if ( $atts[ 'membership' ] ) {
+  if ( $atts['membership'] ) {
 
     $args = array(
       'post_type'				=> 'wc_user_membership',
       'post_status'			=> 'wcm-active',
-      'post_parent'			=> $atts[ 'membership' ],
+      'post_parent'			=> $atts['membership'],
       'posts_per_page'	=> -1,
     );
 
@@ -1611,9 +1837,9 @@ function list_users_shortcode( $atts ) {
 
         array_push( $users, array(
           'user_id'     => get_the_ID(),
-          'email'				=> get_the_author_meta( 'user_email' ),
-          'first_name'	=> get_the_author_meta( 'user_firstname' ),
-          'last_name'		=> get_the_author_meta( 'user_lastname' ),
+          'email'				=> get_the_author_meta( 'user_email'),
+          'first_name'	=> get_the_author_meta( 'user_firstname'),
+          'last_name'		=> get_the_author_meta( 'user_lastname'),
           'firm_name'   => get_field( 'firm_name', 'user_' . get_the_ID() ),
           'city'        => get_user_meta( get_the_ID(), 'billing_city', true ),
           'state'       => get_user_meta( get_the_ID(), 'billing_state', true ),
@@ -1625,9 +1851,9 @@ function list_users_shortcode( $atts ) {
 
   }
 
-  if ( $atts[ 'product' ] ) {
+  if ( $atts['product'] ) {
 
-    $product_id = intval( $atts[ 'product' ] );
+    $product_id = intval( $atts['product'] );
 
     $args = array(
       'fields'  => 'ID',
@@ -1666,7 +1892,7 @@ function list_users_shortcode( $atts ) {
   if ( !empty( $users ) ) {
 
     usort( $users, function( $a, $b ) {
-      return $a[ 'last_name' ] <=> $b[ 'last_name' ];
+      return $a['last_name'] <=> $b['last_name'];
     });
 
     ob_start();
@@ -1679,11 +1905,11 @@ function list_users_shortcode( $atts ) {
 
           <li>
 
-            <?php echo get_avatar( $user[ 'email' ], 100 ); ?>
-            <span class="name"><?php echo $user[ 'first_name' ] . ' ' . $user[ 'last_name' ]; ?></span><br />
-            <?php if ( $user[ 'firm_name' ] ) { ?><span class="firm-name"><?php echo $user[ 'firm_name' ]; ?></span><br /><?php } ?>
-            <?php if ( $user[ 'city' ] && $user[ 'state' ] ) { ?><span class="address"><?php echo $user[ 'city' ]  . ', ' . $user[ 'state' ]; ?></span><br /><?php } ?>
-            <span class="email"><?php echo $user[ 'email' ]; ?></span>
+            <?php echo get_avatar( $user['email'], 100 ); ?>
+            <span class="name"><?php echo $user['first_name'] . ' ' . $user['last_name']; ?></span><br />
+            <?php if ( $user['firm_name'] ) { ?><span class="firm-name"><?php echo $user['firm_name']; ?></span><br /><?php } ?>
+            <?php if ( $user['city'] && $user['state'] ) { ?><span class="address"><?php echo $user['city']  . ', ' . $user['state']; ?></span><br /><?php } ?>
+            <span class="email"><?php echo $user['email']; ?></span>
 
           </li>
 
@@ -1703,7 +1929,7 @@ function list_users_shortcode( $atts ) {
 
 }
 
-add_shortcode( 'list-users', 'list_users_shortcode' );
+add_shortcode( 'list-users', 'list_users_shortcode');
 
 
 /*------------------------------
@@ -1714,10 +1940,10 @@ function praise_cards_shortcode() {
 
   ob_start();
 
-  if ( comments_open() ) { comments_template( '/praise-cards.php' ); }
+  if ( comments_open() ) { comments_template( '/praise-cards.php'); }
 
   return ob_get_clean();
 
 }
 
-add_shortcode( 'praise-cards', 'praise_cards_shortcode' );
+add_shortcode( 'praise-cards', 'praise_cards_shortcode');
