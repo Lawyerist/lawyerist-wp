@@ -15,7 +15,7 @@ custom CTA for the page.
 ## [5.5.0] - 2020-04-01
 
 ### [Changed]
-- Move ACF blocks to their own file.
+- Move ACF blocks to their own folder.
 - Normalize.css updated.
 - Various minor updates in the course of developing the vendor recommender.
 - Some probably-unnecessary updates related to spacing around parentheses.
