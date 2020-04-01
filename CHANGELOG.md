@@ -8,6 +8,8 @@ is based on [Keep a Changelog](https://keepachangelog.com).
 
 
 ## [Unreleased]
+- CTA block updated so the first option is a choice between the default CTA and a
+custom CTA for the page.
 
 
 ## [5.5.0] - 2020-04-01
