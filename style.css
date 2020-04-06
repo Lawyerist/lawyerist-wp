@@ -2441,14 +2441,14 @@ Content
 
   .affinity-discount-card {
     display: grid;
-    grid-column-gap: 1.5rem;
+    grid-gap: 1.5rem;
     grid-template-areas:
       'badge label'
       'badge description'
       'badge button'
       'form form'
     ;
-    grid-template-columns: minmax( 10rem, 15rem) 1fr;
+    grid-template-columns: 15rem 1fr;
     margin: 2rem 0 3rem 0;
     min-height: 12.8rem;
   }
@@ -2464,6 +2464,7 @@ Content
 
       .affinity-discount-card p.discount_descr {
         grid-area: description;
+        margin-bottom: 1.5rem;
       }
 
       .affinity-discount-card button {
@@ -2506,14 +2507,17 @@ Content
       .affinity-discount-card {
         grid-template-areas:
           'badge label'
-          'badge description'
+          'description description'
           'button button'
           'form form'
         ;
       }
 
+      .affinity-discount-card p.card-label {
+        align-self: center;
+      }
+
       .affinity-discount-card button {
-        margin-top: 3rem;
         width: 100%;
       }
 

@@ -31,7 +31,7 @@ CONTENT
 - List of Coauthors
 - Get Alternative Products
 - Get Related Posts
-- Get Related Resources
+		- Get Related Resources
 - List Child Pages Fallback
 - Remove Inline Width from Image Captions
 - Featured Images in RSS Feeds
@@ -1864,10 +1864,10 @@ function mktg_seo_populate_form_fields( $form ) {
 
 }
 
-add_filter( 'gform_pre_render_65', 'mktg_seo_populate_form_fields' );
-add_filter( 'gform_pre_validation_65', 'mktg_seo_populate_form_fields' );
-add_filter( 'gform_pre_submission_filter_65', 'mktg_seo_populate_form_fields' );
-add_filter( 'gform_admin_pre_render_65', 'mktg_seo_populate_form_fields' );
+// add_filter( 'gform_pre_render_65', 'mktg_seo_populate_form_fields' );
+// add_filter( 'gform_pre_validation_65', 'mktg_seo_populate_form_fields' );
+// add_filter( 'gform_pre_submission_filter_65', 'mktg_seo_populate_form_fields' );
+// add_filter( 'gform_admin_pre_render_65', 'mktg_seo_populate_form_fields' );
 
 
 /*------------------------------
