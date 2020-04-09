@@ -1228,7 +1228,7 @@ function lwyrst_add_heading_ids( $content ) {
 
 	if ( !is_main_query() ) { return; }
 
-	$pattern = '#(?P<full_tag><(?P<tag_name>h\d)(?P<tag_details>[^>]*)>(?P<tag_contents>[^<]*)</h\d>)#i';
+	$pattern = '#(?P<full_tag><(?P<tag_name>h\d)(?P<tag_details>[^>]*)>(?P<tag_contents>.*)</h\d>)#i';
 
   if ( preg_match_all( $pattern, $content, $matches, PREG_SET_ORDER ) ) {
 
