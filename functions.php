@@ -35,6 +35,7 @@ CONTENT
 - List Child Pages Fallback
 - Remove Inline Width from Image Captions
 - Featured Images in RSS Feeds
+- Add IDs to All Headings
 - Remove Lab Workshops from Sitemap
 - Remove Lab Workshops from RSS Feed
 - Remove Default Gallery Styles
@@ -1215,6 +1216,53 @@ function featuredtoRSS( $content ) {
 
 add_filter( 'the_excerpt_rss', 'featuredtoRSS' );
 add_filter( 'the_content_feed', 'featuredtoRSS' );
+
+
+/*------------------------------
+Add IDs to All Headings
+------------------------------*/
+
+function lwyrst_add_heading_ids( $content ) {
+
+	global $post;
+
+	if ( !is_main_query() ) { return; }
+
+	$pattern = '#(?P<full_tag><(?P<tag_name>h\d)(?P<tag_details>[^>]*)>(?P<tag_contents>[^<]*)</h\d>)#i';
+
+  if ( preg_match_all( $pattern, $content, $matches, PREG_SET_ORDER ) ) {
+
+    $find			= array();
+    $replace	= array();
+
+    foreach( $matches as $match ) {
+
+      if ( strlen( $match[ 'tag_details' ] ) && false !== stripos( $match[ 'tag_details' ], 'id=' ) ) {
+				continue;
+      }
+
+      $find[]    = $match[ 'full_tag' ];
+      $id        = sanitize_title( $match[ 'tag_contents' ] );
+      $id_attr   = sprintf( ' id="%s"', $id );
+      $replace[] = sprintf(
+				'<%1$s%2$s%3$s>%4$s</%1$s>',
+				$match[ 'tag_name' ],
+				$match[ 'tag_details' ],
+				$id_attr,
+				$match[ 'tag_contents' ]
+			);
+
+    }
+
+    $content = str_replace( $find, $replace, $content );
+
+  }
+
+	return $content;
+
+}
+
+add_filter( 'the_content', 'lwyrst_add_heading_ids' );
 
 
 /*------------------------------
