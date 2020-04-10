@@ -8,18 +8,6 @@ if ( function_exists( 'acf_register_block_type' ) ) {
 
 function register_acf_block_types() {
 
-		// Message
-		acf_register_block_type(
-			array(
-				'name'              => 'message',
-				'title'             => __( 'Message' ),
-				'render_template'   => 'template-parts/acf-blocks/message.php',
-				'category'          => 'common',
-				'icon'							=> 'format-quote',
-				'keywords'          => array( 'message' ),
-			)
-		);
-
     // Call to Action
     acf_register_block_type(
 			array(
@@ -43,6 +31,30 @@ function register_acf_block_types() {
 				'icon'							=> 'microphone',
         'keywords'          => array( 'podcast' ),
 	    )
+		);
+
+    // Featured Pages
+    acf_register_block_type(
+			array(
+        'name'              => 'featured-pages',
+        'title'             => __( 'Featured Pages' ),
+        'render_template'   => 'template-parts/acf-blocks/featured-pages.php',
+        'category'          => 'common',
+				'icon'							=> 'screenoptions',
+        'keywords'          => array( 'blog posts', 'recent' ),
+	    )
+		);
+
+    // Front-Page Message
+		acf_register_block_type(
+			array(
+				'name'              => 'message',
+				'title'             => __( 'Message' ),
+				'render_template'   => 'template-parts/acf-blocks/message.php',
+				'category'          => 'common',
+				'icon'							=> 'format-quote',
+				'keywords'          => array( 'message' ),
+			)
 		);
 
 		// Partner Updates
@@ -69,15 +81,15 @@ function register_acf_block_types() {
 	    )
 		);
 
-		// Featured Pages
+    // Recent Blog Posts
     acf_register_block_type(
 			array(
-        'name'              => 'featured-pages',
-        'title'             => __( 'Featured Pages' ),
-        'render_template'   => 'template-parts/acf-blocks/featured-pages.php',
+        'name'              => 'table-of-contents',
+        'title'             => __( 'Table of Contents' ),
+        'render_template'   => 'template-parts/acf-blocks/table-of-contents.php',
         'category'          => 'common',
-				'icon'							=> 'screenoptions',
-        'keywords'          => array( 'blog posts', 'recent' ),
+				'icon'							=> 'editor-ul',
+        'keywords'          => array( 'table of contents', 'toc', 'index' ),
 	    )
 		);
 

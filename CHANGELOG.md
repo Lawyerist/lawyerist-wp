@@ -13,7 +13,7 @@ custom CTA for the page.
 - Reformat code in parentheses and brackets for consistent spacing.
 - Improve affinity notice card on mobile.
 - Add IDs to all headings.
-
+- Table of contents block.
 
 ## [5.5.0] - 2020-04-01
 

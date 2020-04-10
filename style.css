@@ -744,6 +744,7 @@ label,
 .ld-topic-status,
 .logged-in-as, /* Logged-in message on comment form. */
 #menu-main-menu,
+nav,
 .onsale,
 #opc-product-selection,
 .page .excerpt,
@@ -2107,6 +2108,63 @@ Content
 	/*------------------------------
 	Posts
 	------------------------------*/
+
+  .toc-card {
+    margin-bottom: 3rem;
+    padding: 2rem;
+  }
+
+  nav.toc ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+    nav.toc ul li {
+      margin: 0 0 2rem 0;
+      padding: 0;
+    }
+
+    nav.toc ul li:last-child {
+      margin-bottom: 0;
+    }
+
+      nav.toc a {
+        display: grid;
+        grid-gap: 1.5rem;
+        grid-template-columns: 5rem 1fr;
+      }
+
+      nav.toc a:hover,
+      nav.toc a:focus {
+        text-decoration: none;
+      }
+
+        nav.toc a > * {
+          align-self: center;
+        }
+
+        nav.toc .toc-num {
+          background-color: #ddd;
+          border-radius: 50%;
+          color: #fff;
+          font-size: 3rem;
+          font-weight: bold;
+          height: 5rem;
+          line-height: 5rem;
+          text-align: center;
+          width: 5rem;
+        }
+
+        nav.toc a:hover .toc-num,
+        nav.toc a:focus .toc-num {
+          background-color: #bbb;
+        }
+
+        nav.toc a:hover .toc-heading,
+        nav.toc a:focus .toc-heading {
+          text-decoration: underline;
+        }
 
   .post_body {
     margin-bottom: 4rem;

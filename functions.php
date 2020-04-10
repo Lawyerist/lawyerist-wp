@@ -1228,7 +1228,7 @@ function lwyrst_add_heading_ids( $content ) {
 
 	if ( !is_main_query() ) { return; }
 
-	$pattern = '#(?P<full_tag><(?P<tag_name>h\d)(?P<tag_details>[^>]*)>(?P<tag_contents>.*)</h\d>)#i';
+	$pattern = '#(?P<full_tag><(?P<tag_name>h\d)(?P<tag_atts>[^>]*)>(?P<tag_contents>.*)<\/h\d>)#i';
 
   if ( preg_match_all( $pattern, $content, $matches, PREG_SET_ORDER ) ) {
 
@@ -1237,7 +1237,7 @@ function lwyrst_add_heading_ids( $content ) {
 
     foreach( $matches as $match ) {
 
-      if ( strlen( $match[ 'tag_details' ] ) && false !== stripos( $match[ 'tag_details' ], 'id=' ) ) {
+      if ( strlen( $match[ 'tag_atts' ] ) && false !== stripos( $match[ 'tag_atts' ], 'id=' ) ) {
 				continue;
       }
 
@@ -1247,7 +1247,7 @@ function lwyrst_add_heading_ids( $content ) {
       $replace[] = sprintf(
 				'<%1$s%2$s%3$s>%4$s</%1$s>',
 				$match[ 'tag_name' ],
-				$match[ 'tag_details' ],
+				$match[ 'tag_atts' ],
 				$id_attr,
 				$match[ 'tag_contents' ]
 			);
