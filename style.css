@@ -2583,6 +2583,49 @@ Content
 
   /* Vendor Recommender */
 
+  .vendor-recommender_wrapper .top_label .gfield_label {
+    background-color: #e5e5ea;
+    border-radius: 2.2rem;
+    color: #000;
+    font-weight: normal;
+    margin-right: 20%;
+    padding: .5em 2rem;
+  }
+
+  .vendor-recommender_wrapper .ginput_container {
+    background-color: #0a80fe;
+    border-radius: 2.2rem;
+    color: #fff;
+    font-weight: normal;
+    margin-left: 20%;
+    padding: .5em 2rem;
+  }
+
+  .vendor-recommender_wrapper .gfield_required {
+    display: none;
+  }
+
+  .vendor-recommender_wrapper .gform_page_footer {
+    padding-right: 16px;
+    text-align: right;
+  }
+
+  .vendor-recommender_wrapper .gform_page_footer input[ type="button" ] {
+    background-color: #0a80fe;
+    margin-right: 0;
+  }
+
+  .vendor-recommender_wrapper .gform_page_footer input[ type="button" ]:hover,
+  .vendor-recommender_wrapper .gform_page_footer input[ type="button" ]:focus {
+    background-color: #0a94fe;
+  }
+
+  .vendor-recommender_wrapper .gform_page_footer input[ type="button" ]:active {
+    background-color: #0a6cfe;
+  }
+
+
+
   .recommender-result .title_container {
     margin-bottom: 2rem;
   }
@@ -3846,7 +3889,9 @@ a.greybutton:active,
   .gform_wrapper.gf_browser_chrome .gfield_checkbox li input,
   .gform_wrapper.gf_browser_chrome .gfield_checkbox li input[type=checkbox],
   .gform_wrapper.gf_browser_chrome .gfield_radio li input[type=radio] {
+    margin-right: .4rem;
     margin-top: unset !important;
+    vertical-align: unset !important;
   }
 
   /* Small Firm Scorecard */
