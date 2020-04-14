@@ -2419,7 +2419,7 @@ Content
       border-left: 0;
     }
 
-    .memberships-pricing-chart .row-14 .column-1 {
+    .memberships-pricing-chart .row-16 .column-1 {
       background-color: unset;
     }
 
@@ -2436,7 +2436,7 @@ Content
       border-top: 0;
     }
 
-    .memberships-pricing-chart .row-15 .column-1 {
+    .memberships-pricing-chart .row-16 .column-1 {
       border-left: 0;
       border-bottom: 0;
     }
@@ -2451,10 +2451,6 @@ Content
       font-weight: bold;
       line-height: 1.2;
     	margin-bottom: .5em;
-    }
-
-    .memberships-pricing-chart .row-13 {
-      font-family: concourse, sans-serif;
     }
 
     /* Columns */
@@ -2478,7 +2474,7 @@ Content
       text-align: left;
     }
 
-    .memberships-pricing-chart .row-14 td .button {
+    .memberships-pricing-chart .row-16 td .button {
       margin-bottom: 0;
       width: 100%;
     }
