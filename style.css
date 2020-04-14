@@ -2398,11 +2398,6 @@ Content
       border-top: .1rem solid #ddd;
     }
 
-    .memberships-pricing-chart .column-4,
-    .tablepress.memberships-pricing-chart tbody tr:first-child td.column-4 {
-      border-left: .3rem double #ddd;
-    }
-
     .memberships-pricing-chart tbody tr td:last-child {
       border-right: .1rem solid #ddd;
     }
@@ -2429,12 +2424,14 @@ Content
     }
 
     .memberships-pricing-chart .row-1 .column-2,
-    .memberships-pricing-chart .row-1 .column-3 {
+    .memberships-pricing-chart .row-1 .column-3,
+    .memberships-pricing-chart .row-1 .column-4 {
       background-color: #efefef;
     }
 
     .memberships-pricing-chart .row-2 .column-2,
-    .memberships-pricing-chart .row-2 .column-3 {
+    .memberships-pricing-chart .row-2 .column-3,
+    .memberships-pricing-chart .row-2 .column-4 {
       background-color: #efefef;
       border-top: 0;
     }
@@ -2468,7 +2465,8 @@ Content
     }
 
     .memberships-pricing-chart .column-2,
-    .memberships-pricing-chart .column-3 {
+    .memberships-pricing-chart .column-3,
+    .memberships-pricing-chart .column-4 {
       text-align: center;
       width: 21.25%;
     }
