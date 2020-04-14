@@ -724,6 +724,7 @@ figcaption,
 .section-header,
 #gform_wrapper_60 table.gsurvey-likert td::after,
 #gform_wrapper_61 table.gsurvey-likert td::after,
+.gform_wrapper .gf_progressbar_percentage,
 h1,
 h2,
 .h2,
@@ -2583,44 +2584,85 @@ Content
 
   /* Vendor Recommender */
 
-  .vendor-recommender_wrapper .top_label .gfield_label {
+  .chat-form_wrapper .card {
+    background-color: #fff;
+    margin-bottom: 3rem;
+  }
+
+  .chat-form_wrapper .gf_progressbar_wrapper h3.gf_progressbar_title {
+    margin-left: 0 !important;
+  }
+
+  .chat-form_wrapper .gf_progressbar {
+    padding: 0;
+  }
+
+    .chat-form_wrapper .gf_progressbar_percentage {
+      background: unset;
+      background-color: #0a80fe;
+      border-radius: .5rem;
+      height: 1rem;
+    }
+
+      .chat-form_wrapper .gf_progressbar::after,
+      .chat-form_wrapper .gf_progressbar_percentage span {
+        display: none;
+      }
+
+  body .chat-form_wrapper ul li.gfield {
+    margin-top: 0 !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .chat-form_wrapper .gsection,
+  .chat-form_wrapper .top_label .gfield_label {
     background-color: #e5e5ea;
+    border: 0;
     border-radius: 2.2rem;
     color: #000;
     font-weight: normal;
-    margin-right: 20%;
-    padding: .5em 2rem;
+    margin: 0 20% 1rem 0 !important;
+    padding: 1rem 2rem !important;
   }
 
-  .vendor-recommender_wrapper .ginput_container {
-    background-color: #0a80fe;
+  .chat-form_wrapper li.gfield.field_description_below+li.gsection {
+    margin-top: 0 !important;
+  }
+
+  .chat-form_wrapper h2.gsection_title {
+    margin-bottom: .5em !important;
+  }
+
+  .chat-form_wrapper .ginput_container {
+    border: .1rem solid #e5e5ea;
     border-radius: 2.2rem;
-    color: #fff;
     font-weight: normal;
-    margin-left: 20%;
+    margin: 0 0 1rem 20% !important;
     padding: .5em 2rem;
   }
 
-  .vendor-recommender_wrapper .gfield_required {
+  .chat-form_wrapper .gfield_required {
     display: none;
   }
 
-  .vendor-recommender_wrapper .gform_page_footer {
+  .chat-form_wrapper .gform_footer {
+    border-top: 0;
+    margin-top: 0;
     padding-right: 16px;
     text-align: right;
   }
 
-  .vendor-recommender_wrapper .gform_page_footer input[ type="button" ] {
+  .chat-form_wrapper .gform_footer input[ type="submit" ] {
     background-color: #0a80fe;
-    margin-right: 0;
+    margin-right: 0 !important;
   }
 
-  .vendor-recommender_wrapper .gform_page_footer input[ type="button" ]:hover,
-  .vendor-recommender_wrapper .gform_page_footer input[ type="button" ]:focus {
+  .chat-form_wrapper .gform_footer input[ type="submit" ]:hover,
+  .chat-form_wrapper .gform_footer input[ type="submit" ]:focus {
     background-color: #0a94fe;
   }
 
-  .vendor-recommender_wrapper .gform_page_footer input[ type="button" ]:active {
+  .chat-form_wrapper .gform_footer input[ type="submit" ]:active {
     background-color: #0a6cfe;
   }
 

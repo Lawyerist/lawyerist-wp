@@ -3,9 +3,7 @@
 
   notice = document.querySelector( '#article-counter' );
 
-  if ( !notice ) {
-    return;
-  }
+  if ( !notice ) { return; }
 
   let date, thisMonth, thisArticle, articlesRead, articlesCount, articleCounter;
 
@@ -387,3 +385,14 @@
 
 })( jQuery );
 // End Dismissible Call to Action
+
+
+// Chat-Style Forms
+( function( $ ) {
+
+  form = document.querySelector( '.chat-form' );
+
+  if ( !form ) { return; }
+
+})( jQuery );
+// End Chat-Style Forms
