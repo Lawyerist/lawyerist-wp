@@ -5,6 +5,7 @@ is based on [Keep a Changelog](https://keepachangelog.com).
 
 ## [In Development]
 - Vendor recommender for product portals.
+- Update memberships chart.
 
 
 ## [Unreleased]

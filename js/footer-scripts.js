@@ -366,9 +366,7 @@
 
     notice = document.querySelector( '.dismissible-notice' );
 
-    if ( !notice ) {
-      return;
-    }
+    if ( !notice ) { return; }
 
     dismissButton   = document.querySelector( '#cta .dismiss-button' );
     noticeId        = notice.getAttribute( 'data-id' );
@@ -393,6 +391,10 @@
   form = document.querySelector( '.chat-form' );
 
   if ( !form ) { return; }
+
+  $( '.chat-form input[ type="checkbox" ]' ).on( 'click', function() {
+    console.log( 'Clicked!' );
+  });
 
 })( jQuery );
 // End Chat-Style Forms
