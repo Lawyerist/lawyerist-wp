@@ -6,6 +6,7 @@ is based on [Keep a Changelog](https://keepachangelog.com).
 ## [In Development]
 - Vendor recommender for product portals.
 - Update memberships chart.
+- Fix sponsored post bylines in related posts footer.
 
 
 ## [Unreleased]
