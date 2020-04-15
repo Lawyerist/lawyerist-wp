@@ -2579,7 +2579,6 @@ Content
   /* Vendor Recommender */
 
   .chat-form_wrapper .card {
-    background-color: #fff;
     margin-bottom: 3rem;
   }
 
@@ -2625,6 +2624,7 @@ Content
   }
 
   .chat-form_wrapper .ginput_container {
+    background-color: #fff;
     border: .1rem solid #e5e5ea;
     border-radius: 2.2rem;
     font-weight: normal;
@@ -2636,25 +2636,47 @@ Content
     display: none;
   }
 
+  .chat-form_wrapper .gform_page_footer,
   .chat-form_wrapper .gform_footer {
     border-top: 0;
-    margin-top: 0;
-    padding-right: 0;
+    margin: 0;
+    padding: 0;
     text-align: right;
   }
 
-  .chat-form_wrapper .gform_footer input[ type="submit" ] {
+  .chat-form_wrapper .gform_page_footer input {
+    cursor: pointer;
+  }
+
+  .chat-form_wrapper .gform_page_footer input[ type="button" ],
+  .chat-form_wrapper .gform_page_footer input[ type="submit" ] {
     background-color: #0a80fe;
     margin-right: 0 !important;
   }
 
-  .chat-form_wrapper .gform_footer input[ type="submit" ]:hover,
-  .chat-form_wrapper .gform_footer input[ type="submit" ]:focus {
+  .chat-form_wrapper .gform_page_footer input[ type="button" ]:hover,
+  .chat-form_wrapper .gform_page_footer input[ type="button" ]:focus,
+  .chat-form_wrapper .gform_page_footer input[ type="submit" ]:hover,
+  .chat-form_wrapper .gform_page_footer input[ type="submit" ]:focus {
     background-color: #0a94fe;
   }
 
-  .chat-form_wrapper .gform_footer input[ type="submit" ]:active {
+  .chat-form_wrapper .gform_page_footer input[ type="button" ]:active,
+  .chat-form_wrapper .gform_page_footer input[ type="submit" ]:active {
     background-color: #0a6cfe;
+  }
+
+  .chat-form_wrapper .gform_page_footer input.gform_previous_button {
+    background-color: #ccc;
+  }
+
+  .chat-form_wrapper .gform_page_footer input.gform_previous_button:hover,
+  .chat-form_wrapper .gform_page_footer input.gform_previous_button:focus {
+    background-color: #ddd;
+  }
+
+  .chat-form_wrapper .gform_page_footer input.gform_previous_button:active {
+    background-color: #bbb;
   }
 
 

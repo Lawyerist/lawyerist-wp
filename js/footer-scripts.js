@@ -383,18 +383,3 @@
 
 })( jQuery );
 // End Dismissible Call to Action
-
-
-// Chat-Style Forms
-( function( $ ) {
-
-  form = document.querySelector( '.chat-form' );
-
-  if ( !form ) { return; }
-
-  $( '.chat-form input[ type="checkbox" ]' ).on( 'click', function() {
-    console.log( 'Clicked!' );
-  });
-
-})( jQuery );
-// End Chat-Style Forms
