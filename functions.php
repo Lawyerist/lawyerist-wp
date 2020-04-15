@@ -1099,7 +1099,7 @@ function lawyerist_get_related_posts() {
 
 				while ( $lawyerist_related_posts_query->have_posts() ) : $lawyerist_related_posts_query->the_post();
 
-					lawyerist_get_post_card();
+					lawyerist_get_post_card( $post->ID );
 
 				endwhile; wp_reset_postdata();
 
