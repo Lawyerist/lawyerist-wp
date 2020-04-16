@@ -739,6 +739,7 @@ input[type="button"],
 input[type="submit"],
 label,
 .ld_course_grid,
+.ld-course-step-back,
 .ld-item-list,
 .ld-course-status,
 .ld-lesson-status,
@@ -3673,6 +3674,7 @@ input[type="button"],
 input[type="submit"],
 a.review-btn,
 #commentform.wp-review-comment-form input[type="submit"],
+.ld_course_grid .ld_course_grid_button a.btn,
 .woocommerce #respond input#submit,
 .woocommerce a.button,
 .woocommerce button.button,
@@ -3704,6 +3706,11 @@ a.review-btn,
   width: auto;
 }
 
+  .ld_course_grid .ld_course_grid_button a.btn {
+    display: block;
+    margin: 0;
+  }
+
   a.button.big-button {
     margin: 0 auto 3rem 0;
   }
@@ -3734,6 +3741,18 @@ a.review-btn,
     height: 6rem;
     line-height: 6rem;
     margin: 0 auto 3rem 0;
+  }
+
+  .learndash-wrapper a.ld-button,
+  .learndash-wrapper input.learndash_mark_complete_button {
+    background-color: #c00 !important;
+    font-family: concourse, sans-serif;height: 3.6rem;
+    font-weight: normal;
+    line-height: 3.6rem;
+    outline: none;
+    padding-bottom: 0;
+    padding-top: 0;
+    text-transform: uppercase;
   }
 
   .woocommerce button.button:disabled,
@@ -3801,6 +3820,7 @@ input[type="button"]:focus,
 input[type="submit"]:focus,
 a.review-btn:focus,
 #commentform.wp-review-comment-form input[type="submit"]:focus,
+.ld_course_grid .ld_course_grid_button a.btn:focus,
 .woocommerce #respond input#submit:focus,
 .woocommerce a.button:focus,
 .woocommerce button.button:focus,
@@ -3824,6 +3844,7 @@ input[type="button"]:hover,
 input[type="submit"]:hover,
 a.review-btn:hover,
 #commentform.wp-review-comment-form input[type="submit"]:hover,
+.ld_course_grid .ld_course_grid_button a.btn:hover,
 .woocommerce #respond input#submit:hover,
 .woocommerce a.button:hover,
 .woocommerce button.button:hover,
@@ -3848,6 +3869,7 @@ input[type="button"]:active,
 input[type="submit"]:active,
 a.review-btn:active,
 #commentform.wp-review-comment-form input[type="submit"]:active,
+.ld_course_grid .ld_course_grid_button a.btn:active,
 .woocommerce #respond input#submit:active,
 .woocommerce a.button:active,
 .woocommerce button.button:active,
