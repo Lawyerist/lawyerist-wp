@@ -3744,6 +3744,7 @@ a.review-btn,
   }
 
   .learndash-wrapper a.ld-button,
+  .learndash-wrapper .ld-expand-button,
   .learndash-wrapper input.learndash_mark_complete_button {
     background-color: #c00 !important;
     font-family: concourse, sans-serif;height: 3.6rem;
@@ -3753,6 +3754,18 @@ a.review-btn,
     padding-bottom: 0;
     padding-top: 0;
     text-transform: uppercase;
+  }
+
+  .learndash-wrapper .ld-item-details .ld-expand-button {
+    border-radius: 1.4rem;
+    color: #fff;
+    height: 2.8rem;
+    line-height: 2.8rem;
+    padding: 0 0 0 1em;
+  }
+
+  .learndash-wrapper .ld-item-details .ld-expand-button .ld-icon-arrow-down {
+    background: transparent;
   }
 
   .woocommerce button.button:disabled,
