@@ -9,6 +9,7 @@ is based on [Keep a Changelog](https://keepachangelog.com).
 - Fix sponsored post bylines in related posts footer.
 - Fix LearnDash course grid and course navigation buttons.
 - Add beta flag to financial scorecard.
+- Remove single-cat code and styles.
 
 
 ## [Unreleased]

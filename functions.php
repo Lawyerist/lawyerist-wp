@@ -6,7 +6,6 @@ SETUP
 - Stylesheets & Scripts
 - Theme Setup
 - Template Files
-- Add Categories to Body Classes
 
 STRUCTURE
 - Nav Menu
@@ -132,7 +131,6 @@ function remove_image_sizes() {
 	remove_image_size( 'wp_review_small' );
 	remove_image_size( 'wp_review_large' );
 
-
 }
 
 add_action( 'init', 'remove_image_sizes' );
@@ -151,7 +149,7 @@ add_filter( 'image_size_names_choose', 'remove_image_size_options' );
 
 
 /**
-* Adds an options page.
+* Adds an options page for ACF.
 */
 function front_page_options_acf_op_init() {
 
@@ -184,36 +182,11 @@ if ( !is_admin() ) {
 }
 
 
-/*------------------------------
-Add Categories to Body Classes
-------------------------------*/
-
-function single_cat_body_class( $classes ) {
-
-	if ( is_single() ) {
-
-		global $post;
-
-		$cats = get_the_category( $post->ID );
-
-		foreach ( $cats as $cat ) {
-      $classes[] = 'single-cat-' . $cat->category_nicename;
-    }
-
-	}
-
-  return $classes;
-
-}
-
-add_filter( 'body_class', 'single_cat_body_class' );
-
-
 /* STRUCTURE ******************/
 
-/*------------------------------
-Nav Menu
-------------------------------*/
+/**
+* Nav Menu
+*/
 
 function register_menus() {
 
@@ -229,49 +202,8 @@ add_action( 'init', 'register_menus' );
 
 
 /**
-* Get Login/Register
+* Adds a login/register item to the nav menu.
 */
-function get_lawyerist_login() {
-
-	ob_start();
-
-	?>
-
-	<div id="lawyerist-login" class="modal" style="display: none;">
-
-		<div class="card">
-
-			<button class="greybutton dismiss-button"></button>
-			<img class="l-dot" src="<?php echo get_template_directory_uri(); ?>/images/L-dot-login-large.png">
-
-			<li id="login">
-				<h2>Log in to Lawyerist.com</h2>
-				<p>Not an Insider yet? <a class="link-to-register">Register here.</a> (It's free!)</p>
-				<?php wp_login_form(); ?>
-				<p class="remove_bottom">Forgot your password? <a href="<?php echo esc_url( wp_lostpassword_url( get_permalink() ) ); ?>" alt="<?php esc_attr_e( 'Lost Password', 'textdomain' ); ?>" class="forgot-password-link">Reset it here.</a></p>
-			</li>
-
-			<li id="register" style="display: none;">
-				<h2>Join Lawyerist Insider</h2>
-				<p><a class="back-to-login">Back to login.</a></p>
-				<?php echo do_shortcode( '[gravityform id=59 title=false ajax=true]' ); ?>
-			</li>
-
-		</div>
-
-	</div>
-
-	<div id="lawyerist-login-screen" style="display: none;"></div>
-
-	<?php
-
-	$lawyerist_login = ob_get_clean();
-
-	return $lawyerist_login;
-
-}
-
-
 function lawyerist_loginout( $items, $args ) {
 
 	if ( !function_exists( 'wc_memberships' ) ) {
@@ -347,6 +279,59 @@ add_filter( 'wp_nav_menu_items', 'lawyerist_loginout', 10, 2 );
 Login Form
 ------------------------------*/
 
+/**
+* Get Login/Register
+*
+* Returns the modal login/register form. Called from header.php so it is always
+* available.
+*/
+
+function get_lawyerist_login() {
+
+	ob_start();
+
+	?>
+
+	<div id="lawyerist-login" class="modal" style="display: none;">
+
+		<div class="card">
+
+			<button class="greybutton dismiss-button"></button>
+			<img class="l-dot" src="<?php echo get_template_directory_uri(); ?>/images/L-dot-login-large.png">
+
+			<li id="login">
+				<h2>Log in to Lawyerist.com</h2>
+				<p>Not an Insider yet? <a class="link-to-register">Register here.</a> (It's free!)</p>
+				<?php wp_login_form(); ?>
+				<p class="remove_bottom">Forgot your password? <a href="<?php echo esc_url( wp_lostpassword_url( get_permalink() ) ); ?>" alt="<?php esc_attr_e( 'Lost Password', 'textdomain' ); ?>" class="forgot-password-link">Reset it here.</a></p>
+			</li>
+
+			<li id="register" style="display: none;">
+				<h2>Join Lawyerist Insider</h2>
+				<p><a class="back-to-login">Back to login.</a></p>
+				<?php echo do_shortcode( '[gravityform id=59 title=false ajax=true]' ); ?>
+			</li>
+
+		</div>
+
+	</div>
+
+	<div id="lawyerist-login-screen" style="display: none;"></div>
+
+	<?php
+
+	$lawyerist_login = ob_get_clean();
+
+	return $lawyerist_login;
+
+}
+
+
+/**
+* The following functions modify the login form defaults by adding our logo, URL,
+* and company name.
+*/
+
 function lawyerist_login_logo() { ?>
 
 	<style type="text/css">
@@ -384,6 +369,9 @@ add_filter( 'login_message', 'lawyerist_login_message' );
 
 /*------------------------------
 Remove Menu Items
+
+None of these are essential, but our +New menu had become a mess, so these
+functions clean it up.
 ------------------------------*/
 
 function remove_admin_bar_items( $wp_admin_bar ) {
@@ -427,9 +415,13 @@ add_action( 'wp_before_admin_bar_render', 'remove_stubborn_admin_bar_items', 999
 
 /* UTILITY FUNCTIONS ********************/
 
-/*------------------------------
-Get Country
-------------------------------*/
+/**
+* Get Country
+*
+* This gets the country from the ipStack.com API (we have a paid account there).
+* We use this to make sure we are only showing trial buttons to visitors from
+* the US and Canada.
+*/
 
 function get_country() {
 
@@ -461,43 +453,12 @@ function get_country() {
 
 }
 
-/*------------------------------
-Get Sponsor
-------------------------------*/
-
-function get_sponsor() {
-
-	global $post;
-
-	if ( has_term( true, 'sponsor' ) ) {
-
-		$sponsor_IDs = wp_get_post_terms(
-			$post->ID,
-			'sponsor',
-			array(
-				'fields' 	=> 'ids',
-				'orderby' => 'count',
-				'order' 	=> 'DESC',
-			),
-		);
-
-		$sponsor_info = get_term( $sponsor_IDs[0] );
-		$sponsor      = $sponsor_info->name;
-
-		if ( !empty( $sponsor ) ) {
-
-			return $sponsor;
-
-		}
-
-	} else {
-
-		return;
-
-	}
-
-}
-
+/**
+* Get Sponsor Link
+*
+* Gets the sponsor for bylines. If the post is singular and published, it
+* returns the sponsor as a link.
+*/
 
 function get_sponsor_link( $post_id = null ) {
 
@@ -519,9 +480,12 @@ function get_sponsor_link( $post_id = null ) {
 }
 
 
-/*------------------------------
-Get First Image URL
-------------------------------*/
+/**
+* Get First Image URL
+*
+* Gets the URL of the first image in a post. We use this for our Case Study
+* posts, where the first image is a headshot of the featured lawyer.
+*/
 
 function get_first_image_url( $post_id = NULL ) {
 
@@ -565,9 +529,9 @@ function get_first_image_url( $post_id = NULL ) {
 }
 
 
-/*------------------------------
-Is This a Product Portal?
-------------------------------*/
+/**
+* Is This a Product Portal?
+*/
 
 function is_product_portal() {
 
@@ -604,6 +568,9 @@ function is_product_portal() {
 
 /**
 * Post Cards
+*
+* Outputs the post card for use in lists of posts. This is used all over the
+* place.
 *
 * @param int $post_id Optional. Accepts a valid post ID.
 * @param string $card_top_label Optional.
@@ -768,9 +735,11 @@ function lawyerist_get_post_card( $post_id = null, $card_top_label = null, $card
 
 /* CONTENT ********************/
 
-/*------------------------------
-Archive Headers
-------------------------------*/
+/**
+* Archive Headers
+*
+* Headers with the term (category, tag, etc.) name and description for lists.
+*/
 
 function lawyerist_get_archive_header() {
 
@@ -823,9 +792,11 @@ function lawyerist_get_archive_header() {
 }
 
 
-/*------------------------------
-Yoast SEO Breadcrumbs
-------------------------------*/
+/**
+* Yoast SEO Breadcrumbs
+*
+* Removes the Products breadcrumb on WooCommerce pages.
+*/
 
 function lawyerist_remove_products_breadcrumb( $link_output, $link ) {
 
@@ -839,6 +810,11 @@ function lawyerist_remove_products_breadcrumb( $link_output, $link ) {
 
 add_filter( 'wpseo_breadcrumb_single_link', 'lawyerist_remove_products_breadcrumb', 10, 2 );
 
+
+/**
+* Inserts the Member Portal as a breadcrumb on LearnDash pages, and some other
+* tweaks.
+*/
 
 function lawyerist_add_learndash_breadcrumbs( $links ) {
 
@@ -894,9 +870,11 @@ function lawyerist_add_learndash_breadcrumbs( $links ) {
 add_filter( 'wpseo_breadcrumb_links', 'lawyerist_add_learndash_breadcrumbs' );
 
 
-/*------------------------------
-Author Bios
-------------------------------*/
+/**
+* Author Bios
+*
+* Outputs the author bio box at the bottom of posts and pages.
+*/
 
 function lawyerist_get_author_bio() {
 
@@ -918,42 +896,40 @@ function lawyerist_get_author_bio() {
 	$linkedin_url_parsed 	= parse_url( $linkedin_url );
 	$linkedin_username		= $linkedin_url_parsed[ 'path' ];
 
+	?>
 
-	echo '<div class="author-bio-box card">' . "\n";
+	<div class="author-bio-box card">
+		<?php echo $author_avatar; ?>
+		<div class="author-bio-connect">
+			<div class="author-bio"><?php echo $author_bio; ?></div>
+			<div class="author-connect">
 
-		echo $author_avatar;
+				<?php if ( $twitter_username == true ) { ?>
+					<p class="author-twitter"><a href="https://twitter.com/<?php echo $twitter_username; ?>">@<?php echo $twitter_username; ?></a></p>
+				<?php } ?>
 
-		echo '<div class="author-bio-connect">';
+				<?php if ( $linkedin_username == true ) { ?>
+					<p class="author-linkedin"><a href="<?php echo $linkedin_url; ?>"><?php echo $linkedin_url; ?></a></p>
+				<?php } ?>
 
-			echo '<div class="author-bio">' . $author_bio . '</div>';
+				<?php if ( $author_url == true ) { ?>
+					<p class="author-website"><a href="<?php echo $author_url; ?>"><?php echo $author_url; ?></a></p>
+				<?php } ?>
 
-			// Show links to the author's website and Twitter and LinkedIn profiles.
-			echo '<div class="author-connect">';
+			</div>
+		</div>
+	</div>
 
-				if ( $twitter_username == true ) {
-					echo '<p class="author-twitter"><a href="https://twitter.com/' . $twitter_username . '">@' . $twitter_username . '</a></p>';
-				}
-
-				if ( $linkedin_username == true ) {
-					echo '<p class="author-linkedin"><a href="' . $linkedin_url . '">' . $linkedin_username . '</a></p>';
-				}
-
-				if ( $author_url == true ) {
-					echo '<p class="author-website"><a href="' . $author_url . '">' . $author_url_host . '</a></p>';
-				}
-
-			echo '</div>'; // Close .author_connect.
-
-		echo '</div>'; // Close .author-bio-connect.
-
-	echo '</div>'; // Close .author-bio-box.
+	<?php
 
 }
 
 
-/*------------------------------
-List of Coauthors
-------------------------------*/
+/**
+* List of Coauthors
+*
+* Adds a list of coathors at the bottom of posts and pages, if there are any.
+*/
 
 function lawyerist_get_coauthors() {
 
@@ -1005,9 +981,11 @@ function lawyerist_get_coauthors() {
 }
 
 
-/*------------------------------
-Get Alternative Products
-------------------------------*/
+/**
+* Get Alternative Products
+*
+* Outputs alternative products on product pages if any are selected.
+*/
 
 function lawyerist_get_alternative_products() {
 

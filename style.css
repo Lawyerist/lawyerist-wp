@@ -553,7 +553,6 @@ body {
 }
 
 body.category-lab-workshops #column_container,
-body.single-cat-lab-workshops #column_container,
 body.page-template-full-width #column_container,
 body.page-template-product-page #column_container,
 body.single-sfwd-courses #column_container,
@@ -3243,7 +3242,6 @@ Content
   Full Width Template
   ------------------------------*/
 
-  .single-cat-lab-workshops #content_column,
   .page-template-full-width #content_column,
   .page-template-product-page #content_column,
   .single-sfwd-courses #content_column,
