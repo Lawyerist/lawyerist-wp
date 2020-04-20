@@ -22,9 +22,11 @@ if ( preg_match_all( $pattern, $content, $matches, PREG_SET_ORDER ) ) {
 
           <?php
 
-          // This is a little clunky. We're re-creating the ID set via filter in
-          // functions.php:lwyrst_add_heading_ids(). As long as those lines match,
-          // this will work fine. If they don't match, it won't.
+          // This is a little clunky because get_the_content() gets the
+          // unfiltered content, which means headings don't have the IDs added
+          // by functions.php:lwyrst_add_heading_ids(). So we have to recreate
+          // those IDs here. As long as the functions match, this will work
+          // fine. If they don't match, it won't.
 
           $id = sanitize_title( $match[ 'heading' ] );
 

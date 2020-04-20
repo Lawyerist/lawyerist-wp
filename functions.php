@@ -1046,6 +1046,9 @@ function lawyerist_get_alternative_products() {
 
 /*------------------------------
 Get Related Posts
+
+This is used on product pages to show related posts by matching the current page
+slug to a tag slug.
 ------------------------------*/
 
 function lawyerist_get_related_posts() {
@@ -1092,6 +1095,10 @@ function lawyerist_get_related_posts() {
 
 /*------------------------------
 Get Related Resources
+
+This is used on posts to show related resource pages by matching the post tags
+to resource page slugs. If it doesn't find at least 4 resource pages, it adds
+recent posts with any of the same tags.
 ------------------------------*/
 
 function lawyerist_get_related_resources() {
@@ -1165,12 +1172,12 @@ function lawyerist_get_related_resources() {
 
 /*------------------------------
 Remove Inline Width from Image Captions
+
+At some point I decided this looked dumb. ¯\_(ツ)_/¯
 ------------------------------*/
 
 function lawyerist_remove_caption_padding( $width ) {
-
 	return $width - 10;
-
 }
 
 add_filter( 'img_caption_shortcode_width', 'lawyerist_remove_caption_padding' );
@@ -1178,6 +1185,8 @@ add_filter( 'img_caption_shortcode_width', 'lawyerist_remove_caption_padding' );
 
 /*------------------------------
 Featured Images in RSS Feeds
+
+Adds featured images to RSS feeds.
 ------------------------------*/
 
 function featuredtoRSS( $content ) {
@@ -1198,6 +1207,10 @@ add_filter( 'the_content_feed', 'featuredtoRSS' );
 
 /*------------------------------
 Add IDs to All Headings
+
+This is necessary to make the Table of Contents block work. But make sure to
+check the note in /template-parts/acf-blocks/table-of-contents.php before
+making any changes.
 ------------------------------*/
 
 function lwyrst_add_heading_ids( $content ) {
@@ -1245,6 +1258,9 @@ add_filter( 'the_content', 'lwyrst_add_heading_ids' );
 
 /*------------------------------
 Remove Lab Workshops from Sitemap
+
+We don't want Google to index them becuase they are restricted to Lab members
+and there is no unrestricted content on the pages for Google to index.
 ------------------------------*/
 
 function remove_workshops_from_sitemap( $excluded_posts_ids ) {
@@ -1265,6 +1281,8 @@ add_filter( 'wpseo_exclude_from_sitemap_by_post_ids', 'remove_workshops_from_sit
 
 /*------------------------------
 Remove Lab Workshops from RSS Feed
+
+See above.
 ------------------------------*/
 
 function remove_workshops_from_feed( $query ) {
@@ -1283,6 +1301,8 @@ add_filter( 'pre_get_posts', 'remove_workshops_from_feed' );
 
 /*------------------------------
 Remove Default Gallery Styles
+
+I guess I didn't like these. ¯\_(ツ)_/¯
 ------------------------------*/
 
 add_filter( 'use_default_gallery_style', '__return_false' );
@@ -1292,6 +1312,9 @@ add_filter( 'use_default_gallery_style', '__return_false' );
 
 /*------------------------------
 Platinum Sponsors Widget
+
+Creates the platinum sidebar widget (the only thing currently in the sidebar)
+and adds a tracking code to the URL so we can report clicks.
 ------------------------------*/
 
 function lwyrst_plat_sponsors_widget() {
@@ -1346,79 +1369,79 @@ function lwyrst_plat_sponsors_widget() {
 
 /*------------------------------
 Affinity Benefit Notice
+
+Adds an affinity benefit notice at the top of product pages. Requires
+WooCommerce Memberships to determine which message to show. Also requires AFC
+for the custom fields that define the benefit details.
 ------------------------------*/
 
 function affinity_notice() {
 
-	if ( !function_exists( 'wc_memberships' ) ) {
-    return;
-  }
+	if ( !function_exists( 'wc_memberships' ) ) { return; }
 
 	global $post;
 
 	ob_start();
 
-			$availability = get_field( 'affinity_availability' );
+		$availability = get_field( 'affinity_availability' );
 
-			switch ( $availability ) {
+		switch ( $availability ) {
 
-				case $availability == 'new_only':
+			case $availability == 'new_only':
 
-					$whom = 'new customers';
-					break;
+				$whom = 'new customers';
+				break;
 
-				case $availability == 'old_only':
+			case $availability == 'old_only':
 
-					$whom = 'existing customers';
-					break;
+				$whom = 'existing customers';
+				break;
 
-				case $availability == 'both_new_and_old':
+			case $availability == 'both_new_and_old':
 
-					$whom = 'new & existing customers';
-					break;
+				$whom = 'new & existing customers';
+				break;
 
-			}
+		}
 
-			$card_label = 'Discount Available to ' . $whom;
+		$card_label = 'Discount Available to ' . $whom;
 
-			$user_id = get_current_user_id();
+		$user_id = get_current_user_id();
 
-			if ( wc_memberships_is_user_active_member( $user_id, 'insider' ) ) {
+		if ( wc_memberships_is_user_active_member( $user_id, 'insider' ) ) {
 
-				$discount_descr	= get_field( 'affinity_discount_descr' );
+			$discount_descr	= get_field( 'affinity_discount_descr' );
 
-			} else {
+		} else {
 
-				$post_title			= the_title( '', '', FALSE );
-				$discount_descr = $post_title . ' offers a discount to ' . $whom . ' through our Affinity Benefits program. The details of this discount are only available to members. <a href="https://lawyerist.com/affinity-benefits/">Learn more about the Affinity Benefits program</a> or <a class="login-link" href="https://lawyerist.com/account/">log in</a> if you are a member of Insider or Lab.';
+			$post_title			= the_title( '', '', FALSE );
+			$discount_descr = $post_title . ' offers a discount to ' . $whom . ' through our Affinity Benefits program. The details of this discount are only available to members. <a href="https://lawyerist.com/affinity-benefits/">Learn more about the Affinity Benefits program</a> or <a class="login-link" href="https://lawyerist.com/account/">log in</a> if you are a member of Insider or Lab.';
 
-			}
+		}
 
-			echo '<div class="card affinity-discount-card">';
+		$theme_dir = get_template_directory_uri();
 
-				$theme_dir = get_template_directory_uri();
+		?>
 
-				echo '<img alt="Lawyerist affinity partner badge." src="' . $theme_dir . '/images/affinity-partner-badge.png" height="128" width="150" />';
+		<div class="card affinity-discount-card">
 
-				echo '<p class="card-label">' . $card_label . '</p>';
+			<img alt="Lawyerist affinity partner badge." src="<?php echo $theme_dir; ?>/images/affinity-partner-badge.png" height="128" width="150" />
+			<p class="card-label"><?php echo $card_label; ?></p>
+			<p class="discount_descr"><?php echo $discount_descr; ?></p>
 
-				echo '<p class="discount_descr">' . $discount_descr . '</p>';
+			<?php if ( wc_memberships_is_user_active_member( $user_id, 'insider' ) ) { ?>
 
-				if ( wc_memberships_is_user_active_member( $user_id, 'insider' ) ) {
+				<button class="button expandthis-click">Claim Your Discount</button>
+				<div class="expandthis-hide">
+					<?php echo do_shortcode( '[gravityform id="55" title="false" ajax="true"]' ); ?>
+				</div>
 
-					echo '<button class="button expandthis-click">Claim Your Discount</button>';
+			<?php } ?>
 
-					echo '<div class="expandthis-hide">';
+			</div>
+		</div>
 
-						echo do_shortcode( '[gravityform id="55" title="false" ajax="true"]' );
-
-					echo '</div>';
-
-				}
-
-				echo '</div>';
-
-			echo '</div>';
+		<?php
 
 	$affinity_notice = ob_get_clean();
 
