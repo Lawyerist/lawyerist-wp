@@ -15,6 +15,13 @@ is based on [Keep a Changelog](https://keepachangelog.com).
 ## [Unreleased]
 
 
+## [5.6.1] - 2020-04-22
+
+### [Fixed]
+- Fix blank content on pages with no headings.
+- Fix partner update bylines.
+
+
 ## [5.6.0] - 2020-04-22
 
 ### [Added]
@@ -26,6 +33,7 @@ is based on [Keep a Changelog](https://keepachangelog.com).
 custom CTA for the page.
 - Reformat code in parentheses and brackets for consistent spacing.
 - Improve affinity notice card on mobile.
+
 
 ## [5.5.0] - 2020-04-01
 
