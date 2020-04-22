@@ -3,9 +3,7 @@
 
   notice = document.querySelector( '#article-counter' );
 
-  if ( !notice ) {
-    return;
-  }
+  if ( !notice ) { return; }
 
   let date, thisMonth, thisArticle, articlesRead, articlesCount, articleCounter;
 
@@ -281,7 +279,7 @@
 // Platinum Sponsors Widget
 ( function( $ ) {
 
-  let sidebar = $( '#sidebar_column');
+  let sidebar = $( '#sidebar_column' );
   let widget  = $( '#platinum-sponsors-widget' );
 
   function stickyWidget() {
@@ -368,9 +366,7 @@
 
     notice = document.querySelector( '.dismissible-notice' );
 
-    if ( !notice ) {
-      return;
-    }
+    if ( !notice ) { return; }
 
     dismissButton   = document.querySelector( '#cta .dismiss-button' );
     noticeId        = notice.getAttribute( 'data-id' );

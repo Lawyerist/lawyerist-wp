@@ -5,15 +5,32 @@ is based on [Keep a Changelog](https://keepachangelog.com).
 
 ## [In Development]
 - Vendor recommender for product portals.
+- Update memberships chart.
+- Fix sponsored post bylines in related posts footer.
+- Fix LearnDash course grid and course navigation buttons.
+- Add beta flag to financial scorecard.
+- Remove single-cat code and styles.
 
 
 ## [Unreleased]
 
 
+## [5.6.0] - 2020-04-22
+
+### [Added]
+- Add IDs to all headings.
+- Table of contents block and fallback for pages.
+
+### [Changed]
+- CTA block updated so the first option is a choice between the default CTA and a
+custom CTA for the page.
+- Reformat code in parentheses and brackets for consistent spacing.
+- Improve affinity notice card on mobile.
+
 ## [5.5.0] - 2020-04-01
 
 ### [Changed]
-- Move ACF blocks to their own file.
+- Move ACF blocks to their own folder.
 - Normalize.css updated.
 - Various minor updates in the course of developing the vendor recommender.
 - Some probably-unnecessary updates related to spacing around parentheses.

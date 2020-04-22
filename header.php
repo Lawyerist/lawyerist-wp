@@ -34,7 +34,7 @@
   wp_head();
 
   // Noindexes/nofollows Lab Workshop archives and posts.
-  if ( is_category( 'lab-workshops') || has_category( 'lab-workshops') ) {
+  if ( is_category( 'lab-workshops' ) || has_category( 'lab-workshops' ) ) {
     echo '<!-- Showing a Lab Workshops archive or post, so this page is noindexed and nofollowed. -->';
     echo '<meta name="robots" content="noindex, nofollow">';
   }

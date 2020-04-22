@@ -108,7 +108,7 @@
 	<?php
 		$show_course_content = true;
 	if ( ! $has_access ) :
-		if ( 'on' === $course_meta['sfwd-courses_course_disable_content_table'] ) :
+		if ( 'on' === $course_meta[ 'sfwd-courses_course_disable_content_table' ] ) :
 			$show_course_content = false;
 			endif;
 		endif;
@@ -153,14 +153,14 @@
 				<div id="lessons_list" class="lessons_list">
 
 					<?php foreach ( $lessons as $lesson ) : ?>
-						<div class='post-<?php echo esc_attr( $lesson['post']->ID ); ?> <?php echo esc_attr( $lesson['sample'] ); ?>'>
+						<div class='post-<?php echo esc_attr( $lesson[ 'post' ]->ID ); ?> <?php echo esc_attr( $lesson[ 'sample' ] ); ?>'>
 
 							<div class="list-count">
-								<?php echo $lesson['sno']; ?>
+								<?php echo $lesson[ 'sno' ]; ?>
 							</div>
 
 							<h4>
-								<a class='<?php echo esc_attr( $lesson['status'] ); ?>' href='<?php echo esc_attr( learndash_get_step_permalink( $lesson['post']->ID, $course_id ) ); ?>'><?php echo $lesson['post']->post_title; ?></a>
+								<a class='<?php echo esc_attr( $lesson[ 'status' ] ); ?>' href='<?php echo esc_attr( learndash_get_step_permalink( $lesson[ 'post' ]->ID, $course_id ) ); ?>'><?php echo $lesson[ 'post' ]->post_title; ?></a>
 
 
 								<?php
@@ -168,16 +168,16 @@
 								 * Not available message for drip feeding lessons
 								 */
 								?>
-								<?php if ( ! empty( $lesson['lesson_access_from'] ) ) : ?>
+								<?php if ( ! empty( $lesson[ 'lesson_access_from' ] ) ) : ?>
 									<?php
 										SFWD_LMS::get_template(
 											'learndash_course_lesson_not_available',
 											array(
 												'user_id' => $user_id,
-												'course_id' => learndash_get_course_id( $lesson['post']->ID ),
-												'lesson_id' => $lesson['post']->ID,
-												'lesson_access_from_int' => $lesson['lesson_access_from'],
-												'lesson_access_from_date' => learndash_adjust_date_time_display( $lesson['lesson_access_from'] ),
+												'course_id' => learndash_get_course_id( $lesson[ 'post' ]->ID ),
+												'lesson_id' => $lesson[ 'post' ]->ID,
+												'lesson_access_from_int' => $lesson[ 'lesson_access_from' ],
+												'lesson_access_from_date' => learndash_adjust_date_time_display( $lesson[ 'lesson_access_from' ] ),
 												'context' => 'course',
 											), true
 										);
@@ -190,10 +190,10 @@
 								 * Lesson Topics
 								 */
 								?>
-								<?php $topics = @$lesson_topics[ $lesson['post']->ID ]; ?>
+								<?php $topics = @$lesson_topics[ $lesson[ 'post' ]->ID ]; ?>
 
 								<?php if ( ! empty( $topics ) ) : ?>
-									<div id='learndash_topic_dots-<?php echo esc_attr( $lesson['post']->ID ); ?>' class="learndash_topic_dots type-list">
+									<div id='learndash_topic_dots-<?php echo esc_attr( $lesson[ 'post' ]->ID ); ?>' class="learndash_topic_dots type-list">
 										<ul>
 											<?php $odd_class = ''; ?>
 											<?php foreach ( $topics as $key => $topic ) : ?>
@@ -219,11 +219,11 @@
 			</div>
 			<?php
 				global $course_lessons_results;
-				if ( isset( $course_lessons_results['pager'] ) ) {
+				if ( isset( $course_lessons_results[ 'pager' ] ) ) {
 					echo SFWD_LMS::get_template(
 						'learndash_pager.php',
 						array(
-						'pager_results' => $course_lessons_results['pager'],
+						'pager_results' => $course_lessons_results[ 'pager' ],
 						'pager_context' => 'course_lessons'
 						)
 					);
@@ -232,8 +232,8 @@
 		<?php endif; ?>
 
 		<?php
-			if ( ( isset( $course_lessons_results['pager'] ) ) && ( !empty( $course_lessons_results['pager'] ) ) ) {
-				if ( $course_lessons_results['pager']['paged'] == $course_lessons_results['pager']['total_pages'] ) {
+			if ( ( isset( $course_lessons_results[ 'pager' ] ) ) && ( !empty( $course_lessons_results[ 'pager' ] ) ) ) {
+				if ( $course_lessons_results[ 'pager' ][ 'paged' ] == $course_lessons_results[ 'pager' ][ 'total_pages' ] ) {
 					$show_course_quizzes = true;
 				} else {
 					$show_course_quizzes = false;
@@ -257,10 +257,10 @@
 						<div id="quiz_list" class=“quiz_list”>
 
 							<?php foreach ( $quizzes as $quiz ) : ?>
-								<div id='post-<?php echo esc_attr( $quiz['post']->ID ); ?>' class='<?php echo esc_attr( $quiz['sample'] ); ?>'>
-									<div class="list-count"><?php echo $quiz['sno']; ?></div>
+								<div id='post-<?php echo esc_attr( $quiz[ 'post' ]->ID ); ?>' class='<?php echo esc_attr( $quiz[ 'sample' ] ); ?>'>
+									<div class="list-count"><?php echo $quiz[ 'sno' ]; ?></div>
 									<h4>
-										<a class='<?php echo esc_attr( $quiz['status'] ); ?>' href='<?php echo esc_attr( learndash_get_step_permalink( $quiz['post']->ID, $course_id ) ); ?>'><?php echo $quiz['post']->post_title; ?></a>
+										<a class='<?php echo esc_attr( $quiz[ 'status' ] ); ?>' href='<?php echo esc_attr( learndash_get_step_permalink( $quiz[ 'post' ]->ID, $course_id ) ); ?>'><?php echo $quiz[ 'post' ]->post_title; ?></a>
 									</h4>
 								</div>
 							<?php endforeach; ?>

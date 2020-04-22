@@ -1,13 +1,32 @@
 <?php
 
-$cta[ 'dismissible' ]	= get_field( 'cta_dismissible' ) ?: get_field( 'cta_dismissible', 'option' );
-$cta[ 'image' ]				= get_field( 'cta_image' ) ?: get_field( 'cta_image', 'option' );
-$cta[ 'headline' ]		= get_field( 'cta_headline' ) ?: get_field( 'cta_headline', 'option' ) ;
-$cta[ 'subheading' ]	= get_field( 'cta_subheading' ) ?: get_field( 'cta_subheading', 'option' );
-$cta[ 'content' ]			= get_field( 'cta_content' ) ?: get_field( 'cta_content', 'option' );
-$cta[ 'button_text' ]	= get_field( 'cta_button_text' ) ?: get_field( 'cta_button_text', 'option' );
-$cta[ 'button_url' ]	= get_field( 'cta_button_url' ) ?: get_field( 'cta_button_url', 'option' );
-$cta[ 'free' ]				= get_field( 'cta_show_free_dot' ) ?: get_field( 'cta_show_free_dot', 'option' );
+if ( get_field( 'cta_show_custom_cta' ) == true ) {
+
+  $cta = array(
+    'dismissible' => get_field( 'cta_dismissible' ),
+    'image'       => get_field( 'cta_image' ),
+    'headline'    => get_field( 'cta_headline' ),
+    'subheading'  => get_field( 'cta_subheading' ),
+    'content'     => get_field( 'cta_content' ),
+    'button_text' => get_field( 'cta_button_text' ),
+    'button_url'  => get_field( 'cta_button_url' ),
+    'free'        => get_field( 'cta_show_free_dot' ),
+  );
+
+} else {
+
+  $cta = array(
+    'dismissible' => get_field( 'cta_dismissible', 'option' ),
+    'image'       => get_field( 'cta_image', 'option' ),
+    'headline'    => get_field( 'cta_headline', 'option' ),
+    'subheading'  => get_field( 'cta_subheading', 'option' ),
+    'content'     => get_field( 'cta_content', 'option' ),
+    'button_text' => get_field( 'cta_button_text', 'option' ),
+    'button_url'  => get_field( 'cta_button_url', 'option' ),
+    'free'        => get_field( 'cta_show_free_dot', 'option' ),
+  );
+
+}
 
 ?>
 
