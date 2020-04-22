@@ -81,7 +81,7 @@ function register_acf_block_types() {
 	    )
 		);
 
-    // Recent Blog Posts
+    // Table of Contents
     acf_register_block_type(
 			array(
         'name'              => 'table-of-contents',
@@ -90,6 +90,7 @@ function register_acf_block_types() {
         'category'          => 'common',
 				'icon'							=> 'editor-ul',
         'keywords'          => array( 'table of contents', 'toc', 'index' ),
+        'mode'              => 'preview',
 	    )
 		);
 

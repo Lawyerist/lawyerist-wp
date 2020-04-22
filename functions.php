@@ -26,15 +26,15 @@ CARDS
 CONTENT
 - Archive Headers
 - Yoast SEO Breadcrumbs
+- Add IDs to Headings
+- Render Table of Contents
 - Author Bios
 - List of Coauthors
 - Get Alternative Products
 - Get Related Posts
 		- Get Related Resources
-- List Child Pages Fallback
 - Remove Inline Width from Image Captions
 - Featured Images in RSS Feeds
-- Add IDs to All Headings
 - Remove Lab Workshops from Sitemap
 - Remove Lab Workshops from RSS Feed
 - Remove Default Gallery Styles
@@ -871,6 +871,149 @@ add_filter( 'wpseo_breadcrumb_links', 'lawyerist_add_learndash_breadcrumbs' );
 
 
 /**
+* Add IDs to Headings
+*/
+
+function add_ids_to_headings( $content ) {
+
+	if ( !is_main_query() ) { return $content; }
+
+	$pattern = '#(?P<full_tag><(?P<tag_name>h\d)(?P<tag_atts>[^>]*)>(?P<tag_contents>.*)<\/h\d>)#i';
+
+  if ( preg_match_all( $pattern, $content, $matches, PREG_SET_ORDER ) ) {
+
+    $find			= array();
+    $replace	= array();
+
+    foreach( $matches as $match ) {
+
+      if ( strlen( $match[ 'tag_atts' ] ) && false !== stripos( $match[ 'tag_atts' ], 'id=' ) ) {
+				continue;
+      }
+
+      $find[]    = $match[ 'full_tag' ];
+      $id        = sanitize_title( $match[ 'tag_contents' ] );
+      $id_attr   = sprintf( ' id="%s"', $id );
+      $replace[] = sprintf(
+				'<%1$s%2$s%3$s>%4$s</%1$s>',
+				$match[ 'tag_name' ],
+				$match[ 'tag_atts' ],
+				$id_attr,
+				$match[ 'tag_contents' ]
+			);
+
+    }
+
+    $modified_content = str_replace( $find, $replace, $content );
+
+  }
+
+	return $modified_content;
+
+}
+
+add_filter( 'the_content', 'add_ids_to_headings' );
+
+
+
+/**
+* Render Table of Contents
+*/
+
+function get_toc() {
+
+	global $post;
+
+  $pattern  = '#<h(?P<level>\d).*?id=[\'|\"](?P<id>[^\'\"]*)[^>]*\>(?P<heading>.*)<\/h\d>#i';
+	$content	= add_ids_to_headings( get_the_content() );
+  $toc      = null;
+  $i        = 1;
+
+  if ( preg_match_all( $pattern, $content, $matches, PREG_SET_ORDER ) ) {
+
+    ob_start();
+
+	    ?>
+
+	    <div class="card toc-card">
+
+	      <p class="card-label">On this Page</p>
+
+	      <nav class="toc">
+	        <ul>
+
+	          <?php foreach ( $matches as $match ) { ?>
+
+	            <?php if ( $match[ 'level' ] == 2 ) { ?>
+
+	              <li>
+	                <a href="#<?php echo $match[ 'id' ]; ?>">
+	                  <div class="toc-num"><?php echo $i++; ?></div>
+	                  <div class="toc-heading"><?php echo strip_tags( $match[ 'heading' ] ); ?></div>
+	                </a>
+	              </li>
+
+	            <?php } ?>
+
+	          <?php } ?>
+
+	        </ul>
+	      </nav>
+	    </div>
+
+	    <?php
+
+    $toc = ob_get_clean();
+
+  }
+
+  return $toc;
+
+}
+
+
+/**
+* TOC Fallback
+*/
+
+function toc_fallback( $content ) {
+
+	global $post;
+
+	if ( !is_page() || !is_main_query() ) { return $content; }
+
+	if ( !has_block( 'acf/table-of-contents' ) && get_field( 'show_table_of_contents' ) !== false ) {
+
+		$toc      = get_toc();
+		$splitter = '<h';
+		$headings = explode( $splitter, $content );
+
+		foreach ( $headings as $key => $val ) {
+
+			if ( $key == 1 ) {
+				$replace = $toc . $splitter . $val;
+			} else {
+				$replace = $splitter . $val;
+			}
+
+			$headings[ $key ] = $replace;
+
+		}
+
+		return implode( '', $headings );
+
+	} else {
+
+		return $content;
+
+	}
+
+}
+
+add_filter( 'the_content', 'toc_fallback' );
+
+
+/**
 * Author Bios
 *
 * Outputs the author bio box at the bottom of posts and pages.
@@ -1203,57 +1346,6 @@ function featuredtoRSS( $content ) {
 
 add_filter( 'the_excerpt_rss', 'featuredtoRSS' );
 add_filter( 'the_content_feed', 'featuredtoRSS' );
-
-
-/*------------------------------
-Add IDs to All Headings
-
-This is necessary to make the Table of Contents block work. But make sure to
-check the note in /template-parts/acf-blocks/table-of-contents.php before
-making any changes.
-------------------------------*/
-
-function lwyrst_add_heading_ids( $content ) {
-
-	global $post;
-
-	if ( !is_main_query() ) { return; }
-
-	$pattern = '#(?P<full_tag><(?P<tag_name>h\d)(?P<tag_atts>[^>]*)>(?P<tag_contents>.*)<\/h\d>)#i';
-
-  if ( preg_match_all( $pattern, $content, $matches, PREG_SET_ORDER ) ) {
-
-    $find			= array();
-    $replace	= array();
-
-    foreach( $matches as $match ) {
-
-      if ( strlen( $match[ 'tag_atts' ] ) && false !== stripos( $match[ 'tag_atts' ], 'id=' ) ) {
-				continue;
-      }
-
-      $find[]    = $match[ 'full_tag' ];
-      $id        = sanitize_title( $match[ 'tag_contents' ] );
-      $id_attr   = sprintf( ' id="%s"', $id );
-      $replace[] = sprintf(
-				'<%1$s%2$s%3$s>%4$s</%1$s>',
-				$match[ 'tag_name' ],
-				$match[ 'tag_atts' ],
-				$id_attr,
-				$match[ 'tag_contents' ]
-			);
-
-    }
-
-    $content = str_replace( $find, $replace, $content );
-
-  }
-
-	return $content;
-
-}
-
-add_filter( 'the_content', 'lwyrst_add_heading_ids' );
 
 
 /*------------------------------

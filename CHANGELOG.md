@@ -13,12 +13,19 @@ is based on [Keep a Changelog](https://keepachangelog.com).
 
 
 ## [Unreleased]
+
+
+## [5.6.0] - 2020-04-22
+
+### [Added]
+- Add IDs to all headings.
+- Table of contents block and fallback for pages.
+
+### [Changed]
 - CTA block updated so the first option is a choice between the default CTA and a
 custom CTA for the page.
 - Reformat code in parentheses and brackets for consistent spacing.
 - Improve affinity notice card on mobile.
-- Add IDs to all headings.
-- Table of contents block.
 
 ## [5.5.0] - 2020-04-01
 
