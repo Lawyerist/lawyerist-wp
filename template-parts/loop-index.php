@@ -3,7 +3,7 @@
 // Start the Loop.
 if ( have_posts() ) : while ( have_posts() ) : the_post();
 
-  lawyerist_get_post_card();
+  lawyerist_get_post_card( get_the_ID() );
 
   endwhile;
 
@@ -19,6 +19,6 @@ else :
 
   <p class="post">No posts match your query.</p>
 
-  <?php 
+  <?php
 
 endif; // Close the Loop.

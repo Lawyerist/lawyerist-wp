@@ -876,7 +876,7 @@ add_filter( 'wpseo_breadcrumb_links', 'lawyerist_add_learndash_breadcrumbs' );
 
 function add_ids_to_headings( $content ) {
 
-	if ( !is_main_query() ) { return $content; }
+	if ( !is_main_query() || !has_blocks( 'core/heading' ) ) { return $content; }
 
 	$pattern = '#(?P<full_tag><(?P<tag_name>h\d)(?P<tag_atts>[^>]*)>(?P<tag_contents>.*)<\/h\d>)#i';
 
@@ -923,6 +923,8 @@ add_filter( 'the_content', 'add_ids_to_headings' );
 function get_toc() {
 
 	global $post;
+
+	if ( !has_block( 'core/heading' ) ) { return; }
 
   $pattern  = '#<h(?P<level>\d).*?id=[\'|\"](?P<id>[^\'\"]*)[^>]*\>(?P<heading>.*)<\/h\d>#i';
 	$content	= add_ids_to_headings( get_the_content() );
@@ -982,7 +984,7 @@ function toc_fallback( $content ) {
 
 	if ( !is_page() || !is_main_query() ) { return $content; }
 
-	if ( !has_block( 'acf/table-of-contents' ) && get_field( 'show_table_of_contents' ) !== false ) {
+	if ( has_block( 'core/heading' ) && !has_block( 'acf/table-of-contents' ) && get_field( 'show_table_of_contents' ) !== false ) {
 
 		$toc      = get_toc();
 		$splitter = '<h';
