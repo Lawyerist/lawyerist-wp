@@ -15,11 +15,12 @@ is based on [Keep a Changelog](https://keepachangelog.com).
 ## [Unreleased]
 
 
-## [5.6.1] - 2020-04-22
+## [5.6.1] & [5.6.2] - 2020-04-22
 
 ### [Fixed]
 - Fix blank content on pages with no headings.
 - Fix partner update bylines.
+- Typo.
 
 
 ## [5.6.0] - 2020-04-22
