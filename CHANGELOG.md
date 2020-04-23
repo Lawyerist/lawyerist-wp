@@ -15,6 +15,13 @@ is based on [Keep a Changelog](https://keepachangelog.com).
 ## [Unreleased]
 
 
+## [5.6.3] - 2020-04-23
+
+### [Fixed]
+- The sidebar had wandered over the content column on pages where the table of
+contents was the first thing on the page. I showed it back to its place.
+
+
 ## [5.6.1] & [5.6.2] - 2020-04-22
 
 ### [Fixed]

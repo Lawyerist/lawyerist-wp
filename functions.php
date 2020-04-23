@@ -992,10 +992,20 @@ function toc_fallback( $content ) {
 
 		foreach ( $headings as $key => $val ) {
 
-			if ( $key == 1 ) {
-				$replace = $toc . $splitter . $val;
-			} else {
-				$replace = $splitter . $val;
+			switch ( $key ) {
+
+				case 0:
+					$replace = $val;
+					break;
+
+				case 1:
+					$replace = $toc . $splitter . $val;
+					break;
+
+				default:
+					$replace = $splitter . $val;
+					break;
+
 			}
 
 			$headings[ $key ] = $replace;
