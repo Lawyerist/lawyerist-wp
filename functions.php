@@ -876,7 +876,7 @@ add_filter( 'wpseo_breadcrumb_links', 'lawyerist_add_learndash_breadcrumbs' );
 
 function add_ids_to_headings( $content ) {
 
-	if ( !is_main_query() || !has_blocks( 'core/heading' ) ) { return $content; }
+	if ( !is_main_query() || !has_block( 'core/heading' ) ) { return $content; }
 
 	$pattern = '#(?P<full_tag><(?P<tag_name>h\d)(?P<tag_atts>[^>]*)>(?P<tag_contents>.*)<\/h\d>)#i';
 
@@ -992,10 +992,20 @@ function toc_fallback( $content ) {
 
 		foreach ( $headings as $key => $val ) {
 
-			if ( $key == 1 ) {
-				$replace = $toc . $splitter . $val;
-			} else {
-				$replace = $splitter . $val;
+			switch ( $key ) {
+
+				case 0:
+					$replace = $val;
+					break;
+
+				case 1:
+					$replace = $toc . $splitter . $val;
+					break;
+
+				default:
+					$replace = $splitter . $val;
+					break;
+
 			}
 
 			$headings[ $key ] = $replace;
