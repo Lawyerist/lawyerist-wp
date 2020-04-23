@@ -4534,12 +4534,16 @@ Print
     background: #c00;
   }
 
-  #content_column {
-    float: none;
-    margin: 0 auto;
-    max-width: 80%;
-    width: auto;
+  #column_container {
+    grid-template-areas:
+      'content'
+    ;
+    grid-template-columns: minmax( 32rem, 100% );
   }
+
+    #sidebar_column {
+      display: none;
+    }
 
 
   /* Page Breaks */
