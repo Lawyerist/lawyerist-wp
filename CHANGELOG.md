@@ -14,6 +14,11 @@ is based on [Keep a Changelog](https://keepachangelog.com).
 
 ## [Unreleased]
 
+## [5.6.4] - 2020-05-04
+
+### [Added]
+- Documentation.
+
 
 ## [5.6.3] - 2020-04-23
 

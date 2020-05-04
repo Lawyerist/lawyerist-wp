@@ -149,7 +149,7 @@ add_filter( 'image_size_names_choose', 'remove_image_size_options' );
 
 
 /**
-* Adds an options page for ACF.
+* Adds options page(s) for ACF. (Add more as needed.)
 */
 function front_page_options_acf_op_init() {
 
@@ -328,8 +328,8 @@ function get_lawyerist_login() {
 
 
 /**
-* The following functions modify the login form defaults by adding our logo, URL,
-* and company name.
+* The following functions modify the regularly WordPress login form defaults by
+* adding our logo, URL, and company name, just in case anyone finds it.
 */
 
 function lawyerist_login_logo() { ?>
@@ -367,12 +367,12 @@ add_filter( 'login_headertitle', 'lawyerist_login_logo_url_title' );
 add_filter( 'login_message', 'lawyerist_login_message' );
 
 
-/*------------------------------
-Remove Menu Items
-
-None of these are essential, but our +New menu had become a mess, so these
-functions clean it up.
-------------------------------*/
+/**
+* Remove Menu Items
+*
+* None of these are essential, but our +New menu had become a mess, so these
+* functions clean it up.
+*/
 
 function remove_admin_bar_items( $wp_admin_bar ) {
 
@@ -530,7 +530,7 @@ function get_first_image_url( $post_id = NULL ) {
 
 
 /**
-* Is This a Product Portal?
+* Answers the question "Is this a product portal?"
 */
 
 function is_product_portal() {

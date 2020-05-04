@@ -59,9 +59,7 @@
 $classes = array();
 
 if ( !is_page_template( 'product-page.php' ) && !is_page_template( 'full-width.php' ) && !is_product() ) {
-
   $classes[] = 'show-plat-in-content';
-
 }
 
 ?>
@@ -72,13 +70,16 @@ if ( !is_page_template( 'product-page.php' ) && !is_page_template( 'full-width.p
 
   wp_body_open();
 
-  // Displays the signup wall notice, which also triggers the signup wall script
-  // to record a pageview. (The script will only record pageviews when the notice
-  // is present.)
-  //
-  // The notice is displayed only if (1) the user is not logged in AND (2) viewing
-  // a single post or page, AND (3) that post or page is NOT one of the listed
-  // exceptions in $exclude.
+  /**
+  * Displays the signup wall notice, which also triggers the signup wall script
+  * to record a pageview. (The script will only record pageviews when the notice
+  * is present.)
+  *
+  * The notice is displayed only if (1) the user is not logged in AND (2) viewing
+  * a single post or page, AND (3) that post or page is NOT one of the listed
+  * exceptions in $exclude. This should probably be turned into an option using
+  * ACF so we can more easily add exceptions.
+  */
 
   global $post;
 
@@ -102,6 +103,10 @@ if ( !is_page_template( 'product-page.php' ) && !is_page_template( 'full-width.p
     <?php
 
   }
+
+  /**
+  * The modal login/register.
+  */
 
   echo get_lawyerist_login();
 
