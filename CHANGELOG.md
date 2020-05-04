@@ -13,6 +13,8 @@ is based on [Keep a Changelog](https://keepachangelog.com).
 
 
 ## [Unreleased]
+- Updated size of featured images sent to the RSS feed.
+
 
 ## [5.6.4] - 2020-05-04
 
