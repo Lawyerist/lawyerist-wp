@@ -2636,6 +2636,51 @@ Content
     display: none;
   }
 
+  /* This groups the budget range fields. */
+  .chat-form_wrapper .budget-range .gform_fields {
+    display: grid;
+    grid-template:  'a a a a b' auto
+                    'c d d e e' auto
+                    / 1fr 1fr 1fr 1fr 1fr;
+  }
+
+  .chat-form_wrapper .budget-range .gsection {
+    grid-area: a;
+  }
+
+  .chat-form_wrapper .budget-range .gfield:not( .gsection ) {
+    background-color: #fff;
+    border: .1rem solid #e5e5ea;
+    font-weight: normal;
+  }
+
+  .chat-form_wrapper .budget-range .gfield:not( .gsection ):nth-child( 2 ) {
+    border-radius: 2.2rem 0 0 2.2rem;
+    border-right: 0;
+    grid-area: d;
+    padding: .5em 1rem .5rem 2rem;
+  }
+
+  .chat-form_wrapper .budget-range .gfield:not( .gsection ):nth-child( 3 ) {
+    border-radius: 0 2.2rem 2.2rem 0;
+    border-left: 0;
+    grid-area: e;
+    padding: .5em 2rem .5rem 1rem;
+  }
+
+  .chat-form_wrapper .budget-range .gfield:not( .gsection ) .gfield_label,
+  .chat-form_wrapper .budget-range .gfield:not( .gsection ) .ginput_container {
+    background: unset;
+    border: unset;
+    margin-left: unset !important;
+    margin-right: unset !important;
+    padding: unset !important;
+  }
+
+  .chat-form_wrapper .budget-range .gfield:not( .gsection ) .ginput_container input {
+    width:
+  }
+
   .chat-form_wrapper .gform_page_footer,
   .chat-form_wrapper .gform_footer {
     border-top: 0;
