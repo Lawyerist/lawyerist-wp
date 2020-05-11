@@ -695,7 +695,7 @@ function lawyerist_list_child_pages_fallback( $content ) {
 
 	$children = get_posts( $get_children_args );
 
-if ( !is_home() && is_page() && ( count( $children ) > 0 ) && !is_product_portal() && !has_shortcode( $content, 'list-child-pages' ) ) {
+if ( !is_home() && is_page() && ( count( $children ) > 0 ) && !is_product_portal() && get_field( 'show_child_pages' ) !== false && !has_shortcode( $content, 'list-child-pages' ) ) {
 
 		ob_start();
 

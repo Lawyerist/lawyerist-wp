@@ -2889,8 +2889,8 @@ Content
 
   .page-template-product-page .headline_container {
     display: grid;
-    grid-template-columns: 16rem auto;
-    grid-column-gap: 1rem;
+    grid-template-columns: 15rem auto;
+    grid-column-gap: 1.5rem;
     margin-bottom: 3rem;
   }
 
@@ -2899,7 +2899,7 @@ Content
       border-radius: .2rem;
       box-sizing: border-box;
       height: 15rem;
-      margin: 0 1rem 0 0;
+      margin: 0;
       padding: .5rem;
       width: 15rem;
     }
@@ -2922,8 +2922,17 @@ Content
 
         @media only screen and ( max-width: 499px ) {
 
+          .page-template-product-page .headline_container {
+            grid-template-columns: 10rem auto;
+          }
+
+            .page-template-product-page .headline_container div[itemprop="image"] {
+              height: 10rem;
+              width: 10rem;
+            }
+
           #product_page_title .headline {
-            font-size: 4.2rem;
+            font-size: 3.6rem;
           }
 
           #feature-chart .checkbox .columns {

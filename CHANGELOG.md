@@ -3,17 +3,12 @@
 All notable changes to this project will be documented in this file. The format
 is based on [Keep a Changelog](https://keepachangelog.com).
 
-## [In Development]
-- Vendor recommender for product portals.
-- Update memberships chart.
-- Fix sponsored post bylines in related posts footer.
-- Fix LearnDash course grid and course navigation buttons.
-- Add beta flag to financial scorecard.
-- Remove single-cat code and styles.
-
 
 ## [Unreleased]
 - Updated size of featured images sent to the RSS feed.
+- Reduce size of header image and product name on product pages at mobile
+widths.
+- Add option to hide child pages output.
 
 
 ## [5.6.4] - 2020-05-04
