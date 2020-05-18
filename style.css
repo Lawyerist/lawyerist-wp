@@ -3,7 +3,7 @@ Theme Name:   lawyerist-wp
 Theme URI:    https://lawyerist.com
 Description:  A theme for Lawyerist.com
 Author:       Sam Glover
-Version:      5.6.4
+Version:      5.6.5
 
 License:      Copyright Lawyerist Media, LLC
 ------------------------------*/
@@ -2724,92 +2724,6 @@ Content
     background-color: #bbb;
   }
 
-
-
-  .recommender-result .title_container {
-    margin-bottom: 2rem;
-  }
-
-    .recommender-result a.title {
-      color: #333;
-      display: inline-block;
-      font-size: 2.4rem;
-      font-weight: bold;
-      line-height: 1.2;
-      margin-bottom: .33em;
-      padding: 0;
-    }
-
-      .recommender-result a.title:hover {
-        color: #a00;
-        text-decoration: none;
-      }
-
-      .recommender-result a.title:focus {
-        text-decoration: none;
-      }
-
-  .recommender-result .result-row {
-    display: grid;
-    grid-gap: 1.5rem;
-    grid-template-columns: 16rem 1fr;
-  }
-
-  .recommender-result .result-row .image {
-    display: block;
-    height: 16rem;
-    margin-bottom: 1.5rem;
-    position: relative;
-    width: 16rem;
-  }
-
-    .recommender-result .result-row img.affinity-partner-badge {
-      height: auto;
-      margin: 0;
-      position: absolute;
-        top: -1.5rem;
-        left: -1.5rem;
-      transform: rotate( -.015turn );
-      width: 5rem;
-      z-index: 10;
-    }
-
-    .recommender-result .result-row img.wp-post-image {
-      background-color: #ddd;
-      border-radius: .2rem;
-      box-sizing: content-box;
-      height: auto;
-      margin: auto 0;
-      max-width: none;
-      padding: .5rem;
-      position: relative;
-        bottom: auto;
-        top: auto;
-      width: 15rem;
-    }
-
-    .recommender-result .result-row .col a.button {
-      display: block;
-      text-align: center;
-    }
-
-  .recommender-result table {
-    border: .1rem solid #ddd;
-    font-size: 1.6rem;
-  }
-
-  .recommender-result table th.sub-feature {
-    background-color: unset;
-    border: 0;
-  }
-
-  .recommender-result table td {
-    border: 0;
-  }
-
-    .recommender-result table td .false {
-      color: #c00;
-    }
 
   /* Feature Chart */
 

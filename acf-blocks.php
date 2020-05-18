@@ -94,16 +94,4 @@ function register_acf_block_types() {
 	    )
 		);
 
-    // Vendor Recommender
-    acf_register_block_type(
-			array(
-        'name'              => 'vendor-recommender',
-        'title'             => __( 'Vendor Recommender' ),
-        'render_template'   => 'template-parts/acf-blocks/vendor-recommender.php',
-        'category'          => 'common',
-				'icon'							=> 'image-filter',
-        'keywords'          => array( 'recommend', 'wizard' ),
-	    )
-		);
-
 }
