@@ -11,7 +11,7 @@ widths.
 - Add option to hide child pages output.
 
 
-## [5.6.5] = 2020-05-18
+## [5.6.5] - 2020-05-18
 
 ### Removed
 - Removed vendor recommender code.
