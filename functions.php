@@ -51,7 +51,6 @@ COMMENTS & REVIEWS
 GRAVITY FORMS
 - Enable CC Field on Form Notifications
 - Populate Form Fields
-- Populate Vendor Recommender Forms
 - Auto-Login New Users
 
 WOOCOMMERCE
@@ -1349,7 +1348,7 @@ function featuredtoRSS( $content ) {
 	global $post;
 
 	if ( has_post_thumbnail( $post->ID ) ) {
-		$content = '' . get_the_post_thumbnail( $post->ID, 'featured_top', array( 'style' => 'display:block; height:auto; margin:0 0 15px 0; width:560px;' ) ) . '' . $content;
+		$content = '' . get_the_post_thumbnail( $post->ID, 'large', array( 'style' => 'display:block; height:auto; margin:0 0 15px 0; width:560px;' ) ) . '' . $content;
 	}
 
 	return $content;
@@ -1962,67 +1961,6 @@ function populate_fields( $value, $field, $name ) {
 }
 
 add_filter( 'gform_field_value', 'populate_fields', 10, 3 );
-
-
-/*------------------------------
-Populate Vendor Recommender Forms
-------------------------------*/
-function mktg_seo_populate_form_fields( $form ) {
-
-  foreach ( $form[ 'fields' ] as &$field ) {
-
-    switch ( intval( $field[ 'id' ] ) ) {
-
-			// Goal(s)
-      case 10:
-        $acf_field_key = 'field_5e973e642575d';
-        break;
-
-			// Budget (Up-Front)
-			case 21:
-				$acf_field_key = 'field_5e973ea42575e';
-				break;
-
-			// Budget (Monthly)
-			case 22:
-				$acf_field_key = 'field_5e973ebb2575f';
-				break;
-
-			// Additional Services
-			case 30:
-				$acf_field_key = 'field_5e973ed478f76';
-				break;
-
-			default;
-				$acf_field_key = null;
-
-    }
-
-    $acf_field = get_field_object( $acf_field_key );
-
-    if ( $acf_field ) {
-
-			$choices = array();
-
-      // Loops over each choice and add value/option to $choices array.
-      foreach( $acf_field[ 'choices' ] as $k => $v ) {
-        $choices[] = array( 'text' => $v, 'value' => $k );
-      }
-
-			$field->choices = $choices;
-
-    }
-
-  }
-
-  return $form;
-
-}
-
-add_filter( 'gform_pre_render_65', 'mktg_seo_populate_form_fields' );
-add_filter( 'gform_pre_validation_65', 'mktg_seo_populate_form_fields' );
-add_filter( 'gform_pre_submission_filter_65', 'mktg_seo_populate_form_fields' );
-add_filter( 'gform_admin_pre_render_65', 'mktg_seo_populate_form_fields' );
 
 
 /*------------------------------
