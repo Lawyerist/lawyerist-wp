@@ -1835,14 +1835,17 @@ function list_users_shortcode( $atts ) {
 
       while ( $user_query->have_posts() ) : $user_query->the_post();
 
+        $member_id = get_the_author_meta( 'ID' );
+
         array_push( $users, array(
-          'user_id'     => get_the_ID(),
-          'email'				=> get_the_author_meta( 'user_email' ),
-          'first_name'	=> get_the_author_meta( 'user_firstname' ),
-          'last_name'		=> get_the_author_meta( 'user_lastname' ),
-          'firm_name'   => get_field( 'firm_name', 'user_' . get_the_ID() ),
-          'city'        => get_user_meta( get_the_ID(), 'billing_city', true ),
-          'state'       => get_user_meta( get_the_ID(), 'billing_state', true ),
+          'user_id'       => $member_id,
+          'email'			    => get_the_author_meta( 'user_email' ),
+          'first_name'    => get_the_author_meta( 'user_firstname' ),
+          'last_name'     => get_the_author_meta( 'user_lastname' ),
+          'practice_area' => get_field( 'primary_practice_area', 'user_' . $member_id ),
+          'firm_name'     => get_field( 'firm_name', 'user_' . $member_id ),
+          'city'          => get_field( 'firm_city', 'user_' . $member_id ) ? get_field( 'firm_city', 'user_' . $member_id ) : get_user_meta( $member_id, 'billing_city', true ),
+          'state'         => get_field( 'firm_state', 'user_' . $member_id ) ? get_field( 'firm_state', 'user_' . $member_id ) : get_user_meta( $member_id, 'billing_state', true ),
         ) );
 
       endwhile; wp_reset_postdata();
@@ -1872,13 +1875,14 @@ function list_users_shortcode( $atts ) {
           $customer_data = get_userdata( $customer );
 
           array_push( $users, array(
-            'user_id'     => $customer,
-            'email'				=> $customer_data->user_email,
-            'first_name'	=> $customer_data->first_name,
-            'last_name'		=> $customer_data->last_name,
-            'firm_name'   => get_field( 'firm_name', 'user_' . $customer ),
-            'city'        => get_user_meta( $customer, 'billing_city', true ),
-            'state'       => get_user_meta( $customer, 'billing_state', true ),
+            'user_id'       => $customer,
+            'email'				  => $customer_data->user_email,
+            'first_name'    => $customer_data->first_name,
+            'last_name'     => $customer_data->last_name,
+            'practice_area' => get_field( 'primary_practice_area', 'user_' . $customer ),
+            'firm_name'     => get_field( 'firm_name', 'user_' . $customer ),
+            'city'          => get_field( 'firm_city', 'user_' . $customer ) ? get_field( 'firm_city', 'user_' . $customer ) : get_user_meta( $customer, 'billing_city', true ),
+            'state'         => get_field( 'firm_state', 'user_' . $customer ) ? get_field( 'firm_state', 'user_' . $customer ) : get_user_meta( $customer, 'billing_state', true ),
           ) );
 
         }
@@ -1907,6 +1911,7 @@ function list_users_shortcode( $atts ) {
 
             <?php echo get_avatar( $user[ 'email' ], 100 ); ?>
             <span class="name"><?php echo $user[ 'first_name' ] . ' ' . $user[ 'last_name' ]; ?></span><br />
+            <?php if ( $user[ 'practice_area' ] ) { ?><span class="practice-area"><?php echo $user[ 'practice_area' ]; ?></span><br /><?php } ?>
             <?php if ( $user[ 'firm_name' ] ) { ?><span class="firm-name"><?php echo $user[ 'firm_name' ]; ?></span><br /><?php } ?>
             <?php if ( $user[ 'city' ] && $user[ 'state' ] ) { ?><span class="address"><?php echo $user[ 'city' ]  . ', ' . $user[ 'state' ]; ?></span><br /><?php } ?>
             <span class="email"><?php echo $user[ 'email' ]; ?></span>

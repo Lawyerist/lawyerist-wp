@@ -5,13 +5,21 @@ is based on [Keep a Changelog](https://keepachangelog.com).
 
 
 ## [Unreleased]
+
+
+## [5.6.6] - 2020-5-21
+
+### Added
+- User lists can now include primary practice area, city, and state.
+- Added option to hide child pages output.
+
+### Changed
 - Updated size of featured images sent to the RSS feed.
 - Reduce size of header image and product name on product pages at mobile
 widths.
-- Add option to hide child pages output.
 
 
-## [5.6.5] = 2020-05-18
+## [5.6.5] - 2020-05-18
 
 ### Removed
 - Removed vendor recommender code.
