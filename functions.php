@@ -839,9 +839,9 @@ function lawyerist_add_learndash_breadcrumbs( $links ) {
 		$course_url		= get_permalink( $course_id );
 
 		$course_breadcrumb[] = array(
-        'url' => $course_url,
-        'text' => $course_title,
-        );
+      'url'		=> $course_url,
+      'text'	=> $course_title,
+    );
 
 		array_splice( $links, 1, 0, $course_breadcrumb );
 
@@ -852,9 +852,9 @@ function lawyerist_add_learndash_breadcrumbs( $links ) {
 			$lesson_url		= get_permalink( $lesson_id );
 
 			$lesson_breadcrumb[] = array(
-	        'url' => $lesson_url,
-	        'text' => $lesson_title,
-	        );
+        'url'		=> $lesson_url,
+        'text'	=> $lesson_title,
+      );
 
 			array_splice( $links, 1, 0, $lesson_breadcrumb );
 
