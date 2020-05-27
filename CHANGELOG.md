@@ -7,7 +7,14 @@ is based on [Keep a Changelog](https://keepachangelog.com).
 ## [Unreleased]
 
 
-## [5.6.6] - 2020-5-21
+## [5.6.7] - 2020-05-27
+
+### Fixed
+- Prevent non-admins, non-editors, and non-authors from accessing the WP
+dashboard or seeing the admin bar.
+
+
+## [5.6.6] - 2020-05-21
 
 ### Added
 - User lists can now include primary practice area, city, and state.

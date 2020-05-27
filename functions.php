@@ -13,6 +13,7 @@ STRUCTURE
 ADMIN
 - Login Form
 - Remove Menu Items
+- Prevent Subscribers & Customers from Viewing the WP Dashboard
 
 UTILITY FUNCTIONS
 - Get Country
@@ -410,6 +411,48 @@ function remove_stubborn_admin_bar_items() {
 
 }
 add_action( 'wp_before_admin_bar_render', 'remove_stubborn_admin_bar_items', 999 );
+
+
+/**
+* Prevent Subscribers & Customers from Viewing the WP Dashboard
+*/
+
+// Hide admin bar
+function hide_admin_bar( $show ) {
+
+	if (
+		! current_user_can( 'administrator' ) &&
+		! current_user_can( 'editor' ) &&
+		! current_user_can( 'author' )
+	) {
+		return false;
+	}
+
+	return $show;
+
+}
+
+add_filter( 'show_admin_bar', 'hide_admin_bar' );
+
+// Block wp-admin access
+function block_wp_admin() {
+
+	if (
+		is_admin() &&
+		! current_user_can( 'administrator' ) &&
+		! current_user_can( 'editor' ) &&
+		! current_user_can( 'author' ) &&
+		! ( defined( 'DOING_AJAX' ) && DOING_AJAX )
+	) {
+
+		wp_safe_redirect( '/account/' );
+		exit;
+
+	}
+
+}
+
+add_action( 'admin_init', 'block_wp_admin' );
 
 
 /* UTILITY FUNCTIONS ********************/
@@ -839,9 +882,9 @@ function lawyerist_add_learndash_breadcrumbs( $links ) {
 		$course_url		= get_permalink( $course_id );
 
 		$course_breadcrumb[] = array(
-        'url' => $course_url,
-        'text' => $course_title,
-        );
+      'url'		=> $course_url,
+      'text'	=> $course_title,
+    );
 
 		array_splice( $links, 1, 0, $course_breadcrumb );
 
@@ -852,9 +895,9 @@ function lawyerist_add_learndash_breadcrumbs( $links ) {
 			$lesson_url		= get_permalink( $lesson_id );
 
 			$lesson_breadcrumb[] = array(
-	        'url' => $lesson_url,
-	        'text' => $lesson_title,
-	        );
+        'url'		=> $lesson_url,
+        'text'	=> $lesson_title,
+      );
 
 			array_splice( $links, 1, 0, $lesson_breadcrumb );
 
