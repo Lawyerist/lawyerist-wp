@@ -506,8 +506,28 @@ function get_sponsor_link( $post_id = null ) {
 
 	if ( !$post_id || !has_category( 'sponsored', $post_id ) ) { return; }
 
-	$sponsor					= get_post( get_field( 'sponsored_post_partner', $post_id ) );
-	$product_page_id	= get_field( 'product_page', $sponsor->ID ) ? get_post( get_field( 'product_page', $sponsor->ID ) ) : null;
+	$sponsor = get_post( get_field( 'sponsored_post_partner', $post_id ) );
+
+	if ( get_field( 'product_page', $sponsor->ID ) ) {
+
+		$product_pages = get_field( 'product_page', $sponsor->ID );
+
+		switch ( gettype( $product_pages ) ) {
+
+			case 'integer':
+				$product_page_id = get_post( $product_pages );
+				break;
+
+			case 'array':
+				$product_page_id = get_post( $product_pages[ 0 ] );
+				break;
+
+			default:
+				$product_page_id = null;
+
+		}
+
+	}
 
 	if ( is_single() && $product_page_id && get_post_status( $product_page_id ) == 'publish' ) {
 
