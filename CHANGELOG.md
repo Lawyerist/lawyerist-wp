@@ -7,6 +7,14 @@ is based on [Keep a Changelog](https://keepachangelog.com).
 ## [Unreleased]
 
 
+## [5.6.8] - 2020-06-10
+
+### Fixed
+- Fixed a bug where sponsored post bylines would not link to a product page if
+the partner had multiple product pages. Now it will link to the first product
+page in the list.
+
+
 ## [5.6.7] - 2020-05-27
 
 ### Fixed
